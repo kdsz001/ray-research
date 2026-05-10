@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Typeless 竞品调研报告 · AI 语音输入法赛道 · 2026.05</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+// 防 FOUC：必须在 head 内同步执行，body 渲染前就设好主题
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec;
+  --bg-paper: #fbf9f4;
+  --bg-card: #ffffff;
+  --bg-dark: #14110d;
+  --bg-dark2: #1f1b16;
+  --ink: #14110d;
+  --ink-2: #2c2620;
+  --muted: #6e6358;
+  --light: #a39787;
+  --rule: #14110d;
+  --rule-light: #d8d1c2;
+  --accent-warn: #a73121;
+  --accent-data: #1c4d6b;
+  --accent-pos: #2c5e3f;
+  --accent-yellow: #c89a2c;
+  --grad-warn: rgba(167, 49, 33, 0.04);
+  --grad-data: rgba(28, 77, 107, 0.04);
+  --shadow-card: 0 0 0 transparent;
+  /* Inverse block tokens（用于 TL;DR / verdict / Quick Facts / footer 等"反色块"） */
+  --bg-inverse: #14110d;
+  --bg-inverse-2: #1f1b16;
+  --ink-on-inverse: #f6f3ec;
+  --text-on-inverse: var(--text-on-inverse);
+  --muted-on-inverse: var(--muted-on-inverse);
+  --faint-on-inverse: var(--faint-on-inverse);
+  --light-on-inverse: var(--light-on-inverse);
+  --rule-on-inverse: var(--rule-on-inverse);
+  --accent-yellow-on-inverse: #c89a2c;
+  --serif: "Source Serif 4", "Source Serif Pro", "Charter", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+  --max-w: 820px;
+}
+
+[data-theme="dark"] {
+  --bg: #15120e;
+  --bg-paper: #1c1814;
+  --bg-card: #1f1b16;
+  --bg-dark: #0a0907;
+  --bg-dark2: #0f0d0a;
+  --ink: #ebe3d3;
+  --ink-2: #c9bfae;
+  --muted: #8d8170;
+  --light: #5c5346;
+  --rule: #ebe3d3;
+  --rule-light: #3a342c;
+  --accent-warn: #e87a5f;
+  --accent-data: #6cb1d6;
+  --accent-pos: #6db98c;
+  --accent-yellow: #e6b945;
+  --grad-warn: rgba(232, 122, 95, 0.06);
+  --grad-data: rgba(108, 177, 214, 0.06);
+  --shadow-card: 0 1px 0 rgba(235, 227, 211, 0.04);
+  /* Inverse 反相：dark 模式下反色块变成浅色块，保持视觉对比 */
+  --bg-inverse: #ede5d3;
+  --bg-inverse-2: #e0d8c5;
+  --ink-on-inverse: #14110d;
+  --text-on-inverse: rgba(20, 17, 13, 0.85);
+  --muted-on-inverse: rgba(20, 17, 13, 0.7);
+  --faint-on-inverse: rgba(20, 17, 13, 0.55);
+  --light-on-inverse: rgba(20, 17, 13, 0.5);
+  --rule-on-inverse: rgba(20, 17, 13, 0.18);
+  --accent-yellow-on-inverse: #a47a18;
+}
+
+/* 平滑切换动画（不影响视觉，但让切换不刺眼） */
+body, .tldr, .verdict, .quickfacts-wrap, footer, table, th, td, .stat, .col-card, .callout, .path-card, .verdict-option, .qf-cell {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  font-size: 16px;
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(167, 49, 33, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 80% 100%, rgba(28, 77, 107, 0.04) 0%, transparent 40%);
+}
+
+/* ---------- Top metadata bar ---------- */
+.topbar {
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg-paper);
+  padding: 14px 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.topbar-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  color: var(--muted);
+}
+.topbar strong { color: var(--ink); font-weight: 600; }
+
+/* ---------- Hero ---------- */
+.hero {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 80px 32px 100px;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: end;
+}
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-warn);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--accent-warn);
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 78px;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 28px;
+  font-feature-settings: "ss01";
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent-warn);
+  font-weight: 500;
+}
+.hero-subtitle {
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--muted);
+  font-style: italic;
+  max-width: 560px;
+}
+.hero-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  border-left: 1px solid var(--rule);
+  padding-left: 24px;
+}
+.hero-meta dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
+.hero-meta dt { color: var(--light); font-weight: 400; }
+.hero-meta dd { color: var(--ink); font-weight: 500; }
+
+/* ---------- Quick Facts (10s glance) ---------- */
+.quickfacts-wrap {
+  background: var(--bg-inverse);
+  color: var(--ink-on-inverse);
+  padding: 60px 0 80px;
+  border-bottom: 1px solid var(--rule);
+}
+.quickfacts {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.qf-header { margin-bottom: 36px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.qf-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-yellow-on-inverse);
+}
+.qf-title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text-on-inverse);
+  letter-spacing: -0.01em;
+}
+.qf-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: var(--rule-on-inverse);
+  border: 1px solid var(--rule-on-inverse);
+}
+.qf-cell {
+  background: var(--bg-inverse);
+  padding: 22px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 120px;
+}
+.qf-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--light-on-inverse);
+}
+.qf-value {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--ink-on-inverse);
+  letter-spacing: -0.02em;
+  margin-top: auto;
+  margin-bottom: 4px;
+}
+.qf-value.warn { color: var(--accent-warn); }
+.qf-value.pos { color: var(--accent-pos); }
+.qf-value.data { color: var(--accent-data); }
+.qf-value .qf-unit { font-size: 14px; color: var(--faint-on-inverse); margin-left: 2px; font-weight: 400; }
+.qf-sub {
+  font-size: 11.5px;
+  color: var(--faint-on-inverse);
+  line-height: 1.35;
+}
+.qf-cell-verdict { background: var(--accent-warn); color: white; }
+.qf-cell-verdict .qf-label { color: rgba(255, 255, 255, 0.8); }
+.qf-cell-verdict .qf-verdict {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: white;
+  margin-top: auto;
+  letter-spacing: -0.01em;
+}
+.qf-cell-verdict .qf-sub { color: rgba(255, 255, 255, 0.85); }
+
+/* ---------- Layout containers ---------- */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+main {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 60px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px 120px;
+}
+
+/* ---------- Sticky TOC ---------- */
+nav.toc {
+  position: sticky;
+  top: 40px;
+  align-self: start;
+  height: fit-content;
+  padding-top: 80px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+nav.toc h4 {
+  font-size: 10px;
+  color: var(--light);
+  margin-bottom: 18px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+}
+nav.toc ol { list-style: none; counter-reset: toc; }
+nav.toc li {
+  counter-increment: toc;
+  margin-bottom: 14px;
+  border-left: 1px solid var(--rule-light);
+  padding-left: 14px;
+  transition: border-color 0.2s;
+}
+nav.toc li:hover { border-left-color: var(--ink); }
+nav.toc li::before {
+  content: "0" counter(toc);
+  display: block;
+  color: var(--light);
+  font-size: 10px;
+  margin-bottom: 2px;
+}
+nav.toc a {
+  color: var(--ink-2);
+  text-decoration: none;
+  line-height: 1.3;
+  display: block;
+  font-weight: 500;
+}
+nav.toc a:hover { color: var(--accent-warn); }
+
+article { max-width: var(--max-w); padding-top: 60px; }
+
+/* ---------- Sections ---------- */
+section { padding: 60px 0; border-top: 1px solid var(--rule-light); scroll-margin-top: 30px; }
+section:first-of-type { border-top: none; padding-top: 20px; }
+
+.section-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-warn);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-num::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule-light);
+}
+section h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 32px;
+  font-feature-settings: "ss01";
+}
+section h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.3;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+section h4 {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  margin-top: 36px;
+  margin-bottom: 12px;
+}
+section p {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-2);
+  margin-bottom: 16px;
+}
+section p strong { color: var(--ink); font-weight: 600; }
+section a { color: var(--accent-data); text-decoration: underline; text-decoration-color: rgba(28, 77, 107, 0.3); text-underline-offset: 3px; }
+section a:hover { text-decoration-color: var(--accent-data); }
+
+ul, ol { padding-left: 22px; margin-bottom: 18px; }
+li { margin-bottom: 8px; line-height: 1.7; color: var(--ink-2); }
+li::marker { color: var(--light); }
+
+/* ---------- TL;DR Block ---------- */
+.tldr {
+  background: var(--bg-inverse);
+  color: var(--ink-on-inverse);
+  padding: 56px 56px;
+  border-radius: 0;
+  margin-top: 40px;
+  position: relative;
+}
+.tldr::before {
+  content: "TL;DR";
+  position: absolute;
+  top: -1px;
+  left: 56px;
+  background: var(--accent-warn);
+  color: white;
+  padding: 4px 16px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+}
+.tldr h3 {
+  font-family: var(--serif);
+  color: var(--ink-on-inverse);
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 28px;
+  margin-bottom: 12px;
+}
+.tldr h3:first-of-type { margin-top: 16px; }
+.tldr p, .tldr li { color: var(--text-on-inverse); }
+.tldr p strong, .tldr li strong { color: var(--ink-on-inverse); }
+.tldr ol, .tldr ul { padding-left: 18px; }
+.tldr a { color: var(--ink-on-inverse); text-decoration-color: var(--light-on-inverse); }
+
+/* ---------- Stats grid ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin: 32px 0;
+}
+.stat {
+  background: var(--bg-card);
+  padding: 28px 24px;
+}
+.stat-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.stat-value {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+.stat-value .unit {
+  font-size: 16px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 4px;
+}
+.stat-value.warn { color: var(--accent-warn); }
+.stat-value.pos { color: var(--accent-pos); }
+.stat-value.data { color: var(--accent-data); }
+.stat-note {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ---------- Two col ---------- */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin: 24px 0;
+}
+.col-card {
+  border: 1px solid var(--rule-light);
+  padding: 28px;
+  background: var(--bg-card);
+}
+.col-card h4 {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.col-card.pos h4 { color: var(--accent-pos); }
+.col-card.warn h4 { color: var(--accent-warn); }
+.col-card h4::before {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-family: var(--serif);
+  font-size: 13px;
+  text-align: center;
+  line-height: 18px;
+  font-weight: 600;
+}
+.col-card.pos h4::before { content: "✓"; background: var(--accent-pos); color: white; }
+.col-card.warn h4::before { content: "!"; background: var(--accent-warn); color: white; font-style: italic; }
+.col-card ul { padding-left: 18px; margin-bottom: 0; }
+.col-card li { font-size: 14px; line-height: 1.55; }
+
+/* ---------- Quote ---------- */
+.quote {
+  border-left: 3px solid var(--accent-warn);
+  padding: 8px 0 8px 24px;
+  margin: 24px 0;
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.55;
+  font-style: italic;
+  color: var(--ink-2);
+}
+.quote-attr {
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 12px;
+  font-weight: 500;
+}
+.quote-attr::before { content: "— "; }
+
+/* ---------- Table ---------- */
+.table-wrap { overflow-x: auto; margin: 24px 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: var(--bg-card);
+}
+th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  font-weight: 600;
+  padding: 12px 14px;
+  border-bottom: 2px solid var(--ink);
+  background: var(--bg-paper);
+  white-space: nowrap;
+  vertical-align: bottom;
+}
+td {
+  padding: 14px;
+  border-bottom: 1px solid var(--rule-light);
+  vertical-align: top;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+td.product-name {
+  font-weight: 600;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 15px;
+  white-space: nowrap;
+}
+tr:last-child td { border-bottom: 1px solid var(--ink); }
+td .tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  background: var(--bg-paper);
+  color: var(--muted);
+  border-radius: 2px;
+  margin-right: 4px;
+}
+
+/* ---------- Callout ---------- */
+.callout {
+  background: var(--bg-paper);
+  border-left: 3px solid var(--ink);
+  padding: 24px 28px;
+  margin: 28px 0;
+}
+.callout.warn { border-left-color: var(--accent-warn); background: rgba(167, 49, 33, 0.04); }
+.callout.data { border-left-color: var(--accent-data); background: rgba(28, 77, 107, 0.04); }
+.callout-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.callout.warn .callout-label { color: var(--accent-warn); }
+.callout.data .callout-label { color: var(--accent-data); }
+.callout p { margin-bottom: 12px; }
+.callout p:last-child { margin-bottom: 0; }
+.callout-quote {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* ---------- Hero number rows ---------- */
+.metric-list {
+  margin: 28px 0;
+  border-top: 1px solid var(--ink);
+}
+.metric-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule-light);
+  gap: 24px;
+}
+.metric-row:last-child { border-bottom: 1px solid var(--ink); }
+.metric-row .label {
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.metric-row .label .src {
+  display: block;
+  font-size: 11px;
+  color: var(--light);
+  margin-top: 2px;
+  font-family: var(--mono);
+}
+.metric-row .value {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  text-align: right;
+  white-space: nowrap;
+}
+.metric-row .value.warn { color: var(--accent-warn); }
+.metric-row .value.pos { color: var(--accent-pos); }
+.metric-row .value.data { color: var(--accent-data); }
+.metric-row .value small { font-size: 14px; color: var(--muted); font-weight: 400; }
+
+/* ---------- Section divider with motto ---------- */
+.divider-quote {
+  margin: 80px 0;
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--muted);
+  line-height: 1.5;
+  position: relative;
+  padding: 32px 60px;
+}
+.divider-quote::before, .divider-quote::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 1px;
+  background: var(--rule);
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.divider-quote::after { top: auto; bottom: 0; }
+
+/* ---------- Timeline ---------- */
+.timeline {
+  margin: 32px 0;
+  position: relative;
+  padding-left: 0;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 92px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--rule-light);
+}
+.tl-row {
+  display: grid;
+  grid-template-columns: 80px 14px 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+  align-items: start;
+}
+.tl-row .tl-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  text-align: right;
+  padding-top: 4px;
+  text-transform: uppercase;
+}
+.tl-row .tl-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--ink);
+  margin-top: 4px;
+  position: relative;
+  z-index: 2;
+}
+.tl-row .tl-dot.warn { border-color: var(--accent-warn); background: var(--accent-warn); }
+.tl-row .tl-dot.data { border-color: var(--accent-data); background: var(--accent-data); }
+.tl-row .tl-content { padding-top: 0; }
+.tl-row .tl-title { font-family: var(--serif); font-weight: 600; font-size: 16px; color: var(--ink); line-height: 1.3; margin-bottom: 4px; }
+.tl-row .tl-title.warn { color: var(--accent-warn); }
+.tl-row .tl-desc { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+
+/* ---------- Path A/B/C detail cards ---------- */
+.path-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 28px 0;
+}
+.path-card {
+  border: 1px solid var(--rule-light);
+  background: var(--bg-card);
+  padding: 26px 24px;
+  position: relative;
+}
+.path-card.a { border-top: 4px solid var(--accent-pos); }
+.path-card.c { border-top: 4px solid var(--accent-warn); }
+.path-card .path-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.path-card.a .path-num { color: var(--accent-pos); }
+.path-card.c .path-num { color: var(--accent-warn); }
+.path-card h4 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--ink);
+  text-transform: none;
+  letter-spacing: 0;
+  margin: 0 0 14px 0;
+}
+.path-card p { font-size: 13.5px; line-height: 1.55; color: var(--muted); margin-bottom: 10px; }
+.path-card ul { margin: 0; padding-left: 18px; }
+.path-card li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; color: var(--ink-2); }
+
+/* ---------- Final verdict ---------- */
+.verdict {
+  background: var(--bg-inverse);
+  color: var(--ink-on-inverse);
+  padding: 80px 56px;
+  margin: 80px 0 0;
+  position: relative;
+}
+.verdict-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 24px;
+}
+.verdict h3 {
+  font-family: var(--serif);
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: var(--ink-on-inverse);
+  letter-spacing: -0.02em;
+}
+.verdict p { color: var(--text-on-inverse); font-size: 17px; line-height: 1.65; margin-bottom: 14px; }
+.verdict p strong { color: var(--ink-on-inverse); }
+.verdict-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 40px;
+  background: var(--rule-on-inverse);
+}
+.verdict-option {
+  background: var(--bg-inverse);
+  padding: 28px 24px;
+}
+.verdict-option .num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 12px;
+}
+.verdict-option h4 {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink-on-inverse);
+  margin-bottom: 10px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.verdict-option p { font-size: 14px; line-height: 1.55; margin-bottom: 0; color: var(--muted-on-inverse); }
+
+/* ---------- Score bar ---------- */
+.score-card {
+  border: 1px solid var(--ink);
+  padding: 32px;
+  margin: 24px 0;
+  background: var(--bg-card);
+}
+.score-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 50px;
+  gap: 20px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule-light);
+}
+.score-row:last-child { border-bottom: none; }
+.score-row .name { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: 15px; }
+.score-row .bar { background: var(--bg-paper); height: 8px; position: relative; }
+.score-row .bar-fill { height: 100%; background: var(--accent-data); }
+.score-row .bar-fill.warn { background: var(--accent-warn); }
+.score-row .bar-fill.pos { background: var(--accent-pos); }
+.score-row .num { font-family: var(--mono); font-weight: 600; font-size: 14px; color: var(--ink); text-align: right; }
+
+/* ---------- Footer ---------- */
+footer {
+  border-top: 1px solid var(--rule);
+  background: var(--bg-inverse);
+  color: var(--muted-on-inverse);
+  padding: 60px 32px 80px;
+  margin-top: 0;
+}
+.footer-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+footer h4 { color: var(--ink-on-inverse); margin-bottom: 18px; font-family: var(--serif); font-size: 16px; font-weight: 600; }
+footer ul { padding-left: 0; list-style: none; columns: 2; column-gap: 40px; }
+footer li { font-size: 12px; line-height: 1.5; margin-bottom: 8px; font-family: var(--mono); break-inside: avoid; }
+footer a { color: var(--accent-yellow-on-inverse); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+.footer-meta {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule-on-inverse);
+  font-size: 11px;
+  color: var(--light-on-inverse);
+  font-family: var(--mono);
+  letter-spacing: 0.05em;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  main { grid-template-columns: 1fr; }
+  nav.toc { position: static; padding-top: 40px; }
+  nav.toc ol { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 56px; }
+  .verdict-options { grid-template-columns: 1fr; }
+  .qf-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
+  .hero { padding: 40px 20px 60px; }
+  .hero h1 { font-size: 42px; }
+  .hero-subtitle { font-size: 18px; }
+  main { padding: 0 20px 80px; gap: 0; }
+  .container, .quickfacts { padding: 0 20px; }
+  .quickfacts-wrap { padding: 40px 0 50px; }
+  .qf-grid { grid-template-columns: repeat(2, 1fr); }
+  .qf-value { font-size: 26px; }
+  .qf-cell-verdict .qf-verdict { font-size: 18px; }
+  nav.toc ol { grid-template-columns: 1fr; }
+  section h2 { font-size: 32px; }
+  .stats { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  .verdict, .tldr { padding: 40px 24px; }
+  .verdict h3 { font-size: 26px; }
+  .score-row { grid-template-columns: 120px 1fr 40px; gap: 12px; }
+  footer ul { columns: 1; }
+  .timeline::before { left: 11px; }
+  .tl-row { grid-template-columns: 80px 1fr; }
+  .tl-row .tl-date { font-size: 10px; }
+  .path-detail { grid-template-columns: 1fr; }
+}
+
+/* ---------- Theme toggle button ---------- */
+#theme-toggle {
+  position: fixed;
+  top: 14px;
+  right: 24px;
+  z-index: 1000;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.12s;
+}
+#theme-toggle:hover { background: var(--bg-paper); border-color: var(--ink); }
+#theme-toggle:active { transform: scale(0.92); }
+#theme-toggle .icon-sun, #theme-toggle .icon-moon { transition: opacity 0.15s; }
+#theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] #theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] #theme-toggle {
+  background: var(--bg-paper);
+  border-color: var(--rule-light);
+  color: var(--ink);
+}
+
+@media (max-width: 720px) {
+  #theme-toggle { top: 10px; right: 14px; width: 32px; height: 32px; }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  body { background: white; font-size: 11pt; }
+  .topbar, nav.toc, footer, #theme-toggle { display: none; }
+  main { display: block; max-width: 100%; padding: 0; }
+  article { max-width: 100%; padding-top: 0; }
+  .hero { padding: 30px 0; page-break-after: always; grid-template-columns: 1fr; }
+  .hero h1 { font-size: 36pt; color: black; }
+  .hero h1 em { color: #a73121; }
+  .quickfacts-wrap { background: white; color: black; padding: 20px 0; page-break-after: always; }
+  .qf-grid { background: #ddd; border-color: #ddd; }
+  .qf-cell { background: white; }
+  .qf-label, .qf-sub { color: #666 !important; }
+  .qf-value { color: black !important; }
+  .qf-cell-verdict { background: #f4e6e3 !important; }
+  .qf-cell-verdict .qf-verdict, .qf-cell-verdict .qf-label, .qf-cell-verdict .qf-sub { color: black !important; }
+  section { page-break-inside: avoid; padding: 20px 0; border-top: 2px solid #000; }
+  section h2 { font-size: 22pt; }
+  section h3 { font-size: 14pt; }
+  .tldr, .verdict { background: #f5f5f5 !important; color: black !important; padding: 24px !important; }
+  .tldr *, .verdict * { color: black !important; }
+  .verdict-option { background: white !important; border: 1px solid #ddd; }
+  a { color: black !important; text-decoration: none; }
+  .stats, .two-col, .score-card { page-break-inside: avoid; }
+  .divider-quote { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== THEME TOGGLE ===== -->
+<button id="theme-toggle" aria-label="切换夜间模式" title="切换浅色 / 夜间模式">
+  <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<!-- ===== TOP META BAR ===== -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div><strong>Typeless</strong> · 竞品调研报告</div>
+    <div>调研日期 <strong>2026 · 05 · 10</strong></div>
+    <div>为创业决策准备 · 第一版</div>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div>
+    <div class="hero-eyebrow">AI 语音输入法赛道 · 深度竞品调研</div>
+    <h1>当 AI 学会"<em>听懂你</em>"，<br>语音输入还能打仗吗？</h1>
+    <p class="hero-subtitle">
+      Typeless 是 2024 年从 Stanford StartX 走出的早期玩家，靠 MrBeast 一支视频和"100x cheaper than dictation"出圈。
+      但赛道头部位置已经被 <strong>Wispr Flow 用 $81M 锁死</strong>。
+      它真的值得复刻吗？这份报告告诉你为什么"再造一个 Typeless"是个伪命题。
+    </p>
+  </div>
+  <div class="hero-meta">
+    <dl>
+      <dt>调研对象</dt><dd>Typeless (typeless.com)</dd>
+      <dt>调研深度</dt><dd>4 个并行 AI 调研员</dd>
+      <dt>覆盖平台</dt><dd>13 个英文 + 中文渠道</dd>
+      <dt>一手来源</dt><dd>官网 / PH / SimilarWeb</dd>
+      <dt> </dt><dd>App Store / Reddit / 知乎 / 少数派</dd>
+      <dt>报告字数</dt><dd>约 9,500 字</dd>
+      <dt>面向读者</dt><dd>想做 AI 创业的产品型创始人</dd>
+    </dl>
+  </div>
+</header>
+
+<!-- ===== QUICK FACTS — 10 秒看完 ===== -->
+<div class="quickfacts-wrap">
+  <div class="quickfacts">
+    <div class="qf-header">
+      <div class="qf-eyebrow">10 秒读完 / 核心数据速览</div>
+      <h2 class="qf-title">Typeless at a Glance</h2>
+    </div>
+    <div class="qf-grid">
+      <div class="qf-cell">
+        <div class="qf-label">阶段</div>
+        <div class="qf-value">种子轮</div>
+        <div class="qf-sub">Hat-trick + StartX · 2026.03</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">融资估算</div>
+        <div class="qf-value data">$0.5–3M</div>
+        <div class="qf-sub">官方未披露</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">团队</div>
+        <div class="qf-value">5–15<span class="qf-unit">人</span></div>
+        <div class="qf-sub">无公开招聘</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">月访问量</div>
+        <div class="qf-value data">1.1<span class="qf-unit">M</span></div>
+        <div class="qf-sub">SimilarWeb 4 月</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">Android 下载</div>
+        <div class="qf-value data">540K+</div>
+        <div class="qf-sub">30 天新增 76K</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">付费投放占比</div>
+        <div class="qf-value warn">75.5<span class="qf-unit">%</span></div>
+        <div class="qf-sub">已进入烧钱期</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">Pro 定价</div>
+        <div class="qf-value">$12<span class="qf-unit">/月</span></div>
+        <div class="qf-sub">年付 · vs Wispr $15</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">App Store</div>
+        <div class="qf-value pos">4.57<span class="qf-unit">/5</span></div>
+        <div class="qf-sub">381 评 · 美区</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">Trustpilot</div>
+        <div class="qf-value warn">2.6<span class="qf-unit">/5</span></div>
+        <div class="qf-sub">66% 一星 · typeless.now</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">vs Wispr Flow</div>
+        <div class="qf-value warn">1<span class="qf-unit">:16</span></div>
+        <div class="qf-sub">资本厚度差距</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">复刻可行性</div>
+        <div class="qf-value warn">2<span class="qf-unit">/10</span></div>
+        <div class="qf-sub">综合评分</div>
+      </div>
+      <div class="qf-cell qf-cell-verdict">
+        <div class="qf-label">最终判断</div>
+        <div class="qf-verdict">不建议<br>正面复刻</div>
+        <div class="qf-sub">机会在垂直 / 隐私 / 非英语</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ===== TOC ===== -->
+<nav class="toc">
+  <h4>章节目录</h4>
+  <ol>
+    <li><a href="#tldr">一页纸结论</a></li>
+    <li><a href="#profile">公司档案</a></li>
+    <li><a href="#product">产品本身</a></li>
+    <li><a href="#market">市场反馈</a></li>
+    <li><a href="#users">用户群体</a></li>
+    <li><a href="#competition">竞品格局</a></li>
+    <li><a href="#china">中国市场</a></li>
+    <li><a href="#privacy">隐私争议</a></li>
+    <li><a href="#opportunity">复刻可行性</a></li>
+    <li><a href="#decision">给你的建议</a></li>
+  </ol>
+</nav>
+
+<article>
+
+<!-- ===== 1. TL;DR ===== -->
+<section id="tldr">
+  <div class="section-num">01 / 一页纸结论</div>
+  <h2>如果你只看一段，看这段。</h2>
+
+  <p>
+    Typeless 是一家 <strong>2024 年</strong>由 Stanford 系华人创业者 <strong>Huang Song</strong>（前 Apple/Google/LinkedIn 工程师）创办、<strong>2026 年 3 月</strong>刚拿到种子轮（Hat-trick Capital + StartX）、团队估计 <strong>5–15 人</strong>的早期 AI 语音输入公司。产品已铺齐 Mac / Win / iOS / Android 四端，月访 <strong>110 万</strong>、安卓 <strong>50 万+ 下载</strong>，靠 <strong>MrBeast 单条 524 万阅读</strong>的赞助视频和日本明星 GACKT 等顶流 KOL 完成冷启动。
+  </p>
+  <p>
+    但赛道头部位置已经被 <strong>Wispr Flow 用 $81M 累计融资 + $7 亿估值</strong>锁定，Superwhisper / MacWhisper 在极客圈占据口碑高地。Typeless 处于"快速增长 + 全平台铺开 + 隐私争议浮出水面"的高速但脆弱阶段。
+  </p>
+
+  <div class="tldr">
+    <h3>如果你想做"和它一样的产品"，三种结局：</h3>
+    <ol>
+      <li><strong>中国市场：直接放弃。</strong>豆包、讯飞、微信输入法、智谱小凹已经免费碾压。已经有人花 2 小时写 Python 脚本魔改豆包做 Typeless 平替（知乎 33 赞），中国用户为单功能 SaaS 月付 84 元的意愿极低。</li>
+      <li><strong>海外通用市场：极难复刻。</strong>需要 $5M+ 启动资金、顶级 KOL 营销预算、完整跨平台工程团队。Wispr Flow 的资本厚度足以碾死后来者。</li>
+      <li><strong>真正的机会：差异化切入。</strong>垂直行业（医疗 HIPAA / 法律 / 客服）、Vibe Coding 专用、企业 Voice OS、非英语母语市场（日韩阿拉伯小语种）、本地隐私+Win/Linux 都还没出头部玩家。</li>
+    </ol>
+
+    <h3>如果你只能记住三件事：</h3>
+    <ul>
+      <li><strong>Wispr Flow 是赛道事实赢家。</strong>$81M 融资、$7 亿估值、Fortune 500 中 270 家在用。但 Trustpilot 仅 2.7/5——给"诚实、稳定、不偷数据"的新品牌留下了叙事空间。</li>
+      <li><strong>Typeless 的隐私争议是它最大的裂缝。</strong>日本研究者逆向工程指控其收集屏幕文字、剪贴板、键盘事件、URL——与官网"on-device / zero retention"宣传严重不符。这是后来者的品牌切入点。</li>
+      <li><strong>"通用 AI 语音输入"已经卷完了，机会在垂直和深度集成。</strong>Cursor/Claude Code 集成、医疗 SOAP 笔记、法律文书引用，是接下来 12 个月的真实窗口。</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ===== 2. PROFILE ===== -->
+<section id="profile">
+  <div class="section-num">02 / 公司档案</div>
+  <h2>谁在做这件事？</h2>
+
+  <p>
+    Typeless 注册主体为 <strong>Simply CA LLC</strong>（App Store 备案为 Simply LLC，应是同一实体的简称差异）。PitchBook 登记地址在 San Jose，对外宣传写 Palo Alto。状态：Private / VC-Backed / Generating Revenue。
+  </p>
+
+  <h3>创始人：Huang Song（CEO）</h3>
+  <p>
+    Stanford 校友、连续创业者。X bio 自我介绍 "<em>Founder &amp; CEO @typelessdotcom | @stanford @startx</em>"。过往履历曾在 <strong>Apple（硬件工程师）、Google、LinkedIn（软件开发）</strong>。常驻 San Francisco。X 粉丝 5,314，单条 MrBeast 推文 524 万浏览。
+  </p>
+
+  <div class="metric-list">
+    <div class="metric-row">
+      <div class="label">公司创立<span class="src">来源 PitchBook 1166524-75</span></div>
+      <div class="value">2024</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">融资轮次（截至 2026.05）<span class="src">Hat-trick Capital + StartX</span></div>
+      <div class="value">种子轮</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">融资金额（估算）<span class="src">Hat-trick 公开 check size 区间</span></div>
+      <div class="value data">$0.5M – $3M</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">团队规模（估算）<span class="src">无招聘页面 + LinkedIn 信号推断</span></div>
+      <div class="value">5 – 15 人</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">合规进度<span class="src">trust.typeless.com</span></div>
+      <div class="value pos">HIPAA · GDPR ✓</div>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">⚠ 数据真伪提醒</div>
+    <p>
+      搜索引擎里有 AI 摘要声称 "Typeless 2025 年 6 月获 Menlo Ventures $30M Series A"——<strong>这是幻觉，请勿采信</strong>。Crunchbase / PitchBook / Tracxn / CB Insights 全部不支持。当时 TechCrunch 报道的是 Wispr Flow 的融资，把 Typeless 列为竞争对手之一，未做融资描述。
+    </p>
+    <p>
+      另要注意：互联网上有<strong>多家叫 Typeless 的公司</strong>易混淆——瑞士医疗 AI typeless.ch（被 Doctolib 于 2024 收购，与本文无关）、另一家 Crunchbase 上的 unfunded Typeless 等，请认准 typeless.com / Simply CA LLC。
+    </p>
+  </div>
+</section>
+
+
+<!-- ===== 3. PRODUCT ===== -->
+<section id="product">
+  <div class="section-num">03 / 产品本身</div>
+  <h2>它到底解决什么问题？</h2>
+
+  <p>
+    Typeless 的差异化叙事一句话讲完：<strong>不是把你说的每个字都打出来，而是把你想表达的意思整理成可发送的成稿文本。</strong>它把竞争从"语音转录准确率"切换到"AI 后处理质量"，跳出了苹果听写、讯飞、Whisper 这种"逐字识别"的红海。
+  </p>
+
+  <div class="quote">
+    Speak, don't type. Typeless turns natural speech into polished, ready-to-send text 4× faster than typing.
+    <div class="quote-attr">typeless.com 首页 Slogan</div>
+  </div>
+
+  <h3>核心功能模块</h3>
+  <ul>
+    <li><strong>Dictate（听写）</strong>——自动去 "um/uh/you know" 等口头禅、识别用户改口只保留最终意图、自动结构化列表/步骤、按当前应用调整语气（写邮件 vs 聊天）</li>
+    <li><strong>Translate（翻译）</strong>——100+ 语言实时翻译，支持中英混说</li>
+    <li><strong>Ask anything</strong>——选中文本可以语音命令"改短/改长/改语气/写回复"，整合 ChatGPT / Claude / Perplexity</li>
+    <li><strong>Personal Vocabulary</strong>——学用户的语气、词汇、专有名词</li>
+  </ul>
+
+  <h3>平台 & 集成</h3>
+  <p>
+    <strong>全平台覆盖</strong>：macOS / Windows / iOS / Android — 是当前市场上<strong>平台覆盖最广</strong>的玩家（连头部 Wispr Flow 都没有 Web 版）。已集成 50+ 应用包含 Notion / Slack / VS Code / Cursor / Figma / Claude / ChatGPT / Obsidian 等。
+  </p>
+
+  <h3>定价</h3>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">免费档</div>
+      <div class="stat-value">4,000 <span class="unit">词/周</span></div>
+      <div class="stat-note">≈ 16,000 词/月，比 Wispr Flow 的 2,000 词/周慷慨一倍</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Pro 年付</div>
+      <div class="stat-value data">$12<span class="unit">/月</span></div>
+      <div class="stat-note">$144/年 · 比 Wispr Flow $15/月便宜 20%</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Pro 月付</div>
+      <div class="stat-value">$30<span class="unit">/月</span></div>
+      <div class="stat-note">明显倾斜引导用户选年付</div>
+    </div>
+  </div>
+
+  <h3>底层技术（透明度低）</h3>
+  <p>
+    <strong>官网未披露具体 LLM 来源</strong>——既不说用 Whisper / Deepgram / Parakeet 还是自研、也不说后处理用 GPT / Claude / 自研模型。这与 Superwhisper "用户自选 GPT-5 / Claude Haiku 4.5 / Llama 4 / Parakeet 并支持自带 API key" 的开放姿态形成鲜明对比。
+  </p>
+  <p>
+    隐私表述："<em>Zero cloud data retention · Never trained on your data · On-device history storage</em>" — 但<strong>实际行为存在严重质疑</strong>，详见 <a href="#privacy">第 8 章</a>。
+  </p>
+</section>
+
+
+<!-- ===== 4. MARKET ===== -->
+<section id="market">
+  <div class="section-num">04 / 市场反馈</div>
+  <h2>用户怎么说？</h2>
+
+  <h3>多平台口碑：评分一览</h3>
+  <div class="score-card">
+    <div class="score-row">
+      <div class="name">Product Hunt</div>
+      <div class="bar"><div class="bar-fill pos" style="width: 100%;"></div></div>
+      <div class="num">5.0/5</div>
+    </div>
+    <div class="score-row">
+      <div class="name">App Store (iOS)</div>
+      <div class="bar"><div class="bar-fill pos" style="width: 91.4%;"></div></div>
+      <div class="num">4.57/5</div>
+    </div>
+    <div class="score-row">
+      <div class="name">Google Play</div>
+      <div class="bar"><div class="bar-fill" style="width: 80%;"></div></div>
+      <div class="num">4.0/5</div>
+    </div>
+    <div class="score-row">
+      <div class="name">Trustpilot (typeless.com)</div>
+      <div class="bar"><div class="bar-fill warn" style="width: 74%;"></div></div>
+      <div class="num">3.7/5</div>
+    </div>
+    <div class="score-row">
+      <div class="name">Trustpilot (typeless.now)</div>
+      <div class="bar"><div class="bar-fill warn" style="width: 52%;"></div></div>
+      <div class="num">2.6/5</div>
+    </div>
+    <div class="score-row">
+      <div class="name">Hacker News 讨论</div>
+      <div class="bar"><div class="bar-fill warn" style="width: 5%;"></div></div>
+      <div class="num">≈ 0</div>
+    </div>
+  </div>
+
+  <p>
+    <strong>评分两极分化是关键信号</strong>。Product Hunt 5.0 和 App Store 4.57 看起来很美，但其中 PH 评论里有 4 条来自其他 Maker 的互捧；而 Trustpilot 2.6 / Reddit 50+ 评论的两极争议、HN 完全冷场，才是更接近真实用户底层情绪的写照。
+  </p>
+
+  <h3>Product Hunt：3 次 launch、5 个奖项，但都是"周日榜"</h3>
+  <p>
+    Typeless 在 PH 拿了 3 次 launch，得了 5 个 Launch Awards：
+  </p>
+  <ul>
+    <li><strong>Typeless（2025-11-18）</strong>：#1 of the Day · #4 of the Week · 113 upvotes</li>
+    <li><strong>Typeless for iOS（2025-12-24）</strong>：#1 of the Day · #2 of the Week · 143 upvotes</li>
+    <li><strong>Typeless for Android（2026-01-20）</strong>：#3 of the Day · 72 upvotes（第三次没拿到 #1）</li>
+  </ul>
+
+  <div class="callout warn">
+    <div class="callout-label">⚠ 营销话术校准</div>
+    <p>
+      官网背书有医生 Joe Borelli 一句 "<em>App of the year for 2026 just dropped!</em>" — <strong>但 PH "App of the Year 2026" 这个奖根本不存在</strong>。PH Awards 页面只有 Launch-of-Day/Week 这一类。这是用户自发热情语言被官网当成"奖项级"背书来用。
+    </p>
+  </div>
+
+  <h3>用户最爱的 3 件事</h3>
+  <div class="two-col">
+    <div class="col-card pos">
+      <h4>"Polish 而不是 Transcribe"</h4>
+      <ul>
+        <li>自动去填充词、识别自纠正、把碎想法重组成可发送成文</li>
+        <li>是与所有竞品最强的差异化点</li>
+      </ul>
+    </div>
+    <div class="col-card pos">
+      <h4>跨平台 + Auto Context</h4>
+      <ul>
+        <li>四端齐全 + 在不同 App 自动切语气</li>
+        <li>多个用户实测 158-220 WPM，比打字快 4-6 倍</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>用户最骂的 3 件事</h3>
+  <div class="two-col">
+    <div class="col-card warn">
+      <h4>隐私不一致（致命）</h4>
+      <ul>
+        <li>营销说 on-device / zero retention</li>
+        <li>逆向工程显示音频送 AWS、收 URL/窗口/剪贴板/键盘事件</li>
+      </ul>
+    </div>
+    <div class="col-card warn">
+      <h4>移动端体验差</h4>
+      <ul>
+        <li>安装后输入法被绑死无法切换、Emoji 键消失</li>
+        <li>iOS 必须每次切回原 app、长输入框被遮没收起按钮</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">用户原话精选</div>
+    <p class="callout-quote">
+      "I have barely seen anyone mention this app, and I genuinely cannot believe it. This thing works almost perfectly out of the box."
+    </p>
+    <div class="quote-attr">奇幻小说作者 · r/macapps · 对比 Dragon / SuperWhisper / WhisperFlow / AquaVoice 后选 Typeless</div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">用户原话精选 · 负面</div>
+    <p class="callout-quote">
+      "前 3 个月超好用，最近一周突然不工作了，找不到客服。"
+    </p>
+    <div class="quote-attr">Tracy Allen, US, carpal tunnel 用户 · Trustpilot 1 星</div>
+  </div>
+</section>
+
+
+<!-- ===== 5. USERS ===== -->
+<section id="users">
+  <div class="section-num">05 / 用户群体</div>
+  <h2>谁在用 Typeless？</h2>
+
+  <h3>规模与地理分布</h3>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">全球月访问</div>
+      <div class="stat-value data">1.1<span class="unit">M</span></div>
+      <div class="stat-note">SimilarWeb 4 月数据 · 月环比 -1.9%</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Android 累计下载</div>
+      <div class="stat-value data">540K+</div>
+      <div class="stat-note">Google Play · 30 天新增约 76K</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">付费投放占比</div>
+      <div class="stat-value warn">75.5%</div>
+      <div class="stat-note">已进入烧投放求增长期</div>
+    </div>
+  </div>
+
+  <h3>主要市场（按桌面流量）</h3>
+  <div class="metric-list">
+    <div class="metric-row"><div class="label">🇺🇸 美国</div><div class="value">19.36<small>%</small></div></div>
+    <div class="metric-row"><div class="label">🇨🇳 中国</div><div class="value">15.49<small>%</small></div></div>
+    <div class="metric-row"><div class="label">🇯🇵 日本 <span class="src" style="display: inline; margin-left: 8px; color: var(--accent-pos);">↑ 月环比 +43.92%</span></div><div class="value">14.99<small>%</small></div></div>
+    <div class="metric-row"><div class="label">🇹🇼 台湾</div><div class="value">9.0<small>%</small></div></div>
+    <div class="metric-row"><div class="label">🇮🇳 印度</div><div class="value">3.85<small>%</small></div></div>
+  </div>
+
+  <p>
+    <strong>日本市场单月暴涨 44%</strong>是与 4 月日本顶级歌手 GACKT 主动用日文长推背书强相关。<strong>中国 + 台湾合计 24.5%</strong>是个有趣信号：技术上中文用户用得上，但订阅 / 支付 / 网络 / App Store 切区四道门槛让它停留在小众极客圈层。
+  </p>
+
+  <h3>用户画像</h3>
+  <ul>
+    <li><strong>性别 + 年龄</strong>：男性 59% / 女性 41%；25-34 岁主力（34%）</li>
+    <li><strong>角色</strong>：知识工作者、独立开发者、AI Evangelist、医疗专业（放射科）、军方通讯、内容创作者、学术写作者</li>
+    <li><strong>典型场景</strong>：长文创作、邮件撰写、Slack/微信回复、vibe coding、会议笔记、学术论文</li>
+  </ul>
+
+  <h3>获客路径</h3>
+  <ul>
+    <li><strong>YouTube 主导社交流量 75.7%</strong>——大量 KOL 联盟链接（如 BMF MEDIA "<em>?via=bmfmedia</em>" 9.5 万播放）</li>
+    <li><strong>顶流名人背书</strong>：MrBeast 单条 524 万阅读 + 专属 typeless.com/mrbeast 落地页；GACKT、Linus Ekenstam、Robert Scoble 自发推荐</li>
+    <li><strong>Direct 流量 35.9%</strong>——品牌力开始形成</li>
+    <li><strong>付费投放占 75%</strong>——增长主要靠烧钱</li>
+  </ul>
+</section>
+
+
+<!-- ===== 6. COMPETITION ===== -->
+<section id="competition">
+  <div class="section-num">06 / 竞品格局</div>
+  <h2>真正的 Top 3 是谁？</h2>
+
+  <p>
+    AI 语音输入/听写赛道在 2025–2026 已经分化为<strong>三条主线</strong>：跨平台云端打磨派、Mac 本地隐私派、移动端利基派。每条主线都有明确的头部玩家。
+  </p>
+
+  <h3>赛道资本水位</h3>
+  <p>
+    语音 AI 领域 VC 投资从 2022 年 $315M 增至 2024 年 $2.1B，<strong>两年 7 倍</strong>，2025-2026 持续放量。Wispr Flow 单家累计 $81M / $7 亿估值，Granola（语音会议笔记）2026 年 3 月完成 $125M C 轮、$1.5B 估值——证明"语音 → 文本 → 工作流"赛道可以撑出独角兽。
+  </p>
+
+  <h3>横向对比</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>产品</th>
+          <th>定位</th>
+          <th>定价</th>
+          <th>融资 / 团队</th>
+          <th>主要卖点</th>
+          <th>用户口碑</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="product-name">Wispr Flow<br><span class="tag">Top 1</span></td>
+          <td>"Voice OS"，企业级铺货</td>
+          <td>$15/月</td>
+          <td><strong>$81M</strong> · $7 亿估值 · 87 人</td>
+          <td>跨 50+ App、Auto Edits、Fortune 500 渗透 270 家</td>
+          <td>Trustpilot 2.7/5：付费后准确率塌、800MB 内存常驻、隐私争议</td>
+        </tr>
+        <tr>
+          <td class="product-name">Superwhisper<br><span class="tag">Top 2</span></td>
+          <td>极客口碑高地</td>
+          <td>$8.49/月 · 终身 $250</td>
+          <td>未融资 · 独立团队</td>
+          <td>100% 本地、可选 GPT-5/Claude/Llama/Parakeet 模型、自带 API Key</td>
+          <td>Karpathy / Pieter Levels / Rauch 站台 · PH 4.9/5</td>
+        </tr>
+        <tr>
+          <td class="product-name">MacWhisper<br><span class="tag">Top 3</span></td>
+          <td>转录之王</td>
+          <td>一次性 €59-79</td>
+          <td>独立开发者 Jordi Bruin</td>
+          <td>YouTube/会议自动转、批量转、丰富集成（Notion / n8n / Zapier）</td>
+          <td>PH 4.9/5 · Gumroad 2167+ 评分</td>
+        </tr>
+        <tr style="background: rgba(167, 49, 33, 0.04);">
+          <td class="product-name">Typeless<br><span class="tag" style="background: var(--accent-warn); color: white;">追赶者</span></td>
+          <td>跨平台差异化</td>
+          <td>$12/月 (年付)</td>
+          <td>种子轮 · 5-15 人</td>
+          <td><strong>唯一覆盖 4 端 + Web</strong>、智能自纠正、免费档慷慨</td>
+          <td>App Store 4.57 · Trustpilot 2.6 · 隐私争议浮出</td>
+        </tr>
+        <tr>
+          <td class="product-name">Whisper Memos</td>
+          <td>移动 ADHD 利基</td>
+          <td>$60/年</td>
+          <td>独立开发者 Vojtech Rinik</td>
+          <td>录音→自动 email、ADHD 锁屏提醒、Notion/Things 3 集成</td>
+          <td>App Store 4.8/5 · 500+ 评</td>
+        </tr>
+        <tr>
+          <td class="product-name">Aiko</td>
+          <td>苹果生态本地转录</td>
+          <td>App Store 一次性买断</td>
+          <td>独立开发者 Sindre Sorhus</td>
+          <td>100% 本地 Whisper、SRT/CSV 导出、Universal Purchase</td>
+          <td>4.7/5 · 10 万+ 下载</td>
+        </tr>
+        <tr>
+          <td class="product-name">Better Dictation</td>
+          <td>性价比买断派</td>
+          <td>$39 终身（Basic）</td>
+          <td>团队信息未披露</td>
+          <td>本地 whisper-large-v3-turbo、Apple Neural Engine</td>
+          <td>反 Wispr Flow 订阅模式</td>
+        </tr>
+        <tr>
+          <td class="product-name">VoiceInk</td>
+          <td>开源原教旨</td>
+          <td>$39.99 或自编免费</td>
+          <td>独立开发者 Pax</td>
+          <td>GitHub 4.9k★、Power Mode、Context Aware AI</td>
+          <td>极客与隐私党首选</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout data">
+    <div class="callout-label">关键判断</div>
+    <p>
+      Typeless 在赛道中的位置：<strong>追赶者中的差异化跨平台派</strong>。靠"全平台 + 智能修正 + 免费档"切入 Wispr Flow 没覆盖的长尾用户，但要警惕 Wispr Flow 用资本碾压补齐 Web、以及 Voicy / Willow 等同类切入。
+    </p>
+    <p>
+      <strong>资本厚度差距 16 倍以上</strong>（Wispr $81M vs Typeless 估算 $0.5–3M）——长跑下来 Typeless 很难凭借"跨平台"这一点抗住资本碾压，必须找到第二个壁垒。
+    </p>
+  </div>
+</section>
+
+
+<!-- ===== 7. CHINA ===== -->
+<section id="china">
+  <div class="section-num">07 / 中国市场</div>
+  <h2>中文世界，是机会还是雷区？</h2>
+
+  <p>
+    Typeless 在中国/台湾合计贡献了 24.5% 的桌面流量——但<strong>这并不意味着它在中文市场有立足空间</strong>。中文圈对 Typeless 的认知非常分裂。
+  </p>
+
+  <h3>中文渠道认知度光谱</h3>
+  <div class="metric-list">
+    <div class="metric-row">
+      <div class="label">知乎<span class="src">10+ 篇深度长文，"国内有没有能完全超越 Typeless 的语音输入法" 已成为知乎话题</span></div>
+      <div class="value pos">高 ★★★★★</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">少数派<span class="src">2 篇头部专题 + 1 期派评 + 352 人一派热议</span></div>
+      <div class="value pos">高 ★★★★★</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">36 氪 / 虎嗅<span class="src">行业概念稿，把 Typeless 列为代表产品</span></div>
+      <div class="value">中 ★★★</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">B 站<span class="src">仅 PAPAYA 电脑教室一条专题视频 6914 播放</span></div>
+      <div class="value">中下 ★★</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">即刻<span class="src">站内零声量 — 没进入国内产品圈话题</span></div>
+      <div class="value warn">零 ✗</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">小红书<span class="src">站内零相关笔记 — 没破圈到生活类用户</span></div>
+      <div class="value warn">零 ✗</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">中国用户的真实态度</div>
+    <p class="callout-quote">
+      "Product Hunt 上看到一个叫 Typeless 的软件，是我见过目前来说最好用的 AI 语音输入工具了。<strong>唯一的缺点是贵，年付都要 12 刀一个月。打算 1 个月试用完了直接溜。</strong>"
+    </p>
+    <div class="quote-attr">少数派一派热议 · 東雲閑 · 这是中国用户的典型态度</div>
+  </div>
+
+  <h3>中国市场红海到什么程度？</h3>
+  <ul>
+    <li><strong>讯飞输入法</strong>：月活约 1.2 亿，市占 26%，74 种语种/方言无切换</li>
+    <li><strong>搜狗输入法</strong>：腾讯系，市占 54%，已升大模型</li>
+    <li><strong>百度输入法</strong>：市占 14%，离线识别强</li>
+    <li><strong>微信输入法</strong>：iOS 端事实标准，集成 DeepSeek/混元</li>
+    <li><strong>豆包输入法</strong>：2025 年最大黑马，安卓被多源评为"目前无敌"——多位评测者直接称其为"Typeless 的中国事实平替"</li>
+    <li><strong>智谱小凹</strong>：桌面 Agent 方向，X 圈推为"准确率高"档位</li>
+    <li><strong>千问/通义输入法</strong>：阿里电脑版上线语音</li>
+    <li><strong>闪电说</strong>：武汉创业公司，端侧 0.12s 延迟，归藏强力推荐</li>
+    <li><strong>开源阵营</strong>：CapsWriter（GitHub 5.4k★，最近接入 Qwen3-ASR）、QuQu（GitHub 2.2k★，自称"Wispr Flow 开源平替"）</li>
+  </ul>
+
+  <div class="callout warn">
+    <div class="callout-label">最具警示性的中文圈信号</div>
+    <p>
+      知乎用户 <strong>"阿星 AI 工作室"</strong>发了一篇《魔改豆包输入法变电脑版，立即拥有千元 AI 语音输入法 Typeless 平替》——<strong>用 Python 脚本魔改字节豆包做免费平替，"一年省 1000"。该文 33 赞同 18 评论，是反 Typeless 圈子的最热帖。</strong>
+    </p>
+    <p>
+      这就是中国用户的典型决策路径：<em>功能很赞 + 价格不能接受 + 我有大厂免费方案 + 有人写脚本就跟进</em>。中国 ToC 通用工具市场基本不给单功能 SaaS 月付 84 元的机会。
+    </p>
+  </div>
+
+  <h3>给中国创业者的判断</h3>
+  <p>
+    <strong>不是机会，是死局。</strong>直接做 ToC 通用 AI 语音输入法 = 与豆包、讯飞、微信、搜狗、智谱正面对撞，且后者全部免费。中文世界的 Typeless 平替已经在 GitHub 涌出多个开源版本（CapsWriter、QuQu、VoiceSnap），免费段被填满。
+  </p>
+  <p>
+    <strong>真要做，只有 3 条路：</strong>
+  </p>
+  <ul>
+    <li>端侧 + 隐私（闪电说路径，且要快得离谱）</li>
+    <li>垂直场景（学术写作、播客剪辑、Vibe Coding、客服坐席）</li>
+    <li>B 端（律所、医疗等专业词汇 + 合规需求）</li>
+  </ul>
+</section>
+
+
+<!-- ===== 8. PRIVACY ===== -->
+<section id="privacy">
+  <div class="section-num">08 / 隐私争议</div>
+  <h2>裂缝最深的那一道。</h2>
+
+  <p>
+    这是 Typeless 整份调研里<strong>最重要也最微妙的一节</strong>——因为它直接决定了赛道里"诚实、稳定、不偷数据"是否仍是新品牌的有效切入点。
+  </p>
+
+  <h3>事件时间线</h3>
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-date">2025.11.18</div>
+      <div class="tl-dot data"></div>
+      <div class="tl-content">
+        <div class="tl-title">Typeless 桌面版 Product Hunt 首发</div>
+        <div class="tl-desc">#1 of the Day · 113 upvotes · 隐私宣传 "Zero cloud data retention · Never trained on your data · On-device history storage"</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2025.12.24</div>
+      <div class="tl-dot data"></div>
+      <div class="tl-content">
+        <div class="tl-title">iOS 版 PH 首发</div>
+        <div class="tl-desc">#1 of the Day · 143 upvotes · 进入移动端用户视野</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.01.20</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-title">Android 版 PH 上线</div>
+        <div class="tl-desc">#3 of the Day · 72 upvotes · 全平台铺齐</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.02 末</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">日本研究者 @medmuspg 发布逆向工程分析</div>
+        <div class="tl-desc">指控 Typeless macOS 客户端实际收集屏幕文字、剪贴板、键盘事件、URL、窗口标题——与官方"on-device"宣传严重不符</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.03</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">r/macapps 转贴引发热议</div>
+        <div class="tl-desc">"Has anyone seen this X post about Typeless?" — Reddit 社区开始两极分化，"clear winner" vs "scammy"标签同时出现</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.03 至今</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">Typeless 团队迄今未公开回应</div>
+        <div class="tl-desc">官网继续宣传"Zero cloud data retention"·trust.typeless.com 宣布 HIPAA / GDPR 合规·SOC 2 / ISO 27001 进行中</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.03–05</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">Trustpilot 评价持续恶化</div>
+        <div class="tl-desc">typeless.now 域名 6 评 66% 一星 · "MrBeast scam" / "Totally sus" / "Scammy practices" 多次出现 · 疑似浏览器扩展植入弹窗推广</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Typeless 自己怎么宣传</h3>
+  <div class="quote">
+    Zero cloud data retention. Never trained on your data. On-device history storage.
+    <div class="quote-attr">typeless.com 隐私声明三句话</div>
+  </div>
+
+  <h3>日本研究者的逆向工程指控</h3>
+  <p>
+    2026 年 2 月底，Twitter/X 上日本研究者 <strong>@medmuspg</strong> 发布对 Typeless macOS 客户端的逆向工程分析，被转贴到 r/macapps 引发热议（<a href="https://www.reddit.com/r/macapps/comments/1r2p9j7/" target="_blank">原帖</a>）。指控的具体行为包括：
+  </p>
+  <ul>
+    <li>收集所有访问网站的<strong>完整 URL</strong>（包括 Gmail、Google Docs 等敏感地址）</li>
+    <li>记录<strong>当前焦点应用名 + 窗口标题</strong></li>
+    <li>通过 macOS Accessibility API 调用 <code>collectVisibleTexts</code> <strong>递归收集屏幕上所有可见文字</strong></li>
+    <li><strong>剪贴板读写</strong>（包括读取密码管理器的 <code>TransientType</code> 内容）</li>
+    <li>使用 <code>CGEventTap</code> 进行<strong>系统级键盘监听</strong></li>
+    <li>提取浏览器（Safari/Chrome/Edge/Firefox/Brave）的 DOM 信息</li>
+    <li>通过 <code>TrackEditTextService → sendTrackResultToServer</code> 把<strong>用户编辑的文本字段内容</strong>发回服务器</li>
+  </ul>
+
+  <div class="callout warn">
+    <div class="callout-label">⚠ 这意味着什么</div>
+    <p>
+      如果指控属实——<strong>Typeless 的实际数据采集远超出"语音输入"所必需的范围</strong>，且与官网宣传的 "on-device / zero retention" 严重不符。这在英文 dev / Mac 社区是<strong>非常致命的标签</strong>，会迅速损耗品牌信任。
+    </p>
+    <p>
+      Typeless 团队迄今未对此公开回应。
+    </p>
+  </div>
+
+  <h3>更多实际信号</h3>
+  <ul>
+    <li>Trustpilot 上 typeless.now 域名 6 条评论 <strong>66% 一星</strong>，关键词 "MrBeast scam" / "Totally sus" / "Scammy practices" 多次出现</li>
+    <li>用户 Cy Rambo："<em>一个新 tab 自己弹出来推销它的 app，我根本没碰电脑</em>"——疑似浏览器扩展植入弹窗推广</li>
+    <li>另一用户 Disp mlbb："<em>They paid extension owners to popup their AI slop website</em>"</li>
+    <li>实际数据处理在 <strong>AWS us-east-2</strong>，非"on-device"</li>
+  </ul>
+
+  <div class="callout data">
+    <div class="callout-label">对你的启示</div>
+    <p>
+      Typeless 把"私密"当核心卖点之一却被指控做了相反的事——<strong>这正好是新品牌的品牌叙事窗口</strong>：
+    </p>
+    <ul>
+      <li>"100% 本地、可审计、开源" — VoiceInk / QuQu / CapsWriter 已在打这张</li>
+      <li>"Mac 神经引擎 + Parakeet 本地" — Better Dictation 已在打这张</li>
+      <li>"独立开发者、不收数据" — Aiko / MacWhisper 长期信任牌</li>
+    </ul>
+    <p>
+      但要注意：纯打"我比他们更隐私"很难形成商业闭环——纯隐私党用户付费意愿低，需要叠加其它价值（速度、垂直场景、企业合规）才能撑起订阅。
+    </p>
+  </div>
+</section>
+
+
+<!-- ===== 9. OPPORTUNITY ===== -->
+<section id="opportunity">
+  <div class="section-num">09 / 复刻可行性</div>
+  <h2>"做和它一样的产品"是个伪命题。</h2>
+
+  <p>
+    最重要的认知校准：<strong>Typeless 不是值得"复刻"的对象</strong>——因为它本身只是 Wispr Flow 的差异化追赶者，且自身存在严重的隐私裂缝。复刻 Typeless = 复刻一个"还在打磨期、被资本碾压、口碑在分化"的二线产品。
+  </p>
+
+  <h3>各维度复刻难度评估</h3>
+  <div class="score-card">
+    <div class="score-row">
+      <div class="name">技术门槛</div>
+      <div class="bar"><div class="bar-fill pos" style="width: 30%;"></div></div>
+      <div class="num">3/10</div>
+    </div>
+    <div class="score-row">
+      <div class="name">数据 / 内容门槛</div>
+      <div class="bar"><div class="bar-fill" style="width: 40%;"></div></div>
+      <div class="num">4/10</div>
+    </div>
+    <div class="score-row">
+      <div class="name">资金门槛</div>
+      <div class="bar"><div class="bar-fill warn" style="width: 80%;"></div></div>
+      <div class="num">8/10</div>
+    </div>
+    <div class="score-row">
+      <div class="name">营销门槛</div>
+      <div class="bar"><div class="bar-fill warn" style="width: 90%;"></div></div>
+      <div class="num">9/10</div>
+    </div>
+    <div class="score-row">
+      <div class="name">时间窗口</div>
+      <div class="bar"><div class="bar-fill warn" style="width: 85%;"></div></div>
+      <div class="num">8.5/10</div>
+    </div>
+    <div class="score-row">
+      <div class="name">最终复刻可行性（综合）</div>
+      <div class="bar"><div class="bar-fill warn" style="width: 85%;"></div></div>
+      <div class="num">2/10</div>
+    </div>
+  </div>
+
+  <p>
+    技术上可行（Whisper / Parakeet 开源 + GPT-4o / Claude API 后处理 = 一周可做出 demo），但<strong>商业上几乎不可能</strong>——你需要 $5M+ 资金 + 一支能搞定 KOL 营销的团队 + 跨四端工程能力 + 18 个月时间窗口才能追上 Typeless 当前的位置，而它本身还在被 Wispr Flow 用 16 倍资本厚度追打。
+  </p>
+
+  <h3>哪里还有机会？8 个真实窗口</h3>
+  <ul>
+    <li><strong>1. 垂直行业</strong>：医疗（HIPAA + 医学词典 + SOAP 笔记）、法律（条款引用 + Bluebook 格式）、客服（话术模板）、教育（备课/批改）。通用工具卡不进去。</li>
+    <li><strong>2. 非英语主战场</strong>：日 / 韩 / 阿拉伯 / 西语等高难度语言的精细打磨。Typeless 的"100+ 语言"基本是英语为母版的延伸。<strong>日本市场单月增速 +44%</strong> 已经验证了这个机会。</li>
+    <li><strong>3. 本地隐私 + Win/Linux</strong>：Mac 本地派很挤，但 Win/Linux 本地化（Parakeet on Win、whisper.cpp）几乎没有像样选手。Better Dictation Win 还没上，是窗口。</li>
+    <li><strong>4. Vibe Coding 专用</strong>：Cursor / Claude Code / Zed / JetBrains 深度集成、代码命名规范感知。Reddit r/vibecoding 已有需求被表达，Mumble AI 在抢。</li>
+    <li><strong>5. AI Agent 控制</strong>：语音 → 工具调用 → Agent 任务，不只是文本输入。这是从"输入工具"升级为"操作系统"的下一站。</li>
+    <li><strong>6. 会议中转</strong>：边说边把发言变成 PRD / Issue / Confluence 页面。Granola 已起跳到 $1.5B 估值，证明可以撑大。</li>
+    <li><strong>7. 硬件结合</strong>：可穿戴（耳机 push-to-talk）、车机、专门录音笔配套。</li>
+    <li><strong>8. 反 Wispr / Typeless 的"信任牌"</strong>：Wispr 的 Trustpilot 2.7、Typeless 的隐私争议给"诚实、稳定、不偷数据"留了一条品牌叙事。已被 Better Dictation / VoiceInk / QuQu 在打，但还没出头部。</li>
+  </ul>
+</section>
+
+
+<div class="divider-quote">
+  调研的产出，不应该是"他们多厉害"，<br>
+  而是"我从哪儿切进去能赢"。
+</div>
+
+
+<!-- ===== 10. DECISION ===== -->
+<section id="decision">
+  <div class="section-num">10 / 给你的建议</div>
+  <h2>如果今天必须做决定。</h2>
+
+  <p>
+    根据你"想用 AI 编写产品并创业"的目标，结合上述全部数据，我把建议浓缩成下面三条路径——它们不是平行选项，而是按"风险 → 回报"递增排序。
+  </p>
+
+  <div class="verdict">
+    <div class="verdict-title">★ 三条决策路径</div>
+    <h3>"做一个和 Typeless 一样的产品"是错误的问题。<br>正确的问题是：你要做哪一种？</h3>
+    <p>
+      AI 语音输入法这个赛道在 2026 年 5 月这个时间点已经过了"先发红利期"，进入"资本碾压 + 赛道分化"阶段。如果你坚持要进，必须从一开始就锚定在某个 Typeless 没有覆盖的差异化位置。
+    </p>
+
+    <div class="verdict-options">
+      <div class="verdict-option">
+        <div class="num">路径 A · 低风险</div>
+        <h4>不做语音输入<br>做隔壁</h4>
+        <p>
+          换赛道。AI 写作助手、AI 邮件助手、AI 笔记、AI 客服、AI 翻译插件——这些是"语音输入的同邻居"，竞争格局更分散，机会窗口更大。建议优先看 Granola（$1.5B 估值的会议笔记）类形态，而非 Typeless 类。
+        </p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">路径 B · 中风险</div>
+        <h4>做垂直版<br>语音输入法</h4>
+        <p>
+          锁定一个场景（医疗 SOAP / 法律文书 / Vibe Coding / 客服坐席 / 学术写作），做深度集成 + 行业词典 + 合规。$200K-$500K 启动，6-12 月做出 PMF。可以参考 Whisper Memos（ADHD 利基）的成功路径。
+        </p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">路径 C · 高风险</div>
+        <h4>正面挑战<br>Wispr Flow</h4>
+        <p>
+          做下一代通用 AI 语音输入。需要 $5M+ 资金 + 顶级跨端工程团队 + 顶级营销操盘手 + 一个比"polish 后的成稿"更强的差异化叙事。<strong>不推荐</strong>——除非你能拿到强 VC 背书或有独家技术（如自研模型）。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <h3>三条路径的具体行动指南</h3>
+
+  <h4 style="margin-top: 24px;">PATH A · 不做语音输入，做隔壁（接下来 30 天）</h4>
+  <div class="path-detail">
+    <div class="path-card a">
+      <div class="path-num">A · 第 1-15 天</div>
+      <h4>验证替代方向是否更适合你</h4>
+      <ul>
+        <li>列出 5 个隔壁赛道：AI 写作 / 邮件 / 笔记 / 客服 / 翻译</li>
+        <li>每个找 3 个头部产品做 4 小时使用 + 看 PH/G2 上 30 条评论</li>
+        <li>识别哪个赛道头部 ≤ 5 家、TAM 增速最快、用户付费意愿最强</li>
+        <li>参考 Granola（语音会议笔记）从 0 → $1.5B 估值的路径</li>
+      </ul>
+    </div>
+    <div class="path-card a">
+      <div class="path-num">A · 第 16-30 天</div>
+      <h4>用 /office-hours 做产品定义</h4>
+      <ul>
+        <li>选定 1 个方向做用户深访 8 个</li>
+        <li>用 brainstorming skill 做产品 MVP 定义</li>
+        <li>不用从零开始 — 找 1 个开源/Boilerplate 起步</li>
+        <li>30 天底线：拿到 5 个"我会付费"的口头承诺</li>
+      </ul>
+    </div>
+  </div>
+
+  <h4>PATH B · 做垂直版语音输入法（接下来 30 天）</h4>
+  <ol>
+    <li><strong>选 1 个垂直场景</strong>（推荐顺序：客服坐席 &gt; 学术写作 &gt; Vibe Coding &gt; 法律 &gt; 医疗），做 5-10 个用户深访，验证他们当前用什么工具、最痛的 3 个点、是否愿意为解决方案付费 $30+/月</li>
+    <li><strong>调研该场景下的合规要求</strong>（HIPAA / GDPR / SOC 2 / 等保 / FERPA），这往往是垂直产品的真护城河</li>
+    <li><strong>验证技术可行性</strong>：用 Whisper / Parakeet 跑该场景的真实音频，测准确率是否能达到 90%+；不到就找垂直微调路径（fine-tune 一个 small LLM 处理后处理）</li>
+    <li><strong>看是否有现成的工具链可复用</strong>：少数派/V2EX/GitHub 上已有多少开源/社区项目（CapsWriter、QuQu、VoiceInk 等）可以基于</li>
+    <li><strong>设定 Kill Decision</strong>：如果 30 天后用户深访没听到至少 3 个"我现在就想付钱用"的信号，转向其它方向</li>
+  </ol>
+
+  <h4>PATH C · 正面挑战 Wispr Flow（不推荐 · 但如果你坚持）</h4>
+  <div class="path-detail">
+    <div class="path-card c">
+      <div class="path-num">C · 必备前置条件</div>
+      <h4>没有这 4 项请放弃</h4>
+      <ul>
+        <li><strong>$5M+ 启动资金</strong>（最少跑通 18 个月）</li>
+        <li><strong>独家技术</strong>：自研模型 / 独家数据 / 硬件结合</li>
+        <li><strong>顶级 KOL 营销 know-how</strong>（能拉到 MrBeast 级别站台）</li>
+        <li><strong>跨四端工程团队</strong>（macOS / Windows / iOS / Android 全栈）</li>
+      </ul>
+    </div>
+    <div class="path-card c">
+      <div class="path-num">C · 30 天关键决策</div>
+      <h4>如果 4 项都有，做这些</h4>
+      <ul>
+        <li>找 a16z / Sequoia / Menlo 做 pre-seed 谈话，验证融资可行性</li>
+        <li>设计"为什么我比 Wispr Flow 强 10 倍"的差异化叙事</li>
+        <li>做对比 demo：在 5 个真实场景与 Wispr Flow 同台测试</li>
+        <li>如果融不到资 / 没有差异化 / Demo 输了 → 立即转 Path B</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>不论选哪条路，都要避开的 3 个坑</h3>
+  <ul>
+    <li><strong>不要做"通用 AI 语音输入法 in 中国"</strong>——豆包、讯飞、微信、搜狗、智谱已经免费碾压，且大厂正在加速</li>
+    <li><strong>不要押"我比 Wispr Flow / Typeless 更便宜 / 更准 / 更跨平台"</strong>——这是在和有 16 倍资本厚度的对手在它擅长的维度比拼，必死</li>
+    <li><strong>不要忽视隐私叙事</strong>——Typeless 的隐私争议已经被 Reddit / Mac 社区放大，2026-2027 隐私会成为默认要求而非加分项；如果你做云端产品，从 day 1 就规划好审计、本地选项、HIPAA / SOC 2 路径</li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-label">最后一句</div>
+    <p class="callout-quote">
+      你最大的优势不是资金，是你<strong>不需要赢</strong>。Wispr Flow 必须证明自己是 Voice OS 才能撑住 $7 亿估值；你只需要从某一个特定人群手里，每月稳定收 $30。这个赛道留给小团队的位置仍然存在——但不在 Typeless 的正面战场上。
+    </p>
+  </div>
+</section>
+
+</article>
+</main>
+
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <h4>主要数据来源（一手）</h4>
+    <ul>
+      <li><a href="https://www.typeless.com/" target="_blank">typeless.com</a> · 官网首页 / 关于 / 信任中心</li>
+      <li><a href="https://www.producthunt.com/products/typeless-2" target="_blank">Product Hunt · Typeless 主页</a></li>
+      <li><a href="https://www.producthunt.com/products/typeless-2/reviews" target="_blank">Product Hunt · 全部评论</a></li>
+      <li><a href="https://apps.apple.com/us/app/typeless-ai-voice-keyboard/id6749257650" target="_blank">App Store · iOS 应用页</a></li>
+      <li><a href="https://play.google.com/store/apps/details?id=com.typeless.mobile" target="_blank">Google Play · Android 应用页</a></li>
+      <li><a href="https://www.similarweb.com/website/typeless.com/" target="_blank">SimilarWeb · 流量数据</a></li>
+      <li><a href="https://www.trustpilot.com/review/typeless.com" target="_blank">Trustpilot · typeless.com 评价</a></li>
+      <li><a href="https://www.trustpilot.com/review/typeless.now" target="_blank">Trustpilot · typeless.now 评价</a></li>
+      <li><a href="https://pitchbook.com/profiles/company/1166524-75" target="_blank">PitchBook · Typeless 公司档案</a></li>
+      <li><a href="https://www.reddit.com/r/macapps/comments/1qwn64o/" target="_blank">Reddit · r/macapps 正面评测</a></li>
+      <li><a href="https://www.reddit.com/r/macapps/comments/1r2p9j7/" target="_blank">Reddit · r/macapps 隐私争议帖</a></li>
+      <li><a href="https://wisprflow.ai/new-funding" target="_blank">Wispr Flow · 融资公告</a></li>
+      <li><a href="https://techcrunch.com/2025/11/20/as-its-voice-dectation-app-takes-off-wispr-secures-25m-from-notable-capital/" target="_blank">TechCrunch · Wispr $25M Extension</a></li>
+      <li><a href="https://techcrunch.com/2026/05/02/the-best-ai-powered-dictation-apps-of-2025/" target="_blank">TechCrunch · 2026 最佳 AI 听写应用</a></li>
+      <li><a href="https://sspai.com/post/105358" target="_blank">少数派 · Vanilla Typeless 深度评测</a></li>
+      <li><a href="https://sspai.com/post/105064" target="_blank">少数派 · 南山居氪 学术写作场景</a></li>
+      <li><a href="https://sspai.com/post/105406" target="_blank">少数派 · 一派热议 352 人讨论</a></li>
+      <li><a href="https://zhuanlan.zhihu.com/p/2011044136896177502" target="_blank">知乎 · 胡一刀 19 天深度测评</a></li>
+      <li><a href="https://zhuanlan.zhihu.com/p/1994211099055243322" target="_blank">知乎 · 阿星 魔改豆包做平替</a></li>
+      <li><a href="https://www.bilibili.com/video/BV1KUf1BWEk6/" target="_blank">B 站 · PAPAYA 电脑教室评测</a></li>
+      <li><a href="https://x.com/AI_Whisper_X/status/1995311491541839876" target="_blank">X · AI Dance 五款横评</a></li>
+      <li><a href="https://superwhisper.com/" target="_blank">Superwhisper 官网</a></li>
+      <li><a href="https://goodsnooze.gumroad.com/l/macwhisper" target="_blank">MacWhisper Gumroad</a></li>
+      <li><a href="https://github.com/Beingpax/VoiceInk" target="_blank">VoiceInk GitHub</a></li>
+      <li><a href="https://www.assemblyai.com/blog/voice-ai-in-2026-series-1" target="_blank">AssemblyAI · 2026 Voice AI 投资盘点</a></li>
+    </ul>
+
+    <div class="footer-meta">
+      <div>报告生成 · 2026-05-10 · Claude Opus 4.7 · 4 个并行 AI 调研员协作完成</div>
+      <div>仅供创业决策参考 · 数据可能随时间变化 · 投资有风险</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// 主题切换按钮
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    if (next === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+    try { localStorage.setItem('ray-theme', next); } catch (e) {}
+  });
+  // 系统主题变化时跟随（仅当用户没显式选过时）
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem('ray-theme')) return;
+      if (e.matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+    });
+  }
+})();
+
+// 添加平滑高亮当前章节
+const sections = document.querySelectorAll('section[id]');
+const tocLinks = document.querySelectorAll('nav.toc a');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      tocLinks.forEach(link => {
+        link.style.color = '';
+        link.style.fontWeight = '';
+      });
+      const activeLink = document.querySelector(`nav.toc a[href="#${id}"]`);
+      if (activeLink) {
+        activeLink.style.color = 'var(--accent-warn)';
+        activeLink.style.fontWeight = '600';
+      }
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
