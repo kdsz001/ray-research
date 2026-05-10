@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ray Research · 深度调研报告库</title>
+<meta name="description" content="Ray 的深度调研报告库 — 由 ray-deep-research skill 自动生成的多源验证型 HTML 报告">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec;
+  --bg-paper: #fbf9f4;
+  --bg-card: #ffffff;
+  --bg-inverse: #14110d;
+  --ink: #14110d;
+  --ink-2: #2c2620;
+  --ink-on-inverse: #f6f3ec;
+  --text-on-inverse: rgba(246, 243, 236, 0.85);
+  --muted: #6e6358;
+  --muted-on-inverse: rgba(246, 243, 236, 0.7);
+  --light: #a39787;
+  --rule: #14110d;
+  --rule-light: #d8d1c2;
+  --accent-warn: #a73121;
+  --accent-data: #1c4d6b;
+  --accent-yellow: #c89a2c;
+  --serif: "Source Serif 4", "Charter", Georgia, serif;
+  --sans: "Inter", -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", Menlo, monospace;
+}
+[data-theme="dark"] {
+  --bg: #15120e;
+  --bg-paper: #1c1814;
+  --bg-card: #1f1b16;
+  --bg-inverse: #ede5d3;
+  --ink: #ebe3d3;
+  --ink-2: #c9bfae;
+  --ink-on-inverse: #14110d;
+  --text-on-inverse: rgba(20, 17, 13, 0.85);
+  --muted: #8d8170;
+  --muted-on-inverse: rgba(20, 17, 13, 0.7);
+  --light: #5c5346;
+  --rule: #ebe3d3;
+  --rule-light: #3a342c;
+  --accent-warn: #e87a5f;
+  --accent-data: #6cb1d6;
+  --accent-yellow: #e6b945;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  font-size: 16px;
+  transition: background 0.2s, color 0.2s;
+}
+.topbar {
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg-paper);
+  padding: 14px 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.topbar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  color: var(--muted);
+}
+.topbar strong { color: var(--ink); font-weight: 600; }
+.topbar a { color: var(--muted); text-decoration: none; }
+.topbar a:hover { color: var(--ink); }
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.hero {
+  padding: 100px 32px 80px;
+  border-bottom: 1px solid var(--rule);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-warn);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--accent-warn);
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 84px;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  margin-bottom: 28px;
+  font-feature-settings: "ss01";
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent-warn);
+  font-weight: 500;
+}
+.hero-subtitle {
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--muted);
+  font-style: italic;
+  max-width: 700px;
+}
+
+main { padding: 80px 32px 120px; max-width: 1100px; margin: 0 auto; }
+
+.section-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-warn);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-num::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule-light);
+}
+h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+.topic-list { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.topic {
+  background: var(--bg-card);
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 32px;
+  align-items: start;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+}
+.topic:hover { background: var(--bg-paper); }
+.topic-meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-warn);
+  margin-bottom: 12px;
+}
+.topic h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.topic-desc {
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+.topic-reports {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+.topic-reports a {
+  color: var(--accent-data);
+  text-decoration: none;
+  margin-right: 16px;
+}
+.topic-reports a:hover { text-decoration: underline; }
+.topic-stats {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-align: right;
+  border-left: 1px solid var(--rule-light);
+  padding-left: 24px;
+}
+.topic-stats .num {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
+}
+
+.about {
+  margin-top: 100px;
+  background: var(--bg-inverse);
+  color: var(--ink-on-inverse);
+  padding: 60px 56px;
+  transition: background 0.2s, color 0.2s;
+}
+.about h3 {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--ink-on-inverse);
+}
+.about p { color: var(--text-on-inverse); margin-bottom: 14px; line-height: 1.7; }
+.about a { color: var(--accent-yellow); text-decoration: underline; text-decoration-color: rgba(200, 154, 44, 0.4); }
+
+footer {
+  text-align: center;
+  padding: 40px 32px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--light);
+  border-top: 1px solid var(--rule-light);
+  margin-top: 80px;
+}
+footer a { color: var(--muted); text-decoration: none; }
+footer a:hover { color: var(--ink); }
+
+#theme-toggle {
+  position: fixed;
+  top: 14px;
+  right: 24px;
+  z-index: 1000;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.12s;
+}
+#theme-toggle:hover { background: var(--bg-paper); border-color: var(--ink); }
+#theme-toggle:active { transform: scale(0.92); }
+#theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] #theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] #theme-toggle { background: var(--bg-paper); }
+
+@media (max-width: 720px) {
+  .hero { padding: 60px 20px 50px; }
+  .hero h1 { font-size: 48px; }
+  .hero-subtitle { font-size: 18px; }
+  main { padding: 50px 20px 80px; }
+  h2 { font-size: 32px; }
+  .topic { grid-template-columns: 1fr; }
+  .topic-stats { text-align: left; border-left: none; border-top: 1px solid var(--rule-light); padding-left: 0; padding-top: 16px; }
+  .about { padding: 40px 24px; }
+  #theme-toggle { top: 10px; right: 14px; width: 32px; height: 32px; }
+}
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="切换夜间模式" title="切换浅色 / 夜间模式">
+  <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div><strong>Ray Research</strong> · 深度调研报告库</div>
+    <div><a href="https://github.com/kdsz001/ray-research" target="_blank">GitHub Repo →</a></div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-eyebrow">Deep Research · Built with Claude Code</div>
+  <h1>多源验证、<br>视觉化呈现、<br><em>决策导向</em>的调研报告。</h1>
+  <p class="hero-subtitle">
+    每份报告由 4 个 AI 调研员并行采集多平台数据 → 整合洞察 → 严肃商业杂志风 HTML 输出。
+    不是"AI 帮我搜一下"，而是"派 4 个 AI 调研员下场 → 出一份能拿去做决策的报告"。
+  </p>
+</header>
+
+<main>
+  <div class="section-num">01 / 全部话题</div>
+  <h2>调研话题分组</h2>
+
+  <div class="topic-list">
+    <a class="topic" href="typeless/2026-05-10-typeless.html">
+      <div>
+        <div class="topic-meta">AI 语音输入法 · 竞品调研</div>
+        <h3>Typeless</h3>
+        <p class="topic-desc">
+          Stanford 系华人 Huang Song 创办，2024 年成立，2026.03 拿到 Hat-trick Capital + StartX 种子轮。月访 110 万、Android 50 万+ 下载，靠 MrBeast 单条 524 万阅读冷启动。但隐私争议正在腐蚀根基。
+        </p>
+        <div class="topic-reports">
+          <a href="typeless/2026-05-10-typeless.html">2026-05-10 初版竞品调研</a>
+        </div>
+      </div>
+      <div class="topic-stats">
+        <span class="num">1</span>
+        份报告
+      </div>
+    </a>
+  </div>
+
+  <section class="about">
+    <h3>关于这个仓库</h3>
+    <p>
+      这是 Ray 用 <a href="https://claude.ai/code" target="_blank">Claude Code</a> 配合自定义 <code>ray-deep-research</code> skill 生成的调研报告集合。每份报告由 4 个 AI 调研员并行采集 13+ 个平台的数据后整合而成。
+    </p>
+    <p>
+      <strong style="color: var(--ink-on-inverse)">技术栈</strong>：纯 HTML / CSS / 极简 JS · 无外部依赖 · 单文件可离线浏览 · 含 light + dark 双模式
+    </p>
+    <p>
+      <strong style="color: var(--ink-on-inverse)">视觉风格</strong>：严肃商业杂志风（Source Serif + Inter + 暖奶白纸张感）
+    </p>
+    <p>
+      <strong style="color: var(--ink-on-inverse)">免责</strong>：所有报告为研究用途，不构成投资 / 创业 / 商业决策建议。涉及第三方公司 / 产品的评价为基于公开信息的客观观察。
+    </p>
+  </section>
+</main>
+
+<footer>
+  <a href="https://github.com/kdsz001/ray-research" target="_blank">GitHub</a>
+  &nbsp;·&nbsp;
+  Generated with Claude Opus 4.7
+  &nbsp;·&nbsp;
+  最近更新自动维护
+</footer>
+
+<script>
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    if (next === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    else document.documentElement.removeAttribute('data-theme');
+    try { localStorage.setItem('ray-theme', next); } catch (e) {}
+  });
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem('ray-theme')) return;
+      if (e.matches) document.documentElement.setAttribute('data-theme', 'dark');
+      else document.documentElement.removeAttribute('data-theme');
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
