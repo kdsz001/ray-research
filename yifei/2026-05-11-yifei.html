@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>翼菲科技 / Robotphoenix 调研报告 · 港股 IPO 续命局 · 2026.05</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec;
+  --bg-paper: #fbf9f4;
+  --bg-card: #ffffff;
+  --bg-dark: #14110d;
+  --bg-dark2: #1f1b16;
+  --ink: #14110d;
+  --ink-2: #2c2620;
+  --muted: #6e6358;
+  --light: #a39787;
+  --rule: #14110d;
+  --rule-light: #d8d1c2;
+  --accent-warn: #a73121;
+  --accent-data: #1c4d6b;
+  --accent-pos: #2c5e3f;
+  --accent-yellow: #c89a2c;
+  --bg-inverse: #14110d;
+  --bg-inverse-2: #1f1b16;
+  --ink-on-inverse: #f6f3ec;
+  --text-on-inverse: rgba(246, 243, 236, 0.85);
+  --muted-on-inverse: rgba(246, 243, 236, 0.7);
+  --faint-on-inverse: rgba(246, 243, 236, 0.55);
+  --light-on-inverse: rgba(246, 243, 236, 0.5);
+  --rule-on-inverse: rgba(246, 243, 236, 0.18);
+  --accent-yellow-on-inverse: #c89a2c;
+  --serif: "Source Serif 4", "Source Serif Pro", "Charter", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+  --max-w: 820px;
+}
+[data-theme="dark"] {
+  --bg: #15120e;
+  --bg-paper: #1c1814;
+  --bg-card: #1f1b16;
+  --bg-dark: #0a0907;
+  --ink: #ebe3d3;
+  --ink-2: #c9bfae;
+  --muted: #8d8170;
+  --light: #5c5346;
+  --rule: #ebe3d3;
+  --rule-light: #3a342c;
+  --accent-warn: #e87a5f;
+  --accent-data: #6cb1d6;
+  --accent-pos: #6db98c;
+  --accent-yellow: #e6b945;
+  --bg-inverse: #ede5d3;
+  --bg-inverse-2: #e0d8c5;
+  --ink-on-inverse: #14110d;
+  --text-on-inverse: rgba(20, 17, 13, 0.85);
+  --muted-on-inverse: rgba(20, 17, 13, 0.7);
+  --faint-on-inverse: rgba(20, 17, 13, 0.55);
+  --light-on-inverse: rgba(20, 17, 13, 0.5);
+  --rule-on-inverse: rgba(20, 17, 13, 0.18);
+  --accent-yellow-on-inverse: #a47a18;
+}
+body, .tldr, .verdict, .quickfacts-wrap, footer, table, th, td, .stat, .col-card, .callout, .path-card, .verdict-option, .qf-cell {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  font-size: 16px;
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(167, 49, 33, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 80% 100%, rgba(28, 77, 107, 0.04) 0%, transparent 40%);
+}
+.topbar { border-bottom: 1px solid var(--rule); background: var(--bg-paper); padding: 14px 0; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+.topbar-inner { max-width: 1180px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; color: var(--muted); }
+.topbar strong { color: var(--ink); font-weight: 600; }
+
+.hero { max-width: 1180px; margin: 0 auto; padding: 80px 32px 100px; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 2fr 1fr; gap: 60px; align-items: end; }
+.hero-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-warn); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.hero-eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--accent-warn); }
+.hero h1 { font-family: var(--serif); font-weight: 600; font-size: 78px; line-height: 1.0; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 28px; font-feature-settings: "ss01"; }
+.hero h1 em { font-style: italic; color: var(--accent-warn); font-weight: 500; }
+.hero-subtitle { font-family: var(--serif); font-size: 22px; line-height: 1.45; color: var(--muted); font-style: italic; max-width: 560px; }
+.hero-meta { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 24px; }
+.hero-meta dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
+.hero-meta dt { color: var(--light); font-weight: 400; }
+.hero-meta dd { color: var(--ink); font-weight: 500; }
+
+.quickfacts-wrap { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 60px 0 80px; border-bottom: 1px solid var(--rule); }
+.quickfacts { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+.qf-header { margin-bottom: 36px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.qf-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-yellow-on-inverse); }
+.qf-title { font-family: var(--serif); font-style: italic; font-size: 28px; font-weight: 500; color: var(--text-on-inverse); letter-spacing: -0.01em; }
+.qf-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--rule-on-inverse); border: 1px solid var(--rule-on-inverse); }
+.qf-cell { background: var(--bg-inverse); padding: 22px 18px 20px; display: flex; flex-direction: column; gap: 6px; min-height: 120px; }
+.qf-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light-on-inverse); }
+.qf-value { font-family: var(--serif); font-weight: 600; font-size: 30px; line-height: 1; color: var(--ink-on-inverse); letter-spacing: -0.02em; margin-top: auto; margin-bottom: 4px; }
+.qf-value.warn { color: var(--accent-warn); }
+.qf-value.pos { color: var(--accent-pos); }
+.qf-value.data { color: var(--accent-data); }
+.qf-value .qf-unit { font-size: 13px; color: var(--faint-on-inverse); margin-left: 2px; font-weight: 400; }
+.qf-sub { font-size: 11.5px; color: var(--faint-on-inverse); line-height: 1.35; }
+.qf-cell-verdict { background: var(--accent-warn); color: white; }
+.qf-cell-verdict .qf-label { color: rgba(255, 255, 255, 0.8); }
+.qf-cell-verdict .qf-verdict { font-family: var(--serif); font-style: italic; font-size: 20px; font-weight: 600; line-height: 1.15; color: white; margin-top: auto; letter-spacing: -0.01em; }
+.qf-cell-verdict .qf-sub { color: rgba(255, 255, 255, 0.85); }
+
+.container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+main { display: grid; grid-template-columns: 200px 1fr; gap: 60px; max-width: 1180px; margin: 0 auto; padding: 0 32px 120px; }
+
+nav.toc { position: sticky; top: 40px; align-self: start; height: fit-content; padding-top: 80px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+nav.toc h4 { font-size: 10px; color: var(--light); margin-bottom: 18px; font-weight: 500; letter-spacing: 0.15em; }
+nav.toc ol { list-style: none; counter-reset: toc; }
+nav.toc li { counter-increment: toc; margin-bottom: 14px; border-left: 1px solid var(--rule-light); padding-left: 14px; transition: border-color 0.2s; }
+nav.toc li:hover { border-left-color: var(--ink); }
+nav.toc li::before { content: "0" counter(toc); display: block; color: var(--light); font-size: 10px; margin-bottom: 2px; }
+nav.toc a { color: var(--ink-2); text-decoration: none; line-height: 1.3; display: block; font-weight: 500; }
+nav.toc a:hover { color: var(--accent-warn); }
+article { max-width: var(--max-w); padding-top: 60px; }
+
+section { padding: 60px 0; border-top: 1px solid var(--rule-light); scroll-margin-top: 30px; }
+section:first-of-type { border-top: none; padding-top: 20px; }
+.section-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-warn); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+.section-num::after { content: ""; flex: 1; height: 1px; background: var(--rule-light); }
+section h2 { font-family: var(--serif); font-weight: 600; font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 32px; font-feature-settings: "ss01"; }
+section h3 { font-family: var(--serif); font-weight: 600; font-size: 24px; line-height: 1.3; margin-top: 48px; margin-bottom: 16px; color: var(--ink); }
+section h4 { font-family: var(--sans); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin-top: 36px; margin-bottom: 12px; }
+section p { font-family: var(--sans); font-size: 16px; line-height: 1.7; color: var(--ink-2); margin-bottom: 16px; }
+section p strong { color: var(--ink); font-weight: 600; }
+section a { color: var(--accent-data); text-decoration: underline; text-decoration-color: rgba(28, 77, 107, 0.3); text-underline-offset: 3px; }
+section a:hover { text-decoration-color: var(--accent-data); }
+ul, ol { padding-left: 22px; margin-bottom: 18px; }
+li { margin-bottom: 8px; line-height: 1.7; color: var(--ink-2); }
+li::marker { color: var(--light); }
+
+.tldr { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 56px 56px; margin-top: 40px; position: relative; }
+.tldr::before { content: "TL;DR"; position: absolute; top: -1px; left: 56px; background: var(--accent-warn); color: white; padding: 4px 16px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; font-weight: 600; }
+.tldr h3 { font-family: var(--serif); color: var(--ink-on-inverse); font-size: 22px; font-weight: 500; margin-top: 28px; margin-bottom: 12px; }
+.tldr h3:first-of-type { margin-top: 16px; }
+.tldr p, .tldr li { color: var(--text-on-inverse); }
+.tldr p strong, .tldr li strong { color: var(--ink-on-inverse); }
+.tldr ol, .tldr ul { padding-left: 18px; }
+.tldr a { color: var(--ink-on-inverse); text-decoration-color: var(--light-on-inverse); }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 32px 0; }
+.stat { background: var(--bg-card); padding: 28px 24px; }
+.stat-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 10px; }
+.stat-value { font-family: var(--serif); font-weight: 600; font-size: 36px; line-height: 1; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.02em; }
+.stat-value .unit { font-size: 16px; color: var(--muted); font-weight: 400; margin-left: 4px; }
+.stat-value.warn { color: var(--accent-warn); }
+.stat-value.pos { color: var(--accent-pos); }
+.stat-value.data { color: var(--accent-data); }
+.stat-note { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 24px 0; }
+.col-card { border: 1px solid var(--rule-light); padding: 28px; background: var(--bg-card); }
+.col-card h4 { margin-top: 0; display: flex; align-items: center; gap: 10px; }
+.col-card.pos h4 { color: var(--accent-pos); }
+.col-card.warn h4 { color: var(--accent-warn); }
+.col-card h4::before { display: inline-block; width: 18px; height: 18px; border-radius: 50%; font-family: var(--serif); font-size: 13px; text-align: center; line-height: 18px; font-weight: 600; }
+.col-card.pos h4::before { content: "✓"; background: var(--accent-pos); color: white; }
+.col-card.warn h4::before { content: "!"; background: var(--accent-warn); color: white; font-style: italic; }
+.col-card ul { padding-left: 18px; margin-bottom: 0; }
+.col-card li { font-size: 14px; line-height: 1.55; }
+
+.quote { border-left: 3px solid var(--accent-warn); padding: 8px 0 8px 24px; margin: 24px 0; font-family: var(--serif); font-size: 18px; line-height: 1.55; font-style: italic; color: var(--ink-2); }
+.quote-attr { font-family: var(--sans); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 12px; font-weight: 500; }
+.quote-attr::before { content: "— "; }
+
+.table-wrap { overflow-x: auto; margin: 24px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--bg-card); }
+th { text-align: left; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; padding: 12px 14px; border-bottom: 2px solid var(--ink); background: var(--bg-paper); white-space: nowrap; vertical-align: bottom; }
+td { padding: 14px; border-bottom: 1px solid var(--rule-light); vertical-align: top; line-height: 1.5; color: var(--ink-2); }
+td.product-name { font-weight: 600; color: var(--ink); font-family: var(--serif); font-size: 15px; white-space: nowrap; }
+tr:last-child td { border-bottom: 1px solid var(--ink); }
+tr.highlight td { background: rgba(167, 49, 33, 0.05); }
+td .tag { display: inline-block; font-family: var(--mono); font-size: 10px; text-transform: uppercase; padding: 2px 6px; background: var(--bg-paper); color: var(--muted); border-radius: 2px; margin-right: 4px; }
+
+.callout { background: var(--bg-paper); border-left: 3px solid var(--ink); padding: 24px 28px; margin: 28px 0; }
+.callout.warn { border-left-color: var(--accent-warn); background: rgba(167, 49, 33, 0.04); }
+.callout.data { border-left-color: var(--accent-data); background: rgba(28, 77, 107, 0.04); }
+.callout-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
+.callout.warn .callout-label { color: var(--accent-warn); }
+.callout.data .callout-label { color: var(--accent-data); }
+.callout p { margin-bottom: 12px; }
+.callout p:last-child { margin-bottom: 0; }
+.callout-quote { font-family: var(--serif); font-size: 17px; font-style: italic; line-height: 1.5; color: var(--ink); }
+
+.metric-list { margin: 28px 0; border-top: 1px solid var(--ink); }
+.metric-row { display: grid; grid-template-columns: 1fr auto; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--rule-light); gap: 24px; }
+.metric-row:last-child { border-bottom: 1px solid var(--ink); }
+.metric-row .label { font-size: 14px; color: var(--ink-2); }
+.metric-row .label .src { display: block; font-size: 11px; color: var(--light); margin-top: 2px; font-family: var(--mono); }
+.metric-row .value { font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; text-align: right; white-space: nowrap; }
+.metric-row .value.warn { color: var(--accent-warn); }
+.metric-row .value.pos { color: var(--accent-pos); }
+.metric-row .value.data { color: var(--accent-data); }
+.metric-row .value small { font-size: 13px; color: var(--muted); font-weight: 400; }
+
+.divider-quote { margin: 80px 0; text-align: center; font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--muted); line-height: 1.5; position: relative; padding: 32px 60px; }
+.divider-quote::before, .divider-quote::after { content: ""; position: absolute; width: 40px; height: 1px; background: var(--rule); top: 0; left: 50%; transform: translateX(-50%); }
+.divider-quote::after { top: auto; bottom: 0; }
+
+.timeline { margin: 32px 0; position: relative; padding-left: 0; }
+.timeline::before { content: ""; position: absolute; left: 92px; top: 8px; bottom: 8px; width: 1px; background: var(--rule-light); }
+.tl-row { display: grid; grid-template-columns: 80px 14px 1fr; gap: 12px; margin-bottom: 24px; align-items: start; }
+.tl-row .tl-date { font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em; color: var(--muted); text-align: right; padding-top: 4px; text-transform: uppercase; }
+.tl-row .tl-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--ink); margin-top: 4px; position: relative; z-index: 2; }
+.tl-row .tl-dot.warn { border-color: var(--accent-warn); background: var(--accent-warn); }
+.tl-row .tl-dot.data { border-color: var(--accent-data); background: var(--accent-data); }
+.tl-row .tl-dot.pos { border-color: var(--accent-pos); background: var(--accent-pos); }
+.tl-row .tl-title { font-family: var(--serif); font-weight: 600; font-size: 16px; color: var(--ink); line-height: 1.3; margin-bottom: 4px; }
+.tl-row .tl-title.warn { color: var(--accent-warn); }
+.tl-row .tl-desc { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+
+.path-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 28px 0; }
+.path-card { border: 1px solid var(--rule-light); background: var(--bg-card); padding: 26px 24px; position: relative; }
+.path-card.a { border-top: 4px solid var(--accent-pos); }
+.path-card.b { border-top: 4px solid var(--accent-yellow); }
+.path-card.c { border-top: 4px solid var(--accent-warn); }
+.path-card .path-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.path-card.a .path-num { color: var(--accent-pos); }
+.path-card.b .path-num { color: var(--accent-yellow); }
+.path-card.c .path-num { color: var(--accent-warn); }
+.path-card h4 { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--ink); text-transform: none; letter-spacing: 0; margin: 0 0 14px 0; }
+.path-card p { font-size: 13.5px; line-height: 1.55; color: var(--muted); margin-bottom: 10px; }
+.path-card ul { margin: 0; padding-left: 18px; }
+.path-card li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; color: var(--ink-2); }
+
+.verdict { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 80px 56px; margin: 80px 0 0; position: relative; }
+.verdict-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-yellow-on-inverse); margin-bottom: 24px; }
+.verdict h3 { font-family: var(--serif); font-size: 34px; line-height: 1.2; font-weight: 600; margin-bottom: 24px; color: var(--ink-on-inverse); letter-spacing: -0.02em; }
+.verdict p { color: var(--text-on-inverse); font-size: 17px; line-height: 1.65; margin-bottom: 14px; }
+.verdict p strong { color: var(--ink-on-inverse); }
+.verdict-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 40px; background: var(--rule-on-inverse); }
+.verdict-option { background: var(--bg-inverse); padding: 28px 24px; }
+.verdict-option .num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--accent-yellow-on-inverse); margin-bottom: 12px; }
+.verdict-option h4 { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--ink-on-inverse); margin-bottom: 10px; text-transform: none; letter-spacing: 0; }
+.verdict-option p { font-size: 14px; line-height: 1.55; margin-bottom: 0; color: var(--muted-on-inverse); }
+
+.score-card { border: 1px solid var(--ink); padding: 32px; margin: 24px 0; background: var(--bg-card); }
+.score-row { display: grid; grid-template-columns: 200px 1fr 50px; gap: 20px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--rule-light); }
+.score-row:last-child { border-bottom: none; }
+.score-row .name { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: 15px; }
+.score-row .bar { background: var(--bg-paper); height: 8px; position: relative; }
+.score-row .bar-fill { height: 100%; background: var(--accent-data); }
+.score-row .bar-fill.warn { background: var(--accent-warn); }
+.score-row .bar-fill.pos { background: var(--accent-pos); }
+.score-row .num { font-family: var(--mono); font-weight: 600; font-size: 14px; color: var(--ink); text-align: right; }
+
+footer { border-top: 1px solid var(--rule); background: var(--bg-inverse); color: var(--muted-on-inverse); padding: 60px 32px 80px; margin-top: 0; }
+.footer-inner { max-width: 1180px; margin: 0 auto; }
+footer h4 { color: var(--ink-on-inverse); margin-bottom: 18px; font-family: var(--serif); font-size: 16px; font-weight: 600; }
+footer ul { padding-left: 0; list-style: none; columns: 2; column-gap: 40px; }
+footer li { font-size: 12px; line-height: 1.5; margin-bottom: 8px; font-family: var(--mono); break-inside: avoid; }
+footer a { color: var(--accent-yellow-on-inverse); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+.footer-meta { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--rule-on-inverse); font-size: 11px; color: var(--light-on-inverse); font-family: var(--mono); letter-spacing: 0.05em; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+
+@media (max-width: 1100px) {
+  main { grid-template-columns: 1fr; }
+  nav.toc { position: static; padding-top: 40px; }
+  nav.toc ol { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 56px; }
+  .verdict-options { grid-template-columns: 1fr; }
+  .qf-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
+  .hero { padding: 40px 20px 60px; }
+  .hero h1 { font-size: 42px; }
+  .hero-subtitle { font-size: 18px; }
+  main { padding: 0 20px 80px; gap: 0; }
+  .container, .quickfacts { padding: 0 20px; }
+  .quickfacts-wrap { padding: 40px 0 50px; }
+  .qf-grid { grid-template-columns: repeat(2, 1fr); }
+  .qf-value { font-size: 24px; }
+  .qf-cell-verdict .qf-verdict { font-size: 16px; }
+  nav.toc ol { grid-template-columns: 1fr; }
+  section h2 { font-size: 30px; }
+  .stats { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  .verdict, .tldr { padding: 40px 24px; }
+  .verdict h3 { font-size: 24px; }
+  .score-row { grid-template-columns: 120px 1fr 40px; gap: 12px; }
+  footer ul { columns: 1; }
+  .timeline::before { left: 11px; }
+  .tl-row { grid-template-columns: 80px 1fr; }
+  .tl-row .tl-dot { display: none; }
+  .path-detail { grid-template-columns: 1fr; }
+}
+
+#theme-toggle { position: fixed; top: 14px; right: 24px; z-index: 1000; width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--rule-light); color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.12s; }
+#theme-toggle:hover { background: var(--bg-paper); border-color: var(--ink); }
+#theme-toggle:active { transform: scale(0.92); }
+#theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] #theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] #theme-toggle { background: var(--bg-paper); border-color: var(--rule-light); color: var(--ink); }
+@media (max-width: 720px) { #theme-toggle { top: 10px; right: 14px; width: 32px; height: 32px; } }
+
+@media print {
+  body { background: white; font-size: 11pt; }
+  .topbar, nav.toc, footer, #theme-toggle { display: none; }
+  main { display: block; max-width: 100%; padding: 0; }
+  article { max-width: 100%; padding-top: 0; }
+  .hero { padding: 30px 0; page-break-after: always; grid-template-columns: 1fr; }
+  .hero h1 { font-size: 36pt; color: black; }
+  .hero h1 em { color: #a73121; }
+  .quickfacts-wrap { background: white; color: black; padding: 20px 0; page-break-after: always; }
+  .qf-grid { background: #ddd; border-color: #ddd; }
+  .qf-cell { background: white; }
+  .qf-label, .qf-sub { color: #666 !important; }
+  .qf-value { color: black !important; }
+  .qf-cell-verdict { background: #f4e6e3 !important; }
+  .qf-cell-verdict .qf-verdict, .qf-cell-verdict .qf-label, .qf-cell-verdict .qf-sub { color: black !important; }
+  section { page-break-inside: avoid; padding: 20px 0; border-top: 2px solid #000; }
+  .tldr, .verdict { background: #f5f5f5 !important; color: black !important; padding: 24px !important; }
+  .tldr *, .verdict * { color: black !important; }
+  a { color: black !important; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="切换夜间模式" title="切换浅色 / 夜间模式">
+  <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div><strong>翼菲科技 · Robotphoenix (06871.HK)</strong> · 港股 IPO 续命局</div>
+    <div>调研日期 <strong>2026 · 05 · 11</strong></div>
+    <div>给产品型创业者的尽调 · 第一版</div>
+  </div>
+</div>
+
+<header class="hero">
+  <div>
+    <div class="hero-eyebrow">2012 创立 · 2026.05.18 港股挂牌</div>
+    <h1>清华博士的<em>烧钱长跑</em>，<br>赌在港交所一张通行证上。</h1>
+    <p class="hero-subtitle">翼菲科技不是国产并联机器人的第一名，是 12 年熬到 IPO 临门一脚、用地方国资换交易所窗口、靠"特专科技"通道续命募资的中等玩家——技术真、亏损也真。</p>
+  </div>
+  <aside class="hero-meta">
+    <dl>
+      <dt>调研对象</dt><dd>浙江翼菲智能科技 (06871.HK)</dd>
+      <dt>调研深度</dt><dd>4 子 Agent 并行</dd>
+      <dt>覆盖渠道</dt><dd>港交所招股书 + 36氪 + 新浪 + 凤凰 + 腾讯 + 高工机器人 + Pandaily + Bamboo Works + Crunchbase + Tracxn</dd>
+      <dt>读者画像</dt><dd>产品型创业者 / 非职业投资人</dd>
+      <dt>字数</dt><dd>约 12,000 字</dd>
+      <dt>用途</dt><dd>赛道认知 · 不构成投资建议</dd>
+    </dl>
+  </aside>
+</header>
+
+<div class="quickfacts-wrap">
+  <div class="quickfacts">
+    <div class="qf-header">
+      <span class="qf-eyebrow">Quick Facts · 10 秒看完</span>
+      <div class="qf-title">Yifei / Robotphoenix at a Glance</div>
+    </div>
+    <div class="qf-grid">
+      <div class="qf-cell">
+        <div class="qf-label">公司阶段</div>
+        <div class="qf-value">已上市</div>
+        <div class="qf-sub">06871.HK · 2026.05.18 港交所主板 · 18C 特专科技章节</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">IPO 后市值</div>
+        <div class="qf-value">$9.58<span class="qf-unit">亿</span></div>
+        <div class="qf-sub">HKD 74.71 亿（发行价 HK$30.50/股）</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">累计融资轮次</div>
+        <div class="qf-value">12+1<span class="qf-unit">轮</span></div>
+        <div class="qf-sub">IPO 前 ¥6.34 亿（约 $8810 万），估值涨 180 倍</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">2025 营收</div>
+        <div class="qf-value">¥3.87<span class="qf-unit">亿</span></div>
+        <div class="qf-sub">约 $5370 万 · 同比 +44.5%</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">2025 净亏损</div>
+        <div class="qf-value warn">¥1.52<span class="qf-unit">亿</span></div>
+        <div class="qf-sub">约 -$2110 万 · 同比扩大 113.9%</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">毛利率</div>
+        <div class="qf-value">26.5<span class="qf-unit">%</span></div>
+        <div class="qf-sub">2024 数据 · 显著低于行业头部</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">资产负债率</div>
+        <div class="qf-value warn">88.4<span class="qf-unit">%</span></div>
+        <div class="qf-sub">高杠杆 · 临近资不抵债线</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">流动资产 1 年蒸发</div>
+        <div class="qf-value warn">99.9<span class="qf-unit">%</span></div>
+        <div class="qf-sub">¥4781 万 → ¥5 万（2023→2024）</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">海外营收占比</div>
+        <div class="qf-value">9.8<span class="qf-unit">%</span></div>
+        <div class="qf-sub">2025 ¥3800 万（约 $527 万） · 出海早期</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">并联本体国产排名</div>
+        <div class="qf-value">第 2-3<span class="qf-unit">名</span></div>
+        <div class="qf-sub">阿童木 (12.3% 国产 Top 1) 已实质性反超</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">英文世界存在感</div>
+        <div class="qf-value">3.5<span class="qf-unit">/10</span></div>
+        <div class="qf-sub">LinkedIn 仅 77 follower · 越南 + 美国仅 2 场展会</div>
+      </div>
+      <div class="qf-cell qf-cell-verdict">
+        <div class="qf-label">综合判断</div>
+        <div class="qf-verdict">值得了解，<br>不建议复刻或投资</div>
+        <div class="qf-sub">真做事 + 财务险 · 18C 通道续命 ≠ 胜利</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+<nav class="toc">
+  <h4>Contents</h4>
+  <ol>
+    <li><a href="#tldr">一页纸结论</a></li>
+    <li><a href="#profile">公司档案与迁址</a></li>
+    <li><a href="#product">产品矩阵与定位</a></li>
+    <li><a href="#financials">财务三件套</a></li>
+    <li><a href="#voice">市场声音</a></li>
+    <li><a href="#competitors">竞品横向格局</a></li>
+    <li><a href="#ipo">IPO 路径与风险</a></li>
+    <li><a href="#overseas">海外业务真相</a></li>
+    <li><a href="#opportunity">复刻可行性与机会窗口</a></li>
+    <li><a href="#decision">决策建议三条路径</a></li>
+  </ol>
+</nav>
+
+<article>
+
+<section id="tldr">
+  <div class="section-num">01 · 一页纸结论</div>
+  <h2>从济南到玉环，一家公司 12 年的<em style="font-style:italic;color:var(--accent-warn)">变形记</em>。</h2>
+  <p>翼菲科技是个不容易讲清楚的故事——它的英文名是 <strong>Robotphoenix</strong>（凤凰机器人），中文老名是<strong>济南翼菲自动化</strong>，现在的法人是<strong>浙江翼菲智能科技股份有限公司</strong>。三个名字、三个总部，背后是同一家由清华博士张赛 2012 年在济南创办的并联机器人厂。</p>
+  <p>这家公司熬了 13 年没盈利，融了 12 轮共 ¥6.34 亿（约 $8810 万）。它的市场地位从 2018 年的"国产并联出货第一"被天津阿童木实质性反超，于是它把战略从"卖机器人本体"转成"卖整线集成"——本体业务现在只占营收的 20%。2025 年 6 月公司从济南迁址到浙江台州玉环，换取地方国资 ¥2.44 亿（约 $3389 万）入股 + IPO 落户。2026 年 5 月 18 日，它通过港交所 18C 章程（专门给未盈利"特专科技"公司的通道）登陆主板，募资净额 HKD 6.73 亿（约 $8630 万）。</p>
+  <div class="tldr">
+    <h3>如果你想做一家和翼菲类似的并联机器人公司，三种结局：</h3>
+    <ol>
+      <li><strong>"你做不过阿童木"</strong>——它已经连 5 年国产 Top 1、全球第 2 仅次 ABB，2025 前三季度还首次扭亏盈利 ¥93.8 万。并联本体是"小赛道 + 高集中度"，新玩家进不去。</li>
+      <li><strong>"你做不动整线"</strong>——翼菲 80% 营收来自整线集成，这是个"人 + 关系 + 项目管理"的活，需要 200+ 人的项目交付团队、十年客户积累、地方政府关系。这不是产品创业。</li>
+      <li><strong>"你只能做翼菲做不到的东西"</strong>——半导体洁净间分拣、AI 视觉 + 异形件抓取、控制器/视觉双修核心零部件——这是真实的机会窗口，但都不是"翼菲第二"，而是"翼菲外的物种"。</li>
+    </ol>
+    <h3>如果你只能记住三件事：</h3>
+    <ul>
+      <li><strong>翼菲已经上市，但 IPO 本身就是续命动作。</strong> 流动资产 1 年蒸发 99.9%，账上现金 ¥2289 万对应 ¥1.35 亿银行借款——上市募资是用来还债 + 续命 + 押注人形机器人"鸿钧"。</li>
+      <li><strong>"国产并联第一股"是营销话术，不是市场地位。</strong> 翼菲自己招股书写的是"中国轻工业机器人国内排名第 5（2024）→ 第 4（2025），市占率 1.4%"——它是首家上市，不是销量第一。</li>
+      <li><strong>无基石、无绿鞋的"裸奔 IPO"+ 老股东突击退出 + IPO 前迁址玉环换国资接盘——三件事同时发生，是行业里很少见的组合。</strong> 不是骗局，但是个高风险局。</li>
+    </ul>
+  </div>
+</section>
+
+<section id="profile">
+  <div class="section-num">02 · 公司档案与迁址</div>
+  <h2>三个名字 · 三个总部 · 同一家公司。</h2>
+  <p>这家公司的"主体身份"演化是理解它的关键。</p>
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-date">2012.06</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-title">济南翼菲自动化科技有限公司成立</div>
+        <div class="tl-desc">山东济南高新区航天大道，创始人张赛（清华本+哥大硕）联合张健、张立、金喆共 4 人创业。中文名"翼菲"取自"凤凰"二字拆解，英文名 Robotphoenix。</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2014.03</div>
+      <div class="tl-dot data"></div>
+      <div class="tl-content">
+        <div class="tl-title">天使轮 ¥600 万（约 $83 万）</div>
+        <div class="tl-desc">佳士科技子公司投资。这是 A 股上市的焊接设备厂第一次产业投资。</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2016</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">现金流危机 · 张赛卖房自救</div>
+        <div class="tl-desc">公司差点资金链断裂，张赛个人卖房现金回购合伙人股份。这件事在 2025 年招股前被各家媒体反复消费，公司用"硬科技创业精神"包装，但本质暴露了 2016 年的资金困境。</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2018</div>
+      <div class="tl-dot pos"></div>
+      <div class="tl-content">
+        <div class="tl-title">出货量做到"国产并联第一"</div>
+        <div class="tl-desc">界面新闻援引行业数据，翼菲并联出货占国内赛道约 50% 产值。这是翼菲市场地位的高点。</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2021</div>
+      <div class="tl-dot pos"></div>
+      <div class="tl-content">
+        <div class="tl-title">工信部第三批专精特新"小巨人"</div>
+        <div class="tl-desc">国家级中小企业认定，享受税收优惠+政府融资支持。这是真背书。</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2022.03</div>
+      <div class="tl-dot data"></div>
+      <div class="tl-content">
+        <div class="tl-title">D 轮数亿元 · 春华资本领投</div>
+        <div class="tl-desc">D 轮（A/B/C/D 表示融资阶段，D 轮通常意味着公司进入成熟期、接近上市）。清控银杏、宽带资本跟投。IPO 前最重要的一笔。</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2022-23</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">阿童木实质性反超</div>
+        <div class="tl-desc">天津阿童木机器人 2024 年中国并联市占率 12.3% 国产第 1、全球第 2（仅次 ABB）。翼菲并联本体业务的份额被切走。</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2024.12</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-title">张赛拿到清华工博博士学位</div>
+        <div class="tl-desc">创业 12 年后、IPO 前夕完成博士。"清华博士创业"的人设在招股书叙事里被放大。</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2025.06.25</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">注册地从济南迁至浙江玉环</div>
+        <div class="tl-desc">玉环国投 + 玉环投资合计入股 16%+（¥2.44 亿，约 $3389 万），条件是公司迁址 + 在浙江绍兴上虞投资 ¥5.2 亿（约 $7222 万）建新基地。这是地方政府用国资换 IPO 落户的典型交易。</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2025.06.30</div>
+      <div class="tl-dot data"></div>
+      <div class="tl-content">
+        <div class="tl-title">港交所首次递交 A1 招股书</div>
+        <div class="tl-desc">援引 18C 章程（专门给"特专科技"未盈利公司的上市通道）。农银国际独家保荐。</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.04.21</div>
+      <div class="tl-dot data"></div>
+      <div class="tl-content">
+        <div class="tl-title">通过港交所聆讯</div>
+        <div class="tl-desc">招股书曾失效后重新递表，前三季度营收增速 71.4% 是过关关键。</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.05.18</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">港交所主板挂牌 · 06871.HK</div>
+        <div class="tl-desc">发行价 HK$30.50，发行 2,460 万股，募资净额 HKD 6.73 亿（约 $8630 万）。<strong>无基石、无绿鞋"裸奔"上市</strong>——这是港股市场对它信心不强的信号。</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>股权结构 · 极度分散</h3>
+  <div class="metric-list">
+    <div class="metric-row"><div class="label">张赛直接持股</div><div class="value">11.17<small>%</small></div></div>
+    <div class="metric-row"><div class="label">张赛通过员工持股平台<span class="src">济南梓遒 8.76% · 云帆 2.72% · 知秋 2.41%（GP=张赛）</span></div><div class="value">13.89<small>%</small></div></div>
+    <div class="metric-row"><div class="label">张赛合计投票权</div><div class="value pos">25.07<small>%</small></div></div>
+    <div class="metric-row"><div class="label">玉环国投 + 玉环投资<span class="src">地方国资 · 玉环县政府投资工具</span></div><div class="value">16+<small>%</small></div></div>
+    <div class="metric-row"><div class="label">宽带诚柏（CBC Capital 系）</div><div class="value">8.69<small>%</small></div></div>
+    <div class="metric-row"><div class="label">上海峰瑞（峰瑞资本）<span class="src">已部分退出</span></div><div class="value">6.44<small>%</small></div></div>
+    <div class="metric-row"><div class="label">清控银杏<span class="src">清华系 PE · 已部分退出</span></div><div class="value">5.15<small>%</small></div></div>
+    <div class="metric-row"><div class="label">总登记股东数</div><div class="value data">38<small>名</small></div></div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">风险信号 · IPO 前老股东突击退出</div>
+    <p>2025 年 4-5 月递表前的 2 个月内，多家老股东集中转股给玉环国投等接盘方：</p>
+    <ul>
+      <li>2025.04：王娇娇、上海东数、泉州晟联、上海峰瑞、前海蓝点转股，对价 ¥1.1 亿（约 $1528 万）。其中王娇娇、上海东数、前海蓝点完全退出。</li>
+      <li>2025.05：李春帆、清控银杏、君利联合、上海峰瑞转股，对价合计 ¥3300 万（约 $458 万）。常春藤（常州）股权投资基金完全退出，对价 ¥1870 万（约 $260 万）。</li>
+    </ul>
+    <p><strong>解读</strong>：VC（风险投资基金，一般 7-10 年到期需要退出）选择在 IPO 前转股而不是等上市后涨价，往往意味着触发了回购条款（投资合同里"如果公司没按时 IPO 就要回购股份"的条款），或者对发行价没信心。</p>
+  </div>
+</section>
+
+<section id="product">
+  <div class="section-num">03 · 产品矩阵与定位</div>
+  <h2>五个动物系列 + 一个人形——但<em style="font-style:italic;color:var(--accent-warn)">本体只赚两成钱</em>。</h2>
+  <p>翼菲对外讲的故事是"轻工业全品类工业机器人 + 智能制造解决方案供应商"，产品系列以动物命名（这是翼菲 ToB 公司里少见的品牌包装思路）：</p>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Bat 系列 · 并联机器人</div>
+      <div class="stat-value">迅翼</div>
+      <div class="stat-note">Delta 机器人主力产品，首批通过国内 20,000 小时无故障认证。这是翼菲的招牌业务。</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Python 系列 · SCARA</div>
+      <div class="stat-value">水平多关节</div>
+      <div class="stat-note">3C 装配场景；面对汇川（中国 SCARA 市占 27.3% 第 1）的直接竞争。</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Mantis 系列 · 六轴</div>
+      <div class="stat-value">六关节</div>
+      <div class="stat-note">通用工业机器人；面对埃斯顿（国产六轴 No.1）的直接竞争。</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Camel 系列 · AGV/AMR</div>
+      <div class="stat-value">移动机器人</div>
+      <div class="stat-note">轮式自主搬运；这是翼菲做整线集成的辅助产品线。</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Lobster 系列 · 晶圆</div>
+      <div class="stat-value data">半导体</div>
+      <div class="stat-note">真正的新蓝海方向；目前国产晶圆搬运机器人空白，对手是 Stäubli/ABB。</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">人形机器人"鸿钧"</div>
+      <div class="stat-value warn">2024.11 发布</div>
+      <div class="stat-note">具身智能赛道押注；2025 年研发开支增加的核心去向，亏损扩大原因之一。</div>
+    </div>
+  </div>
+
+  <h3>"本体业务" vs "解决方案业务" · 营收占比对比</h3>
+  <div class="metric-list">
+    <div class="metric-row"><div class="label">2022 年本体业务<span class="src">出厂卖机器人本身</span></div><div class="value">~5<small>%</small></div></div>
+    <div class="metric-row"><div class="label">2024 年本体业务</div><div class="value">20.8<small>%</small></div></div>
+    <div class="metric-row"><div class="label">2025 年本体业务<span class="src">在涨，但仍是次要</span></div><div class="value pos">31.9<small>%</small></div></div>
+    <div class="metric-row"><div class="label">2024 年解决方案业务<span class="src">整线集成 · 视觉 · 控制器打包卖</span></div><div class="value">79.2<small>%</small></div></div>
+  </div>
+
+  <div class="callout data">
+    <div class="callout-label">关键判断 · 翼菲不是机器人本体公司</div>
+    <p>它本质上是<strong>"整线集成商 + 自有本体小厂"</strong>——客户买的是"开箱即用的产线"，包括视觉系统、控制器、本体机器人、传送带、安装调试。这是中国工业自动化典型的"工程公司"模式，毛利率低（26.5%）但订单大、客户黏性高、容易做政府关系。</p>
+    <p>这个判断对赛道理解很重要：<strong>翼菲对标的不是阿童木（本体厂），而是新松、博众、海康机器人这种解决方案商。</strong></p>
+  </div>
+</section>
+
+<section id="financials">
+  <div class="section-num">04 · 财务三件套</div>
+  <h2>越卖越亏的"<em style="font-style:italic;color:var(--accent-warn)">硬科技烧钱长跑</em>"。</h2>
+  <p>翼菲在港股招股书里把财务摊得很开——这是它的诚实。但摊开后看到的是一组令人不安的数字。</p>
+
+  <h3>营收与亏损 · 4 年</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>指标</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th></tr></thead>
+      <tbody>
+        <tr><td class="product-name">营收（人民币）</td><td>¥1.62 亿（约 $2,250 万）</td><td>¥2.01 亿（约 $2,790 万）</td><td>¥2.68 亿（约 $3,720 万）</td><td><strong>¥3.87 亿（约 $5,370 万）</strong></td></tr>
+        <tr><td class="product-name">同比增速</td><td>—</td><td>+24%</td><td>+33%</td><td><strong>+44.5%</strong></td></tr>
+        <tr><td class="product-name">净亏损</td><td>-¥5755 万（约 -$800 万）</td><td>-¥1.11 亿（约 -$1,540 万）</td><td>-¥7150 万（约 -$993 万）</td><td><strong>-¥1.52 亿（约 -$2,110 万）</strong></td></tr>
+        <tr><td class="product-name">亏损同比</td><td>—</td><td>+93%</td><td>-36%</td><td><strong>+114%</strong></td></tr>
+        <tr><td class="product-name">毛利率</td><td>26.7%</td><td>18.3%</td><td>26.5%</td><td>未披露</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>三个观察</strong>：</p>
+  <ol>
+    <li>营收 3 年翻 2.4 倍（CAGR 即"复合年增长率"≈ 33.6%）是真增长，不是注水。</li>
+    <li>2024 亏损收窄到 ¥7150 万曾经是好信号，但 2025 又翻倍到 ¥1.52 亿——这次的解释是"E 轮 + IPO 中介费 + 人形机器人鸿钧研发"。听上去合理，但 IPO 中介费是一次性的，研发开支会持续。</li>
+    <li>4 年累计亏损约 ¥3.9 亿（约 $5,417 万）——和 IPO 募资净额 HKD 6.73 亿（约 $8,630 万）几乎是 1:1 的"再续命周期"。</li>
+  </ol>
+
+  <h3>现金流与资产负债 · 续命指标</h3>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">流动资产 1 年蒸发</div>
+      <div class="stat-value warn">99.9<span class="unit">%</span></div>
+      <div class="stat-note">¥4,781 万（2023 末）→ ¥5 万（2024 末）。这是濒危信号。</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">账上现金 2024 末</div>
+      <div class="stat-value warn">¥2,289<span class="unit">万</span></div>
+      <div class="stat-note">约 $318 万 · 对应 ¥1.35 亿计息银行借款。无法覆盖。</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">资产负债率 2025Q3</div>
+      <div class="stat-value warn">88.4<span class="unit">%</span></div>
+      <div class="stat-note">从 2022 年 43.8% 飙到 88.4%——临近资不抵债线。</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">应收账款 3 年增长</div>
+      <div class="stat-value warn">+392<span class="unit">%</span></div>
+      <div class="stat-note">¥2,810 万 → ¥1.38 亿；占 2024 年营收的 51.6%——半数收入是"打白条"。</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">应收账款周转天数</div>
+      <div class="stat-value warn">120<span class="unit">天</span></div>
+      <div class="stat-note">从 46 天涨到 120 天——客户拿货后 4 个月才付钱。</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">存货周转天数</div>
+      <div class="stat-value warn">445<span class="unit">天</span></div>
+      <div class="stat-note">2025Q3 数据——库存差不多要 1.2 年才能消化。</div>
+    </div>
+  </div>
+
+  <h3>客户集中度 · 最大客户两年丢了 45% 收入</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>年份</th><th>最大客户 A 收入</th><th>占总营收</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr class="highlight"><td class="product-name">2022</td><td>¥1.16 亿（约 $1,610 万）</td><td><strong>71.2%</strong></td><td>第一大客户占七成，极度依赖单一客户。</td></tr>
+        <tr><td class="product-name">2023</td><td>¥0.81 亿（约 $1,130 万）</td><td>40.3%</td><td>占比下降是好事，但客户 A 的绝对值在掉。</td></tr>
+        <tr><td class="product-name">2024</td><td>¥0.64 亿（约 $890 万）</td><td>23.7%</td><td>客户 A 两年丢了 45% 营收，公司未给具体解释。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">未解之谜 · 最大客户在掉</div>
+    <p>招股书原话："客户通常按项目购买，不保证频繁再次购买。"——这是教科书级的"我们不解释"。客户 A 两年绝对值掉了 ¥5,200 万（约 $722 万），相当于翼菲 2022 年全年营收的 32%。这是好事还是坏事？取决于：</p>
+    <ul>
+      <li><strong>好事版本</strong>：客户 A 是早期"产能爬坡"型项目（如某新厂建设），项目结束自然下降。新客户在补位。</li>
+      <li><strong>坏事版本</strong>：客户 A 转去用了阿童木/汇川/外资方案——这是市场份额流失。</li>
+    </ul>
+    <p>公司没披露，市场就只能猜——这是港股市场"裸奔"上市的代价。</p>
+  </div>
+</section>
+
+<section id="voice">
+  <div class="section-num">05 · 市场声音</div>
+  <h2>"清华博士卖房自救"的故事很燃，<em style="font-style:italic;color:var(--accent-warn)">但不全是好话</em>。</h2>
+
+  <h3>多平台认知度对比</h3>
+  <div class="score-card">
+    <div class="score-row"><div class="name">中文行业垂媒（高工/OFweek/亿欧）</div><div class="bar"><div class="bar-fill pos" style="width: 85%"></div></div><div class="num">8.5</div></div>
+    <div class="score-row"><div class="name">中文财经媒体（36氪/新浪/凤凰/腾讯）</div><div class="bar"><div class="bar-fill pos" style="width: 80%"></div></div><div class="num">8.0</div></div>
+    <div class="score-row"><div class="name">中文大众认知（抖音/B站/小红书）</div><div class="bar"><div class="bar-fill warn" style="width: 15%"></div></div><div class="num">1.5</div></div>
+    <div class="score-row"><div class="name">英文中概股媒体（Pandaily/Bamboo Works）</div><div class="bar"><div class="bar-fill" style="width: 50%"></div></div><div class="num">5.0</div></div>
+    <div class="score-row"><div class="name">英文产业媒体（The Robot Report/IEEE）</div><div class="bar"><div class="bar-fill warn" style="width: 10%"></div></div><div class="num">1.0</div></div>
+    <div class="score-row"><div class="name">英文 LinkedIn / YouTube</div><div class="bar"><div class="bar-fill warn" style="width: 10%"></div></div><div class="num">1.0</div></div>
+    <div class="score-row"><div class="name">海外学术 / 开源圈</div><div class="bar"><div class="bar-fill warn" style="width: 5%"></div></div><div class="num">0.5</div></div>
+  </div>
+
+  <h3>媒体引用 · 正面 vs 负面（原话）</h3>
+  <div class="two-col">
+    <div class="col-card pos">
+      <h4>正面声音</h4>
+      <ul>
+        <li>"<strong>国家级专精特新小巨人 · 鲁企炼成记</strong>"——新浪财经 2024 专题报道把翼菲列为山东硬科技的代表企业。</li>
+        <li>"<strong>清华博士张赛卖房自救</strong>"——多家媒体把这个故事包装成中国硬科技创业精神。</li>
+        <li>"<strong>271 项授权专利 · 36 项发明专利</strong>"——核心技术储备真实。</li>
+        <li>"<strong>2018 年并联出货量全国第一</strong>"——界面新闻援引行业数据。</li>
+        <li>"<strong>D 轮春华资本背书</strong>"——一线 PE 站台。</li>
+        <li>"<strong>客户名单可验证</strong>"：蓝思科技、富士康、比亚迪、联合利华、东阿阿胶、华熙生物、迈瑞医疗、华鲁制药、三只松鼠、美的、金锣集团。</li>
+      </ul>
+    </div>
+    <div class="col-card warn">
+      <h4>负面声音</h4>
+      <ul>
+        <li>"<strong>无基石无绿鞋，相当'裸奔'的结构</strong>"——腾讯财经港股打新评论。</li>
+        <li>"<strong>不性感的机器人要小心 · 还没证明能把规模增长变成利润增长</strong>"——腾讯财经。</li>
+        <li>"<strong>半数收入打白条</strong>"——瑞财经评应收账款。</li>
+        <li>"<strong>清华博士'卖房自救'被反复消费</strong>"——其实暴露了 2016 年的资金断裂险情。</li>
+        <li>"<strong>多位早期投资者上市前选择提前套现退出</strong>"——界面新闻指认为看空信号。</li>
+        <li>"<strong>研发体系可能因迁址而动摇</strong>"——多家媒体质疑迁址玉环换地方国资是治理问题。</li>
+        <li>"<strong>副总裁年薪 ¥917 万（约 $127 万）远超创始人 ¥48 万（约 $6.7 万）</strong>"——瑞财经称暗示治理结构有看点。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quote">
+    营收是增长的，亏损也是认真的。
+    <div class="quote-attr">腾讯财经港股打新评论（2026.05.08）</div>
+  </div>
+
+  <h3>知乎 / B站 / 小红书 · 民间讨论</h3>
+  <p>翻完中文社区后的发现：<strong>翼菲在大众层面几乎没有出圈</strong>。B 站只有翼菲自家发布的产品演示视频（含"AI 数字人张赛"系列），没有 KOL 评测、用户讨论、二创。小红书、看准网、脉脉搜不到员工真实吐槽——这是 ToB（面向企业销售）工业机器人公司的常态，但也意味着<strong>翼菲没有雇主品牌的正负面音量</strong>，是个"行业内有人提、大众不认识"的低识别度品牌。</p>
+</section>
+
+<section id="competitors">
+  <div class="section-num">06 · 竞品横向格局</div>
+  <h2>翼菲在这个赛道里，<em style="font-style:italic;color:var(--accent-warn)">既不是第一也不是第三</em>。</h2>
+  <p>这是调研里最颠覆原本认知的部分。翼菲对外宣传"国产并联第一股"，但在并联本体出货量这个核心指标上，它已经不是 Top 1，甚至不是 Top 3。</p>
+
+  <h3>并联机器人 2024 中国市占率（按出货量）</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>排名</th><th>公司</th><th>市占率</th><th>性质</th><th>状态</th></tr></thead>
+      <tbody>
+        <tr><td class="product-name">1</td><td>阿童木机器人（天津）</td><td><strong>12.3%</strong></td><td>国产 · 未上市</td><td>2026.01 港股递表，2025 前三季已扭亏盈利 ¥93.8 万</td></tr>
+        <tr><td class="product-name">2</td><td>ABB（瑞士）</td><td>~10-11%</td><td>外资</td><td>FlexPicker 系列鼻祖，IP69K 食品级</td></tr>
+        <tr class="highlight"><td class="product-name">3-5</td><td>翼菲 / 勃肯特 / FANUC</td><td>各 5-8%</td><td>国产+外资混战</td><td>翼菲本体业务已被阿童木实质性反超</td></tr>
+        <tr><td class="product-name">6-10</td><td>李群、瑞思、华盛控、博力实等</td><td>长尾</td><td>国产为主</td><td>体量小、增长慢</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>翼菲的真实位置：轻工业全品类机器人国内第 4-5 名</h3>
+  <p>翼菲招股书的精准措辞是：<strong>"按 2024 年收入计，翼菲智能是中国专注于轻工行业的工业机器人及解决方案供应商中排名第五的国内企业，市占率 1.4%。2025 年升至第 4。"</strong></p>
+  <p>翻译成大白话：</p>
+  <ul>
+    <li>不是"中国并联机器人第一"（那是阿童木）</li>
+    <li>不是"中国 SCARA 第一"（那是汇川，市占 27.3% 断层第 1）</li>
+    <li>不是"中国综合机器人第一"（那是埃斯顿，2025 H1 国产 Top 1）</li>
+    <li>是"中国轻工业整线集成 + 全品类机器人"这个被刻意设计的细分口径下排名第 4-5</li>
+  </ul>
+
+  <h3>横向对比 · Top 玩家</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>公司</th><th>上市</th><th>2024 营收</th><th>主战场</th><th>对翼菲的威胁</th></tr></thead>
+      <tbody>
+        <tr><td class="product-name">阿童木<span class="tag">国产</span></td><td>港股递表中</td><td>¥1.35 亿（约 $1,880 万）</td><td>并联机器人本体（国产 Top 1、全球第 2）</td><td><strong style="color:var(--accent-warn)">极高</strong> · 直接抢翼菲本体业务</td></tr>
+        <tr class="highlight"><td class="product-name">翼菲<span class="tag">国产</span></td><td>06871.HK</td><td>¥2.68 亿（约 $3,720 万）</td><td>轻工业全品类 · 整线集成</td><td>—（本体仅占自身 20% 营收）</td></tr>
+        <tr><td class="product-name">勃肯特<span class="tag">国产</span></td><td>未上市</td><td>~¥1-2 亿（约 $139-278 万）</td><td>Delta 直驱并联 + 串并混联</td><td>中 · 技术派同类</td></tr>
+        <tr><td class="product-name">汇川技术<span class="tag">A 股</span></td><td>300124.SZ</td><td>集团 ¥370 亿 / 机器人 ¥11 亿</td><td>SCARA 中国 Top 1（27.3%）+ 工控全产业链</td><td><strong style="color:var(--accent-warn)">高</strong> · SCARA 端碾压</td></tr>
+        <tr><td class="product-name">埃斯顿<span class="tag">A 股</span></td><td>002747.SZ</td><td>¥40.09 亿（约 $5.57 亿）</td><td>六轴焊接 · 国产综合 Top 1</td><td>中 · 全品类覆盖随时可下场</td></tr>
+        <tr><td class="product-name">ABB<span class="tag">外资</span></td><td>瑞士母公司</td><td>集团 $328 亿 / 机器人 $34.8 亿</td><td>并联机器人鼻祖 · 全球 Top 1</td><td>低 · 价格贵 3-4 倍，被国产替代</td></tr>
+        <tr><td class="product-name">FANUC<span class="tag">外资</span></td><td>日本 6954.T</td><td>集团 ¥7,700 亿（约 $51 亿 USD）</td><td>中国综合工业机器人 Top 1</td><td>低 · 并联非其主战场</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>赛道天花板 · 不大</h3>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">2024 中国并联机器人销量</div>
+      <div class="stat-value">5-7<span class="unit">千台</span></div>
+      <div class="stat-note">高工 GGII 数据。是个细分小赛道。</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">2029 中国并联市场规模预测</div>
+      <div class="stat-value">¥19<span class="unit">亿</span></div>
+      <div class="stat-note">约 $2.64 亿。容不下太多玩家。</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">2024 中国工业机器人整体国产化率</div>
+      <div class="stat-value pos">58.7<span class="unit">%</span></div>
+      <div class="stat-note">首次破 50%，提升 7+ 个百分点。</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-quote">
+  "国产替代叙事被反复使用，但赛道天花板有限——这是大多数国产工业机器人公司的共同尴尬。"
+</div>
+
+<section id="ipo">
+  <div class="section-num">07 · IPO 路径与风险</div>
+  <h2>港交所 <em style="font-style:italic;color:var(--accent-warn)">18C 章程</em>—— 一张未盈利公司的通行证。</h2>
+  <p>翼菲走的是港交所主板 18C 章程，这是 2023 年新设的"特专科技"未盈利公司上市通道。它绕过了传统主板的盈利要求，但代价是市场对你的信心通常打折扣。</p>
+
+  <h3>IPO 关键参数</h3>
+  <div class="metric-list">
+    <div class="metric-row"><div class="label">股票代码</div><div class="value">06871<small>.HK</small></div></div>
+    <div class="metric-row"><div class="label">挂牌日</div><div class="value">2026<small>.05.18</small></div></div>
+    <div class="metric-row"><div class="label">发行价</div><div class="value">HK$30.50<small>/股</small></div></div>
+    <div class="metric-row"><div class="label">发行股数</div><div class="value">2,460<small>万股</small></div></div>
+    <div class="metric-row"><div class="label">发行规模（占总股本）</div><div class="value">10.04<small>%</small></div></div>
+    <div class="metric-row"><div class="label">募资总额</div><div class="value">HK$7.5<small>亿（约 $9620 万）</small></div></div>
+    <div class="metric-row"><div class="label">募资净额</div><div class="value pos">HK$6.73<small>亿（约 $8630 万）</small></div></div>
+    <div class="metric-row"><div class="label">发行市值</div><div class="value">HK$74.71<small>亿（约 $9.58 亿）</small></div></div>
+    <div class="metric-row"><div class="label">独家保荐人</div><div class="value">农银国际</div></div>
+    <div class="metric-row"><div class="label">基石投资者<span class="src">上市前锁定的大单 · 稳定信号</span></div><div class="value warn">无</div></div>
+    <div class="metric-row"><div class="label">绿鞋机制<span class="src">超额配售护盘工具 · 抗破发</span></div><div class="value warn">无</div></div>
+    <div class="metric-row"><div class="label">招股孖展（保证金）超购</div><div class="value">7.4<small>倍</small></div></div>
+  </div>
+
+  <h3>募资用途分配</h3>
+  <div class="metric-list">
+    <div class="metric-row"><div class="label">研发升级（包括人形机器人鸿钧）</div><div class="value">40<small>%</small></div></div>
+    <div class="metric-row"><div class="label">生产基地建设（浙江绍兴上虞）</div><div class="value">28<small>%</small></div></div>
+    <div class="metric-row"><div class="label">海外业务拓展</div><div class="value">12<small>%</small></div></div>
+    <div class="metric-row"><div class="label">供应链上下游投资</div><div class="value">10<small>%</small></div></div>
+    <div class="metric-row"><div class="label">营运资金</div><div class="value">10<small>%</small></div></div>
+  </div>
+
+  <h3>风险信号汇总（11 个）</h3>
+  <div class="two-col">
+    <div class="col-card warn">
+      <h4>财务类风险</h4>
+      <ul>
+        <li>流动资产 1 年蒸发 99.9%（¥4,781 万 → ¥5 万）</li>
+        <li>应收账款 3 年涨 392%，占营收 51.6%</li>
+        <li>资产负债率 88.4%，临近资不抵债</li>
+        <li>存货周转 445 天，库存压力大</li>
+        <li>2025 亏损扩大 113.9%（越做越亏）</li>
+        <li>账上现金 ¥2,289 万 vs 银行借款 ¥1.35 亿</li>
+      </ul>
+    </div>
+    <div class="col-card warn">
+      <h4>治理与结构风险</h4>
+      <ul>
+        <li>无基石、无绿鞋"裸奔"上市</li>
+        <li>IPO 前 2 个月老股东突击退出</li>
+        <li>从济南迁址玉环换地方国资接盘</li>
+        <li>2 号位副总年薪 ¥917 万 vs 创始人 ¥48 万</li>
+        <li>张赛投票权仅 25.07%，38 家股东极度分散</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">特别提示 · 18C 章程不是"加分项"</div>
+    <p>18C 章程允许未盈利公司上市，但要求市值≥10 亿港元、研发占比≥15%、有 2 名领航投资者（独立机构持股至少 6 个月）等。<strong>本质是港交所为了吸引"硬科技"开的"低门槛通道"</strong>——这意味着翼菲按传统主板标准达不到条件。市场对 18C 公司的估值锚一般低于盈利公司。</p>
+    <p>历史可比：埃斯顿（A 股已上市的工业机器人龙头）2020 年港股上市首日<strong>破发 25%</strong>——这是机构对中国机器人公司估值偏谨慎的明证。</p>
+  </div>
+</section>
+
+<section id="overseas">
+  <div class="section-num">08 · 海外业务真相</div>
+  <h2>"覆盖 25 国"和"在曼谷雇了一个销售头"——<em style="font-style:italic;color:var(--accent-warn)">这是两件事</em>。</h2>
+  <p>翼菲在英文世界叫 <strong>Robotphoenix</strong>，这是品牌出海的聪明操作——但英文世界对它的真实认知极浅。</p>
+
+  <h3>海外营收真实数据</h3>
+  <div class="metric-list">
+    <div class="metric-row"><div class="label">2024 海外营收</div><div class="value">¥2,550<small>万（约 $354 万）</small></div></div>
+    <div class="metric-row"><div class="label">2024 海外占比</div><div class="value">9.5<small>%</small></div></div>
+    <div class="metric-row"><div class="label">2025 海外营收</div><div class="value pos">¥3,800<small>万（约 $528 万）</small></div></div>
+    <div class="metric-row"><div class="label">2025 海外占比</div><div class="value pos">9.8<small>%</small></div></div>
+    <div class="metric-row"><div class="label">海外营收 YoY 增速</div><div class="value pos">+49<small>%</small></div></div>
+    <div class="metric-row"><div class="label">覆盖国家</div><div class="value">25<small>个</small></div></div>
+    <div class="metric-row"><div class="label">代理国家</div><div class="value">7<small>个</small></div></div>
+    <div class="metric-row"><div class="label">真实参加的海外展会</div><div class="value warn">2<small>场（越南 VME 2023 · 美国 Pack Expo 2023）</small></div></div>
+    <div class="metric-row"><div class="label">LinkedIn 公司页 follower</div><div class="value warn">77</div></div>
+  </div>
+
+  <h3>英文媒体覆盖 · 仅这几家</h3>
+  <ul>
+    <li><strong>Pandaily（2022.03）</strong> · 最完整的英文 D 轮融资报道</li>
+    <li><strong>Bamboo Works（2026.05.08）</strong> · IPO 启动报道</li>
+    <li><strong>kr-asia（2025.07）</strong> · 中国机器人厂商出海 IPO 综述</li>
+    <li><strong>Caixin Global（2025.07.10）</strong> · 仅一句 mention</li>
+    <li><strong>EqualOcean（2022/2025/2026 系列简讯）</strong></li>
+    <li><strong>China Daily Shandong（2018.09.03）</strong> · 创始人 Zhang Sai 早期人物报道</li>
+    <li><strong>港交所招股书（2025.06.30 / 2026.04 重新递表）</strong> · 唯一英文一手"官方"披露</li>
+    <li><strong>Crunchbase / PitchBook / Tracxn / CB Insights</strong> · 条目存在但数据互相矛盾（员工数 8 vs 51-100 vs 201-500，总部 Jinan vs Taizhou vs Shanghai）</li>
+  </ul>
+
+  <div class="callout data">
+    <div class="callout-label">小知识 · 为什么用 Robotphoenix 这个英文名</div>
+    <p>"翼菲"两字在中文里是"凤凰"的拆解（凤 = 翼 + 菲 = 飞）。这是个文化双关——但中文用户基本看不出来，外国人也认不出。改用 Robotphoenix（机器人凤凰）后，<strong>英文 SEO 立即跑通</strong>，Crunchbase 等数据库才能查到。这是个聪明的品牌出海决策——但代价是中英文双品牌互不联通，需要双倍维护。</p>
+  </div>
+
+  <h3>海外业务的实际形态</h3>
+  <ul>
+    <li><strong>海外子公司</strong>：香港、越南（招股书披露"to better serve Southeast Asian clients"）</li>
+    <li><strong>国际业务负责人</strong>：陈冉 Ran Chen，疑似驻泰国（联系电话 +66）</li>
+    <li><strong>2023 年高规格政府接触</strong>：张赛 + 陈冉访问泰国，会见前副总理 Suwit Khunkitti</li>
+    <li><strong>未找到任何具体海外客户名字</strong>。所有英文报道都用"major customers across consumer electronics, automotive, new energy, healthcare, FMCG, semiconductors"这种抽象描述——这是"出海早期"的典型表征。</li>
+  </ul>
+</section>
+
+<section id="opportunity">
+  <div class="section-num">09 · 复刻可行性与机会窗口</div>
+  <h2>不要做"翼菲第二"，<em style="font-style:italic;color:var(--accent-warn)">做翼菲做不到的</em>。</h2>
+  <p>这个章节回答两个问题：如果你想做一家工业机器人公司，能不能做？如果不行，赛道里真实的机会窗口在哪儿？</p>
+
+  <h3>复刻可行性 · 6 个维度评分</h3>
+  <div class="score-card">
+    <div class="score-row"><div class="name">技术难度</div><div class="bar"><div class="bar-fill warn" style="width: 85%"></div></div><div class="num">8.5/10</div></div>
+    <div class="score-row"><div class="name">需要的资金量</div><div class="bar"><div class="bar-fill warn" style="width: 90%"></div></div><div class="num">9.0/10</div></div>
+    <div class="score-row"><div class="name">客户/政府关系门槛</div><div class="bar"><div class="bar-fill warn" style="width: 90%"></div></div><div class="num">9.0/10</div></div>
+    <div class="score-row"><div class="name">营销与品牌门槛</div><div class="bar"><div class="bar-fill" style="width: 40%"></div></div><div class="num">4.0/10</div></div>
+    <div class="score-row"><div class="name">时间窗口（赛道天花板）</div><div class="bar"><div class="bar-fill warn" style="width: 75%"></div></div><div class="num">7.5/10</div></div>
+    <div class="score-row"><div class="name">综合复刻可行性</div><div class="bar"><div class="bar-fill warn" style="width: 15%"></div></div><div class="num">1.5/10</div></div>
+  </div>
+
+  <p><strong>结论</strong>：复刻翼菲对绝大多数创业者不现实——需要 5+ 年烧 ¥5+ 亿、200+ 人交付团队、Pre-IPO 政府关系积累。<strong>但赛道里仍有真实机会，做的是"翼菲做不到的物种"</strong>。</p>
+
+  <h3>8 个真实机会窗口（按优先级）</h3>
+  <div class="path-detail">
+    <div class="path-card a">
+      <div class="path-num">机会 01 · 优先级最高</div>
+      <h4>半导体洁净间分拣机器人</h4>
+      <p>痛点：晶圆/掩膜/光刻工艺所用的 Class 1-10 洁净间需要 IP69K + ISO Class 5 双认证机器人，国产几乎空白。Stäubli/ABB 占据，单台 ¥40-80 万（约 $5,500-1.1 万）交期半年起。</p>
+      <ul>
+        <li>翼菲已经在试（Lobster 晶圆系列），但远未做透</li>
+        <li>新玩家聚焦"国产替代半导体洁净机器人"</li>
+        <li>对标 Stäubli TP/TS 系列</li>
+      </ul>
+    </div>
+    <div class="path-card a">
+      <div class="path-num">机会 02 · 高优先级</div>
+      <h4>AI 视觉 + Delta 异形件抓取</h4>
+      <p>痛点：传统 Delta 只能抓规则形状（巧克力/胶囊/瓶子），软包零食/异形糕点/带液体软袋是行业老大难。梅卡曼德 + 第三方本体的"拼装方案"集成度差、调试周期长。</p>
+      <ul>
+        <li>做"AI 视觉原生 + Delta 本体"的整合公司</li>
+        <li>把抓取成功率从 92% 推到 99%</li>
+        <li>下游：休闲食品、宠物粮、烘焙食品</li>
+      </ul>
+    </div>
+    <div class="path-card b">
+      <div class="path-num">机会 03 · 中优先级</div>
+      <h4>核心零部件路线 · 控制器 + 视觉双修</h4>
+      <p>痛点：本体毛利在 26-30% 趴着，但控制器/视觉系统毛利可达 50%+。固高、众为兴在做控制器；梅卡曼德、海康在做视觉；但"控制器+视觉双修"的中国玩家几乎没有。</p>
+      <ul>
+        <li>赋能整线集成商的核心供应商</li>
+        <li>卖控制器+视觉+算法，不做本体</li>
+        <li>避开本体红海，毛利率高</li>
+      </ul>
+    </div>
+    <div class="path-card b">
+      <div class="path-num">机会 04 · 中优先级</div>
+      <h4>出海东南亚 / 拉美 / 中东</h4>
+      <p>痛点：东南亚食品厂（越南/印尼/泰国）正在升级自动化，对中国设备接受度高，但需要本地化服务。中国机器人 2025 出口 +48.7%，翼菲海外占比仅 9.8%。</p>
+      <ul>
+        <li>曼谷/胡志明/雅加达设立服务中心</li>
+        <li>做"国产 Delta 的东南亚总代"模式</li>
+        <li>拉美/墨西哥食品市场 2025 年快速打开</li>
+      </ul>
+    </div>
+    <div class="path-card">
+      <div class="path-num">机会 05</div>
+      <h4>医药 GMP 等级整线交钥匙</h4>
+      <p>医药客户对 GMP（药品生产质量管理规范）/FDA 合规的整线方案需求大，翼菲、阿童木都偏向食品场景。礼来、辉瑞中国工厂主要用 ABB+西门子。</p>
+      <ul>
+        <li>聚焦"医药 GMP 整线集成商"</li>
+        <li>大输液罐装、胶囊计数装瓶、无菌粉针分装</li>
+      </ul>
+    </div>
+    <div class="path-card">
+      <div class="path-num">机会 06</div>
+      <h4>SCARA 细分赛道（洁净/吊装/立柱式）</h4>
+      <p>标准 SCARA 价格战已经打到 ¥3-5 万（约 $417-694）同质化严重。但"洁净型 SCARA"、"吊装/壁挂 SCARA"目前只有外资爱普生有完整 SKU。</p>
+      <ul>
+        <li>填补国产空白</li>
+        <li>3C 精密装配、医药包装下游</li>
+      </ul>
+    </div>
+    <div class="path-card c">
+      <div class="path-num">机会 07 · 高风险</div>
+      <h4>具身智能 + 分拣早期落地</h4>
+      <p>人形机器人量产元年（2025）但商业场景未明；同时分拣场景的柔性需求增长。把通用抓取大模型先在低风险的食品/物流分拣场景落地。</p>
+      <ul>
+        <li>"具身分拣机器人"过渡产品</li>
+        <li>技术风险高，但资本预期高</li>
+        <li>翼菲也在押"鸿钧"，可能有正面冲突</li>
+      </ul>
+    </div>
+    <div class="path-card c">
+      <div class="path-num">机会 08 · 高风险</div>
+      <h4>2-3 万元价位"普惠 Delta"</h4>
+      <p>中小食品厂买不起 ¥8-15 万（约 $1,111-2,083）的国产 Delta，但人工已涨到 ¥6-8 千/月。通过整机减薄设计 + 直驱电机 + 自研控制器，把 BOM 砍到 ¥1.5 万实现 ¥3 万售价。</p>
+      <ul>
+        <li>勃肯特已在做直驱方向，竞争激烈</li>
+        <li>毛利压缩到极限</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="decision">
+  <div class="section-num">10 · 决策建议三条路径</div>
+  <h2>对一个产品型创业者，三种合理姿态。</h2>
+  <p>这份报告不是给职业投资人的二级市场打新建议，而是给一个产品型创业者（如你）的"赛道认知 + 行动指南"。基于上述全部素材，给出三条可选路径。</p>
+
+  <div class="verdict">
+    <div class="verdict-title">Verdict · 给产品型创业者的决策</div>
+    <h3>翼菲值得了解，但<em style="font-style:italic">不值得复刻、也不建议投资</em>。</h3>
+    <p>翼菲是"中国硬科技烧钱长跑"的典型样本——技术真做、客户大牌、政府关系扎实，但 13 年没盈利、流动资产临崖、IPO 是续命。它代表的是"重资产 + 慢周期 + 高地方关系"的工业自动化模式——这不是产品型创业者的赛道。</p>
+    <p>但翼菲的故事价值在于：它让你看清并联机器人 / 工业自动化赛道<strong>真实的市场结构、客户构成、毛利水位、资本节奏</strong>——这些都是新玩家进入"邻近赛道"（如核心零部件、AI 视觉、半导体洁净）时的关键背景。</p>
+    <div class="verdict-options">
+      <div class="verdict-option">
+        <div class="num">Path A · 低风险</div>
+        <h4>看而不做</h4>
+        <p>把翼菲当作"中国工业自动化的活样本"长期观察，但不进入这个赛道。把精力放在自己擅长的产品型创业上（软件、消费、AI 应用）。</p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">Path B · 中风险</div>
+        <h4>做邻近物种</h4>
+        <p>不做本体厂、不做整线集成商，做"翼菲做不到的物种"——半导体洁净机器人、AI 视觉模组、核心控制器。轻资产、产品化、能复用 SaaS 经验。</p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">Path C · 高风险</div>
+        <h4>正面入场</h4>
+        <p>真要做并联机器人本体厂——需要 5 年烧 ¥3+ 亿、找 200+ 人交付团队、深耕一个垂直行业（如医药 GMP / 半导体）做差异化。<strong>不推荐</strong>。</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Path A · 30 天行动指南（"看而不做"）</h3>
+  <div class="path-detail">
+    <div class="path-card a">
+      <div class="path-num">第 1-15 天</div>
+      <h4>建立长期观察体系</h4>
+      <ul>
+        <li>关注 06871.HK 股价 + 季报 + 投资者公告</li>
+        <li>订阅高工机器人 + OFweek 月度行业简报</li>
+        <li>把阿童木港股递表进度做并行追踪（直接对手）</li>
+        <li>看汇川、埃斯顿、新时达 A 股财报中的"机器人板块"营收变化</li>
+      </ul>
+    </div>
+    <div class="path-card a">
+      <div class="path-num">第 16-30 天</div>
+      <h4>把认知应用到本职</h4>
+      <ul>
+        <li>把"中国硬科技烧钱长跑"这个模式抽象出来——作为判断其他赛道的参考</li>
+        <li>识别身边类似模式的公司（如 SaaS、AI、芯片创业），用同样的 6 维评分体系评估</li>
+        <li>不让翼菲的"国产替代叙事"诱惑自己进入不熟悉的赛道</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Path B · 30 天行动指南（"做邻近物种"）</h3>
+  <ol>
+    <li><strong>第 1-7 天</strong>：从 8 个机会窗口里选 1-2 个深挖。优先半导体洁净间分拣（蓝海 + 国产空白 + 资本认）、AI 视觉异形件抓取（场景真实痛点）。</li>
+    <li><strong>第 8-14 天</strong>：访谈 3-5 个真实下游客户（一家半导体 fab、一家食品厂、一家医药厂）——了解他们今天用谁、最大痛点是什么、愿意付多少钱。</li>
+    <li><strong>第 15-21 天</strong>：评估自己的技术储备 + 资金能力 + 团队可获得性——这 3 个机会窗口里哪个真能做？</li>
+    <li><strong>第 22-30 天</strong>：写一份单页的"MVP（最小可用产品）定义"——如果能做 1 个原型证明 product-market fit（产品-市场契合），需要多少钱、多少时间、什么标志算成功。</li>
+    <li><strong>第 30 天回顾</strong>：MVP 路径是否清晰、客户付费意愿是否真实、自己是否真的想长期做硬件——三个回答都是 yes 才进入下一阶段。</li>
+  </ol>
+
+  <h3>不论选哪条路，都要避开的 3 个坑</h3>
+  <ul>
+    <li><strong>不要被"国产替代"叙事单独说服</strong>——这个叙事在赛道里被反复使用，但翼菲 13 年没盈利说明：国产替代是真的、市场天花板有限也是真的。</li>
+    <li><strong>不要相信"特专科技"标签</strong>——18C 章程、专精特新小巨人都是政府认定，对市场地位的指示性弱。真实地位看市占率、客户名单、毛利率。</li>
+    <li><strong>不要做"翼菲第二"</strong>——这个生态位已经被翼菲、阿童木、勃肯特、汇川占满。新玩家进入需要"翼菲做不到的物种"。</li>
+  </ul>
+
+  <div class="quote">
+    你最大的优势不是资金，是你不需要赢——你可以在小生态位里活得好，而不是非要做下一个翼菲。
+    <div class="quote-attr">给产品型创业者的最后一句</div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>主要数据来源</h4>
+    <ul>
+      <li><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0508/2026050800016_c.pdf">港交所招股书 PDF（一手）</a></li>
+      <li><a href="https://www1.hkexnews.hk/app/sehk/2026/108073/documents/sehk26042001578_c.pdf">港交所聆讯后资料集（一手）</a></li>
+      <li><a href="https://www.robotphoenix.com/">翼菲官网 robotphoenix.com</a></li>
+      <li><a href="https://pitchhub.36kr.com/project/1679703341323010">36氪 PitchHub · 项目档案</a></li>
+      <li><a href="https://finance.sina.com.cn/roll/2025-08-14/doc-infkxcef7139614.shtml">新浪财经 · IPO 前迁址</a></li>
+      <li><a href="https://finance.sina.com.cn/jjxw/2024-05-29/doc-inawwzys8266648.shtml">新浪财经 · 专精特新</a></li>
+      <li><a href="https://finance.sina.com.cn/tech/2022-03-14/doc-imcwipih8365479.shtml">新浪科技 · D 轮报道</a></li>
+      <li><a href="https://finance.sina.com.cn/stock/observe/2025-07-11/doc-inffamtr0901575.shtml">新浪财经 · 最大客户暴跌</a></li>
+      <li><a href="https://finance.ifeng.com/c/8q2xpYtCIPy">凤凰财经 · 股权疑云</a></li>
+      <li><a href="https://m.rccaijing.com/news-7452173416507569980.html">瑞财经 · 高管薪酬异常</a></li>
+      <li><a href="https://m.rccaijing.com/news-7367080949756655545.html">瑞财经 · 半数收入打白条</a></li>
+      <li><a href="https://36kr.com/p/3362869516703881">36氪 · 应收账款增 392%</a></li>
+      <li><a href="https://www.jiemian.com/article/13019625.html">界面新闻 · 卖房自救分析</a></li>
+      <li><a href="https://m.jiemian.com/article/7317366.html">界面新闻 · 并联赛道</a></li>
+      <li><a href="https://news.qq.com/rain/a/20260508A0751Q00">腾讯财经 · 打新警示</a></li>
+      <li><a href="https://finance.stockstar.com/IG2026050800040638.shtml">证券之星 · 估值 180 倍</a></li>
+      <li><a href="https://inews.hket.com/article/4125693/">HKET · 招股详情</a></li>
+      <li><a href="https://www.tsinghua.org.cn/info/1953/13282.htm">清华校友总会 · 张赛专访</a></li>
+      <li><a href="https://pandaily.com/robotphoenix-secures-hundreds-of-millions-of-yuan-in-financing/">Pandaily · D 轮英文报道</a></li>
+      <li><a href="https://thebambooworks.com/robotphoenix-launches-86-million-hong-kong-ipo/">Bamboo Works · IPO 报道</a></li>
+      <li><a href="https://kr-asia.com/chinas-industrial-robot-makers-turn-to-ipos-to-gear-up-for-global-expansion">kr-asia · 中国机器人厂出海</a></li>
+      <li><a href="https://www.caixinglobal.com/2025-07-10/cx-briefing-industrial-robot-maker-debuts-in-hot-hong-kong-market-102339928.html">Caixin Global · 简讯</a></li>
+      <li><a href="https://www.bekannter.cn/about.shtml">勃肯特 · 竞品官网</a></li>
+      <li><a href="https://www.donews.com/news/detail/4/6404041.html">DoNews · 阿童木对比</a></li>
+      <li><a href="https://jzgkchina.com/node/2856">剑指工控 · 汇川 SCARA</a></li>
+      <li><a href="https://www.chyxx.com/industry/1237880.html">智研咨询 · SCARA 行业研判</a></li>
+      <li><a href="https://36kr.com/p/3389709621248137">36氪 · 工业机器人淘汰赛</a></li>
+      <li><a href="https://news.qq.com/rain/a/20250228A08LDY00">腾讯 · GGII 2025 工业机器人</a></li>
+    </ul>
+    <div class="footer-meta">
+      <div>Generated · 2026.05.11 · Ray Deep Research · 4 sub-agents in parallel</div>
+      <div>本报告基于公开信息整合 · 不构成投资建议 · 信息以官方披露为准</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  function applyTheme(theme) {
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    else document.documentElement.removeAttribute('data-theme');
+  }
+  btn.addEventListener('click', function() {
+    var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    var next = cur === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    try { localStorage.setItem('ray-theme', next); } catch (e) {}
+  });
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      try {
+        if (!localStorage.getItem('ray-theme')) applyTheme(e.matches ? 'dark' : 'light');
+      } catch (err) {}
+    });
+  }
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var id = entry.target.id;
+        document.querySelectorAll('nav.toc a').forEach(function(link) {
+          link.style.color = '';
+          link.style.fontWeight = '';
+        });
+        var activeLink = document.querySelector('nav.toc a[href="#' + id + '"]');
+        if (activeLink) {
+          activeLink.style.color = 'var(--accent-warn)';
+          activeLink.style.fontWeight = '600';
+        }
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  document.querySelectorAll('section[id]').forEach(function(s) { observer.observe(s); });
+})();
+</script>
+
+</body>
+</html>

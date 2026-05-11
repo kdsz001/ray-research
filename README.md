@@ -17,6 +17,12 @@
 |------|------|---------|
 | 2026-05-10 | [初版竞品调研](typeless/2026-05-10-typeless.html) | [↗ Open](https://kdsz001.github.io/ray-research/typeless/2026-05-10-typeless.html) |
 
+### 🤖 [翼菲科技 / Robotphoenix](yifei/) · 并联机器人 · 港股 IPO 续命局
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-11 | [初版调研 · 港股 IPO 续命局](yifei/2026-05-11-yifei.html) | [↗ Open](https://kdsz001.github.io/ray-research/yifei/2026-05-11-yifei.html) |
+
 <!-- INDEX-END -->
 
 ---

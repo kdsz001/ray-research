@@ -17,6 +17,18 @@
           "title": "初版竞品调研"
         }
       ]
+    },
+    {
+      "slug": "yifei",
+      "name": "翼菲科技 / Robotphoenix",
+      "tagline": "并联机器人 · 港股 IPO 续命局",
+      "reports": [
+        {
+          "date": "2026-05-11",
+          "file": "2026-05-11-yifei.html",
+          "title": "初版调研 · 港股 IPO 续命局"
+        }
+      ]
     }
   ]
 }
