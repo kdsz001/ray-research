@@ -1,0 +1,22 @@
+{
+  "site": {
+    "name": "Ray Research",
+    "tagline": "深度调研报告库",
+    "base_url": "/ray-research/",
+    "github": "https://github.com/kdsz001/ray-research"
+  },
+  "topics": [
+    {
+      "slug": "typeless",
+      "name": "Typeless",
+      "tagline": "AI 语音输入法 · 竞品调研",
+      "reports": [
+        {
+          "date": "2026-05-10",
+          "file": "2026-05-10-typeless.html",
+          "title": "初版竞品调研"
+        }
+      ]
+    }
+  ]
+}
