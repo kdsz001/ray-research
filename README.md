@@ -23,9 +23,10 @@
 
 ## 🛠 关于这个仓库
 
-- **生成方式**：用 [Claude Code](https://claude.ai/code) + 自定义 [`ray-deep-research`](https://github.com/anthropics/claude-code) skill 调研，每份报告由 4 个 AI 调研员并行采集多平台数据后生成
-- **技术栈**：纯 HTML / CSS / minimal JS，无外部依赖，单文件可离线浏览
-- **视觉风格**：严肃商业杂志风（Source Serif + Inter + 暖奶白纸张感）+ 夜间模式
+- **生成方式**：用 [Claude Code](https://claude.ai/code) + 自定义 `ray-deep-research` skill 调研，每份报告由 4 个 AI 调研员并行采集多平台数据后生成
+- **技术栈**：纯 HTML / CSS / minimal JS，无构建步骤
+- **共享资源**：报告页面引用 `assets/sidebar.css` + `assets/sidebar.js`（驱动全局导航 sidebar）和 Google Fonts。资源加载失败时会自动降级，报告本身仍可阅读
+- **视觉风格**：严肃商业杂志风（Source Serif + Inter + 暖奶白纸张感）+ 夜间模式（默认跟随系统）
 - **更新频率**：不定期，每完成新调研自动 push
 
 ## 📜 免责声明
