@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>剂泰科技 7666.HK · 暗盘前调研报告 · 2026-05-11</title>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<style>
+:root {
+  --bg: #f6f3ec;
+  --bg-paper: #fbf9f4;
+  --bg-card: #ffffff;
+  --bg-dark: #14110d;
+  --bg-dark2: #1f1b16;
+
+  --ink: #14110d;
+  --ink-2: #2c2620;
+  --muted: #6e6358;
+  --light: #a39787;
+
+  --rule: #14110d;
+  --rule-light: #d8d1c2;
+
+  --accent-warn: #a73121;
+  --accent-data: #1c4d6b;
+  --accent-pos: #2c5e3f;
+  --accent-yellow: #c89a2c;
+
+  --serif: "Source Serif 4", "Charter", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+
+  --max-w: 820px;
+
+  --bg-inverse: #14110d;
+  --bg-inverse2: #1f1b16;
+  --ink-on-inverse: #f6f3ec;
+  --text-on-inverse: rgba(246, 243, 236, 0.85);
+  --muted-on-inverse: rgba(246, 243, 236, 0.7);
+  --faint-on-inverse: rgba(246, 243, 236, 0.55);
+  --light-on-inverse: rgba(246, 243, 236, 0.5);
+  --rule-on-inverse: rgba(246, 243, 236, 0.18);
+  --accent-yellow-on-inverse: #c89a2c;
+  --accent-warn-bright: #a73121;
+}
+
+[data-theme="dark"] {
+  --bg: #14110d;
+  --bg-paper: #1f1b16;
+  --bg-card: #1f1b16;
+  --bg-dark: #14110d;
+
+  --ink: #f6f3ec;
+  --ink-2: #ede5d3;
+  --muted: #a39787;
+  --light: #6e6358;
+
+  --rule: #ede5d3;
+  --rule-light: #3b342b;
+
+  --accent-warn: #e87a5f;
+  --accent-data: #6fa8c4;
+  --accent-pos: #6fb088;
+  --accent-yellow: #e8b94d;
+
+  --bg-inverse: #ede5d3;
+  --bg-inverse2: #d8d1c2;
+  --ink-on-inverse: #14110d;
+  --text-on-inverse: rgba(20, 17, 13, 0.88);
+  --muted-on-inverse: rgba(20, 17, 13, 0.72);
+  --faint-on-inverse: rgba(20, 17, 13, 0.55);
+  --light-on-inverse: rgba(20, 17, 13, 0.5);
+  --rule-on-inverse: rgba(20, 17, 13, 0.18);
+  --accent-yellow-on-inverse: #a07520;
+  --accent-warn-bright: #e87a5f;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* ============== Top Bar ============== */
+.topbar {
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  padding: 10px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar .left { color: var(--ink); font-weight: 500; }
+
+/* ============== Theme Toggle ============== */
+#theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: var(--bg-card);
+  color: var(--ink);
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+#theme-toggle:hover { background: var(--rule-light); }
+#theme-toggle svg { width: 18px; height: 18px; }
+#theme-toggle .moon { display: none; }
+[data-theme="dark"] #theme-toggle .sun { display: none; }
+[data-theme="dark"] #theme-toggle .moon { display: block; }
+
+/* ============== Hero ============== */
+.hero {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 32px 60px;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 80px;
+  align-items: start;
+}
+.hero .eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-warn);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero .eyebrow::before {
+  content: "";
+  width: 36px;
+  height: 1px;
+  background: var(--accent-warn);
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 78px;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent-warn);
+  font-weight: 400;
+}
+.hero .subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.4;
+  color: var(--muted);
+  max-width: 640px;
+}
+.hero-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-top: 1px solid var(--rule);
+  padding-top: 16px;
+}
+.hero-meta dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; }
+.hero-meta dt { color: var(--muted); }
+.hero-meta dd { color: var(--ink); font-weight: 500; }
+
+/* ============== Quick Facts ============== */
+.quickfacts-wrap {
+  background: var(--bg-inverse);
+  color: var(--ink-on-inverse);
+  padding: 56px 32px;
+  transition: background-color 0.2s, color 0.2s;
+}
+.quickfacts-inner { max-width: 1280px; margin: 0 auto; }
+.quickfacts-wrap .eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 12px;
+}
+.quickfacts-wrap h2 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 34px;
+  margin-bottom: 36px;
+  color: var(--ink-on-inverse);
+}
+.qf-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border-top: 1px solid var(--rule-on-inverse);
+  border-left: 1px solid var(--rule-on-inverse);
+}
+.qf-cell {
+  border-right: 1px solid var(--rule-on-inverse);
+  border-bottom: 1px solid var(--rule-on-inverse);
+  padding: 22px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 130px;
+}
+.qf-cell .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted-on-inverse);
+  margin-bottom: 12px;
+}
+.qf-cell .num {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--ink-on-inverse);
+  margin-bottom: 4px;
+}
+.qf-cell .sub {
+  font-size: 11px;
+  color: var(--faint-on-inverse);
+  line-height: 1.3;
+}
+.qf-cell.verdict {
+  background: var(--accent-warn-bright);
+  color: #fff;
+  border-color: var(--accent-warn-bright);
+}
+.qf-cell.verdict .label { color: rgba(255,255,255,0.65); }
+.qf-cell.verdict .num { color: #fff; font-size: 22px; line-height: 1.15; }
+.qf-cell.verdict .sub { color: rgba(255,255,255,0.85); }
+
+/* ============== Layout: TOC + Main ============== */
+.layout {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 32px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+nav.toc {
+  position: sticky;
+  top: 40px;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+nav.toc .toc-title {
+  color: var(--muted);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
+}
+nav.toc ol { list-style: none; }
+nav.toc li { margin-bottom: 14px; line-height: 1.4; }
+nav.toc a {
+  color: var(--ink-2);
+  text-decoration: none;
+  display: block;
+  transition: color 0.15s;
+}
+nav.toc a:hover { color: var(--accent-warn); }
+nav.toc .num {
+  display: inline-block;
+  width: 26px;
+  color: var(--light);
+}
+
+main { max-width: var(--max-w); }
+
+/* ============== Sections ============== */
+section { margin-bottom: 96px; scroll-margin-top: 32px; }
+section .section-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-warn);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+}
+section h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 44px;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin-bottom: 28px;
+  color: var(--ink);
+}
+section h2 em { font-style: italic; color: var(--accent-warn); font-weight: 400; }
+section h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 24px;
+  margin: 36px 0 16px;
+  color: var(--ink);
+}
+section p { margin-bottom: 20px; color: var(--ink-2); }
+section p strong { color: var(--ink); font-weight: 600; }
+section ul, section ol { margin: 16px 0 24px 24px; }
+section li { margin-bottom: 8px; color: var(--ink-2); }
+section a { color: var(--accent-data); text-decoration: none; border-bottom: 1px solid var(--rule-light); }
+section a:hover { border-bottom-color: var(--accent-data); }
+
+/* ============== TL;DR Block ============== */
+.tldr {
+  background: var(--bg-inverse);
+  color: var(--ink-on-inverse);
+  padding: 42px 36px 36px;
+  margin: 40px 0;
+  position: relative;
+  transition: background-color 0.2s, color 0.2s;
+}
+.tldr::before {
+  content: "TL;DR";
+  position: absolute;
+  top: -10px;
+  left: 24px;
+  background: var(--accent-warn-bright);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  padding: 5px 10px;
+}
+.tldr h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 22px;
+  margin: 0 0 18px;
+  color: var(--ink-on-inverse);
+}
+.tldr ol { list-style: none; counter-reset: tldr; margin: 0; padding: 0; }
+.tldr ol li {
+  counter-increment: tldr;
+  position: relative;
+  padding-left: 36px;
+  margin-bottom: 14px;
+  color: var(--text-on-inverse);
+  font-size: 16px;
+  line-height: 1.65;
+}
+.tldr ol li::before {
+  content: counter(tldr, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent-yellow-on-inverse);
+  font-weight: 500;
+}
+.tldr ol li strong { color: var(--ink-on-inverse); font-weight: 600; }
+
+/* ============== Stats Cards ============== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 28px 0;
+}
+.stat {
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  padding: 22px 20px;
+}
+.stat .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.stat .num {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.stat .sub { font-size: 12px; color: var(--muted); }
+.stat.warn .num { color: var(--accent-warn); }
+.stat.data .num { color: var(--accent-data); }
+.stat.pos .num { color: var(--accent-pos); }
+
+/* ============== Metric List ============== */
+.metric-list {
+  border-top: 2px solid var(--rule);
+  border-bottom: 2px solid var(--rule);
+  margin: 28px 0;
+}
+.metric-list .row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule-light);
+  align-items: baseline;
+}
+.metric-list .row:last-child { border-bottom: 0; }
+.metric-list .label {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.metric-list .label .src {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--light);
+  display: block;
+  margin-top: 2px;
+}
+.metric-list .val {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.metric-list .val.warn { color: var(--accent-warn); }
+.metric-list .val.pos { color: var(--accent-pos); }
+
+/* ============== Two-Col Cards ============== */
+.twocol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 28px 0;
+}
+.col-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  padding: 24px 22px;
+}
+.col-card h4 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.col-card.pos h4::before {
+  content: "✓"; display: inline-block;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--accent-pos); color: #fff;
+  font-size: 12px; line-height: 20px; text-align: center;
+  font-family: var(--sans); font-weight: 700;
+}
+.col-card.warn h4::before {
+  content: "!"; display: inline-block;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--accent-warn); color: #fff;
+  font-size: 12px; line-height: 20px; text-align: center;
+  font-family: var(--sans); font-weight: 700;
+}
+.col-card ul { margin: 0; padding-left: 18px; }
+.col-card li { font-size: 14px; line-height: 1.55; margin-bottom: 8px; }
+
+/* ============== Quote ============== */
+blockquote {
+  border-left: 3px solid var(--accent-warn);
+  padding: 6px 0 6px 22px;
+  margin: 24px 0;
+}
+blockquote p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin-bottom: 8px;
+}
+blockquote cite {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  font-style: normal;
+}
+blockquote cite::before { content: "— "; }
+
+/* ============== Tables ============== */
+.table-wrap {
+  margin: 28px 0;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--rule);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+table thead th {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 2px solid var(--rule);
+  color: var(--ink);
+  font-weight: 500;
+}
+table tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--rule-light);
+  vertical-align: top;
+  color: var(--ink-2);
+}
+table tbody tr.highlight {
+  background: rgba(167, 49, 33, 0.05);
+}
+[data-theme="dark"] table tbody tr.highlight {
+  background: rgba(232, 122, 95, 0.08);
+}
+table tbody tr.highlight td { color: var(--ink); font-weight: 500; }
+table .product-name {
+  font-family: var(--serif);
+  font-weight: 600;
+  color: var(--ink);
+}
+table .tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 6px;
+  background: var(--accent-warn);
+  color: #fff;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+table .num-col { font-family: var(--serif); font-weight: 600; color: var(--ink); }
+table .pos { color: var(--accent-pos); }
+table .warn { color: var(--accent-warn); }
+
+/* ============== Callout ============== */
+.callout {
+  background: var(--bg-paper);
+  border-left: 3px solid var(--ink);
+  padding: 20px 24px;
+  margin: 28px 0;
+}
+.callout.warn { border-left-color: var(--accent-warn); }
+.callout.data { border-left-color: var(--accent-data); }
+.callout.pos { border-left-color: var(--accent-pos); }
+.callout .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.callout-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.callout p { font-size: 14px; margin: 6px 0 0; color: var(--ink-2); }
+
+/* ============== Timeline ============== */
+.timeline {
+  margin: 28px 0;
+}
+.timeline .row {
+  display: grid;
+  grid-template-columns: 110px 36px 1fr;
+  gap: 0;
+  position: relative;
+  padding-bottom: 28px;
+}
+.timeline .row:last-child { padding-bottom: 0; }
+.timeline .date {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-align: right;
+  padding-right: 18px;
+  padding-top: 4px;
+}
+.timeline .dot-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.timeline .dot-wrap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  bottom: -28px;
+  width: 1px;
+  background: var(--rule-light);
+  transform: translateX(-50%);
+}
+.timeline .row:last-child .dot-wrap::before { display: none; }
+.timeline .dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--ink);
+  margin-top: 6px;
+  z-index: 1;
+}
+.timeline .dot.warn { border-color: var(--accent-warn); }
+.timeline .dot.data { border-color: var(--accent-data); }
+.timeline .dot.pos { border-color: var(--accent-pos); }
+.timeline .content { padding-left: 18px; }
+.timeline .title {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.timeline .desc { font-size: 14px; color: var(--ink-2); line-height: 1.5; }
+
+/* ============== Verdict Block ============== */
+.verdict {
+  background: var(--bg-inverse);
+  color: var(--ink-on-inverse);
+  padding: 48px 36px;
+  margin: 40px 0;
+  transition: background-color 0.2s, color 0.2s;
+}
+.verdict-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 16px;
+}
+.verdict h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.15;
+  margin: 0 0 18px;
+  color: var(--ink-on-inverse);
+}
+.verdict h3 em { font-style: italic; color: var(--accent-yellow-on-inverse); font-weight: 400; }
+.verdict > p {
+  color: var(--text-on-inverse);
+  margin-bottom: 32px;
+  max-width: 680px;
+  font-size: 16px;
+}
+.verdict-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  border-top: 1px solid var(--rule-on-inverse);
+  padding-top: 28px;
+}
+.verdict-option {
+  border-left: 2px solid var(--rule-on-inverse);
+  padding-left: 18px;
+}
+.verdict-option.recommended { border-left-color: var(--accent-yellow-on-inverse); }
+.verdict-option .num {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 10px;
+}
+.verdict-option h4 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--ink-on-inverse);
+  margin-bottom: 10px;
+}
+.verdict-option p {
+  font-size: 13px;
+  color: var(--text-on-inverse);
+  line-height: 1.5;
+  margin: 0;
+}
+.recommend-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--accent-yellow-on-inverse);
+  color: var(--bg-inverse);
+  padding: 3px 7px;
+  margin-bottom: 10px;
+}
+
+/* ============== Path Cards ============== */
+.paths {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 28px 0;
+}
+.path-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  padding: 24px 22px;
+  border-top: 4px solid var(--accent-yellow);
+}
+.path-card.a { border-top-color: var(--accent-pos); }
+.path-card.c { border-top-color: var(--accent-warn); }
+.path-card .path-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.path-card h4 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+.path-card p { font-size: 14px; margin-bottom: 12px; }
+.path-card ul { margin: 8px 0 0 18px; }
+.path-card li { font-size: 13px; margin-bottom: 6px; }
+
+/* ============== Divider Quote ============== */
+.divider-quote {
+  text-align: center;
+  margin: 60px 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+.divider-quote::before, .divider-quote::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--rule);
+  margin: 0 auto 18px;
+}
+.divider-quote::after { margin: 18px auto 0; }
+
+/* ============== Footer ============== */
+footer {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  padding: 60px 32px;
+  transition: background-color 0.2s, color 0.2s;
+}
+.footer-inner { max-width: 1280px; margin: 0 auto; }
+footer h4 {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 18px;
+}
+.sources {
+  columns: 2;
+  column-gap: 48px;
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--text-on-inverse);
+  margin-bottom: 36px;
+}
+.sources a { color: var(--text-on-inverse); text-decoration: none; border-bottom: 1px solid var(--rule-on-inverse); }
+.sources a:hover { color: var(--ink-on-inverse); }
+.footer-meta {
+  border-top: 1px solid var(--rule-on-inverse);
+  padding-top: 24px;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--faint-on-inverse);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ============== Responsive ============== */
+@media (max-width: 1100px) {
+  .layout { grid-template-columns: 1fr; gap: 40px; }
+  nav.toc { position: relative; top: 0; columns: 2; column-gap: 24px; }
+  .verdict-options { grid-template-columns: 1fr; }
+  .qf-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero { grid-template-columns: 1fr; gap: 40px; }
+  .hero h1 { font-size: 56px; }
+}
+@media (max-width: 720px) {
+  .hero { padding: 48px 20px 40px; }
+  .hero h1 { font-size: 40px; }
+  .layout { padding: 40px 20px; }
+  .qf-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats, .twocol, .paths { grid-template-columns: 1fr; }
+  section h2 { font-size: 32px; }
+  .topbar { padding: 8px 16px; flex-wrap: wrap; gap: 6px; }
+  nav.toc { columns: 1; }
+  .timeline .row { grid-template-columns: 80px 30px 1fr; }
+  .quickfacts-wrap { padding: 40px 20px; }
+}
+
+/* ============== Print ============== */
+@media print {
+  body { background: white; color: black; }
+  #theme-toggle, nav.toc, .topbar { display: none; }
+  .quickfacts-wrap, .tldr, .verdict, footer {
+    background: white !important;
+    color: black !important;
+    border: 1px solid #999;
+  }
+  .qf-cell .num, .tldr h3, .verdict h3 { color: black !important; }
+  .qf-cell.verdict { background: #ddd !important; color: black !important; }
+  section { page-break-inside: avoid; }
+  .hero { page-break-after: always; }
+  a { color: black !important; border-bottom: none !important; text-decoration: none !important; }
+  .layout { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="切换主题">
+  <svg class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+  <svg class="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+
+<div class="topbar">
+  <span class="left">RAY DEEP RESEARCH · 港股 IPO 调研</span>
+  <span>2026-05-11 · v1.0 · 中签决策版</span>
+</div>
+
+<!-- ========== HERO ========== -->
+<header class="hero">
+  <div>
+    <div class="eyebrow">剂泰科技 · 7666.HK · 暗盘前 18 小时</div>
+    <h1>这是一笔<em>必赚的红包</em>，<br>不是一张登船的<em>船票</em>。</h1>
+    <p class="subtitle">基石豪华 + 孖展 4322 倍超购 + 18C 章稀缺标的 = 暗盘大概率上涨 70-110%；但 95-100× 市销率、98% 收入靠一个客户、MIT 三剑客团队的"AI 纳米递送"故事跟主力管线 MTS-004 没关系。短打即走，别把红包当船票。</p>
+  </div>
+  <aside class="hero-meta">
+    <dl>
+      <dt>调研对象</dt><dd>剂泰科技 7666.HK</dd>
+      <dt>调研时点</dt><dd>2026-05-11 22:00</dd>
+      <dt>暗盘开市</dt><dd>2026-05-12 16:15</dd>
+      <dt>正式上市</dt><dd>2026-05-13 09:00</dd>
+      <dt>子 Agent 数</dt><dd>5 并行</dt>
+      <dt>覆盖来源</dt><dd>HKEX 招股书 + 35 网</dd>
+      <dt>读者</dt><dd>非职业投资人 · 中签散户</dd>
+      <dt>建议</dt><dd>暗盘卖 70-100%</dd>
+    </dl>
+  </aside>
+</header>
+
+<!-- ========== QUICK FACTS ========== -->
+<div class="quickfacts-wrap">
+  <div class="quickfacts-inner">
+    <div class="eyebrow">7666.HK at a glance</div>
+    <h2>10 秒看完剂泰科技</h2>
+    <div class="qf-grid">
+      <div class="qf-cell"><div class="label">招股价</div><div><div class="num">HK$10.50</div><div class="sub">约 $1.35 / 一手 500 股</div></div></div>
+      <div class="qf-cell"><div class="label">入场费</div><div><div class="num">HK$5,303</div><div class="sub">约 $682</div></div></div>
+      <div class="qf-cell"><div class="label">上市后市值</div><div><div class="num">HK$121 亿</div><div class="sub">约 $15.5 亿 / ¥112 亿</div></div></div>
+      <div class="qf-cell"><div class="label">募资净额</div><div><div class="num">HK$19.8 亿</div><div class="sub">约 $254M</div></div></div>
+      <div class="qf-cell"><div class="label">基石认购</div><div><div class="num">$1.48 亿</div><div class="sub">18 家 / 占发行 55%</div></div></div>
+      <div class="qf-cell"><div class="label">孖展超购</div><div><div class="num">4,322 倍</div><div class="sub">冻资 HK$4,567 亿</div></div></div>
+      <div class="qf-cell"><div class="label">2025 营收</div><div><div class="num">¥1.05 亿</div><div class="sub">95% 来自 1 个客户</div></div></div>
+      <div class="qf-cell"><div class="label">2025 净亏</div><div><div class="num">¥3.92 亿</div><div class="sub">3 年累亏 ¥17.5 亿</div></div></div>
+      <div class="qf-cell"><div class="label">市销率 (PS)</div><div><div class="num">95-103×</div><div class="sub">同业晶泰 29× / 英矽 41×</div></div></div>
+      <div class="qf-cell"><div class="label">基石锁定期</div><div><div class="num">6 月</div><div class="sub">2026-11-13 解禁</div></div></div>
+      <div class="qf-cell"><div class="label">暗盘预期涨幅</div><div><div class="num">+70~110%</div><div class="sub">每手 HK$3.5-5.5K 浮盈</div></div></div>
+      <div class="qf-cell verdict"><div class="label">建议</div><div><div class="num">暗盘卖 70-100%</div><div class="sub">短期红包 / 长期是估值刺客</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== MAIN LAYOUT ========== -->
+<div class="layout">
+
+<nav class="toc">
+  <div class="toc-title">目录</div>
+  <ol>
+    <li><a href="#sec-1"><span class="num">01</span>一句话结论</a></li>
+    <li><a href="#sec-2"><span class="num">02</span>公司是什么</a></li>
+    <li><a href="#sec-3"><span class="num">03</span>招股核心数据</a></li>
+    <li><a href="#sec-4"><span class="num">04</span>基石阵容</a></li>
+    <li><a href="#sec-5"><span class="num">05</span>财务真相</a></li>
+    <li><a href="#sec-6"><span class="num">06</span>业务与管线</a></li>
+    <li><a href="#sec-7"><span class="num">07</span>估值锚点</a></li>
+    <li><a href="#sec-8"><span class="num">08</span>暗盘 / 历史可比</a></li>
+    <li><a href="#sec-9"><span class="num">09</span>散户中签数据</a></li>
+    <li><a href="#sec-10"><span class="num">10</span>八大隐藏风险</a></li>
+    <li><a href="#sec-11"><span class="num">11</span>决策建议</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ========== 01 一页纸结论 ========== -->
+<section id="sec-1">
+  <div class="section-num"><span>01 / 一页纸</span><span>TL;DR</span></div>
+  <h2>一句话结论：<em>短期红包，长期刺客。</em></h2>
+  <p>剂泰科技（7666.HK）是 2026 年港股最火的 AI 制药 IPO：18 家基石认购 $1.48 亿、孖展超购 <strong>4,322 倍</strong>、冻资 HK$4,567 亿，三个数字都是港股历史前列水平。明天（5/12）下午 16:15 的暗盘大概率高开 <strong>70-110%</strong>，按基准预期每手能落 HK$3,750-5,750（约 $480-740）。</p>
+  <p>但这火爆背后藏着三件不太对劲的事：① 公司"AI 纳米递送第一股"故事的卖点跟它最快的产品 MTS-004 <strong>毫无关系</strong>（MTS-004 是个口崩片，不含 LNP）；② 2025 年 ¥1.05 亿营收里 ¥1 亿是<strong>一笔一次性 license 首付款</strong>（剔除后真实经常性收入只有数百万元）；③ 95-100× 市销率是港股 AI 制药历史最贵，是同业晶泰科技的 3.3 倍、英矽智能的 2.3 倍。</p>
+
+  <div class="tldr">
+    <h3>如果你只能记住三件事</h3>
+    <ol>
+      <li><strong>明天暗盘是赚红包的最佳时机</strong>，不是建仓时机。基于晶泰 18C 第一股暗盘只 +2%、3 天破发的前车之鉴，加上散户超购 4322 倍 vs 国际机构相对冷静的"散户情绪股"格局，暗盘是情绪顶点 + 富途流动性最佳，是减仓最好窗口。</li>
+      <li><strong>"AI 纳米递送"是给二级市场的故事，不是当下管线的事实</strong>。真正用 LNP 的自研管线 MTS-201 还在一期，MTS-105/109 计划 2026-2027 才提 IND（提交临床试验申请）。"递送第一股"标签要兑现需要 2-3 年，但估值已经按"明年还能签 N 个 1 亿首付款"在定价。</li>
+      <li><strong>2026-11-13 是基石解禁日</strong>。$1.48 亿基石（占发行 55%）锁仓 6 个月后会有集中减持压力。如果没有第二个 BD 大单（business development，对外授权）落地，95× PS 大概率向 30× 收敛 = 股价腰斩。所以"暗盘卖 70%、留 30% 看首日"是平衡策略；"暗盘全卖"是稳妥策略；"持有半年看 catalyst"是高风险赌注。</li>
+    </ol>
+  </div>
+
+  <p><strong>给你的明确建议</strong>：你既然中签了（甲尾稳1抽2、乙头中签率 40%，这本身已经很幸运），明天暗盘 16:15 开市后看走势 — 如果开盘涨 +60% 以上，<strong>分两笔卖出 70-100%</strong>，落袋为安；如果开盘只涨 +30% 以内（罕见情景），可以多看 30 分钟、首日开盘前再决策。详细的三种策略路径见第 11 章。</p>
+</section>
+
+<!-- ========== 02 公司是什么 ========== -->
+<section id="sec-2">
+  <div class="section-num"><span>02 / 档案</span><span>剂泰科技 = ?</span></div>
+  <h2>公司是什么：<em>MIT 三剑客的 AI 纳米递送平台</em></h2>
+
+  <p><strong>正式名</strong>：劑泰科技（北京）股份有限公司 / Metis TechBio Co., Ltd.（不是医药公司，注意区分晶泰科技 XtalPi 2228 和英矽智能 Insilico 3696）。</p>
+  <p><strong>成立</strong>：2020 年 2 月，杭州 + 北京双总部，146 名员工（研发 105 人，含 40+ 博士），美国波士顿设子公司。</p>
+  <p><strong>定位</strong>：用 AI + 量子化学 + 高通量湿实验做"药物递送系统"——把 mRNA / 小分子等"载荷"用纳米颗粒（脂质纳米粒 LNP）<strong>精准送到肝、肺、心、淋巴、肿瘤</strong>等 8 个器官。核心平台 <strong>NanoForge</strong> 包含全球最大的脂质库（号称 1000 万+ 种可电离脂质）+ AI 基础模型 + 量子化学仿真。</p>
+  <p><strong>商业模式</strong>：双轮驱动 = 平台合作（给大药企的载荷设计专属递送系统，按"研究费 + 选择权 + 许可费"收钱）+ 自研管线对外授权（POC 后 license out 收首付款 + 里程碑 + 销售提成）。<strong>不卖药、不做 CRO/CDMO</strong>。</p>
+
+  <h3>MIT 三剑客创始团队（背景非常硬核）</h3>
+  <div class="twocol">
+    <div class="col-card pos">
+      <h4>赖才达 / Chris Lai · 36 岁 · CEO</h4>
+      <ul>
+        <li>MIT 化工博士（师从 Bernhardt Trout 院士）+ 麦肯锡战略咨询</li>
+        <li>曾兼任晶泰科技波士顿分部"科技战略与企业发展"</li>
+        <li>主导剂泰 AI 平台和公司战略</li>
+      </ul>
+    </div>
+    <div class="col-card pos">
+      <h4>陈鸿铭 / Hongming Chen · 54 岁 · CSO</h4>
+      <ul>
+        <li><strong>美国国家工程院院士（2018 入选）</strong></li>
+        <li>MIT 化工博士，师从 Bob Langer（"药物递送之父"）</li>
+        <li>29 年制药经验，曾联创 Kala Pharmaceuticals（NASDAQ: KALA 上市）</li>
+      </ul>
+    </div>
+    <div class="col-card pos">
+      <h4>王文首 / Wenshou Wang · 45 岁 · COO</h4>
+      <ul>
+        <li>前 MIT CSAIL（计算机科学与人工智能实验室）研究员</li>
+        <li>联合创立 Inkbit（AI 3D 打印公司）</li>
+        <li>主导制剂/递送平台 + 中国日常运营</li>
+      </ul>
+    </div>
+    <div class="col-card pos">
+      <h4>关键高管（IPO 前重仓招的人）</h4>
+      <ul>
+        <li><strong>CFO 付翀</strong>（2025/4 加入）：复旦遗传学 → 中科院 → 华盛顿大学免疫学博士 → UC Berkeley 法学博士 → 海通国际投行 MD</li>
+        <li><strong>CSO 徐伟</strong>（2023/12 加入）：前罗氏 CSO + 信达生物 VP</li>
+        <li><strong>CBO Mark Herbert</strong>（2025/1 加入）：前 Arcturus mRNA-LNP（美股上市）BD VP + 药明康德 BD</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout data">
+    <div class="label">关键观察</div>
+    <div class="callout-quote">"团队学术背书是这家公司估值溢价的真正基础——美国工程院院士 + Bob Langer 弟子 + MIT 三剑客的搭配，在中国 AI 制药圈非常罕见。但学术 ≠ 商业化，团队豪华不代表 5 年内能把 NanoForge 平台变成持续盈利。"</div>
+  </div>
+</section>
+
+<!-- ========== 03 招股核心数据 ========== -->
+<section id="sec-3">
+  <div class="section-num"><span>03 / 数据</span><span>招股核心</span></div>
+  <h2>招股核心数据：<em>顶格定价、绿鞋满配</em></h2>
+
+  <div class="metric-list">
+    <div class="row"><div class="label">股票代码<span class="src">港交所主板 · 第 18C 章特专科技</span></div><div class="val">7666.HK</div></div>
+    <div class="row"><div class="label">招股价（一口价，不是区间）<span class="src">等同上限定价，无让利</span></div><div class="val">HK$10.50</div></div>
+    <div class="row"><div class="label">每手股数 / 入场费<span class="src">含佣金 / 经纪费</span></div><div class="val">500 股 · HK$5,303</div></div>
+    <div class="row"><div class="label">全球发售<span class="src">公开 5% / 国际 95% (有回拨机制)</span></div><div class="val">2.012 亿股</div></div>
+    <div class="row"><div class="label">超额配股权（绿鞋）<span class="src">承销商护盘工具</span></div><div class="val">3,018 万股</div></div>
+    <div class="row"><div class="label">募资总额 / 净额<span class="src">含绿鞋约 $313M</span></div><div class="val">HK$21.1 / 19.8 亿</div></div>
+    <div class="row"><div class="label">上市后市值<span class="src">按 11.52 亿股 × HK$10.50 计算</span></div><div class="val">HK$121 亿</div></div>
+    <div class="row"><div class="label">联席保荐人<span class="src">3 家投行牵头</span></div><div class="val">富瑞 · 德银 · 中信</div></div>
+    <div class="row"><div class="label">招股期 / 截飞<span class="src">已结束</span></div><div class="val">5/5–5/8 中午</div></div>
+    <div class="row"><div class="label">暗盘 / 上市日<span class="src">富途 / 辉立暗盘</span></div><div class="val warn">5/12 16:15 · 5/13</div></div>
+    <div class="row"><div class="label">公开发售超购倍数<span class="src">含孖展，AAStocks 5/8 截飞数据</span></div><div class="val warn">4,322 倍</div></div>
+    <div class="row"><div class="label">孖展冻资<span class="src">含 10 倍杠杆</span></div><div class="val warn">HK$4,567 亿</div></div>
+  </div>
+
+  <div class="callout warn">
+    <div class="label">重要 · 这次是 18C 章不是 18A 章</div>
+    <p><strong>18C 章</strong>是港交所 2023 年新开的"特专科技未商业化公司"通道（晶泰 2228 是 18C 第一股），跟传统的<strong>18A 章</strong>（生物科技未盈利通道）规则不同。关键差异：18C 创始人禁售期是 <strong>12 个月</strong>（18A 是 6 个月）；18C 章对"特专科技"叙事审查更严，所以剂泰必须把"AI 纳米递送平台"这个故事讲足。</p>
+  </div>
+
+  <h3>4,322 倍超购是什么概念？</h3>
+  <p>港股新股超购 100 倍就算"火爆"了，500 倍叫"疯狂"，4,322 倍意味着 <strong>HK$4,567 亿（约 $587 亿）的孖展资金</strong>来抢 HK$1.06 亿的公开盘货 — 是港股历史前几名级别。参照：</p>
+  <ul>
+    <li><strong>乐动机器人</strong>（5/11 同期上市）：超购 6,707 倍</li>
+    <li><strong>天星医疗</strong>（5/5 上市）：超购 7,823 倍</li>
+    <li><strong>剂泰科技</strong>（5/13 上市）：超购 4,322 倍</li>
+    <li><strong>英矽智能</strong>（2025/12 上市）：公开发售 1,427 倍（创当年医疗 IPO 纪录）</li>
+    <li><strong>晶泰科技</strong>（2024/6 上市）：公开 103 倍 / 国配 2.13 倍</li>
+  </ul>
+  <p><strong>但要小心</strong>：超购倍数高 ≠ 暗盘必涨。晶泰当年 103 倍超购，暗盘只 +2%；英矽 1427 倍，暗盘 +50%。AI 制药板块历来"暗盘比情绪赛道（机器人/医疗器械）冷"。</p>
+</section>
+
+<!-- ========== 04 基石阵容 ========== -->
+<section id="sec-4">
+  <div class="section-num"><span>04 / 基石</span><span>豪华阵容</span></div>
+  <h2>基石阵容：<em>港股 AI 制药历史最豪华</em></h2>
+  <p>18 家基石合计认购 <strong>$1.48 亿（约 HK$11.59 亿，占 H 股发售 54.87%）</strong>，是港股 AI 制药 IPO 历史最高基石规模（晶泰当时 8 家、英矽 15 家，规模都比剂泰小）。所有基石都签了 <strong>6 个月禁售协议</strong>（自上市日起，到 2026-11-13 解禁）。</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>类别</th><th>基石</th><th>认购金额</th><th>性质</th></tr></thead>
+      <tbody>
+        <tr class="highlight"><td>领投</td><td class="product-name">BlackRock 贝莱德</td><td class="num-col">$50.0 M</td><td>全球最大资管（13.9 万亿 AUM）</td></tr>
+        <tr><td>国际资管</td><td class="product-name">UBS Asset Management</td><td class="num-col">$15.0 M</td><td>瑞银资管</td></tr>
+        <tr><td>国际资管</td><td class="product-name">Mirae Asset</td><td class="num-col">$8.0 M</td><td>韩国未来资产</td></tr>
+        <tr><td>国际资管</td><td class="product-name">ORIX Asia</td><td class="num-col">$2.0 M</td><td>日本欧力士</td></tr>
+        <tr class="highlight"><td>医疗专项</td><td class="product-name">Deerfield</td><td class="num-col">$5.0 M</td><td>美国老牌医疗对冲（$163 亿 AUM）</td></tr>
+        <tr class="highlight"><td>医疗专项</td><td class="product-name">RTW Funds</td><td class="num-col">$5.0 M</td><td>纽约 biotech 专业基金（$90 亿 AUM）</td></tr>
+        <tr><td>医疗专项</td><td class="product-name">Lake Bleu 清池资本</td><td class="num-col">$4.0 M</td><td>大中华医疗对冲</td></tr>
+        <tr><td>医疗专项</td><td class="product-name">Sage Partners 锐智资本</td><td class="num-col">$4.0 M</td><td>香港医疗+科技</td></tr>
+        <tr><td>国家队</td><td class="product-name">国风投创新投资基金</td><td class="num-col">$10.0 M</td><td>国新系国家队</td></tr>
+        <tr><td>国家队</td><td class="product-name">工银理财</td><td class="num-col">$2.0 M</td><td>工行理财子</td></tr>
+        <tr><td>中资公募</td><td class="product-name">华夏基金（香港）</td><td class="num-col">$5.0 M</td><td>3.03 万亿 AUM</td></tr>
+        <tr><td>中资公募</td><td class="product-name">工银瑞信</td><td class="num-col">$5.0 M</td><td>2.37 万亿 AUM</td></tr>
+        <tr><td>中资公募</td><td class="product-name">广发基金</td><td class="num-col">$5.0 M</td><td>2 万亿 AUM</td></tr>
+        <tr><td>中资公募</td><td class="product-name">富国基金</td><td class="num-col">$5.0 M</td><td>老十家公募</td></tr>
+        <tr><td>VC/PE</td><td class="product-name">HHLRA 高瓴二级</td><td class="num-col">$8.0 M</td><td>高瓴医疗</td></tr>
+        <tr><td>VC/PE</td><td class="product-name">华登国际</td><td class="num-col">$5.0 M</td><td>半导体/AI 产业</td></tr>
+        <tr><td>VC/PE</td><td class="product-name">Arc Avenue</td><td class="num-col">$5.0 M</td><td>新加坡某主权基金背后</td></tr>
+        <tr><td>VC/PE</td><td class="product-name">Isometry Global</td><td class="num-col">$5.0 M</td><td>美国某主权基金背后</td></tr>
+        <tr style="border-top: 2px solid var(--rule);"><td><strong>合计</strong></td><td><strong>18 家</strong></td><td class="num-col warn"><strong>$148 M</strong></td><td><strong>占发行 54.87%</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="twocol">
+    <div class="col-card pos">
+      <h4>利好层面</h4>
+      <ul>
+        <li>BlackRock $5000 万领投，给市场最强机构信心</li>
+        <li>Deerfield + RTW + 清池 = 3 家全球顶级医疗基金 = 行业专业背书</li>
+        <li>4 大中资公募 + 国新基金 = 中资接盘力量充足</li>
+        <li>基石占发行 55% = 流通盘小，暗盘+首日易拉</li>
+      </ul>
+    </div>
+    <div class="col-card warn">
+      <h4>需要警惕</h4>
+      <ul>
+        <li><strong>没有 GIC / 淡马锡 / 挪威 GPFG 等真正长线主权基金</strong>（曦智科技 IPO 时有 GIC + 淡马锡）</li>
+        <li>没有产业资本（如默沙东、阿斯利康、礼来）作为基石 = <strong>产业协同背书不足</strong></li>
+        <li>2026-11-13 基石禁售期到期 = <strong>1.1 亿股集中抛压</strong>（占总股本 ~9.6%）</li>
+        <li>君圣泰前车之鉴：2023/12 基石豪华，解禁后跌 91%，基石浮亏 90%</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 05 财务真相 ========== -->
+<section id="sec-5">
+  <div class="section-num"><span>05 / 财务</span><span>3 年累亏 ¥17.5 亿</span></div>
+  <h2>财务真相：<em>1.05 亿营收，95% 是一次性首付</em></h2>
+
+  <div class="stats">
+    <div class="stat warn"><div class="label">2025 年营收</div><div class="num">¥1.05 亿</div><div class="sub">同比涨 70 倍 (但 95% 来自 1 个客户)</div></div>
+    <div class="stat warn"><div class="label">2025 净亏损</div><div class="num">¥3.92 亿</div><div class="sub">约 $54M</div></div>
+    <div class="stat warn"><div class="label">3 年累计亏损</div><div class="num">¥17.5 亿</div><div class="sub">约 $2.4 亿</div></div>
+    <div class="stat data"><div class="label">现金及等价物</div><div class="num">¥11.3 亿</div><div class="sub">约 $1.57 亿（IPO 前）</div></div>
+    <div class="stat data"><div class="label">研发投入</div><div class="num">¥270M</div><div class="sub">2025 年研发费用</div></div>
+    <div class="stat data"><div class="label">单一客户占比</div><div class="num">95.2%</div><div class="sub">浙江引安 ¥1 亿首付</div></div>
+  </div>
+
+  <h3>2025 那笔 ¥1 亿首付款的真相</h3>
+  <p>2025 年 9 月 12 日，剂泰把核心管线 MTS-004 的中国大陆权益授权给了一家叫 <strong>"浙江引安医药科技有限公司"</strong>的公司，对方先付了 ¥1 亿首付款（约 $13.9M）+ 承诺最高 ¥18.45 亿销售里程碑款。这笔 ¥1 亿在 2025 年 12 月入账，让全年营收从 ¥1.5M 暴涨到 ¥1.05 亿。</p>
+  <p><strong>问题来了</strong>：这是一笔<strong>一次性</strong>的资产授权（license-out），不是经常性收入。剔除这笔后，2025 年真实经常性收入只有 ¥5M（约 $700K）。意味着 2026 年财务报表大概率"营收暴跌"——除非剂泰在 2026 年再签一笔类似量级的授权。</p>
+
+  <blockquote>
+    <p>"1 亿首付款撑起 115 亿市值、95 倍市销率的背后，是资本市场对剂泰科技首付款之后持续性收入的一场赌注。"</p>
+    <cite>钛媒体 · 舒书《115 亿港元押在首付款之后的持续性上》</cite>
+  </blockquote>
+
+  <h3>更让人皱眉的事实</h3>
+  <p>雪球大 V "湘西头人" 5/8 发现：浙江引安医药 <strong>2025 年 8 月 20 日才注册成立</strong>（剂泰收 1 亿首付的 23 天前），注册资本仅 ¥1000 万。一家成立 19 天的小公司，凭什么愿意为一款<strong>还没上市</strong>的药花 1 亿现金？被网友质疑可能是<strong>关联方交易</strong>（即剂泰自己人控制的另一家公司"自付自收"做高营收）。招股书未明确说明引安与剂泰股东的关系。</p>
+
+  <div class="callout warn">
+    <div class="label">招股书原文摘录</div>
+    <div class="callout-quote">"于 2025 年 9 月以人民币 100 百万元的分期首付款...产生短期项目收入。" + "部分合作方或客户在完成一次性项目后，并无延续与我们的合作。"</div>
+    <p>翻译：剂泰自己也承认这笔 1 亿是"短期项目收入"，且过往就有客户做完一次就不再合作的案例。</p>
+  </div>
+
+  <h3>烧钱速度 + 现金跑道</h3>
+  <p>2025 年经营现金流出 ¥122M（剔除 ¥1 亿首付款后实际烧 ¥222M）。每月 burn rate（烧钱速度）约 <strong>¥18-20M（$2.5M/月）</strong>。IPO 募资净额 HK$19.8 亿（约 ¥18.3 亿）到账后，<strong>现金跑道 11-12 年</strong>（极宽松）。</p>
+  <p>但<strong>钛媒体提醒</strong>：如果管线推进到临床后期（MTS-201 进 II/III 期、MTS-105/109 进 I/II 期），单条管线烧钱可能到 ¥1.5-2 亿/年，跑道会压缩到 <strong>2-2.5 年</strong>。所以"现金宽松"是当前烧钱速度下的假象，不能用"还能撑 12 年"来安心。</p>
+
+  <h3>IPO 前一年突击拉薪酬：¥1.7 亿打入创始人口袋</h3>
+  <p>贝多财经 5/10 报道：2025 年三大创始人合计股权激励 + 工资约 <strong>¥1.7 亿（约 $2,360 万）</strong>，相当于全年净亏损（¥3.92 亿）的 43%。具体：</p>
+  <ul>
+    <li>赖才达 2025 年薪酬：<strong>¥5,420 万</strong>（约 $750 万）</li>
+    <li>王文首 2025 年薪酬：<strong>¥3,217 万</strong>（约 $447 万）</li>
+    <li>陈鸿铭 2025 年薪酬：<strong>¥2,530 万</strong>（约 $352 万）</li>
+    <li>2025 年股权激励合计：<strong>¥1.84 亿</strong>（vs 2024 年 ¥9389 万，<strong>同比 +96%</strong>）</li>
+  </ul>
+  <p>这是港股 IPO 前非常常见的操作 —— "上市前把口袋装满"。本身不违法，但散户看到这个数字会犹豫。</p>
+</section>
+
+<!-- ========== 06 业务管线 ========== -->
+<section id="sec-6">
+  <div class="section-num"><span>06 / 管线</span><span>故事 vs 现实</span></div>
+  <h2>业务与管线：<em>"AI 纳米递送" ≠ 主力产品</em></h2>
+  <p>这是<strong>本次调研最重要的发现</strong>。如果你只读懂这一节，已经超过了 90% 的散户。</p>
+
+  <h3>讲给二级市场的故事 vs 真实管线</h3>
+  <p>剂泰对外宣传的核心标签是 <strong>"全球 AI 药物递送第一股"</strong>，主打用 LNP（脂质纳米粒，mRNA 疫苗用的递送系统）+ AI 把 mRNA 等大分子精准送到肝肺心淋巴 8 个器官。听起来很性感。</p>
+  <p>但翻开招股书的管线表，你会发现它<strong>唯一进入 III 期临床、即将上市的产品</strong> MTS-004 ——</p>
+
+  <div class="callout warn">
+    <div class="label">关键事实</div>
+    <div class="callout-quote">MTS-004 不含 LNP 纳米递送。它是 AiTEM 平台优化的<strong>口崩片</strong>（小分子配方），活性成分是<strong>已上市的右美沙芬+奎尼丁组合</strong>（剂型改良）。靶向适应症 PBA 是个罕见病（"假性延髓情绪障碍"，俗称"强哭强笑综合征"），中国市场极小。</div>
+  </div>
+
+  <p>真正用 LNP 的自研管线呢？</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>候选药</th><th>类型</th><th>适应症</th><th>最新阶段</th><th>预计进展</th></tr></thead>
+      <tbody>
+        <tr class="highlight"><td class="product-name">MTS-004 <span class="tag">招牌</span></td><td>小分子口崩片<br>(不含 LNP)</td><td>PBA 强哭强笑综合征 (中国罕见病)</td><td class="pos">III 期完成 · Pre-NDA</td><td>2025-09 已授权浙江引安</td></tr>
+        <tr><td class="product-name">MTS-201</td><td>小分子 (TGR5 激动剂)</td><td>肥胖 / 糖尿病 / MASH</td><td class="warn">I 期临床中</td><td>2-3 年内难有数据</td></tr>
+        <tr><td class="product-name">MTS-105</td><td><strong>mRNA-LNP</strong> (肝靶向)</td><td>肝细胞癌 (FDA 孤儿药资格)</td><td class="warn">临床前</td><td>计划 2026 提交 IND</td></tr>
+        <tr><td class="product-name">MTS-109</td><td><strong>mRNA-LNP</strong> (淋巴靶向)</td><td>自身免疫</td><td class="warn">临床前</td><td>计划 2027 启动 I 期</td></tr>
+        <tr><td class="product-name">MTS-107/108/118/128</td><td>mRNA-LNP</td><td>癌症 / 自免</td><td class="warn">临床前 (动物数据)</td><td>未明确时间表</td></tr>
+        <tr><td class="product-name">PTS-201/101</td><td>动物用</td><td>宠物糖尿病/肥胖</td><td>开发中</td><td>已签宠物医疗集团 JV</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>所以现实是：<strong>剂泰目前 0 款基于自家 LNP 纳米递送平台的药物进入临床</strong>，最快是 MTS-201（一期）和 MTS-105/109（计划 2026-2027 才提 IND）。"AI 纳米递送"这个估值故事的兑现窗口至少 <strong>2-3 年</strong>。</p>
+
+  <h3>平台合作：30+ 家在谈，$345-512M 大单仅 term sheet 未签</h3>
+  <p>招股书披露 30+ 家全球药企/biotech 合作伙伴（全部匿名"全球领先制药公司"），<strong>2026/3 收到一个 $345M 平台合作 term sheet</strong>（每靶点合约价值 $345-512M）。<strong>但仅是 term sheet 不是签订</strong>——这是剂泰估值兑现的最大 catalyst（催化剂），但也是最大风险。</p>
+  <p>过去 3 年平台合作真实收入累计仅 <strong>~¥15M（约 $2M）</strong>，"卖 AI 设计能力"的商业模式至今<strong>还没跑通</strong>。</p>
+
+  <div class="callout data">
+    <div class="label">技术真相核查</div>
+    <p><strong>"千万种脂质库"是虚拟筛选不是真实合成</strong>。钛媒体核查招股书指出：剂泰宣称的 1000 万+ 脂质中，<strong>实物合成并经过实验验证的只有约 2,000 个</strong>，剩下都是 AI 生成的虚拟筛选库（理论潜力，未实测）。这个口径差异需要散户自行判断"千万脂质库"的实际护城河价值。</p>
+  </div>
+</section>
+
+<!-- ========== 07 估值锚点 ========== -->
+<section id="sec-7">
+  <div class="section-num"><span>07 / 估值</span><span>港股 AI 制药最贵</span></div>
+  <h2>估值锚点：<em>95× PS，是同业 2-3 倍</em></h2>
+  <p>市销率（PS）= 市值 / 营收。是 biotech 估值常用工具（biotech 通常没利润，没法用 PE 市盈率）。剂泰按 2025 年营收 ¥1.05 亿、市值 HK$121 亿计算，PS 约 <strong>95-103×</strong>。</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>公司</th><th>市值</th><th>2025 营收</th><th>市销率 (PS)</th><th>差异化</th></tr></thead>
+      <tbody>
+        <tr><td class="product-name">晶泰科技 2228.HK <span class="tag" style="background:var(--accent-data)">已盈利</span></td><td class="num-col">HK$393 亿</td><td>¥8.03 亿 (+201%)</td><td class="pos num-col">29×</td><td>AI + 量子化学 + 自动化</td></tr>
+        <tr><td class="product-name">英矽智能 3696.HK</td><td class="num-col">HK$358 亿</td><td>$5,624万 (-34%)</td><td class="num-col">41×</td><td>生成式 AI + 28 条临床管线</td></tr>
+        <tr class="highlight"><td class="product-name">剂泰科技 7666.HK <span class="tag">本次 IPO</span></td><td class="num-col">HK$121 亿</td><td>¥1.05 亿 (95% 一次性)</td><td class="warn num-col">95-103×</td><td>AI 纳米递送 (故事)</td></tr>
+        <tr><td class="product-name">Recursion (RXRX)</td><td class="num-col">$1.76B</td><td>$66.4M (+11%)</td><td class="num-col">26×</td><td>AI 药物发现 (合并 Exscientia)</td></tr>
+        <tr><td class="product-name">Schrodinger (SDGR)</td><td class="num-col">$0.97B</td><td>$234M (含软件)</td><td class="pos num-col">~4×</td><td>计算化学软件 + 自研管线</td></tr>
+        <tr><td class="product-name">Absci (ABSI)</td><td class="num-col">$0.92B</td><td>$2.8M (-38%)</td><td class="warn num-col">~330×</td><td>生成式 AI 抗体 (故事)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>更夸张</strong>：如果剔除 MTS-004 一次性首付（¥1 亿），剂泰真实经常性收入只有 ~¥5M，调整后 PS 超 <strong>2,300×</strong>。</p>
+
+  <h3>历史融资估值演变（招股书一手数据）</h3>
+  <div class="timeline">
+    <div class="row"><div class="date">2020/2 天使</div><div class="dot-wrap"><div class="dot pos"></div></div><div class="content"><div class="title">$16M 投后</div><div class="desc">峰瑞资本领投。早期股东折让 95.4%。</div></div></div>
+    <div class="row"><div class="date">2020/4 天使+</div><div class="dot-wrap"><div class="dot pos"></div></div><div class="content"><div class="title">$22.6M 投后</div><div class="desc">红杉中国种子（HSG Seed I）+ 峰瑞跟投。</div></div></div>
+    <div class="row"><div class="date">2020/11 Pre-A</div><div class="dot-wrap"><div class="dot pos"></div></div><div class="content"><div class="title">$63.5M 投后</div><div class="desc">光速中国 + 五源 + 红杉 + 晶泰科技 XtalPi 投资。</div></div></div>
+    <div class="row"><div class="date">2021/11 A 轮</div><div class="dot-wrap"><div class="dot data"></div></div><div class="content"><div class="title">$336.5M 投后</div><div class="desc">五源加注 + 光速加注 + 红杉风投 + Eric Li + 人保健康。</div></div></div>
+    <div class="row"><div class="date">2022/1 B 轮</div><div class="dot-wrap"><div class="dot data"></div></div><div class="content"><div class="title">$561M 投后</div><div class="desc">Martis Fund / Eric Li $27M 领投。</div></div></div>
+    <div class="row"><div class="date">2024/1 C 轮</div><div class="dot-wrap"><div class="dot data"></div></div><div class="content"><div class="title">$823.6M 投后</div><div class="desc">中金资本 $24M 领投 + 中金康瑞 $48M 可换股债。</div></div></div>
+    <div class="row"><div class="date">2025/7 D 轮</div><div class="dot-wrap"><div class="dot data"></div></div><div class="content"><div class="title">$1.05B 投后 ($10.5 亿)</div><div class="desc">北京医药健康产业基金 ¥2 亿 + 北京大兴产业基金 ¥1.5 亿。</div></div></div>
+    <div class="row"><div class="date">2026/5 IPO</div><div class="dot-wrap"><div class="dot warn"></div></div><div class="content"><div class="title">~$1.55B (HK$121 亿)</div><div class="desc">较 D 轮（7 个月前）<strong>溢价约 35%</strong>。biotech IPO 里属 "温和合理"。</div></div></div>
+  </div>
+
+  <div class="callout">
+    <div class="label">估值争议</div>
+    <p>有雪球 KOL（@爱投资的小熊猫）从另一口径计算 D 轮估值 <strong>HK$155 亿</strong>，得出 IPO 估值（HK$121 亿）<strong>"倒挂"22%</strong> 的结论。这两个口径都成立，差异来自于"投后估值"（招股书算法）vs "完全摊薄估值"（含未行权期权 + 可转债）。无论哪个口径，IPO 价没有大幅溢价，给二级市场留了一点上涨空间，但 PS 95× 已经把"温和定价"全部消化。</p>
+  </div>
+</section>
+
+<!-- ========== 08 暗盘 + 历史可比 ========== -->
+<section id="sec-8">
+  <div class="section-num"><span>08 / 历史</span><span>同业可比 IPO</span></div>
+  <h2>历史可比：<em>同行业暗盘历史不友好</em></h2>
+  <p>预测剂泰暗盘走势最有价值的两类参照系：① 同行业（AI 制药），② 同热度级（5000+ 倍超购）。</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>公司</th><th>上市日</th><th>类别</th><th>超购</th><th>暗盘</th><th>首日</th><th>3 天后</th><th>1 年后</th></tr></thead>
+      <tbody>
+        <tr class="highlight"><td class="product-name">晶泰科技 2228</td><td>2024/6/13</td><td>18C AI 制药</td><td>103×</td><td class="num-col warn">+2%</td><td class="num-col">+9.8%</td><td class="num-col warn">破发</td><td class="num-col pos">+98%</td></tr>
+        <tr class="highlight"><td class="product-name">英矽智能 3696</td><td>2025/12/30</td><td>主板 AI 制药</td><td>1427×</td><td class="num-col pos">+50%</td><td class="num-col pos">+45%</td><td class="num-col pos">高位</td><td class="num-col pos">+167%</td></tr>
+        <tr><td class="product-name">乐动机器人 1236</td><td>2026/5/11</td><td>18C 机器人</td><td class="warn">6,707×</td><td class="num-col pos">+150%</td><td class="num-col pos">+128% (半日)</td><td>—</td><td>—</td></tr>
+        <tr><td class="product-name">天星医疗 1609</td><td>2026/5/5</td><td>18A 医疗器械</td><td class="warn">7,823×</td><td class="num-col pos">+213%</td><td class="num-col pos">+118%</td><td class="num-col">−8% (5日)</td><td>—</td></tr>
+        <tr><td class="product-name">曦智科技-P 1879</td><td>2026/4/28</td><td>18C 硅光 AI 芯片</td><td>53×</td><td class="num-col pos">+350%</td><td class="num-col pos">+383%</td><td class="num-col pos">+377%</td><td>—</td></tr>
+        <tr><td class="product-name">商米科技-W 6810</td><td>2026/4/29</td><td>智能硬件</td><td>—</td><td class="num-col pos">+282%</td><td class="num-col pos">+241%</td><td class="num-col pos">+197%</td><td>—</td></tr>
+        <tr><td class="product-name">傅里叶 3625</td><td>2026/3/31</td><td>机器人</td><td>—</td><td class="num-col pos">+108%</td><td class="num-col pos">+100%</td><td class="num-col pos">+209% (5日)</td><td>—</td></tr>
+        <tr><td class="product-name">铜师傅 0664</td><td>2026/3/31</td><td>消费</td><td>—</td><td class="num-col warn">−30%</td><td class="num-col warn">−49%</td><td class="num-col warn">持续暴跌</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>三个参照锚点</h3>
+  <ol>
+    <li><strong>看"行业像"</strong>（AI 制药）：晶泰 +2%、英矽 +50% — 港股 AI 制药历史<strong>暗盘期望值 +30%</strong>，不要奢望 +150% 以上</li>
+    <li><strong>看"热度像"</strong>（5000+ 倍超购）：乐动 +150%、天星 +213% — 但这两家是<strong>有产品收入</strong>的赛道（机器人、医疗器械），不是纯故事 AI 制药</li>
+    <li><strong>看"18C 像"</strong>：晶泰 18C 第一股暗盘 +2% / 3 天破发 / 1 年才 +98%；曦智 18C 暗盘 +350% — <strong>同样 18C 章，结果天差地别</strong>。差异在于市场对叙事的接受度</li>
+  </ol>
+
+  <h3>暗盘预期开盘价区间（基于上述锚点）</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>情景</th><th>预期暗盘价</th><th>涨幅</th><th>每手浮盈</th><th>概率</th></tr></thead>
+      <tbody>
+        <tr><td>极悲观（晶泰路径）</td><td class="num-col">HK$10.5-11.5</td><td>0% to +10%</td><td class="num-col">$0-64</td><td>10%</td></tr>
+        <tr><td>悲观（英矽路径）</td><td class="num-col">HK$15-17</td><td>+43% to +62%</td><td class="num-col">$290-420</td><td>25%</td></tr>
+        <tr class="highlight"><td><strong>基准（综合判断）</strong></td><td class="num-col"><strong>HK$18-22</strong></td><td><strong>+71% to +110%</strong></td><td class="num-col"><strong>$480-740</strong></td><td><strong>35%</strong></td></tr>
+        <tr><td>乐观（乐动路径）</td><td class="num-col">HK$25-28</td><td>+138% to +167%</td><td class="num-col">$930-1,125</td><td>20%</td></tr>
+        <tr><td>极乐观（曦智+天星路径）</td><td class="num-col">HK$30-35+</td><td>+185%+</td><td class="num-col">$1,250+</td><td>10%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ========== 09 散户中签 ========== -->
+<section id="sec-9">
+  <div class="section-num"><span>09 / 散户</span><span>共识陷阱</span></div>
+  <h2>散户中签数据：<em>共识陷阱已就位</em></h2>
+
+  <h3>5/11 中签结果（雪球散户原话）</h3>
+  <ul>
+    <li><strong>甲组（小户）尾部</strong>：稳 1 抽 2（1 手稳中、2 手抽签）— 历史罕见</li>
+    <li><strong>100 手 / 600 手 / 2000 手</strong>：均中 1 手</li>
+    <li><strong>乙头（大户首档）</strong>：中签率 ~40%，<strong>很多乙头一手都没中</strong></li>
+    <li><strong>顶头槌（最大额）</strong>：仅配发 4 手</li>
+  </ul>
+
+  <blockquote>
+    <p>"这个结果，谁看了不炸... 甲尾稳 1 抽 2。乙头抽 1，中签率大约 40%，很多乙组都没中。甲尾赢麻了。我中了一些，提前预定 KTV 去了。"</p>
+    <cite>雪球 · 头狼叶羽 · 2026-05-11</cite>
+  </blockquote>
+
+  <p>你能中说明属于"甲尾稳中"或"乙头被抽中"群体——非常幸运。但这个分配格局有个隐含信号：<strong>散户筹码反而比想象中稀缺</strong>（甲组比乙组好分配），意味着<strong>暗盘开高有支撑</strong>。</p>
+
+  <h3>共识陷阱：找不到一篇看空大 V 的文章</h3>
+  <p>调研覆盖了雪球、富途、老虎、微博、知乎、B 站、公众号等 35+ 中文平台，<strong>找不到任何一篇明确看空 + 推荐放弃打新的深度文</strong>。最看空的几篇都是"中性带提醒"：</p>
+
+  <div class="twocol">
+    <div class="col-card warn">
+      <h4>看空声音 (极少)</h4>
+      <ul>
+        <li><strong>钛媒体 / 舒书</strong>："115 亿港元押在首付款之后的持续性上"</li>
+        <li><strong>凤凰网财经</strong>："98.4% 收入靠单一客户"</li>
+        <li><strong>蓝鲸财经</strong>："还未跨过盈亏平衡点"</li>
+        <li><strong>贝多财经</strong>："持续亏损，高管 2025 年薪酬飙升"</li>
+        <li><strong>雪球 @爱投资的小熊猫</strong>："PS 100x 严重高估，透支未来 3-5 年"</li>
+      </ul>
+    </div>
+    <div class="col-card pos">
+      <h4>看多声音 (绝大多数)</h4>
+      <ul>
+        <li>"下一个曦智科技，SSS+，10 分满星必打" — 雪球 KOL 大猪先森</li>
+        <li>"全球 AI 药物递送第一股" — 几乎所有公众号</li>
+        <li>"基石阵容现象级" — 智通财经、IPO早知道</li>
+        <li>韵华证券伍礼贤："剂泰科技及英派药业上市后均会有不俗表现"</li>
+        <li>富途/老虎社区：散户全员晒中签截图、KTV 庆祝</li>
+      </ul>
+    </div>
+  </div>
+
+  <blockquote>
+    <p>"接近 100 万都没中"<br>"十倍杠杆都不中，要多少才能中"<br>"一手能赚 1 万吗？"</p>
+    <cite>老虎社区 7666 评论区 · 2026-05-11 早晨</cite>
+  </blockquote>
+
+  <div class="callout warn">
+    <div class="label">最重要的反面信号</div>
+    <div class="callout-quote">"当所有散户都把这股当成 ATM 时，反向风险开始累积。'中签 = 赚钱'已成散户共识，意味着风险已不是涨不涨，而是涨多少 — 这本身就是要警惕的信号。"</div>
+    <p>历史教训：曦智科技 5/11 已经从最高 HK$930 砸到 HK$200 多 — 当所有人都说"下一个曦智"时，要警惕的恰恰是"上一个曦智的故事"已经结束。</p>
+  </div>
+</section>
+
+<!-- ========== 10 隐藏风险 ========== -->
+<section id="sec-10">
+  <div class="section-num"><span>10 / 风险</span><span>八大红旗</span></div>
+  <h2>八大隐藏风险：<em>每条都有一手来源</em></h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>#</th><th>风险</th><th>量化数据</th><th>来源</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><strong>客户集中度极端</strong></td><td>2025 最大客户占比 <strong>95.2-98.4%</strong>；前五大 99.7%</td><td>招股书 / 凤凰 / 21财经</td></tr>
+        <tr><td>2</td><td><strong>估值严重透支：PS 95-100×</strong></td><td>同业 29-41×；剔除一次性收入 PS &gt; 2,300×</td><td>钛媒体 / 国投证券研报</td></tr>
+        <tr><td>3</td><td><strong>核心客户疑似关联方</strong></td><td>浙江引安"成立 19 天"就掏 ¥1 亿首付</td><td>雪球 @湘西头人</td></tr>
+        <tr><td>4</td><td><strong>临床后期跑道仅 2-2.5 年</strong></td><td>当前现金 ¥11.3 亿；管线进 III 期烧钱加速</td><td>钛媒体 / 招股书</td></tr>
+        <tr><td>5</td><td><strong>创始人 IPO 前突击拉薪酬</strong></td><td>三创始人 2025 年薪酬+激励 <strong>~¥1.7 亿</strong></td><td>贝多财经 / 招股书</td></tr>
+        <tr><td>6</td><td><strong>"千万脂质库"是虚拟筛选</strong></td><td>实物合成验证 ~2,000 个，远低于 1,000 万</td><td>钛媒体核查</td></tr>
+        <tr><td>7</td><td><strong>国际主权基金缺席 + 无产业资本</strong></td><td>没有 GIC / 淡马锡 / Big Pharma 基石</td><td>雪球小熊猫 / 招股书</td></tr>
+        <tr><td>8</td><td><strong>中文圈舆论一致 = 共识陷阱</strong></td><td>35 平台 0 篇明确看空文</td><td>本次调研全网扫描</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>5/13 上市当天的额外风险</h3>
+  <ul>
+    <li><strong>同日 IPO 抽水</strong>：5/13 同日上市还有英派药业-B（07630，超购 395 倍），资金会分流</li>
+    <li><strong>大盘风险</strong>：恒指 26,406 点（5/11 收盘），<strong>5/15 中美关税谈判截止</strong> — 5/13 上市当天可能撞大盘黑天鹅</li>
+    <li><strong>美股 AI 制药板块</strong>：Recursion 1 年 -24%，Absci 收入腰斩，国际板块情绪冷 — 港股是孤岛</li>
+  </ul>
+
+  <h3>已核实"不存在"的风险（澄清谣言）</h3>
+  <div class="twocol">
+    <div class="col-card pos">
+      <h4>核实结果：以下风险不存在</h4>
+      <ul>
+        <li><strong>实体清单</strong>：未发现剂泰被列入美国实体清单</li>
+        <li><strong>VIE 架构风险</strong>：剂泰是境内股份制公司直接 H 股上市，不是 VIE</li>
+        <li><strong>创始人不光彩历史</strong>：赖才达履历干净 (MIT + 麦肯锡 + AquaFresco MassChallenge 奖)</li>
+        <li><strong>赖才达 IPO 前套现</strong>：2025/8 退出南京承泰裕鑫是常规架构整理（员工持股平台并表），不是减持</li>
+        <li><strong>专利诉讼</strong>：未发现与 Alnylam 等行业巨头的专利诉讼</li>
+        <li><strong>政策风险</strong>：2026/4 创新药政策利好（从医保谈判降价转为自主定价保护）</li>
+      </ul>
+    </div>
+    <div class="col-card warn">
+      <h4>注意：AI 摘要常见的错误信息</h4>
+      <ul>
+        <li>Google AI Overview 把<strong>承泰科技</strong>（比亚迪供应商）创始人陈承文 IPO 前套现 ¥3000 万的事错误关联到了<strong>剂泰科技</strong>赖才达 — 这是 AI 幻觉，请忽略</li>
+        <li>"礼来亚洲基金 LAV 是剂泰股东"未在招股书出现，可能是早期媒体报道有误，或通过其他主体间接持有，但招股书未明示</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 11 决策建议 ========== -->
+<section id="sec-11">
+  <div class="section-num"><span>11 / 决策</span><span>三条路径</span></div>
+  <h2>决策建议：<em>三条路径，一个推荐</em></h2>
+
+  <div class="verdict">
+    <div class="verdict-title">最终判断 · Final Verdict</div>
+    <h3>暗盘卖 70-100% 是<em>大概率最优解</em>。</h3>
+    <p>三个事实推导这个建议：① AI 制药板块历史暗盘不友好（晶泰仅 +2%，英矽 +50%），同业期望值低于 +100%；② 散户超购 4322 倍 vs 国际机构相对冷静，是典型"散户情绪股"，暗盘是情绪顶点 + 富途流动性最佳，是减仓最好窗口；③ 95-100× PS 长期估值不可持续，2026-11-13 基石解禁日是潜在抛压。短期红包必须落袋，别把红包当船票。</p>
+    <div class="verdict-options">
+      <div class="verdict-option recommended">
+        <div class="recommend-tag">推荐</div>
+        <div class="num">Path A · 稳健派</div>
+        <h4>暗盘卖 70-100%</h4>
+        <p>暗盘开市后看走势：开盘 +60% 以上分两笔卖出；首日开市再处理剩余 30%。预期落袋 HK$3,150-5,750/手（约 $400-740）。错过极端涨幅但锁定确定收益。</p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">Path B · 平衡派</div>
+        <h4>暗盘卖 50%、留 50% 看首日</h4>
+        <p>暗盘把成本减半（卖出半仓回收本金 + 部分利润），剩下半仓博首日开盘冲高。如果首日高开，开盘前 30 分钟内全部出清；如果首日开盘破暗盘价，立即止损。</p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">Path C · 激进派</div>
+        <h4>持有 1 周到 1 月</h4>
+        <p>赌"基石锁定 + AI 板块情绪"能撑 30 天。风险：5/15 中美关税谈判截止可能搅动大盘；首日后 3-5 天是机构 short 窗口；30 天内大概率有获利回吐。仅适合愿意承受 -30% 回撤的人。</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Path A · 暗盘当天行动指南（推荐）</h3>
+  <div class="paths">
+    <div class="path-card a">
+      <div class="path-num">5/12 (周二) · 暗盘日</div>
+      <h4>16:00 准备 · 16:15 开市后行动</h4>
+      <p>富途 / 辉立 / 捷利暗盘交易池都开。富途流动性最好，建议在富途 App 操作。</p>
+      <ul>
+        <li>16:00 开 App，预设两个限价单：① +60% 处（HK$16.8）卖 50%，② +90% 处（HK$20）卖 30%</li>
+        <li>16:15 开市看 5 分钟集合竞价</li>
+        <li>如开盘已 +80%+，挂市价立即清 70%；如开盘 +50% 以下，挂限价 +50% 等弹起再卖</li>
+        <li>暗盘 18:30 收市前必须决定：是否留 30% 看首日</li>
+        <li><strong>不要追加买入</strong>：超购 4322 倍意味散户已把情绪买到顶</li>
+      </ul>
+    </div>
+    <div class="path-card a">
+      <div class="path-num">5/13 (周三) · 上市首日</div>
+      <h4>09:00 开市后行动</h4>
+      <p>港股早盘 9:30 集合竞价 + 9:30-12:00 早市。AI 制药历史显示首日开盘后 1-2 小时常见高开冲高回落（晶泰盘中 +25% 收 +9.8%、3 天破发）。</p>
+      <ul>
+        <li>09:00 看暗盘收盘价 vs 5/13 开盘集合竞价</li>
+        <li>如首日开盘 ≥ 暗盘收盘价 → 30 分钟内清空剩余 30%</li>
+        <li>如首日开盘低于暗盘 → 立即清空，避免追跌</li>
+        <li>11:30 之前 100% 出清，规避中午基石/机构卖盘</li>
+        <li><strong>不要</strong>留过午、不要留过周末（5/16-5/17）</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>不推荐的策略 · 三个坑</h3>
+  <ul>
+    <li><strong>暗盘加仓 / 首日追涨买入</strong>：超购 4322 倍意味散户情绪已经买到顶，你买进去就是接最后一棒</li>
+    <li><strong>持有到基石解禁（2026-11-13）</strong>：6 个月后 1.1 亿基石股集中抛压，加上 95× PS 不可持续，大概率股价腰斩。除非你在 11/13 之前看到剂泰签下第二个 $345M 平台合作大单</li>
+    <li><strong>用赚来的钱再融资买更多新股</strong>：港股 IPO 是低胜率游戏，2026 Q1 整体破发率 61.5%。剂泰中签红包属于"运气钱"，落袋就好</li>
+  </ul>
+
+  <div class="divider-quote">"暗盘是为运气准备的小红包，<br>不是为信仰准备的入场券。"</div>
+
+  <div class="callout warn">
+    <div class="label">最后一句（给非职业投资人）</div>
+    <div class="callout-quote">你既然是中签的散户，明天的核心任务不是"判断剂泰能涨多高"，而是"把已经到手的红包安全收下"。MIT 三剑客的故事很性感、基石阵容很豪华、孖展超购很爆款 — 这些都是支撑暗盘高开的<strong>短期推力</strong>，不是支撑你长期持股的<strong>商业基本面</strong>。商业基本面要等 2026-11 之后看：是否签下第二个 $345M 大单、MTS-201 一期数据、第一个真正的 LNP 管线进 IND。如果到时候这些都兑现了，你可以再买回来。</div>
+  </div>
+</section>
+
+</main>
+
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="footer-inner">
+    <h4>关键一手数据来源</h4>
+    <div class="sources">
+      <p><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0505/2026050500020_c.pdf">HKEX 招股书 PHIP 中文版（一手）</a></p>
+      <p><a href="https://www.metistechbio.com/en/about.html">METiS TechBio 官网 About</a></p>
+      <p><a href="https://www.aastocks.com/sc/stocks/analysis/stock-aafn-con/07666/AAFN/NOW.1523477/hk-stock-news">AAStocks 5/8 截飞快讯</a></p>
+      <p><a href="https://finance.sina.com.cn/stock/estate/integration/2026-05-07/doc-inhxahri5068049.shtml">新浪财经 5/7 孖展 758 亿</a></p>
+      <p><a href="https://finance.sina.com.cn/stock/bxjj/2026-05-05/doc-inhwvivh9702870.shtml">新浪财经 1.48 亿基石名单</a></p>
+      <p><a href="https://www.tmtpost.com/7976832.html">钛媒体《115 亿港元押在首付款之后的持续性上》(看空)</a></p>
+      <p><a href="https://finance.ifeng.com/c/8rtnkQiIIOp">凤凰网《70 倍增长背后有何隐忧》(看空)</a></p>
+      <p><a href="https://xueqiu.com/2287778230/388026551">贝多财经《持续亏损，高管 2025 年薪酬飙升》</a></p>
+      <p><a href="https://xueqiu.com/8522447024/387443751">雪球 @爱投资的小熊猫《D 轮 155 亿估值倒挂》(看空)</a></p>
+      <p><a href="https://xueqiu.com/1264130808/387808917">雪球 @湘西头人《关联方交易令人多心》</a></p>
+      <p><a href="https://xueqiu.com/1133075318/388204829">蓝鲸财经《AI 制药三小龙、还未跨过盈亏平衡点》</a></p>
+      <p><a href="https://xueqiu.com/S/07666">雪球 7666 个股页</a></p>
+      <p><a href="https://www.laohu8.com/stock/07666">老虎社区 7666</a></p>
+      <p><a href="https://www.futunn.com/quote/hk/ipo">富途新股频道实时数据</a></p>
+      <p><a href="https://stockanalysis.com/quote/hkg/2228/">stockanalysis 晶泰 2228</a></p>
+      <p><a href="https://cn.investing.com/news/stock-market-news/article-3143654">Investing 英矽暗盘 +50.1%</a></p>
+      <p><a href="https://www.eeo.com.cn/2025/1010/757795.shtml">经济观察网 赖才达专访</a></p>
+      <p><a href="https://www.21jingji.com/article/20260421/herald/625f573d85e171125cc6ebe3a8592f98.html">21 经济网《通过聆讯：三年亏 14 亿》</a></p>
+      <p><a href="https://www.prnewswire.com/news-releases/metis-biotech-announces-chinas-first-ai-enabled-formulation-drug-candidate-to-complete-phase-iii-clinical-trial-302592862.html">PR Newswire MTS-004 III 期完成</a></p>
+      <p><a href="https://www.vcbeathealth.com/article/3192">VCBeat 1.48 亿基石融资分析</a></p>
+    </div>
+    <div class="footer-meta">
+      <span>RAY DEEP RESEARCH · 5 子 Agent 并行调研 · 调研时点 2026-05-11 22:00</span>
+      <span>免责声明：本文仅为信息整理，不构成投资建议。投资有风险，决策需谨慎。</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Theme toggle
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  if (next === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+  try { localStorage.setItem('ray-theme', next); } catch (e) {}
+});
+
+// Follow system change
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  if (!localStorage.getItem('ray-theme')) {
+    if (e.matches) document.documentElement.setAttribute('data-theme', 'dark');
+    else document.documentElement.removeAttribute('data-theme');
+  }
+});
+
+// TOC active state
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      document.querySelectorAll('nav.toc a').forEach(link => {
+        link.style.color = '';
+        link.style.fontWeight = '';
+      });
+      const activeLink = document.querySelector(`nav.toc a[href="#${id}"]`);
+      if (activeLink) {
+        activeLink.style.color = 'var(--accent-warn)';
+        activeLink.style.fontWeight = '600';
+      }
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

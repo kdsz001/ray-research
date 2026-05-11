@@ -23,6 +23,12 @@
 |------|------|---------|
 | 2026-05-11 | [初版调研 · 港股 IPO 续命局](yifei/2026-05-11-yifei.html) | [↗ Open](https://kdsz001.github.io/ray-research/yifei/2026-05-11-yifei.html) |
 
+### 💊 [剂泰科技 7666.HK](jitai/) · AI 纳米药物递送 · 暗盘前打新调研
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-11 | [暗盘前调研 · 红包还是船票](jitai/2026-05-11-jitai.html) | [↗ Open](https://kdsz001.github.io/ray-research/jitai/2026-05-11-jitai.html) |
+
 <!-- INDEX-END -->
 
 ---
