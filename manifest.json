@@ -41,6 +41,18 @@
           "title": "暗盘前调研 · 红包还是船票"
         }
       ]
+    },
+    {
+      "slug": "chainlink",
+      "name": "Chainlink (LINK)",
+      "tagline": "Oracle 之王 · 加密投资深度调研",
+      "reports": [
+        {
+          "date": "2026-05-12",
+          "file": "2026-05-12-chainlink.html",
+          "title": "初版投资调研 · Oracle 之王"
+        }
+      ]
     }
   ]
 }

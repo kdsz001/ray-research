@@ -29,6 +29,12 @@
 |------|------|---------|
 | 2026-05-11 | [暗盘前调研 · 红包还是船票](jitai/2026-05-11-jitai.html) | [↗ Open](https://kdsz001.github.io/ray-research/jitai/2026-05-11-jitai.html) |
 
+### 🔗 [Chainlink (LINK)](chainlink/) · Oracle 之王 · 加密投资调研
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-12 | [初版投资调研 · Oracle 之王](chainlink/2026-05-12-chainlink.html) | [↗ Open](https://kdsz001.github.io/ray-research/chainlink/2026-05-12-chainlink.html) |
+
 <!-- INDEX-END -->
 
 ---
