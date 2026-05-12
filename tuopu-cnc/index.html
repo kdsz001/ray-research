@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>拓璞数控 07688.HK · 调研话题 · Ray Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if ((saved || (prefersDark ? 'dark' : 'light')) === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec; --bg-card: #ffffff; --ink: #14110d; --muted: #6e6358; --light: #a39787;
+  --rule: #14110d; --rule-light: #d8d1c2; --accent: #a73121; --link: #1c4d6b;
+  --serif: "Source Serif 4", Georgia, serif;
+  --sans: "Inter", -apple-system, "PingFang SC", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", monospace;
+}
+[data-theme="dark"] {
+  --bg: #15120e; --bg-card: #1f1b16; --ink: #ebe3d3; --muted: #8d8170; --light: #5c5346;
+  --rule: #ebe3d3; --rule-light: #3a342c; --accent: #e87a5f; --link: #6cb1d6;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--sans); background: var(--bg); color: var(--ink);
+  line-height: 1.65; font-size: 16px; max-width: 720px; margin: 0 auto; padding: 80px 32px;
+  -webkit-font-smoothing: antialiased; transition: background 0.2s, color 0.2s;
+}
+.eyebrow {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 12px;
+}
+.eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--accent); }
+.eyebrow a { color: var(--accent); text-decoration: none; }
+h1 {
+  font-family: var(--serif); font-weight: 600; font-size: 56px;
+  line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 18px;
+}
+.lead { font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--muted); margin-bottom: 50px; }
+h2 {
+  font-family: var(--serif); font-weight: 600; font-size: 22px;
+  margin: 48px 0 18px; letter-spacing: -0.01em;
+}
+.report-list {
+  border-top: 1px solid var(--ink); list-style: none;
+}
+.report-list li {
+  padding: 20px 0; border-bottom: 1px solid var(--rule-light);
+  display: grid; grid-template-columns: 110px 1fr; gap: 20px; align-items: baseline;
+}
+.report-list .date { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+.report-list .title { font-family: var(--serif); font-size: 19px; font-weight: 600; }
+.report-list a { color: var(--ink); text-decoration: none; }
+.report-list a:hover { color: var(--accent); }
+ul.findings { list-style: none; margin: 0; }
+ul.findings li {
+  padding: 12px 0 12px 22px; position: relative; line-height: 1.55; color: var(--muted);
+  border-bottom: 1px dashed var(--rule-light);
+}
+ul.findings li::before {
+  content: "→"; position: absolute; left: 0; color: var(--accent); font-family: var(--mono);
+}
+ul.findings li:last-child { border: none; }
+ul.findings li strong { color: var(--ink); }
+
+#theme-toggle {
+  position: fixed; top: 14px; right: 24px; z-index: 1000;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--bg-card); border: 1px solid var(--rule-light);
+  color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center;
+  padding: 0; transition: all 0.15s;
+}
+#theme-toggle:hover { border-color: var(--ink); }
+#theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] #theme-toggle .icon-moon { display: block; }
+
+footer {
+  margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--rule-light);
+  font-family: var(--mono); font-size: 11px; color: var(--light); letter-spacing: 0.05em;
+}
+footer a { color: var(--muted); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="切换夜间模式">
+  <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<div class="eyebrow"><a href="../">← 返回 Ray Research</a> · 调研话题</div>
+<h1>拓璞数控 07688.HK</h1>
+<p class="lead">中国唯一批量交付航空航天大型构件五轴联动机床的厂商 · 港股商业航天第一股 · 5/20 挂牌 · 七年 IPO 长跑终过关 · 技术是真的、估值是高烧、客户是央企。</p>
+
+<h2>报告列表</h2>
+<ul class="report-list">
+  <li>
+    <span class="date">2026-05-12</span>
+    <a class="title" href="2026-05-12-tuopu-cnc.html">港股 IPO 深度调研 · 技术真、估值贵、客户险 →</a>
+  </li>
+</ul>
+
+<h2>跨报告核心结论</h2>
+<ul class="findings">
+  <li><strong>技术真但护城河靠客户</strong> — 镜像铣全球唯三中国唯一、12 米双五轴 + 全球首家全运动部件用碳纤维；但西飞 2025 已自研出 12 米双五轴镜像铣，科德正在切入大件领域</li>
+  <li><strong>「中国第一」分两个口径</strong> — 航空航天细分 10-11.6% 第一（招股书叙事）vs 全部五轴 3.9% / 第五（真实位置）</li>
+  <li><strong>估值已被打满</strong> — 市值 HK$108 亿 / PE 386 倍（经调整）/ 1,370 倍（GAAP）· A 股可比科德 PE 95 倍 · 老股东 D 轮投后 ¥59 亿 → IPO ¥95 亿浮盈 61%</li>
+  <li><strong>结构性风险</strong> — 杠杆率 193% / 客户集中 80% / 客户 E 是公司持股 14.48% 联营公司 · 5 次冲 IPO 才过会</li>
+  <li><strong>机构信号强散户零热度</strong> — 13 家基石锁 50%（高盛/UBS/博裕/高瓴 顶配）vs 雪球 112 人关注 / 知乎 0 讨论 · "1.5 流热门票"</li>
+  <li><strong>打新策略</strong> — 1-2 手保守仓位 · 看 5/19 暗盘表现决定卖出时机 · 不留 6 个月解禁期前</li>
+</ul>
+
+<footer>
+  <a href="../">Ray Research</a> · <a href="https://github.com/kdsz001/ray-research" target="_blank" rel="noopener noreferrer">GitHub</a>
+</footer>
+
+<script>
+var btn = document.getElementById('theme-toggle');
+btn.addEventListener('click', function() {
+  var current = document.documentElement.getAttribute('data-theme');
+  var next = current === 'dark' ? 'light' : 'dark';
+  if (next === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  else document.documentElement.removeAttribute('data-theme');
+  try { localStorage.setItem('ray-theme', next); } catch (e) {}
+});
+</script>
+
+</body>
+</html>

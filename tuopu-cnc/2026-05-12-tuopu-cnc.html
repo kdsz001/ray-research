@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>拓璞数控（07688.HK）港股 IPO 深度调研 · Ray 调研报告</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec;
+  --bg-paper: #fbf9f4;
+  --bg-card: #ffffff;
+  --bg-dark: #14110d;
+  --bg-dark2: #1f1b16;
+
+  --ink: #14110d;
+  --ink-2: #2c2620;
+  --muted: #6e6358;
+  --light: #a39787;
+
+  --rule: #14110d;
+  --rule-light: #d8d1c2;
+
+  --accent-warn: #a73121;
+  --accent-data: #1c4d6b;
+  --accent-pos: #2c5e3f;
+  --accent-yellow: #c89a2c;
+
+  --bg-inverse: #14110d;
+  --bg-inverse2: #1f1b16;
+  --ink-on-inverse: #f6f3ec;
+  --text-on-inverse: rgba(246, 243, 236, 0.88);
+  --muted-on-inverse: rgba(246, 243, 236, 0.7);
+  --faint-on-inverse: rgba(246, 243, 236, 0.55);
+  --light-on-inverse: rgba(246, 243, 236, 0.5);
+  --rule-on-inverse: rgba(246, 243, 236, 0.18);
+  --accent-yellow-on-inverse: #d9ab3a;
+  --accent-warn-on-inverse: #e87a5f;
+
+  --serif: "Source Serif 4", "Source Serif Pro", "Charter", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+
+  --max-w: 820px;
+}
+
+[data-theme="dark"] {
+  --bg: #14110d;
+  --bg-paper: #1f1b16;
+  --bg-card: #221d17;
+  --bg-dark: #ede5d3;
+  --bg-dark2: #d8cdb6;
+
+  --ink: #f6f3ec;
+  --ink-2: #e3dac7;
+  --muted: #a39787;
+  --light: #6e6358;
+
+  --rule: #f6f3ec;
+  --rule-light: #3a3429;
+
+  --accent-warn: #e87a5f;
+  --accent-data: #6fa7c8;
+  --accent-pos: #82b596;
+  --accent-yellow: #d9ab3a;
+
+  --bg-inverse: #ede5d3;
+  --bg-inverse2: #d8cdb6;
+  --ink-on-inverse: #14110d;
+  --text-on-inverse: rgba(20, 17, 13, 0.88);
+  --muted-on-inverse: rgba(20, 17, 13, 0.7);
+  --faint-on-inverse: rgba(20, 17, 13, 0.55);
+  --light-on-inverse: rgba(20, 17, 13, 0.5);
+  --rule-on-inverse: rgba(20, 17, 13, 0.18);
+  --accent-yellow-on-inverse: #a37e1f;
+  --accent-warn-on-inverse: #a73121;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+a { color: var(--accent-data); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Top metadata bar */
+.topbar {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  padding: 8px 24px;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.topbar span { color: var(--muted-on-inverse); }
+.topbar strong { color: var(--ink-on-inverse); font-weight: 500; }
+
+/* Theme toggle */
+#theme-toggle {
+  position: fixed;
+  top: 14px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  cursor: pointer;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+#theme-toggle:hover { transform: scale(1.05); }
+#theme-toggle svg { width: 18px; height: 18px; stroke: var(--ink); fill: none; stroke-width: 2; }
+[data-theme="dark"] #theme-toggle .sun { display: block; }
+[data-theme="dark"] #theme-toggle .moon { display: none; }
+#theme-toggle .sun { display: none; }
+#theme-toggle .moon { display: block; }
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 60px;
+}
+
+main { max-width: var(--max-w); }
+
+/* Sticky TOC */
+nav.toc {
+  position: sticky;
+  top: 40px;
+  align-self: start;
+  padding-top: 80px;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 2;
+}
+nav.toc h4 {
+  font-size: 10px;
+  color: var(--light);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+nav.toc ol { list-style: none; counter-reset: toc; }
+nav.toc li { counter-increment: toc; }
+nav.toc a {
+  color: var(--muted);
+  display: block;
+  padding: 3px 0;
+  transition: color 0.15s;
+  text-decoration: none;
+}
+nav.toc a::before {
+  content: counter(toc, decimal-leading-zero) "  ";
+  color: var(--light);
+}
+nav.toc a:hover { color: var(--ink); }
+
+/* Hero */
+.hero {
+  padding: 70px 0 50px;
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 40px;
+  align-items: end;
+  border-bottom: 1px solid var(--rule-light);
+}
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-warn);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.eyebrow::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--accent-warn);
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+  color: var(--ink);
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent-warn);
+}
+.hero .subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.hero-meta {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.hero-meta dl { display: grid; grid-template-columns: 1fr; gap: 14px; }
+.hero-meta dt { color: var(--light); margin-bottom: 2px; }
+.hero-meta dd { color: var(--ink); font-weight: 500; }
+
+/* Quick Facts */
+.quickfacts-wrap {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  padding: 60px 24px;
+  margin-top: 50px;
+  transition: background-color 0.2s, color 0.2s;
+}
+.quickfacts-inner { max-width: 1200px; margin: 0 auto; }
+.quickfacts-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 12px;
+}
+.quickfacts-title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 38px;
+  color: var(--ink-on-inverse);
+  margin-bottom: 38px;
+  line-height: 1.1;
+}
+.qf-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: var(--rule-on-inverse);
+  border: 1px solid var(--rule-on-inverse);
+}
+.qf-cell {
+  background: var(--bg-inverse);
+  padding: 22px 18px;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background-color 0.2s;
+}
+.qf-cell .qf-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--faint-on-inverse);
+  margin-bottom: 14px;
+}
+.qf-cell .qf-value {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ink-on-inverse);
+}
+.qf-cell .qf-value .qf-unit {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--muted-on-inverse);
+  margin-left: 4px;
+}
+.qf-cell .qf-sub {
+  font-size: 11px;
+  color: var(--muted-on-inverse);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+.qf-cell.verdict {
+  background: var(--accent-warn);
+  color: white;
+}
+.qf-cell.verdict .qf-label { color: rgba(255,255,255,0.7); }
+.qf-cell.verdict .qf-value { color: white; font-size: 22px; line-height: 1.15; }
+.qf-cell.verdict .qf-sub { color: rgba(255,255,255,0.85); }
+
+/* Section */
+section {
+  padding: 80px 0 20px;
+  border-bottom: 1px solid var(--rule-light);
+}
+section:last-of-type { border-bottom: none; }
+.sec-number {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-warn);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sec-number::before {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: var(--accent-warn);
+}
+section h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 42px;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 30px;
+  color: var(--ink);
+}
+section h2 em { font-style: italic; color: var(--accent-warn); }
+section h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.3;
+  margin: 36px 0 14px;
+  color: var(--ink);
+}
+section h4 {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 24px 0 10px;
+  color: var(--ink-2);
+}
+section p {
+  margin-bottom: 14px;
+  color: var(--ink-2);
+  font-size: 16px;
+  line-height: 1.7;
+}
+section ul, section ol {
+  margin: 12px 0 18px 24px;
+  color: var(--ink-2);
+}
+section li { margin-bottom: 6px; line-height: 1.65; }
+
+strong { color: var(--ink); font-weight: 600; }
+em { font-style: italic; }
+
+/* TL;DR block */
+.tldr {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  padding: 50px 44px;
+  margin: 36px 0;
+  position: relative;
+  transition: background-color 0.2s, color 0.2s;
+}
+.tldr::before {
+  content: "TL;DR";
+  position: absolute;
+  top: -12px;
+  left: 32px;
+  background: var(--accent-warn);
+  color: white;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  letter-spacing: 0.12em;
+}
+.tldr h3 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--ink-on-inverse);
+  margin: 0 0 16px;
+}
+.tldr p, .tldr li { color: var(--text-on-inverse); margin-bottom: 10px; }
+.tldr ol { margin-left: 22px; }
+.tldr strong { color: var(--accent-yellow-on-inverse); }
+.tldr-sub-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-yellow-on-inverse);
+  margin: 24px 0 8px;
+}
+
+/* Stats grid */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin: 28px 0;
+}
+.stat {
+  border-top: 2px solid var(--rule);
+  padding-top: 14px;
+}
+.stat .stat-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.stat .stat-value {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ink);
+}
+.stat .stat-value.warn { color: var(--accent-warn); }
+.stat .stat-value.data { color: var(--accent-data); }
+.stat .stat-value.pos { color: var(--accent-pos); }
+.stat .stat-sub {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+/* Metric list */
+.metrics {
+  border-top: 2px solid var(--rule);
+  border-bottom: 2px solid var(--rule);
+  padding: 6px 0;
+  margin: 24px 0;
+}
+.metric-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-light);
+}
+.metric-row:last-child { border-bottom: none; }
+.metric-name {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.metric-name .metric-source {
+  font-size: 11px;
+  color: var(--light);
+  margin-left: 8px;
+}
+.metric-value {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.metric-value.warn { color: var(--accent-warn); }
+.metric-value.pos { color: var(--accent-pos); }
+
+/* Two-col cards */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin: 28px 0;
+}
+.col-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  padding: 28px 26px;
+}
+.col-card h4 {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.col-card.pos h4 { color: var(--accent-pos); }
+.col-card.warn h4 { color: var(--accent-warn); }
+.col-card.pos h4::before {
+  content: "✓";
+  display: inline-flex;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--accent-pos);
+  color: white;
+  align-items: center; justify-content: center;
+  font-size: 13px;
+}
+.col-card.warn h4::before {
+  content: "!";
+  display: inline-flex;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--accent-warn);
+  color: white;
+  align-items: center; justify-content: center;
+  font-size: 13px;
+}
+.col-card ul { margin: 0 0 0 18px; }
+.col-card li { font-size: 14px; line-height: 1.6; margin-bottom: 10px; color: var(--ink-2); }
+
+/* Quote */
+.quote {
+  border-left: 3px solid var(--accent-warn);
+  padding: 8px 0 8px 24px;
+  margin: 24px 0;
+}
+.quote p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin-bottom: 10px;
+}
+.quote .attribution {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.quote .attribution::before { content: "— "; }
+
+/* Callout */
+.callout {
+  border-left: 3px solid var(--ink);
+  background: var(--bg-paper);
+  padding: 22px 26px;
+  margin: 24px 0;
+}
+.callout.warn { border-left-color: var(--accent-warn); }
+.callout.data { border-left-color: var(--accent-data); }
+.callout.pos { border-left-color: var(--accent-pos); }
+.callout-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.callout.warn .callout-label { color: var(--accent-warn); }
+.callout.pos .callout-label { color: var(--accent-pos); }
+.callout-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* Table */
+.tbl-wrap { overflow-x: auto; margin: 24px 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+thead th {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-align: left;
+  padding: 12px 10px 12px 0;
+  border-bottom: 2px solid var(--rule);
+  font-weight: 600;
+}
+tbody td {
+  padding: 12px 10px 12px 0;
+  border-bottom: 1px solid var(--rule-light);
+  color: var(--ink-2);
+  vertical-align: top;
+}
+tbody tr:last-child td { border-bottom: 1px solid var(--rule); }
+tbody td.num { font-family: var(--mono); font-size: 13px; }
+tbody td.product-name { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: 14.5px; }
+tbody td .tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--accent-warn);
+  color: white;
+  padding: 2px 6px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+tbody td .tag.pos { background: var(--accent-pos); }
+tbody td .tag.data { background: var(--accent-data); }
+tbody tr.highlight { background: rgba(167, 49, 33, 0.04); }
+[data-theme="dark"] tbody tr.highlight { background: rgba(232, 122, 95, 0.06); }
+
+/* Timeline */
+.timeline {
+  margin: 28px 0;
+}
+.tl-row {
+  display: grid;
+  grid-template-columns: 100px 32px 1fr;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-light);
+}
+.tl-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  text-align: right;
+  padding-top: 4px;
+}
+.tl-dot {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.tl-dot::before {
+  content: "";
+  position: absolute;
+  top: 0; bottom: -100%;
+  left: 50%;
+  width: 1px;
+  background: var(--rule-light);
+  transform: translateX(-50%);
+}
+.tl-dot::after {
+  content: "";
+  position: relative;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  background: var(--bg);
+  margin-top: 4px;
+  z-index: 1;
+}
+.tl-dot.warn::after { border-color: var(--accent-warn); background: var(--accent-warn); }
+.tl-dot.data::after { border-color: var(--accent-data); }
+.tl-dot.pos::after { border-color: var(--accent-pos); background: var(--accent-pos); }
+.tl-content .tl-title {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+.tl-content .tl-desc {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* Verdict block */
+.verdict {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  padding: 50px 40px;
+  margin: 30px 0;
+  transition: background-color 0.2s, color 0.2s;
+}
+.verdict-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 14px;
+}
+.verdict h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.18;
+  color: var(--ink-on-inverse);
+  margin-bottom: 18px;
+}
+.verdict h3 em { font-style: italic; color: var(--accent-warn-on-inverse); }
+.verdict p { color: var(--text-on-inverse); margin-bottom: 14px; }
+.verdict-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 32px;
+  background: var(--rule-on-inverse);
+}
+.verdict-option {
+  background: var(--bg-inverse);
+  padding: 24px 22px;
+  transition: background-color 0.2s;
+}
+.verdict-option .opt-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint-on-inverse);
+  margin-bottom: 8px;
+}
+.verdict-option h4 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--ink-on-inverse);
+  margin-bottom: 8px;
+}
+.verdict-option p {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-on-inverse);
+  margin: 0;
+}
+
+/* Path cards */
+.path-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin: 22px 0;
+}
+.path-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  border-top: 4px solid var(--accent-pos);
+  padding: 26px 24px;
+}
+.path-card.b { border-top-color: var(--accent-yellow); }
+.path-card.c { border-top-color: var(--accent-warn); }
+.path-card .path-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.path-card h4 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.path-card p { font-size: 14px; color: var(--ink-2); margin-bottom: 12px; }
+.path-card ul { margin: 8px 0 0 20px; }
+.path-card li { font-size: 13px; line-height: 1.6; margin-bottom: 8px; color: var(--ink-2); }
+
+/* Divider quote */
+.divider-quote {
+  text-align: center;
+  padding: 50px 0;
+  margin: 30px 0;
+}
+.divider-quote::before, .divider-quote::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--rule-light);
+  margin: 0 auto 20px;
+}
+.divider-quote::after { margin: 20px auto 0; }
+.divider-quote p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.4;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Score bar */
+.scores {
+  border: 1px solid var(--rule);
+  background: var(--bg-card);
+  padding: 24px 26px;
+  margin: 24px 0;
+}
+.score-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 50px;
+  gap: 16px;
+  align-items: center;
+  padding: 8px 0;
+}
+.score-name {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+}
+.score-bar {
+  height: 8px;
+  background: var(--rule-light);
+  position: relative;
+  overflow: hidden;
+}
+.score-fill {
+  height: 100%;
+  background: var(--accent-data);
+}
+.score-fill.warn { background: var(--accent-warn); }
+.score-fill.pos { background: var(--accent-pos); }
+.score-num {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  text-align: right;
+}
+
+/* Footer */
+footer {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  padding: 60px 24px 40px;
+  margin-top: 80px;
+  transition: background-color 0.2s, color 0.2s;
+}
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+footer h4 {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 16px;
+}
+.footer-sources {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 30px;
+  font-family: var(--mono);
+  font-size: 11px;
+  margin-bottom: 36px;
+}
+.footer-sources a { color: var(--muted-on-inverse); }
+.footer-sources a:hover { color: var(--ink-on-inverse); }
+.footer-meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--faint-on-inverse);
+  line-height: 1.7;
+  border-top: 1px solid var(--rule-on-inverse);
+  padding-top: 24px;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .container { grid-template-columns: 1fr; gap: 0; }
+  nav.toc { display: none; }
+  .qf-grid { grid-template-columns: repeat(3, 1fr); }
+  .verdict-options { grid-template-columns: 1fr; }
+  .hero { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 56px; }
+}
+
+@media (max-width: 720px) {
+  .hero { padding: 40px 0 30px; }
+  .hero h1 { font-size: 40px; }
+  .qf-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats, .two-col, .path-cards { grid-template-columns: 1fr; }
+  section h2 { font-size: 30px; }
+  .tldr, .verdict { padding: 32px 24px; }
+  .quickfacts-title { font-size: 26px; }
+}
+
+@media print {
+  .topbar, #theme-toggle, nav.toc, footer { display: none; }
+  body { background: white; color: black; }
+  .tldr, .verdict, .quickfacts-wrap { background: white; color: black; border: 1px solid #000; }
+  .tldr h3, .verdict h3, .quickfacts-title, .qf-cell .qf-value { color: black; }
+  .qf-cell { background: white; border: 1px solid #ccc; }
+  section { page-break-inside: avoid; }
+  a { color: black; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="Toggle theme">
+  <svg class="moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+</button>
+
+<div class="topbar">
+  <span>Ray <strong>调研报告</strong> · 港股 IPO 深度</span>
+  <span>调研日期 <strong>2026-05-12</strong></span>
+  <span>主题 <strong>拓璞数控 07688.HK</strong></span>
+  <span>版本 <strong>v1.0</strong></span>
+</div>
+
+<div class="container">
+<nav class="toc">
+  <h4>目录</h4>
+  <ol>
+    <li><a href="#sec1">速览：发行细节</a></li>
+    <li><a href="#sec2">TL;DR 一页纸</a></li>
+    <li><a href="#sec3">公司档案</a></li>
+    <li><a href="#sec4">业务剖析</a></li>
+    <li><a href="#sec5">行业地位</a></li>
+    <li><a href="#sec6">财务深度</a></li>
+    <li><a href="#sec7">客户与关联</a></li>
+    <li><a href="#sec8">政策与产业链</a></li>
+    <li><a href="#sec9">打新热度</a></li>
+    <li><a href="#sec10">风险清单</a></li>
+    <li><a href="#sec11">决策建议</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<header class="hero">
+  <div>
+    <div class="eyebrow">07688.HK · 港股商业航天第一股 · 5/20 挂牌</div>
+    <h1>技术是<em>真的</em>，估值是<em>高烧</em>，客户是<em>央企</em>。</h1>
+    <p class="subtitle">拓璞数控冲刺七年终于过关，「打新就是赌十几家顶配基石的脸面」——这份调研把它的真实成色拆给你看。</p>
+  </div>
+  <div class="hero-meta">
+    <dl>
+      <dt>调研对象</dt><dd>上海拓璞数控科技</dd>
+      <dt>调研深度</dt><dd>5 个并行子调研员</dd>
+      <dt>覆盖来源</dt><dd>港交所招股书 · 雪球 · 老虎社区 · 工信部 · 灼识咨询 · 同行年报</dd>
+      <dt>字数</dt><dd>约 19,000 字</dd>
+      <dt>读者</dt><dd>港股打新党 / 非职业投资人</dd>
+    </dl>
+  </div>
+</header>
+
+<div class="quickfacts-wrap">
+  <div class="quickfacts-inner">
+    <div class="quickfacts-eyebrow">Tuopu Numerical Control · at a Glance</div>
+    <h2 class="quickfacts-title">10 秒看完拓璞</h2>
+    <div class="qf-grid">
+      <div class="qf-cell">
+        <div class="qf-label">股票代码</div>
+        <div><div class="qf-value">07688<span class="qf-unit">.HK</span></div>
+        <div class="qf-sub">联交所主板 · 5/20 挂牌</div></div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">发行价</div>
+        <div><div class="qf-value">26.39<span class="qf-unit">HK$</span></div>
+        <div class="qf-sub">一手 100 股 = HK$2,665.61（约 $342）</div></div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">发行后市值</div>
+        <div><div class="qf-value">108<span class="qf-unit">亿 HK$</span></div>
+        <div class="qf-sub">≈ ¥95 亿 ≈ $14 亿</div></div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">2025 营收</div>
+        <div><div class="qf-value">5.78<span class="qf-unit">亿 ¥</span></div>
+        <div class="qf-sub">≈ $80M / 3 年 CAGR 31%</div></div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">2025 GAAP 净利</div>
+        <div><div class="qf-value">162<span class="qf-unit">万 ¥</span></div>
+        <div class="qf-sub">≈ $22.5 万 / 净利率 0.3%</div></div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">静态市盈率</div>
+        <div><div class="qf-value">1,370<span class="qf-unit">倍</span></div>
+        <div class="qf-sub">经调整后 386 倍 · 科德 95 倍</div></div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">基石锁定</div>
+        <div><div class="qf-value">50<span class="qf-unit">%</span></div>
+        <div class="qf-sub">$110M · 13 家（高盛/UBS/博裕/高瓴/鼎晖）</div></div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">最大客户占营收</div>
+        <div><div class="qf-value">48<span class="qf-unit">%</span></div>
+        <div class="qf-sub">2025 客户 G 一家 · 前五合计 80%</div></div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">航空航天五轴市占</div>
+        <div><div class="qf-value">10<span class="qf-unit">%</span></div>
+        <div class="qf-sub">中国细分第一 · 灼识咨询口径</div></div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">杠杆比率</div>
+        <div><div class="qf-value">193<span class="qf-unit">%</span></div>
+        <div class="qf-sub">总债务 / 权益 · 3 年从 98% 飙升</div></div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">公开部分超购</div>
+        <div><div class="qf-value">22<span class="qf-unit">倍</span></div>
+        <div class="qf-sub">5/12 首日 · 同期翼菲 6,925 倍</div></div>
+      </div>
+      <div class="qf-cell verdict">
+        <div class="qf-label">综合判断</div>
+        <div><div class="qf-value">机构主导<br>·谨慎打满·</div>
+        <div class="qf-sub">基石撑得起首日，长持需要看 3 年兑现</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="sec1">
+  <div class="sec-number">01 — 速览：发行细节</div>
+  <h2>这是一笔「<em>机构组的局</em>」</h2>
+  <p>拓璞数控 2026 年 5 月 12-15 日招股，5 月 20 日挂牌，发行价 <strong>HK$26.39</strong>（固定价、不是区间），全球发售 6,533 万 H 股，集资净额约 <strong>HK$16.06 亿（约 $2.06 亿）</strong>。13 家基石（cornerstone investors，<em>IPO 前承诺认购、6 个月禁售期的大投资方，相当于"提前背书"</em>）合计认购 <strong>$110M（约 HK$8.62 亿）</strong>，占发售盘整整 50%——这个比例显著高于港股一般 IPO 的 30-40%，意味着市场可流通的真实盘子只剩约 HK$8 亿。换句话说：开盘日散户能买到的票本来就不多。</p>
+
+  <div class="callout">
+    <div class="callout-label">基石阵容（共 13 家 · 6 个月禁售期）</div>
+    <p class="callout-quote">RBC 加拿大皇家银行 $22M（最大）/ 3W Fund $20M / 博裕资本 $15M / 高瓴 HHLR $10M / 瑞银资管 $10M / 鼎晖 $10M / 信庭 Cithara $5M / 富国基金 $3M / 华夏基金 $3M / 上海闵行国资 $3M / TT International $3M / 韩国未来资产 $3M / 高盛资管 $3M</p>
+  </div>
+
+  <p>这个组合在 2026 年港股 IPO 里属于<strong>"一年一两单"的级别</strong>——高盛 + 博裕 + UBS 同框出现，传递的信号是<strong>"机构圈把这单当成系统性配置"</strong>。但雪球老牌打新党金融民科直接给出了更冷静的定性：</p>
+
+  <div class="quote">
+    <p>"基石占比 50% 打满了，外资不少，漂亮；当然，没主权基金，不能算一流，<strong>属于 1.5 流</strong>。"</p>
+    <div class="attribution">雪球用户「金融民科」/ 2026-05-12</div>
+  </div>
+
+  <h3>关键时间表</h3>
+  <div class="metrics">
+    <div class="metric-row"><div class="metric-name">招股期</div><div class="metric-value">5/12 - 5/15</div></div>
+    <div class="metric-row"><div class="metric-name">配发结果</div><div class="metric-value">5/19</div></div>
+    <div class="metric-row"><div class="metric-name">暗盘交易<span class="metric-source">非正式盘，正式上市前一天</span></div><div class="metric-value">5/19 16:15-18:30</div></div>
+    <div class="metric-row"><div class="metric-name">挂牌上市</div><div class="metric-value">5/20 (周三)</div></div>
+    <div class="metric-row"><div class="metric-name">联席保荐</div><div class="metric-value">国泰君安国际 · 建银国际</div></div>
+    <div class="metric-row"><div class="metric-name">总股本（上市后）</div><div class="metric-value">4.09 亿股</div></div>
+    <div class="metric-row"><div class="metric-name">公开发售占比</div><div class="metric-value">10% · 国际配售 90%</div></div>
+    <div class="metric-row"><div class="metric-name">绿鞋（超额配股权，稳价用）</div><div class="metric-value">最多 +15%</div></div>
+  </div>
+</section>
+
+<section id="sec2">
+  <div class="sec-number">02 — TL;DR 一页纸</div>
+  <h2>如果你只读一段，读这段</h2>
+
+  <p>拓璞数控是中国唯一一家批量交付<strong>航空航天大型构件五轴联动机床</strong>（"五轴联动"= 机床能同时 5 个方向移动加工，做飞机机翼/火箭壳体这种超大复杂曲面）的厂商。它的招牌是 <strong>双五轴镜像铣</strong>——全球只有它和法国 Dufieux 两个团队掌握，中国唯一。下游客户清一色央企：中国商飞 C919 蒙皮加工线、长征火箭贮箱、中航工业成飞/沈飞/西飞/上飞、中国航天科技集团。它确实站在中国"工业母机国产替代 + 商业航天"这条最热的政策坡道上——"十五五"规划（2026-2030）首次把工业母机和芯片放到同一级别的"决战卡脖子领域"。</p>
+
+  <p>但同时，它也是一家<strong>毛利率 35%、净利率 0.3%、杠杆率 193%、客户集中 80%、5 次冲 IPO 才过会（科创板 2 次撤回 + 2 次辅导放弃）的"硬科技困难户"</strong>。2025 年 GAAP 净利润仅 ¥162 万（约 $22.5 万），按发行价市盈率 1,370 倍——这个估值不是用利润倍数算的，是<strong>用"中国五轴市场 2030 年到 ¥319 亿（CAGR 19.8%）"这个故事买的</strong>。</p>
+
+  <div class="tldr">
+    <h3>三件事，记不住别的都行</h3>
+    <ol>
+      <li><strong>技术是真的，护城河来自客户绑定不来自纯技术领先。</strong> 镜像铣 / 12 米卧式双五轴 / 全球首家全运动部件用碳纤维 — 这些都是真东西。但 2025 年陕西（西飞牵头）已经自研出 12 米双五轴镜像铣，科德数控也和沈飞共建大飞机结构件中试基地——竞争对手正在追赶大件领域。</li>
+      <li><strong>"中国第一"分两个口径，差很多。</strong> 「中国航空航天五轴细分市占 10-11.6% 第一」是它的招股书叙事；放进「全部中国五轴市场」是 3.9% / 第五。前者是 PR 口径，后者才是真位置。和真正的国产替代标杆<strong>科德数控（数控系统自研 85%）</strong>比，拓璞核心数控系统仍大量用海德汉/西门子。</li>
+      <li><strong>估值已被打满。</strong> A 股可比公司科德数控 PE 95 倍，拓璞按发行价经调整 PE 386 倍——溢价已经把"未来 3 年净利润跑到 1-3 亿"的预期 priced-in。最后一轮（2023-12）投后估值 ¥59 亿，本次 IPO ¥95 亿，老股东账面浮盈 61%——他们 6 个月禁售期一过，是首批可能减持的。</li>
+    </ol>
+    <div class="tldr-sub-title">如果你打新，三种结局</div>
+    <p>① 中签拿一手，暗盘 +50% 到 +120%（基石锁 50% + 公开盘窄，技术上容易拉升）；② 中签拿一手，开盘冲高回落，首日小幅获利 / 持平；③ 中签后 6 个月解禁期被基石抛压打折——这是<strong>最大的中期不确定性</strong>。</p>
+  </div>
+</section>
+
+<section id="sec3">
+  <div class="sec-number">03 — 公司档案</div>
+  <h2>一个交大教授 + 18 年 + 5 次 IPO</h2>
+
+  <h3>创始人 · 团队</h3>
+  <p><strong>王宇晗，60 岁</strong>，南京航空学院机械制造硕士 + 上海交大机械与电子工程博士，1998-2008 任上海交大机械工程学院副教授——典型的"半边教授半边创业"路径。2007 年带着 5 位上海交大机械/管理博士共同创立公司，2008 年他从交大正式离职专注公司。<strong>实控人持股 32.6%（直接 30.9% + 员工持股平台 1.6%）</strong>。</p>
+
+  <p>团队没有国资战略股东（不像同行有商飞产投/航发系投资），但有<strong>地方国资上海闵行作为基石</strong>（认购 $3M）——属于地方政府站台，不是战略协同。</p>
+
+  <div class="callout warn">
+    <div class="callout-label">治理瑕疵</div>
+    <p class="callout-quote">联席公司秘书<strong>王劲森，35 岁</strong>，是董事长王宇晗的<strong>侄子</strong>，2015 年获音乐表演硕士学位，2025 年 4 月升任公司秘书——被《每日经济新闻》专门点名报道。这种安排在港股 IPO 前的最后一个治理调整动作里，会被基金经理打折扣。</p>
+  </div>
+
+  <h3>历轮融资 · D 轮估值 ¥59 亿 vs IPO ¥95 亿</h3>
+  <p>从 2011 年第一轮投后 <strong>¥1 亿</strong>，到 2023 年 12 月最后一轮（中邮人寿保险 + 北京远京 + 北京京国创参投）投后 <strong>¥59 亿（约 $8.2 亿）</strong>。本次港股 IPO 估值 <strong>¥95 亿</strong>，<strong>较 D 轮 1 年 5 个月浮盈 61%</strong>——但这是<strong>港股发行估值</strong>，要扣港股流动性折价。已有股东包括：嘉兴鼎晖 4.7%、上海谊鼎 6.7%、深圳和辉 2.8%、中邮人寿等。</p>
+
+  <h3>IPO 长征 · 五次冲资本市场</h3>
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-date">2007.05</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-title">公司成立</div>
+        <div class="tl-desc">王宇晗博士 + 5 位上海交大博士共同创立 · 注册地上海闵行</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2008</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title">第一笔 1,500 万融资三个月烧光，差点倒闭</div>
+        <div class="tl-desc">硬科技公司的"死亡谷"时刻</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2016</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-title">ARJ21 飞机国产化装配生产线（中国商飞配套首单）</div>
+        <div class="tl-desc">商飞绑定起点</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2018</div>
+      <div class="tl-dot pos"></div>
+      <div class="tl-content">
+        <div class="tl-title">大型双五轴镜像铣削生产单元 + 国家科技进步奖二等奖</div>
+        <div class="tl-desc">"筒形薄壁工件多头镜像铣削装置" · 首次国家级背书</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2019.06</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title">科创板首次申报 → 12 月撤回</div>
+        <div class="tl-desc">招商证券保荐 · 仅过 1 轮问询就撤</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2020.06</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title">科创板二次申报 → 2021.01 撤回</div>
+        <div class="tl-desc">中金接手 · 回复完 2 轮问询后撤回</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2022</div>
+      <div class="tl-dot pos"></div>
+      <div class="tl-content">
+        <div class="tl-title">上海市技术发明奖特等奖（双五轴镜像铣）</div>
+        <div class="tl-desc">上海地方政府最高级别认证 · 特等奖每年最多 2 项</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2023.12</div>
+      <div class="tl-dot data"></div>
+      <div class="tl-content">
+        <div class="tl-title">D 轮融资 · 投后估值 ¥59 亿（约 $8.2 亿）</div>
+        <div class="tl-desc">中邮人寿、北京远京、北京京国创领投</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2025.05</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-title">首次递表港交所</div>
+        <div class="tl-desc">国泰君安国际 + 建银国际 联席保荐</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.05</div>
+      <div class="tl-dot pos"></div>
+      <div class="tl-content">
+        <div class="tl-title">通过聆讯 · 招股 5/12-15 · 挂牌 5/20</div>
+        <div class="tl-desc">发行价 HK$26.39 · 市值 HK$108 亿</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout data">
+    <div class="callout-label">为什么 A 股 4 次都不收，港股第 5 次收</div>
+    <p class="callout-quote">A 股科创板看"持续盈利 + 财务可比性"——拓璞 2016-2023 持续亏损 + 关联交易 + 政府补贴依赖；港股主板更看市场地位 / 行业故事——只要"扭亏为盈"就够。<strong>2024 年 GAAP 扭亏（¥688 万），刚好够港交所主板门槛</strong>。换句话说，不是公司变好了，是市场变低了。</p>
+  </div>
+</section>
+
+<section id="sec4">
+  <div class="sec-number">04 — 业务剖析</div>
+  <h2>三条业务线，<em>一条腿走路</em></h2>
+
+  <p>招股书披露的三大业务线，<strong>2025 年航空航天装备一条线占营收 88.7%</strong>。这就是它最大的特征：超级专精，也是超级脆弱。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>业务线</th><th>2023 占比</th><th>2024 占比</th><th>2025 占比</th><th>2025 毛利率</th></tr>
+      </thead>
+      <tbody>
+        <tr class="highlight"><td class="product-name">航空航天装备<span class="tag">招牌</span></td><td class="num">97.2%</td><td class="num">94.7%</td><td class="num">88.7%</td><td class="num">41.9%</td></tr>
+        <tr><td class="product-name">紧凑型通用五轴（鲲鹏家族）</td><td class="num">1.0%</td><td class="num">4.5%</td><td class="num">6.8%</td><td class="num">21.5%</td></tr>
+        <tr><td class="product-name">大尺寸碳纤维五轴（幻影家族）<span class="tag pos">首创</span></td><td class="num">—</td><td class="num">—</td><td class="num">4.2%</td><td class="num">-6.3%</td></tr>
+        <tr><td class="product-name">维修服务</td><td class="num">1.8%</td><td class="num">0.8%</td><td class="num">0.3%</td><td class="num">52.2%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>1 · 航空航天智能制造装备（招牌业务）</h3>
+  <ul>
+    <li><strong>双五轴镜像铣</strong>（mirror milling）—— 飞机蒙皮像超大薯片，传统铣容易抖；这套设备一面切削，另一面用顶针对撑，使柔性薄壁件不变形。<strong>全球唯三、中国唯一</strong>。代表产品：全球首台 5 米立式双五轴镜像铣 + 全球最大 12 米卧式双五轴镜像铣（已用于 C919 机身和长征火箭贮箱）</li>
+    <li><strong>卧式翻板铣五轴机床</strong> —— 大型飞机长桁、整体壁板</li>
+    <li><strong>搅拌摩擦焊（FSW）五轴机床</strong> —— 火箭贮箱筒段焊接</li>
+    <li><strong>自动钻铆对接装备 RDS210/300/500</strong> —— 飞机机身、火箭筒身自动钻孔与铆接</li>
+    <li><strong>航空航天五轴加工中心 + 高精度五轴龙门</strong> —— 大型壁板、桁条</li>
+  </ul>
+  <p>截至 2023 年，<strong>累计销售镜像铣约 25 台，累计销售额 ¥7.7 亿（约 $107M）</strong>。</p>
+
+  <h3>2 · 紧凑型通用五轴机床（"鲲鹏"，9 个机型）</h3>
+  <p>定位中小型零件加工（汽车模具、3C、医疗器械、能源）。关键打法：<strong>自研数控系统 + 自研电主轴 + 自研旋转轴</strong>，BOM 成本从 50% 降至 30%（招股书原话）。<strong>这是公司未来摆脱"军品单腿走"的关键押注</strong>。2024 年首次卖到比亚迪、特斯拉上海工厂、中国海油、联影医疗。</p>
+
+  <h3>3 · 大尺寸碳纤维复合材料五轴机床（"幻影"，全球独有）</h3>
+  <p>跨距 3-15 米。卖点：<strong>全球首家且唯一在所有运动部件上全面应用碳纤维复合材料结构的机床制造商</strong>。意义：传统铸铁机床主轴梁很重，热变形大、加速度低；碳纤维件轻 + 刚性高，能做更快更准。2025 首销 6 台，营收 ¥2,440 万（约 $339 万），但<strong>毛利率 -6.3%（首批亏本卖做客户）</strong>。瞄准客户：新能源汽车一体压铸模具、复合材料壁板加工、风电叶片模具。</p>
+
+  <h3>技术壁垒的"真"与"假"</h3>
+  <div class="two-col">
+    <div class="col-card pos">
+      <h4>是真的</h4>
+      <ul>
+        <li>双五轴镜像铣全球只有它和法国 Dufieux 两家做出来</li>
+        <li>大型碳纤维龙门机床全球独门</li>
+        <li>专利 80+ 已注册 + 40 待审批</li>
+        <li>04 专项 9 项 + 智能制造 3 项 + 国家科技进步奖二等奖 + 上海技术发明奖特等奖（国内仅几家）</li>
+        <li>航空航天客户验证周期 3-5 年，新进入者门槛极高</li>
+      </ul>
+    </div>
+    <div class="col-card warn">
+      <h4>没那么不可替代</h4>
+      <ul>
+        <li>核心数控系统仍大量用海德汉/西门子（与科德数控 85% 自研对比明显）</li>
+        <li>原材料占成本 87.4%（2024 年旧版招股书数据），意味关键件大量外购</li>
+        <li>募资 12.1%（约 ¥1.7 亿）拟收购伺服驱动 + 直驱扭矩电机厂商——等于自己承认核心件不在手上</li>
+        <li>2025 年陕西（西飞牵头）已自研出 12 米双五轴镜像铣</li>
+        <li>科德数控与沈飞共建"大飞机结构件工艺验证中试基地"——正在切入大件领域</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>研发投入趋势（值得警惕）</h3>
+  <div class="stats">
+    <div class="stat"><div class="stat-label">研发投入 2023</div><div class="stat-value">8,990<span style="font-size:18px;color:var(--muted)">万 ¥</span></div><div class="stat-sub">≈ $12.5M · 占营收 26.9%</div></div>
+    <div class="stat"><div class="stat-label">研发投入 2024</div><div class="stat-value">8,590<span style="font-size:18px;color:var(--muted)">万 ¥</span></div><div class="stat-sub">≈ $11.9M · 占营收 16.2%</div></div>
+    <div class="stat"><div class="stat-label">研发投入 2025</div><div class="stat-value warn">10,680<span style="font-size:18px;color:var(--muted)">万 ¥</span></div><div class="stat-sub">≈ $14.8M · 占营收 18.5%</div></div>
+  </div>
+  <p>3 年累计 ¥2.83 亿（约 $39M），占同期总营收 19.7%——硬科技公司标准画像。但 2024 年研发<strong>绝对值同比下降</strong>，与"技术驱动"定位略有矛盾；2025 年重新上升是好信号。</p>
+</section>
+
+<section id="sec5">
+  <div class="sec-number">05 — 行业地位</div>
+  <h2>"<em>中国第一</em>"有两个口径</h2>
+
+  <p>媒体反复引用的"中国五轴第一"是个<strong>需要拆解的口径</strong>。拓璞自己的招股书引用<strong>灼识咨询（CIC）</strong>的数据：</p>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-label">中国航空航天五轴细分市场</div><div class="stat-value pos">10-11.6<span style="font-size:18px;color:var(--muted)">%</span></div><div class="stat-sub">第一名 · 招股书叙事口径</div></div>
+    <div class="stat"><div class="stat-label">中国全部五轴市场</div><div class="stat-value">3.9-4.3<span style="font-size:18px;color:var(--muted)">%</span></div><div class="stat-sub">国内厂商第二 / 全市场第五</div></div>
+    <div class="stat"><div class="stat-label">2024 国产五轴销量 TOP10</div><div class="stat-value warn">第 2<span style="font-size:18px;color:var(--muted)">位</span></div><div class="stat-sub">第一是北京精雕（3C/模具）</div></div>
+  </div>
+
+  <h3>同行业上市公司横向对比</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>公司</th><th>2024 营收</th><th>2024 净利</th><th>净利率</th><th>主营</th><th>数控系统</th></tr>
+      </thead>
+      <tbody>
+        <tr class="highlight"><td class="product-name">拓璞数控 07688.HK<span class="tag">本调研对象</span></td><td class="num">¥5.32 亿<br>$74M</td><td class="num">¥688 万</td><td class="num">1.3%</td><td>航空航天大构件专精</td><td>大量外购</td></tr>
+        <tr><td class="product-name">科德数控 688305<span class="tag pos">国产标杆</span></td><td class="num">¥6.05 亿<br>$84M</td><td class="num">¥1.30 亿</td><td class="num">21.5%</td><td>通用 + 航空航天小件</td><td>自研 85%</td></tr>
+        <tr><td class="product-name">国盛智科 688558</td><td class="num">¥10.37 亿<br>$144M</td><td class="num">¥1.28 亿</td><td class="num">12.3%</td><td>五轴龙门 + 半导体</td><td>多用外资</td></tr>
+        <tr><td class="product-name">海天精工 601882</td><td class="num">¥33.52 亿<br>$466M</td><td class="num">¥5.23 亿</td><td class="num">15.6%</td><td>通用龙门、卧加、立加</td><td>多用外资</td></tr>
+        <tr><td class="product-name">北京精雕（未上市）</td><td class="num">¥22 亿+（2023）<br>$305M</td><td>—</td><td>—</td><td>3C/模具五轴</td><td>自研+外购</td></tr>
+        <tr><td class="product-name">创世纪 300083</td><td class="num">¥46.05 亿<br>$640M</td><td class="num">¥2.37 亿</td><td class="num">5.1%</td><td>3C 钻攻 → 五轴</td><td>外购</td></tr>
+        <tr><td class="product-name">华中数控 300161</td><td class="num">¥17.82 亿<br>$248M</td><td class="num">亏损</td><td class="num">负</td><td>数控系统国产龙头</td><td>自研（被 OFAC 制裁）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>真实差异：拓璞 vs 科德数控</h3>
+  <p>两家最常被拿来比较，但<strong>本质上不是直接竞争</strong>：</p>
+  <ul>
+    <li><strong>拓璞</strong>给"航空航天 OEM 本厂"（成飞、沈飞、西飞、上飞、商飞）<strong>加工大飞机 / 火箭本体大构件</strong>；机型 12-15 米跨距大型专机为主；数控系统大量用海德汉/西门子；净利率 1.3%；做的是<strong>"工艺装备集成商"</strong></li>
+    <li><strong>科德数控</strong>给"航空航天/军工的零部件加工厂"（航天科技、航发、三角防务）<strong>加工叶盘、机匣、发动机部件</strong>；通用型/中型五轴为主，单台均价 ¥242 万；85% 自研含数控系统；净利率 21.5%；做的是<strong>"数控母机厂"</strong></li>
+  </ul>
+
+  <div class="callout warn">
+    <div class="callout-label">护城河的真实来源</div>
+    <p class="callout-quote">"拓璞的不可替代性主要来自<strong>客户绑定 + 工艺 know-how</strong>，而非纯粹技术领先。它存在的根本逻辑是<strong>瓦森纳协议</strong>——DMG MORI / Mazak / Makino 高端五轴卖不进中国军工航天，所以国产专机必须存在。一旦出口管制松动（短期看不会），赛道格局会重塑。"</p>
+  </div>
+
+  <h3>全球玩家与对华出口限制</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>海外厂商</th><th>总部</th><th>2024 营收</th><th>对华态度</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="product-name">DMG MORI</td><td>德日合资</td><td class="num">€22.3 亿<br>≈ ¥173 亿</td><td>2023 年中国订单从 Q1 ¥197 亿日元跌至 Q4 ¥30 亿日元；五轴占其组合 42%</td></tr>
+        <tr><td class="product-name">Mazak（山崎马扎克）</td><td>日本</td><td class="num">未上市</td><td>1998 进中国，宁夏 + 辽宁建厂；高端机受瓦森纳管制</td></tr>
+        <tr><td class="product-name">FANUC（发那科）</td><td>日本</td><td class="num">控制系统</td><td>中国市占 37%（最大数控系统供应商）</td></tr>
+        <tr><td class="product-name">西门子 Sinumerik</td><td>德国</td><td class="num">控制系统</td><td>2022 年中国市占第三 · 高精度受瓦森纳</td></tr>
+        <tr><td class="product-name">海德汉（Heidenhain）</td><td>德国</td><td class="num">控制系统</td><td>几乎所有国产高端五轴都用它的控制器</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>核心红线（瓦森纳协议 2024 版）：<strong>行程 ≤4m 时直线轴重复定位精度 ≤1.4 微米 + 旋转轴 ≤0.003°</strong>——超过这条线即对中国军工航天**事实上禁运**。这就是拓璞和科德两家在中国军工航天市场的护城河。</p>
+</section>
+
+<section id="sec6">
+  <div class="sec-number">06 — 财务深度</div>
+  <h2>毛利<em>稳定</em>，净利<em>稀薄</em>，债务<em>偏紧</em></h2>
+
+  <h3>三年趋势（招股书 P.5-19 + 安永审计）</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>指标</th><th>2023</th><th>2024</th><th>2025</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="product-name">营业收入</td><td class="num">¥3.35 亿<br>$47M</td><td class="num">¥5.32 亿<br>$74M</td><td class="num">¥5.78 亿<br>$80M</td></tr>
+        <tr><td class="product-name">毛利率</td><td class="num">34.6%</td><td class="num">37.6%</td><td class="num">35.4%</td></tr>
+        <tr><td class="product-name">研发投入</td><td class="num">¥8,990 万<br>$12.5M（26.9%）</td><td class="num">¥8,590 万<br>$11.9M（16.2%）</td><td class="num">¥10,680 万<br>$14.8M（18.5%）</td></tr>
+        <tr class="highlight"><td class="product-name">GAAP 净利润</td><td class="num">-¥6,234 万</td><td class="num">+¥688 万</td><td class="num">+¥162 万</td></tr>
+        <tr><td class="product-name">经调整净利润<br><span style="font-size:11px;color:var(--muted)">(剔除股权激励+上市开支)</span></td><td class="num">-¥6,100 万</td><td class="num">+¥1,338 万</td><td class="num">+¥2,461 万</td></tr>
+        <tr><td class="product-name">经营现金流</td><td class="num warn">-¥2.58 亿</td><td class="num warn">-¥5,400 万</td><td class="num pos">+¥2,540 万</td></tr>
+        <tr><td class="product-name">应收账款</td><td class="num">¥9,780 万</td><td class="num">¥6,000 万</td><td class="num warn">¥2.06 亿</td></tr>
+        <tr class="highlight"><td class="product-name">杠杆比率（总债务/权益）</td><td class="num">98.1%</td><td class="num">148.9%</td><td class="num warn">192.7%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>三个最值得警惕的"红灯"</h3>
+  <ul>
+    <li><strong>杠杆率从 98% 飙到 193%</strong>——3 年来银行借款增加约 ¥2.4 亿，主要为嘉兴产线建设 + 补充流动资金。<strong>总债务接近权益的 2 倍</strong>，利息保障倍数 1.2 倍（EBIT 仅能覆盖利息 1.2 次）——利率上行有压力。</li>
+    <li><strong>应收账款 2025 暴增到 ¥2.06 亿（同比 +243%）</strong>——主要来自客户 E（成都辰飞）大额验收。<strong>对国企客户回款 127 天</strong>，行业通病但不能忽视。</li>
+    <li><strong>2023 年因延期向客户 E 赔 ¥810 万</strong>（接近 2024 全年净利润）——这是个有先例的"硬伤"。</li>
+  </ul>
+
+  <h3>1 个意外的"绿灯"</h3>
+  <div class="callout pos">
+    <div class="callout-label">2025 经营现金流首次转正</div>
+    <p class="callout-quote">2025 经营现金流 +¥2,540 万（约 $353 万），<strong>是公司 2022 年以来第一次为正</strong>。原因是客户 G 的大合同在 2025 年 1 月最终验收回款。这是个改善信号——但需要看 2026 年能否持续。</p>
+  </div>
+
+  <h3>估值横向对比（最关键的一张表）</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>公司</th><th>市值</th><th>PE TTM</th><th>P/S 市销率</th></tr>
+      </thead>
+      <tbody>
+        <tr class="highlight"><td class="product-name">拓璞数控（按发行价）<span class="tag">本调研对象</span></td><td class="num">HK$108 亿<br>≈ ¥95 亿</td><td class="num warn">1,370 倍（GAAP）<br>386 倍（经调整）</td><td class="num">16.4 倍</td></tr>
+        <tr><td class="product-name">科德数控 688305<br><span style="font-size:11px;color:var(--muted)">最直接可比</span></td><td class="num">¥86.0 亿</td><td class="num">95.5 倍</td><td class="num">14.2 倍</td></tr>
+        <tr><td class="product-name">国盛智科 688558</td><td class="num">¥54.0 亿</td><td class="num">33.0 倍</td><td class="num">5.2 倍</td></tr>
+        <tr><td class="product-name">海天精工 601882</td><td class="num">¥120.5 亿</td><td class="num">27.3 倍</td><td class="num">3.6 倍</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">估值结论</div>
+    <p class="callout-quote">拓璞按发行价的 PE 已经把"未来 3 年净利润跑到 1-3 亿"的预期全部 priced-in。<strong>科德数控的 PE 95 倍已经是同赛道高估值的参照系</strong>，拓璞还要在 386 倍上面——意味着<strong>买的不是当前利润，是 2028 年的预期利润</strong>。如果未来 3 年净利能跑到 5,000 万-1 亿，回看 PE 还能压到 100-200 倍——但这需要不出意外。</p>
+  </div>
+</section>
+
+<section id="sec7">
+  <div class="sec-number">07 — 客户与关联</div>
+  <h2>「<em>把命押在一个客户身上</em>」</h2>
+
+  <p>这是拓璞最大的结构性风险。前五大客户占比 2023 年 92.7% / 2024 年 79.5% / 2025 年 80.1%——<strong>"集中度高"在硬科技 IPO 里不算稀奇，但拓璞的特点是"集中而且变得快"</strong>——单一最大客户 2023 是客户 A（58.4%），2024 是客户 E（24.4%），2025 又变成客户 G（48.1%）。结构反复换头。</p>
+
+  <h3>客户身份（媒体已对上号）</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>招股书代号</th><th>实际身份</th><th>关键年份占比</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="product-name">客户 A</td><td>中国航天科技集团（推测，注册资本 ¥200 亿央企）</td><td class="num">2023 占 58.4% · 2025 占 10.4%</td></tr>
+        <tr><td class="product-name">客户 B</td><td>中国商飞 / 中国航空工业集团（注册资本 ¥640 亿央企）</td><td class="num">2023 占 16.3% · 2024 占 12.9%</td></tr>
+        <tr class="highlight"><td class="product-name">客户 E / F<span class="tag">关联</span></td><td><strong>成都辰飞 + 母公司</strong>（公司持股 14.48% 联营公司，上层股东含成都新都区国资委）</td><td class="num">2024 占 24.4% · 2025 占 15.0%</td></tr>
+        <tr><td class="product-name">客户 G</td><td>未明确身份（推测为三角防务/钛合金锻造系）</td><td class="num">2025 占 48.1%（爆发性增长）</td></tr>
+        <tr><td class="product-name">客户 H</td><td>三角防务（深交所 300775.SZ，钛合金锻造，间接服务 J-20 等军机）</td><td class="num">2024 占 8.4%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">关联交易的争议焦点</div>
+    <p class="callout-quote">客户 E（成都辰飞）是拓璞<strong>持股 14.48% 的联营公司</strong>。2024 年作为最大客户贡献 ¥1.29 亿（占营收 24.4%），2025 年仍贡献 ¥8,680 万。<strong>等于"自己卖给自己控股 14.48% 的子公司"</strong>。<br><br>《新浪财经》2025 年 12 月专门写过这事——上层股东成都香城建投（新都区国资）持成都辰飞 55.56%，所以这笔交易本质是"地方国资 + 拓璞共同投资的项目向拓璞采购设备"。招股书有专门解释董事会避嫌投票机制，但港交所或基金经理在估值时仍会折扣。</p>
+  </div>
+
+  <h3>老虎社区量化派 KOL 的犀利点评</h3>
+  <div class="quote">
+    <p>"五大客户贡献了收入的 80%。最大那个客户，一家就占了 48%。<strong>这不是集中度偏高，这叫'把命押在一个客户身上'</strong>。2025 年这个客户给了 2.78 亿，要是哪年他们预算砍一刀，或者验收拖一拖，财报立马变脸。"</p>
+    <div class="attribution">老虎社区 KOL「慌得一比的金融算命师」/ 2026-05-12</div>
+  </div>
+
+  <h3>另一个"红旗"：法国 Dufieux 专利诉讼</h3>
+  <p>法国 Dufieux 工业（全球另一家镜像铣团队）起诉拓璞侵犯 ZL200480038387.4 号专利，<strong>索赔 ¥2,656 万（约 $369 万）</strong>。公司认为侵权概率小，并已申请专利无效。<strong>败诉极端情景下需停产核心产品镜像铣</strong>——这是真正的"黑天鹅"，但概率不高。</p>
+</section>
+
+<section id="sec8">
+  <div class="sec-number">08 — 政策与产业链</div>
+  <h2>站在<em>最热的政策坡道</em>上</h2>
+
+  <p>拓璞之所以能在 2025 年扭亏 + 2026 年上市，离不开背后一条"国家级长钱 + 十五五战略 + 出口管制三重叠加"的政策坡道。这条线从 2009 年一路延续到 2026 年——<strong>没有断过，只在加速</strong>。</p>
+
+  <h3>关键政策时间线</h3>
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-date">2009.02</div>
+      <div class="tl-dot data"></div>
+      <div class="tl-content">
+        <div class="tl-title">工信部启动 04 专项（国家科技重大专项第 04 号）</div>
+        <div class="tl-desc">2009-2016 累计中央财政投入 ¥91.14 亿（约 $12.7 亿），立项 562 个课题——拓璞从中拿到 9 项</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2020.10</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-title">04 专项延续至 2030 年</div>
+        <div class="tl-desc">国家级"长钱"持续输入</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2024.09</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title">瓦森纳 2024 修订清单生效</div>
+        <div class="tl-desc">五轴 ≤4m 精度需 ≤1.4 微米才可对华出口——事实禁运 · 给国产腾出市场</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2025.11</div>
+      <div class="tl-dot pos"></div>
+      <div class="tl-content">
+        <div class="tl-title">"工业母机"首次写入十五五规划建议</div>
+        <div class="tl-desc">从"重要装备"升级到"国家战略卡脖子领域"</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.03</div>
+      <div class="tl-dot pos"></div>
+      <div class="tl-content">
+        <div class="tl-title">十五五规划纲要正式发布</div>
+        <div class="tl-desc">集成电路 / 工业母机 / 高端仪器 / 基础软件 / 先进材料 / 生物制造——6 个"决战决胜"卡脖子领域</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.05</div>
+      <div class="tl-dot pos"></div>
+      <div class="tl-content">
+        <div class="tl-title">拓璞通过聆讯 · 5/20 挂牌</div>
+        <div class="tl-desc">"十五五"东风落地的第一只港股</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>国产替代的真实进度（不要被口号忽悠）</h3>
+  <div class="metrics">
+    <div class="metric-row"><div class="metric-name">低端数控机床国产化率<span class="metric-source">2024</span></div><div class="metric-value pos">82%</div></div>
+    <div class="metric-row"><div class="metric-name">中端数控机床国产化率<span class="metric-source">2024</span></div><div class="metric-value">65%</div></div>
+    <div class="metric-row"><div class="metric-name">高端数控机床国产化率<span class="metric-source">2024 · 拓璞所在档</span></div><div class="metric-value warn">仅 6%</div></div>
+    <div class="metric-row"><div class="metric-name">五轴机床（含中低端）国产占比<span class="metric-source">2024</span></div><div class="metric-value pos">首破 50%</div></div>
+    <div class="metric-row"><div class="metric-name">高端数控系统国产化率<span class="metric-source">2024</span></div><div class="metric-value warn">20-30%</div></div>
+    <div class="metric-row"><div class="metric-name">高端滚珠丝杆国产化率<span class="metric-source">2022</span></div><div class="metric-value warn">5%</div></div>
+  </div>
+
+  <p>白话：所谓"国产替代"——中低端确实快完成了；<strong>在高端基本还在 6% 的水平</strong>。这是赛道的"低基数红利"，翻倍到 12% 也只是开始。但前提是公司能活下去。</p>
+
+  <h3>C919 拉动 vs 实际兑现</h3>
+  <div class="stats">
+    <div class="stat"><div class="stat-label">C919 累计订单（2025/2）</div><div class="stat-value">1,500<span style="font-size:18px;color:var(--muted)">架</span></div><div class="stat-sub">确认订单约 1,000 架</div></div>
+    <div class="stat"><div class="stat-label">C919 累计交付（2026/3）</div><div class="stat-value warn">35<span style="font-size:18px;color:var(--muted)">架</span></div><div class="stat-sub">2024 目标 30 → 实际 13</div></div>
+    <div class="stat"><div class="stat-label">2026 交付目标</div><div class="stat-value warn">28<span style="font-size:18px;color:var(--muted)">架</span></div><div class="stat-sub">原目标 75 架，砍掉 2/3</div></div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">关键提醒</div>
+    <p class="callout-quote">商飞产能爬坡<strong>显著低于预期</strong>——是机床厂订单兑现的最大不确定性。"C919 拉动 1.4 万亿产业链"的口号，到 2026 年实际是杯水车薪。但订单池 1,000 架是真的——<strong>长线 alpha 在那里，但兑现节奏不确定</strong>。</p>
+  </div>
+</section>
+
+<section id="sec9">
+  <div class="sec-number">09 — 打新热度</div>
+  <h2>「<em>1.5 流热门票</em>」——机构信号强，散户出圈零</h2>
+
+  <p>这是最反直觉的发现。"港股商业航天第一股"在 KOL 圈里被反复刷屏，但在真实的散户社区里——<strong>出圈度基本为零</strong>。</p>
+
+  <h3>三个"冷"信号</h3>
+  <div class="stats">
+    <div class="stat"><div class="stat-label">雪球球友关注数</div><div class="stat-value warn">112<span style="font-size:18px;color:var(--muted)">人</span></div><div class="stat-sub">5/12 21:00 · 同期热门票破千</div></div>
+    <div class="stat"><div class="stat-label">知乎搜索结果</div><div class="stat-value warn">0<span style="font-size:18px;color:var(--muted)">条</span></div><div class="stat-sub">"未搜索到相关内容"</div></div>
+    <div class="stat"><div class="stat-label">微信头部财经号</div><div class="stat-value warn">0<span style="font-size:18px;color:var(--muted)">家</span></div><div class="stat-sub">吴晓波/罗辑思维/半佛 全部缺席</div></div>
+  </div>
+
+  <h3>三个"热"信号</h3>
+  <div class="stats">
+    <div class="stat"><div class="stat-label">5/12 中午公开部分超购</div><div class="stat-value pos">22<span style="font-size:18px;color:var(--muted)">倍</span></div><div class="stat-sub">HK$40 亿孖展融资</div></div>
+    <div class="stat"><div class="stat-label">5/12 18:40 中金借出</div><div class="stat-value pos">126<span style="font-size:18px;color:var(--muted)">亿 HK$</span></div><div class="stat-sub">约 $16.3 亿</div></div>
+    <div class="stat"><div class="stat-label">国际配售路演（21财经）</div><div class="stat-value pos">114<span style="font-size:18px;color:var(--muted)">亿 HK$</span></div><div class="stat-sub">超购 124.3 倍（5/7 数据）</div></div>
+  </div>
+
+  <h3>同期港股 IPO 横向对比</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>公司</th><th>招股期</th><th>孖展峰值</th><th>超购倍数</th><th>暗盘表现</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="product-name">翼菲科技 06871</td><td class="num">5/11-14</td><td class="num">HK$2,599 亿</td><td class="num">6,926 倍</td><td>暗盘大涨</td></tr>
+        <tr><td class="product-name">剂泰科技-P 07666</td><td class="num">截 5/8</td><td class="num">HK$4,567 亿</td><td class="num">4,322 倍</td><td class="num pos">+188% ~ +204%</td></tr>
+        <tr class="highlight"><td class="product-name">拓璞数控 07688<span class="tag">本调研对象</span></td><td class="num">5/12-15</td><td class="num">HK$40 → 126 亿</td><td class="num">22 倍 → 预估 4-6k</td><td>5/19 待观察</td></tr>
+        <tr><td class="product-name">驭势科技 01511</td><td class="num">5/12-15</td><td class="num">显著低于拓璞</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>多空对照</h3>
+  <div class="two-col">
+    <div class="col-card pos">
+      <h4>乐观派核心论据</h4>
+      <ul>
+        <li>13 家基石锁 50%（高盛/UBS/博裕/高瓴/RBC 顶配）—— "一年一两单"级别</li>
+        <li>商业航天 + 国产替代 + 工业母机 三重叙事</li>
+        <li>中国航空航天五轴 NO.1（10% 市占）</li>
+        <li>全球唯一全运动部件碳纤维五轴机床</li>
+        <li>3 年营收 CAGR 31%，毛利率 35%+</li>
+        <li>KOL 共识："优先拓璞，能抢就抢"</li>
+        <li>基石锁 50% + 公开盘窄 = 首日易拉升</li>
+      </ul>
+    </div>
+    <div class="col-card warn">
+      <h4>悲观派核心论据</h4>
+      <ul>
+        <li>PE 386 倍（经调整）/ 1,370 倍（GAAP），估值严重透支</li>
+        <li>净利仅 ¥162 万，2026 公司自己预期再亏损</li>
+        <li>前五客户占 80%，最大单客户 48%</li>
+        <li>科创板 2 次撤回 + 2 次辅导放弃 = 第 5 次才上车</li>
+        <li>客户 E 关联交易（持股 14.48% 联营公司）</li>
+        <li>杠杆率 193%，应收账款激增到 ¥2.06 亿</li>
+        <li>数控系统仍依赖海德汉/西门子 vs 科德 85% 自研</li>
+        <li>知乎 0 讨论、微博 0 热度，散户出圈为零</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout data">
+    <div class="callout-label">综合打新情绪评分 · 6.5/10</div>
+    <p class="callout-quote">定性：<strong>"冷热分明的 1.5 流热门票——KOL 圈一致看多但散户出圈度极低，机构信号比情绪信号强，估值是最大隐患"</strong>。<br><br>对比剂泰科技（暗盘 +204%，孖展 4,567 亿）、翼菲科技（孖展 2,599 亿，6,925 倍超购）——拓璞热度只在"打新 KOL 圈"，没有破圈。"112 球友关注"是冷门票的硬证据。但 $110M 顶级基石占 50% 这个组合，是 2026 年港股 IPO 一年只出 1-2 单的级别，机构信号足以保证上市后不至于破发太惨。</p>
+  </div>
+</section>
+
+<section id="sec10">
+  <div class="sec-number">10 — 风险清单</div>
+  <h2>真正会让你<em>翻车</em>的几件事</h2>
+
+  <div class="scores">
+    <div class="score-row"><div class="score-name">客户集中度</div><div class="score-bar"><div class="score-fill warn" style="width:90%"></div></div><div class="score-num">9/10 红</div></div>
+    <div class="score-row"><div class="score-name">估值透支</div><div class="score-bar"><div class="score-fill warn" style="width:88%"></div></div><div class="score-num">8.8/10 红</div></div>
+    <div class="score-row"><div class="score-name">关联交易（客户 E）</div><div class="score-bar"><div class="score-fill warn" style="width:75%"></div></div><div class="score-num">7.5/10</div></div>
+    <div class="score-row"><div class="score-name">杠杆 / 应收激增</div><div class="score-bar"><div class="score-fill warn" style="width:72%"></div></div><div class="score-num">7.2/10</div></div>
+    <div class="score-row"><div class="score-name">数控系统国产化滞后</div><div class="score-bar"><div class="score-fill" style="width:65%"></div></div><div class="score-num">6.5/10</div></div>
+    <div class="score-row"><div class="score-name">C919 交付低预期</div><div class="score-bar"><div class="score-fill" style="width:62%"></div></div><div class="score-num">6.2/10</div></div>
+    <div class="score-row"><div class="score-name">Dufieux 专利诉讼（黑天鹅）</div><div class="score-bar"><div class="score-fill" style="width:35%"></div></div><div class="score-num">3.5/10</div></div>
+    <div class="score-row"><div class="score-name">治理瑕疵（董事长侄子做公司秘书）</div><div class="score-bar"><div class="score-fill" style="width:30%"></div></div><div class="score-num">3/10</div></div>
+    <div class="score-row"><div class="score-name">基石 6 个月解禁后抛压</div><div class="score-bar"><div class="score-fill" style="width:60%"></div></div><div class="score-num">6/10</div></div>
+  </div>
+
+  <p>分数越高 = 风险越大。打新时间维度（1-2 周）<strong>关注前两项（客户集中度 + 估值）</strong>；中期持有维度（6-12 个月）<strong>关注解禁抛压 + C919 交付 + 应收回款</strong>。</p>
+
+  <h3>真正的"小概率高破坏力"事件</h3>
+  <ul>
+    <li><strong>法国 Dufieux 镜像铣专利诉讼</strong>——索赔 ¥2,656 万（约 $369 万）。败诉极端情景下需停产核心产品镜像铣，对营收冲击巨大</li>
+    <li><strong>客户 E（成都辰飞）关联交易被监管/基金经理深挖</strong>——可能在解禁前后引发估值重估</li>
+    <li><strong>大客户 G 在 2025 占营收 48% 后 2026 砍订单</strong>——按公司自己披露 2026 年大概率再亏损</li>
+  </ul>
+</section>
+
+<section id="sec11">
+  <div class="sec-number">11 — 决策建议</div>
+  <h2>三条路径，各有取舍</h2>
+
+  <div class="verdict">
+    <div class="verdict-title">Ray's Verdict</div>
+    <h3>"它<em>不是无风险</em>的，但<em>是真东西</em>。如果你打新，方法比仓位重要。"</h3>
+    <p>拓璞数控不是炒概念——它站在一条真实国家战略坡道上的"低基数赛道隐形冠军"。但<strong>它的 IPO 估值已经透支未来 3 年</strong>。打新和长持是两套完全不同的逻辑，混着做容易踩坑。</p>
+
+    <div class="verdict-options">
+      <div class="verdict-option">
+        <div class="opt-num">Path A</div>
+        <h4>低风险：纯打新 + 暗盘/首日卖</h4>
+        <p>申购 1-2 手，目标暗盘 5/19 卖出或上市首日开盘冲高卖。<strong>不留过夜</strong>。把这单当作"基石 50% 锁定 + 公开盘窄"的技术性博弈，不要把它当成"长期持有的好公司"。</p>
+      </div>
+      <div class="verdict-option">
+        <div class="opt-num">Path B</div>
+        <h4>中风险：打新 + 持有到 6 个月解禁前</h4>
+        <p>申购 1-2 手，挂牌后<strong>关注 11 月基石解禁动向</strong>。如果中间 2026Q3 财报披露净利没有显著突破，解禁前先减仓。这条路赌的是"机构脸面 + 政策叙事 + 中报扭亏"三者继续撑住估值。</p>
+      </div>
+      <div class="verdict-option">
+        <div class="opt-num">Path C</div>
+        <h4>高风险：长期持有 1-3 年</h4>
+        <p>需要赌：① 大尺寸碳纤维机床放量到 10% 以上营收；② 紧凑型通用五轴扩展为第二曲线（汽车/医疗/3C）；③ 数控系统真自主化（依赖募资 12.1% 收购伺服厂商）。<strong>不出意外</strong>条件下 3 年净利能跑到 1-3 亿。是 hard mode。</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Path A · 打新具体行动（推荐给保守派）</h3>
+  <div class="path-cards">
+    <div class="path-card">
+      <div class="path-num">第 1 步 · 5/12-15 招股期</div>
+      <h4>申购 1-2 手</h4>
+      <p>入场费 HK$2,665.61 / 手，1-2 手约 HK$2,700-5,400（约 $342-$685）。</p>
+      <ul>
+        <li>不要用孖展 5 倍以上杠杆——同期翼菲 6,925 倍超购，拓璞超购倍数大概率拉到 4,000-6,000 倍，杠杆中签率被稀释</li>
+        <li>甲组（≤500 万 HK$ 申购）申满 1 手概率 50% 左右（KOL 估算）</li>
+        <li>不需要孤注一掷，把它当成"组合里 5-10% 仓位的打新机会"</li>
+      </ul>
+    </div>
+    <div class="path-card">
+      <div class="path-num">第 2 步 · 5/19 暗盘 + 5/20 首日</div>
+      <h4>看暗盘走势决定卖出时机</h4>
+      <p>港股新股的关键 60 分钟在 5/19 16:15-18:30 暗盘交易（用老虎/富途/辉立/致富）。</p>
+      <ul>
+        <li><strong>暗盘 +80% 以上</strong>：建议直接暗盘出货，避开 5/20 开盘冲高回落</li>
+        <li><strong>暗盘 +50% - 80%</strong>：5/20 开盘观察 15 分钟，开盘后还在继续走高 → 持有到午盘看</li>
+        <li><strong>暗盘 +30% 以内</strong>：5/20 开盘前 30 分钟内出货</li>
+        <li><strong>暗盘平盘或下跌</strong>：暗盘直接止损，不留到首日</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>不论选哪条路，都要避开的 3 个坑</h3>
+  <ul>
+    <li><strong>不要把"基石 13 家顶配"理解为"长期价值背书"</strong>——基石 6 个月禁售期一过，他们也会减仓。基石的真实功能是"保证 IPO 不破发"，不是"保证长期股价"。</li>
+    <li><strong>不要拿 A 股科德数控 21.5% 净利率类比拓璞</strong>——两家本质上不是直接竞争。拓璞做的是工艺装备集成，科德做的是数控母机。商业模型不同，可比性有限。</li>
+    <li><strong>不要在中报披露前抢加仓</strong>——拓璞 2026 上市开支 + 研发扩张双杀，公司自己预期 2026 年再亏损。中报披露前任何"利好"传闻都是博弈性消息，不要 follow。</li>
+  </ul>
+
+  <div class="divider-quote">
+    <p>"机构的脸面撑得起首日，撑不起 3 年。"</p>
+  </div>
+
+  <p style="text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:30px">— Ray's Research, 2026-05-12 —</p>
+
+</section>
+
+</main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <h4>关键数据来源（一手优先）</h4>
+    <div class="footer-sources">
+      <a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0512/2026051200018_c.pdf" target="_blank">港交所招股章程（440 页 PDF）</a>
+      <a href="https://www.hkexnews.hk/reports/newlisting/new_listing_announcements_c.htm" target="_blank">港交所披露易新上市页</a>
+      <a href="https://www.topnc.com.cn" target="_blank">拓璞数控官网</a>
+      <a href="https://finance.sina.com.cn/stock/observe/2025-12-05/doc-infztpue8438560.shtml" target="_blank">新浪财经 · 净利与现金流倒挂</a>
+      <a href="https://finance.sina.com.cn/jjxw/2025-06-27/doc-infcppey5876379.shtml" target="_blank">新浪财经 · 净利率 1.3%</a>
+      <a href="https://finance.sina.com.cn/stock/s/2026-05-07/doc-inhxanxc8287515.shtml" target="_blank">新浪财经 · 七年 IPO 长跑</a>
+      <a href="https://www.nbd.com.cn/articles/2026-05-11/4386404.html" target="_blank">每经 · 通过聆讯报道</a>
+      <a href="https://www.stcn.com/article/detail/3901247.html" target="_blank">证券时报 · 聆讯通过</a>
+      <a href="https://inews.hket.com/article/4127326/TOPNC-7688-ipo-2026" target="_blank">香港经济日报 · 招股报道</a>
+      <a href="https://www.cls.cn/detail/526465" target="_blank">财联社 · Dufieux 专利诉讼</a>
+      <a href="https://xueqiu.com/9714682502/388397183" target="_blank">雪球 kukuangel · 打新分析</a>
+      <a href="https://stcn.com/article/detail/1725042.html" target="_blank">科德数控 2024 年报</a>
+      <a href="https://pdf.dfcfw.com/pdf/H3_AP202506161692028423_1.pdf" target="_blank">华中数控山西证券深度</a>
+      <a href="https://zhuanlan.zhihu.com/p/32292538287" target="_blank">MIR DATABANK 国产五轴 TOP10</a>
+      <a href="https://brgg.fudan.edu.cn/articleinfo_2788_9.html" target="_blank">复旦 · 瓦森纳协议解读</a>
+      <a href="https://www.cnr.cn/sxpd/gstjsxpd/20250815/t20250815_527319336.shtml" target="_blank">央广网 · 陕西 12 米双五轴自研</a>
+    </div>
+    <div class="footer-meta">
+      Ray's Research Engine · Generated 2026-05-12 · 5 parallel sub-agents (业务/行业/财务/资本市场/政策)<br>
+      汇率锚点：$1 ≈ HK$7.8 ≈ ¥7.2 ≈ €0.92<br>
+      本报告不构成投资建议。所有数据来自港交所招股书、公开媒体报道、第三方研究。投资决策请咨询持牌投资顾问。
+    </div>
+  </div>
+</footer>
+
+<script>
+// Theme toggle
+const toggle = document.getElementById('theme-toggle');
+toggle.addEventListener('click', () => {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const newTheme = isDark ? 'light' : 'dark';
+  if (newTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+  try { localStorage.setItem('ray-theme', newTheme); } catch(e) {}
+});
+
+// System theme change
+if (window.matchMedia) {
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    const saved = localStorage.getItem('ray-theme');
+    if (!saved) {
+      if (e.matches) document.documentElement.setAttribute('data-theme', 'dark');
+      else document.documentElement.removeAttribute('data-theme');
+    }
+  });
+}
+
+// TOC IntersectionObserver
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      document.querySelectorAll('nav.toc a').forEach(link => {
+        link.style.color = '';
+        link.style.fontWeight = '';
+      });
+      const activeLink = document.querySelector(`nav.toc a[href="#${id}"]`);
+      if (activeLink) {
+        activeLink.style.color = 'var(--accent-warn)';
+        activeLink.style.fontWeight = '600';
+      }
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

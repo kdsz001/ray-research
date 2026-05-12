@@ -41,6 +41,12 @@
 |------|------|---------|
 | 2026-05-12 | [初版投资影响调研 · 加密合法化的最后一公里](clarity-act/2026-05-12-clarity-act.html) | [↗ Open](https://kdsz001.github.io/ray-research/clarity-act/2026-05-12-clarity-act.html) |
 
+### ✈ [拓璞数控 07688.HK](tuopu-cnc/) · 航空航天五轴机床 · 港股 IPO 深度调研
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-12 | [港股 IPO 深度调研 · 技术真、估值贵、客户险](tuopu-cnc/2026-05-12-tuopu-cnc.html) | [↗ Open](https://kdsz001.github.io/ray-research/tuopu-cnc/2026-05-12-tuopu-cnc.html) |
+
 <!-- INDEX-END -->
 
 ---
