@@ -53,6 +53,18 @@
           "title": "初版投资调研 · Oracle 之王"
         }
       ]
+    },
+    {
+      "slug": "clarity-act",
+      "name": "CLARITY 法案",
+      "tagline": "美国数字资产市场结构法案 · 加密合法化最后一公里",
+      "reports": [
+        {
+          "date": "2026-05-12",
+          "file": "2026-05-12-clarity-act.html",
+          "title": "初版投资影响调研 · 加密合法化的最后一公里"
+        }
+      ]
     }
   ]
 }

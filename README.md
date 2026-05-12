@@ -35,6 +35,12 @@
 |------|------|---------|
 | 2026-05-12 | [初版投资调研 · Oracle 之王](chainlink/2026-05-12-chainlink.html) | [↗ Open](https://kdsz001.github.io/ray-research/chainlink/2026-05-12-chainlink.html) |
 
+### 📜 [CLARITY 法案](clarity-act/) · 加密合法化的最后一公里 · 政策投资调研
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-12 | [初版投资影响调研 · 加密合法化的最后一公里](clarity-act/2026-05-12-clarity-act.html) | [↗ Open](https://kdsz001.github.io/ray-research/clarity-act/2026-05-12-clarity-act.html) |
+
 <!-- INDEX-END -->
 
 ---
