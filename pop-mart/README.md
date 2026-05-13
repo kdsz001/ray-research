@@ -7,7 +7,8 @@
 
 | 日期 | 报告 | 在线浏览 |
 |------|------|---------|
-| 2026-05-13 | [投资调研 · 从「现象」到「机器」之间的悬念](2026-05-13-pop-mart.html) | [↗ 在线打开](https://kdsz001.github.io/ray-research/pop-mart/2026-05-13-pop-mart.html) |
+| 2026-05-13 | [v1 · 从「现象」到「机器」之间的悬念](2026-05-13-pop-mart.html) | [↗ 在线打开](https://kdsz001.github.io/ray-research/pop-mart/2026-05-13-pop-mart.html) |
+| 2026-05-13 | [v2 · 段永平视角 · 他看的不是 Labubu，是王宁](2026-05-13-pop-mart-v2.html) | [↗ 在线打开](https://kdsz001.github.io/ray-research/pop-mart/2026-05-13-pop-mart-v2.html) |
 
 ## 核心结论
 
