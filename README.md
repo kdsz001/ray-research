@@ -53,6 +53,12 @@
 |------|------|---------|
 | 2026-05-12 | [机场 L4 垄断者撞上板块全员破发](uisee/2026-05-12-uisee.html) | [↗ Open](https://kdsz001.github.io/ray-research/uisee/2026-05-12-uisee.html) |
 
+### 🧸 [泡泡玛特 9992.HK](pop-mart/) · Labubu 现象母公司 · 港股投资深度调研
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-13 | [从「现象」到「机器」之间的悬念](pop-mart/2026-05-13-pop-mart.html) | [↗ Open](https://kdsz001.github.io/ray-research/pop-mart/2026-05-13-pop-mart.html) |
+
 <!-- INDEX-END -->
 
 ---
