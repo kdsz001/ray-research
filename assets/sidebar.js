@@ -133,9 +133,16 @@
         var rLi = el('li');
         var rA = el('a', {
           href: BASE + topic.slug + '/' + r.file,
-          'data-current': isCurrentReport ? 'true' : 'false',
-          text: r.date || r.file
+          'data-current': isCurrentReport ? 'true' : 'false'
         });
+        if (r.date) rA.appendChild(el('span', { class: 'rs-report-date', text: r.date }));
+        // 只在 title 与 file 不同时展示（避免冗余）
+        if (r.title && r.title !== r.file) {
+          rA.appendChild(el('span', { class: 'rs-report-title', text: r.title }));
+        } else if (!r.date) {
+          // 没有 date 也没有有效 title 时兜底显示文件名
+          rA.appendChild(el('span', { class: 'rs-report-date', text: r.file }));
+        }
         rLi.appendChild(rA);
         reportsUl.appendChild(rLi);
       });
