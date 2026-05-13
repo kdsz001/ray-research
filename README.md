@@ -47,6 +47,12 @@
 |------|------|---------|
 | 2026-05-12 | [港股 IPO 深度调研 · 技术真、估值贵、客户险](tuopu-cnc/2026-05-12-tuopu-cnc.html) | [↗ Open](https://kdsz001.github.io/ray-research/tuopu-cnc/2026-05-12-tuopu-cnc.html) |
 
+### 🛬 [驭势科技 01511.HK](uisee/) · 机场 L4 自动驾驶垄断者 · 港股 18C 章 IPO 深度调研
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-12 | [机场 L4 垄断者撞上板块全员破发](uisee/2026-05-12-uisee.html) | [↗ Open](https://kdsz001.github.io/ray-research/uisee/2026-05-12-uisee.html) |
+
 <!-- INDEX-END -->
 
 ---
