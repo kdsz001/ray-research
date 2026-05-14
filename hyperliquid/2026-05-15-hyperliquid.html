@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hyperliquid (HYPE) 投资调研报告 · 链上币安？仁慈独裁？ · 2026.05</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec; --bg-paper: #fbf9f4; --bg-card: #ffffff; --bg-dark: #14110d; --bg-dark2: #1f1b16;
+  --ink: #14110d; --ink-2: #2c2620; --muted: #6e6358; --light: #a39787;
+  --rule: #14110d; --rule-light: #d8d1c2;
+  --accent-warn: #a73121; --accent-data: #1c4d6b; --accent-pos: #2c5e3f; --accent-yellow: #c89a2c;
+  --grad-warn: rgba(167, 49, 33, 0.04); --grad-data: rgba(28, 77, 107, 0.04);
+  --shadow-card: 0 0 0 transparent;
+  --bg-inverse: #14110d; --bg-inverse-2: #1f1b16;
+  --ink-on-inverse: #f6f3ec; --text-on-inverse: rgba(246, 243, 236, 0.85);
+  --muted-on-inverse: rgba(246, 243, 236, 0.7); --faint-on-inverse: rgba(246, 243, 236, 0.55);
+  --light-on-inverse: rgba(246, 243, 236, 0.5); --rule-on-inverse: rgba(246, 243, 236, 0.18);
+  --accent-yellow-on-inverse: #c89a2c;
+  --serif: "Source Serif 4", "Source Serif Pro", "Charter", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+  --max-w: 820px;
+}
+[data-theme="dark"] {
+  --bg: #15120e; --bg-paper: #1c1814; --bg-card: #1f1b16; --bg-dark: #0a0907; --bg-dark2: #0f0d0a;
+  --ink: #ebe3d3; --ink-2: #c9bfae; --muted: #8d8170; --light: #5c5346;
+  --rule: #ebe3d3; --rule-light: #3a342c;
+  --accent-warn: #e87a5f; --accent-data: #6cb1d6; --accent-pos: #6db98c; --accent-yellow: #e6b945;
+  --grad-warn: rgba(232, 122, 95, 0.06); --grad-data: rgba(108, 177, 214, 0.06);
+  --shadow-card: 0 1px 0 rgba(235, 227, 211, 0.04);
+  --bg-inverse: #ede5d3; --bg-inverse-2: #e0d8c5;
+  --ink-on-inverse: #14110d; --text-on-inverse: rgba(20, 17, 13, 0.85);
+  --muted-on-inverse: rgba(20, 17, 13, 0.7); --faint-on-inverse: rgba(20, 17, 13, 0.55);
+  --light-on-inverse: rgba(20, 17, 13, 0.5); --rule-on-inverse: rgba(20, 17, 13, 0.18);
+  --accent-yellow-on-inverse: #a47a18;
+}
+body, .tldr, .verdict, .quickfacts-wrap, footer, table, th, td, .stat, .col-card, .callout, .path-card, .verdict-option, .qf-cell { transition: background-color 0.2s, color 0.2s, border-color 0.2s; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { font-family: var(--sans); background: var(--bg); color: var(--ink); line-height: 1.65; font-size: 16px; background-image: radial-gradient(circle at 20% 0%, rgba(167, 49, 33, 0.04) 0%, transparent 40%), radial-gradient(circle at 80% 100%, rgba(28, 77, 107, 0.04) 0%, transparent 40%); }
+.topbar { border-bottom: 1px solid var(--rule); background: var(--bg-paper); padding: 14px 0; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+.topbar-inner { max-width: 1180px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; color: var(--muted); }
+.topbar strong { color: var(--ink); font-weight: 600; }
+.hero { max-width: 1180px; margin: 0 auto; padding: 80px 32px 100px; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 2fr 1fr; gap: 60px; align-items: end; }
+.hero-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-warn); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.hero-eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--accent-warn); }
+.hero h1 { font-family: var(--serif); font-weight: 600; font-size: 78px; line-height: 1.0; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 28px; }
+.hero h1 em { font-style: italic; color: var(--accent-warn); font-weight: 500; }
+.hero-subtitle { font-family: var(--serif); font-size: 22px; line-height: 1.45; color: var(--muted); font-style: italic; max-width: 560px; }
+.hero-meta { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 24px; }
+.hero-meta dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
+.hero-meta dt { color: var(--light); font-weight: 400; }
+.hero-meta dd { color: var(--ink); font-weight: 500; }
+
+.quickfacts-wrap { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 60px 0 80px; border-bottom: 1px solid var(--rule); }
+.quickfacts { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+.qf-header { margin-bottom: 36px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.qf-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-yellow-on-inverse); }
+.qf-title { font-family: var(--serif); font-style: italic; font-size: 28px; font-weight: 500; color: var(--text-on-inverse); letter-spacing: -0.01em; }
+.qf-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--rule-on-inverse); border: 1px solid var(--rule-on-inverse); }
+.qf-cell { background: var(--bg-inverse); padding: 22px 18px 20px; display: flex; flex-direction: column; gap: 6px; min-height: 120px; }
+.qf-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light-on-inverse); }
+.qf-value { font-family: var(--serif); font-weight: 600; font-size: 32px; line-height: 1; color: var(--ink-on-inverse); letter-spacing: -0.02em; margin-top: auto; margin-bottom: 4px; }
+.qf-value.warn { color: var(--accent-warn); } .qf-value.pos { color: var(--accent-pos); } .qf-value.data { color: var(--accent-data); }
+.qf-value .qf-unit { font-size: 14px; color: var(--faint-on-inverse); margin-left: 2px; font-weight: 400; }
+.qf-sub { font-size: 11.5px; color: var(--faint-on-inverse); line-height: 1.35; }
+.qf-cell-verdict { background: var(--accent-warn); color: white; }
+.qf-cell-verdict .qf-label { color: rgba(255, 255, 255, 0.8); }
+.qf-cell-verdict .qf-verdict { font-family: var(--serif); font-style: italic; font-size: 22px; font-weight: 600; line-height: 1.15; color: white; margin-top: auto; letter-spacing: -0.01em; }
+.qf-cell-verdict .qf-sub { color: rgba(255, 255, 255, 0.85); }
+
+.container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+main { display: grid; grid-template-columns: 200px 1fr; gap: 60px; max-width: 1180px; margin: 0 auto; padding: 0 32px 120px; }
+nav.toc { position: sticky; top: 40px; align-self: start; height: fit-content; padding-top: 80px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+nav.toc h4 { font-size: 10px; color: var(--light); margin-bottom: 18px; font-weight: 500; letter-spacing: 0.15em; }
+nav.toc ol { list-style: none; counter-reset: toc; padding-left: 0; }
+nav.toc li { counter-increment: toc; margin-bottom: 14px; border-left: 1px solid var(--rule-light); padding-left: 14px; transition: border-color 0.2s; }
+nav.toc li:hover { border-left-color: var(--ink); }
+nav.toc li::before { content: "0" counter(toc); display: block; color: var(--light); font-size: 10px; margin-bottom: 2px; }
+nav.toc a { color: var(--ink-2); text-decoration: none; line-height: 1.3; display: block; font-weight: 500; }
+nav.toc a:hover { color: var(--accent-warn); }
+
+article { max-width: var(--max-w); padding-top: 60px; }
+section { padding: 60px 0; border-top: 1px solid var(--rule-light); scroll-margin-top: 30px; }
+section:first-of-type { border-top: none; padding-top: 20px; }
+.section-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-warn); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+.section-num::after { content: ""; flex: 1; height: 1px; background: var(--rule-light); }
+section h2 { font-family: var(--serif); font-weight: 600; font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 32px; }
+section h3 { font-family: var(--serif); font-weight: 600; font-size: 24px; line-height: 1.3; margin-top: 48px; margin-bottom: 16px; color: var(--ink); }
+section h4 { font-family: var(--sans); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin-top: 36px; margin-bottom: 12px; }
+section p { font-family: var(--sans); font-size: 16px; line-height: 1.7; color: var(--ink-2); margin-bottom: 16px; }
+section p strong { color: var(--ink); font-weight: 600; }
+section a { color: var(--accent-data); text-decoration: underline; text-decoration-color: rgba(28, 77, 107, 0.3); text-underline-offset: 3px; }
+section a:hover { text-decoration-color: var(--accent-data); }
+ul, ol { padding-left: 22px; margin-bottom: 18px; }
+li { margin-bottom: 8px; line-height: 1.7; color: var(--ink-2); }
+li::marker { color: var(--light); }
+
+.tldr { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 56px 56px; margin-top: 40px; position: relative; }
+.tldr::before { content: "TL;DR"; position: absolute; top: -1px; left: 56px; background: var(--accent-warn); color: white; padding: 4px 16px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; font-weight: 600; }
+.tldr h3 { font-family: var(--serif); color: var(--ink-on-inverse); font-size: 22px; font-weight: 500; margin-top: 28px; margin-bottom: 12px; }
+.tldr h3:first-of-type { margin-top: 16px; }
+.tldr p, .tldr li { color: var(--text-on-inverse); }
+.tldr p strong, .tldr li strong { color: var(--ink-on-inverse); }
+.tldr ol, .tldr ul { padding-left: 18px; }
+.tldr a { color: var(--ink-on-inverse); text-decoration-color: var(--light-on-inverse); }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 32px 0; }
+.stat { background: var(--bg-card); padding: 28px 24px; }
+.stat-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 10px; }
+.stat-value { font-family: var(--serif); font-weight: 600; font-size: 36px; line-height: 1; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.02em; }
+.stat-value .unit { font-size: 16px; color: var(--muted); font-weight: 400; margin-left: 4px; }
+.stat-value.warn { color: var(--accent-warn); } .stat-value.pos { color: var(--accent-pos); } .stat-value.data { color: var(--accent-data); }
+.stat-note { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 24px 0; }
+.col-card { border: 1px solid var(--rule-light); padding: 28px; background: var(--bg-card); }
+.col-card h4 { margin-top: 0; display: flex; align-items: center; gap: 10px; }
+.col-card.pos h4 { color: var(--accent-pos); } .col-card.warn h4 { color: var(--accent-warn); }
+.col-card h4::before { display: inline-block; width: 18px; height: 18px; border-radius: 50%; font-family: var(--serif); font-size: 13px; text-align: center; line-height: 18px; font-weight: 600; }
+.col-card.pos h4::before { content: "✓"; background: var(--accent-pos); color: white; }
+.col-card.warn h4::before { content: "!"; background: var(--accent-warn); color: white; font-style: italic; }
+.col-card ul { padding-left: 18px; margin-bottom: 0; }
+.col-card li { font-size: 14px; line-height: 1.55; }
+
+.quote { border-left: 3px solid var(--accent-warn); padding: 8px 0 8px 24px; margin: 24px 0; font-family: var(--serif); font-size: 18px; line-height: 1.55; font-style: italic; color: var(--ink-2); }
+.quote-attr { font-family: var(--sans); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 12px; font-weight: 500; }
+.quote-attr::before { content: "— "; }
+
+.table-wrap { overflow-x: auto; margin: 24px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--bg-card); }
+th { text-align: left; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; padding: 12px 14px; border-bottom: 2px solid var(--ink); background: var(--bg-paper); white-space: nowrap; vertical-align: bottom; }
+td { padding: 14px; border-bottom: 1px solid var(--rule-light); vertical-align: top; line-height: 1.5; color: var(--ink-2); }
+td.product-name { font-weight: 600; color: var(--ink); font-family: var(--serif); font-size: 15px; white-space: nowrap; }
+tr:last-child td { border-bottom: 1px solid var(--ink); }
+tr.highlight td { background: rgba(167, 49, 33, 0.06); }
+td .tag { display: inline-block; font-family: var(--mono); font-size: 10px; text-transform: uppercase; padding: 2px 6px; background: var(--bg-paper); color: var(--muted); border-radius: 2px; margin-right: 4px; }
+
+.callout { background: var(--bg-paper); border-left: 3px solid var(--ink); padding: 24px 28px; margin: 28px 0; }
+.callout.warn { border-left-color: var(--accent-warn); background: rgba(167, 49, 33, 0.04); }
+.callout.data { border-left-color: var(--accent-data); background: rgba(28, 77, 107, 0.04); }
+.callout-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
+.callout.warn .callout-label { color: var(--accent-warn); } .callout.data .callout-label { color: var(--accent-data); }
+.callout p { margin-bottom: 12px; } .callout p:last-child { margin-bottom: 0; }
+.callout-quote { font-family: var(--serif); font-size: 17px; font-style: italic; line-height: 1.5; color: var(--ink); }
+
+.metric-list { margin: 28px 0; border-top: 1px solid var(--ink); }
+.metric-row { display: grid; grid-template-columns: 1fr auto; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--rule-light); gap: 24px; }
+.metric-row:last-child { border-bottom: 1px solid var(--ink); }
+.metric-row .label { font-size: 14px; color: var(--ink-2); }
+.metric-row .label .src { display: block; font-size: 11px; color: var(--light); margin-top: 2px; font-family: var(--mono); }
+.metric-row .value { font-family: var(--serif); font-size: 28px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; text-align: right; white-space: nowrap; }
+.metric-row .value.warn { color: var(--accent-warn); } .metric-row .value.pos { color: var(--accent-pos); } .metric-row .value.data { color: var(--accent-data); }
+.metric-row .value small { font-size: 14px; color: var(--muted); font-weight: 400; }
+
+.divider-quote { margin: 80px 0; text-align: center; font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--muted); line-height: 1.5; position: relative; padding: 32px 60px; }
+.divider-quote::before, .divider-quote::after { content: ""; position: absolute; width: 40px; height: 1px; background: var(--rule); top: 0; left: 50%; transform: translateX(-50%); }
+.divider-quote::after { top: auto; bottom: 0; }
+
+.timeline { margin: 32px 0; position: relative; padding-left: 0; }
+.timeline::before { content: ""; position: absolute; left: 92px; top: 8px; bottom: 8px; width: 1px; background: var(--rule-light); }
+.tl-row { display: grid; grid-template-columns: 80px 14px 1fr; gap: 12px; margin-bottom: 24px; align-items: start; }
+.tl-row .tl-date { font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em; color: var(--muted); text-align: right; padding-top: 4px; text-transform: uppercase; }
+.tl-row .tl-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--ink); margin-top: 4px; position: relative; z-index: 2; }
+.tl-row .tl-dot.warn { border-color: var(--accent-warn); background: var(--accent-warn); }
+.tl-row .tl-dot.data { border-color: var(--accent-data); background: var(--accent-data); }
+.tl-row .tl-dot.pos { border-color: var(--accent-pos); background: var(--accent-pos); }
+.tl-row .tl-title { font-family: var(--serif); font-weight: 600; font-size: 16px; color: var(--ink); line-height: 1.3; margin-bottom: 4px; }
+.tl-row .tl-title.warn { color: var(--accent-warn); }
+.tl-row .tl-desc { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+
+.path-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 28px 0; }
+.path-card { border: 1px solid var(--rule-light); background: var(--bg-card); padding: 26px 24px; position: relative; }
+.path-card.a { border-top: 4px solid var(--accent-pos); }
+.path-card.b { border-top: 4px solid var(--accent-data); }
+.path-card.c { border-top: 4px solid var(--accent-warn); }
+.path-card .path-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.path-card.a .path-num { color: var(--accent-pos); } .path-card.b .path-num { color: var(--accent-data); } .path-card.c .path-num { color: var(--accent-warn); }
+.path-card h4 { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--ink); text-transform: none; letter-spacing: 0; margin: 0 0 14px 0; }
+.path-card p { font-size: 13.5px; line-height: 1.55; color: var(--muted); margin-bottom: 10px; }
+.path-card ul { margin: 0; padding-left: 18px; }
+.path-card li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; color: var(--ink-2); }
+
+.verdict { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 80px 56px; margin: 80px 0 0; position: relative; }
+.verdict-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-yellow-on-inverse); margin-bottom: 24px; }
+.verdict h3 { font-family: var(--serif); font-size: 36px; line-height: 1.2; font-weight: 600; margin-bottom: 24px; color: var(--ink-on-inverse); letter-spacing: -0.02em; }
+.verdict p { color: var(--text-on-inverse); font-size: 17px; line-height: 1.65; margin-bottom: 14px; }
+.verdict p strong { color: var(--ink-on-inverse); }
+.verdict-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 40px; background: var(--rule-on-inverse); }
+.verdict-option { background: var(--bg-inverse); padding: 28px 24px; }
+.verdict-option .num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--accent-yellow-on-inverse); margin-bottom: 12px; }
+.verdict-option h4 { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--ink-on-inverse); margin-bottom: 10px; text-transform: none; letter-spacing: 0; }
+.verdict-option p { font-size: 14px; line-height: 1.55; margin-bottom: 0; color: var(--muted-on-inverse); }
+
+.score-card { border: 1px solid var(--ink); padding: 32px; margin: 24px 0; background: var(--bg-card); }
+.score-row { display: grid; grid-template-columns: 200px 1fr 50px; gap: 20px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--rule-light); }
+.score-row:last-child { border-bottom: none; }
+.score-row .name { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: 15px; }
+.score-row .bar { background: var(--bg-paper); height: 8px; position: relative; }
+.score-row .bar-fill { height: 100%; background: var(--accent-data); }
+.score-row .bar-fill.warn { background: var(--accent-warn); } .score-row .bar-fill.pos { background: var(--accent-pos); }
+.score-row .num { font-family: var(--mono); font-weight: 600; font-size: 14px; color: var(--ink); text-align: right; }
+
+footer { border-top: 1px solid var(--rule); background: var(--bg-inverse); color: var(--muted-on-inverse); padding: 60px 32px 80px; margin-top: 0; }
+.footer-inner { max-width: 1180px; margin: 0 auto; }
+footer h4 { color: var(--ink-on-inverse); margin-bottom: 18px; font-family: var(--serif); font-size: 16px; font-weight: 600; }
+footer ul { padding-left: 0; list-style: none; columns: 2; column-gap: 40px; }
+footer li { font-size: 12px; line-height: 1.5; margin-bottom: 8px; font-family: var(--mono); break-inside: avoid; }
+footer a { color: var(--accent-yellow-on-inverse); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+.footer-meta { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--rule-on-inverse); font-size: 11px; color: var(--light-on-inverse); font-family: var(--mono); letter-spacing: 0.05em; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+
+@media (max-width: 1100px) {
+  main { grid-template-columns: 1fr; } nav.toc { position: static; padding-top: 40px; }
+  nav.toc ol { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .hero { grid-template-columns: 1fr; } .hero h1 { font-size: 56px; }
+  .verdict-options { grid-template-columns: 1fr; } .qf-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
+  .hero { padding: 40px 20px 60px; } .hero h1 { font-size: 42px; } .hero-subtitle { font-size: 18px; }
+  main { padding: 0 20px 80px; gap: 0; } .container, .quickfacts { padding: 0 20px; }
+  .quickfacts-wrap { padding: 40px 0 50px; } .qf-grid { grid-template-columns: repeat(2, 1fr); }
+  .qf-value { font-size: 26px; } .qf-cell-verdict .qf-verdict { font-size: 18px; }
+  nav.toc ol { grid-template-columns: 1fr; } section h2 { font-size: 32px; }
+  .stats { grid-template-columns: 1fr; } .two-col { grid-template-columns: 1fr; }
+  .verdict, .tldr { padding: 40px 24px; } .verdict h3 { font-size: 26px; }
+  .score-row { grid-template-columns: 120px 1fr 40px; gap: 12px; }
+  footer ul { columns: 1; } .timeline::before { left: 11px; }
+  .tl-row { grid-template-columns: 80px 1fr; } .tl-row .tl-date { font-size: 10px; }
+  .path-detail { grid-template-columns: 1fr; }
+}
+
+#theme-toggle { position: fixed; top: 14px; right: 24px; z-index: 1000; width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--rule-light); color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.12s; }
+#theme-toggle:hover { background: var(--bg-paper); border-color: var(--ink); }
+#theme-toggle:active { transform: scale(0.92); }
+#theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] #theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] #theme-toggle { background: var(--bg-paper); border-color: var(--rule-light); color: var(--ink); }
+
+@media (max-width: 720px) { #theme-toggle { top: 10px; right: 14px; width: 32px; height: 32px; } }
+@media print {
+  body { background: white; font-size: 11pt; }
+  .topbar, nav.toc, footer, #theme-toggle { display: none; }
+  main { display: block; max-width: 100%; padding: 0; }
+  article { max-width: 100%; padding-top: 0; }
+  .hero { padding: 30px 0; page-break-after: always; grid-template-columns: 1fr; }
+  .hero h1 { font-size: 36pt; color: black; } .hero h1 em { color: #a73121; }
+  .quickfacts-wrap { background: white; color: black; padding: 20px 0; page-break-after: always; }
+  .qf-grid { background: #ddd; border-color: #ddd; } .qf-cell { background: white; }
+  .qf-label, .qf-sub { color: #666 !important; } .qf-value { color: black !important; }
+  .qf-cell-verdict { background: #f4e6e3 !important; }
+  .qf-cell-verdict .qf-verdict, .qf-cell-verdict .qf-label, .qf-cell-verdict .qf-sub { color: black !important; }
+  section { page-break-inside: avoid; padding: 20px 0; border-top: 2px solid #000; }
+  section h2 { font-size: 22pt; } section h3 { font-size: 14pt; }
+  .tldr, .verdict { background: #f5f5f5 !important; color: black !important; padding: 24px !important; }
+  .tldr *, .verdict * { color: black !important; }
+  .verdict-option { background: white !important; border: 1px solid #ddd; }
+  a { color: black !important; text-decoration: none; }
+  .stats, .two-col, .score-card { page-break-inside: avoid; } .divider-quote { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="切换夜间模式" title="切换浅色 / 夜间模式">
+  <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div><strong>Hyperliquid (HYPE)</strong> · 加密投资调研报告</div>
+    <div>调研日期 <strong>2026 · 05 · 15</strong></div>
+    <div>为投资决策准备 · 第一版</div>
+  </div>
+</div>
+
+<header class="hero">
+  <div>
+    <div class="hero-eyebrow">链上永续之王 · 投资价值深度调研</div>
+    <h1>链上币安，<br><em>仁慈独裁</em>。</h1>
+    <p class="hero-subtitle">
+      Hyperliquid 是 11 个 Harvard 校友造出来的赚钱机器——年化 <strong>$6.27 亿美元</strong>收入、占去中心化永续合约市场 <strong>27.9%</strong>、<strong>99% 手续费回购</strong>自己的代币、<strong>零 VC 解锁</strong>压力。但 JELLY 事件证明这不是 DeFi 而是"21 个验证者听 Jeff 一个人话"的半中心化系统。它的护城河不是技术，是 <strong>Jeff Yan 个人能力 + 美国监管的真空期</strong>——两者都有过期日。
+    </p>
+  </div>
+  <div class="hero-meta">
+    <dl>
+      <dt>调研对象</dt><dd>Hyperliquid · HYPE 代币 + L1 + DEX</dd>
+      <dt>调研深度</dt><dd>6 个并行 AI 调研员</dd>
+      <dt>覆盖平台</dt><dd>30+ 中英文一手渠道</dd>
+      <dt>核心来源</dt><dd>DefiLlama / CoinGecko / Tokenomist</dd>
+      <dt> </dt><dd>X / Reddit / Foresight / 知乎 / Fortune</dd>
+      <dt>报告字数</dt><dd>约 14,000 字</dd>
+      <dt>面向读者</dt><dd>非职业加密投资者 · Ray</dd>
+    </dl>
+  </div>
+</header>
+
+<div class="quickfacts-wrap">
+  <div class="quickfacts">
+    <div class="qf-header">
+      <div class="qf-eyebrow">10 秒读完 / 核心数据速览</div>
+      <h2 class="qf-title">Hyperliquid at a Glance</h2>
+    </div>
+    <div class="qf-grid">
+      <div class="qf-cell"><div class="qf-label">当前价</div><div class="qf-value">$42.85</div><div class="qf-sub">CoinGecko · 2026-05-15</div></div>
+      <div class="qf-cell"><div class="qf-label">流通市值</div><div class="qf-value data">$10.2<span class="qf-unit">B</span></div><div class="qf-sub">加密总榜第 13</div></div>
+      <div class="qf-cell"><div class="qf-label">FDV 完全稀释</div><div class="qf-value">$41.1<span class="qf-unit">B</span></div><div class="qf-sub">10 亿代币全释放后市值</div></div>
+      <div class="qf-cell"><div class="qf-label">流通率</div><div class="qf-value">23.8<span class="qf-unit">%</span></div><div class="qf-sub">2.38 亿 / 10 亿总量</div></div>
+      <div class="qf-cell"><div class="qf-label">24h Perp 量</div><div class="qf-value pos">$5.95<span class="qf-unit">B</span></div><div class="qf-sub">DefiLlama · 永续合约</div></div>
+      <div class="qf-cell"><div class="qf-label">占 Perp DEX</div><div class="qf-value pos">27.9<span class="qf-unit">%</span></div><div class="qf-sub">断层第一 · 第二名 1/3</div></div>
+      <div class="qf-cell"><div class="qf-label">占全永续市场</div><div class="qf-value">1.3<span class="qf-unit">%</span></div><div class="qf-sub">Binance 仍是它 8.7x</div></div>
+      <div class="qf-cell"><div class="qf-label">年化协议收入</div><div class="qf-value pos">$627<span class="qf-unit">M</span></div><div class="qf-sub">市值的 6.15% · 行业最高</div></div>
+      <div class="qf-cell"><div class="qf-label">累计回购销毁</div><div class="qf-value pos">$890<span class="qf-unit">M</span></div><div class="qf-sub">4003 万 HYPE 已回购</div></div>
+      <div class="qf-cell"><div class="qf-label">团队规模</div><div class="qf-value">11<span class="qf-unit">人</span></div><div class="qf-sub">人均年创收 $57M</div></div>
+      <div class="qf-cell"><div class="qf-label">去中心化评分</div><div class="qf-value warn">4.5<span class="qf-unit">/10</span></div><div class="qf-sub">21 验证者 · Foundation 控 81%</div></div>
+      <div class="qf-cell qf-cell-verdict">
+        <div class="qf-label">最终判断</div>
+        <div class="qf-verdict">配置可以<br>梭哈不行</div>
+        <div class="qf-sub">5-15% 仓位 · 监管悬剑下蓝筹</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+<nav class="toc">
+  <h4>章节目录</h4>
+  <ol>
+    <li><a href="#tldr">一页纸结论</a></li>
+    <li><a href="#profile">项目档案</a></li>
+    <li><a href="#tokenomics">代币经济学</a></li>
+    <li><a href="#tech">技术架构</a></li>
+    <li><a href="#chain-data">链上 KPI</a></li>
+    <li><a href="#competitors">竞品格局</a></li>
+    <li><a href="#cex-compare">VS 中心化交易所</a></li>
+    <li><a href="#community">市场情绪</a></li>
+    <li><a href="#china">中文圈认知</a></li>
+    <li><a href="#risk">风险与争议</a></li>
+    <li><a href="#feasibility">投资可行性</a></li>
+    <li><a href="#decision">三条投资路径</a></li>
+  </ol>
+</nav>
+
+<article>
+
+<section id="tldr">
+  <div class="section-num">01 / 一页纸结论</div>
+  <h2>如果你只看一段，看这段。</h2>
+
+  <p>
+    Hyperliquid 是 <strong>2023 年</strong>由两位 Harvard 数学/CS 校友 <strong>Jeff Yan</strong>（@chameleon_jeff，前 Hudson River Trading 高频量化）与 <strong>iliensinc</strong> 创立的去中心化永续合约交易所。公司主体 <strong>Hyperliquid Labs Pte. Ltd.</strong> 注册在新加坡，团队 <strong>11 人</strong>，<strong>从未接受任何 VC 融资</strong>——Jeff 曾拒绝过估值 10 亿美元（约 ¥72 亿）的融资轮。2024-11-29 TGE（代币首发）当天直接把 31% 总量（3.1 亿 HYPE，按当时价值约 $10 亿美元）<strong>空投给 9.4 万个早期用户</strong>，无 VC 配置、无 KOL 配置、无 OTC 私募。
+  </p>
+  <p>
+    业务硬指标顶天：年化协议收入 <strong>$6.27 亿美元（约 ¥45 亿）</strong>、24h 永续合约交易量 <strong>$59.5 亿美元（约 ¥430 亿）</strong>、占去中心化永续合约市场 <strong>27.9% 断层第一</strong>、累计交易量 <strong>$4.32 万亿美元（约 ¥31 万亿）</strong>、累计独立用户 <strong>120 万</strong>。<strong>99% 协议收入用于在公开市场回购 HYPE</strong>（Assistance Fund 累计已花 $8.9 亿美元买回 4003 万 HYPE，占总量 4%）——这是当前加密世界里**最干净、最直接、最激进**的代币价值捕获模型。
+  </p>
+
+  <div class="tldr">
+    <h3>如果你买 HYPE，要先想清楚三件事：</h3>
+    <ol>
+      <li><strong>这不是"DeFi 协议"，是"链上 BitMEX"</strong>。JELLY 事件（2025-03-26）已经证明：当 HLP 自营做市金库面临 $13.5M（约 ¥9700 万）亏损风险时，21 个验证者（Foundation 控制 81% 质押）能在 <strong>2 分钟内集体投票下架资产</strong>，按 $0.0095 而非 oracle 报价 $0.50 强制结算。Bitget CEO 公开骂 "FTX 2.0"、Arthur Hayes 说 "let's stop pretending hyperliquid is decentralised"。你买的不是去中心化金融，是"Jeff Yan 个人信用 + 监管真空期"。</li>
+      <li><strong>2026-2028 是团队代币的解锁瀑布期</strong>。23.8% 总量（2.38 亿 HYPE）锁仓 1 年 cliff 后于 2025-11-29 开始释放，<strong>之后每月解锁约 990 万 HYPE（按当前价约 ¥30 亿）</strong>持续到 2027-2028。Assistance Fund 月度回购约 $28M（约 ¥2 亿）仅能对冲约 7% 解锁名义量——净抛压约 $370M/月，需要持续的真实新需求才能维持当前价。a16z 在二级市场买的 $25 亿（约 ¥180 亿）也是潜在抛压源。</li>
+      <li><strong>真正的反转条件有三个</strong>：① CFTC/SEC 给出明文豁免（避开 BitMEX 老路：当年 $100M 罚款 + 三创始人认罪）；② 验证者扩容到 100+ 且分布在 30+ 国家（拆掉中心化指控）；③ Assistance Fund 永久销毁提案通过（一次性消灭 13% 流通量，对冲解锁压力）。三条至少兑现一条，HYPE 才从"投机筹码"切换成"基础设施蓝筹"。</li>
+    </ol>
+
+    <h3>如果你只能记住三件事：</h3>
+    <ul>
+      <li><strong>这是加密史上人效最高的团队</strong>。11 人撑起年化 $627M 收入，<strong>人均创收 $57M（约 ¥4.1 亿）</strong>——比任何上市公司都狠。Fortune 2026-01 封面级长文确认了这点。但反过来说：<strong>关键人（Key Man）风险也是顶级</strong>，Jeff 一个人是单点故障。</li>
+      <li><strong>护城河不是技术，是"零 VC"</strong>。CLOB 订单簿 + 自有 L1 + EVM 兼容这些技术 dYdX/Aster/Lighter 都能复刻。真正难复刻的是"31% 直接给用户、0% 给 VC"——这种筹码结构需要团队有钱（Jeff 财务自由）+ 有种（拒绝软银/a16z 的私募邀约）。中文 KOL 川沐："整个币圈历史上都没几个超越他这份格局。"</li>
+      <li><strong>美国市场被锁死，长期天花板有限</strong>。条款明文屏蔽美国 + 加拿大安大略 + 制裁国家，<strong>但前端不做强 IP 拦截</strong>——Hyperliquid Stats 自己显示 22.59% 流量来自美国。这是 CFTC 当年抓 BitMEX 的同一剧本（罚 $100M + 创始人 Hayes 认罪 + 6 个月软禁）。Hyperliquid 在华盛顿设了 DeFi 政策中心游说，但 12-24 个月的执法窗口是真实存在的。</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider-quote">"$HYPE can't handle the $JELLY. Let's stop pretending hyperliquid is decentralised."<br>— Arthur Hayes，BitMEX 创始人，2025-03-26 JELLY 事件当天</div>
+
+<section id="profile">
+  <div class="section-num">02 / 项目档案</div>
+  <h2>谁在做这件事？</h2>
+
+  <p>
+    Hyperliquid 的运营主体是 <strong>Hyperliquid Labs Pte. Ltd.</strong>，注册在新加坡，公司编号 202402326K，注册日期 2024-01-16——值得注意的是：<strong>协议 2023 年就已上线，公司 2024-01 才注册</strong>，是典型的"产品先做、公司后补"加密原生路径。新加坡选址符合监管中性 + 税务友好的常见做法。所有未公开的内容（团队完整名单、Hyper Foundation 资金构成、个别员工 vest 期）均不在官方披露范围内。
+  </p>
+
+  <h3>创始人画像：Jeff Yan（CEO）</h3>
+  <p>
+    1995/1996 年出生，<strong>Harvard 数学 + 计算机双学位（2017 届）</strong>，中学时拿过国际物理奥赛银牌（2012 爱沙尼亚）+ 金牌（2013 丹麦），代表美国队。职业路径：<strong>Google X 自动驾驶实习 → Tower Research Capital 实习 → Hudson River Trading（HRT，全球顶级量化做市商）</strong>正职做美股高频交易系统。2019 年底从 HRT 离职，搬到波多黎各，用 1 万美元（约 ¥7 万）起步创立 Chameleon Trading（加密做市公司），<strong>27 岁实现财务自由</strong>。Fortune 2026-01 封面长文称他"自己理发、只穿一款衣服、把数十亿分给陌生人"——形象在中文圈被 BlockBeats 翻译后封神。
+  </p>
+
+  <h3>联创：iliensinc</h3>
+  <p>
+    Jeff Yan 的 <strong>Harvard 同班同学</strong>，主导技术研发。公开资料极少，保持匿名风格——Hyperliquid Wiki 是唯一确认其联创身份的来源。这是加密圈相对罕见的"双头但一明一暗"结构。
+  </p>
+
+  <h3>团队 11 人 · 人效炸裂</h3>
+  <p>
+    截止 2026-01 Fortune 报道：核心团队 <strong>11 人</strong>。2024-10 Jeff 公开宣布扩招至 14 人。Wiki 列出的可识别成员（Jeff、Iliensinc、Xulian、Valinorae、Jay Gee、Ben、Adam、Kangaroo 等）背景统一是 <strong>Harvard / Caltech / MIT 校友 + 前 Citadel / Hudson River Trading / Airtable / Nuro 工程师</strong>。年化协议收入 $627M ÷ 11 人 = <strong>人均年创收约 $57M（约 ¥4.1 亿）</strong>——这是加密史上甚至整个科技史上罕见的人效数字。
+  </p>
+
+  <div class="metric-list">
+    <div class="metric-row"><div class="label">公司注册地<span class="src">新加坡公司注册局 sgpbusiness.com</span></div><div class="value">新加坡</div></div>
+    <div class="metric-row"><div class="label">协议上线<span class="src">官方 Wiki + DeFiLlama</span></div><div class="value">2023</div></div>
+    <div class="metric-row"><div class="label">TGE 代币首发<span class="src">2024-11-29 · 31% 空投给 9.4 万钱包</span></div><div class="value data">2024-11-29</div></div>
+    <div class="metric-row"><div class="label">VC 融资<span class="src">Jeff 多次公开确认 + 代币分配 0% VC</span></div><div class="value warn">从未发生</div></div>
+    <div class="metric-row"><div class="label">团队规模<span class="src">Fortune 2026-01 + PANews 一致</span></div><div class="value">11 <small>人</small></div></div>
+    <div class="metric-row"><div class="label">人均年创收<span class="src">协议年化收入 / 团队人数</span></div><div class="value pos">$57M</div></div>
+    <div class="metric-row"><div class="label">Jeff Yan 拒绝过的融资估值<span class="src">Fortune 报道</span></div><div class="value warn">$1B</div></div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">"零 VC"叙事核实结论</div>
+    <p class="callout-quote">"Hyperliquid Labs is entirely self-funded and has not taken any external capital."（基本属实，需区分 TGE 前后两阶段）</p>
+    <p style="margin-top: 16px;"><strong>TGE 前</strong>：没有任何 VC 入股，没有私募轮，代币分配 0% 给投资人。Jeff 2025-08 在推特公开否认与做市商有过任何私下分润或投资协议——拒绝了 Aster / Lighter 那种"先卖代币给 Jump、Wintermute 换流动性"的模式。</p>
+    <p><strong>TGE 后</strong>：a16z 在二级市场买入约 <strong>6,600 万 HYPE（约 $25 亿美元 / ¥180 亿）</strong>并大部分质押。Bitwise/Grayscale/21Shares/VanEck 都已申请 HYPE 现货 ETF，21Shares 的 THYP 已于 2026-05-13 在 Nasdaq 上市。这些是公开市场买入，不是项目方私募——Hyperliquid 仍是迄今主流加密项目中最干净的"零私募"案例。</p>
+  </div>
+</section>
+
+
+<section id="tokenomics">
+  <div class="section-num">03 / 代币经济学</div>
+  <h2>$627M 收入怎么传给持币者？</h2>
+
+  <p>
+    HYPE 是当前加密世界<strong>价值捕获机制最直接</strong>的代币之一——超过 BNB、超过 LINK、超过几乎所有 L1 代币。逻辑只有一条：<strong>协议手续费的 97% 自动用于在公开市场购买 HYPE，转入 Assistance Fund 系统地址</strong>。这相当于"上市公司用真实收入回购自己的股票并锁仓"，但是在区块链上 24/7 自动执行、无董事会决议、无律师审批。
+  </p>
+
+  <h3>代币分配 10 亿总量</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>分配类别</th><th>比例</th><th>数量（HYPE）</th><th>锁仓 / 释放节奏</th></tr></thead>
+      <tbody>
+        <tr class="highlight"><td class="product-name">创世空投</td><td>31.00%</td><td>3.10 亿</td><td>TGE 当天 100% 解锁立即流通 · 给 9.4 万用户</td></tr>
+        <tr><td class="product-name">未来排放<br>+ 社区奖励</td><td>38.89%</td><td>3.889 亿</td><td>排放储备池 · 6 年线性 · 第一年释放 39.24%</td></tr>
+        <tr><td class="product-name">核心贡献者<br>（团队）</td><td>23.80%</td><td>2.38 亿</td><td><strong>1 年 cliff 至 2025-11-29</strong> · 之后 24-36 个月线性释放</td></tr>
+        <tr><td class="product-name">Hyper Foundation</td><td>6.00%</td><td>6,000 万</td><td>基金会运营 / 生态建设</td></tr>
+        <tr><td class="product-name">社区拨款</td><td>0.30%</td><td>300 万</td><td>Grants 拨款 · 已部分发放</td></tr>
+        <tr><td class="product-name">HIP-2 流动性</td><td>0.01%</td><td>10 万</td><td>自动做市种子流动性</td></tr>
+        <tr class="highlight"><td class="product-name">VC / 投资人</td><td><strong>0.00%</strong></td><td><strong>0</strong></td><td><strong>无 · 这是核心叙事</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>价值捕获机制：协议费用流向</h3>
+
+  <div class="callout data">
+    <div class="callout-label">资金流向</div>
+    <p class="callout-quote">用户在 Hyperliquid 交易 → 月度约 $65M 协议收入 → 97% Assistance Fund + 3% HLP 金库 → 97% 部分用 USDC 在公开市场购买 HYPE → 转入系统地址 → 累计已回购 4,003 万 HYPE（占总供应 4%）</p>
+    <p style="margin-top: 16px;">2025 全年 Assistance Fund 回购总额 <strong>$644.64M（约 ¥46 亿）</strong>，占全行业代币回购的 <strong>46%</strong>——Hyperliquid 一家干了行业一半。当前金库持仓约 3,700 万 HYPE / $1.25B 等值。2025-12 Hyper Foundation 发起治理提案：<strong>将 Assistance Fund 内全部 HYPE 永久剔除流通</strong>（相当于一次销毁约 13% 流通量）。</p>
+  </div>
+
+  <h3>团队代币释放节奏（最大供给压力）</h3>
+
+  <div class="timeline">
+    <div class="tl-row"><div class="tl-date">2024-11</div><div class="tl-dot data"></div><div><div class="tl-title">TGE</div><div class="tl-desc">31% 创世空投 · 团队代币 100% 锁仓 · cliff 期开始</div></div></div>
+    <div class="tl-row"><div class="tl-date">2025-11</div><div class="tl-dot warn"></div><div><div class="tl-title warn">Cliff 结束 · 首次大解锁</div><div class="tl-desc">约 $308M 等值 HYPE 进入流通 · 解锁正式启动</div></div></div>
+    <div class="tl-row"><div class="tl-date">2026 Q1</div><div class="tl-dot warn"></div><div><div class="tl-title warn">每月 990 万 HYPE 释放</div><div class="tl-desc">按当前价约 $400M / 月理论供给压力</div></div></div>
+    <div class="tl-row"><div class="tl-date">2026-05</div><div class="tl-dot warn"></div><div><div class="tl-title warn">当前位置</div><div class="tl-desc">已解锁约 1,800 万 HYPE / $770M · 进入持续释放期</div></div></div>
+    <div class="tl-row"><div class="tl-date">2027 Q4</div><div class="tl-dot"></div><div><div class="tl-title">大部分员工 vest 完成</div><div class="tl-desc">剩余长期员工还有 12 个月线性</div></div></div>
+    <div class="tl-row"><div class="tl-date">2028 Q4</div><div class="tl-dot pos"></div><div><div class="tl-title">团队代币 100% 释放</div><div class="tl-desc">供给压力结束 · 真实流通市值 = FDV</div></div></div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">净抛压估算（最重要的供需数学）</div>
+    <p><strong>解锁名义量</strong>：每月约 990 万 HYPE × 当前 $42.85 ≈ <strong>$424M / 月</strong>（注意：员工实际套现速度远低于此，团队多数人会"惜售"，但理论压力是这个数字）。</p>
+    <p><strong>Assistance Fund 月度回购</strong>：约 $28M（按周回购 $7M 估算） ≈ <strong>$112M / 月</strong>（市场较好时）。</p>
+    <p><strong>净理论压力</strong>：$424M − $112M = $312M / 月 → 需要真实新增需求填补。21Shares ETF 上市 + Coinbase/Circle USDC 合作（年化给协议带来 $160M+ 额外收益）+ a16z 持仓 + 机构托管渠道是关键填补来源。</p>
+  </div>
+</section>
+
+<section id="tech">
+  <div class="section-num">04 / 技术架构</div>
+  <h2>为什么是<em>自有 L1</em>，不是以太坊 L2？</h2>
+
+  <p>
+    Hyperliquid 是<strong>少数选择"自建公链"</strong>而非寄生在以太坊 / Solana 上的衍生品协议。这不是技术炫技，是产品决策——CLOB 订单簿（订单簿撮合，类似传统交易所按价格-时间优先排队成交）需要 sub-100ms 撮合速度，以太坊 L2 做不到；同时<strong>自建链让 Sequencer（排序节点，决定谁先成交）的利润归社区 99%</strong>而非母链/项目方独占。
+  </p>
+
+  <h3>三层架构</h3>
+
+  <p>整条链分三层叠在一起：</p>
+
+  <ul>
+    <li><strong>HyperCore（原生订单簿层）</strong>——用 <strong>Rust 写的原生引擎，不是 EVM 智能合约</strong>。每笔订单、撤单、成交、清算都完全上链，比 dYdX v4 的"链下订单簿 + 链上结算"更彻底。性能：~200,000 订单/秒、~0.07 秒区块时间、一区块最终性（约 0.9 秒）。</li>
+    <li><strong>HyperEVM（EVM 兼容层）</strong>——2025-02 主网上线，与 HyperCore 共享 HyperBFT 共识。完全 EVM 兼容，以太坊生态的 Solidity dApp 可以无缝部署。关键互操作通过 Precompile（预编译合约，让 EVM 智能合约能读 HyperCore 数据）和 2025-07 上线的 CoreWriter（让 EVM 合约能向 HyperCore 发交易）。</li>
+    <li><strong>HyperBFT（共识层）</strong>——基于 HotStuff 优化的拜占庭容错共识，当前 <strong>21-24 个验证者</strong>。</li>
+  </ul>
+
+  <h3>架构 vs 同行</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>维度</th><th>Hyperliquid</th><th>dYdX v4</th><th>GMX</th><th>Drift/Jupiter</th></tr></thead>
+      <tbody>
+        <tr><td>架构</td><td>自有 L1 + 原生 CLOB</td><td>Cosmos 应用链 + 链下订单簿</td><td>Arbitrum 上 AMM 池</td><td>Solana L1 智能合约</td></tr>
+        <tr><td>订单簿位置</td><td><strong>完全链上</strong></td><td>验证者链下撮合</td><td>无订单簿（AMM 池）</td><td>链上订单簿</td></tr>
+        <tr><td>TPS</td><td>~200k 订单/秒</td><td>~2k 交易/秒</td><td>受 Arbitrum 限制</td><td>受 Solana 限制</td></tr>
+        <tr><td>最终性</td><td>~0.9 秒</td><td>~1 秒</td><td>~2 秒</td><td>~0.4 秒</td></tr>
+        <tr><td>Sequencer 利润归</td><td><strong>协议（99% 回购）</strong></td><td>协议（DYDX 持有者）</td><td>协议 + LP</td><td>Solana</td></tr>
+        <tr><td>30d 交易量</td><td>~$2,080 亿</td><td>~$50 亿</td><td>~$30 亿</td><td>~$200 亿</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>HIP-1/2/3 + Builder Code：从 DEX 到"DEX 操作系统"</h3>
+
+  <div class="metric-list">
+    <div class="metric-row"><div class="label">HIP-1<span class="src">原生代币标准（类似 ERC-20，HyperCore 原生支持）</span></div><div class="value">已上线</div></div>
+    <div class="metric-row"><div class="label">HIP-2<span class="src">Hyperliquidity · 新代币上线自动挂买卖单提供初始流动性</span></div><div class="value">已上线</div></div>
+    <div class="metric-row"><div class="label">HIP-3<span class="src">Builder-deployed Perps · 任何人质押 50 万 HYPE 即可上线自己的永续</span></div><div class="value data">2025-10</div></div>
+    <div class="metric-row"><div class="label">Builder Code 第三方分成<span class="src">钱包/终端/机器人接入抽 0.1%</span></div><div class="value pos">$40M+ 已分</div></div>
+    <div class="metric-row"><div class="label">通过第三方前端 DAU 占比<span class="src">Phantom、PVP.trade 等接入</span></div><div class="value pos">40%</div></div>
+  </div>
+
+  <p>
+    <strong>HIP-3 + Builder Code 是真正的护城河结构性创新</strong>。它让 Hyperliquid 从"perp DEX 应用"升级到"perp DEX 基础设施"——第三方做交易终端、复制交易工具、Telegram 机器人、AI 交易助手，统一从 Hyperliquid 流动性吃手续费分成。Phantom 钱包接入后单日赚 $100K、PVP.trade 累计赚 $7.2M。这种结构 CEX（Binance/OKX）永远做不到。
+  </p>
+</section>
+
+<section id="chain-data">
+  <div class="section-num">05 / 链上 KPI</div>
+  <h2>$4.32 万亿累计交易量是什么概念？</h2>
+
+  <p>
+    数据截至 2026-05-15。所有数字来自 DefiLlama、CoinGecko、ASXN Dashboard 一手抓取。
+  </p>
+
+  <div class="metric-list">
+    <div class="metric-row"><div class="label">累计永续合约交易量<span class="src">ASXN Dashboard · All-Time</span></div><div class="value pos">$4.32T</div></div>
+    <div class="metric-row"><div class="label">24h Perp 交易量<span class="src">DefiLlama Normalized · 2026-05-15</span></div><div class="value">$5.95B</div></div>
+    <div class="metric-row"><div class="label">30d Perp 交易量<span class="src">DefiLlama derivatives</span></div><div class="value">$176.4B</div></div>
+    <div class="metric-row"><div class="label">TVL（Bridge 锁仓 + 合约资产）<span class="src">DefiLlama protocol page</span></div><div class="value data">$5.08B</div></div>
+    <div class="metric-row"><div class="label">未平仓合约 OI<span class="src">DefiLlama</span></div><div class="value">$9.11B</div></div>
+    <div class="metric-row"><div class="label">累计独立用户数<span class="src">ASXN · unique addresses</span></div><div class="value">120万</div></div>
+    <div class="metric-row"><div class="label">年化协议费用<span class="src">DefiLlama · annualized</span></div><div class="value">$702.6M</div></div>
+    <div class="metric-row"><div class="label">年化协议收入（归 HYPE 持有人）<span class="src">DefiLlama · 扣除费用补贴</span></div><div class="value pos">$627.2M</div></div>
+    <div class="metric-row"><div class="label">收入 / 市值比<span class="src">$627M ÷ $10.2B 流通市值</span></div><div class="value pos">6.15%</div></div>
+    <div class="metric-row"><div class="label">HyperEVM TVL<span class="src">2025-02 上线 · 已逼近 Arbitrum $1.6B</span></div><div class="value data">$1.4B</div></div>
+    <div class="metric-row"><div class="label">HLP 历史年化收益<span class="src">2025 YTD 平均</span></div><div class="value pos">~12%</div></div>
+    <div class="metric-row"><div class="label">Assistance Fund 累计回购<span class="src">链上数据 · ASXN buybacks dashboard</span></div><div class="value pos">$890M</div></div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">人效对比（这部分容易被忽略）</div>
+    <p>11 人团队 vs 主要竞争对手公司规模：<strong>Binance ≈ 8,000 人</strong>、<strong>OKX ≈ 5,000 人</strong>、<strong>Coinbase ≈ 4,500 人</strong>、<strong>dYdX ≈ 80 人</strong>。Hyperliquid 11 人创造 $627M 年化收入意味着<strong>每人贡献相当于 Binance 等 CEX 200-300 倍的人均产出</strong>——这种工程文化是这家公司最不容易被复刻的东西。</p>
+  </div>
+</section>
+
+<section id="competitors">
+  <div class="section-num">06 / 竞品格局</div>
+  <h2>Perp DEX 赛道横向对比</h2>
+
+  <p>
+    去中心化永续合约（perp DEX）2025 全年累计量 <strong>$7.9 万亿美元（约 ¥57 万亿）</strong>，比 2024 增长 3 倍。Hyperliquid 一家贡献了大部分增量。但 2025-Q4 起 Aster（CZ 站台）和 Lighter（a16z 投资）开始撕咬市场份额——一家独大格局正在被冲淡。
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>产品</th><th>架构</th><th>24h 量</th><th>30d 量</th><th>代币 FDV</th><th>差异化</th></tr></thead>
+      <tbody>
+        <tr class="highlight"><td class="product-name">Hyperliquid <span class="tag">头部</span></td><td>自有 L1 + CLOB</td><td>$5.95B</td><td>$176B</td><td>$41B</td><td>零 VC · 99% 回购 · 11 人</td></tr>
+        <tr><td class="product-name">Aster</td><td>BNB Chain L1 混合</td><td>$1.76B</td><td>$52B</td><td>~$5B</td><td>CZ + YZi Labs 站台 · 1001x 杠杆</td></tr>
+        <tr><td class="product-name">Lighter</td><td>Ethereum L2 + ZK</td><td>$1.61B</td><td>$40B</td><td>未发币</td><td>a16z + Founders Fund · ZK 撮合证明</td></tr>
+        <tr><td class="product-name">edgeX</td><td>应用链 CLOB</td><td>$1.09B</td><td>$45B</td><td>未发币</td><td>高频友好</td></tr>
+        <tr><td class="product-name">ApeX</td><td>多链 zkLink</td><td>$1.24B</td><td>$36B</td><td>~$200M</td><td>Bybit 系孵化 · Dragonfly 投</td></tr>
+        <tr><td class="product-name">GMX v2</td><td>Arbitrum AMM 池</td><td>低</td><td>$3.1B</td><td>$73M</td><td>老牌池子模型 · LP 拿 63% 费</td></tr>
+        <tr><td class="product-name">Jupiter Perps</td><td>Solana + JLP 池</td><td>中</td><td>$5.6B</td><td>$8B+</td><td>Solana 龙头 · JLP 12% APY</td></tr>
+        <tr><td class="product-name">dYdX v4</td><td>Cosmos 应用链</td><td>低</td><td>$4B</td><td>$132M</td><td>老牌 CLOB · 220+ 市场</td></tr>
+        <tr><td class="product-name">Drift</td><td>Solana 混合</td><td>低</td><td>~$2B</td><td>$20M</td><td>Solana #2 · 50+ 市场</td></tr>
+        <tr><td class="product-name">Aevo</td><td>OP Stack L2</td><td>低</td><td>$92M</td><td>$27M</td><td>永续 + 期权一体</td></tr>
+        <tr><td class="product-name">Paradex</td><td>StarkNet 应用链</td><td>中</td><td>$642M</td><td>$4.3M</td><td>Paradigm 孵化 · 机构级</td></tr>
+        <tr><td class="product-name">Vertex</td><td>Arbitrum 混合</td><td>~$0</td><td>停滞</td><td>~$0</td><td>已被市场淘汰</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>关键挑战者三剑客</h3>
+
+  <p>
+    <strong>Aster</strong>（2025-09 TGE）—— CZ 个人持仓 250 万美元、Binance Labs 母公司 YZi Labs 站台。BNB Chain 上的混合架构（订单簿 + AMM），最高 1001x 杠杆。首日量冲到 $37 亿，目前 24h 量 $17.6 亿——是 Hyperliquid 的 30%，已是次于 Hyperliquid 的明确第二名。<strong>风险</strong>：流量被怀疑有"刷量"成分，CZ 的政治化操作把它推到风口浪尖。
+  </p>
+
+  <p>
+    <strong>Lighter</strong>（2025 早期上线）—— a16z + Founders Fund + Dragonfly 投资，Ethereum L2 上的 <strong>ZK Rollup CLOB</strong>（用零知识证明保证撮合公正性）。当前积分激励刷量阶段，24h 量 $16 亿。<strong>护城河</strong>：技术上"链下撮合 + ZK 证明"理论可以做到比 Hyperliquid 还快还便宜，同时保持"可验证"。
+  </p>
+
+  <p>
+    <strong>ApeX</strong>—— Bybit 系（关联 Davion Labs）+ Dragonfly Capital + Tiger Global 投资。24h 量 $12.4 亿。Bybit 用户搬家的明确接收方。
+  </p>
+
+  <div class="callout warn">
+    <div class="callout-label">市场份额变化（关键警示）</div>
+    <p>Hyperliquid 在 2025-Q3 高峰时占去中心化永续合约市场 <strong>70-80%</strong>。<strong>2025-Q4 起被 Aster + Lighter 切走</strong>，目前已下滑到 <strong>27.9%</strong>（24h 量口径）。一家独大格局不存在了——这是估值需要重新校准的关键变量。</p>
+  </div>
+</section>
+
+<section id="cex-compare">
+  <div class="section-num">07 / VS 中心化交易所</div>
+  <h2>Binance 仍然是它 <em>8.7 倍</em></h2>
+
+  <p>
+    放眼整个永续合约市场（CEX + DEX 合计 24h 约 $4,630 亿美元），DEX 总量只占 <strong>2-3%</strong>。Hyperliquid 在 DEX 里是龙头，但放到全市场只占 <strong>1.3%</strong>。Binance 单家是它的 8.7 倍。下表是 5 家头部永续业务横向对比：
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>平台</th><th>24h 永续量</th><th>OI 未平仓</th><th>上市永续数</th><th>最大杠杆</th><th>KYC</th><th>关键风险事件</th></tr></thead>
+      <tbody>
+        <tr><td class="product-name">Binance</td><td>$51.8B</td><td>$275B</td><td>648</td><td>125x</td><td>强 KYC + 美国封禁</td><td>2023 DOJ + OFAC 罚 $43亿 · CZ 认罪</td></tr>
+        <tr><td class="product-name">OKX</td><td>$22.0B</td><td>$80B</td><td>357</td><td>125x</td><td>强 KYC + 美国封禁</td><td>多国合规争议</td></tr>
+        <tr><td class="product-name">Bybit</td><td>$12.5B</td><td>$121B</td><td>733</td><td>100x</td><td>强 KYC</td><td><strong>2025-02 被朝鲜黑客盗 $14.6 亿</strong>（史上最大单次加密黑客）</td></tr>
+        <tr><td class="product-name">Bitget</td><td>$8.6B</td><td>$82B</td><td>648</td><td>125x</td><td>强 KYC + 美国封禁</td><td>2025-04 VOXEL 拉盘事件 · 起诉用户索赔 $2000万</td></tr>
+        <tr class="highlight"><td class="product-name">Hyperliquid <span class="tag">对照</span></td><td>$5.95B</td><td>$9.1B</td><td>340</td><td>40-50x</td><td><strong>无 KYC</strong> + 美国地理屏蔽</td><td>2024-12 朝鲜地址未冻结 · 2025-03 JELLY 事件</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>用户切换到 Hyperliquid 的真实驱动力</h3>
+
+  <p>来自中文调研员的关键洞察：中文加密用户从 CEX 切换到 Hyperliquid 的真实驱动，<strong>不是"去中心化情怀"</strong>，而是 5 个非常实用的硬需求：</p>
+
+  <div class="two-col">
+    <div class="col-card pos">
+      <h4>Hyperliquid 真实优势</h4>
+      <ul>
+        <li><strong>巨鲸隐私</strong>——CEX KYC 后大户行为可追踪，Hyperliquid 钱包地址公开但身份匿名</li>
+        <li><strong>抢跑首发合约</strong>——TRUMP、CBRS、SpaceX、Anthropic 等都是它先上永续</li>
+        <li><strong>链上跟单</strong>——巨鲸仓位 100% 透明可看，James 等 KOL 的"金钱与影响力循环"</li>
+        <li><strong>HLP 双重激励</strong>——12% 被动做市 APR + 潜在空投积分</li>
+        <li><strong>7×24 美股商品永续</strong>——周末原油、NVIDIA、S&amp;P500 都能交易</li>
+        <li><strong>无 KYC 钱包直连</strong>——FTX 后大户对 KYC 极度排斥</li>
+      </ul>
+    </div>
+    <div class="col-card warn">
+      <h4>CEX 仍不可替代的部分</h4>
+      <ul>
+        <li>法币出入金（Hyperliquid 必须先有加密资产）</li>
+        <li>客服 + 异常处理（出问题就是出问题）</li>
+        <li>保险基金（Binance 有 $10 亿保险池）</li>
+        <li>监管合规（美国市场完全锁死）</li>
+        <li>最高 125x 杠杆（Hyperliquid 40-50x）</li>
+        <li>340 vs 648-733 上市资产数</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="community">
+  <div class="section-num">08 / 市场情绪</div>
+  <h2>"6 different computers in Jeff's office"</h2>
+
+  <p>
+    海外加密圈对 Hyperliquid 的口碑是<strong>"产品 9/10、去中心化 4/10、整体 7.5/10"</strong>——支持派盛赞，反对派把"中心化"作为最大攻击点。下面收集了 TGE 至今的关键 KOL 原话——保留英文原文以保真。
+  </p>
+
+  <h3>看多派代表观点</h3>
+
+  <div class="quote">
+    "yeah, hyperliquid definitely moves fast, and seems most in tune with their userbase."
+    <div class="quote-attr">Hsaka Trades（顶级匿名交易员），2023</div>
+  </div>
+
+  <div class="quote">
+    "Not listing HYPE is helping Hyperliquid more than listing would. I would say it's the only barrier."
+    <div class="quote-attr">Cobie（加密 OG KOL），2025-10-17：HYPE 没上 Binance 反而帮了它</div>
+  </div>
+
+  <div class="quote">
+    "Harvard grad helped make Hyperliquid the biggest new player in crypto."
+    <div class="quote-attr">Fortune 2026-01 封面长文标题</div>
+  </div>
+
+  <div class="quote">
+    "Hyperliquid 把 97% 的收入直接用于回购 HYPE……整个币圈历史上都没几个超越他这份格局。我今天也是第一次知道，如果知道早，肯定梭哈了。"
+    <div class="quote-attr">@xiaomustock 川沐 \| Trumoo，2025-11-06（300 点赞 / 9.3 万阅读）</div>
+  </div>
+
+  <h3>看空派代表观点（更值得听）</h3>
+
+  <div class="quote">
+    "$HYPE can't handle the $JELLY. Let's stop pretending that Hyperliquid is decentralized, and let's stop pretending that traders really care."
+    <div class="quote-attr">Arthur Hayes，BitMEX 创始人，2025-03-26</div>
+  </div>
+
+  <div class="quote">
+    "#Hyperliquid may be on track to become #FTX 2.0. The way it handled the $JELLY incident was immature, unethical, and unprofessional, triggering user losses and casting serious doubts over its integrity."
+    <div class="quote-attr">Gracy Chen，Bitget CEO，2025-03-26</div>
+  </div>
+
+  <div class="quote">
+    "The validators are just 6 different computers in Jeff's office."
+    <div class="quote-attr">Reddit r/CryptoCurrency JELLY 事件帖最高赞（35 票）</div>
+  </div>
+
+  <div class="quote">
+    "no multisig that can pause withdrawals, block addresses (like Hyperliquid)" — 这是"真 DeFi"的标准，Hyperliquid 不符合。
+    <div class="quote-attr">DefiIgnas（同盟者），2026-04-02 自己点名 Hyperliquid 不是真 DeFi</div>
+  </div>
+
+  <div class="quote">
+    "if i was the dude managing Hyperliquid's 4 validators (or those fucking ghetto ass binaries on gh) I would be shitting my pants right now."
+    <div class="quote-attr">Tay Monahan，MetaMask 首席安全研究员，2024-12 北朝鲜地址事件</div>
+  </div>
+
+  <div class="quote">
+    "whats the reason that, aside from crime, hlp hasnt been profitable in 6 months."
+    <div class="quote-attr">推特用户 @176_sol，2026-05-14（连存款人都自嘲 HLP 利润主要来自"罪犯亏钱"）</div>
+  </div>
+
+  <h3>分项口碑评分</h3>
+
+  <div class="score-card">
+    <div class="score-row"><div class="name">产品体验</div><div class="bar"><div class="bar-fill pos" style="width: 90%;"></div></div><div class="num">9 / 10</div></div>
+    <div class="score-row"><div class="name">代币经济学</div><div class="bar"><div class="bar-fill pos" style="width: 90%;"></div></div><div class="num">9 / 10</div></div>
+    <div class="score-row"><div class="name">团队执行力</div><div class="bar"><div class="bar-fill pos" style="width: 90%;"></div></div><div class="num">9 / 10</div></div>
+    <div class="score-row"><div class="name">生态扩展</div><div class="bar"><div class="bar-fill pos" style="width: 80%;"></div></div><div class="num">8 / 10</div></div>
+    <div class="score-row"><div class="name">监管 / 风险韧性</div><div class="bar"><div class="bar-fill warn" style="width: 60%;"></div></div><div class="num">6 / 10</div></div>
+    <div class="score-row"><div class="name">估值合理性</div><div class="bar"><div class="bar-fill warn" style="width: 50%;"></div></div><div class="num">5 / 10</div></div>
+    <div class="score-row"><div class="name">去中心化叙事</div><div class="bar"><div class="bar-fill warn" style="width: 40%;"></div></div><div class="num">4 / 10</div></div>
+  </div>
+</section>
+
+
+<section id="china">
+  <div class="section-num">09 / 中文圈认知</div>
+  <h2>"链上币安"叙事 vs "估值已透支"反方</h2>
+
+  <p>
+    中文加密原生圈对 Hyperliquid 的认知度评级 <strong>9.5/10</strong>——是 BTC/ETH/SOL/BNB 之后最被讨论的项目。但跨出加密原生圈到泛中文创投圈（即刻为代表）则几乎归零——<strong>Hyperliquid 没有破圈到中文创投圈</strong>，仅在加密原生用户中是日常话题。
+  </p>
+
+  <div class="metric-list">
+    <div class="metric-row"><div class="label">中文加密原生圈认知度<span class="src">推特中文区 + 巴比特 + Foresight + 深潮</span></div><div class="value pos">9.5 / 10</div></div>
+    <div class="metric-row"><div class="label">中文加密泛圈认知度<span class="src">B 站 40+ 视频 · 单视频最高 2.8 万播放</span></div><div class="value">6 / 10</div></div>
+    <div class="metric-row"><div class="label">中文创投圈认知度<span class="src">即刻几乎无相关讨论</span></div><div class="value warn">2 / 10</div></div>
+    <div class="metric-row"><div class="label">看多 / 看空 / 观望比例<span class="src">综合中文 KOL 推特和深度文统计</span></div><div class="value">65 / 25 / 10</div></div>
+    <div class="metric-row"><div class="label">中文版主流叙事<span class="src">B 站 / 推特中文区高频词</span></div><div class="value data">"链上币安"</div></div>
+  </div>
+
+  <h3>中文圈三大看多论点</h3>
+
+  <ol>
+    <li><strong>"无 VC、利润回购、格局大"</strong>——中文圈对 Hyperliquid 最敬重的就是这一点。@xiaomustock 川沐："97% 收入用于回购……整个币圈历史上都没几个超越他这份格局"。BlockBeats 翻译 Colossus 的 Jeff Yan 长文《天外有天》在中文圈被疯传，让 Jeff 成为加密圈仅次于 CZ/SBF/Vitalik 的中文识别度人物。</li>
+    <li><strong>"链上币安、衍生品赛道第一"</strong>——B 站视频的核心叙事词。Token 老王、加密肥猫大壮、慢富心法等 KOL 都在做长篇科普。Foresight News 给出最有力的支持论据："在币圈，千夫所指并不可怕，无可替代才是王牌。"</li>
+    <li><strong>"必配仓位（但不梭哈）"</strong>——多名中文 KOL 把 HYPE 与 BTC/ETH 并列为"必配仓位"。@CryptoJ29 加密刀客 Luca："一定要买点肯定会涨的现货仓位放到冷钱包：$BTC $ETH $HYPE $ZEC $TAO。"配置方式多为"配置一点而非梭哈"。</li>
+  </ol>
+
+  <h3>中文圈三大看空论点</h3>
+
+  <ol>
+    <li><strong>估值已透支</strong>——Odaily 翻译 Catrina 的看空文章：FDV 400 亿 USD 接近纳斯达克历史高点（570 亿 USD），75% 未解锁，"边际买家从哪来"。</li>
+    <li><strong>中心化质疑（JELLY 事件后遗症）</strong>——Bitget CEO Gracy Chen "不是真正 DEX，是离岸 CEX"、Arthur Hayes 的金句被中文圈反复引用。</li>
+    <li><strong>关键人风险 + 合规风险</strong>——知乎评论："11 人团队，核心人物 Jeff 无公开继任计划"、"最重要就是 KYC，合规就是灭亡时刻"。</li>
+  </ol>
+
+  <h3>中国市场可达性</h3>
+
+  <div class="callout">
+    <div class="callout-label">中文用户实际访问情况</div>
+    <p><strong>条款层面</strong>：明文禁止美国 + 加拿大安大略 + 制裁国家（伊朗、朝鲜、叙利亚、古巴、克里米亚、顿涅茨克、卢甘斯克）。<strong>中国大陆并未被明确写入受限名单</strong>，但中国警方 2025 年起已立案 3 起涉 Hyperliquid 的洗钱案件——中国大陆实际处于"灰色地带"。</p>
+    <p><strong>实操层面</strong>：网页能加载（CDN 未屏蔽），但官方界面仅英文。中文用户多通过 VPN + 海外钱包 + 海外银行卡入金 USDC。Similarweb 显示流量分布：美国 22.59%、新加坡 7.45%、香港 6.43%——<strong>无中国大陆显式占比，但部分新加坡/香港流量可能是中国 VPN 出口</strong>。</p>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="section-num">10 / 风险与争议</div>
+  <h2>BitMEX <em>剧本</em>正在重演？</h2>
+
+  <p>
+    Hyperliquid 风险面综合评分 <strong>7.5/10（高）</strong>。这不是"市场波动"风险，是"如果监管或黑天鹅发生就会直接归零"的尾部风险。下面是必看的 4 个核心风险维度。
+  </p>
+
+  <h3>1. JELLY 事件（2025-03-26）—— "去中心化神话"破灭日</h3>
+
+  <div class="timeline">
+    <div class="tl-row"><div class="tl-date">12:53 UTC</div><div class="tl-dot"></div><div><div class="tl-title">攻击者建仓</div><div class="tl-desc">2.15 亿 JELLY 空单 · 同时在 DEX 砸盘 JELLY 现货</div></div></div>
+    <div class="tl-row"><div class="tl-date">13:03 UTC</div><div class="tl-dot warn"></div><div><div class="tl-title warn">HLP 被迫接盘</div><div class="tl-desc">3.98 亿 JELLY 空单转给 HLP 自营做市金库</div></div></div>
+    <div class="tl-row"><div class="tl-date">14:30 UTC</div><div class="tl-dot warn"></div><div><div class="tl-title warn">HLP 浮亏 $13.5M</div><div class="tl-desc">JELLY 被拉盘 400% · HYPE 单日跌 22%</div></div></div>
+    <div class="tl-row"><div class="tl-date">15:15 UTC</div><div class="tl-dot warn"></div><div><div class="tl-title warn">验证者 2 分钟全票投票下架</div><div class="tl-desc">按 $0.0095 强制结算（市价 $0.50）· HLP 反盈 $700K</div></div></div>
+    <div class="tl-row"><div class="tl-date">15:47 UTC</div><div class="tl-dot data"></div><div><div class="tl-title">官方公告 + 用户补偿</div><div class="tl-desc">除"flagged 地址"外全部用户由基金会补偿</div></div></div>
+    <div class="tl-row"><div class="tl-date">事件后 24h</div><div class="tl-dot warn"></div><div><div class="tl-title warn">$184M USDC 流出</div><div class="tl-desc">短期信任冲击 · 部分用户撤资</div></div></div>
+  </div>
+
+  <p>
+    <strong>事件揭示的真相</strong>：21 个验证者中 5 个核心节点控制 81% 质押 HYPE（全在 Hyper Foundation 旗下），能在 2 分钟内集体决议下架资产、按非市价结算。这等同 CEX 的中心化操作，只不过名义上叫"验证者投票"。这是 Hyperliquid 最大的品牌伤口——从此<strong>"DEX"标签必须打折</strong>。
+  </p>
+
+  <h3>2. 北朝鲜 Lazarus 地址事件（2024-12）</h3>
+
+  <p>
+    链上侦探 Tayvano 公开警告：多个被标记为 DPRK（朝鲜国家级黑客组织）的钱包在 Hyperliquid 上交易并亏损 <strong>$700K（约 ¥500 万）</strong>。Hyperliquid Labs 官方回应"无 DPRK 漏洞"，但<strong>没有任何反洗钱（AML）程序</strong>。MetaMask 安全研究员 Mudit Gupta 警告 Hyperliquid 的桥（bridge，跨链资产托管合约）是 <strong>"2/3 多签 + 单一 binary 程序"</strong> = 单点故障。这是 OFAC 制裁名单地址在 Hyperliquid 上自由交易的合规炸弹。
+  </p>
+
+  <h3>3. CFTC / SEC 监管风险（最严重的尾部风险）</h3>
+
+  <div class="callout warn">
+    <div class="callout-label">BitMEX 先例（2021 CFTC 结案）</div>
+    <p>五家 BitMEX 实体合计罚 <strong>$100M</strong>（CFTC $50M + FinCEN $50M），三创始人 Hayes / Delo / Reed <strong>每人追加 $10M</strong> 民事罚款 + 全部认罪 BSA 违法。罪名核心：<strong>"Operating a facility to trade swaps without being a DCM/SEF（指定合约市场 / 互换执行机构） + AML failure"</strong>。Hyperliquid <strong>具备 BitMEX 当年全部违规要素</strong>：向美国用户提供 swap、无 AML、无 KYC、给杠杆服务——区别只在创始人在美国境外（新加坡）。</p>
+  </div>
+
+  <p>
+    Hyperliquid 服务条款明文禁止美国用户，<strong>但前端不做强 IP 拦截</strong>——CFTC 当年抓 BitMEX 就直接戳穿过"Terms-only"屏蔽这个套路。Hyperliquid 2025-11 在华盛顿设了 DeFi 政策中心做游说，但 12-24 个月的执法窗口是真实存在的。一旦执法启动，参考 BMEX 估值蒸发幅度，HYPE 至少 -60%。
+  </p>
+
+  <h3>4. 集中度与代码风险</h3>
+
+  <div class="metric-list">
+    <div class="metric-row"><div class="label">验证者数量<span class="src">从 4 个 → 21 个，仍偏少</span></div><div class="value warn">21</div></div>
+    <div class="metric-row"><div class="label">Hyper Foundation 控质押比<span class="src">链上数据估算</span></div><div class="value warn">~81%</div></div>
+    <div class="metric-row"><div class="label">桥多签结构<span class="src">Mudit Gupta 评估</span></div><div class="value warn">2/3 of 4</div></div>
+    <div class="metric-row"><div class="label">代码开源情况<span class="src">官方文档 + 第三方审计页</span></div><div class="value warn">HyperCore 闭源</div></div>
+    <div class="metric-row"><div class="label">已审计部分<span class="src">仅 bridge 合约 · Zellic 2023</span></div><div class="value warn">仅 bridge</div></div>
+    <div class="metric-row"><div class="label">Bug Bounty 计划<span class="src">无公开 Immunefi / HackerOne</span></div><div class="value warn">无</div></div>
+  </div>
+
+  <h3>5. 竞品反制</h3>
+
+  <p>
+    <strong>Binance 立场</strong>：上 HYPE 永续（75x，2025-05），但<strong>不上 HYPE 现货</strong>——CZ 称"交易者不喜欢全透明订单簿"。Jeff Yan 拒绝过 Binance 上币邀约。<strong>CZ 自推 Aster</strong>抢市场份额，Hyperliquid 占 DEX 市场从 70% 跌到 27.9%。<strong>a16z 同时投 Lighter</strong>对冲 Hyperliquid（虽然也持仓 HYPE）。
+  </p>
+</section>
+
+<section id="feasibility">
+  <div class="section-num">11 / 投资可行性</div>
+  <h2>三个维度同时打分</h2>
+
+  <div class="score-card">
+    <div class="score-row"><div class="name">业务基本面</div><div class="bar"><div class="bar-fill pos" style="width: 90%;"></div></div><div class="num">9 / 10</div></div>
+    <div class="score-row"><div class="name">价值捕获模型</div><div class="bar"><div class="bar-fill pos" style="width: 95%;"></div></div><div class="num">9.5/ 10</div></div>
+    <div class="score-row"><div class="name">人效 / 团队</div><div class="bar"><div class="bar-fill pos" style="width: 95%;"></div></div><div class="num">9.5/ 10</div></div>
+    <div class="score-row"><div class="name">护城河 / 差异化</div><div class="bar"><div class="bar-fill pos" style="width: 75%;"></div></div><div class="num">7.5/ 10</div></div>
+    <div class="score-row"><div class="name">机构采用度</div><div class="bar"><div class="bar-fill" style="width: 70%;"></div></div><div class="num">7 / 10</div></div>
+    <div class="score-row"><div class="name">估值吸引力</div><div class="bar"><div class="bar-fill warn" style="width: 50%;"></div></div><div class="num">5 / 10</div></div>
+    <div class="score-row"><div class="name">解锁压力</div><div class="bar"><div class="bar-fill warn" style="width: 40%;"></div></div><div class="num">4 / 10</div></div>
+    <div class="score-row"><div class="name">监管韧性</div><div class="bar"><div class="bar-fill warn" style="width: 30%;"></div></div><div class="num">3 / 10</div></div>
+    <div class="score-row"><div class="name">去中心化</div><div class="bar"><div class="bar-fill warn" style="width: 45%;"></div></div><div class="num">4.5/ 10</div></div>
+    <div class="score-row"><div class="name">综合投资评级</div><div class="bar"><div class="bar-fill" style="width: 70%;"></div></div><div class="num">7 / 10</div></div>
+  </div>
+
+  <h3>支撑长期价值的 5 个真实理由</h3>
+
+  <div class="two-col">
+    <div class="col-card pos">
+      <h4>正面驱动</h4>
+      <ul>
+        <li><strong>$627M 年化收入 + 99% 回购</strong>：行业最干净的价值捕获</li>
+        <li><strong>11 人 / 人均 $57M 创收</strong>：人效护城河难复刻</li>
+        <li><strong>零 VC、零 OTC、零私募</strong>：筹码结构无可挑剔</li>
+        <li><strong>HIP-3 + Builder Code 生态外延</strong>：从应用升级到基础设施</li>
+        <li><strong>21Shares ETF + Coinbase/Circle USDC 合作</strong>：机构通道打开</li>
+      </ul>
+    </div>
+    <div class="col-card warn">
+      <h4>负面压制</h4>
+      <ul>
+        <li><strong>FDV $41B vs 流通市值 $10.2B</strong>：未来 75% 释放需求要填补</li>
+        <li><strong>2025-Q4 起 Aster / Lighter 切走份额</strong>：从 70% 跌到 28%</li>
+        <li><strong>CFTC / SEC 12-24 月执法窗口</strong>：BitMEX 老路 -60% 风险</li>
+        <li><strong>验证者集中（21 个 / Foundation 控 81%）</strong>：去中心化标签待打折</li>
+        <li><strong>美国市场完全锁死</strong>：长期天花板有限</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="decision">
+  <div class="section-num">12 / 三条投资路径</div>
+  <h2>给非职业投资者的具体建议</h2>
+
+  <div class="verdict">
+    <div class="verdict-title">最终判断 · 配置可以、梭哈不行</div>
+    <h3>HYPE 是<br>"<em>低弹性蓝筹</em>"<br>不是"财富密码"。</h3>
+    <p>它是当前加密世界里<strong>唯一在"产品+收入+回购"三角同时领先</strong>的代币。买它是买"链上 BitMEX 的现金奶牛"——不要期待 10x、不要梭哈、但 5-15% 的加密配置仓位是合理的。真正的反转点在 CFTC/SEC 明文豁免、验证者扩容、Assistance Fund 永久销毁——三件至少兑现一件，再考虑加仓。</p>
+    <div class="verdict-options">
+      <div class="verdict-option">
+        <div class="num">PATH A · 低风险</div>
+        <h4>5% 仓位试水</h4>
+        <p>把它当作"另类 BTC"，仓位 5% 以下。波动大时也不肉痛。等三个反转条件之一兑现再考虑加仓到 10-15%。</p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">PATH B · 中风险</div>
+        <h4>10-15% 主力配置</h4>
+        <p>愿意接受"和 Crypto 总盘共进退 + Alpha 一点"的回报，承认监管尾部风险。设好止损线（如跌破 $25 减半）。</p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">PATH C · 高风险</div>
+        <h4>25%+ 梭哈持有</h4>
+        <p>认为它会变成"链上 CME（芝加哥商品交易所）"，市值奔 $50B+。<strong>不推荐</strong>——监管 + 解锁 + 竞品三重压力下，回撤可能 -70%。</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Path A · 30 天行动指南（推荐路径）</h3>
+  <div class="path-detail">
+    <div class="path-card a">
+      <div class="path-num">第 1-15 天 · 建立观察仓</div>
+      <h4>用 5% 加密仓位建仓 + 监控信号</h4>
+      <p>不追高，分批建仓平均成本。同时建立监控清单：</p>
+      <ul>
+        <li>每周看一次 DefiLlama 永续 DEX 市占率（跌破 25% 是预警）</li>
+        <li>每月看一次 Assistance Fund 累计回购量</li>
+        <li>关注 CFTC 是否对永续 DEX 启动调查</li>
+        <li>关注团队代币每月解锁 + 链上钱包动向</li>
+      </ul>
+    </div>
+    <div class="path-card a">
+      <div class="path-num">第 16-30 天 · 加深理解 + 实操</div>
+      <h4>真实使用产品 + 等反转信号</h4>
+      <p>不交易也要用，理解护城河来源：</p>
+      <ul>
+        <li>真实开一笔小额永续合约（$100 以内），体验 CLOB 速度</li>
+        <li>看一遍 HLP 金库历史曲线（理解黑天鹅风险）</li>
+        <li>读 Fortune + Bloomberg + Delphi Digital 长文（理解叙事）</li>
+        <li>等三个反转条件之一兑现：CFTC 豁免、验证者 100+、AF 销毁通过</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Path B · 30 天行动指南</h3>
+  <ol>
+    <li><strong>第 1-7 天</strong>：分 5 批建仓（每批 2-3 天）共 10-15% 加密仓位，避免一次性买在阶段顶。</li>
+    <li><strong>第 8-15 天</strong>：用其中 1/3 仓位的 USDC 存 HLP 拿做市收益（12% APR 左右），熟悉链上操作。</li>
+    <li><strong>第 16-25 天</strong>：设好硬性止损（如跌破 $25 减半仓位、跌破 $18 清仓）；订阅 @HyperliquidX + @chameleon_jeff + 知名空头 Bitget Gracy Chen 推特。</li>
+    <li><strong>第 26-30 天</strong>：建立"每月解锁日"前后 3 天观察清单（关注大额转账 + 价格短期反应）。</li>
+    <li><strong>持续</strong>：每季度复盘一次 DefiLlama 收入数据，年化收入跌破 $400M 就重新评估持仓。</li>
+  </ol>
+
+  <h3>不论选哪条路，都要避开的 4 个坑</h3>
+  <ul>
+    <li><strong>不要用美国 IP 注册</strong>。条款明文禁止，未来 CFTC 执法时美国用户可能被冻结资产。</li>
+    <li><strong>不要把 HYPE 当作"DeFi 蓝筹"</strong>。它本质是"半中心化交易所平台代币"，估值锚要看 BNB / OKB / BMEX，而不是 ETH。</li>
+    <li><strong>不要在团队代币解锁日前一周加仓</strong>。每月 6 号附近是固定供给冲击日（虽然实际抛售速度未必到位，但情绪压力存在）。</li>
+    <li><strong>不要 100% 信"99% 回购销毁"</strong>。回购的 HYPE 目前仍在 Assistance Fund 国库里（占总量 4%），<strong>永久销毁提案尚未通过</strong>——如果某天 Foundation 改变主意把这部分代币重新流通，就是黑天鹅级抛压。</li>
+  </ul>
+
+  <div class="callout warn">
+    <div class="callout-label">最后一句</div>
+    <p class="callout-quote">"你最大的优势不是资金、不是消息，是你不需要在这一个项目上赢。"</p>
+    <p style="margin-top: 12px;">Hyperliquid 是优秀的项目，但不是必持的项目。加密世界还有很多比它更便宜、更小的机会。把 HYPE 当作"配置型蓝筹"，配 5-15%，剩下的精力去找下一个"$3.81 起步的 11 人团队"——那才是真正的财富密码。</p>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer>
+<div class="footer-inner">
+<h4>主要一手数据 / 链接来源</h4>
+<ul>
+  <li>DefiLlama Hyperliquid 协议页 · <a href="https://defillama.com/protocol/hyperliquid">defillama.com</a></li>
+  <li>DefiLlama Derivatives 排行 · <a href="https://defillama.com/derivatives">defillama.com</a></li>
+  <li>CoinGecko Hyperliquid · <a href="https://www.coingecko.com/en/coins/hyperliquid">coingecko.com</a></li>
+  <li>ASXN Hyperscreener · <a href="https://hyperscreener.asxn.xyz/">asxn.xyz</a></li>
+  <li>Hyperliquid 官方文档 · <a href="https://hyperliquid.gitbook.io">gitbook.io</a></li>
+  <li>Hyperliquid Wiki · <a href="https://hyperliquid-co.gitbook.io/wiki">gitbook.io</a></li>
+  <li>Tokenomist HYPE 释放 · <a href="https://tokenomist.ai/hyperliquid">tokenomist.ai</a></li>
+  <li>新加坡公司注册 · <a href="https://www.sgpbusiness.com/company/Hyperliquid-Labs-Pte-Ltd">sgpbusiness.com</a></li>
+  <li>Fortune 2026-01 长文 · <a href="https://fortune.com/2026/01/12/hyperliquid-jeff-yan-defi-perpetuals-perps-exchange-defi/">fortune.com</a></li>
+  <li>Bloomberg 2025-10 · <a href="https://www.bloomberg.com/news/articles/2025-10-16/inside-hyperliquid-the-crypto-exchange-behind-billions-in-trades">bloomberg.com</a></li>
+  <li>CoinDesk JELLY 报道 · <a href="https://www.coindesk.com/markets/2025/03/26/hyperliquid-delists-jellyjelly-after-vault-squeezed-in-usd13m-tussle">coindesk.com</a></li>
+  <li>Delphi Digital "Beyond the Hype" · <a href="https://members.delphidigital.io/reports/beyond-the-hype-an-objective-analysis-of-hyperliquid">delphidigital.io</a></li>
+  <li>OAK Research JELLY 拆解 · <a href="https://oakresearch.io/en/analyses/investigations/hyperliquid-jelly-attack-context-vulnerability-team-solution">oakresearch.io</a></li>
+  <li>Halborn JELLY 安全报告 · <a href="https://www.halborn.com/blog/post/explained-the-hyperliquid-hack-march-2025">halborn.com</a></li>
+  <li>Arrington Capital 三条建议 · <a href="https://www.arringtoncapital.com/blog/hyperliquids-tipping-point-three-things-they-must-do-now/">arringtoncapital.com</a></li>
+  <li>CFTC BitMEX 罚款 · <a href="https://www.cftc.gov/PressRoom/PressReleases/8412-21">cftc.gov</a></li>
+  <li>BlockBeats Jeff Yan 长文 · <a href="https://m.theblockbeats.info/news/61946">theblockbeats.info</a></li>
+  <li>Foresight News Hyperliquid · <a href="https://foresightnews.pro/article/detail/81076">foresightnews.pro</a></li>
+  <li>深潮 TechFlow 财库股分析 · <a href="https://www.techflowpost.com/zh-CN/article/31205">techflowpost.com</a></li>
+  <li>PANews 2025 年度回顾 · <a href="https://www.panewslab.com/zh/articles/fbda8509-3545-4dcc-b3a7-4e6f09d2a64c">panewslab.com</a></li>
+  <li>Reddit JELLY 讨论 · <a href="https://old.reddit.com/r/CryptoCurrency/comments/1jkmz9b/hyperliquid_jelly/">reddit.com</a></li>
+  <li>Cobie 推文 · <a href="https://x.com/cobie/status/1979087571264430564">x.com</a></li>
+  <li>Arthur Hayes JELLY 推文 · <a href="https://x.com/CryptoHayes/status/1904923078431293855">x.com</a></li>
+  <li>Gracy Chen FTX 2.0 推文 · <a href="https://x.com/GracyBitget/status/1904941729834557453">x.com</a></li>
+</ul>
+<div class="footer-meta">
+  <span>报告生成 · 2026-05-15 · Ray Deep Research / Hyperliquid 第一版</span>
+  <span>免责声明：本报告不构成任何投资建议 · 加密资产风险极高，可能归零</span>
+</div>
+</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      document.querySelectorAll('nav.toc a').forEach(link => { link.style.color = ''; link.style.fontWeight = ''; });
+      const activeLink = document.querySelector(`nav.toc a[href="#${id}"]`);
+      if (activeLink) { activeLink.style.color = 'var(--accent-warn)'; activeLink.style.fontWeight = '600'; }
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+
+const themeToggle = document.getElementById('theme-toggle');
+function applyTheme(theme) {
+  if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  else document.documentElement.removeAttribute('data-theme');
+}
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  const next = current === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+  try { localStorage.setItem('ray-theme', next); } catch (e) {}
+});
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  try { if (!localStorage.getItem('ray-theme')) applyTheme(e.matches ? 'dark' : 'light'); } catch (err) {}
+});
+</script>
+
+</body>
+</html>

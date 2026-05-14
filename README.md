@@ -60,6 +60,12 @@
 | 2026-05-13 | [v1 · 从「现象」到「机器」之间的悬念](pop-mart/2026-05-13-pop-mart.html) | [↗ Open](https://kdsz001.github.io/ray-research/pop-mart/2026-05-13-pop-mart.html) |
 | 2026-05-13 | [v2 · 段永平视角 · 他看的不是 Labubu，是王宁](pop-mart/2026-05-13-pop-mart-v2.html) | [↗ Open](https://kdsz001.github.io/ray-research/pop-mart/2026-05-13-pop-mart-v2.html) |
 
+### ⚡ [Hyperliquid (HYPE)](hyperliquid/) · 链上永续之王 · 加密投资深度调研
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-15 | [初版投资调研 · 链上币安，仁慈独裁](hyperliquid/2026-05-15-hyperliquid.html) | [↗ Open](https://kdsz001.github.io/ray-research/hyperliquid/2026-05-15-hyperliquid.html) |
+
 <!-- INDEX-END -->
 
 ---
