@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linde plc (LIN) 投资调研 · 文艺复兴加仓信号深度解读 · 2026 年 5 月</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec;
+  --bg-paper: #fbf9f4;
+  --bg-card: #ffffff;
+  --bg-dark: #14110d;
+  --bg-dark2: #1f1b16;
+  --ink: #14110d;
+  --ink-2: #2c2620;
+  --muted: #6e6358;
+  --light: #a39787;
+  --rule: #14110d;
+  --rule-light: #d8d1c2;
+  --accent-warn: #a73121;
+  --accent-data: #1c4d6b;
+  --accent-pos: #2c5e3f;
+  --accent-yellow: #c89a2c;
+  --serif: "Source Serif 4", "Source Serif Pro", "Charter", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+  --max-w: 820px;
+  --score-track: #ece5d4;
+  --table-head-bg: var(--bg-paper);
+}
+[data-theme="dark"] {
+  --bg: #18140f;
+  --bg-paper: #221d17;
+  --bg-card: #2a2520;
+  --bg-dark: #0a0805;
+  --bg-dark2: #14100c;
+  --ink: #f0e9d8;
+  --ink-2: #d8cfbc;
+  --muted: #948574;
+  --light: #6e6155;
+  --rule: #6e6358;
+  --rule-light: #3a3128;
+  --accent-warn: #d4533f;
+  --accent-data: #6cabd0;
+  --accent-pos: #5fa074;
+  --accent-yellow: #d8a93a;
+  --score-track: #2e2620;
+  --table-head-bg: #221d17;
+}
+[data-theme="dark"] .quick-facts,
+[data-theme="dark"] .tldr,
+[data-theme="dark"] .verdict,
+[data-theme="dark"] footer {
+  border: 1px solid var(--rule-light);
+}
+[data-theme="dark"] footer { border: none; border-top: 1px solid var(--rule-light); }
+[data-theme="dark"] .stat,
+[data-theme="dark"] .tc-card,
+[data-theme="dark"] .path-card { border-color: var(--rule-light); }
+[data-theme="dark"] thead th { background: var(--table-head-bg); color: var(--ink); }
+[data-theme="dark"] tbody tr:last-child td { border-bottom-color: var(--rule); }
+[data-theme="dark"] .row-highlight { background: rgba(212, 83, 63, 0.10); }
+[data-theme="dark"] .product-name { color: var(--ink); }
+[data-theme="dark"] .text-num { color: var(--ink-2); }
+[data-theme="dark"] .insight:first-child,
+[data-theme="dark"] .insight:last-child { border-color: var(--rule); }
+[data-theme="dark"] .scores { background: var(--bg-card); }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; font-feature-settings: "kern" 1, "liga" 1; transition: background-color .2s, color .2s; }
+a { color: var(--accent-data); text-decoration: none; border-bottom: 1px solid rgba(28,77,107,.3); transition: border-color .15s; }
+a:hover { border-bottom-color: var(--accent-data); }
+em, i { font-style: italic; }
+strong { font-weight: 600; }
+
+.topbar { border-bottom: 1px solid var(--rule); padding: 12px 32px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; align-items: center; background: var(--bg-paper); gap: 16px; transition: background-color .2s; }
+.topbar .topbar-title { color: var(--ink); font-weight: 600; }
+.topbar-right { display: flex; align-items: center; gap: 18px; }
+.theme-toggle { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; font-weight: 600; text-transform: uppercase; color: var(--ink); background: transparent; border: 1px solid var(--rule); padding: 6px 12px; cursor: pointer; transition: background-color .15s, color .15s, border-color .15s; display: inline-flex; align-items: center; gap: 6px; }
+.theme-toggle:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.theme-toggle .tt-icon { font-size: 12px; line-height: 1; }
+@media (max-width: 720px) { .topbar { flex-wrap: wrap; padding: 10px 18px; } .theme-toggle { padding: 5px 10px; font-size: 9.5px; } }
+
+.layout { display: grid; grid-template-columns: 200px 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; padding: 60px 32px 0; }
+nav.toc { position: sticky; top: 40px; align-self: start; font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; }
+nav.toc .toc-label { text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+nav.toc ol { list-style: none; }
+nav.toc li { margin-bottom: 10px; }
+nav.toc a { color: var(--ink-2); border-bottom: none; display: block; line-height: 1.4; transition: color .15s; }
+nav.toc a:hover { color: var(--accent-warn); }
+nav.toc .toc-num { color: var(--light); margin-right: 8px; }
+
+main { max-width: var(--max-w); width: 100%; }
+
+.hero { display: grid; grid-template-columns: 1fr 220px; gap: 60px; margin-bottom: 80px; padding-bottom: 60px; border-bottom: 2px solid var(--rule); }
+.eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-warn); font-weight: 600; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--accent-warn); display: inline-block; }
+h1.hero-title { font-family: var(--serif); font-size: 72px; line-height: 1.0; letter-spacing: -0.03em; font-weight: 600; color: var(--ink); margin-bottom: 28px; }
+h1.hero-title em { color: var(--accent-warn); font-style: italic; font-weight: 600; }
+.hero-subtitle { font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 1.45; color: var(--muted); font-weight: 300; }
+.hero-meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; border-top: 1px solid var(--rule); padding-top: 16px; }
+.hero-meta dl { margin: 0; }
+.hero-meta dt { text-transform: uppercase; color: var(--muted); font-weight: 600; margin-top: 14px; font-size: 10px; }
+.hero-meta dt:first-child { margin-top: 0; }
+.hero-meta dd { color: var(--ink); margin-top: 4px; }
+
+.quick-facts { background: var(--bg-dark); color: #f0e9d8; padding: 48px 40px; margin-bottom: 80px; }
+.quick-facts .qf-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-yellow); font-weight: 600; margin-bottom: 8px; }
+.quick-facts h2 { font-family: var(--serif); font-style: italic; font-size: 38px; font-weight: 400; line-height: 1.15; color: #f0e9d8; margin-bottom: 32px; }
+.quick-facts h2 em { color: var(--accent-yellow); font-style: italic; }
+.qf-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); }
+.qf-cell { background: var(--bg-dark); padding: 22px 18px; min-height: 130px; display: flex; flex-direction: column; justify-content: space-between; }
+.qf-cell .qf-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(240,233,216,0.55); margin-bottom: 12px; line-height: 1.3; }
+.qf-cell .qf-value { font-family: var(--serif); font-size: 28px; line-height: 1.05; color: #f0e9d8; font-weight: 500; letter-spacing: -0.01em; word-break: keep-all; }
+.qf-cell .qf-value .qf-unit { font-size: 13px; font-weight: 400; color: rgba(240,233,216,0.7); margin-left: 3px; }
+.qf-cell .qf-sub { font-family: var(--sans); font-size: 11px; color: rgba(240,233,216,0.55); line-height: 1.4; margin-top: 8px; }
+.qf-cell.verdict { background: var(--accent-warn); }
+.qf-cell.verdict .qf-label { color: rgba(255,255,255,0.7); }
+.qf-cell.verdict .qf-value { color: #fff; font-size: 16px; line-height: 1.3; white-space: normal; word-break: keep-all; }
+.qf-cell.verdict .qf-sub { color: rgba(255,255,255,0.85); }
+
+section { margin-bottom: 100px; scroll-margin-top: 40px; }
+.section-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-warn); font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 16px; }
+.section-num::after { content: ""; flex: 1; height: 1px; background: var(--rule-light); }
+section h2 { font-family: var(--serif); font-size: 44px; line-height: 1.05; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 28px; color: var(--ink); }
+section h2 em { color: var(--accent-warn); font-style: italic; }
+section h3 { font-family: var(--serif); font-size: 24px; line-height: 1.25; font-weight: 600; margin: 40px 0 16px; color: var(--ink); }
+section h4 { font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); margin: 30px 0 14px; }
+section p { margin-bottom: 18px; color: var(--ink-2); }
+section ul, section ol { padding-left: 22px; margin-bottom: 18px; }
+section li { margin-bottom: 8px; color: var(--ink-2); }
+section li::marker { color: var(--light); }
+
+.tldr { background: var(--bg-dark); color: #f0e9d8; padding: 56px 48px 48px; margin: 0 0 60px; position: relative; }
+.tldr-ribbon { position: absolute; top: 0; left: 32px; background: var(--accent-warn); color: #fff; padding: 8px 18px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; font-weight: 600; text-transform: uppercase; transform: translateY(-50%); }
+.tldr h3 { font-family: var(--serif); font-size: 26px; line-height: 1.35; font-weight: 500; color: #f0e9d8; margin-bottom: 24px; }
+.tldr h3 em { color: var(--accent-yellow); font-style: italic; }
+.tldr ol { padding-left: 22px; }
+.tldr li { color: rgba(240,233,216,0.85); margin-bottom: 14px; line-height: 1.65; font-size: 15.5px; }
+.tldr li strong { color: #f0e9d8; font-weight: 600; }
+.tldr li::marker { color: var(--accent-yellow); font-family: var(--serif); font-style: italic; font-weight: 600; }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule-light); border: 1px solid var(--rule-light); margin: 24px 0 28px; }
+.stat { background: var(--bg-card); padding: 26px 24px; }
+.stat .stat-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.stat .stat-value { font-family: var(--serif); font-size: 36px; line-height: 1; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; }
+.stat .stat-value .unit { font-size: 14px; color: var(--muted); margin-left: 2px; }
+.stat.warn .stat-value { color: var(--accent-warn); }
+.stat.pos .stat-value { color: var(--accent-pos); }
+.stat.data .stat-value { color: var(--accent-data); }
+.stat .stat-sub { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.4; }
+
+.metric-list { border-top: 2px solid var(--rule); border-bottom: 2px solid var(--rule); margin: 28px 0; }
+.metric-row { display: flex; justify-content: space-between; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--rule-light); gap: 20px; }
+.metric-row:last-child { border-bottom: none; }
+.metric-row .m-label { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--ink); }
+.metric-row .m-source { font-family: var(--mono); font-size: 10px; color: var(--muted); display: block; margin-top: 4px; letter-spacing: 0.04em; }
+.metric-row .m-value { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; text-align: right; white-space: nowrap; }
+.metric-row .m-value .unit { font-size: 11px; color: var(--muted); margin-left: 3px; font-weight: 400; }
+.metric-row.warn .m-value { color: var(--accent-warn); }
+.metric-row.pos .m-value { color: var(--accent-pos); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 28px 0; }
+.tc-card { background: var(--bg-card); border: 1px solid var(--rule-light); padding: 28px 26px; }
+.tc-card h4 { font-family: var(--serif); font-size: 18px; font-weight: 600; margin: 0 0 14px; display: flex; align-items: center; gap: 10px; text-transform: none; letter-spacing: 0; }
+.tc-card h4::before { content: ""; width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
+.tc-card.pos h4::before { background: var(--accent-pos); }
+.tc-card.warn h4::before { background: var(--accent-warn); }
+.tc-card.pos h4 { color: var(--accent-pos); }
+.tc-card.warn h4 { color: var(--accent-warn); }
+.tc-card ul { padding-left: 20px; margin: 0; }
+.tc-card li { font-size: 14px; color: var(--ink-2); margin-bottom: 8px; line-height: 1.55; }
+
+.quote { border-left: 3px solid var(--accent-warn); padding: 6px 0 6px 22px; margin: 28px 0; }
+.quote p { font-family: var(--serif); font-style: italic; font-size: 18px; line-height: 1.55; color: var(--ink); margin: 0; }
+.quote .attr { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; color: var(--muted); margin-top: 10px; display: block; }
+.quote .attr::before { content: "— "; }
+
+.scores { border: 1px solid var(--rule); background: var(--bg-card); padding: 24px; margin: 24px 0; }
+.score-row { display: grid; grid-template-columns: 200px 1fr 50px; align-items: center; gap: 18px; padding: 12px 0; border-bottom: 1px solid var(--rule-light); }
+.score-row:last-child { border-bottom: none; }
+.score-row .s-name { font-family: var(--serif); font-size: 15px; font-weight: 600; color: var(--ink); }
+.score-bar { height: 8px; background: var(--score-track); position: relative; overflow: hidden; }
+.score-bar .fill { height: 100%; background: var(--accent-data); }
+.score-bar .fill.pos { background: var(--accent-pos); }
+.score-bar .fill.warn { background: var(--accent-warn); }
+.score-row .s-value { font-family: var(--mono); font-size: 13px; text-align: right; font-weight: 600; color: var(--ink); }
+
+.table-wrap { overflow-x: auto; margin: 24px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+thead th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; padding: 14px 10px; border-bottom: 2px solid var(--rule); color: var(--ink); font-weight: 600; background: var(--table-head-bg); }
+tbody td { padding: 12px 10px; border-bottom: 1px solid var(--rule-light); vertical-align: top; color: var(--ink-2); line-height: 1.45; }
+tbody tr:last-child td { border-bottom: 1px solid var(--rule); }
+.product-name { font-family: var(--serif); font-weight: 700; color: var(--ink); font-size: 15px; }
+.product-name .tag { display: inline-block; font-family: var(--mono); font-size: 9px; letter-spacing: 0.06em; background: var(--ink); color: #fff; padding: 2px 6px; margin-left: 6px; vertical-align: middle; text-transform: uppercase; }
+.product-name .tag.warn { background: var(--accent-warn); }
+.product-name .tag.pos { background: var(--accent-pos); }
+.row-highlight { background: rgba(167, 49, 33, 0.05); }
+.text-num { font-family: var(--mono); font-size: 13px; color: var(--ink); }
+.text-warn { color: var(--accent-warn); font-weight: 600; }
+.text-pos { color: var(--accent-pos); font-weight: 600; }
+
+.callout { background: var(--bg-paper); border-left: 3px solid var(--ink); padding: 24px 28px; margin: 28px 0; }
+.callout.warn { border-left-color: var(--accent-warn); }
+.callout.data { border-left-color: var(--accent-data); }
+.callout.pos { border-left-color: var(--accent-pos); }
+.callout-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+.callout.warn .callout-label { color: var(--accent-warn); }
+.callout.data .callout-label { color: var(--accent-data); }
+.callout.pos .callout-label { color: var(--accent-pos); }
+.callout-quote { font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1.55; color: var(--ink); }
+.callout p { margin-bottom: 12px; color: var(--ink-2); }
+.callout p:last-child { margin-bottom: 0; }
+.callout strong { color: var(--ink); }
+
+.timeline { margin: 28px 0; position: relative; padding-left: 0; }
+.tl-row { display: grid; grid-template-columns: 100px 24px 1fr; gap: 16px; padding: 14px 0; align-items: start; }
+.tl-date { font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; color: var(--muted); text-align: right; padding-top: 6px; font-weight: 600; }
+.tl-dot-col { position: relative; height: 100%; display: flex; justify-content: center; }
+.tl-dot-col::before { content: ""; position: absolute; top: 0; bottom: -28px; width: 1px; background: var(--rule-light); }
+.tl-row:last-child .tl-dot-col::before { bottom: 50%; }
+.tl-dot { width: 10px; height: 10px; border-radius: 50%; background: #fff; border: 2px solid var(--ink); margin-top: 8px; position: relative; z-index: 1; }
+.tl-row.warn .tl-dot { border-color: var(--accent-warn); background: var(--accent-warn); }
+.tl-row.data .tl-dot { border-color: var(--accent-data); background: var(--accent-data); }
+.tl-row.pos .tl-dot { border-color: var(--accent-pos); background: var(--accent-pos); }
+.tl-content .tl-title { font-family: var(--serif); font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.tl-content .tl-desc { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+
+.paths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 28px 0; }
+.path-card { background: var(--bg-card); border: 1px solid var(--rule-light); border-top: 4px solid var(--ink); padding: 28px 24px; }
+.path-card.a { border-top-color: var(--accent-pos); }
+.path-card.b { border-top-color: var(--accent-yellow); }
+.path-card.c { border-top-color: var(--accent-warn); }
+.path-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; color: var(--muted); margin-bottom: 10px; }
+.path-card.a .path-num { color: var(--accent-pos); }
+.path-card.b .path-num { color: var(--accent-yellow); }
+.path-card.c .path-num { color: var(--accent-warn); }
+.path-card h4 { font-family: var(--serif); font-size: 22px; font-weight: 600; margin: 0 0 12px; text-transform: none; letter-spacing: 0; color: var(--ink); }
+.path-card .path-prob { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 16px; font-weight: 600; }
+.path-card .path-target { font-family: var(--serif); font-size: 26px; font-weight: 500; margin: 14px 0; color: var(--ink); }
+.path-card.a .path-target { color: var(--accent-pos); }
+.path-card.c .path-target { color: var(--accent-warn); }
+.path-card p { font-size: 13.5px; line-height: 1.55; color: var(--ink-2); margin-bottom: 12px; }
+.path-card ul { font-size: 13px; padding-left: 18px; }
+.path-card li { color: var(--ink-2); margin-bottom: 6px; }
+
+.verdict { background: var(--bg-dark); color: #f0e9d8; padding: 56px 48px; margin: 60px 0 0; }
+.verdict-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-yellow); font-weight: 600; margin-bottom: 18px; }
+.verdict h3 { font-family: var(--serif); font-size: 34px; line-height: 1.25; font-weight: 500; color: #f0e9d8; margin: 0 0 24px; letter-spacing: -0.01em; }
+.verdict h3 em { color: var(--accent-warn); font-style: italic; }
+.verdict p { color: rgba(240,233,216,0.85); font-size: 16px; line-height: 1.7; margin-bottom: 14px; }
+.verdict-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); margin-top: 28px; }
+.vo-cell { background: var(--bg-dark); padding: 22px 18px; }
+.vo-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--accent-yellow); font-weight: 600; margin-bottom: 10px; }
+.vo-title { font-family: var(--serif); font-size: 17px; font-weight: 600; color: #f0e9d8; margin-bottom: 8px; }
+.vo-desc { font-size: 13px; color: rgba(240,233,216,0.7); line-height: 1.5; }
+
+.divider-quote { text-align: center; margin: 80px 0; padding: 0 60px; }
+.divider-quote::before, .divider-quote::after { content: ""; display: block; width: 40px; height: 1px; background: var(--ink); margin: 24px auto; }
+.divider-quote p { font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 1.5; color: var(--muted); font-weight: 400; margin: 0; }
+
+footer { background: var(--bg-dark); color: #f0e9d8; padding: 60px 32px 40px; margin-top: 100px; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+footer h4 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-yellow); margin-bottom: 18px; font-weight: 600; }
+.sources { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; font-family: var(--mono); font-size: 11px; margin-bottom: 40px; }
+.sources a { color: rgba(240,233,216,0.7); border: none; }
+.sources a:hover { color: var(--accent-yellow); }
+.footer-meta { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; font-family: var(--mono); font-size: 10px; color: rgba(240,233,216,0.5); letter-spacing: 0.04em; line-height: 1.6; }
+
+@media (max-width: 1100px) {
+  .layout { grid-template-columns: 1fr; gap: 30px; padding: 30px 24px 0; }
+  nav.toc { position: static; padding-bottom: 24px; border-bottom: 1px solid var(--rule); }
+  nav.toc ol { display: flex; flex-wrap: wrap; gap: 14px 22px; }
+  nav.toc li { margin-bottom: 0; }
+  .hero { grid-template-columns: 1fr; gap: 28px; }
+  h1.hero-title { font-size: 56px; }
+  .qf-grid { grid-template-columns: repeat(3, 1fr); }
+  .verdict-options { grid-template-columns: 1fr; }
+  .paths { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  h1.hero-title { font-size: 40px; }
+  section h2 { font-size: 30px; }
+  .quick-facts { padding: 32px 22px; }
+  .quick-facts h2 { font-size: 24px; }
+  .qf-grid { grid-template-columns: repeat(2, 1fr); }
+  .qf-cell { min-height: 110px; padding: 18px 14px; }
+  .qf-cell .qf-value { font-size: 22px; }
+  .stats { grid-template-columns: 1fr; }
+  .tldr { padding: 44px 28px 32px; }
+  .tldr h3 { font-size: 20px; }
+  .verdict { padding: 40px 24px; }
+  .verdict h3 { font-size: 24px; }
+  .tl-row { grid-template-columns: 70px 20px 1fr; gap: 10px; }
+  .tl-date { font-size: 10px; }
+  .divider-quote { padding: 0 20px; }
+  .divider-quote p { font-size: 17px; }
+  .score-row { grid-template-columns: 1fr; gap: 8px; padding: 14px 0; }
+}
+
+@media print {
+  body { background: #fff; font-size: 11pt; color: #000; }
+  .topbar, nav.toc, footer, .theme-toggle { display: none; }
+  .layout { grid-template-columns: 1fr; padding: 0; }
+  .hero { page-break-after: always; }
+  section { page-break-inside: avoid; }
+  .quick-facts, .tldr, .verdict, .qf-cell, .vo-cell, .path-card { background: #fff !important; color: #000 !important; }
+  .quick-facts h2, .tldr h3, .verdict h3, .qf-cell .qf-value, .qf-cell .qf-label, .qf-cell .qf-sub, .vo-title, .vo-desc, .tldr li { color: #000 !important; }
+  a { color: #000; text-decoration: none; border: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="topbar-title">Linde plc (LIN) Investment Research</span>
+  <div class="topbar-right">
+    <span>Vol. 01 · 2026-05-16 · Ray Deep Research Engine</span>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+      <span class="tt-icon">☾</span><span class="tt-text">NIGHT</span>
+    </button>
+  </div>
+</div>
+
+<div class="layout">
+
+<nav class="toc">
+  <div class="toc-label">Contents</div>
+  <ol>
+    <li><a href="#facts"><span class="toc-num">01</span>速览</a></li>
+    <li><a href="#tldr"><span class="toc-num">02</span>核心结论</a></li>
+    <li><a href="#profile"><span class="toc-num">03</span>公司档案</a></li>
+    <li><a href="#financials"><span class="toc-num">04</span>财务表现</a></li>
+    <li><a href="#growth"><span class="toc-num">05</span>增长引擎</a></li>
+    <li><a href="#peers"><span class="toc-num">06</span>三巨头对比</a></li>
+    <li><a href="#renaissance"><span class="toc-num">07</span>文艺复兴真相</a></li>
+    <li><a href="#risk"><span class="toc-num">08</span>风险与多空</a></li>
+    <li><a href="#china"><span class="toc-num">09</span>中国视角</a></li>
+    <li><a href="#playbook"><span class="toc-num">10</span>投资建议</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<header class="hero">
+  <div>
+    <div class="eyebrow">Investment Thesis · Industrial Gases · NASDAQ: LIN</div>
+    <h1 class="hero-title">30 年复利的<em>工业版可口可乐</em>，<br>被市场充分认知后剩下的是耐心。</h1>
+    <p class="hero-subtitle">Linde 是工业气体寡头之首，财务质量碾压同行。<br>但当前 PE 33.6× 已经 price-in 完美执行；文艺复兴 0.5% 仓位 ≠ Medallion 神话；<br>同期高管净卖出 3,700 万美元与对冲基金抢筹形成对冲格局。</p>
+  </div>
+  <aside class="hero-meta">
+    <dl>
+      <dt>调研对象</dt>
+      <dd>Linde plc</dd>
+      <dt>当前股价</dt>
+      <dd>$506.11</dd>
+      <dt>市值</dt>
+      <dd>$234 B</dd>
+      <dt>调研深度</dt>
+      <dd>6 个并行子 Agent</dd>
+      <dt>覆盖维度</dt>
+      <dd>财务 · 行业 · 持仓 · 增长 · 风险 · 中国</dd>
+      <dt>数据截止</dt>
+      <dd>2026-05-15</dd>
+      <dt>关键节点</dt>
+      <dd>Q1 2026 财报已出 · FY26 指引上调</dd>
+      <dt>读者画像</dt>
+      <dd>非职业投资人 / 想做严肃判断</dd>
+    </dl>
+  </aside>
+</header>
+
+<section id="facts" class="quick-facts">
+  <div class="qf-eyebrow">LIN at a Glance · 2026-05-15</div>
+  <h2><em>工业气体之王</em>，但好公司 ≠ 好价格——<br>当前 PE 33.6× 与 10 年中位数完全持平。</h2>
+  <div class="qf-grid">
+    <div class="qf-cell">
+      <div class="qf-label">阶段</div>
+      <div class="qf-value">成熟龙头</div>
+      <div class="qf-sub">S&amp;P 500 · 全球工业气体第一</div>
+    </div>
+    <div class="qf-cell">
+      <div class="qf-label">市值</div>
+      <div class="qf-value">$234<span class="qf-unit">B</span></div>
+      <div class="qf-sub">材料板块美股最大</div>
+    </div>
+    <div class="qf-cell">
+      <div class="qf-label">2025 收入</div>
+      <div class="qf-value">$34.0<span class="qf-unit">B</span></div>
+      <div class="qf-sub">YoY +3% / 5 年 CAGR ~2%</div>
+    </div>
+    <div class="qf-cell">
+      <div class="qf-label">Adj 营业利润率</div>
+      <div class="qf-value">29.8<span class="qf-unit">%</span></div>
+      <div class="qf-sub">vs AL 20.7% / APD 22%</div>
+    </div>
+    <div class="qf-cell">
+      <div class="qf-label">ROIC / Adj ROC</div>
+      <div class="qf-value">12–24<span class="qf-unit">%</span></div>
+      <div class="qf-sub">含/剔商誉两口径</div>
+    </div>
+    <div class="qf-cell">
+      <div class="qf-label">连续增息</div>
+      <div class="qf-value">33<span class="qf-unit">年</span></div>
+      <div class="qf-sub">Dividend Aristocrat</div>
+    </div>
+    <div class="qf-cell">
+      <div class="qf-label">PE TTM / Fwd</div>
+      <div class="qf-value">33.6 / 27.7</div>
+      <div class="qf-sub">10 年中位数 33.85</div>
+    </div>
+    <div class="qf-cell">
+      <div class="qf-label">EV/EBITDA</div>
+      <div class="qf-value">19.0<span class="qf-unit">×</span></div>
+      <div class="qf-sub">vs S&amp;P 500 ~15×</div>
+    </div>
+    <div class="qf-cell">
+      <div class="qf-label">股息率 / Payout</div>
+      <div class="qf-value">1.27<span class="qf-unit">%</span></div>
+      <div class="qf-sub">Payout 41% · 仍有空间</div>
+    </div>
+    <div class="qf-cell">
+      <div class="qf-label">文艺复兴持仓</div>
+      <div class="qf-value">0.5<span class="qf-unit">%</span></div>
+      <div class="qf-sub">$312M · RIEF 量化非 Medallion</div>
+    </div>
+    <div class="qf-cell">
+      <div class="qf-label">高管净卖出</div>
+      <div class="qf-value">−$37<span class="qf-unit">M</span></div>
+      <div class="qf-sub">12 个月 / Lamba 仅买 $1M</div>
+    </div>
+    <div class="qf-cell verdict">
+      <div class="qf-label">Ray 总评</div>
+      <div class="qf-value">合理价位 A+ 公司<br>等回调 $380–$420</div>
+      <div class="qf-sub">不便宜 · 不是显著折扣</div>
+    </div>
+  </div>
+</section>
+
+<section id="tldr">
+  <div class="section-num">02 · TL;DR</div>
+  <h2>一页纸<em>核心判断</em></h2>
+  <div class="tldr">
+    <div class="tldr-ribbon">TL;DR</div>
+    <h3>Linde 是<em>"toll booth 模式"</em>的极致——15-20 年 take-or-pay 长合同 + 95% 续约率 + 三家寡头垄断 70% 全球市场。<br>但好公司 ≠ 好价格：当前 $506 已 price-in 完美执行，下行有 25-35% 空间，上行只有 7-10%。</h3>
+    <ol>
+      <li><strong>财务质量是行业天花板</strong>。调整后营业利润率 29.8% 碾压 Air Liquide 20.7% 和 Air Products 22%；ROIC 12–24%（视口径）同样领先；33 年连续增息（Dividend Aristocrat = 标普 500 中连续 25 年增息成分股）；2025 股东返还 $74 亿（分红 $28 亿 + 回购 $46 亿）。</li>
+      <li><strong>文艺复兴的"加仓"被严重夸大</strong>。62.9 万股 × $506 = $312M，仅占文艺复兴 $639B 组合的 0.5%——不是重仓投票。这是对外的 RIEF 量化基金的因子轮动，不是传奇 Medallion 神话；同期对竞品 APD 持仓为零，连"行业看好"都谈不上。</li>
+      <li><strong>真正值得跟的"聪明钱"是别人</strong>。同期 Egerton（$530M NEW）、Maverick（$211M NEW）、Soros、Druckenmiller 同步建仓——这才是基本面机构的重仓投票。但同期高管净卖出 $37M：前 CEO Steve Angel 卖 $23.8M、两个 EVP 共卖 $13.4M，CEO Lamba 仅 $1M 表态买入。"对冲基金抢筹 vs 高管减持"是典型对冲格局。</li>
+      <li><strong>当前估值不便宜</strong>。PE TTM 33.6 略低于 5 年均值 36.3，与 10 年中位数 33.85 持平——但相对 S&amp;P 500 的 21.4× 仍贵 50%+。基础情景 DCF（贴现现金流估值，把未来收入折回今天）合理价 $340–$400。历史 3 次大买点（2020/2022/2025）都是 PE 跌到 22× 才出现，对应股价 ~$380–$420。</li>
+      <li><strong>增长靠"价格 + 回购"而非量增</strong>。2025 年 base volumes（基础销量）实际 0% 增长；EPS 7-10% 的复合靠 +2% 涨价 + +2% 回购 + +3% 项目投产拼出。一旦定价能力遇阻或全球工业深度衰退，模型会失效。</li>
+      <li><strong>双引擎清晰：电子半导体（最确定）+ 清洁氢（最有想象力但最易延期）</strong>。Q1 2026 电子板块 +10% YoY、$10B+ 专项 backlog；清洁氢 90% 走蓝氢稳健路线（Beaumont $1.8B 已延期至 2027 Q1，Alberta Dow $2B+ 2028 投产）；项目储备 $9.9B 总盘子，70% 与清洁能源转型相关。</li>
+      <li><strong>不是文艺复兴让你买，而是 Lamba 在 $396 买</strong>。CEO 2025-12 在股价低点买入 $1M 是这次机构大戏中最有信号意义的动作——不是金额（很小），是时点（精准）。如果后续股价回到 $400 附近，跟着 CEO 而不是跟着量化基金，才是稳健者的选择。</li>
+    </ol>
+  </div>
+</section>
+
+<section id="profile">
+  <div class="section-num">03 · Company Profile</div>
+  <h2>公司档案：<em>"toll booth"</em> 商业模式的极致</h2>
+  <p>Linde plc 是全球工业气体（氧、氮、氩、氢、氦、CO₂、电子特气等）行业的绝对龙头。它本质上是<strong>一台用空气和水当原料、靠 15-20 年长合同收"过路费"的现金流机器</strong>——这种模式被行业内称作 "toll booth"（收费亭）。</p>
+
+  <h3>基本档案</h3>
+  <div class="metric-list">
+    <div class="metric-row"><div><div class="m-label">法律住所 / 实际总部</div><div class="m-source">爱尔兰都柏林（plc 注册）/ 英国 Woking + 美国康州 Danbury</div></div><div class="m-value">双总部</div></div>
+    <div class="metric-row"><div><div class="m-label">CEO / Chairman</div><div class="m-source">Sanjiv Lamba（印度裔，2022-03 任 CEO，2026-01 起兼任 Chairman）</div></div><div class="m-value">Lamba</div></div>
+    <div class="metric-row"><div><div class="m-label">CFO</div><div class="m-source">Matthew J. White</div></div><div class="m-value">White</div></div>
+    <div class="metric-row"><div><div class="m-label">员工人数</div><div class="m-source">2024 年末 SEC 10-K</div></div><div class="m-value">65,289</div></div>
+    <div class="metric-row"><div><div class="m-label">运营国家数</div><div class="m-source">Q1 2026 新闻稿</div></div><div class="m-value">80+</div></div>
+    <div class="metric-row"><div><div class="m-label">上市地</div><div class="m-source">2023-03 从法兰克福退市，仅 NASDAQ 单一上市</div></div><div class="m-value">NASDAQ:LIN</div></div>
+    <div class="metric-row"><div><div class="m-label">合并历史</div><div class="m-source">2018-10-31 与德国 Linde AG 完成 ~$750 亿对等合并</div></div><div class="m-value">Praxair-Linde</div></div>
+  </div>
+
+  <h3>"toll booth" 商业模式三种供货</h3>
+  <p>这是理解 Linde 护城河的核心。客户不会自己建空分装置（一座 ASU = Air Separation Unit，把空气液化分离出氧氮氩的工厂，需要 $1-5 亿美元 + 2-3 年建设期），而是把"用气这件事"外包给 Linde。三种模式占气体销售比重和合约结构如下：</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>供货模式</th><th>占气体销售</th><th>合约期</th><th>合约结构 · 商业特征</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="product-name">On-site<br><span style="font-family:var(--mono);font-size:10px;color:var(--muted);font-weight:400">现场制气 / Tonnage</span></td>
+          <td class="text-num">38%</td>
+          <td class="text-num text-warn">15–20 年</td>
+          <td>take-or-pay（不管买不买都要付钱）+ 成本转嫁条款 + 价格上调机制。Linde 在客户工厂内/旁建空分装置，管道直供。<strong>资本最重，回报最确定</strong>。</td>
+        </tr>
+        <tr>
+          <td class="product-name">Merchant<br><span style="font-family:var(--mono);font-size:10px;color:var(--muted);font-weight:400">散装液态</span></td>
+          <td class="text-num">5–32%</td>
+          <td class="text-num">3–7 年</td>
+          <td>低温罐车送液氧/液氮到中型客户，区域内罐车密度越大成本越低。<strong>密度护城河</strong>。</td>
+        </tr>
+        <tr>
+          <td class="product-name">Packaged<br><span style="font-family:var(--mono);font-size:10px;color:var(--muted);font-weight:400">瓶装</span></td>
+          <td class="text-num">25–32%</td>
+          <td class="text-num">1–3 年</td>
+          <td>钢瓶 + 阀门 + 配送服务，类似"水站送水"。客户多、单价高、毛利最高，但物流复杂。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout pos">
+    <div class="callout-label">Why this is a moat</div>
+    <p><strong>三道护城河 = 寡头垄断的硬底层</strong>：① 一座 ASU $1-5 亿起 + 配套管道再几亿，新玩家进不来；② On-site 15-20 年 take-or-pay 把未来现金流锁死，拆装置成本远高于续约——续约率长期 <strong>95%+</strong>；③ Merchant + Packaged 业务在区域内密度越高单位成本越低，先入者越来越强。<strong>结果：Linde + Air Liquide + Air Products 三家寡头合计占全球工业气体 ~70%</strong>，新增并购已经无空间（反垄断当局极敏感），格局基本"锁死"。</p>
+  </div>
+
+  <h3>四个经营 segment（2025 全年）</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Segment</th><th>2025 收入</th><th>占比</th><th>Op Margin</th><th>性质</th></tr></thead>
+      <tbody>
+        <tr><td class="product-name">Americas</td><td class="text-num">$15.2B</td><td class="text-num">44.7%</td><td class="text-num">31.2%</td><td>最大区域，含美国全部气体业务 + Lincare 家用医疗气体</td></tr>
+        <tr><td class="product-name">EMEA</td><td class="text-num">$8.5B</td><td class="text-num">25.0%</td><td class="text-num text-pos">35.7%</td><td><strong>利润率最高</strong>——前 Linde AG 资产经多年成本结构改造</td></tr>
+        <tr><td class="product-name">APAC</td><td class="text-num">$6.7B</td><td class="text-num">19.7%</td><td class="text-num">29.0%</td><td>电子气体核心区（中、韩、台、日、澳）</td></tr>
+        <tr><td class="product-name">Engineering</td><td class="text-num">$2.3B</td><td class="text-num">6.8%</td><td class="text-num">18.1%</td><td>设计/建造空分装置、氢气工厂、LNG 设施，对外销售</td></tr>
+        <tr class="row-highlight"><td class="product-name">Total</td><td class="text-num">$34.0B</td><td class="text-num">100%</td><td class="text-num">29.8% (adj)</td><td>调整后口径</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>客户行业分布（end-market mix）</h3>
+  <div class="scores">
+    <div class="score-row"><div class="s-name">化工与能源</div><div class="score-bar"><div class="fill warn" style="width: 21%"></div></div><div class="s-value">21%</div></div>
+    <div class="score-row"><div class="s-name">制造业</div><div class="score-bar"><div class="fill warn" style="width: 21%"></div></div><div class="s-value">21%</div></div>
+    <div class="score-row"><div class="s-name">其他工业</div><div class="score-bar"><div class="fill" style="width: 17%"></div></div><div class="s-value">17%</div></div>
+    <div class="score-row"><div class="s-name">金属与采矿</div><div class="score-bar"><div class="fill warn" style="width: 13%"></div></div><div class="s-value">13%</div></div>
+    <div class="score-row"><div class="s-name">医疗（防御性）</div><div class="score-bar"><div class="fill pos" style="width: 9%"></div></div><div class="s-value">9%</div></div>
+    <div class="score-row"><div class="s-name">食品饮料（防御性）</div><div class="score-bar"><div class="fill pos" style="width: 9%"></div></div><div class="s-value">9%</div></div>
+    <div class="score-row"><div class="s-name">电子半导体（增长）</div><div class="score-bar"><div class="fill" style="width: 10%"></div></div><div class="s-value">10%</div></div>
+  </div>
+  <p style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:-8px">来源：Linde "Why Linde" 投资者演示稿 2026-03 + Q1 2026 earnings call</p>
+
+  <p>真正反周期或增长行业（医疗 + 食饮 + 电子）合计 <strong>~28%</strong>，剩余 <strong>72%</strong> 来自周期性工业。所谓"防御性"被高估了——Linde 的稳定性主要来自合约结构（take-or-pay）而非客户行业本身。</p>
+</section>
+
+<section id="financials">
+  <div class="section-num">04 · Financials</div>
+  <h2>财务表现：<em>低增长 + 高利润率</em>的成熟态</h2>
+  <p>2023 年后 Linde 进入了"收入增速接近 GDP、靠定价 + 回购 + 项目投产拼出 7-10% EPS 复合"的成熟阶段。这是 toll booth 模型的典型表现——<strong>收入故事不性感，但利润机器可怕</strong>。</p>
+
+  <h3>5 年财务全景（2021-2025）</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>指标 (USD M)</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th></tr></thead>
+      <tbody>
+        <tr><td class="product-name">销售额</td><td class="text-num">30,793</td><td class="text-num">33,364</td><td class="text-num">32,854</td><td class="text-num">33,005</td><td class="text-num">33,986</td></tr>
+        <tr><td class="product-name">YoY 增速</td><td class="text-num text-pos">+13%</td><td class="text-num text-pos">+8%</td><td class="text-num text-warn">−2%</td><td class="text-num">+0.5%</td><td class="text-num">+3%</td></tr>
+        <tr><td class="product-name">Adj 营业利润</td><td class="text-num">7,200</td><td class="text-num">7,904</td><td class="text-num">9,070</td><td class="text-num">9,719</td><td class="text-num text-pos">10,137</td></tr>
+        <tr class="row-highlight"><td class="product-name">Adj 营业利润率</td><td class="text-num">23.4%</td><td class="text-num">23.7%</td><td class="text-num">27.6%</td><td class="text-num">29.5%</td><td class="text-num text-pos">29.8%</td></tr>
+        <tr><td class="product-name">GAAP 净利润</td><td class="text-num">3,821</td><td class="text-num">4,147</td><td class="text-num">6,199</td><td class="text-num">6,565</td><td class="text-num">6,898</td></tr>
+        <tr><td class="product-name">Adj 摊薄 EPS</td><td class="text-num">$10.69</td><td class="text-num">$12.29</td><td class="text-num">$14.20</td><td class="text-num">$15.51</td><td class="text-num text-pos">$16.46</td></tr>
+        <tr><td class="product-name">经营性现金流</td><td class="text-num">9,700</td><td class="text-num">8,864</td><td class="text-num">9,305</td><td class="text-num">9,400</td><td class="text-num text-pos">10,350</td></tr>
+        <tr><td class="product-name">Capex</td><td class="text-num">3,100</td><td class="text-num">3,173</td><td class="text-num">3,787</td><td class="text-num">4,497</td><td class="text-num text-warn">5,261</td></tr>
+        <tr><td class="product-name">自由现金流 (OCF-Capex)</td><td class="text-num">6,600</td><td class="text-num">5,691</td><td class="text-num">5,518</td><td class="text-num">4,903</td><td class="text-num">5,089</td></tr>
+        <tr><td class="product-name">股东总返还（分红+回购）</td><td class="text-num">6,800</td><td class="text-num">7,512</td><td class="text-num">6,440</td><td class="text-num">~7,100</td><td class="text-num text-pos">7,412</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:-8px">来源：Linde 4Q24 / 4Q25 / 1Q26 earnings release tables (PDF) + stockanalysis.com</p>
+
+  <h3>关键洞察</h3>
+  <div class="two-col">
+    <div class="tc-card pos">
+      <h4>看多侧</h4>
+      <ul>
+        <li><strong>Adj Op Margin 6.4 个百分点扩张</strong>（23.4% → 29.8%）——合并协同效应持续释放</li>
+        <li><strong>Adj EPS 5 年 CAGR 11%</strong>（$10.69 → $16.46）——靠涨价 + 回购 + 项目投产，不靠规模</li>
+        <li><strong>2025 经营现金流 $10.35B 创历史新高</strong></li>
+        <li><strong>33 年连续增息</strong>，2026 Q1 又涨 7%（季度 $1.60 → 年化 $6.40）</li>
+        <li><strong>Q1 2026 加速</strong>：收入 +8%、Adj EPS +10%，FY26 指引上调到 $17.60-$17.90</li>
+      </ul>
+    </div>
+    <div class="tc-card warn">
+      <h4>看空侧</h4>
+      <ul>
+        <li><strong>5 年收入 CAGR 仅 ~2%</strong>——增长停滞，全部靠价格</li>
+        <li><strong>2025 base volumes 实际 0% 增长</strong>，管理层指引"guarded, prudent, conservative"</li>
+        <li><strong>FCF 自 2021 已下滑</strong>（$6.6B → $5.1B），Capex 上行（$3.1B → $5.3B）压缩自由现金</li>
+        <li><strong>Q1 2026 EMEA 内生 −2%</strong>——欧洲去工业化趋势在显现</li>
+        <li><strong>Engineering segment 收入 −8%</strong>——氢能项目延期开始反映</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>当前估值（2026-05-15 截止）</h3>
+  <div class="stats">
+    <div class="stat"><div class="stat-label">PE TTM</div><div class="stat-value">33.6<span class="unit">×</span></div><div class="stat-sub">5 年均值 36.3 / 10 年中位数 33.85 / S&amp;P 500 21.4×</div></div>
+    <div class="stat"><div class="stat-label">Forward PE</div><div class="stat-value">27.7<span class="unit">×</span></div><div class="stat-sub">基于 FY26 指引中值 $17.75</div></div>
+    <div class="stat warn"><div class="stat-label">EV/EBITDA</div><div class="stat-value">19.0<span class="unit">×</span></div><div class="stat-sub">vs Air Liquide ~14× / APD ~21× (含减值)</div></div>
+    <div class="stat warn"><div class="stat-label">PEG</div><div class="stat-value">3.19</div><div class="stat-sub">8% 增速配 33× PE，明显偏贵</div></div>
+    <div class="stat"><div class="stat-label">股息率</div><div class="stat-value">1.27<span class="unit">%</span></div><div class="stat-sub">Payout 41% · 仍有大幅提升空间</div></div>
+    <div class="stat pos"><div class="stat-label">Beta (5Y)</div><div class="stat-value">0.74</div><div class="stat-sub">显著低于市场 · 防御性</div></div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">DCF 敏感性参考</div>
+    <p>用公司公布的 WACC 8% + FCF 增长假设做基准 DCF：</p>
+    <p><strong>WACC 8% + 永续增长 2%（基准情景）→ 合理价 ~$340</strong>，对应当前 $506 隐含 −33% 下行。要让 DCF 给出 $511 是"合理"，必须假设 WACC ≤ 7% <strong>且</strong> 永续增长 ≥ 3%——两者同时成立需要利率长期下行 + 远超 GDP 增速，并不轻松。</p>
+    <p>历史上 LIN 给过 PE 22× 左右的"折扣价"（2020 疫情 / 2022 通胀 / 2025 年底），对应股价 <strong>$380–$420</strong>——这是"耐心买入区"。</p>
+  </div>
+
+  <h3>华尔街共识（2026-05）</h3>
+  <div class="metric-list">
+    <div class="metric-row"><div><div class="m-label">分析师覆盖数（综合）</div><div class="m-source">MarketBeat 12 / Stockanalysis 8 / Benzinga 24</div></div><div class="m-value">32 家</div></div>
+    <div class="metric-row pos"><div><div class="m-label">Buy / Hold / Sell 分布</div><div class="m-source">超 80% Buy 及以上，0 家 Sell</div></div><div class="m-value">21 / 4 / 2</div></div>
+    <div class="metric-row"><div><div class="m-label">目标价中位数</div><div class="m-source">最新升级：BofA $532 维持 Buy</div></div><div class="m-value">$525–$540</div></div>
+    <div class="metric-row warn"><div><div class="m-label">隐含上行</div><div class="m-source">从当前 $506 看</div></div><div class="m-value">+4 ~ +7%</div></div>
+    <div class="metric-row"><div><div class="m-label">目标价区间</div><div class="m-source">高 Citigroup $585 / 低 DZ Bank $460</div></div><div class="m-value">$460–$585</div></div>
+  </div>
+
+  <p>简单一句话：分析师整体看多，但中位目标价仅暗示 +5%——这本身就是"已被市场充分认知"的信号。</p>
+</section>
+
+<section id="growth">
+  <div class="section-num">05 · Growth Engines</div>
+  <h2>未来 3-5 年<em>增长引擎</em>评分</h2>
+  <p>Linde 增长不是规模故事而是"双引擎"：电子半导体（最确定）+ 清洁氢（最有想象力但最易延期）。基础盘由 $9.9B 项目储备（Sale of Gas backlog $7.1B + Engineering backlog $2.8B）支撑——其中约 70% 与清洁能源转型相关。</p>
+
+  <div class="scores">
+    <div class="score-row"><div class="s-name">电子气体（半导体）</div><div class="score-bar"><div class="fill pos" style="width: 95%"></div></div><div class="s-value">★★★★★</div></div>
+    <div class="score-row"><div class="s-name">Project Backlog 执行</div><div class="score-bar"><div class="fill pos" style="width: 90%"></div></div><div class="s-value">★★★★★</div></div>
+    <div class="score-row"><div class="s-name">股东回报机器</div><div class="score-bar"><div class="fill pos" style="width: 90%"></div></div><div class="s-value">★★★★★</div></div>
+    <div class="score-row"><div class="s-name">清洁氢（蓝氢主导）</div><div class="score-bar"><div class="fill" style="width: 75%"></div></div><div class="s-value">★★★★☆</div></div>
+    <div class="score-row"><div class="s-name">印度扩产</div><div class="score-bar"><div class="fill" style="width: 75%"></div></div><div class="s-value">★★★★☆</div></div>
+    <div class="score-row"><div class="s-name">CCUS（水泥/钢铁脱碳）</div><div class="score-bar"><div class="fill" style="width: 55%"></div></div><div class="s-value">★★★☆☆</div></div>
+    <div class="score-row"><div class="s-name">医疗气体（压舱石）</div><div class="score-bar"><div class="fill" style="width: 50%"></div></div><div class="s-value">★★★☆☆</div></div>
+  </div>
+
+  <h3>引擎 1 · 电子半导体（最确定的增长）</h3>
+  <p>电子板块占总收入约 <strong>10%</strong>（约 $34 亿），是 Linde 增长最快的端市场——Q1 2026 同比 <strong>+10% 加速</strong>。CFO Matt White 在 Q1 2026 财报会议明确披露：</p>
+  <div class="quote">
+    <p>"我们正在把 backlog 中超过 10 亿美元投入超高纯度气体工厂，支持全球最先进的 fab，今年还会有大量新项目加入 backlog。"</p>
+    <span class="attr">Matt White, Linde CFO · Q1 2026 earnings call</span>
+  </div>
+  <p>关键客户合同（多年期 take-or-pay）：</p>
+  <ul>
+    <li><strong>TSMC 凤凰城 Fab 21（Phase 1+2）</strong>：~$6 亿 ASU，2021 年签，"above-average economics"（高毛利）</li>
+    <li><strong>Samsung 韩国 Pyeongtaek Fab 8 + 德州 Taylor</strong>：第 8 套现场空分装置 2026 年中投产，是 Linde 全球最大单一电子客户站点</li>
+    <li><strong>Intel 俄亥俄州新工厂 + Micron + SK Hynix</strong>：多十年期供应</li>
+  </ul>
+
+  <h3>引擎 2 · 清洁氢（最大叙事，但延期已发生）</h3>
+  <p>CEO Sanjiv Lamba 公开口径："Linde 在美国正在开发的清洁氢项目，<strong>90% 是蓝氢</strong>"（蓝氢 = 天然气制氢 + CCS 碳捕集）。这是与 Air Products 重押绿氢（NEOM 项目，APD 已减值 $31 亿）截然相反的稳健路径——靠 IRA 45Q（CCS 每吨 CO₂ 补 $85）拿钱，回避正在被特朗普政府收紧的 45V（绿氢补贴）。</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>项目</th><th>客户</th><th>Linde 投资</th><th>关键信息</th><th>投产</th></tr></thead>
+      <tbody>
+        <tr class="row-highlight"><td class="product-name">Beaumont, TX 蓝氢综合体</td><td>OCI → Woodside（已收购）</td><td class="text-num">$18 亿</td><td>蓝氨原料氢；ATR + CCS；每年封存 170 万吨 CO₂</td><td class="text-warn">2027 Q1（已延期）</td></tr>
+        <tr><td class="product-name">Beaumont CO₂ 销售</td><td>ExxonMobil</td><td class="text-num">配套</td><td>Exxon 史上最大 CO₂ 包销，220 万吨/年</td><td>同上</td></tr>
+        <tr class="row-highlight"><td class="product-name">Fort Saskatchewan 蓝氢</td><td>Dow Path2Zero</td><td class="text-num">$20 亿+</td><td>加拿大最大清洁氢工厂；ATR + HISORP CCS</td><td class="text-num">2028</td></tr>
+        <tr><td class="product-name">路易斯安那低碳氨</td><td>未具名</td><td class="text-num">$4 亿</td><td>蓝氢配套</td><td class="text-num">2027–2028</td></tr>
+        <tr><td class="product-name">Lengfurt, 德国</td><td>Heidelberg Materials（水泥）</td><td>合资</td><td>水泥行业首批大规模 CCS；7 万吨 CO₂/年</td><td class="text-pos">2025 投产</td></tr>
+        <tr><td class="product-name">Stegra（瑞典绿钢）</td><td>原 H2 Green Steel</td><td class="text-num">$1.5 亿</td><td>HIPURE™ PSA 装置；目标减碳 95%</td><td class="text-num">2026</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">重要风险信号</div>
+    <p><strong>OCI/Woodside 项目已宣布延期</strong>。OCI 卖给 Woodside 后，Woodside 公开承认"low-carbon ammonia demand growing slower than expected"，把 2026 年低碳氨投产推迟至下半年。Linde 的 Beaumont 设施 2026 年初要完工，可能进入"建成了等买家"的窘境。<strong>2025 年 11 月 ExxonMobil $70 亿 Baytown 蓝氢项目被冻结</strong>（找不到 offtake 客户）证明蓝氢需求并非铁板一块——但 Linde 因为已经签了 OCI/Dow 的 take-or-pay 合同，下游需求是"形式上"锁死的。<strong>ATR + CCS 实际投产已经从原计划滑到 2027 Q1</strong>。</p>
+  </div>
+
+  <h3>未来 3-5 年关键 catalyst（催化剂事件）</h3>
+  <div class="timeline">
+    <div class="tl-row pos">
+      <div class="tl-date">2026 年中</div>
+      <div class="tl-dot-col"><div class="tl-dot"></div></div>
+      <div class="tl-content"><div class="tl-title">Samsung 平泽 P8 ASU 投产</div><div class="tl-desc">韩国电子板块加速；Linde 全球最大单一电子客户站点</div></div>
+    </div>
+    <div class="tl-row data">
+      <div class="tl-date">2026 H2</div>
+      <div class="tl-dot-col"><div class="tl-dot"></div></div>
+      <div class="tl-content"><div class="tl-title">Beaumont 灰氢全面启动</div><div class="tl-desc">营收增量逐步释放</div></div>
+    </div>
+    <div class="tl-row data">
+      <div class="tl-date">2026 全年</div>
+      <div class="tl-dot-col"><div class="tl-dot"></div></div>
+      <div class="tl-content"><div class="tl-title">Backlog 冲到 $80 亿+</div><div class="tl-desc">未来 3 年增长可见度提升</div></div>
+    </div>
+    <div class="tl-row warn">
+      <div class="tl-date">2027 Q1</div>
+      <div class="tl-dot-col"><div class="tl-dot"></div></div>
+      <div class="tl-content"><div class="tl-title">Beaumont CCS + ATR 上线</div><div class="tl-desc">关键里程碑；如再次延期会被砸</div></div>
+    </div>
+    <div class="tl-row pos">
+      <div class="tl-date">2028</div>
+      <div class="tl-dot-col"><div class="tl-dot"></div></div>
+      <div class="tl-content"><div class="tl-title">Alberta Dow Path2Zero 投产</div><div class="tl-desc">加拿大最大清洁氢厂落地，年化营收贡献 $5 亿+</div></div>
+    </div>
+    <div class="tl-row warn">
+      <div class="tl-date">持续</div>
+      <div class="tl-dot-col"><div class="tl-dot"></div></div>
+      <div class="tl-content"><div class="tl-title">风险型 catalyst</div><div class="tl-desc">美国 45Q/45V 政策再调整、客户违约——但 take-or-pay 提供缓冲</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="peers">
+  <div class="section-num">06 · Peer Comparison</div>
+  <h2>三巨头对比：<em>Linde 是质量王者</em>，但贵</h2>
+  <p>全球工业气体 ~$1,180 亿市场，Top 3（Linde + Air Liquide + Air Products）合计市占 ~70%（含二线 Top 5 达 80-84%）。三家的运营效率分化已经持续 7 年没有收敛。</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>维度</th><th>Linde (LIN)<span class="tag" style="background:var(--accent-pos)">质量王</span></th><th>Air Liquide (AI.PA)</th><th>Air Products (APD)</th></tr></thead>
+      <tbody>
+        <tr><td class="product-name">总部 / 上市</td><td>爱尔兰/英国 · NASDAQ</td><td>法国巴黎 · Euronext</td><td>美国宾州 · NYSE</td></tr>
+        <tr class="row-highlight"><td class="product-name">市值</td><td class="text-num text-pos">$234 B</td><td class="text-num">$112 B<br><span style="font-size:10px;color:var(--muted)">€99 B</span></td><td class="text-num">$66 B</td></tr>
+        <tr><td class="product-name">2025 年收入</td><td class="text-num">$34.0 B</td><td class="text-num">$30.4 B<br><span style="font-size:10px;color:var(--muted)">€26.94 B</span></td><td class="text-num">$12.0 B<br><span style="font-size:10px;color:var(--muted)">FY 9月底</span></td></tr>
+        <tr class="row-highlight"><td class="product-name">Adj 营业利润率</td><td class="text-num text-pos">29.8%</td><td class="text-num">20.7%</td><td class="text-num">~22% (adj)</td></tr>
+        <tr><td class="product-name">ROIC / ROCE</td><td class="text-num text-pos">12.2% / 24% (Adj ROC)</td><td class="text-num">11.2% (ROCE)</td><td class="text-num text-warn">~5% (受减值拖累)</td></tr>
+        <tr><td class="product-name">Net Debt / EBITDA</td><td class="text-num text-pos">1.7–1.9×</td><td class="text-num text-pos">1.3–1.5×</td><td class="text-num text-warn">3.0×</td></tr>
+        <tr class="row-highlight"><td class="product-name">2025 自由现金流</td><td class="text-num text-pos">+$5.1 B</td><td class="text-num">~+$3.0 B</td><td class="text-num text-warn">−$1.25 B</td></tr>
+        <tr><td class="product-name">Forward PE</td><td class="text-num">27.7×</td><td class="text-num">24–25×</td><td class="text-num">~21.5×</td></tr>
+        <tr><td class="product-name">EV/EBITDA</td><td class="text-num">19.0×</td><td class="text-num text-pos">~14×</td><td class="text-num">~21× (含减值)</td></tr>
+        <tr><td class="product-name">股息率 / Payout</td><td class="text-num">1.27% / 41%</td><td class="text-num">2.1% / ~50%</td><td class="text-num">2.6% / <strong style="color:var(--accent-warn)">76-101%</strong></td></tr>
+        <tr><td class="product-name">连续增息年数</td><td class="text-num">33 年</td><td class="text-num">30+ 年</td><td class="text-num">44 年（最长）</td></tr>
+        <tr><td class="product-name">2025 股东返还</td><td class="text-num text-pos">$74 亿</td><td class="text-num">~$25 亿</td><td class="text-num">$16 亿（无回购）</td></tr>
+        <tr><td class="product-name">氢能源策略</td><td class="text-pos">务实派 · 90% 蓝氢 · take-or-pay 长合同</td><td>积极但理性 · 减温绿氢</td><td class="text-warn">激进派转 disciplined<br>NEOM $84亿持股 1/3</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>三家的定性评价（一句话）</h3>
+  <div class="callout pos">
+    <div class="callout-label">Linde · 寡头中的优等生</div>
+    <p>合并后把前 Praxair 的 cost discipline 基因和前 Linde AG 的欧洲资产结合，<strong>每 $1 销售比 Air Liquide 多挣 9 美分营业利润</strong>，复利下来差距巨大。资本配置三角平衡（CapEx + 回购 + 33 年增息），氢能策略最克制。<strong>问题：估值已定价了它的优秀</strong>。</p>
+  </div>
+  <div class="callout">
+    <div class="callout-label">Air Liquide · 欧洲贵族 · 稳健但偏慢</div>
+    <p>129 年历史的法国国宝，欧洲市场绝对统治者。2024 转型计划后利润率终于突破 20%，但仍比 Linde 低近 10 个百分点。<strong>2026-01 以 $33 亿收购韩国 DIG Airgas，跃居韩国第一</strong>，深度绑定三星/SK 海力士供应链——这是 Linde 必须做出回应的产业大事件。估值更便宜（PE 24-25×）、股息率高（2.1%），适合愿接受"慢富"的欧洲价值投资者。</p>
+  </div>
+  <div class="callout warn">
+    <div class="callout-label">Air Products · 战略大转弯中的麻烦学生</div>
+    <p>2025 年最戏剧化事件：激进股东 Mantle Ridge 1 月赶走 CEO Seifi Ghasemi，2 月前 Praxair/Linde 高管 <strong>Eduardo Menezes 接任 CEO</strong>——他正在把 APD 改造成"小 Linde"。FY2025 GAAP 净亏损 $395M（$31 亿撇账）、EPS −$1.74、FCF −$38 亿、Net Debt/EBITDA 飙到 3.1x、派息率超 100%（要靠借钱派息）。NEOM 项目 90% 完工，2026 年底投产是关键考验。当前是"清理 + 重置"阶段。</p>
+  </div>
+
+  <div class="divider-quote"><p>"行业三巨头的战略风格正在收敛——Air Products 不再是激进异类，竞争重新回到运营效率和密度的拼刺刀。而这个维度 Linde 是领先者。"</p></div>
+</section>
+
+<section id="renaissance">
+  <div class="section-num">07 · Renaissance Truth</div>
+  <h2>文艺复兴<em>"加仓信号"</em>的真相</h2>
+  <p>这是用户提问的核心。先一句话定调：<strong>文艺复兴确实在 2026 Q1 大幅加仓 LIN（持股从 12.7 万股暴增到 62.9 万股，约 5 倍），但这是其对外量化基金 RIEF/RIDA（不是传奇 Medallion）的常规因子轮动，不是基本面看好的"信号"，更不能作为长线买入依据。</strong></p>
+
+  <h3>持仓时间序列（基于 SEC 13F 原始申报）</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>季度（持仓日）</th><th>持股</th><th>市值</th><th>占组合</th><th>动作</th></tr></thead>
+      <tbody>
+        <tr><td class="text-num">2023-Q1</td><td class="text-num">666,600</td><td class="text-num">$237 M</td><td class="text-num">0.3%</td><td>—</td></tr>
+        <tr><td class="text-num">2023-Q2</td><td class="text-num">19,400</td><td class="text-num">$7 M</td><td class="text-num">0.0%</td><td class="text-warn">大幅减仓 −97%</td></tr>
+        <tr><td class="text-num">2023-Q3 ~ Q4</td><td>—</td><td>—</td><td>—</td><td>清仓</td></tr>
+        <tr><td class="text-num">2024-Q1</td><td class="text-num">402,918</td><td class="text-num">$187 M</td><td class="text-num">0.3%</td><td>新建仓</td></tr>
+        <tr><td class="text-num">2024-Q2</td><td class="text-num">228,000</td><td class="text-num">$100 M</td><td class="text-num">0.2%</td><td class="text-warn">减仓 −43%</td></tr>
+        <tr><td class="text-num">2024-Q3</td><td class="text-num">79,300</td><td class="text-num">$38 M</td><td class="text-num">0.1%</td><td class="text-warn">减仓 −65%</td></tr>
+        <tr><td class="text-num">2024-Q4 ~ 2025-Q3</td><td>—</td><td>—</td><td>—</td><td>清仓</td></tr>
+        <tr><td class="text-num">2025-Q4</td><td class="text-num">127,300</td><td class="text-num">$54 M</td><td class="text-num">0.1%</td><td>新建仓</td></tr>
+        <tr class="row-highlight"><td class="text-num">2026-Q1</td><td class="text-num text-pos">629,820</td><td class="text-num text-pos">$312 M</td><td class="text-num text-pos">0.5%</td><td class="text-pos"><strong>大幅加仓 +394.7%</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:-8px">来源：SEC EDGAR 13F-HR 经 13f.info 解析</p>
+
+  <div class="callout data">
+    <div class="callout-label">关键事实</div>
+    <p><strong>过去 8 个季度文艺复兴对 LIN 的持仓"建仓 → 减仓 → 清仓 → 重新建仓"反复发生 3 次</strong>，平均一个完整周期 2-3 个季度。这是统计套利模型在跟踪因子信号，<strong>不是基于"看好这家公司"的判断</strong>。即使是"大幅加仓"的 2026 Q1，绝对仓位仍只占组合 0.5%，在文艺复兴 3,213 个持仓里排在第 22 位左右——"显著加仓"是对的，但远远不是"重仓押注"。</p>
+  </div>
+
+  <h3>RIEF ≠ Medallion · 5 个常见误区</h3>
+  <p>13F 反映的<strong>只能是面向外部投资人的 RIEF / RIDA / RIDGE 三只基金</strong>，不可能是 Medallion——后者是员工自营、不外开、年化净收益历史超 39% 的传奇基金，且 Medallion 平均持仓周期是<strong>几小时到几天</strong>，根本不出现在季度快照里。</p>
+  <ol>
+    <li><strong>误区一：把 13F 当"今天的持仓"</strong> — 13F 是 6 周前的快照，量化基金可能已经卖了</li>
+    <li><strong>误区二：把 RIEF 等同于 Medallion 神话</strong> — RIEF 长期收益约年化 10-12%，跑赢标普 500 但远不如 Medallion 的 39%</li>
+    <li><strong>误区三：以为量化基金"看好这家公司"</strong> — 量化模型不关心公司质地，只关心数学因子</li>
+    <li><strong>误区四：抄量化作业 = 抄 0.5% 仓位</strong> — 即使你完全复制，文艺复兴也只配置了 0.5%，对你的组合影响微乎其微</li>
+    <li><strong>误区五：忽略时间错配</strong> — 量化基金平均持仓几周，散户持仓几年，时间维度不在一个量级</li>
+  </ol>
+
+  <h3>真正值得跟的"聪明钱"地图</h3>
+  <p>同期 Q1 2026 多名顶级 Super Investor 同时新建仓 LIN——<strong>这才是这次调研最强信号</strong>，远比文艺复兴更有信息量：</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>基金 / 经理</th><th>动作</th><th>持股</th><th>市值</th></tr></thead>
+      <tbody>
+        <tr class="row-highlight"><td class="product-name">Egerton Capital UK · John Armitage</td><td class="text-pos">NEW 建仓</td><td class="text-num">1.1M 股</td><td class="text-num text-pos"><strong>$530 M</strong></td></tr>
+        <tr class="row-highlight"><td class="product-name">Maverick Capital · Lee Ainslie</td><td class="text-pos">NEW 建仓</td><td class="text-num">426k 股</td><td class="text-num text-pos"><strong>$211 M</strong></td></tr>
+        <tr><td class="product-name">Capital Research Global Investors</td><td class="text-pos">+58.5%（+5.9M 股）</td><td class="text-num">16.1M 股</td><td class="text-num">$8.0 B</td></tr>
+        <tr><td class="product-name">Soros Fund Management · George Soros</td><td class="text-pos">NEW 建仓</td><td class="text-num">260k 股</td><td class="text-num">$129 M</td></tr>
+        <tr><td class="product-name">Duquesne Family Office · Druckenmiller</td><td class="text-pos">NEW 建仓</td><td class="text-num">41.2k 股</td><td class="text-num">$20 M</td></tr>
+        <tr><td class="product-name">Ako Capital · Patrick Hargreaves</td><td class="text-pos">+899%</td><td class="text-num">135k 股</td><td class="text-num">$67 M</td></tr>
+        <tr class="row-highlight"><td class="product-name">Renaissance Technologies (RIEF)</td><td class="text-num">+394%（量化轮动）</td><td class="text-num">630k 股</td><td class="text-num">$312 M</td></tr>
+        <tr><td class="product-name">JPMorgan AM</td><td class="text-warn">−29%（−2.6M 股）</td><td class="text-num">6.3M 股</td><td class="text-num">$3.1 B</td></tr>
+        <tr><td class="product-name">FMR (Fidelity)</td><td class="text-warn">−16%（−1.7M 股）</td><td class="text-num">9.0M 股</td><td class="text-num">$4.5 B</td></tr>
+        <tr><td class="product-name">Wellington Management</td><td class="text-warn">−29%</td><td class="text-num">5.2M 股</td><td class="text-num">$2.2 B</td></tr>
+        <tr><td class="product-name">Bridgewater (Ray Dalio)</td><td class="text-warn">持续清仓中</td><td>—</td><td>—</td></tr>
+        <tr><td class="product-name">Berkshire Hathaway (Buffett)</td><td>未持有 (历史从未)</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">对冲格局：高管净卖出 $37M</div>
+    <p>更值得关注的是，<strong>同期高管在卖</strong>：</p>
+    <ul style="margin-top:6px;margin-bottom:0">
+      <li>2025-08-07 · 前 CEO Steve Angel · <strong>卖出 $23.8M</strong>（50,309 股 × $473）</li>
+      <li>2025-12-08 · CEO Sanjiv Lamba · <strong>买入 $999K</strong>（2,520 股 × $397）— 唯一买入</li>
+      <li>2026-02 ~ 03 · EVP Bichara · 共卖 $6.6M</li>
+      <li>2026-02 ~ 03 · EVP Durbin · 共卖 $6.4M</li>
+    </ul>
+    <p style="margin-top:10px"><strong>净卖出方向 ~−$37M</strong>。多笔 EVP 级卖出集中在 Q1 大涨期间，正好是文艺复兴和对冲基金抢筹的同时——这是<strong>"对冲基金抢筹 vs 高管减持"的典型对峙格局</strong>。</p>
+  </div>
+
+  <h3>卖空数据 + 期权情绪</h3>
+  <div class="metric-list">
+    <div class="metric-row"><div><div class="m-label">Short Interest（卖空比例）</div><div class="m-source">2026-04-30 / MarketBeat</div></div><div class="m-value">1.33<span class="unit">%</span></div></div>
+    <div class="metric-row"><div><div class="m-label">Days to Cover（按当前成交量回补天数）</div><div class="m-source">极低</div></div><div class="m-value">3.2<span class="unit">天</span></div></div>
+    <div class="metric-row pos"><div><div class="m-label">趋势</div><div class="m-source">较上期 −8.32%（卖空者在回补）</div></div><div class="m-value">−27%<span class="unit">vs Dec25</span></div></div>
+    <div class="metric-row"><div><div class="m-label">Put/Call 成交量比</div><div class="m-source">Barchart</div></div><div class="m-value">1.11</div></div>
+    <div class="metric-row"><div><div class="m-label">隐含波动率 IV / IV 百分位</div><div class="m-source">略偏高，反映防御性配置</div></div><div class="m-value">22.4% / 64</div></div>
+  </div>
+
+  <p>卖空力量极弱（&lt;5% 健康线），且持续平仓。期权 Put 略多但更可能是<strong>已持现货的机构买 Put 锁利</strong>，而非纯看跌。</p>
+</section>
+
+<section id="risk">
+  <div class="section-num">08 · Risk &amp; Bear Case</div>
+  <h2>多空对照与<em>风险二维评估</em></h2>
+  <p>站在空头角度问：在 $506 这个价位、PE 33.6× 这个估值上，最大的风险是什么？</p>
+
+  <div class="two-col">
+    <div class="tc-card pos">
+      <h4>多头 Bull Case</h4>
+      <ul>
+        <li>商业模式 = 长期合同 + 现场建厂 + 行业垄断（toll booth）</li>
+        <li>PE 30× 低于历史均值 36×（自身参照看不贵）</li>
+        <li>EPS 5 年 CAGR 26%，2026 指引 6-9%</li>
+        <li>蓝氢策略 vs APD 绿氢失败已差异明显</li>
+        <li>ROIC 12-24% 显著高于 WACC 8%</li>
+        <li>2025 弱美元贡献 EPS 加成</li>
+        <li>电子半导体 +10% 增速 + AI 数据中心制冷需求</li>
+        <li>CEO 12 月低位买入 $1M 显示信心</li>
+      </ul>
+    </div>
+    <div class="tc-card warn">
+      <h4>空头 Bear Case</h4>
+      <ul>
+        <li>75% 收入来自周期性行业，"防御性"被夸大</li>
+        <li>远高于 S&amp;P 500 21.4× 与化工同行 20.5×（贵 50%+）</li>
+        <li>5 年收入 CAGR 仅 2%，base volumes 0% 增长</li>
+        <li>OCI/Beaumont 已延期；45V 写销期被砍</li>
+        <li>ROIC vs WACC 利差只剩 1.5 个百分点</li>
+        <li>2026 美元若反弹 → 60%+ 海外收入受损</li>
+        <li>中国客户被出口管制压制</li>
+        <li><strong>NOxBOXi 医疗设备 FDA 问题（涉新生儿死亡）</strong> + Halliburton "financial arson" 诉讼</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>风险二维评估（概率 × 影响）</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>风险</th><th>发生概率</th><th>对股价影响</th><th>评级</th></tr></thead>
+      <tbody>
+        <tr class="row-highlight"><td class="product-name">估值回归历史均值（PE 28→22×）</td><td class="text-warn">高 60%+</td><td class="text-warn">−25 ~ −35%</td><td class="text-warn">★★★★★</td></tr>
+        <tr><td class="product-name">全球工业衰退冲击 base volumes</td><td>中 30-40%</td><td class="text-warn">−20%</td><td class="text-warn">★★★★</td></tr>
+        <tr><td class="product-name">美元反弹 → FX 拖累 EPS</td><td>中 35%</td><td>−8%</td><td>★★★</td></tr>
+        <tr><td class="product-name">45V 进一步削减 → 氢气项目减值</td><td>中 30%</td><td>−10%</td><td>★★★</td></tr>
+        <tr><td class="product-name">OCI/Woodside 项目延期或重谈</td><td class="text-warn">已发生</td><td>−3 ~ −5%</td><td>★★★</td></tr>
+        <tr><td class="product-name">NOxBOXi 集体诉讼爆发</td><td>中 25-35%</td><td>−2 ~ −5% + ESG 拖累</td><td>★★</td></tr>
+        <tr><td class="product-name">反垄断重大行动</td><td>低 10%</td><td class="text-warn">&gt; −15%</td><td>★★</td></tr>
+        <tr><td class="product-name">中国电子气体业务被进一步管制</td><td>中 25%</td><td>−3%</td><td>★★</td></tr>
+        <tr><td class="product-name">CEO 离职 / 重大治理事件</td><td>低 &lt;10%</td><td class="text-warn">−15%</td><td>★★</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">叠加效应警告</div>
+    <p><strong>估值回归 + 全球衰退两者同时发生的概率不低（30%+）</strong>，届时股价可能从 $506 跌至 <strong>$320–$380 区间</strong>——这就是 2020 / 2022 / 2025 三次历史买点的位置。LIN 的护城河不变，但"等下一个买点"是合理选择。</p>
+  </div>
+
+  <h3>Quality trap（质量陷阱）：为伟大生意付了过高的价格</h3>
+  <div class="quote">
+    <p>"Linde retreated from mid-year highs after trading at historically high forward price-to-earnings ratio of approximately 30x... underperforming relative to the S&amp;P 500."</p>
+    <span class="attr">FinancialContent · 2026 LIN 回顾</span>
+  </div>
+  <div class="quote">
+    <p>"Linde's 2025 results show 6% EPS growth and strong margins, but the current valuation fully reflects 2026 guidance."</p>
+    <span class="attr">Seeking Alpha · LIN 降级文章</span>
+  </div>
+  <p>JPMorgan 2026 年 2 月降级理由："valuation and pricing pressure"；DZ Bank 2026 年 2 月降级理由："风险/回报比不再有吸引力"。<strong>当前 27-28× Forward PE 已透支 2026 指引的全部 6-9% EPS 增长</strong>，并且暗含市场愿意继续给"高质量溢价"。一旦 EPS 增长降到 0-3%（管理层"base volumes 0%"已暗示），市场可能把 PE 重定价到 22×，对应 $380-$420 区间，下行 18-25%。</p>
+
+  <h3>替代标的机会成本</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>公司</th><th>Ticker</th><th>Forward PE</th><th>股息率</th><th>评注</th></tr></thead>
+      <tbody>
+        <tr class="row-highlight"><td class="product-name">Linde</td><td class="text-num">LIN</td><td class="text-num">27-28×</td><td class="text-num">1.27%</td><td>当前贵</td></tr>
+        <tr><td class="product-name">Air Products</td><td class="text-num">APD</td><td class="text-num text-pos">22-25×</td><td class="text-num text-pos">2.6%</td><td>折价但有执行风险</td></tr>
+        <tr><td class="product-name">Air Liquide</td><td class="text-num">AI.PA</td><td class="text-num">24-25×</td><td class="text-num">2.1%</td><td>欧元资产 + 收益型分红</td></tr>
+        <tr><td class="product-name">Coca-Cola</td><td class="text-num">KO</td><td class="text-num text-pos">23×</td><td class="text-num text-pos">~3%</td><td>同等防御 + 股息更高</td></tr>
+        <tr><td class="product-name">Waste Management</td><td class="text-num">WM</td><td class="text-num">28×</td><td class="text-num">1.4%</td><td>真正防御 + 行业更垄断</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="china">
+  <div class="section-num">09 · China View</div>
+  <h2>中国视角：<em>A 股映射 + 实操指南</em></h2>
+  <p>中文社区对 LIN 几乎没有讨论——雪球关注仅 <strong>2,667</strong>，相比之下 A 股杭氧 51,011、华特气体 37,553、金宏气体 24,300。LIN 在中文世界几乎只作为"对标对象"出现，不作为研究对象。</p>
+
+  <h3>A 股工业气体三家对标 vs Linde</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>维度</th><th>杭氧 002430</th><th>华特气体 688268</th><th>金宏气体 688106</th><th>Linde (LIN)</th></tr></thead>
+      <tbody>
+        <tr><td class="product-name">主业</td><td>空分设备 + 气体运营双轮</td><td>电子特气（光刻气全球第四）</td><td>综合气体（大宗 + 电子）</td><td>纯气体运营商</td></tr>
+        <tr><td class="product-name">2025 营收</td><td class="text-num">¥133 亿（$18 亿）</td><td class="text-num">¥14 亿（$2.0 亿）</td><td class="text-num">¥28 亿（$3.9 亿）</td><td class="text-num">$340 亿</td></tr>
+        <tr><td class="product-name">2025 净利润</td><td class="text-num">¥10 亿</td><td class="text-num text-warn">¥1.35 亿（−27%）</td><td class="text-num text-warn">¥1.32 亿（−34%）</td><td class="text-num">$81 亿</td></tr>
+        <tr class="row-highlight"><td class="product-name">市值</td><td class="text-num">¥293 亿（$40.7 亿）</td><td class="text-num">¥229 亿（$31.8 亿）</td><td class="text-num">¥169 亿（$23.5 亿）</td><td class="text-num text-pos">$2,340 亿（¥1.69 万亿）</td></tr>
+        <tr><td class="product-name">PE TTM</td><td class="text-num">29.7×</td><td class="text-num text-warn">183.8×</td><td class="text-num text-warn">182.3×</td><td class="text-num">33.0×</td></tr>
+        <tr><td class="product-name">股息率</td><td class="text-num">1.33%</td><td class="text-num">0.26%</td><td class="text-num">0.79%</td><td class="text-num">1.27% (33 年增息)</td></tr>
+        <tr><td class="product-name">中文叙事</td><td>"中国林德"、估值修复</td><td>氦气危机、ASML EUV 认证、国产替代</td><td>俄氦贸易龙头</td><td>几乎无</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:-8px">来源：雪球各股票页 + 各公司 2025 年报。汇率 $1 ≈ ¥7.2。</p>
+
+  <div class="callout">
+    <div class="callout-label">中文圈 LIN 的唯一原话语境</div>
+    <p>未名 SJK · 雪球 · 2026-04-25：</p>
+    <p class="callout-quote">"林德气体市值 2300 亿美元（约 ¥1.6 万亿），<strong>华特为什么不能有千亿</strong>？！中国版林德，百年未有之大变局……"</p>
+    <p style="margin-top:8px">这是中文社区对 LIN 最典型的引用——把 LIN 市值当成"画饼对标"工具，<strong>而不是研究对象</strong>。</p>
+  </div>
+
+  <h3>给中国投资者的实操指南</h3>
+  <div class="metric-list">
+    <div class="metric-row"><div><div class="m-label">渠道选择</div><div class="m-source">合规优先 → IBKR 盈透；不想折腾 → 宽基 QDII</div></div><div class="m-value">IBKR / QDII</div></div>
+    <div class="metric-row warn"><div><div class="m-label">QDII 路径几乎不通</div><div class="m-source">华夏全球精选 000041 前 10 重仓全是科技股，没 LIN</div></div><div class="m-value">~0.5% 权重</div></div>
+    <div class="metric-row"><div><div class="m-label">每年外汇额度</div><div class="m-source">个人换汇 → 港股券商 → 美股账户</div></div><div class="m-value">$50,000</div></div>
+    <div class="metric-row"><div><div class="m-label">股息预扣税（填 W-8BEN）</div><div class="m-source">中美税收协定，3 年期需续签</div></div><div class="m-value">10%</div></div>
+    <div class="metric-row warn"><div><div class="m-label">美股遗产税免税额</div><div class="m-source">超出按 18-40% 联邦遗产税</div></div><div class="m-value">$60,000</div></div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">最大的雷 · 美股遗产税</div>
+    <p>非美籍非美居民身份的人，持有 <strong>&gt;$60,000（约 ¥43 万）</strong> 的美国注册资产（包括美股、美国注册 ETF、停在美国券商的现金）时，本人去世后超出部分按 <strong>18% 阶梯到 40%</strong> 的联邦遗产税征收。买 LIN（爱尔兰注册但 NYSE 上市，属美国 situs 资产）<strong>依然适用</strong>。</p>
+    <p><strong>三招规避</strong>：① 单账户美股市值控制在 $60K 以下；② 买爱尔兰/卢森堡注册的 UCITS ETF（如 CSPX）跟踪同样指数但不受美国遗产税；③ 通过香港人寿保险/境外信托间接持仓（门槛高，仅适合 $200K+ 体量）。</p>
+  </div>
+
+  <h3>价值投资圈对工业气体的观点</h3>
+  <ul>
+    <li><strong>巴菲特 / Berkshire</strong>：从未持有过 LIN，2026 Q1 13F 也不在持仓中。可能原因：合并历史涉及大量商誉、跨境法律实体、且 PE 30×、PB 6× 不便宜</li>
+    <li><strong>段永平</strong>：雪球主页全文未提林德、LIN、工业气体——他偏好消费 + 平台型公司，对资本密集型工业资产不感冒</li>
+    <li><strong>林园</strong>：白酒、中药、医药消费、片仔癀类。工业气体不在他的能力圈</li>
+    <li><strong>张磊（高瓴）</strong>：A 股化工/材料板块有布局，但工业气体不是重点赛道</li>
+  </ul>
+  <p>工业气体理论上完全符合"时间的朋友"型资产定义（Linde 30 年 EPS CAGR 11% + 33 年增息 + take-or-pay 长合同），但<strong>中文价值投资圈很少有人公开背书</strong>——主要原因是它"不在叙事框架里"，且回报率 30 年 11% 年化对中文散户没有爆炸性吸引力。</p>
+</section>
+
+<section id="playbook">
+  <div class="section-num">10 · Playbook</div>
+  <h2>三条决策路径与<em>30 天行动清单</em></h2>
+
+  <div class="verdict">
+    <div class="verdict-title">FINAL VERDICT</div>
+    <h3>Linde 是你能买到的<em>最好的工业资产之一</em>，<br>但当前价位已经 price-in 完美执行。</h3>
+    <p>现在不是显著折扣，分析师中位目标价仅暗示 +5% 上行；下行回归到合理 PE 22× 有 25-35% 空间。聪明的做法不是 FOMO 进场，而是<strong>建立观察清单 + 设定目标价 + 分批介入</strong>。</p>
+    <p>如果你完全不持有美股 / 完全不持有工业资产，可以小仓位（&lt;3%）"踩个脚印"；如果你已经持有相似品种（KO / WM / Roper），LIN 的边际价值有限，等回调更划算。</p>
+    <div class="verdict-options">
+      <div class="vo-cell"><div class="vo-num">PATH A · 低风险</div><div class="vo-title">现在不动 · 等 PE 22×</div><div class="vo-desc">目标价 $380-$420（−18 ~ −25%）；用过去 3 次买点（2020/2022/2025 12月）作为锚点</div></div>
+      <div class="vo-cell"><div class="vo-num">PATH B · 中风险</div><div class="vo-title">小仓位试水 · DCA 摊薄</div><div class="vo-desc">先建 1/4 仓，每跌 5% 加 1/4，目标在均价 $450-470 完成建仓；总仓位 ≤5%</div></div>
+      <div class="vo-cell"><div class="vo-num">PATH C · 高风险</div><div class="vo-title">现在 all-in</div><div class="vo-desc">假设市场继续给"质量溢价"+ 电子半导体超预期+ 氢气项目按时投产；不推荐除非你的策略本身就是"never sell"</div></div>
+    </div>
+  </div>
+
+  <h3>三条路径的 30 天行动清单</h3>
+  <div class="paths">
+    <div class="path-card a">
+      <div class="path-num">PATH A · LOW RISK</div>
+      <h4>等 $380-$420 入场</h4>
+      <div class="path-prob">实施概率：80% · 推荐</div>
+      <div class="path-target">目标价 $400 ± $20</div>
+      <p><strong>第 1-15 天</strong>：</p>
+      <ul>
+        <li>开 IBKR / 富途 美股账户，填 W-8BEN</li>
+        <li>设置 LIN $420 价格提醒</li>
+        <li>关注每月 13F 申报（Egerton/Maverick/Druckenmiller 是否继续加仓）</li>
+        <li>关注 Beaumont CCS 项目进度（再延期是负面）</li>
+      </ul>
+      <p><strong>第 16-30 天</strong>：</p>
+      <ul>
+        <li>读 Linde 2025 Annual Report 全文</li>
+        <li>研究替代标的 KO、WM、APD 横向对比</li>
+        <li>设定个人 thesis（多少仓位 / 持有多久 / 退出条件）</li>
+        <li>等价格触发，不强求</li>
+      </ul>
+    </div>
+
+    <div class="path-card b">
+      <div class="path-num">PATH B · MID RISK</div>
+      <h4>分批 DCA 摊薄</h4>
+      <div class="path-prob">实施概率：15%</div>
+      <div class="path-target">目标均价 $450-$470</div>
+      <p><strong>关键步骤</strong>：</p>
+      <ol>
+        <li>先建 1/4 仓位（在 $500 附近）</li>
+        <li>每跌 5% 加 1/4 仓（$475 / $450 / $425）</li>
+        <li>总仓位 ≤5%（避免单一标的过重）</li>
+        <li>不要在 PE 涨回 35× 时再加仓</li>
+        <li>一旦完成建仓，长期持有 5+ 年（吃涨价 + 回购 + 分红的复利）</li>
+      </ol>
+      <p><strong>谨慎前提</strong>：</p>
+      <ul>
+        <li>美股账户 ≤$60K（避免遗产税）</li>
+        <li>填好 W-8BEN（股息预扣 30% → 10%）</li>
+      </ul>
+    </div>
+
+    <div class="path-card c">
+      <div class="path-num">PATH C · HIGH RISK</div>
+      <h4>$506 现在 all-in</h4>
+      <div class="path-prob">实施概率：&lt;5% · 不推荐</div>
+      <div class="path-target">隐含 −20 ~ −35% 短期回撤</div>
+      <p><strong>触发条件（同时满足才考虑）</strong>：</p>
+      <ul>
+        <li>你的策略是 "never sell"，10+ 年长持</li>
+        <li>组合中没有任何防御性 compounder</li>
+        <li>愿意承担 PE 重定价到 22× 的 −33% 短期账面损失</li>
+        <li>不需要这笔钱用于 5 年内的任何用途</li>
+      </ul>
+      <p><strong>必备前置条件</strong>：</p>
+      <ul>
+        <li>美股账户严格 ≤$60K</li>
+        <li>有应急资金 + 不杠杆</li>
+        <li>把 LIN 当成"第二份养老金"而非"alpha 来源"</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>不论选哪条路，避开这 3 个坑</h3>
+  <ol>
+    <li><strong>不要把"文艺复兴加仓"当成买入信号</strong>。0.5% 仓位 + RIEF 量化 ≠ Medallion 神话；同期高管净卖出 $37M 是更值得跟的反向信号</li>
+    <li><strong>不要把 LIN 和 A 股气体股做"替代选择"</strong>。它们不是同一个游戏——前者收复利，后者赌赔率；选一个就够，不要叠加</li>
+    <li><strong>不要忽略美股遗产税的 $60K 免税额</strong>。这是中国非美籍持有人最容易踩的雷，去世后超出按 18-40% 征税。如果想配置 &gt;$60K 美股，请走 UCITS ETF 路径</li>
+  </ol>
+
+  <div class="divider-quote">
+    <p>"如果你想要质量就得付溢价，没有免费的午餐。<br>Linde 是这三家里 Buffett 哲学含量最高的一家，但 Buffett 自己都买不下手。"</p>
+  </div>
+
+</section>
+
+</main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <h4>主要一手来源</h4>
+    <div class="sources">
+      <a href="https://www.linde.com/news-and-media/2026/linde-reports-full-year-and-fourth-quarter-2025-results">Linde FY2025 财报新闻稿</a>
+      <a href="https://assets.linde.com/-/media/global/corporate/corporate/documents/press-releases/2026/linde-1q26-earnings-release-tables.pdf">Linde Q1 2026 earnings release</a>
+      <a href="https://www.fool.com/earnings/call-transcripts/2026/05/01/linde-lin-q1-2026-earnings-call-transcript/">Linde Q1 2026 Earnings Call (Motley Fool)</a>
+      <a href="https://assets.linde.com/-/media/global/corporate/corporate/documents/investors/events-and-presentations/why-linde-presentation.pdf">Why Linde Investor Presentation 2026/03</a>
+      <a href="https://www.sec.gov/edgar/browse/?CIK=1707925">SEC EDGAR Linde 10-K filings</a>
+      <a href="https://stockanalysis.com/stocks/lin/statistics/">Stockanalysis · LIN 估值统计</a>
+      <a href="https://www.macrotrends.net/stocks/charts/LIN/linde/pe-ratio">Macrotrends · LIN PE 历史</a>
+      <a href="https://13f.info/manager/0001037389-renaissance-technologies-llc">13f.info · 文艺复兴 13F 申报</a>
+      <a href="https://hedgefollow.com/stocks/LIN">HedgeFollow · LIN 机构持仓</a>
+      <a href="https://stockzoa.com/ticker/lin/">Stockzoa · LIN 持仓详情</a>
+      <a href="https://www.secform4.com/insider-trading/1707925.htm">SECform4 · LIN 内部人交易</a>
+      <a href="https://www.marketbeat.com/stocks/NASDAQ/LIN/short-interest/">MarketBeat · LIN Short Interest</a>
+      <a href="https://www.airliquide.com/group/press-releases-news/2026-02-20/2025-record-performance">Air Liquide FY2025 财报</a>
+      <a href="https://www.airproducts.com/-/media/files/en/900/900-25-045-glb-annual-report-2025.pdf">Air Products FY2025 Annual Report</a>
+      <a href="https://www.h2-view.com/story/woodside-delays-blue-ammonia-beyond-2026-after-beaumont-takeover/2138748.article/">H2 View · Woodside 延期蓝氨</a>
+      <a href="https://www.gasworld.com/story/90-of-lindes-current-us-clean-hydrogen-developments-will-be-blue/2121185.article/">gasworld · "90% 蓝氢"路径</a>
+      <a href="https://www.linde.com/news-and-media/2024/linde-signs-long-term-agreement-to-supply-clean-hydrogen-to-dow%E2%80%99s-path2zero-project-in-canada">Linde-Dow Alberta 蓝氢合同</a>
+      <a href="https://thecapitolforum.com/linde-gas-fda-problems-with-noxboxi-device-that-led-to-neonatal-deaths-and-injuries/">Capitol Forum · NOxBOXi FDA 调查</a>
+      <a href="https://news.bloomberglaw.com/esg/halliburton-sued-for-financial-arson-toward-linde-partnership">Bloomberg Law · Halliburton 诉讼</a>
+      <a href="https://xueqiu.com/S/LIN">雪球 LIN 个股页</a>
+      <a href="https://xueqiu.com/4206051491/115377104">雪球坚信价值 · 美股遗产税</a>
+      <a href="https://en.wikipedia.org/wiki/Renaissance_Technologies">Wikipedia · Renaissance Technologies 基金类型</a>
+    </div>
+
+    <div class="footer-meta">
+      Ray Deep Research Engine · 2026-05-16 ·
+      调研由 6 个并行子 Agent 组成（业务+财务、行业三巨头、机构持仓+文艺复兴、增长引擎、风险与多空、中文圈+A股映射） ·
+      所有数据基于公开渠道（SEC 10-K、季报、官方新闻稿、13F 申报、行业媒体），未经实地访谈或私募内幕信息验证 ·
+      不构成投资建议 · 本人立场：未持有 LIN，无利益冲突 ·
+      技术：单文件 HTML、零依赖、永久存档兼容
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var toggle = document.getElementById('theme-toggle');
+  var html = document.documentElement;
+  function updateButton() {
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    var icon = toggle.querySelector('.tt-icon');
+    var text = toggle.querySelector('.tt-text');
+    icon.textContent = isDark ? '☀' : '☾';
+    text.textContent = isDark ? 'DAY' : 'NIGHT';
+  }
+  updateButton();
+  toggle.addEventListener('click', function() {
+    var current = html.getAttribute('data-theme');
+    if (current === 'dark') {
+      html.removeAttribute('data-theme');
+      localStorage.setItem('ray-theme', 'light');
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      localStorage.setItem('ray-theme', 'dark');
+    }
+    updateButton();
+  });
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+    if (!localStorage.getItem('ray-theme')) {
+      if (e.matches) html.setAttribute('data-theme', 'dark');
+      else html.removeAttribute('data-theme');
+      updateButton();
+    }
+  });
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var id = entry.target.id;
+        document.querySelectorAll('nav.toc a').forEach(function(link) {
+          link.style.color = '';
+          link.style.fontWeight = '';
+        });
+        var activeLink = document.querySelector('nav.toc a[href="#' + id + '"]');
+        if (activeLink) {
+          activeLink.style.color = 'var(--accent-warn)';
+          activeLink.style.fontWeight = '600';
+        }
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  document.querySelectorAll('section[id]').forEach(function(s) { observer.observe(s); });
+})();
+</script>
+
+</body>
+</html>

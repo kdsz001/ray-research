@@ -85,6 +85,12 @@
 |------|------|---------|
 | 2026-05-16 | [初版投资调研 · DDR5 周期的高纯度龙头，估值已透支两年](montage-tech/2026-05-16-montage-tech-06809.html) | [↗ Open](https://kdsz001.github.io/ray-research/montage-tech/2026-05-16-montage-tech-06809.html) |
 
+### 🛢 [Linde plc (LIN)](linde/) · 工业气体之王 · 文艺复兴加仓信号深度解读 · 33 年增息 Aristocrat
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-16 | [初版投资调研 · 工业版可口可乐，被市场充分认知后剩下的是耐心](linde/2026-05-16-linde.html) | [↗ Open](https://kdsz001.github.io/ray-research/linde/2026-05-16-linde.html) |
+
 <!-- INDEX-END -->
 
 ---
