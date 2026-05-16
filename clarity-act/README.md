@@ -6,13 +6,16 @@
 
 | 日期 | 报告 | 在线浏览 |
 |------|------|---------|
-| 2026-05-12 | [初版投资影响调研 · 加密合法化的最后一公里](2026-05-12-clarity-act.html) | [↗ 在线打开](https://kdsz001.github.io/ray-research/clarity-act/2026-05-12-clarity-act.html) |
+| 2026-05-12 | [v1 · 加密合法化的最后一公里](2026-05-12-clarity-act.html) | [↗ Open](https://kdsz001.github.io/ray-research/clarity-act/2026-05-12-clarity-act.html) |
+| 2026-05-16 | [v2 · 5-14 markup 通过后 4 天复盘 + 配置调整](2026-05-16-clarity-act-v2.html) | [↗ Open](https://kdsz001.github.io/ray-research/clarity-act/2026-05-16-clarity-act-v2.html) |
 
-## 核心结论
+## 核心结论（V2 更新，2026-05-16）
 
-- **法案利好已部分 price in**：SEC/CFTC 2026-03-17 联合解释已经把 16 个主流代币归类 commodity，是法案精神的"行政预演"。法案通过的作用是把行政解释升级成成文法
-- **关键节点**：参议院银行委员会 2026-05-14 markup 投票，川普目标 7-4 签署、Polymarket 67% / Galaxy 50% 通过概率
-- **最大单点受益**：Circle (CRCL $137.87) 拿合规护城河、Coinbase (COIN $216.60) 撤诉 + DCE 牌照量身，但都已部分 price in。CRCL NTM P/E ~100x 偏高（JPM 目标 $80）
-- **真正的法案 alpha**：SOL（最干净）、XRP（流入最猛）、ADA（最被低估）、LINK（白宫点名）、Kraken IPO（$20B 估值候选）、DTCC 代币化平台（2026-07 上线）
-- **投资综合评级 8/10**：政策红利真实存在但已部分定价；推荐 60/30/10 分散配置（美股加密蓝筹 60% + 主流代币 ETF 30% + 法案 alpha 弹性 10%）
-- **中国身份实操**：香港 HashKey/OSL 持牌 + 老虎/富途国际港美股账户是最稳妥通道，避开大陆 OTC 银行卡冻结风险
+- **5-14 参议院银行委员会 15-9 通过**（民主党 Gallego + Alsobrooks 越党赞成）—— 比预期 13-11 党派票更跨党派；Polymarket 通过概率从 43% 升至 73-76%
+- **市场反应是教科书级 sell the news**：5-14 当天 BTC 触 $82,022、COIN +5%、MSTR +5%；5-15 集体崩盘 — CRCL -7.98%、COIN -7.82%、BTC 跌穿 $80K；BTC ETF 4 天净流出 $1.03B
+- **PPI 6% + Warsh 接 Fed + Saylor 卖币松动**三件事叠加把立法 alpha 完全吃掉。立法 alpha 兑现 = sell the news
+- **CRCL 评级一片看多但散户在出货**：JPM 目标 $112→$155（+38%）但 4 天 -7.81%。中文实盘 Ace 5-15 减仓 → 5-16 清仓转 NVDA
+- **MSTR 永不卖币承诺破窗**：Saylor 5-13 业绩会承认"必要时卖 BTC"
+- **真正受益者**：7 个 DeFi 协议（Pendle/Morpho/Sky/Maple/Centrifuge/Apyx/Saturn Credit）+ ETH Tier 1 重估
+- **V2 配置微调**：60/30/10 框架保持，内部重排 — CRCL 5%→3%、MSTR 15%→12%、BLK 10%→8%、HOOD 5%→7%；30% 代币 ETF 改为 SOL 12%+XRP 8%+BTC 6%+ETH 4%
+- **道德条款 11-13 失败留下 60 票死结**：7-4 白宫目标 "reachable, not guaranteed"

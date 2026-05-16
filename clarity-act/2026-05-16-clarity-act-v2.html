@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLARITY 法案 V2 · 5-14 markup 通过后 4 天复盘 · 2026.05.16</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec; --bg-paper: #fbf9f4; --bg-card: #ffffff;
+  --bg-dark: #14110d; --bg-dark2: #1f1b16;
+  --ink: #14110d; --ink-2: #2c2620; --muted: #6e6358; --light: #a39787;
+  --rule: #14110d; --rule-light: #d8d1c2;
+  --accent-warn: #a73121; --accent-data: #1c4d6b; --accent-pos: #2c5e3f; --accent-yellow: #c89a2c;
+  --bg-inverse: #14110d; --bg-inverse-2: #1f1b16;
+  --ink-on-inverse: #f6f3ec;
+  --text-on-inverse: rgba(246, 243, 236, 0.85);
+  --muted-on-inverse: rgba(246, 243, 236, 0.7);
+  --faint-on-inverse: rgba(246, 243, 236, 0.55);
+  --light-on-inverse: rgba(246, 243, 236, 0.5);
+  --rule-on-inverse: rgba(246, 243, 236, 0.18);
+  --accent-yellow-on-inverse: #c89a2c;
+  --serif: "Source Serif 4", "Source Serif Pro", "Charter", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+  --max-w: 820px;
+}
+[data-theme="dark"] {
+  --bg: #15120e; --bg-paper: #1c1814; --bg-card: #1f1b16;
+  --bg-dark: #0a0907; --bg-dark2: #0f0d0a;
+  --ink: #ebe3d3; --ink-2: #c9bfae; --muted: #8d8170; --light: #5c5346;
+  --rule: #ebe3d3; --rule-light: #3a342c;
+  --accent-warn: #e87a5f; --accent-data: #6cb1d6; --accent-pos: #6db98c; --accent-yellow: #e6b945;
+  --bg-inverse: #ede5d3; --bg-inverse-2: #e0d8c5;
+  --ink-on-inverse: #14110d;
+  --text-on-inverse: rgba(20, 17, 13, 0.85);
+  --muted-on-inverse: rgba(20, 17, 13, 0.7);
+  --faint-on-inverse: rgba(20, 17, 13, 0.55);
+  --light-on-inverse: rgba(20, 17, 13, 0.5);
+  --rule-on-inverse: rgba(20, 17, 13, 0.18);
+  --accent-yellow-on-inverse: #a47a18;
+}
+body, .tldr, .verdict, .quickfacts-wrap, footer, table, th, td, .stat, .col-card, .callout, .path-card, .verdict-option, .qf-cell {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  font-family: var(--sans); background: var(--bg); color: var(--ink);
+  line-height: 1.65; font-size: 16px;
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(167, 49, 33, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 80% 100%, rgba(28, 77, 107, 0.04) 0%, transparent 40%);
+}
+.topbar { border-bottom: 1px solid var(--rule); background: var(--bg-paper); padding: 14px 0; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+.topbar-inner { max-width: 1180px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; color: var(--muted); }
+.topbar strong { color: var(--ink); font-weight: 600; }
+.hero { max-width: 1180px; margin: 0 auto; padding: 80px 32px 100px; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 2fr 1fr; gap: 60px; align-items: end; }
+.hero-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-warn); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.hero-eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--accent-warn); }
+.hero h1 { font-family: var(--serif); font-weight: 600; font-size: 78px; line-height: 1.0; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 28px; font-feature-settings: "ss01"; }
+.hero h1 em { font-style: italic; color: var(--accent-warn); font-weight: 500; }
+.hero-subtitle { font-family: var(--serif); font-size: 22px; line-height: 1.45; color: var(--muted); font-style: italic; max-width: 560px; }
+.hero-meta { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 24px; }
+.hero-meta dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
+.hero-meta dt { color: var(--light); font-weight: 400; }
+.hero-meta dd { color: var(--ink); font-weight: 500; }
+
+.quickfacts-wrap { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 60px 0 80px; border-bottom: 1px solid var(--rule); }
+.quickfacts { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+.qf-header { margin-bottom: 36px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.qf-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-yellow-on-inverse); }
+.qf-title { font-family: var(--serif); font-style: italic; font-size: 28px; font-weight: 500; color: var(--text-on-inverse); letter-spacing: -0.01em; }
+.qf-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--rule-on-inverse); border: 1px solid var(--rule-on-inverse); }
+.qf-cell { background: var(--bg-inverse); padding: 22px 18px 20px; display: flex; flex-direction: column; gap: 6px; min-height: 120px; }
+.qf-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light-on-inverse); }
+.qf-value { font-family: var(--serif); font-weight: 600; font-size: 32px; line-height: 1; color: var(--ink-on-inverse); letter-spacing: -0.02em; margin-top: auto; margin-bottom: 4px; }
+.qf-value.warn { color: var(--accent-warn); }
+.qf-value.pos { color: var(--accent-pos); }
+.qf-value.data { color: var(--accent-data); }
+.qf-value .qf-unit { font-size: 14px; color: var(--faint-on-inverse); margin-left: 2px; font-weight: 400; }
+.qf-sub { font-size: 11.5px; color: var(--faint-on-inverse); line-height: 1.35; }
+.qf-cell-verdict { background: var(--accent-warn); color: white; }
+.qf-cell-verdict .qf-label { color: rgba(255, 255, 255, 0.8); }
+.qf-cell-verdict .qf-verdict { font-family: var(--serif); font-style: italic; font-size: 22px; font-weight: 600; line-height: 1.15; color: white; margin-top: auto; letter-spacing: -0.01em; }
+.qf-cell-verdict .qf-sub { color: rgba(255, 255, 255, 0.85); }
+
+main { display: grid; grid-template-columns: 200px 1fr; gap: 60px; max-width: 1180px; margin: 0 auto; padding: 0 32px 120px; }
+
+nav.toc { position: sticky; top: 40px; align-self: start; height: fit-content; padding-top: 80px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+nav.toc h4 { font-size: 10px; color: var(--light); margin-bottom: 18px; font-weight: 500; letter-spacing: 0.15em; }
+nav.toc ol { list-style: none; counter-reset: toc; padding-left: 0; }
+nav.toc li { counter-increment: toc; margin-bottom: 14px; border-left: 1px solid var(--rule-light); padding-left: 14px; transition: border-color 0.2s; }
+nav.toc li:hover { border-left-color: var(--ink); }
+nav.toc li::before { content: "0" counter(toc); display: block; color: var(--light); font-size: 10px; margin-bottom: 2px; }
+nav.toc a { color: var(--ink-2); text-decoration: none; line-height: 1.3; display: block; font-weight: 500; }
+nav.toc a:hover { color: var(--accent-warn); }
+
+article { max-width: var(--max-w); padding-top: 60px; }
+section { padding: 60px 0; border-top: 1px solid var(--rule-light); scroll-margin-top: 30px; }
+section:first-of-type { border-top: none; padding-top: 20px; }
+.section-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-warn); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+.section-num::after { content: ""; flex: 1; height: 1px; background: var(--rule-light); }
+section h2 { font-family: var(--serif); font-weight: 600; font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 32px; font-feature-settings: "ss01"; }
+section h3 { font-family: var(--serif); font-weight: 600; font-size: 24px; line-height: 1.3; margin-top: 48px; margin-bottom: 16px; color: var(--ink); }
+section h4 { font-family: var(--sans); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin-top: 36px; margin-bottom: 12px; }
+section p { font-family: var(--sans); font-size: 16px; line-height: 1.7; color: var(--ink-2); margin-bottom: 16px; }
+section p strong { color: var(--ink); font-weight: 600; }
+section a { color: var(--accent-data); text-decoration: underline; text-decoration-color: rgba(28, 77, 107, 0.3); text-underline-offset: 3px; }
+section a:hover { text-decoration-color: var(--accent-data); }
+ul, ol { padding-left: 22px; margin-bottom: 18px; }
+li { margin-bottom: 8px; line-height: 1.7; color: var(--ink-2); }
+li::marker { color: var(--light); }
+
+.tldr { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 56px 56px; border-radius: 0; margin-top: 40px; position: relative; }
+.tldr::before { content: "TL;DR · V2"; position: absolute; top: -1px; left: 56px; background: var(--accent-warn); color: white; padding: 4px 16px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; font-weight: 600; }
+.tldr h3 { font-family: var(--serif); color: var(--ink-on-inverse); font-size: 22px; font-weight: 500; margin-top: 28px; margin-bottom: 12px; }
+.tldr h3:first-of-type { margin-top: 16px; }
+.tldr p, .tldr li { color: var(--text-on-inverse); }
+.tldr p strong, .tldr li strong { color: var(--ink-on-inverse); }
+.tldr ol, .tldr ul { padding-left: 18px; }
+.tldr a { color: var(--ink-on-inverse); text-decoration-color: var(--light-on-inverse); }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 32px 0; }
+.stat { background: var(--bg-card); padding: 28px 24px; }
+.stat-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 10px; }
+.stat-value { font-family: var(--serif); font-weight: 600; font-size: 36px; line-height: 1; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.02em; }
+.stat-value .unit { font-size: 16px; color: var(--muted); font-weight: 400; margin-left: 4px; }
+.stat-value.warn { color: var(--accent-warn); }
+.stat-value.pos { color: var(--accent-pos); }
+.stat-value.data { color: var(--accent-data); }
+.stat-note { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 24px 0; }
+.col-card { border: 1px solid var(--rule-light); padding: 28px; background: var(--bg-card); }
+.col-card h4 { margin-top: 0; display: flex; align-items: center; gap: 10px; }
+.col-card.pos h4 { color: var(--accent-pos); }
+.col-card.warn h4 { color: var(--accent-warn); }
+.col-card h4::before { display: inline-block; width: 18px; height: 18px; border-radius: 50%; font-family: var(--serif); font-size: 13px; text-align: center; line-height: 18px; font-weight: 600; }
+.col-card.pos h4::before { content: "✓"; background: var(--accent-pos); color: white; }
+.col-card.warn h4::before { content: "!"; background: var(--accent-warn); color: white; font-style: italic; }
+.col-card ul { padding-left: 18px; margin-bottom: 0; }
+.col-card li { font-size: 14px; line-height: 1.55; }
+
+.quote { border-left: 3px solid var(--accent-warn); padding: 8px 0 8px 24px; margin: 24px 0; font-family: var(--serif); font-size: 18px; line-height: 1.55; font-style: italic; color: var(--ink-2); }
+.quote-attr { font-family: var(--sans); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 12px; font-weight: 500; }
+.quote-attr::before { content: "— "; }
+
+.table-wrap { overflow-x: auto; margin: 24px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--bg-card); }
+th { text-align: left; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; padding: 12px 14px; border-bottom: 2px solid var(--ink); background: var(--bg-paper); white-space: nowrap; vertical-align: bottom; }
+td { padding: 14px; border-bottom: 1px solid var(--rule-light); vertical-align: top; line-height: 1.5; color: var(--ink-2); }
+td.product-name { font-weight: 600; color: var(--ink); font-family: var(--serif); font-size: 15px; white-space: nowrap; }
+tr:last-child td { border-bottom: 1px solid var(--ink); }
+tr.highlight td { background: rgba(167, 49, 33, 0.06); }
+tr.highlight-pos td { background: rgba(44, 94, 63, 0.06); }
+td .tag { display: inline-block; font-family: var(--mono); font-size: 10px; text-transform: uppercase; padding: 2px 6px; background: var(--bg-paper); color: var(--muted); border-radius: 2px; margin-right: 4px; }
+
+.callout { background: var(--bg-paper); border-left: 3px solid var(--ink); padding: 24px 28px; margin: 28px 0; }
+.callout.warn { border-left-color: var(--accent-warn); background: rgba(167, 49, 33, 0.04); }
+.callout.data { border-left-color: var(--accent-data); background: rgba(28, 77, 107, 0.04); }
+.callout.pos { border-left-color: var(--accent-pos); background: rgba(44, 94, 63, 0.04); }
+.callout-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
+.callout.warn .callout-label { color: var(--accent-warn); }
+.callout.data .callout-label { color: var(--accent-data); }
+.callout.pos .callout-label { color: var(--accent-pos); }
+.callout p { margin-bottom: 12px; }
+.callout p:last-child { margin-bottom: 0; }
+.callout-quote { font-family: var(--serif); font-size: 17px; font-style: italic; line-height: 1.5; color: var(--ink); }
+
+.metric-list { margin: 28px 0; border-top: 1px solid var(--ink); }
+.metric-row { display: grid; grid-template-columns: 1fr auto; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--rule-light); gap: 24px; }
+.metric-row:last-child { border-bottom: 1px solid var(--ink); }
+.metric-row .label { font-size: 14px; color: var(--ink-2); }
+.metric-row .label .src { display: block; font-size: 11px; color: var(--light); margin-top: 2px; font-family: var(--mono); }
+.metric-row .value { font-family: var(--serif); font-size: 28px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; text-align: right; white-space: nowrap; }
+.metric-row .value.warn { color: var(--accent-warn); }
+.metric-row .value.pos { color: var(--accent-pos); }
+.metric-row .value.data { color: var(--accent-data); }
+.metric-row .value small { font-size: 14px; color: var(--muted); font-weight: 400; }
+
+.divider-quote { margin: 80px 0; text-align: center; font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--muted); line-height: 1.5; position: relative; padding: 32px 60px; }
+.divider-quote::before, .divider-quote::after { content: ""; position: absolute; width: 40px; height: 1px; background: var(--rule); top: 0; left: 50%; transform: translateX(-50%); }
+.divider-quote::after { top: auto; bottom: 0; }
+
+.timeline { margin: 32px 0; position: relative; padding-left: 0; }
+.timeline::before { content: ""; position: absolute; left: 92px; top: 8px; bottom: 8px; width: 1px; background: var(--rule-light); }
+.tl-row { display: grid; grid-template-columns: 80px 14px 1fr; gap: 12px; margin-bottom: 24px; align-items: start; }
+.tl-row .tl-date { font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em; color: var(--muted); text-align: right; padding-top: 4px; text-transform: uppercase; }
+.tl-row .tl-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--ink); margin-top: 4px; position: relative; z-index: 2; }
+.tl-row .tl-dot.warn { border-color: var(--accent-warn); background: var(--accent-warn); }
+.tl-row .tl-dot.data { border-color: var(--accent-data); background: var(--accent-data); }
+.tl-row .tl-dot.pos { border-color: var(--accent-pos); background: var(--accent-pos); }
+.tl-row .tl-content { padding-top: 0; }
+.tl-row .tl-title { font-family: var(--serif); font-weight: 600; font-size: 16px; color: var(--ink); line-height: 1.3; margin-bottom: 4px; }
+.tl-row .tl-title.warn { color: var(--accent-warn); }
+.tl-row .tl-desc { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+
+.path-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 28px 0; }
+.path-card { border: 1px solid var(--rule-light); background: var(--bg-card); padding: 26px 24px; position: relative; }
+.path-card.a { border-top: 4px solid var(--accent-pos); }
+.path-card.b { border-top: 4px solid var(--accent-data); }
+.path-card.c { border-top: 4px solid var(--accent-warn); }
+.path-card .path-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.path-card.a .path-num { color: var(--accent-pos); }
+.path-card.b .path-num { color: var(--accent-data); }
+.path-card.c .path-num { color: var(--accent-warn); }
+.path-card h4 { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--ink); text-transform: none; letter-spacing: 0; margin: 0 0 14px 0; }
+.path-card p { font-size: 13.5px; line-height: 1.55; color: var(--muted); margin-bottom: 10px; }
+.path-card ul { margin: 0; padding-left: 18px; }
+.path-card li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; color: var(--ink-2); }
+
+.verdict { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 80px 56px; margin: 80px 0 0; position: relative; }
+.verdict-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-yellow-on-inverse); margin-bottom: 24px; }
+.verdict h3 { font-family: var(--serif); font-size: 36px; line-height: 1.2; font-weight: 600; margin-bottom: 24px; color: var(--ink-on-inverse); letter-spacing: -0.02em; }
+.verdict p { color: var(--text-on-inverse); font-size: 17px; line-height: 1.65; margin-bottom: 14px; }
+.verdict p strong { color: var(--ink-on-inverse); }
+.verdict-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 40px; background: var(--rule-on-inverse); }
+.verdict-option { background: var(--bg-inverse); padding: 28px 24px; }
+.verdict-option .num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--accent-yellow-on-inverse); margin-bottom: 12px; }
+.verdict-option h4 { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--ink-on-inverse); margin-bottom: 10px; text-transform: none; letter-spacing: 0; }
+.verdict-option p { font-size: 14px; line-height: 1.55; margin-bottom: 0; color: var(--muted-on-inverse); }
+
+footer { border-top: 1px solid var(--rule); background: var(--bg-inverse); color: var(--muted-on-inverse); padding: 60px 32px 80px; margin-top: 0; }
+.footer-inner { max-width: 1180px; margin: 0 auto; }
+footer h4 { color: var(--ink-on-inverse); margin-bottom: 18px; font-family: var(--serif); font-size: 16px; font-weight: 600; }
+footer ul { padding-left: 0; list-style: none; columns: 2; column-gap: 40px; }
+footer li { font-size: 12px; line-height: 1.5; margin-bottom: 8px; font-family: var(--mono); break-inside: avoid; }
+footer a { color: var(--accent-yellow-on-inverse); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+.footer-meta { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--rule-on-inverse); font-size: 11px; color: var(--light-on-inverse); font-family: var(--mono); letter-spacing: 0.05em; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+
+@media (max-width: 1100px) {
+  main { grid-template-columns: 1fr; }
+  nav.toc { position: static; padding-top: 40px; }
+  nav.toc ol { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 56px; }
+  .verdict-options { grid-template-columns: 1fr; }
+  .qf-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
+  .hero { padding: 40px 20px 60px; }
+  .hero h1 { font-size: 42px; }
+  .hero-subtitle { font-size: 18px; }
+  main { padding: 0 20px 80px; gap: 0; }
+  .quickfacts { padding: 0 20px; }
+  .quickfacts-wrap { padding: 40px 0 50px; }
+  .qf-grid { grid-template-columns: repeat(2, 1fr); }
+  .qf-value { font-size: 26px; }
+  .qf-cell-verdict .qf-verdict { font-size: 18px; }
+  nav.toc ol { grid-template-columns: 1fr; }
+  section h2 { font-size: 32px; }
+  .stats { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  .verdict, .tldr { padding: 40px 24px; }
+  .verdict h3 { font-size: 26px; }
+  footer ul { columns: 1; }
+  .timeline::before { left: 11px; }
+  .tl-row { grid-template-columns: 80px 1fr; }
+  .tl-row .tl-date { font-size: 10px; }
+  .path-detail { grid-template-columns: 1fr; }
+}
+
+#theme-toggle { position: fixed; top: 14px; right: 24px; z-index: 1000; width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--rule-light); color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.12s; }
+#theme-toggle:hover { background: var(--bg-paper); border-color: var(--ink); }
+#theme-toggle:active { transform: scale(0.92); }
+#theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] #theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] #theme-toggle { background: var(--bg-paper); border-color: var(--rule-light); color: var(--ink); }
+@media (max-width: 720px) { #theme-toggle { top: 10px; right: 14px; width: 32px; height: 32px; } }
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="切换夜间模式" title="切换浅色 / 夜间模式">
+  <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div><strong>CLARITY 法案 V2</strong> · 5-14 markup 通过后 4 天复盘</div>
+    <div>调研日期 <strong>2026 · 05 · 16</strong></div>
+    <div>V1 调研 2026-05-12 · 第二版</div>
+  </div>
+</div>
+
+<header class="hero">
+  <div>
+    <div class="hero-eyebrow">CLARITY 法案 · 4 天复盘 · 配置调整</div>
+    <h1>立法过会，<br><em>市场没买账</em>。</h1>
+    <p class="hero-subtitle">
+      5-14 参议院银行委员会 <strong>15-9 通过 CLARITY 法案</strong>——历史性两党票。但同一周 PPI 数据 +6%、Kevin Warsh 接任 Fed 主席、Saylor 5-13 业绩会承认"必要时卖 BTC"——三件事叠加把立法 alpha 完全吃掉。<strong>4 天里 CRCL -7.81%、COIN -5.88%、BTC -3.35%、BTC ETF 净流出 $1.03B</strong>。立法 alpha 兑现 = sell the news。
+    </p>
+  </div>
+  <div class="hero-meta">
+    <dl>
+      <dt>调研对象</dt><dd>5-12 至 5-16 法案 + 市场变化</dd>
+      <dt>调研深度</dt><dd>7 个聚焦型 AI 调研员</dd>
+      <dt>覆盖维度</dt><dd>markup 详情 / 海外 KOL / 中文圈</dd>
+      <dt> </dt><dd>代币价格 / 股价 / 机构动作 / 风险</dd>
+      <dt>报告字数</dt><dd>约 14,000 字</dd>
+      <dt>V1 参照</dt><dd>2026-05-12 初版</dd>
+      <dt>面向读者</dt><dd>非职业加密 + 美股投资者 · Ray</dd>
+    </dl>
+  </div>
+</header>
+
+<div class="quickfacts-wrap">
+  <div class="quickfacts">
+    <div class="qf-header">
+      <div class="qf-eyebrow">10 秒读完 / 4 天关键变化</div>
+      <h2 class="qf-title">4-Day Recap at a Glance</h2>
+    </div>
+    <div class="qf-grid">
+      <div class="qf-cell">
+        <div class="qf-label">5-14 markup</div>
+        <div class="qf-value pos">15:9</div>
+        <div class="qf-sub">民主党 Gallego + Alsobrooks 越党</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">通过概率</div>
+        <div class="qf-value pos">73<span class="qf-unit">%</span></div>
+        <div class="qf-sub">Polymarket · 4 月底 43%</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">道德条款</div>
+        <div class="qf-value warn">11:13</div>
+        <div class="qf-sub">Van Hollen 失败 · 60 票死结</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">CRCL 4 天</div>
+        <div class="qf-value warn">-7.81<span class="qf-unit">%</span></div>
+        <div class="qf-sub">$123.65 → $114.00</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">COIN 4 天</div>
+        <div class="qf-value warn">-5.88<span class="qf-unit">%</span></div>
+        <div class="qf-sub">$207.64 → $195.43</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">BTC 4 天</div>
+        <div class="qf-value warn">-3.35<span class="qf-unit">%</span></div>
+        <div class="qf-sub">$81,725 → $78,986</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">PPI 通胀</div>
+        <div class="qf-value warn">+6.0<span class="qf-unit">%</span></div>
+        <div class="qf-sub">5-13 远超预期 4.9%</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">BTC ETF 4 天</div>
+        <div class="qf-value warn">-$1.03<span class="qf-unit">B</span></div>
+        <div class="qf-sub">5-15 单日 -$290M</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">JPM CRCL 目标价</div>
+        <div class="qf-value pos">$112→$155</div>
+        <div class="qf-sub">+38% 上调 · 评级全调</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">Schwab 加密费率</div>
+        <div class="qf-value data">0.75<span class="qf-unit">%</span></div>
+        <div class="qf-sub">5-12 启动 · 费率战开打</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">Fed 主席换帅</div>
+        <div class="qf-value warn">Warsh</div>
+        <div class="qf-sub">5-15 54-45 通过</div>
+      </div>
+      <div class="qf-cell qf-cell-verdict">
+        <div class="qf-label">V2 判断</div>
+        <div class="qf-verdict">减 CRCL<br>加 SOL/XRP</div>
+        <div class="qf-sub">立法 alpha 兑现 · 配置微调</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<nav class="toc">
+  <h4>章节目录</h4>
+  <ol>
+    <li><a href="#tldr">4 天 TL;DR</a></li>
+    <li><a href="#markup">5-14 markup 详解</a></li>
+    <li><a href="#market">市场反应</a></li>
+    <li><a href="#crcl">CRCL 复盘</a></li>
+    <li><a href="#tokens">代币 + ETF</a></li>
+    <li><a href="#institution">新机构动作</a></li>
+    <li><a href="#hidden">新隐藏受益者</a></li>
+    <li><a href="#config">配置微调</a></li>
+    <li><a href="#friday">5-17 行动清单</a></li>
+  </ol>
+</nav>
+
+<article>
+
+<section id="tldr">
+  <div class="section-num">01 / 4 天 TL;DR</div>
+  <h2>立法过会，市场没买账。</h2>
+
+  <p>
+    距离 V1 调研（2026-05-12）4 天，跨过 5-14 参议院银行委员会 markup 关键节点。结果：<strong>15-9 历史性两党票通过</strong>（民主党 Gallego + Alsobrooks 越党）——比 V1 时市场预期（13-11 党派票）更跨党派。Polymarket 通过概率从 43% 升至 <strong>73-76%</strong>。
+  </p>
+  <p>
+    但这本应是"美国加密历史最重要一天"的事件，市场反应是<strong>教科书级 sell the news</strong>：5-14 当天 BTC 触 $82,022、COIN +5.06%、MSTR +5.02%、HOOD +5.15%；第二天 5-15 集体崩盘——CRCL 单日 -7.98%、COIN -7.82%、BTC 跌穿 $80K、5-15 BTC ETF 单日净流出 $290M、12 支 ETF 无一净流入。原因是同一周更早 PPI 数据 +6%（远超预期 4.9%）让降息预期破灭，叠加 Kevin Warsh 5-15 接任 Fed 主席的不确定性。<strong>立法 alpha 完全被宏观 beta 吃掉</strong>。
+  </p>
+
+  <div class="tldr">
+    <h3>V2 的三个关键修订：</h3>
+    <ol>
+      <li><strong>CRCL 减仓信号已亮：JPM 把目标价从 $112 上调到 $155（+38%）、其余 5 家大行同步上调</strong>——但价格反向下跌 7.81% 到 $114。"评级一片看多但散户在出货"是典型拥挤交易。中文实盘大佬 Ace（@Money_or_Life_X）5-15 减仓、5-16 完全清仓 CRCL 转 NVDA——这是中文圈第一个公开 sell-the-news 的实盘信号。V1 建议 CRCL 仓位 5%，<strong>V2 建议降到 3%</strong>，等 $100 以下再考虑加。</li>
+      <li><strong>MSTR 永不卖币承诺破窗</strong>：Saylor 5-13 业绩会承认"必要时会进行净值管理，出售一些比特币来保持还债能力"——这是从 2020 年以来"永远买永远不卖"叙事的实质性松动。5-14 仍买 4,708 BTC（嘴上说卖手上还在买），但 5-15 提交 Form 144（拟出售证券预报）。<strong>MSTR 仓位从 15% 降到 12%</strong>，BTC 跌至 $75K 再加。</li>
+      <li><strong>真正受益者不是 CRCL/COIN，而是 7 个 DeFi 协议 + ETH Tier 1 重估</strong>。稳定币禁息条款（Section 404）落锤后，"机构投资者+散户都涌向同一类标的"——Pendle/Morpho/Sky(USDS)/Maple/Centrifuge/Apyx/Saturn Credit。ETH 因通过五项去中心化测试可能从 Tier 2（现金流估值）跃迁到 Tier 1（货币溢价）。USDS 4 天 +11.5%（DeFi 资金转向）、USDtb +66%——稳定币结构性变化已经在发生。</li>
+    </ol>
+
+    <h3>新发现的关键变化（4 天里只有这几件事真的重要）：</h3>
+    <ul>
+      <li><strong>Schwab 5-12 启动散户现货加密（0.75% 费率战）</strong>——$12T 客户资产入场。COIN 最大长期威胁——这是 V1 警告"传统券商抢市场"的兑现。</li>
+      <li><strong>道德条款 11-13 失败留下 60 票死结</strong>——Van Hollen 修正案被否、Warnock/Gillibrand 已明牌"floor 没有道德条款不投赞成"。共和党 53 + Gallego + Alsobrooks = 55 票，还差 5 张民主党票。7-4 白宫目标 "reachable, not guaranteed"。</li>
+      <li><strong>JPMorgan 5-12 申请第二只代币化货基 JLTXX</strong>——专为稳定币储备设计。Elliptic $120M D 轮（德银+纳斯达克+JPM 联手）暗示"合规即基础设施"是隐性主线。</li>
+      <li><strong>5-14 BlackRock 当天向 Coinbase 转 $287M BTC</strong>——这是 4 天里"机构持续买入"叙事第一个裂痕信号。当日 ETF 净流入仅 $131M（vs 前一日流出 $635M）。</li>
+    </ul>
+  </div>
+</section>
+
+
+<section id="markup">
+  <div class="section-num">02 / 5-14 markup 详解</div>
+  <h2>15-9 通过，但留下道德条款死结。</h2>
+
+  <h3>投票结果（24 人委员会全员到场）</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>阵营</th>
+          <th>票数</th>
+          <th>关键人物</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight-pos">
+          <td>共和党 13 人</td>
+          <td><strong>全部赞成</strong></td>
+          <td>Tim Scott（主席）、Lummis、Tillis、Hagerty、Crapo、Rounds、Kennedy、Britt、Ricketts、Banks、Cramer、Moreno、McCormick</td>
+        </tr>
+        <tr class="highlight-pos">
+          <td>民主党 2 人</td>
+          <td><strong>越党赞成</strong></td>
+          <td><strong>Ruben Gallego (D-AZ) + Angela Alsobrooks (D-MD)</strong></td>
+        </tr>
+        <tr class="highlight">
+          <td>民主党 9 人</td>
+          <td>反对</td>
+          <td>Warren、Reed、Warner、Van Hollen、Cortez Masto、Smith、Warnock、Kim、Blunt Rochester</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    <strong>共和党反水：0 人</strong>。<strong>民主党越党 2 人</strong>——比中文圈预测的 13-11 党派票更跨党派，是关键超预期信号。
+  </p>
+
+  <h3>关键修正案逐条结果</h3>
+
+  <div class="metric-list">
+    <div class="metric-row">
+      <div class="label">Lummis Amendment 122（DeFi 安全港细化）<span class="src">Warner + Cortez Masto + Alsobrooks 联手共和党</span></div>
+      <div class="value pos">18:6 通过</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">Rounds AI sandbox（金融 AI 监管沙盒）<span class="src">Warren 呼吁反对未果</span></div>
+      <div class="value pos">15:9 通过</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">McCormick Portfolio margining（组合保证金）<span class="src">两党高票通过</span></div>
+      <div class="value pos">18:6 通过</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">Van Hollen 道德条款（针对 Trump 利益冲突）<span class="src">直接针对 World Liberty Financial</span></div>
+      <div class="value warn">11:13 失败</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">Warren 退休账户禁高风险资产<span class="src">党派线 11-13</span></div>
+      <div class="value warn">11:13 失败</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">Warren 加密 mixer 制裁授权<span class="src">引用朝鲜黑客洗钱 $450M</span></div>
+      <div class="value warn">11:13 失败</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">Cortez Masto deposit flight 保护<span class="src">Scott 程序裁定 out of order</span></div>
+      <div class="value warn">不予审议</div>
+    </div>
+  </div>
+
+  <h3>关键人物原话</h3>
+
+  <div class="quote">
+    Today, the Banking Committee showed the American people that Washington can still work together. We had a serious debate, worked through real differences, and came together around a shared goal: protecting consumers, supporting innovation, and keeping the future of finance in America.
+    <div class="quote-attr">Tim Scott · 参议院银行委主席 · 投票后官方声明</div>
+  </div>
+
+  <div class="quote">
+    Right now American families all across this country are struggling… we could be working on capping credit card interest rates. But instead of that, we're spending our time working on a bill written by the crypto industry for the crypto industry. This bill declares open season on defrauding American consumers who use crypto.
+    <div class="quote-attr">Elizabeth Warren · 5-14 开场陈述</div>
+  </div>
+
+  <div class="quote">
+    This is the hardest piece of legislation I've ever worked on. This is a very new commodity and security, and it takes time to craft something to address the innovation that has been brought about through blockchain technology.
+    <div class="quote-attr">Cynthia Lummis · 5-14 markup 当天</div>
+  </div>
+
+  <div class="quote">
+    I want to be clear that my vote here does not guarantee a vote on the floor. After today, we need to connect with our agriculture committee colleagues… we have come close, but have not finished an agreement on ethics guardrail for elected officials, all elected officials, we need real, enforceable standards.
+    <div class="quote-attr">Ruben Gallego · 投票后立刻明牌道德条款是 floor 投票条件</div>
+  </div>
+
+  <div class="quote">
+    I was in 'crypto hell' the last couple months… I guess I'm right now in crypto purgatory, but I'm looking forward to getting all the way to crypto heaven.
+    <div class="quote-attr">Mark Warner · 民主党参议员 · 名场面框架</div>
+  </div>
+
+  <h3>后续路径（5-14 → 7-4）</h3>
+
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-date">5-14 → 5-31</div>
+      <div class="tl-dot data"></div>
+      <div class="tl-content">
+        <div class="tl-title">两委员会幕僚级合并文本</div>
+        <div class="tl-desc">银行委 + 农业委两个版本合并，days to weeks</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">6 月</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">参议院全体辩论 + 60 票投票</div>
+        <div class="tl-desc">最大死结。共和党 53 + Gallego + Alsobrooks = 55 票，需 5 名民主党。Warnock/Gillibrand 要道德条款</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">6 月底-7 月初</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-title">众议院再投（合并版本）</div>
+        <div class="tl-desc">众议院去年 7-17 已 294-134 通过，需对合并版本再投</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">7-4 目标</div>
+      <div class="tl-dot pos"></div>
+      <div class="tl-content">
+        <div class="tl-title">川普签署目标（reachable, not guaranteed）</div>
+        <div class="tl-desc">Patrick Witt 在 markup 现场。Gillibrand 预测更现实窗口是 8 月初</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">⚠ 60 票死结</div>
+    <p>
+      Gallego/Alsobrooks 在 markup 现场已经公开警告：<strong>floor 投票他们不一定投赞成</strong>，除非法案加入道德条款（限制 Trump 家族加密利益）。但 Patrick Witt 已划红线"不接受针对总统的条款"。<strong>这是 7-4 目标最大障碍</strong>——目前没有公开通路显示双方有妥协空间。
+    </p>
+  </div>
+</section>
+
+
+<section id="market">
+  <div class="section-num">03 / 市场反应</div>
+  <h2>立法 alpha 被宏观 beta 吃掉。</h2>
+
+  <h3>4 天关键事件时间线</h3>
+
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-date">5-12 周一</div>
+      <div class="tl-dot data"></div>
+      <div class="tl-content">
+        <div class="tl-title">309 页 CLARITY 全文公布</div>
+        <div class="tl-desc">同日 Schwab 启动散户加密、JPM 申请 JLTXX、Elliptic $120M D 轮</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">5-13 周二</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">PPI 数据 +6% 远超预期 4.9%</div>
+        <div class="tl-desc">核心 PPI +5.2%、BTC 跌穿 $80K、6 月降息概率暴跌至 2.4%</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">5-13 周二</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">Saylor 业绩会承认"必要时卖 BTC"</div>
+        <div class="tl-desc">永不卖币承诺破窗 · MSTR 4 天跌 -3.79%</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">5-14 周三</div>
+      <div class="tl-dot pos"></div>
+      <div class="tl-content">
+        <div class="tl-title">CLARITY 15-9 通过 markup</div>
+        <div class="tl-desc">BTC 触 $82,022、COIN +5.06%、MSTR +5.02%、HOOD +5.15%</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">5-14 周三</div>
+      <div class="tl-dot data"></div>
+      <div class="tl-content">
+        <div class="tl-title">BlackRock 当天向 Coinbase 转 $287M BTC</div>
+        <div class="tl-desc">机构卖出信号？BTC ETF 当日仅净流入 $131M（vs 前日 -$635M）</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">5-14 周三</div>
+      <div class="tl-dot pos"></div>
+      <div class="tl-content">
+        <div class="tl-title">MSTR 仍买 4,708 BTC（嘴上说卖、手上还在买）</div>
+        <div class="tl-desc">总持仓继续逼近百万 BTC 目标</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">5-15 周四</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">Kevin Warsh 接任 Fed 主席</div>
+        <div class="tl-desc">参议院 54-45 通过 · 鹰派背景 · 6 周内 Fed 政策路径不确定性陡增</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">5-15 周四</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">加密板块集体崩盘</div>
+        <div class="tl-desc">CRCL -7.98%、COIN -7.82%、BLSH -9.63%、MSTR -5.11%</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">5-15 周四</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">BTC ETF 单日净流出 $290M · 12 支无一净流入</div>
+        <div class="tl-desc">4 天累计净流出 $1.03B · 4 月连续 6 周净流入纪录被打破</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">5-16 周五</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">BTC 跌穿 $79K · LINK $9.98</div>
+        <div class="tl-desc">立法 alpha 完全消散</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>市场反应的二元分化</h3>
+
+  <p>
+    CoinDesk 5-14 头条用了一个精准词："markup leaves Bitcoin unstirred"（markup 让 BTC 纹丝不动）。BTC 期权隐含波动率压到 30%（年内新低）——做市商不预期波动放大。但加密相关股票却涨 6-9%（5-14 当天 COIN +9.10%、MSTR +8.16%、HOOD +6.16%）。
+  </p>
+
+  <div class="callout warn">
+    <div class="callout-label">关键反差</div>
+    <p>
+      <strong>市场已经把 CLARITY 重定价为"股权/合规题材"而非"BTC 题材"</strong>。这是 V1 没充分预料到的——5-14 投票当天**资金转向被分类后受益最直接的板块**（payments/stablecoin/合规 broker），而不是 BTC 本身。但即便如此，5-15 后整个板块仍集体回吐——证明<strong>立法预期已 price in 大部分</strong>。
+    </p>
+  </div>
+</section>
+
+
+<section id="crcl">
+  <div class="section-num">04 / CRCL 复盘</div>
+  <h2>"评级一片看多但散户在出货"。</h2>
+
+  <p>
+    CRCL 是 4 天里最戏剧性的标的——大行评级集体上调 + 价格反向下跌的拥挤交易典型样本。
+  </p>
+
+  <h3>分析师目标价集体上调潮（5-11 起）</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>大行</th>
+          <th>旧目标价</th>
+          <th>新目标价</th>
+          <th>调整幅度</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight-pos">
+          <td class="product-name">JPMorgan</td>
+          <td>$112</td>
+          <td><strong>$155</strong></td>
+          <td>+38%（最大转向）</td>
+        </tr>
+        <tr>
+          <td class="product-name">Needham</td>
+          <td>$130</td>
+          <td>$150</td>
+          <td>+15%</td>
+        </tr>
+        <tr>
+          <td class="product-name">Clear Street</td>
+          <td>$152</td>
+          <td>$157</td>
+          <td>+3%</td>
+        </tr>
+        <tr>
+          <td class="product-name">Mizuho</td>
+          <td>$120</td>
+          <td>$135</td>
+          <td>+13%</td>
+        </tr>
+        <tr>
+          <td class="product-name">Deutsche Bank</td>
+          <td>$83</td>
+          <td>$101</td>
+          <td>+22%</td>
+        </tr>
+        <tr class="highlight">
+          <td class="product-name">Compass Point</td>
+          <td>$77</td>
+          <td>$97</td>
+          <td>+26%（最空的也调升）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    <strong>JPM 这一笔尤其关键</strong>。他们之前的负面假设是"对利率敏感、降息周期会吃掉 margin"。+38% 意味着内部利率假设悄悄改了——可能把"2026 年降息 3 次"模型调到"降息推迟"（PPI 6% 验证了这个判断）。
+  </p>
+
+  <h3>但 4 天股价表现完全相反</h3>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">5-12 收盘</div>
+      <div class="stat-value">$123.65</div>
+      <div class="stat-note">Q1 业绩 beat 后</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">5-14 markup 当天</div>
+      <div class="stat-value warn">-2.13<span class="unit">%</span></div>
+      <div class="stat-note">利好出尽减仓</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">5-15 单日</div>
+      <div class="stat-value warn">-7.98<span class="unit">%</span></div>
+      <div class="stat-note">$114.00 收盘</div>
+    </div>
+  </div>
+
+  <h3>三个跌的原因</h3>
+
+  <ol>
+    <li><strong>利好出尽（最主要）</strong>：5-4 因 Tillis-Alsobrooks 稳定币妥协方案已经涨 16.53%、5-11 Q1 业绩 beat 涨 15.91%。5-14 markup 当天属于"news 兑现"，机构开始减仓。</li>
+    <li><strong>5-15 Form 4 + 软银减持传闻</strong>：CRCL 5-15 提交两份 Form 4 高管持股变动声明；雪球 KOL 提及"软银继续减持"（注：4 天内未在 SEC EDGAR 一手核实，软银 Q4 2025 已减持 ~1667 万股套现 $33.8 亿是已确认事实）。</li>
+    <li><strong>稳定币禁息条款负面影响被重新审视</strong>：Section 404 完整保留禁止 passive yield。Foresight News 5-16："交易所和 DeFi 平台可对闲置资金发放理财收益的渠道面临关闭"——这部分业务对 Circle 是负面。</li>
+  </ol>
+
+  <h3>中文实盘大佬动向（V1 时不知道）</h3>
+
+  <div class="quote">
+    在新加坡时间上午这段时间，我稍微减仓了一些 Circle，感觉 Circle 现在在《Clarity Act》初步通过后有 "卖消息" 的趋势……（第二天）直接清仓了 CRCL，加仓了 NVDA。
+    <div class="quote-attr">Ace @Money_or_Life_X · 中文美股圈 KOL · 5-15 → 5-16</div>
+  </div>
+
+  <div class="quote">
+    Hyperliquid 放弃 USDH，回到 USDC——网络效应加强。
+    <div class="quote-attr">雪球 CRCL 讨论 · 5-13 · 反向利好被忽视</div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">V2 CRCL 判断</div>
+    <p class="callout-quote">
+      "评级一片看多但散户在出货"——拥挤交易典型。V1 建议 CRCL 仓位 5%，<strong>V2 降到 3%</strong>。<strong>不要追 $130 以上，等 $100 以下再考虑</strong>。JPM 目标 $155 长期可信，但 4-8 周内"利好真空 + 利率不确定 + Form 4 抛压"组合让短期反弹有限。
+    </p>
+  </div>
+</section>
+
+
+<section id="tokens">
+  <div class="section-num">05 / 代币 + ETF</div>
+  <h2>普跌中两个净流入。</h2>
+
+  <h3>主流代币 4 天变化（5-12 vs 5-16）</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>代币</th>
+          <th>5-12 USD</th>
+          <th>5-16 USD</th>
+          <th>4 天变动</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="product-name">BTC</td>
+          <td>$81,725</td>
+          <td>$78,986</td>
+          <td><strong>-3.35%</strong></td>
+        </tr>
+        <tr>
+          <td class="product-name">ETH</td>
+          <td>$2,340</td>
+          <td>$2,225</td>
+          <td>-4.92%</td>
+        </tr>
+        <tr class="highlight">
+          <td class="product-name">SOL</td>
+          <td>$97.32</td>
+          <td>$88.55</td>
+          <td><strong>-9.01%</strong></td>
+        </tr>
+        <tr>
+          <td class="product-name">XRP</td>
+          <td>$1.476</td>
+          <td>$1.424</td>
+          <td>-3.52%（相对抗跌）</td>
+        </tr>
+        <tr>
+          <td class="product-name">ADA</td>
+          <td>$0.2805</td>
+          <td>$0.2593</td>
+          <td>-7.56%</td>
+        </tr>
+        <tr class="highlight-pos">
+          <td class="product-name">DOGE</td>
+          <td>$0.1113</td>
+          <td>$0.1118</td>
+          <td><strong>+0.45%</strong>（唯一持平）</td>
+        </tr>
+        <tr>
+          <td class="product-name">LINK</td>
+          <td>$10.59</td>
+          <td>$9.98</td>
+          <td>-5.76%</td>
+        </tr>
+        <tr class="highlight">
+          <td class="product-name">APT (Aptos)</td>
+          <td>—</td>
+          <td>$0.9808</td>
+          <td><strong>7d -13.34%（最惨）</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>DeFi 治理代币 4-7 天平均跌 -7.6%（弱于 BTC）</h3>
+
+  <p>
+    所谓"DeFi 法案 alpha"叙事<strong>没有兑现</strong>。UNI -4.12%、AAVE -7.11%、MKR -14.87%（最大跌幅）、LDO -11.77%。CLARITY Act 通过的利好被宏观风险盖过。
+  </p>
+
+  <h3>ETF 资金流向 4 天逐日数据</h3>
+
+  <div class="metric-list">
+    <div class="metric-row">
+      <div class="label">BTC 现货 ETF 4 天合计<span class="src">5-12 -$233M / 5-13 -$635M / 5-14 +$131M / 5-15 -$290M</span></div>
+      <div class="value warn">-$1.03B</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">ETH 现货 ETF 4 天合计<span class="src">连续 5 日净流出</span></div>
+      <div class="value warn">-$238M</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">SOL 现货 ETF 4 天合计<span class="src">5 家发行人 · 11 天连续净流入</span></div>
+      <div class="value pos">+$31.55M</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">XRP 现货 ETF 4 天合计<span class="src">7 家发行人 · 标普展望 $4-8B 年底前</span></div>
+      <div class="value pos">+$34.70M</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">DOGE 现货 ETF 4 天合计<span class="src">REX-Osprey DOJE</span></div>
+      <div class="value">+$273K（基本零）</div>
+    </div>
+  </div>
+
+  <h3>稳定币 4 天结构性变化</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>稳定币</th>
+          <th>4 天净变化</th>
+          <th>解读</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td class="product-name">USDC (Circle)</td>
+          <td>-$190M</td>
+          <td>净赎回 · 传统美国机构资金撤出信号</td>
+        </tr>
+        <tr>
+          <td class="product-name">USDT (Tether)</td>
+          <td>+$130M</td>
+          <td>几乎持平 · 市场观望</td>
+        </tr>
+        <tr class="highlight-pos">
+          <td class="product-name">USDS (Sky)</td>
+          <td><strong>+$910M (+11.5%)</strong></td>
+          <td>DeFi 资金转向 · 最大净流入</td>
+        </tr>
+        <tr class="highlight-pos">
+          <td class="product-name">USDtb (Ethena T-bill)</td>
+          <td>+$450M (+66%)</td>
+          <td>本周稳定币最大涨幅</td>
+        </tr>
+        <tr>
+          <td class="product-name">BUIDL (BlackRock)</td>
+          <td>+$240M (+8%)</td>
+          <td>机构链上美债产品</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout pos">
+    <div class="callout-label">新发现的资金流向</div>
+    <p>
+      <strong>USDC 在缩量、USDS / USDtb / BUIDL 在扩张</strong>——这是稳定币禁息条款落地后的真实演绎：用户从"被动持有 USDC 拿利息"转向"主动质押到 DeFi 协议（Sky/Ethena/BlackRock 货基）"。<strong>真正赢家可能不是 Circle 而是 Sky（USDS 发行人）+ Ethena + BlackRock BUIDL</strong>。
+    </p>
+  </div>
+</section>
+
+
+<section id="institution">
+  <div class="section-num">06 / 新机构动作</div>
+  <h2>4 天里 3 件大事颠覆 V1 判断。</h2>
+
+  <h3>1. Schwab 5-12 启动散户现货加密交易</h3>
+
+  <p>
+    <strong>这是 V1 没充分预料到的大事</strong>。Schwab 管着 <strong>$12T 客户资产</strong>，5-12 起分批向散户开放 BTC/ETH 现货交易，托管由 Paxos + Schwab Premier Bank 提供。
+  </p>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Schwab 加密费率</div>
+      <div class="stat-value warn">0.75<span class="unit">%</span></div>
+      <div class="stat-note">vs Fidelity 1% · 直接打 25% 折扣</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Schwab 客户资产</div>
+      <div class="stat-value">$12<span class="unit">T</span></div>
+      <div class="stat-note">数千万散户</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">现货加密同时供应方</div>
+      <div class="stat-value data">3</div>
+      <div class="stat-note">Schwab + Fidelity + Morgan Stanley E*Trade</div>
+    </div>
+  </div>
+
+  <p>
+    <strong>这是 COIN 最大长期威胁</strong>——V1 警告"传统券商抢市场"的实际兑现。<strong>美国老牌券商基本"全员就位"</strong>——Schwab + Fidelity + Morgan Stanley E*Trade 同时供现货加密。后续 Coinbase 必须回应 0.75% 费率，否则市场份额会被慢慢蚕食。
+  </p>
+
+  <h3>2. JPMorgan 5-12 申请第二只代币化货基 JLTXX</h3>
+
+  <p>
+    <strong>JPMorgan OnChain Liquidity-Token Money Market Fund</strong>（代码 JLTXX）发在以太坊上，底层只买 ≤93 天的美国国债 + 隔夜回购。<strong>重点：专门为稳定币发行人做储备资产设计</strong>——USDC、PYUSD 这类发行人的储备未来可以直接放在 JPM 这只基金里赚息。
+  </p>
+
+  <p>
+    这是 JPM 半年内第二只链上基金（去年 12 月已上线 MONY）。<strong>信号：JPM 在主动占位"稳定币储备的银行通道"</strong>。
+  </p>
+
+  <h3>3. Elliptic $120M D 轮：德银 + 纳斯达克 + JPM 联手</h3>
+
+  <p>
+    估值 <strong>$670M</strong>，One Peak Partners 领投，<strong>纳斯达克 Ventures、德意志银行、英国商业银行、JPMorgan 参投</strong>。Elliptic 是做链上合规分析的英国公司。
+  </p>
+
+  <div class="callout data">
+    <div class="callout-label">隐性主线："合规即基础设施"</div>
+    <p>
+      传统大行用钱投票——大行集体进加密 → 合规分析公司成机构必采购品。德银 + 纳斯达克 + JPM 同时下注同一家，<strong>把这家公司锁定成"机构合规"事实标准的种子选手</strong>。Elliptic、Chainalysis、TRM Labs 是这个赛道的三大种子。
+    </p>
+  </div>
+
+  <h3>其他 4 天关键机构动作</h3>
+
+  <ul>
+    <li><strong>5-14 Dartmouth 大学捐赠基金披露 $14.5M BTC + ETH ETF 持仓</strong>——美国大学捐赠基金第一次显性持仓加密 ETF</li>
+    <li><strong>5-14 BlackRock 当天向 Coinbase 转 $287M BTC</strong>——市场分歧，部分解读为"BlackRock 在卖"。当日 ETF 净流入仅 $131M</li>
+    <li><strong>5-15 Hana Bank 收购 Upbit 母公司 Dunamu 6.7 亿美元股份</strong>——韩国传统银行入场</li>
+    <li><strong>5-16 Hyperliquid 联创 Jeff.hl 通过 Policy Center 与美国监管会面</strong>——推动"链上衍生品市场监管路径"</li>
+    <li><strong>5-16 美国众议院多名议员致信川普</strong>——敦促任命完整 CFTC 委员名单（含民主党）</li>
+  </ul>
+</section>
+
+
+<section id="hidden">
+  <div class="section-num">07 / 新隐藏受益者</div>
+  <h2>Schwab/JPM/Elliptic 之外，还有谁吃到肉？</h2>
+
+  <h3>4 天里浮出水面的 6 个新名字</h3>
+
+  <div class="two-col">
+    <div class="col-card pos">
+      <h4>明显受益（数据支撑）</h4>
+      <ul>
+        <li><strong>Securitize</strong>（私有）— BlackRock BUIDL 默认基础设施 + Plume 网络合作 28 万 RWA 用户</li>
+        <li><strong>Paxos</strong>（私有）— Schwab 选择的托管方 + PYUSD 发行人 + 多个稳定币背后管道</li>
+        <li><strong>Ondo Finance (ONDO)</strong> — 5-15 单日 +23%，市场定价"代币化总规模 $20B 突破"最大受益者</li>
+        <li><strong>Sky (USDS) + Ethena (USDtb)</strong> — 稳定币禁息后真正赢家，4 天 +$910M / +$450M</li>
+      </ul>
+    </div>
+    <div class="col-card pos">
+      <h4>叙事受益（暂未兑现）</h4>
+      <ul>
+        <li><strong>Ripple / XRP Ledger</strong> — 5-6 跨境美债结算 5 秒清算 · 7 家 XRP ETF 4 天 +$34.70M</li>
+        <li><strong>Hyperliquid (HYPE)</strong> — Policy Center $29M 推 perp 合法化 · 5-16 已与美国监管会面</li>
+        <li><strong>美国合规科技赛道</strong> — Elliptic + Chainalysis + TRM Labs（机构合规必采购）</li>
+        <li><strong>Equiniti</strong> — 被 Bullish $4.2B 收购，从传统转让代理变成"链上发股合规通道"</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>7 个 DeFi 协议红利风口（Foresight News 5-16）</h3>
+
+  <p>
+    这是中文圈 4 天里浮出的最重要新发现——稳定币禁息条款落地后"机构投资者+散户都涌向同一类标的"：
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>赛道</th>
+          <th>协议</th>
+          <th>逻辑</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>收益拆分</td>
+          <td class="product-name">Pendle</td>
+          <td>PT/YT 代币 · 把稳定币收益拆出来买卖</td>
+        </tr>
+        <tr>
+          <td>机构借贷</td>
+          <td class="product-name">Morpho</td>
+          <td>合规机构借贷协议</td>
+        </tr>
+        <tr>
+          <td>机构借贷</td>
+          <td class="product-name">Maple Finance</td>
+          <td>机构借贷 · 私募信贷代币化</td>
+        </tr>
+        <tr>
+          <td>代币化货基</td>
+          <td class="product-name">Sky (USDS/sUSDS)</td>
+          <td>稳定币禁息后最大转向标的</td>
+        </tr>
+        <tr>
+          <td>RWA</td>
+          <td class="product-name">Centrifuge</td>
+          <td>现实资产代币化</td>
+        </tr>
+        <tr>
+          <td>结构化固收</td>
+          <td class="product-name">Apyx</td>
+          <td>新兴协议</td>
+        </tr>
+        <tr>
+          <td>结构化固收</td>
+          <td class="product-name">Saturn Credit</td>
+          <td>新兴协议</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>ETH Tier 1 重估叙事（Odaily 5-14）</h3>
+
+  <div class="callout data">
+    <div class="callout-label">这是 4 天里中文圈最有想象空间的叙事</div>
+    <p>
+      <strong>"ETH 是唯一通过 CLARITY 五项去中心化测试又拥有可编程智能合约平台的资产。法案通过将使 ETH 的估值框架从 Tier 2（基于现金流乘数）跃迁到 Tier 1（基于货币溢价，无估值上限）。"</strong>
+    </p>
+    <p>
+      对非美投资者：ETH 现货 ETF 在香港已有，比 BTC 更具不对称机会。但 4 天里 ETH 跌 -4.92% + ETH ETF 连续 5 日净流出——叙事还没兑现，等价格回调到 $2,000 以下是更稳妥入场点。
+    </p>
+  </div>
+</section>
+
+
+<section id="config">
+  <div class="section-num">08 / 配置微调</div>
+  <h2>V1 → V2：60/30/10 框架保持，内部重排。</h2>
+
+  <p>
+    V1 时（5-12）给的推荐配置是 60% 美股加密蓝筹 + 30% 主流代币 ETF + 10% 法案 alpha 弹性。4 天后总框架不需要推翻，<strong>但内部权重和时点需要微调</strong>。
+  </p>
+
+  <h3>仓位调整对比表</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>仓位</th>
+          <th>V1 (5-12)</th>
+          <th>V2 (5-16)</th>
+          <th>调整理由</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="product-name">COIN</td>
+          <td>25%</td>
+          <td>25%</td>
+          <td>维持 · Schwab 0.75% 是长期威胁但短期不影响</td>
+        </tr>
+        <tr class="highlight">
+          <td class="product-name">MSTR</td>
+          <td>15%</td>
+          <td><strong>12%（-3%）</strong></td>
+          <td>Saylor 永不卖币破窗 + 债务墙累积 + BTC 跌穿 $80K 杠杆反向放大</td>
+        </tr>
+        <tr class="highlight">
+          <td class="product-name">BLK</td>
+          <td>10%</td>
+          <td><strong>8%（-2%）</strong></td>
+          <td>BLK 没有 CLARITY 直接催化 · 资金转向 alpha 弹性</td>
+        </tr>
+        <tr class="highlight">
+          <td class="product-name">CRCL</td>
+          <td>5%</td>
+          <td><strong>3%（-2%）</strong></td>
+          <td>评级一片看多但拥挤交易 · Compass Point 下调 + Form 4 抛压 · 等 $100 以下</td>
+        </tr>
+        <tr class="highlight-pos">
+          <td class="product-name">HOOD</td>
+          <td>5%</td>
+          <td><strong>7%（+2%）</strong></td>
+          <td>YTD -32% · event contracts 业务对冲 · 深度回调标的</td>
+        </tr>
+        <tr class="highlight">
+          <td>主流代币 ETF（合计 30%）</td>
+          <td>BTC 15% + ETH 10% + SOL 5%</td>
+          <td><strong>SOL 12% + XRP 8% + BTC 6% + ETH 4%</strong></td>
+          <td>SOL 资金面最热（11 天连续流入）· XRP 法案弹性最大 · ETH 流出严重暂减配</td>
+        </tr>
+        <tr class="highlight">
+          <td>法案 alpha 弹性（10%）</td>
+          <td>ADA + PYTH + Kraken IPO</td>
+          <td><strong>ADA ETF 候选 4% + Kraken/Anchorage 预留 6%</strong></td>
+          <td>ADA 8-9 后将进入 ETF 审批快通道 · Kraken IPO 仍搁置（$13.3B 估值）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>三种情景决策树</h3>
+
+  <div class="path-detail">
+    <div class="path-card a">
+      <div class="path-num">情景 A · 35%</div>
+      <h4>7-4 前通过 + 川普签署</h4>
+      <p><strong>COIN/CRCL 不再是首选</strong>（news 已兑现），转向 SOL/XRP/ADA。Kraken 大概率 Q3 重启 IPO。</p>
+      <ul>
+        <li>SOL 加仓至 15%</li>
+        <li>XRP 加仓至 10%</li>
+        <li>ADA ETF 候选加仓至 6%</li>
+        <li>CRCL/COIN 减仓 50%</li>
+      </ul>
+    </div>
+    <div class="path-card b">
+      <div class="path-num">情景 B · 45%（最可能）</div>
+      <h4>卡在参议院全院 60 票门槛</h4>
+      <p>防守为主：减仓 COIN/CRCL，加 MSTR（BTC 仍是终极避险）+ 现金仓位待 BTC 回 $75K。</p>
+      <ul>
+        <li>MSTR 加回到 15%</li>
+        <li>CRCL 仓位降到 1%</li>
+        <li>预留 15% 现金等 BTC $75K</li>
+        <li>SOL/XRP 维持目标仓位</li>
+      </ul>
+    </div>
+    <div class="path-card c">
+      <div class="path-num">情景 C · 20%</div>
+      <h4>法案被肢解或推迟到 2027</h4>
+      <p>全面减仓加密蓝筹股。保留 BTC 现货 ETF (IBIT) 作长期持仓。香港平台逻辑不变。</p>
+      <ul>
+        <li>COIN/CRCL/HOOD/MSTR 全部清仓 50-80%</li>
+        <li>IBIT 维持作底仓</li>
+        <li>转入 NVDA/半导体（如 Ace 实盘）</li>
+        <li>等 2027 重新评估</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<section id="friday">
+  <div class="section-num">09 / 5-17 行动清单</div>
+  <h2>给 Ray 的周五具体动作。</h2>
+
+  <div class="verdict">
+    <div class="verdict-title">V2 最终判断 · 综合评级 7.5 / 10</div>
+    <h3>政策红利兑现，宏观风险接管。</h3>
+    <p>
+      CLARITY 15-9 通过验证了"立法终将落地"长逻辑。但 PPI 6% + Warsh 接 Fed + Saylor 卖币松动三件事，让 4-6 周决定胜负的不是法案本身，而是<strong>Fed 政策路径 + 银行业对 stablecoin yield 的反扑 + Trump 道德条款能否让步</strong>。
+    </p>
+    <p>
+      <strong>战术节奏从"政策驱动 → 估值驱动"切换</strong>：5-14 之后利好兑现，资金转向 SOL/XRP/ADA 和 7 个 DeFi 协议。CRCL 减仓、SOL/XRP 加仓、保留现金等 BTC $75K 是最优策略。
+    </p>
+
+    <div class="verdict-options">
+      <div class="verdict-option">
+        <div class="num">应该做的</div>
+        <h4>三件具体事</h4>
+        <p>① 周五观察 COIN 价格：若 &lt;$200，分批 1/3 建仓<br>② 启动 SOL ETF（BSOL 含 staking 7-8% APY）定投<br>③ HOOD 若跌至 $75 以下，小仓位（2-3%）建仓</p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">不该追的</div>
+        <h4>4 天已涨过的</h4>
+        <p>① CRCL（NTM P/E ~100x、Compass Point 下调、Form 4 抛压）<br>② MARA（PPI 通胀风险加剧时矿企反向）<br>③ BMNR（流动性差、信息不对称）<br>④ MSTR > $190（Saylor 松动叙事）</p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">应该等的</div>
+        <h4>低位埋伏标的</h4>
+        <p>① CRCL &lt; $100（JPM 长期目标 $155 但短期阻力）<br>② BTC IBIT 对应 BTC &lt; $75K<br>③ ETH &lt; $2,000（Tier 1 重估叙事）<br>④ HOOD &lt; $75（深度超跌反弹）</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>5-17 周五至 5-23 周观察清单</h3>
+
+  <div class="path-detail">
+    <div class="path-card b">
+      <div class="path-num">每日盯</div>
+      <h4>4 个关键指标</h4>
+      <ul>
+        <li>BTC ETF 资金流向（SoSoValue 每日 22:00 更新）—— 净流入 = 看多信号；连续净流出 = 防守</li>
+        <li>COIN 价格 + 期权 IV —— 突破 $200 加仓窗口</li>
+        <li>Polymarket 法案通过概率 —— 跌破 60% 是预警</li>
+        <li>Fed 主席 Warsh 公开讲话 —— 6 月降息概率变化</li>
+      </ul>
+    </div>
+    <div class="path-card b">
+      <div class="path-num">每周盯</div>
+      <h4>4 个事件节点</h4>
+      <ul>
+        <li>5-20 ~ 5-31 参议院银行委 + 农业委版本合并进度（CoinDesk Politico 报道）</li>
+        <li>5-21 阵亡将士纪念日前能否敲定道德条款妥协</li>
+        <li>5 月底 Kraken / Anchorage IPO 重启信号</li>
+        <li>6 月 FOMC 议息会议（6-17/18）—— 利率敏感的 CRCL 关键节点</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>不论选哪条路，都要避开的 3 个坑（V2 版）</h3>
+
+  <ol>
+    <li><strong>不要 all-in 任何单一标的，包括看似最稳的 BLK</strong>。4 天里 BLK -0.97% 是最抗跌，但它没有 CLARITY 直接催化——平淡的稳定收益。如果你想要"加密 alpha"，BLK 给不了。</li>
+    <li><strong>不要把"法案 7-4 必通过"当成已发生事件加杠杆</strong>。Galaxy 50% / Polymarket 73% 都不是 100%。Patrick Witt "reachable, not guaranteed" 才是诚实定性。<strong>道德条款 11-13 失败 + Warnock/Gillibrand 明牌威胁 = 60 票死结仍未解</strong>。</li>
+    <li><strong>不要忽视 MSTR "永不卖币" 承诺破窗的长期影响</strong>。Saylor 一直靠"反身性叙事"——发新债 + 发新股买更多 BTC、信徒坚信不卖。一旦松口，<strong>mNAV 溢价（当前 1.11x）会缓慢收敛到 1.0x 甚至折价</strong>。短期影响 -10%，但长期估值框架被改写。</li>
+  </ol>
+
+  <div class="callout warn">
+    <div class="callout-label">最后一句</div>
+    <p class="callout-quote">
+      "Crypto purgatory"（加密炼狱）——Mark Warner 5-14 的名场面。<br>
+      过了 markup 这关，离 "crypto heaven" 还差 5 张民主党票 + 一场 Trump 自我设限的政治表态。<br>
+      <strong>你的胜负不在 5-14 投票当天 ±10%，在你能不能扛过 4-8 周的横盘</strong>。
+    </p>
+  </div>
+</section>
+
+
+</article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>核心一手来源（V2 新增 5-12 → 5-16）</h4>
+    <ul>
+      <li><a href="https://www.banking.senate.gov/newsroom/majority/chairman-scott-senate-banking-committee-advance-clarity-act-in-historic-bipartisan-vote" target="_blank">参议院银行委 · Scott 投票后官方声明</a></li>
+      <li><a href="https://www.banking.senate.gov/newsroom/majority/what-they-are-saying-industry-leaders-praise-chairman-scott-senate-banking-committee-on-advancing-bipartisan-clarity-act" target="_blank">参议院银行委 · 行业领袖反应合集</a></li>
+      <li><a href="https://www.coindesk.com/policy/2026/05/14/live-senate-banking-committee-holds-key-hearing-to-advance-clarity-act" target="_blank">CoinDesk · 5-14 markup live blog</a></li>
+      <li><a href="https://www.coindesk.com/policy/2026/05/14/clarity-act-clears-u-s-senate-committee-on-its-way-to-a-final-test-in-congress" target="_blank">CoinDesk · 5-15 recap + 后续路线</a></li>
+      <li><a href="https://www.coindesk.com/markets/2026/05/13/live-markets-bitcoin-dips-below-usd80-000-as-producer-price-inflation-surges-to-6" target="_blank">CoinDesk · 5-13 PPI 6% / BTC 跌穿 $80K</a></li>
+      <li><a href="https://www.coindesk.com/markets/2026/05/15/xrp-doge-surge-5-bitcoin-above-usd81-000-as-clarity-act-clears-senate-banking-panel" target="_blank">CoinDesk · 5-15 市场反应</a></li>
+      <li><a href="https://www.coindesk.com/business/2026/05/12/jpmorgan-files-to-launch-new-tokenized-fund-as-wall-street-tokenization-race-heats-up" target="_blank">CoinDesk · JPM JLTXX 申请</a></li>
+      <li><a href="https://www.coindesk.com/business/2026/05/13/charles-schwab-begins-rollout-of-spot-crypto-trading-for-retail" target="_blank">CoinDesk · Schwab 散户现货加密</a></li>
+      <li><a href="https://www.elliptic.co/media-center/elliptic-secures-120-million-investment" target="_blank">Elliptic $120M D 轮（德银+纳斯达克+JPM）</a></li>
+      <li><a href="https://www.cnbc.com/2026/05/14/clarity-act-congress-crypto-senate.html" target="_blank">CNBC · 5-14 markup 通过</a></li>
+      <li><a href="https://bitcoinmagazine.com/news/senate-committee-advances-clarity-act" target="_blank">Bitcoin Magazine · 15-9 详细分布</a></li>
+      <li><a href="https://www.cryptotimes.io/2026/05/14/clarity-act-vote-timeline-what-happens-next/" target="_blank">Crypto Times · 7-4 时间表分析</a></li>
+      <li><a href="https://decrypt.co/367871/democrats-split-clarity-act-crypto-bill-passes-senate-committee-vote" target="_blank">Decrypt · 民主党分裂</a></li>
+      <li><a href="https://www.galaxy.com/insights/research/clarity-act-senate-banking-markup-may-2026-analysis" target="_blank">Galaxy Research · markup 分析</a></li>
+      <li><a href="https://www.coindesk.com/markets/2026/05/14/bitcoin-stuck-below-usd80-000-as-leveraged-longs-unwind-altcoins-slide" target="_blank">CoinDesk · BTC stuck below $80K</a></li>
+      <li><a href="https://www.panewslab.com/zh/articles/019e2b12-d46f-717e-b9d5-21a0de155d57" target="_blank">PANews · 7 个 DeFi 协议红利风口</a></li>
+      <li><a href="https://www.panewslab.com/zh/articles/019e2aa1-1521-7788-b2a7-324a6220f22e" target="_blank">PANews · 菠菜 CLARITY 三个底层逻辑</a></li>
+      <li><a href="https://www.odaily.news/zh-CN/post/5210760" target="_blank">Odaily · ETH Tier 1 重估</a></li>
+      <li><a href="https://sosovalue.com/zh/assets/etf/us-btc-spot" target="_blank">SoSoValue · ETF 资金流向一手</a></li>
+      <li><a href="https://www.strategy.com/purchases" target="_blank">Strategy · 5-14 仍买 4708 BTC</a></li>
+    </ul>
+
+    <div class="footer-meta">
+      <div>Ray Deep Research · /ray-deep-research V2</div>
+      <div>7 个聚焦型 AI 调研员 · 约 14,000 字 · 2026-05-16</div>
+      <div>仅供参考 · 不构成投资建议 · V1 见 2026-05-12 版</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const themeToggle = document.getElementById('theme-toggle');
+function applyTheme(theme) {
+  if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  else document.documentElement.removeAttribute('data-theme');
+}
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  const next = current === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+  try { localStorage.setItem('ray-theme', next); } catch (e) {}
+});
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  try {
+    if (!localStorage.getItem('ray-theme')) applyTheme(e.matches ? 'dark' : 'light');
+  } catch (err) {}
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      document.querySelectorAll('nav.toc a').forEach(link => {
+        link.style.color = '';
+        link.style.fontWeight = '';
+      });
+      const activeLink = document.querySelector(`nav.toc a[href="#${id}"]`);
+      if (activeLink) {
+        activeLink.style.color = 'var(--accent-warn)';
+        activeLink.style.fontWeight = '600';
+      }
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

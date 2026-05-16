@@ -39,7 +39,8 @@
 
 | 日期 | 报告 | 在线浏览 |
 |------|------|---------|
-| 2026-05-12 | [初版投资影响调研 · 加密合法化的最后一公里](clarity-act/2026-05-12-clarity-act.html) | [↗ Open](https://kdsz001.github.io/ray-research/clarity-act/2026-05-12-clarity-act.html) |
+| 2026-05-12 | [v1 · 加密合法化的最后一公里](clarity-act/2026-05-12-clarity-act.html) | [↗ Open](https://kdsz001.github.io/ray-research/clarity-act/2026-05-12-clarity-act.html) |
+| 2026-05-16 | [v2 · 5-14 markup 通过后 4 天复盘 + 配置调整](clarity-act/2026-05-16-clarity-act-v2.html) | [↗ Open](https://kdsz001.github.io/ray-research/clarity-act/2026-05-16-clarity-act-v2.html) |
 
 ### ✈ [拓璞数控 07688.HK](tuopu-cnc/) · 航空航天五轴机床 · 港股 IPO 深度调研
 
