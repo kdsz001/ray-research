@@ -35,14 +35,23 @@ body.rs-active { padding-left: var(--rs-w); transition: padding-left 0.18s; }
 /* 隐藏报告原本的 sticky TOC（被 sidebar 取代） */
 body.rs-active nav.toc { display: none !important; }
 
-/* main 从 grid 变成单列（之前 main 用 grid-template-columns: 200px 1fr） */
-body.rs-active main {
+/* 主容器从 grid 变成单列。兼容多种容器命名：
+   - <main> (typeless 标杆)
+   - <div class="layout"> (后来 skill 生成的新模板)
+   - <div class="container"> (备用) */
+body.rs-active main,
+body.rs-active .layout,
+body.rs-active div.container {
   display: block !important;
   grid-template-columns: none !important;
   max-width: 880px !important;
   margin: 0 auto !important;
+  padding-left: 32px !important;
+  padding-right: 32px !important;
 }
-body.rs-active main article {
+body.rs-active main > article,
+body.rs-active .layout > article,
+body.rs-active div.container > article {
   max-width: 100% !important;
   padding-top: 60px !important;
 }
