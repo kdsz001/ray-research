@@ -110,9 +110,9 @@ main { max-width: var(--max-w); width: 100%; }
 .hero { display: grid; grid-template-columns: 1fr 220px; gap: 60px; margin-bottom: 80px; padding-bottom: 60px; border-bottom: 2px solid var(--rule); }
 .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-warn); font-weight: 600; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
 .eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--accent-warn); display: inline-block; }
-h1.hero-title { font-family: var(--serif); font-size: 72px; line-height: 1.0; letter-spacing: -0.03em; font-weight: 600; color: var(--ink); margin-bottom: 28px; }
-h1.hero-title em { color: var(--accent-warn); font-style: italic; font-weight: 600; }
-.hero-subtitle { font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 1.45; color: var(--muted); font-weight: 300; }
+h1.hero-title { font-family: var(--serif); font-size: 54px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 600; color: var(--ink); margin-bottom: 28px; word-break: keep-all; overflow-wrap: break-word; }
+h1.hero-title em { color: var(--accent-warn); font-style: italic; font-weight: 600; white-space: nowrap; }
+.hero-subtitle { font-family: var(--serif); font-style: italic; font-size: 19px; line-height: 1.55; color: var(--muted); font-weight: 300; word-break: keep-all; overflow-wrap: break-word; }
 .hero-meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; border-top: 1px solid var(--rule); padding-top: 16px; }
 .hero-meta dl { margin: 0; }
 .hero-meta dt { text-transform: uppercase; color: var(--muted); font-weight: 600; margin-top: 14px; font-size: 10px; }
@@ -126,8 +126,8 @@ h1.hero-title em { color: var(--accent-warn); font-style: italic; font-weight: 6
 .qf-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); }
 .qf-cell { background: var(--bg-dark); padding: 22px 18px; min-height: 130px; display: flex; flex-direction: column; justify-content: space-between; }
 .qf-cell .qf-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(240,233,216,0.55); margin-bottom: 12px; line-height: 1.3; }
-.qf-cell .qf-value { font-family: var(--serif); font-size: 28px; line-height: 1.05; color: #f0e9d8; font-weight: 500; letter-spacing: -0.01em; word-break: keep-all; }
-.qf-cell .qf-value .qf-unit { font-size: 13px; font-weight: 400; color: rgba(240,233,216,0.7); margin-left: 3px; }
+.qf-cell .qf-value { font-family: var(--serif); font-size: 26px; line-height: 1.1; color: #f0e9d8; font-weight: 500; letter-spacing: -0.01em; word-break: keep-all; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.qf-cell .qf-value .qf-unit { font-size: 13px; font-weight: 400; color: rgba(240,233,216,0.7); margin-left: 3px; white-space: nowrap; }
 .qf-cell .qf-sub { font-family: var(--sans); font-size: 11px; color: rgba(240,233,216,0.55); line-height: 1.4; margin-top: 8px; }
 .qf-cell.verdict { background: var(--accent-warn); }
 .qf-cell.verdict .qf-label { color: rgba(255,255,255,0.7); }
@@ -148,7 +148,7 @@ section li::marker { color: var(--light); }
 
 .tldr { background: var(--bg-dark); color: #f0e9d8; padding: 56px 48px 48px; margin: 0 0 60px; position: relative; }
 .tldr-ribbon { position: absolute; top: 0; left: 32px; background: var(--accent-warn); color: #fff; padding: 8px 18px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; font-weight: 600; text-transform: uppercase; transform: translateY(-50%); }
-.tldr h3 { font-family: var(--serif); font-size: 26px; line-height: 1.35; font-weight: 500; color: #f0e9d8; margin-bottom: 24px; }
+.tldr h3 { font-family: var(--serif); font-size: 21px; line-height: 1.5; font-weight: 500; color: #f0e9d8; margin-bottom: 24px; word-break: keep-all; overflow-wrap: break-word; }
 .tldr h3 em { color: var(--accent-yellow); font-style: italic; }
 .tldr ol { padding-left: 22px; }
 .tldr li { color: rgba(240,233,216,0.85); margin-bottom: 14px; line-height: 1.65; font-size: 15.5px; }
@@ -361,8 +361,8 @@ footer h4 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; t
 <header class="hero">
   <div>
     <div class="eyebrow">Investment Thesis · Industrial Gases · NASDAQ: LIN</div>
-    <h1 class="hero-title">30 年复利的<em>工业版可口可乐</em>，<br>被市场充分认知后剩下的是耐心。</h1>
-    <p class="hero-subtitle">Linde 是工业气体寡头之首，财务质量碾压同行。<br>但当前 PE 33.6× 已经 price-in 完美执行；文艺复兴 0.5% 仓位 ≠ Medallion 神话；<br>同期高管净卖出 3,700 万美元与对冲基金抢筹形成对冲格局。</p>
+    <h1 class="hero-title">30 年复利的<em>工业版可口可乐</em>，被市场充分认知后剩下的是耐心。</h1>
+    <p class="hero-subtitle">Linde 是工业气体寡头之首，财务质量碾压同行。但当前 PE 33.6× 已经 price-in 完美执行；文艺复兴 0.5% 仓位 ≠ Medallion 神话；同期高管净卖出 3,700 万美元与对冲基金抢筹形成对冲格局。</p>
   </div>
   <aside class="hero-meta">
     <dl>
@@ -412,7 +412,7 @@ footer h4 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; t
     </div>
     <div class="qf-cell">
       <div class="qf-label">ROIC / Adj ROC</div>
-      <div class="qf-value">12–24<span class="qf-unit">%</span></div>
+      <div class="qf-value">12&#8209;24<span class="qf-unit">%</span></div>
       <div class="qf-sub">含/剔商誉两口径</div>
     </div>
     <div class="qf-cell">
@@ -422,7 +422,7 @@ footer h4 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; t
     </div>
     <div class="qf-cell">
       <div class="qf-label">PE TTM / Fwd</div>
-      <div class="qf-value">33.6 / 27.7</div>
+      <div class="qf-value">33.6&nbsp;/&nbsp;27.7</div>
       <div class="qf-sub">10 年中位数 33.85</div>
     </div>
     <div class="qf-cell">
@@ -442,13 +442,13 @@ footer h4 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; t
     </div>
     <div class="qf-cell">
       <div class="qf-label">高管净卖出</div>
-      <div class="qf-value">−$37<span class="qf-unit">M</span></div>
+      <div class="qf-value">&#8722;$37<span class="qf-unit">M</span></div>
       <div class="qf-sub">12 个月 / Lamba 仅买 $1M</div>
     </div>
     <div class="qf-cell verdict">
       <div class="qf-label">Ray 总评</div>
-      <div class="qf-value">合理价位 A+ 公司<br>等回调 $380–$420</div>
-      <div class="qf-sub">不便宜 · 不是显著折扣</div>
+      <div class="qf-value">等回调入场<br>$380&#8209;$420</div>
+      <div class="qf-sub">A+ 公司，但不便宜</div>
     </div>
   </div>
 </section>
