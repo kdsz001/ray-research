@@ -78,6 +78,12 @@
 |------|------|---------|
 | 2026-05-16 | [初版投资调研 · AI 数据中心的点灯人](lumentum/2026-05-16-lumentum-lite.html) | [↗ Open](https://kdsz001.github.io/ray-research/lumentum/2026-05-16-lumentum-lite.html) |
 
+### 💾 [澜起科技 06809.HK](montage-tech/) · A+H 双重上市 · DDR5 内存接口芯片全球龙头 · 投资调研
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-16 | [初版投资调研 · DDR5 周期的高纯度龙头，估值已透支两年](montage-tech/2026-05-16-montage-tech-06809.html) | [↗ Open](https://kdsz001.github.io/ray-research/montage-tech/2026-05-16-montage-tech-06809.html) |
+
 <!-- INDEX-END -->
 
 ---

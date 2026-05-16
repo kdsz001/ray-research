@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>澜起科技 06809 · 调研话题 · Ray Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if ((saved || (prefersDark ? 'dark' : 'light')) === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec; --bg-card: #ffffff; --ink: #14110d; --muted: #6e6358; --light: #a39787;
+  --rule: #14110d; --rule-light: #d8d1c2; --accent: #a73121; --link: #1c4d6b;
+  --serif: "Source Serif 4", Georgia, serif;
+  --sans: "Inter", -apple-system, "PingFang SC", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", monospace;
+}
+[data-theme="dark"] {
+  --bg: #15120e; --bg-card: #1f1b16; --ink: #ebe3d3; --muted: #8d8170; --light: #5c5346;
+  --rule: #ebe3d3; --rule-light: #3a342c; --accent: #e87a5f; --link: #6cb1d6;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--sans); background: var(--bg); color: var(--ink);
+  line-height: 1.65; font-size: 16px; max-width: 720px; margin: 0 auto; padding: 80px 32px;
+  -webkit-font-smoothing: antialiased; transition: background 0.2s, color 0.2s;
+}
+.eyebrow {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 12px;
+}
+.eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--accent); }
+.eyebrow a { color: var(--accent); text-decoration: none; }
+h1 {
+  font-family: var(--serif); font-weight: 600; font-size: 56px;
+  line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 18px;
+}
+.lead { font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--muted); margin-bottom: 50px; }
+h2 {
+  font-family: var(--serif); font-weight: 600; font-size: 22px;
+  margin: 48px 0 18px; letter-spacing: -0.01em;
+}
+.report-list {
+  border-top: 1px solid var(--ink); list-style: none;
+}
+.report-list li {
+  padding: 20px 0; border-bottom: 1px solid var(--rule-light);
+  display: grid; grid-template-columns: 110px 1fr; gap: 20px; align-items: baseline;
+}
+.report-list .date { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+.report-list .title { font-family: var(--serif); font-size: 19px; font-weight: 600; }
+.report-list a { color: var(--ink); text-decoration: none; }
+.report-list a:hover { color: var(--accent); }
+ul.findings { list-style: none; margin: 0; }
+ul.findings li {
+  padding: 12px 0 12px 22px; position: relative; line-height: 1.55; color: var(--muted);
+  border-bottom: 1px dashed var(--rule-light);
+}
+ul.findings li::before {
+  content: "→"; position: absolute; left: 0; color: var(--accent); font-family: var(--mono);
+}
+ul.findings li:last-child { border: none; }
+ul.findings li strong { color: var(--ink); }
+
+#theme-toggle {
+  position: fixed; top: 14px; right: 24px; z-index: 1000;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--bg-card); border: 1px solid var(--rule-light);
+  color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center;
+  padding: 0; transition: all 0.15s;
+}
+#theme-toggle:hover { border-color: var(--ink); }
+#theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] #theme-toggle .icon-moon { display: block; }
+
+footer {
+  margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--rule-light);
+  font-family: var(--mono); font-size: 11px; color: var(--light); letter-spacing: 0.05em;
+}
+footer a { color: var(--muted); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="切换夜间模式">
+  <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<div class="eyebrow"><a href="../">← 返回 Ray Research</a> · 调研话题</div>
+<h1>澜起科技 06809.HK</h1>
+<p class="lead">A 股 688008 + 港股 06809 双重上市 · 全球内存接口芯片 36.8% 市占龙头 · DDR5 周期 + AI 服务器双轮 · 港股市值破 HK$6,000 亿 · 但三星自研 RCD 40% + 8/8 基石解禁 + 5 大资金方同步减持，估值已透支两年。</p>
+
+<h2>报告列表</h2>
+<ul class="report-list">
+  <li>
+    <span class="date">2026-05-16</span>
+    <a class="title" href="2026-05-16-montage-tech-06809.html">初版投资调研 · DDR5 周期的高纯度龙头，估值已透支两年 →</a>
+  </li>
+</ul>
+
+<h2>跨报告核心结论</h2>
+<ul class="findings">
+  <li><strong>业务面 A · 估值面 C-</strong> — 业务壁垒 8.5/10、财务质量 9/10，但 A 股 PE 109× / 港股 PE 174× 已超过所有公开卖方目标价</li>
+  <li><strong>港股不要追，要买就 A 股</strong> — 港股流通盘仅 6.2%、AH 溢价 +59% 罕见倒挂、流动性差、基石解禁压力大</li>
+  <li><strong>2026-08-08 是最大单一风险事件</strong> — 18 家基石持 49.82% 发行筹码解禁，按当前价已浮盈 +294%、按 5/13 高点 +408%</li>
+  <li><strong>三星 DDR5 RCD 自供率 40% 已发生</strong> — 最大客户内化最赚钱的产品，且仍在上升；前 5 大客户合计 80.1%</li>
+  <li><strong>5 大资金方同步减持</strong> — 创始人（60.57% → 3.93%、套现 200 亿）+ Intel 高位清仓 + 中电投减持 12.6% + 大摩 5 月内 4 次减持 + 北向 Q1 净减</li>
+  <li><strong>战略转型三连败</strong> — 机顶盒（2014）→ 津逮 CPU（2023 减值，毛利 4%）→ NPU（2024 中止）；现在的 AI 互连平台故事是不是第四次押注</li>
+  <li><strong>行业周期仍在中前期偏中期</strong> — DDR5 服务器渗透 60-65%（2025），2026E >80%；MRDIMM 才 6% 渗透；周期顶部预期 2027 下半年</li>
+  <li><strong>三条决策路径</strong> — Path A 等回调到 A 股 ¥165~190（PE 50-60×，推荐）/ Path B 现在配置选 A 股 + 5% 仓位上限 / Path C 做多 A 做空 H 套利组合</li>
+</ul>
+
+<footer>
+  <a href="../">Ray Research</a> · <a href="https://github.com/kdsz001/ray-research" target="_blank" rel="noopener noreferrer">GitHub</a>
+</footer>
+
+<script>
+var btn = document.getElementById('theme-toggle');
+btn.addEventListener('click', function() {
+  var current = document.documentElement.getAttribute('data-theme');
+  var next = current === 'dark' ? 'light' : 'dark';
+  if (next === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  else document.documentElement.removeAttribute('data-theme');
+  try { localStorage.setItem('ray-theme', next); } catch (e) {}
+});
+</script>
+
+</body>
+</html>

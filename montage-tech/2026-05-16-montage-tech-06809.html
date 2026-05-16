@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>澜起科技 06809 · 投资调研报告 · 2026-05-15</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec;
+  --bg-paper: #fbf9f4;
+  --bg-card: #ffffff;
+  --bg-dark: #14110d;
+  --bg-dark2: #1f1b16;
+  --ink: #14110d;
+  --ink-2: #2c2620;
+  --muted: #6e6358;
+  --light: #a39787;
+  --rule: #14110d;
+  --rule-light: #d8d1c2;
+  --accent-warn: #a73121;
+  --accent-data: #1c4d6b;
+  --accent-pos: #2c5e3f;
+  --accent-yellow: #c89a2c;
+  --serif: "Source Serif 4", "Source Serif Pro", "Charter", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", monospace;
+  --max-w: 880px;
+
+  --bg-inverse: #14110d;
+  --bg-inverse-2: #1f1b16;
+  --ink-on-inverse: #f6f3ec;
+  --text-on-inverse: rgba(246, 243, 236, 0.88);
+  --muted-on-inverse: rgba(246, 243, 236, 0.65);
+  --faint-on-inverse: rgba(246, 243, 236, 0.5);
+  --rule-on-inverse: rgba(246, 243, 236, 0.18);
+  --accent-warn-bright: #e87a5f;
+  --accent-yellow-bright: #e3b94f;
+  --accent-pos-bright: #6fb380;
+  --accent-data-bright: #6db4d9;
+}
+[data-theme="dark"] {
+  --bg: #14110d;
+  --bg-paper: #1a1714;
+  --bg-card: #22201c;
+  --ink: #f6f3ec;
+  --ink-2: #e0d8c8;
+  --muted: #a39787;
+  --light: #6e6358;
+  --rule: #d8d1c2;
+  --rule-light: rgba(216, 209, 194, 0.18);
+  --accent-warn: #e87a5f;
+  --accent-data: #6db4d9;
+  --accent-pos: #6fb380;
+  --accent-yellow: #e3b94f;
+
+  --bg-inverse: #ede5d3;
+  --bg-inverse-2: #d8d1c2;
+  --ink-on-inverse: #14110d;
+  --text-on-inverse: rgba(20, 17, 13, 0.88);
+  --muted-on-inverse: rgba(20, 17, 13, 0.6);
+  --faint-on-inverse: rgba(20, 17, 13, 0.45);
+  --rule-on-inverse: rgba(20, 17, 13, 0.18);
+  --accent-warn-bright: #a73121;
+  --accent-yellow-bright: #c89a2c;
+  --accent-pos-bright: #2c5e3f;
+  --accent-data-bright: #1c4d6b;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--bg);
+  transition: background-color 0.2s, color 0.2s;
+  -webkit-font-smoothing: antialiased;
+}
+
+.metabar {
+  border-bottom: 1px solid var(--rule);
+  padding: 10px 28px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  background: var(--bg);
+}
+
+#theme-toggle {
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: var(--bg-paper);
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: background-color 0.2s, color 0.2s;
+}
+#theme-toggle:hover { background: var(--bg-card); }
+#theme-toggle .sun { display: none; }
+#theme-toggle .moon { display: block; }
+[data-theme="dark"] #theme-toggle .sun { display: block; }
+[data-theme="dark"] #theme-toggle .moon { display: none; }
+
+.layout {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 56px 28px 0;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 60px;
+}
+
+nav.toc {
+  position: sticky;
+  top: 40px;
+  align-self: start;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-top: 2px solid var(--rule);
+  padding-top: 16px;
+  height: fit-content;
+}
+nav.toc .toc-label {
+  color: var(--muted);
+  margin-bottom: 14px;
+  letter-spacing: 0.12em;
+}
+nav.toc a {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--rule-light);
+  transition: color 0.15s;
+}
+nav.toc a:last-child { border-bottom: none; }
+nav.toc a:hover { color: var(--accent-warn); }
+nav.toc a .num {
+  color: var(--muted);
+  margin-right: 8px;
+}
+
+main { min-width: 0; }
+
+/* HERO */
+.hero {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 50px;
+  padding-bottom: 60px;
+  border-bottom: 2px solid var(--rule);
+}
+.hero-left .eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-warn);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-left .eyebrow::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--accent-warn);
+}
+.hero-left h1 {
+  font-family: var(--serif);
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+.hero-left h1 em {
+  font-style: italic;
+  color: var(--accent-warn);
+  font-weight: 600;
+}
+.hero-left .subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.hero-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  border-top: 1px solid var(--rule);
+  padding-top: 18px;
+}
+.hero-meta dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; }
+.hero-meta dt {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 10px;
+}
+.hero-meta dd {
+  color: var(--ink);
+  font-size: 12px;
+}
+
+/* QUICK FACTS */
+.quickfacts-wrap {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  margin: 80px -200px 0;
+  padding: 60px 70px;
+  border-radius: 0;
+  transition: background-color 0.2s, color 0.2s;
+}
+.quickfacts-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-yellow-bright);
+  margin-bottom: 14px;
+}
+.quickfacts-title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 38px;
+  font-weight: 500;
+  color: var(--ink-on-inverse);
+  margin-bottom: 38px;
+  letter-spacing: -0.01em;
+}
+.qf-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: var(--rule-on-inverse);
+  border: 1px solid var(--rule-on-inverse);
+}
+.qf-cell {
+  background: var(--bg-inverse);
+  padding: 22px 18px;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.qf-cell .qf-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--faint-on-inverse);
+}
+.qf-cell .qf-value {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--ink-on-inverse);
+  margin-top: 12px;
+}
+.qf-cell .qf-sub {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--muted-on-inverse);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+.qf-cell.verdict {
+  background: var(--accent-warn-bright);
+  color: #fff;
+}
+.qf-cell.verdict .qf-label { color: rgba(255,255,255,0.7); }
+.qf-cell.verdict .qf-value {
+  color: #fff;
+  font-size: 22px;
+  line-height: 1.2;
+}
+.qf-cell.verdict .qf-sub { color: rgba(255,255,255,0.8); }
+
+/* SECTIONS */
+section {
+  padding: 80px 0 40px;
+  border-bottom: 1px solid var(--rule-light);
+}
+section:last-of-type { border-bottom: none; }
+.sect-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-warn);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sect-num::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule-light);
+}
+section h2 {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 30px;
+  color: var(--ink);
+}
+section h2 em {
+  font-style: italic;
+  color: var(--accent-warn);
+}
+section h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  margin: 38px 0 14px;
+  color: var(--ink);
+}
+section p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--ink-2);
+  margin-bottom: 18px;
+}
+section p strong { font-weight: 600; color: var(--ink); }
+section ul, section ol { margin: 14px 0 22px 24px; }
+section li { margin-bottom: 9px; line-height: 1.7; color: var(--ink-2); }
+section li strong { color: var(--ink); }
+a { color: var(--accent-data); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+/* TL;DR BLOCK */
+.tldr {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  padding: 50px 48px 40px;
+  margin: 30px 0 20px;
+  position: relative;
+  border-radius: 0;
+  transition: background-color 0.2s, color 0.2s;
+}
+.tldr::before {
+  content: 'TL;DR';
+  position: absolute;
+  top: -14px;
+  left: 28px;
+  background: var(--accent-warn-bright);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  padding: 6px 14px;
+  font-weight: 500;
+}
+.tldr h3 {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--ink-on-inverse);
+  margin: 0 0 18px;
+}
+.tldr p {
+  color: var(--text-on-inverse);
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+.tldr ol { margin-left: 22px; color: var(--text-on-inverse); }
+.tldr ol li {
+  color: var(--text-on-inverse);
+  margin-bottom: 10px;
+}
+.tldr ol li strong { color: var(--ink-on-inverse); }
+.tldr a { color: var(--accent-yellow-bright); }
+
+/* STATS GRID */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin: 26px 0;
+}
+.stat-cell {
+  background: var(--bg-card);
+  padding: 22px 20px;
+}
+.stat-cell .stat-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.stat-cell .stat-value {
+  font-family: var(--serif);
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.05;
+  margin-top: 8px;
+  color: var(--ink);
+}
+.stat-cell .stat-sub {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.stat-cell.warn .stat-value { color: var(--accent-warn); }
+.stat-cell.pos .stat-value { color: var(--accent-pos); }
+.stat-cell.data .stat-value { color: var(--accent-data); }
+
+/* METRIC LIST */
+.metric-list {
+  border-top: 2px solid var(--rule);
+  border-bottom: 2px solid var(--rule);
+  margin: 26px 0;
+}
+.metric-list .row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-light);
+}
+.metric-list .row:last-child { border-bottom: none; }
+.metric-list .row .label {
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.metric-list .row .label .source {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  font-family: var(--mono);
+  margin-top: 2px;
+}
+.metric-list .row .value {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.metric-list .row .value.warn { color: var(--accent-warn); }
+.metric-list .row .value.pos { color: var(--accent-pos); }
+
+/* COMPARISON TABLE */
+.table-wrap { overflow-x: auto; margin: 26px 0; }
+.compare-table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+.compare-table thead th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  padding: 12px 14px;
+  border-bottom: 2px solid var(--rule);
+  background: var(--bg-paper);
+}
+.compare-table tbody td {
+  padding: 14px;
+  border-bottom: 1px solid var(--rule-light);
+  vertical-align: top;
+  color: var(--ink-2);
+}
+.compare-table tbody tr:last-child td { border-bottom: 1px solid var(--rule); }
+.compare-table .product-name {
+  font-family: var(--serif);
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 15px;
+}
+.compare-table .highlight {
+  background: rgba(167, 49, 33, 0.06);
+}
+[data-theme="dark"] .compare-table .highlight {
+  background: rgba(232, 122, 95, 0.1);
+}
+.compare-table .tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--accent-warn);
+  color: #fff;
+  padding: 2px 7px;
+  margin-top: 4px;
+}
+
+/* TWO COL CARDS */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 28px 0;
+}
+.col-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  padding: 26px 26px 22px;
+}
+.col-card h4 {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.col-card.pos h4 { color: var(--accent-pos); }
+.col-card.warn h4 { color: var(--accent-warn); }
+.col-card.pos h4::before {
+  content: '✓';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--accent-pos);
+  color: #fff;
+  font-size: 11px;
+}
+.col-card.warn h4::before {
+  content: '!';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--accent-warn);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+.col-card ul {
+  list-style: none;
+  margin: 0;
+}
+.col-card li {
+  font-size: 14px;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--rule-light);
+  color: var(--ink-2);
+}
+.col-card li:last-child { border-bottom: none; }
+.col-card li strong { color: var(--ink); }
+
+/* QUOTE */
+blockquote {
+  border-left: 3px solid var(--accent-warn);
+  padding: 4px 0 4px 20px;
+  margin: 22px 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+blockquote .attr {
+  display: block;
+  font-style: normal;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 10px;
+  font-weight: 400;
+}
+blockquote .attr::before { content: '— '; }
+
+/* SCORE BARS */
+.scores {
+  border: 1px solid var(--rule);
+  background: var(--bg-card);
+  padding: 22px 26px;
+  margin: 26px 0;
+}
+.score-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 50px;
+  gap: 18px;
+  align-items: center;
+  padding: 9px 0;
+}
+.score-row .score-name {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+}
+.score-row .bar {
+  height: 10px;
+  background: var(--rule-light);
+  position: relative;
+}
+.score-row .bar-fill {
+  position: absolute;
+  top: 0; left: 0;
+  bottom: 0;
+  background: var(--accent-data);
+}
+.score-row .bar-fill.pos { background: var(--accent-pos); }
+.score-row .bar-fill.warn { background: var(--accent-warn); }
+.score-row .score-num {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 600;
+  text-align: right;
+  color: var(--ink);
+}
+
+/* CALLOUT */
+.callout {
+  background: var(--bg-paper);
+  border-left: 3px solid var(--accent-warn);
+  padding: 20px 22px;
+  margin: 24px 0;
+}
+.callout.data { border-left-color: var(--accent-data); }
+.callout.pos { border-left-color: var(--accent-pos); }
+.callout-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-warn);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.callout.data .callout-label { color: var(--accent-data); }
+.callout.pos .callout-label { color: var(--accent-pos); }
+.callout-quote {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+/* TIMELINE */
+.timeline { margin: 30px 0; }
+.tl-row {
+  display: grid;
+  grid-template-columns: 110px 30px 1fr;
+  gap: 18px;
+  align-items: start;
+  margin-bottom: 22px;
+  position: relative;
+}
+.tl-row .tl-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-align: right;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  padding-top: 5px;
+}
+.tl-row .tl-dot-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.tl-row .tl-dot-wrap::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: -22px;
+  width: 1px;
+  background: var(--rule-light);
+  transform: translateX(-50%);
+}
+.tl-row:last-child .tl-dot-wrap::before { display: none; }
+.tl-row .tl-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  background: var(--bg);
+  position: relative;
+  z-index: 1;
+  margin-top: 7px;
+}
+.tl-row .tl-dot.warn { border-color: var(--accent-warn); background: var(--accent-warn); }
+.tl-row .tl-dot.data { border-color: var(--accent-data); background: var(--accent-data); }
+.tl-row .tl-dot.pos { border-color: var(--accent-pos); background: var(--accent-pos); }
+.tl-row .tl-content .tl-title {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.tl-row .tl-content .tl-desc {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+
+/* VERDICT BLOCK */
+.verdict {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  padding: 56px 50px 50px;
+  margin: 32px 0;
+  transition: background-color 0.2s, color 0.2s;
+}
+.verdict-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-yellow-bright);
+  margin-bottom: 16px;
+}
+.verdict h3 {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink-on-inverse);
+  margin-bottom: 20px;
+}
+.verdict p {
+  color: var(--text-on-inverse);
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+.verdict-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule-on-inverse);
+  margin-top: 16px;
+}
+.verdict-option {
+  background: var(--bg-inverse-2);
+  padding: 22px 20px;
+}
+.verdict-option .vo-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-yellow-bright);
+  margin-bottom: 10px;
+}
+.verdict-option h4 {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink-on-inverse);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.verdict-option p {
+  font-size: 13px;
+  color: var(--muted-on-inverse);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* PATH CARDS */
+.paths {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin: 28px 0;
+}
+.path-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  border-top: 4px solid var(--accent-data);
+  padding: 24px 24px 20px;
+}
+.path-card.a { border-top-color: var(--accent-pos); }
+.path-card.b { border-top-color: var(--accent-yellow); }
+.path-card.c { border-top-color: var(--accent-warn); }
+.path-card .path-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.path-card h4 {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.path-card p {
+  font-size: 13.5px;
+  color: var(--ink-2);
+  margin-bottom: 12px;
+  line-height: 1.55;
+}
+.path-card ul { margin: 0 0 0 18px; }
+.path-card li {
+  font-size: 13px;
+  color: var(--ink-2);
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
+
+/* DIVIDER QUOTE */
+.divider-quote {
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--muted);
+  margin: 50px 0;
+  position: relative;
+  padding: 0 40px;
+}
+.divider-quote::before, .divider-quote::after {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background: var(--muted);
+  vertical-align: middle;
+  margin: 0 16px;
+}
+
+/* FOOTER */
+footer {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  margin: 80px -200px 0;
+  padding: 60px 70px 40px;
+  transition: background-color 0.2s, color 0.2s;
+}
+footer h4 {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-yellow-bright);
+  margin-bottom: 18px;
+}
+footer .sources {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 30px;
+  font-family: var(--mono);
+  font-size: 11px;
+  margin-bottom: 36px;
+}
+footer .sources a {
+  color: var(--text-on-inverse);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--rule-on-inverse);
+  padding-bottom: 2px;
+  word-break: break-all;
+}
+footer .sources a:hover { color: var(--accent-yellow-bright); }
+footer .footer-meta {
+  border-top: 1px solid var(--rule-on-inverse);
+  padding-top: 22px;
+  font-size: 12px;
+  color: var(--muted-on-inverse);
+  line-height: 1.65;
+}
+footer .footer-meta strong { color: var(--ink-on-inverse); }
+
+@media (max-width: 1100px) {
+  .layout { grid-template-columns: 1fr; gap: 30px; padding: 30px 24px 0; }
+  nav.toc { position: static; border-top: none; padding-top: 0; }
+  nav.toc a { display: inline-block; margin-right: 14px; border-bottom: none; }
+  .hero { grid-template-columns: 1fr; gap: 30px; }
+  .hero-left h1 { font-size: 54px; }
+  .quickfacts-wrap, footer { margin-left: -24px; margin-right: -24px; padding-left: 28px; padding-right: 28px; }
+  .qf-grid { grid-template-columns: repeat(3, 1fr); }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .verdict-options { grid-template-columns: 1fr; }
+  .two-col, .paths { grid-template-columns: 1fr; }
+  section h2 { font-size: 34px; }
+}
+@media (max-width: 720px) {
+  .hero-left h1 { font-size: 40px; }
+  .quickfacts-wrap { padding: 40px 22px; }
+  .qf-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: 1fr; }
+  .score-row { grid-template-columns: 1fr; gap: 6px; }
+  .tl-row { grid-template-columns: 80px 24px 1fr; gap: 10px; }
+  section h2 { font-size: 28px; }
+  .quickfacts-title { font-size: 26px; }
+  .tldr, .verdict { padding: 36px 24px 30px; }
+}
+
+@media print {
+  body { background: white; }
+  .metabar, nav.toc, #theme-toggle { display: none; }
+  .layout { grid-template-columns: 1fr; padding: 0; }
+  .quickfacts-wrap, .tldr, .verdict, footer {
+    background: white;
+    color: var(--ink);
+    margin: 20px 0;
+    padding: 20px 0;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+  }
+  .quickfacts-title, .tldr h3, .verdict h3, footer h4 { color: var(--ink); }
+  .tldr::before { background: var(--ink); }
+  a { color: var(--ink); text-decoration: none; }
+  section { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="切换暗色模式" title="切换暗色 / 亮色模式">
+  <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+  <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+
+<div class="metabar">
+  <span>Ray Research · 投资调研 · 澜起科技 06809</span>
+  <span>2026-05-15 · v1.0 · 5 子 agent 并行</span>
+</div>
+
+<div class="layout">
+  <nav class="toc">
+    <div class="toc-label">目录</div>
+    <a href="#tldr"><span class="num">01</span>速览结论</a>
+    <a href="#company"><span class="num">02</span>公司档案</a>
+    <a href="#industry"><span class="num">03</span>行业格局</a>
+    <a href="#financial"><span class="num">04</span>财务与估值</a>
+    <a href="#hk"><span class="num">05</span>港股 06809</a>
+    <a href="#risks"><span class="num">06</span>风险与空头</a>
+    <a href="#scorecard"><span class="num">07</span>综合评分</a>
+    <a href="#decision"><span class="num">08</span>决策建议</a>
+  </nav>
+
+  <main>
+
+    <div class="hero">
+      <div class="hero-left">
+        <div class="eyebrow">投资调研报告 · 2026-05-15</div>
+        <h1>澜起科技：DDR5 周期的<em>高纯度龙头</em>，估值已透支两年</h1>
+        <div class="subtitle">A 股 688008 + 港股 06809 双重上市 · 全球内存接口芯片 36.8% 市占率 · 当前股价已超所有公开卖方目标价 · 客户三星已自研 RCD 40% 自供率</div>
+      </div>
+      <div class="hero-meta">
+        <dl>
+          <dt>调研对象</dt><dd>澜起科技股份 (Montage Technology)</dd>
+          <dt>代码</dt><dd>688008.SH / 06809.HK</dd>
+          <dt>主营</dt><dd>内存接口芯片 · PCIe Retimer · CXL MXC</dd>
+          <dt>调研深度</dt><dd>5 个并行子 Agent · 海外+中文+空头三维</dd>
+          <dt>核心数据时点</dt><dd>2026-05-15 港股盘中</dd>
+          <dt>读者画像</dt><dd>非专业投资人 · 考虑是否买入</dd>
+          <dt>免责</dt><dd>仅供决策参考，不构成投资建议</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="quickfacts-wrap">
+      <div class="quickfacts-eyebrow">— 10 秒速览</div>
+      <div class="quickfacts-title">澜起科技 06809 · At a Glance</div>
+      <div class="qf-grid">
+        <div class="qf-cell">
+          <div class="qf-label">港股代码</div>
+          <div class="qf-value">06809.HK</div>
+          <div class="qf-sub">2026-02-09 港交所上市</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">A 股代码</div>
+          <div class="qf-value">688008</div>
+          <div class="qf-sub">2019-07-22 科创板上市</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">港股股价 (今日)</div>
+          <div class="qf-value">HK$421</div>
+          <div class="qf-sub">今日 -12.65% · 距 5/13 高点 -22%</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">港股总市值</div>
+          <div class="qf-value">HK$5,150 亿</div>
+          <div class="qf-sub">≈ $660 亿 (约 ¥4,750 亿)</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">A 股 PE-TTM</div>
+          <div class="qf-value">109×</div>
+          <div class="qf-sub">5 年中位线 ~84x</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">港股 PE-TTM</div>
+          <div class="qf-value">174×</div>
+          <div class="qf-sub">vs Rambus 60× · Astera 228×</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">AH 溢价 (H 贵)</div>
+          <div class="qf-value">+59%</div>
+          <div class="qf-sub">罕见 H&gt;A · 流通盘仅 6.2%</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">2025 营收增速</div>
+          <div class="qf-value">+50%</div>
+          <div class="qf-sub">¥54.6 亿 (约 $7.6 亿)</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">2026Q1 毛利率</div>
+          <div class="qf-value">69.8%</div>
+          <div class="qf-sub">同比 +9.3pp · 历史新高</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">三星自供 RCD</div>
+          <div class="qf-value">40%</div>
+          <div class="qf-sub">最大客户开始内化</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">基石解禁日</div>
+          <div class="qf-value">08-08</div>
+          <div class="qf-sub">3 个月后 · 49.82% 筹码</div>
+        </div>
+        <div class="qf-cell verdict">
+          <div class="qf-label">最终判断</div>
+          <div class="qf-value">短期偏贵 · 等回调</div>
+          <div class="qf-sub">建议 A 股而非港股</div>
+        </div>
+      </div>
+    </div>
+
+    <section id="tldr">
+      <div class="sect-num">01 · 速览结论</div>
+      <h2>一页纸读完：现在该不该买？</h2>
+
+      <p>澜起科技是一家<strong>真正稀缺的优质半导体公司</strong>——全球内存接口芯片三强中唯一的中国玩家、DDR5 周期 + AI 服务器内存配套放量的双重受益标的、2026Q1 毛利率冲到 69.8% 的历史新高、几乎无负债 + 167 亿元（约 $23.2 亿）现金家底。<strong>业务面打满分</strong>。</p>
+
+      <p>但<strong>价格已经把好处全部吃完了</strong>：A 股 PE 109× 高于 5 年中位、港股 PE 174× 在全球同业中独一档（Rambus 60×、Astera 228×），股价超过所有公开卖方目标价。最大客户三星已实现 DDR5 RCD 40% 自供率、5 大类资金（创始人 + Intel + 中电投 + 大摩 + 北向）同步减持、3 个月后港股基石解禁占发行 49.82%——这是经典的<strong>"故事讲完、聪明钱出货"信号</strong>。</p>
+
+      <div class="tldr">
+        <h3>如果你只能记住三件事</h3>
+        <ol>
+          <li><strong>港股不要追，A 股是更合理的选择。</strong>港股流通盘仅 6.2%、流动性差、H 比 A 贵 59%，无套利空间但有踩踏风险。买就买 A 股 688008，等回调到 PE 50~60× 区间（对应股价约 ¥165~190）更安心。</li>
+          <li><strong>2026 年 8 月 8 日是关键拐点。</strong>港股 18 家基石投资者持有 49.82% 发行股将解禁，按当前价已浮盈 +294%——任何一家长线基金都难抵诱惑。这是未来 3 个月最大的单一事件风险。</li>
+          <li><strong>三星 RCD 40% 自供率是结构性威胁，但不是死刑。</strong>三星自研的 RCD 已侵蚀澜起 15-20% 的份额空间，但 MRCD/MDB/CKD 等新品类的增量能对冲。这个故事 2027 年才会真正显形——届时市场会重新定价"客户即对手"。</li>
+        </ol>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label">⚠ 一句话定性</div>
+        <div class="callout-quote">这是一家"业务硬 A 估值贵 C-"的标的——长期值得拥有，但不是现在的价位。等 8 月解禁后看盘面消化，回调到 A 股 ¥165~190 / 港股 HK$280~340 是更合理的入场区间。</div>
+      </div>
+    </section>
+
+    <section id="company">
+      <div class="sect-num">02 · 公司档案</div>
+      <h2>澜起到底<em>是什么</em>公司</h2>
+
+      <p>澜起科技是<strong>fabless 模式（公司只做芯片设计，把生产外包给晶圆厂）</strong>的半导体设计公司，2004 年由杨崇和、Stephen Tai 创立。三条业务线：</p>
+
+      <h3>业务线 1 · 内存接口芯片（核心利润引擎，占营收 94.3%）</h3>
+      <p><strong>做什么</strong>：CPU 跟服务器内存条之间的"信号管家"——DDR5 速度越来越快，信号在铜线上会失真，必须由一颗 RCD（Registered Clock Driver，寄存时钟驱动器）芯片重新整形。DDR4 时代单条服务器内存条只需 1 颗 RCD；<strong>DDR5 时代单条需要 1 颗 RCD + 多颗 DB + SPD + PMIC + TS = 8~10 颗配套芯片</strong>，单价大幅提升。澜起就是卖这套配套芯片组的全球龙头。</p>
+
+      <div class="stats-grid">
+        <div class="stat-cell">
+          <div class="stat-label">全球内存互连芯片市占率</div>
+          <div class="stat-value">36.8%</div>
+          <div class="stat-sub">2024 年 · 全球第一</div>
+        </div>
+        <div class="stat-cell pos">
+          <div class="stat-label">DDR5 RCD 第四子代</div>
+          <div class="stat-value">2025-10</div>
+          <div class="stat-sub">最早规模量产</div>
+        </div>
+        <div class="stat-cell data">
+          <div class="stat-label">JEDEC 角色</div>
+          <div class="stat-value">主席单位</div>
+          <div class="stat-sub">MDB 标准牵头制定</div>
+        </div>
+      </div>
+
+      <h3>业务线 2 · 高速运力芯片（第二曲线，占营收 ~5-10%）</h3>
+      <p>包含 <strong>PCIe Retimer</strong>（PCIe 信号中继器，AI 服务器 CPU↔GPU 之间必备）+ <strong>CXL MXC</strong>（CPU 内存扩展控制器）+ CKD（DDR5 PC 时钟驱动）。</p>
+      <ul>
+        <li>PCIe Retimer 全球市占率 <strong>10.9%（2024，全球第二）</strong>——但跟全球第一 Astera Labs 的 86% 差距巨大</li>
+        <li>CXL MXC 全球首颗量产，已入选 CXL 2.0 + CXL 3.1 联盟合规供应商</li>
+        <li>2025-05 业绩会披露：<strong>暂缓自研 AI ASIC，转向 PCIe Switch</strong>——要正面对决博通（市占率 90%+）</li>
+      </ul>
+
+      <h3>业务线 3 · 津逮 CPU 服务器平台（鸡肋业务，占营收 5.7%）</h3>
+      <p>基于英特尔至强裸芯片 + 澜起安全模块的 x86 服务器 CPU。2024 年从英特尔采购裸芯片支出 12.7 亿元（约 $1.76 亿），占公司总成本约 50%，但<strong>项目毛利率仅 4.01%</strong>。本质上是"白干给英特尔打工"。已经在事实上被公司放养。</p>
+
+      <h3>团队 + 治理结构</h3>
+      <div class="metric-list">
+        <div class="row">
+          <div class="label">创始人 + CEO 杨崇和（Chongo Yang）<span class="source">IEEE Fellow · 俄勒冈州立大学电子博士</span></div>
+          <div class="value">66 岁 美籍</div>
+        </div>
+        <div class="row">
+          <div class="label">共同创始人持股（杨崇和 + Stephen Tai）<span class="source">通过 WLT Partners · 港股招股书</span></div>
+          <div class="value warn">3.93%</div>
+        </div>
+        <div class="row">
+          <div class="label">控股股东 / 实控人<span class="source">公司公告</span></div>
+          <div class="value warn">无</div>
+        </div>
+        <div class="row">
+          <div class="label">2024 年 CEO 薪酬<span class="source">年报披露 · 占全体高管 70%</span></div>
+          <div class="value">¥999 万</div>
+        </div>
+        <div class="row">
+          <div class="label">研发人员（占员工比）<span class="source">2025 年报</span></div>
+          <div class="value">583 人 · 74%</div>
+        </div>
+        <div class="row">
+          <div class="label">2025 研发投入<span class="source">研发费用率 16.77%</span></div>
+          <div class="value">¥9.15 亿</div>
+        </div>
+        <div class="row">
+          <div class="label">5 年累计股东减持套现<span class="source">中电投/Intel/创始人 · 各路径合计</span></div>
+          <div class="value warn">¥200+ 亿</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label">治理结构警示</div>
+        <div class="callout-quote">创始人持股从 IPO 时 60.57% 跌到 3.93%，无控股股东无实控人，而 CEO 年薪占全体高管的 70%——这是典型的"代理人问题"治理结构。短期影响不大，但长期对小股东不利。</div>
+      </div>
+
+      <h3>客户结构 · 风险最高的一项</h3>
+      <ul>
+        <li><strong>三星电子单一客户占比 &gt;30%</strong>（2025Q1，港股招股书）</li>
+        <li>前五大客户：<strong>三星、SK海力士、美光 + 服务器 OEM</strong> · 合计 76.7% (2024) → 80.1% (2025Q1)</li>
+        <li>境外收入占 71.6%（毛利率 66.0%）· 境内 28.4%（毛利率 52.8%）</li>
+        <li><strong>三星已实现 DDR5 RCD 40% 自供率（2025）</strong>——最大客户开始内化你最赚钱的产品。这是整个故事最大的隐忧。</li>
+      </ul>
+
+      <h3>供应链 · 单点依赖</h3>
+      <p>Fabless 模式，<strong>晶圆 90% 依赖台积电</strong>（部分用富士通），先进制程必备。2024 年台积电涨价澜起被迫接受。澜起 2024 年在泰国布产能后路。<strong>目前未被列入美国实体清单</strong>，但作为依赖台积电的中国 fabless 公司，长臂管辖是黑天鹅风险。</p>
+    </section>
+
+    <section id="industry">
+      <div class="sect-num">03 · 行业格局</div>
+      <h2>赛道：DDR5 上行周期<em>仍在中前期</em></h2>
+
+      <h3>市场规模与增长曲线</h3>
+      <p>全球内存互连芯片市场 2024 年约 $12 亿（智研咨询口径），DDR5 RCD 单品 $1.2B（Research Intelo），2025-2035 CAGR 约 29.5%。若把 PMIC + SPD + TS + Retimer 等"DIMM 配套芯片"全部纳入，全球年度市场 $30-40 亿。</p>
+
+      <div class="stats-grid">
+        <div class="stat-cell">
+          <div class="stat-label">DDR5 服务器渗透 2024</div>
+          <div class="stat-value">40%</div>
+          <div class="stat-sub">TrendForce · 按 bit 出货</div>
+        </div>
+        <div class="stat-cell pos">
+          <div class="stat-label">DDR5 服务器渗透 2025</div>
+          <div class="stat-value">60-65%</div>
+          <div class="stat-sub">TrendForce · 已实现</div>
+        </div>
+        <div class="stat-cell warn">
+          <div class="stat-label">DDR5 服务器渗透 2026E</div>
+          <div class="stat-value">&gt;80%</div>
+          <div class="stat-sub">TrendForce · 接近见顶</div>
+        </div>
+      </div>
+
+      <h3>三家寡头格局（DDR5 RCD 战场）</h3>
+      <div class="table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr><th>指标</th><th>澜起科技 (调研对象)</th><th>Rambus (美国)</th><th>Renesas (日本)</th></tr>
+          </thead>
+          <tbody>
+            <tr class="highlight">
+              <td class="product-name">DDR5 RCD 份额 2024</td>
+              <td><strong>36~37%（全口径）</strong><div class="tag">中国 ONLY</div></td>
+              <td>"early 40%" (自报)</td>
+              <td>~28-30%</td>
+            </tr>
+            <tr class="highlight">
+              <td class="product-name">DDR5 第四子代量产</td>
+              <td><strong>2025-10 最早</strong></td>
+              <td>已样品</td>
+              <td>已样品</td>
+            </tr>
+            <tr>
+              <td class="product-name">MRCD/MDB Gen2 (12800 MT/s)</td>
+              <td>2025-01 送样 · Q4 放量</td>
+              <td><strong>2024-10 首发完整套片</strong></td>
+              <td>2025 第二代完整方案</td>
+            </tr>
+            <tr>
+              <td class="product-name">2025 营收</td>
+              <td>¥54.56 亿 / $7.6 亿</td>
+              <td>$348M（产品营收）</td>
+              <td>综合大公司 不可比</td>
+            </tr>
+            <tr>
+              <td class="product-name">营收增速</td>
+              <td><strong>+49.94%</strong></td>
+              <td>+41%</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td class="product-name">毛利率</td>
+              <td>2026Q1 69.8%</td>
+              <td>~62%</td>
+              <td>~50%（综合）</td>
+            </tr>
+            <tr>
+              <td class="product-name">PE-TTM</td>
+              <td class="highlight"><strong>109× (A) / 174× (H)</strong></td>
+              <td>56-62×</td>
+              <td>~25× (综合)</td>
+            </tr>
+            <tr>
+              <td class="product-name">地缘风险</td>
+              <td>中国厂商 · 出口管制是黑天鹅</td>
+              <td>美国厂商 · 无</td>
+              <td>日本厂商 · 无</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>AI 服务器拉动逻辑（必须搞清楚）</h3>
+      <p>"AI 越火澜起越赚钱"是常见的卖方叙事，但需要拆开看：</p>
+      <ul>
+        <li><strong>真：</strong>主流 AI 训练集群仍是"NVIDIA GPU + x86 CPU 头节点"架构。AI 资本开支 → x86 头节点更新换代 → 单台 CPU 内存配置翻倍至 768GB+ DDR5 RDIMM → <strong>每根 RDIMM 必须配 1 颗澜起 RCD</strong>。澜起一季报原文："互连类芯片新产品 MRCD/MDB、PCIe Retimer、CKD 及 CXL MXC 芯片收入显著攀升"。</li>
+        <li><strong>有水分：</strong>NVIDIA Grace CPU 自研 ARM + 配 LPDDR5X/SOCAMM，<strong>不走 RDIMM 路径，不需要 RCD</strong>。如果未来 ARM CPU 头节点扩张到通用服务器，会绕开 DIMM 生态。</li>
+        <li><strong>HBM vs RCD 不冲突：</strong>HBM 直连 GPU、RCD 配 CPU——两套独立链路。HBM 越多 = AI 服务器越多 = CPU 侧 DDR5 用量越大，反而<strong>正相关</strong>。</li>
+      </ul>
+
+      <h3>周期位置判断</h3>
+      <p>上一轮周期：2021Q4 高点（DDR4 末期）→ 2023 谷底（澜起营收 -37.76%，净利 -65.30%）。<strong>本轮 DDR5 周期当前位置：中前期偏中期</strong>，证据：(1) 渗透率 60-65% 离 80%+ 见顶仍有 1-2 年；(2) 第四子代 RCD 刚 2025-10 量产，子代升级是第二曲线；(3) MRDIMM 2025 渗透率才 6%，2026-2027 进入快速放量；(4) 2026Q1 毛利率 69.8% 历史新高，产品组合改善。<strong>下一个周期拐点：2027 下半年 - 2028</strong>（DDR5 渗透饱和 + DDR6 切换青黄不接），届时澜起业绩压力会显现。</p>
+
+      <div class="divider-quote">"这是一个不缺增长、不缺壁垒、只缺安全边际的好生意"</div>
+    </section>
+
+    <section id="financial">
+      <div class="sect-num">04 · 财务与估值</div>
+      <h2>5 年财务数据 + 估值定位</h2>
+
+      <h3>历史财务（5 年大周期）</h3>
+      <div class="table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr><th>年度</th><th>营收 (¥亿 / $亿)</th><th>归母净利 (¥亿)</th><th>毛利率</th><th>ROE</th><th>备注</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="product-name">2020</td><td>18.24 / $2.53</td><td>11.04</td><td>72.13%</td><td>14.39%</td><td>DDR4 末期高位</td></tr>
+            <tr><td class="product-name">2021</td><td>25.62 / $3.56</td><td>8.29</td><td>48.08%</td><td>9.93%</td><td>津逮 CPU 拖累毛利</td></tr>
+            <tr><td class="product-name">2022</td><td>36.72 / $5.10</td><td>12.99</td><td>46.44%</td><td>14.18%</td><td>DDR5 起步</td></tr>
+            <tr class="highlight"><td class="product-name">2023 谷底</td><td>22.86 / $3.18</td><td>4.51</td><td>58.91%</td><td>4.44%</td><td>DDR4→5 切换青黄不接</td></tr>
+            <tr><td class="product-name">2024</td><td>36.39 / $5.06</td><td>14.12</td><td>58.13%</td><td>13.41%</td><td>DDR5 放量起点</td></tr>
+            <tr class="highlight"><td class="product-name">2025</td><td><strong>54.56 / $7.58</strong></td><td><strong>22.36</strong></td><td>62.23%</td><td><strong>18.25%</strong></td><td>AI + DDR5 双轮</td></tr>
+            <tr class="highlight"><td class="product-name">2026Q1 单季</td><td>14.61 / $2.03</td><td><strong>8.47</strong></td><td><strong>69.79%</strong></td><td>—</td><td>毛利率历史新高</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>现金家底 + 分红</h3>
+      <ul>
+        <li>2026Q1 末货币资金 <strong>¥146 亿 + 交易性金融资产 ¥21 亿 = 总现金 ~¥167 亿（约 $23.2 亿）</strong></li>
+        <li>资产负债率 <strong>4.17%</strong> · 流动比率 24.66 · 几乎无负债</li>
+        <li>2019 上市至 2025 累计派息 ¥23.67 亿 + 累计回购 ¥14.30 亿 = 返还股东 ¥37.97 亿（约 $5.3 亿）</li>
+        <li>2025 派息率 50.07%（含回购） · 但 TTM 股息率仅 0.23%（A）/ 0.10%（H）——估值太高摊薄</li>
+      </ul>
+
+      <h3>当前估值（2026-05-15 收盘）</h3>
+      <div class="metric-list">
+        <div class="row">
+          <div class="label">A 股 688008 股价<span class="source">东方财富</span></div>
+          <div class="value">¥244.41 (-7.80%)</div>
+        </div>
+        <div class="row">
+          <div class="label">A 股总市值<span class="source">含限售股</span></div>
+          <div class="value">¥2,987 亿 ($415 亿)</div>
+        </div>
+        <div class="row">
+          <div class="label">港股 06809 股价<span class="source">东方财富 港股</span></div>
+          <div class="value warn">HK$421.40 (-12.65%)</div>
+        </div>
+        <div class="row">
+          <div class="label">港股总市值<span class="source">港股全部股本</span></div>
+          <div class="value warn">HK$5,150 亿 ($660 亿)</div>
+        </div>
+        <div class="row">
+          <div class="label">A 股 PE-TTM<span class="source">按 EPS_TTM 2.24</span></div>
+          <div class="value">109×</div>
+        </div>
+        <div class="row">
+          <div class="label">港股 PE-TTM<span class="source">折算人民币口径</span></div>
+          <div class="value warn">174×</div>
+        </div>
+        <div class="row">
+          <div class="label">A 股 26E PE-Forward<span class="source">券商共识 EPS 2.56</span></div>
+          <div class="value">95.5×</div>
+        </div>
+        <div class="row">
+          <div class="label">A 股 27E PE-Forward<span class="source">券商共识 EPS 3.28</span></div>
+          <div class="value">74.5×</div>
+        </div>
+        <div class="row">
+          <div class="label">PB（市净率）<span class="source">A 股</span></div>
+          <div class="value">14.3×</div>
+        </div>
+        <div class="row">
+          <div class="label">AH 溢价（H 比 A 贵）<span class="source">异常 · 通常 A 贵 H</span></div>
+          <div class="value warn">+59%</div>
+        </div>
+        <div class="row">
+          <div class="label">5 年 PE 中位数<span class="source">亿牛网历史区间</span></div>
+          <div class="value">~84×</div>
+        </div>
+        <div class="row">
+          <div class="label">5 年 PE 历史最低<span class="source">2022-10 周期底</span></div>
+          <div class="value pos">48.65×</div>
+        </div>
+      </div>
+
+      <h3>卖方一致目标价 vs 当前股价</h3>
+      <div class="table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr><th>机构</th><th>评级</th><th>目标价</th><th>距当前股价</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="product-name">高盛（H 股）</td><td>买入</td><td>HK$510</td><td class="pos">尚有 +21%</td></tr>
+            <tr><td class="product-name">里昂（H 股）</td><td>跑赢大市</td><td>HK$447</td><td class="pos">尚有 +6%</td></tr>
+            <tr><td class="product-name">瑞银（H 股）</td><td>买入</td><td>HK$380</td><td class="warn">已超 -10%</td></tr>
+            <tr><td class="product-name">大摩（H 股）</td><td>增持</td><td>HK$310</td><td class="warn">已超 -26%</td></tr>
+            <tr><td class="product-name">群益证券（H 股）</td><td>增持</td><td>HK$350</td><td class="warn">已超 -17%</td></tr>
+            <tr><td class="product-name">东方证券（A 股）</td><td>买入</td><td>¥198.72</td><td class="warn">已超 -19%</td></tr>
+            <tr><td class="product-name">华泰证券（A 股）</td><td>买入</td><td>¥176.30</td><td class="warn">已超 -28%</td></tr>
+            <tr><td class="product-name">群益证券（A 股）</td><td>增持</td><td>¥185</td><td class="warn">已超 -24%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label">关键结论</div>
+        <div class="callout-quote">A 股当前 ¥244 已超过 3/3 公开 A 股目标价（最高 ¥198.72）。港股仅高盛 HK$510 和里昂 HK$447 还有空间——而大摩 5/13 上调目标价至 HK$310 同日就出货 HK$320。这是"卖方目标价追赶股价"的典型背书已耗尽信号。</div>
+      </div>
+
+      <h3>机构资金动向（核心警示）</h3>
+      <ul>
+        <li><strong>北向资金 2026Q1 减持 502 万股（-3.31%）</strong>——尽管仍是第一大流通股东（11.98%），但已转向流出</li>
+        <li><strong>中国电子投资控股 2026Q1 减持 607 万股（-12.6%）</strong>——国资部门高位减持</li>
+        <li><strong>易方达科创 50 ETF 减仓 -44%</strong>（被动 ETF 大规模赎回）</li>
+        <li><strong>大摩 5 月内在港股 06809 连续减持 4 次</strong>，最新减持价 HK$320.33——边唱多边出货</li>
+        <li><strong>Intel Capital：从 IPO 9% → 现 1.55%</strong>，累计套现超 $2.7 亿</li>
+        <li>股东户数 2 年翻 3 倍至 12.4 万户——筹码大幅散户化</li>
+        <li>正面：港股 IPO 时基石 18 家中含阿里、JPM、UBS、Aspex、霸菱、Mirae，国际长线认可</li>
+      </ul>
+    </section>
+
+    <section id="hk">
+      <div class="sect-num">05 · 港股 06809 专题</div>
+      <h2>06809 港股<em>火得不正常</em></h2>
+
+      <h3>上市档案</h3>
+      <div class="metric-list">
+        <div class="row">
+          <div class="label">挂牌日<span class="source">港交所主板</span></div>
+          <div class="value">2026-02-09</div>
+        </div>
+        <div class="row">
+          <div class="label">IPO 定价<span class="source">顶格定价</span></div>
+          <div class="value">HK$106.89</div>
+        </div>
+        <div class="row">
+          <div class="label">公开发售认购倍数<span class="source">中国半导体 20 年最大港股 IPO</span></div>
+          <div class="value pos">707.3×</div>
+        </div>
+        <div class="row">
+          <div class="label">国际配售认购<span class="source">长线机构追捧</span></div>
+          <div class="value pos">37.67×</div>
+        </div>
+        <div class="row">
+          <div class="label">首日收盘<span class="source">+63.72% 巨幅高开</span></div>
+          <div class="value pos">HK$175</div>
+        </div>
+        <div class="row">
+          <div class="label">募资净额<span class="source">含绿鞋前</span></div>
+          <div class="value">HK$69.05 亿 ($8.85 亿)</div>
+        </div>
+        <div class="row">
+          <div class="label">港股流通股数<span class="source">占总股本 6.2%</span></div>
+          <div class="value warn">7,577 万股</div>
+        </div>
+        <div class="row">
+          <div class="label">保荐人<span class="source">中金 + 摩根士丹利 + 瑞银</span></div>
+          <div class="value">3 家联席</div>
+        </div>
+        <div class="row">
+          <div class="label">基石总规模 / 占发行<span class="source">禁售至 2026-08-08</span></div>
+          <div class="value warn">$4.5 亿 / 49.82%</div>
+        </div>
+        <div class="row">
+          <div class="label">港股通纳入<span class="source">南向资金可买</span></div>
+          <div class="value pos">2026-03-09</div>
+        </div>
+      </div>
+
+      <h3>关键事件时间线</h3>
+      <div class="timeline">
+        <div class="tl-row">
+          <div class="tl-date">2026-02-09</div>
+          <div class="tl-dot-wrap"><div class="tl-dot pos"></div></div>
+          <div class="tl-content">
+            <div class="tl-title">港股挂牌</div>
+            <div class="tl-desc">IPO 价 HK$106.89，首日收 HK$175（+63.72%）。中国半导体行业 20 年来香港最大 IPO。</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2026-03-09</div>
+          <div class="tl-dot-wrap"><div class="tl-dot data"></div></div>
+          <div class="tl-content">
+            <div class="tl-title">纳入港股通</div>
+            <div class="tl-desc">南向资金开始入场，5/12 单日净买入 HK$1.9 亿。流通盘小 + 南向涌入 → 推高估值。</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2026-04-28</div>
+          <div class="tl-dot-wrap"><div class="tl-dot pos"></div></div>
+          <div class="tl-content">
+            <div class="tl-title">2026Q1 季报超预期</div>
+            <div class="tl-desc">营收 +19.5% / 净利 +61.3% / 毛利率冲 69.8%。绩后 +3% 收 HK$266。</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2026-05-05~13</div>
+          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+          <div class="tl-content">
+            <div class="tl-title">大摩连续减持 + JPM 减持</div>
+            <div class="tl-desc">大摩在 HK$140 / 162 / 320 三个价位连续减持；JPM 同期减持。大摩持股 7% → 5.74%。</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2026-05-13</div>
+          <div class="tl-dot-wrap"><div class="tl-dot warn"></div></div>
+          <div class="tl-content">
+            <div class="tl-title">市值破 HK$6,000 亿，港股半导体新王</div>
+            <div class="tl-desc">盘中 +26% 创高 HK$543。AH 溢价飙至 +67.9%（H 贵 67.9%）。高盛大幅上调目标价至 HK$510。同日大摩在 HK$320 减持 24.87 万股。</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2026-05-15</div>
+          <div class="tl-dot-wrap"><div class="tl-dot warn"></div></div>
+          <div class="tl-content">
+            <div class="tl-title">今日 -12.65% 急跌</div>
+            <div class="tl-desc">美国 4 月 CPI 反弹引发费城半导体指数跌 5%+，港股 + A 股同步回调。AH 溢价回落至 +33%。情绪开始动摇。</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2026-07 下旬</div>
+          <div class="tl-dot-wrap"><div class="tl-dot data"></div></div>
+          <div class="tl-content">
+            <div class="tl-title">2026 H1 半年报预披露（预期）</div>
+            <div class="tl-desc">业绩兑现度验证。如 Q2 增速延续 60%+，可缓解估值压力。</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2026-08-08</div>
+          <div class="tl-dot-wrap"><div class="tl-dot warn"></div></div>
+          <div class="tl-content">
+            <div class="tl-title">★ 基石投资者解禁日 ★</div>
+            <div class="tl-desc">18 家基石持 3,282.8 万股（占发行 49.82%）锁定到期。按今日 HK$421 已浮盈 +294%、按 5/13 高点 +408%——长线基金锁定利润的诱惑极强。这是未来 3 个月最大单一风险。</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>港股 vs A 股该选哪个？</h3>
+      <div class="two-col">
+        <div class="col-card pos">
+          <h4>选 A 股 688008 的理由</h4>
+          <ul>
+            <li><strong>估值显著便宜</strong>：PE 109× vs 港股 174×</li>
+            <li><strong>流动性更好</strong>：A 股日成交 ¥232 亿 vs 港股 HK$24.6 亿（约 ¥22 亿）</li>
+            <li><strong>无基石解禁压力</strong>：A 股股本结构稳定</li>
+            <li><strong>不承担汇率风险</strong></li>
+            <li>北向虽减但仍是大单边持有</li>
+          </ul>
+        </div>
+        <div class="col-card warn">
+          <h4>港股 06809 的特殊风险</h4>
+          <ul>
+            <li><strong>流通盘仅 6.2%</strong> → 暴涨暴跌易踩踏</li>
+            <li><strong>2026-08-08 49.82% 筹码解禁</strong></li>
+            <li><strong>AH 溢价异常 +59%</strong>，理论上必然收敛</li>
+            <li>国际投行边唱多边出货（大摩典型）</li>
+            <li>港股流动性差 + 短线情绪盘 + 高 beta</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="risks">
+      <div class="sect-num">06 · 风险与空头</div>
+      <h2>反方观点：<em>5 个真正的硬看空</em></h2>
+
+      <p>整个中文舆论场对澜起几乎一边倒看多——研报、自媒体、券商、雪球热门帖都在推。<strong>真正硬核的看空论据需要去英文资料、海外估值平台（GuruFocus、StockAnalysis）和创始人减持记录里挖。</strong>这也是 5 个 Agent 调研的核心增量。</p>
+
+      <h3>空头论点 #1 · 客户即对手</h3>
+      <blockquote>
+        三星电子在 2025 年宣布自主研发 DDR5 RCD 芯片，并实现 40% 自供率，直接威胁到了澜起科技的市场份额
+        <span class="attr">腾讯新闻 2025-09 / 三星半导体官网</span>
+      </blockquote>
+      <p>这是真正的硬看空论据。<strong>客户即对手，且对手已经吃下 40% 的 captive supply。</strong>三星单一客户占澜起营收 30%+，前五大客户合计 80.1%（2025Q1）。三家合计 90%+ DRAM 市场份额——任何一家"内部化"接口芯片都会冲击澜起 15-30% 营收。</p>
+
+      <h3>空头论点 #2 · 创始人用脚投票</h3>
+      <blockquote>
+        杨崇和及共同创始人 Stephen Tai 通过 WLT 持股比例已从初创时的超过 60% 大幅下降至 3.93%，但二人每年薪酬均为 999 万元，合计拿走当年全体高管薪酬的约 70%
+        <span class="attr">新浪财经 / 瑞财经</span>
+      </blockquote>
+      <blockquote>
+        到底是对行业发展趋势有多不熟悉，才能错过这轮股价暴涨机遇？
+        <span class="attr">瑞财经原文</span>
+      </blockquote>
+      <p>5 年股东累计套现超 ¥200 亿（约 $28 亿）。叠加 Intel Capital 高位清仓、中电投 + 嘉兴芯电产业资本减持、大摩 5 月连续 4 次减持、北向资金 Q1 净减。<strong>5 大类资金同步减持，是"聪明钱卖给散户"的经典信号。</strong></p>
+
+      <h3>空头论点 #3 · CXL 故事已经被推迟到 2028 年</h3>
+      <blockquote>
+        Nvidia GPU、AMD 的 MI300A 等主流 AI 芯片已支持专用互连，但几乎没有明确支持 CXL IP 的商用产品。NVLink 双向带宽 450GB/s vs PCIe 5.0 仅 112GB/s——CXL 在 AI 时代已死。
+        <span class="attr">太平洋科技 PConline 企业频道</span>
+      </blockquote>
+      <p>CXL 大规模商用从原本市场预期的 2024 年被推迟到 <strong>2027-2028 年</strong>。澜起 MXC（CXL 内存扩展控制器）2024 年贡献"微乎其微"，被吹得很高的"第二曲线"被推迟 3 年。</p>
+
+      <h3>空头论点 #4 · GuruFocus 标 5 warning signs</h3>
+      <blockquote>
+        SHSE:688008 trading at a 317% premium to fair value... GF Value ¥124.77 vs current price ¥210.27 — 68.5% above estimated fair value, with 5 warning signs
+        <span class="attr">GuruFocus 估值平台</span>
+      </blockquote>
+      <p>WACC（融资成本指标，越高市场要求越苛刻） <strong>18.65% 是 10 年中位数 9.09% 的 2 倍</strong>。EV/EBITDA 81.45 倍，处于行业极端高位。</p>
+
+      <h3>空头论点 #5 · PCIe Retimer 海外格局：澜起远不是龙头</h3>
+      <blockquote>
+        As of 2024, 澜起科技's PCIe Retimer chip revenue was 0.4 billion USD, accounting for 10.90% of the global PCIe Retimer chip market share... significantly behind Astera Labs' 86.00% market share
+        <span class="attr">小牛行研报告</span>
+      </blockquote>
+      <p>中文研究普遍宣传"澜起 Retimer 第二曲线"，但事实是这条曲线澜起<strong>远不是龙头</strong>。Marvell（5nm PCIe 6.0）+ Broadcom（Vantage 5/6）已经入场，澜起被锁在第三梯队。第二曲线想象空间被严重高估。</p>
+
+      <h3>9 大风险矩阵（发生概率 × 影响程度）</h3>
+      <div class="scores">
+        <div class="score-row"><div class="score-name">客户自研替代</div><div class="bar"><div class="bar-fill warn" style="width:100%"></div></div><div class="score-num">25</div></div>
+        <div class="score-row"><div class="score-name">估值高位回调</div><div class="bar"><div class="bar-fill warn" style="width:80%"></div></div><div class="score-num">20</div></div>
+        <div class="score-row"><div class="score-name">大股东持续减持</div><div class="bar"><div class="bar-fill warn" style="width:80%"></div></div><div class="score-num">20</div></div>
+        <div class="score-row"><div class="score-name">CXL/MXC 商用推迟</div><div class="bar"><div class="bar-fill warn" style="width:64%"></div></div><div class="score-num">16</div></div>
+        <div class="score-row"><div class="score-name">内存价格周期下行</div><div class="bar"><div class="bar-fill warn" style="width:64%"></div></div><div class="score-num">16</div></div>
+        <div class="score-row"><div class="score-name">客户集中度（三星）</div><div class="bar"><div class="bar-fill warn" style="width:60%"></div></div><div class="score-num">15</div></div>
+        <div class="score-row"><div class="score-name">港股基石解禁踩踏</div><div class="bar"><div class="bar-fill" style="width:48%"></div></div><div class="score-num">12</div></div>
+        <div class="score-row"><div class="score-name">PCIe Retimer 海外竞争</div><div class="bar"><div class="bar-fill" style="width:48%"></div></div><div class="score-num">12</div></div>
+        <div class="score-row"><div class="score-name">治理结构（无实控人）</div><div class="bar"><div class="bar-fill" style="width:48%"></div></div><div class="score-num">12</div></div>
+        <div class="score-row"><div class="score-name">出口管制实体清单</div><div class="bar"><div class="bar-fill" style="width:40%"></div></div><div class="score-num">10</div></div>
+        <div class="score-row"><div class="score-name">台积电涨价 / 供应链</div><div class="bar"><div class="bar-fill" style="width:36%"></div></div><div class="score-num">9</div></div>
+        <div class="score-row"><div class="score-name">台海地缘黑天鹅</div><div class="bar"><div class="bar-fill pos" style="width:20%"></div></div><div class="score-num">5</div></div>
+        <div class="score-row"><div class="score-name">2014 LQW 做空案复燃</div><div class="bar"><div class="bar-fill pos" style="width:12%"></div></div><div class="score-num">3</div></div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label">最大单一风险</div>
+        <div class="callout-quote">"客户即对手"——三星 DDR5 RCD 自供率 40% 且仍在上升，而澜起 80% 营收依赖内存接口芯片、30%+ 营收来自三星一家。这是估值已经透支 2027-2028 年 38% 利润 CAGR 的故事股，而它最大的客户已经在系统性把订单内化。</div>
+      </div>
+    </section>
+
+    <section id="scorecard">
+      <div class="sect-num">07 · 综合评分</div>
+      <h2>六个维度<em>整体打分</em></h2>
+
+      <div class="scores">
+        <div class="score-row"><div class="score-name">业务壁垒</div><div class="bar"><div class="bar-fill pos" style="width:85%"></div></div><div class="score-num">8.5</div></div>
+        <div class="score-row"><div class="score-name">行业景气</div><div class="bar"><div class="bar-fill pos" style="width:80%"></div></div><div class="score-num">8.0</div></div>
+        <div class="score-row"><div class="score-name">财务质量</div><div class="bar"><div class="bar-fill pos" style="width:90%"></div></div><div class="score-num">9.0</div></div>
+        <div class="score-row"><div class="score-name">估值水平 (A 股)</div><div class="bar"><div class="bar-fill warn" style="width:30%"></div></div><div class="score-num">3.0</div></div>
+        <div class="score-row"><div class="score-name">估值水平 (港股)</div><div class="bar"><div class="bar-fill warn" style="width:15%"></div></div><div class="score-num">1.5</div></div>
+        <div class="score-row"><div class="score-name">公司治理</div><div class="bar"><div class="bar-fill" style="width:55%"></div></div><div class="score-num">5.5</div></div>
+        <div class="score-row"><div class="score-name">资金面</div><div class="bar"><div class="bar-fill warn" style="width:30%"></div></div><div class="score-num">3.0</div></div>
+        <div class="score-row"><div class="score-name">地缘风险</div><div class="bar"><div class="bar-fill" style="width:55%"></div></div><div class="score-num">5.5</div></div>
+        <div class="score-row"><div class="score-name">综合 (A 股)</div><div class="bar"><div class="bar-fill" style="width:60%"></div></div><div class="score-num">6.0</div></div>
+        <div class="score-row"><div class="score-name">综合 (港股)</div><div class="bar"><div class="bar-fill warn" style="width:45%"></div></div><div class="score-num">4.5</div></div>
+      </div>
+
+      <p style="margin-top: 24px;"><strong>关键解读</strong>：业务面 8-9 分（顶级国产半导体公司），但估值面 1.5-3 分（已透支两年增长），资金面 3 分（聪明钱在出货）——综合下来不是"差的公司"，是"好公司在错的价位"。如果价格回到 5 年 PE 中位数（84×）以下，综合分会立刻跳到 7.5+。</p>
+    </section>
+
+    <section id="decision">
+      <div class="sect-num">08 · 决策建议</div>
+      <h2>到底买不买？<em>三条路径</em></h2>
+
+      <div class="verdict">
+        <div class="verdict-title">最终建议</div>
+        <h3>不建议追高港股 06809。如果一定要参与，选 A 股 688008 + 等回调。</h3>
+        <p>当前 HK$421 / ¥244 已经把未来 2-3 年最乐观预期 price in，加上 8 月 8 日基石解禁、5 大资金方同步减持、三星自研 RCD 内化威胁，短期赔率不利。</p>
+        <div class="verdict-options">
+          <div class="verdict-option">
+            <div class="vo-num">Path A · 低风险</div>
+            <h4>不买，等回调</h4>
+            <p>等 8 月解禁后看盘面消化。A 股回调到 ¥165-190（PE 50-60×）/ 港股 HK$280-340 是合理的入场区间。</p>
+          </div>
+          <div class="verdict-option">
+            <div class="vo-num">Path B · 中风险</div>
+            <h4>买 A 股不买港股</h4>
+            <p>如必须现在配置，买 A 股 688008（PE 109 vs 港股 174）+ 仓位控制在总仓位 5% 以内 + 设 -15% 止损。</p>
+          </div>
+          <div class="verdict-option">
+            <div class="vo-num">Path C · 高风险</div>
+            <h4>AH 套利组合</h4>
+            <p>做多 A 股 + 做空 H 股的套利组合（押注 +59% 溢价收敛）。需融券通道，对散户门槛高，且做空有融券利息。</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Path A · 等回调的 30 天行动指南（推荐）</h3>
+      <div class="paths">
+        <div class="path-card a">
+          <div class="path-num">Day 1-30 · 等催化</div>
+          <h4>建立观察清单 + 设置警戒位</h4>
+          <p>用东方财富 / 雪球 设置三档价格提醒：</p>
+          <ul>
+            <li>A 股 ¥210（PE 86×，回到 5 年均值）—— 开始关注</li>
+            <li>A 股 ¥190（PE 75×，27E PE 60×）—— 可分批试探建仓 1/3 仓位</li>
+            <li>A 股 ¥165（PE 65×，回到合理）—— 加仓到目标仓位</li>
+            <li>港股对应 HK$340 / 300 / 260</li>
+          </ul>
+        </div>
+        <div class="path-card a">
+          <div class="path-num">关键日历事件</div>
+          <h4>三个时点必须重点看</h4>
+          <ul>
+            <li><strong>2026-07 下旬</strong>：H1 业绩预披露 —— 检验 Q2 增速</li>
+            <li><strong>2026-08-08</strong>：港股基石解禁 —— 等首日跌幅观察情绪</li>
+            <li><strong>2026-08 下旬</strong>：H1 正式半年报 —— 看新品（MRCD/MDB/CKD）放量进度</li>
+            <li>如三件事都不利，等 2027 年报反弹再考虑</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>不论走哪条路，都要避开的 3 个坑</h3>
+      <ul>
+        <li><strong>不要追高港股 06809。</strong>流通盘 6.2% + 解禁压力 + AH 溢价 59% → 卖盘集中时无买盘承接。今天 -12.65% 是预警。</li>
+        <li><strong>不要"梭哈"。</strong>这是 PE 109× 的标的，单一仓位不超过总资产 5%；任何成长股都不值得为信仰超配。</li>
+        <li><strong>不要忽视 8 月 8 日。</strong>把这天写进日历。任何 7 月底 / 8 月初的浮夸研报都要警惕"为基石抬轿"。</li>
+      </ul>
+
+      <div class="divider-quote">"业务面是 A，估值面是 C—— 现在不是买点，是观察点。"</div>
+
+      <h3>结合你的具体情况</h3>
+      <ul>
+        <li>如果你是<strong>第一次买股票 / 资金量 &lt; 20 万</strong>：不要买这只。PE 109× 的股票不是新手该买的，回撤可能很大。先用 沪深 300 ETF / 科创 50 ETF 起步。</li>
+        <li>如果你是<strong>有经验 + 中长线持有意愿（&gt; 2 年）</strong>：可以观察 Path A，在合理价位分批介入。澜起的业务质地配得上长期持有。</li>
+        <li>如果你是<strong>短线 / 想抓 AI 题材</strong>：放弃这只。当前价位赔率非常不利，宁可看 Astera Labs（PE 26 forward）或 Rambus（PE 60×）。</li>
+        <li>如果你<strong>已经持有港股 06809</strong>：减仓 30-50% 锁定利润，留一些底仓继续跟。重点防 8 月解禁。</li>
+      </ul>
+
+      <div class="callout pos">
+        <div class="callout-label">最后一句</div>
+        <div class="callout-quote">你最大的优势不是资金，是你不用一定要买。耐心是散户面对机构最锋利的武器——它们必须每个季度交业绩，你不必。</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <h4>— 数据来源</h4>
+  <div class="sources">
+    <a href="https://stockmc.xueqiu.com/202508/688008_20250830_9YFH.pdf">澜起 2025 半年报</a>
+    <a href="https://paper.cnstock.com/html/2026-04/28/content_2207810.htm">澜起 2026Q1 季报</a>
+    <a href="https://static.cninfo.com.cn/finalpage/2026-03-31/1225057736.PDF">澜起 2025 年报</a>
+    <a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0130/2026013000008_c.pdf">HKEX 招股说明书 06809</a>
+    <a href="https://quote.eastmoney.com/hk/06809.html">东方财富 06809 行情</a>
+    <a href="https://xueqiu.com/S/SH688008">雪球 688008</a>
+    <a href="https://www.gurufocus.com/stock/SHSE:688008/summary">GuruFocus 估值</a>
+    <a href="https://www.fool.com/earnings/call-transcripts/2026/02/02/rambus-rmbs-q4-2025-earnings-call-transcript/">Rambus Q4 2025 业绩会</a>
+    <a href="https://markets.financialcontent.com/stocks/article/finterra-2026-4-3-the-nervous-system-of-ai-a-deep-dive-into-astera-labs-alab">Astera Labs FY2025 分析</a>
+    <a href="https://www.trendforce.com/research/download/RP251022KY">TrendForce DDR5 供需研究</a>
+    <a href="https://www.trendforce.com/news/2025/07/23/news-ddr6-set-for-2027-mass-adoption-as-memory-giants-reportedly-finalize-prototype-designs/">TrendForce DDR6 2027 量产</a>
+    <a href="https://enterprise.pconline.com.cn/1722/17222388.html">CXL 在 AI 时代已死 · 太平洋科技</a>
+    <a href="https://news.qq.com/rain/a/20250916A07C3000">三星 RCD 自研深度 · 腾讯</a>
+    <a href="https://m.rccaijing.com/news-7426589346897786675.html">瑞财经 · 创始人减持</a>
+    <a href="https://finance.sina.com.cn/stock/zqgd/2025-07-30/doc-infifvky6845182.shtml">5 年套现 200 亿 · 新浪</a>
+    <a href="https://finance.sina.com.cn/jjxw/2026-05-13/doc-inhxtzpm4551523.shtml">市值破 6000 亿 · 新浪</a>
+    <a href="https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-05-13/doc-inhxufvi4451541.shtml">大摩减持 · 新浪</a>
+    <a href="https://www.hangyan.co/reports/2560090683134182470">PCIe Retimer 全球格局 · 小牛行研</a>
+    <a href="https://www.cls.cn/detail/2371677">澜起业绩说明会 · 财联社</a>
+    <a href="https://m.jiemian.com/article/3321543.html">2014 做空往事 · 界面新闻</a>
+  </div>
+  <div class="footer-meta">
+    <strong>Ray Research · 调研引擎</strong> · 本报告由 5 个并行 AI Agent 在 2026-05-15 完成（覆盖业务/行业/财务/港股/风险五个维度），所有关键数字均标注一手来源 + 时间戳。<br><br>
+    <strong>免责声明：</strong>本报告基于公开信息整理与分析，不构成任何投资建议或要约。证券投资有风险，决策须谨慎，盈亏自负。报告中的预测和判断包含主观判断，可能因市场变化而失效。如发现事实错误，请反馈以更正后续报告。<br><br>
+    生成于 2026-05-15 · 调研深度 = 5 个并行 sub-agent · 数据时点 = 2026-05-15 港股盘中
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      document.querySelectorAll('nav.toc a').forEach(link => {
+        link.style.color = '';
+        link.style.fontWeight = '';
+      });
+      const activeLink = document.querySelector(`nav.toc a[href="#${id}"]`);
+      if (activeLink) {
+        activeLink.style.color = 'var(--accent-warn)';
+        activeLink.style.fontWeight = '600';
+      }
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+
+const toggle = document.getElementById('theme-toggle');
+toggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  if (current === 'dark') {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('ray-theme', 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('ray-theme', 'dark');
+  }
+});
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  if (!localStorage.getItem('ray-theme')) {
+    if (e.matches) document.documentElement.setAttribute('data-theme', 'dark');
+    else document.documentElement.removeAttribute('data-theme');
+  }
+});
+</script>
+
+</body>
+</html>
