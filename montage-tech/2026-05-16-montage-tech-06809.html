@@ -129,7 +129,7 @@ body {
 [data-theme="dark"] #theme-toggle .sun { display: block; }
 [data-theme="dark"] #theme-toggle .moon { display: none; }
 
-.layout {
+main.layout {
   max-width: 1280px;
   margin: 0 auto;
   padding: 56px 28px 0;
@@ -170,7 +170,7 @@ nav.toc a .num {
   margin-right: 8px;
 }
 
-main { min-width: 0; }
+article { min-width: 0; display: block; }
 
 /* HERO */
 .hero {
@@ -240,10 +240,13 @@ main { min-width: 0; }
 .quickfacts-wrap {
   background: var(--bg-inverse);
   color: var(--text-on-inverse);
-  margin: 80px -200px 0;
-  padding: 60px 70px;
+  margin: 80px 0 0;
+  padding: 60px 44px;
   border-radius: 0;
   transition: background-color 0.2s, color 0.2s;
+}
+body.rs-active .quickfacts-wrap {
+  margin: 80px -50px 0;
 }
 .quickfacts-eyebrow {
   font-family: var(--mono);
@@ -878,8 +881,9 @@ blockquote .attr::before { content: '— '; }
 footer {
   background: var(--bg-inverse);
   color: var(--text-on-inverse);
-  margin: 80px -200px 0;
-  padding: 60px 70px 40px;
+  max-width: 1280px;
+  margin: 80px auto 0;
+  padding: 60px 44px 40px;
   transition: background-color 0.2s, color 0.2s;
 }
 footer h4 {
@@ -916,7 +920,7 @@ footer .footer-meta {
 footer .footer-meta strong { color: var(--ink-on-inverse); }
 
 @media (max-width: 1100px) {
-  .layout { grid-template-columns: 1fr; gap: 30px; padding: 30px 24px 0; }
+  main.layout { grid-template-columns: 1fr; gap: 30px; padding: 30px 24px 0; }
   nav.toc { position: static; border-top: none; padding-top: 0; }
   nav.toc a { display: inline-block; margin-right: 14px; border-bottom: none; }
   .hero { grid-template-columns: 1fr; gap: 30px; }
@@ -943,7 +947,7 @@ footer .footer-meta strong { color: var(--ink-on-inverse); }
 @media print {
   body { background: white; }
   .metabar, nav.toc, #theme-toggle { display: none; }
-  .layout { grid-template-columns: 1fr; padding: 0; }
+  main.layout { grid-template-columns: 1fr; padding: 0; }
   .quickfacts-wrap, .tldr, .verdict, footer {
     background: white;
     color: var(--ink);
@@ -971,7 +975,7 @@ footer .footer-meta strong { color: var(--ink-on-inverse); }
   <span>2026-05-15 · v1.0 · 5 子 agent 并行</span>
 </div>
 
-<div class="layout">
+<main class="layout">
   <nav class="toc">
     <div class="toc-label">目录</div>
     <a href="#tldr"><span class="num">01</span>速览结论</a>
@@ -984,7 +988,7 @@ footer .footer-meta strong { color: var(--ink-on-inverse); }
     <a href="#decision"><span class="num">08</span>决策建议</a>
   </nav>
 
-  <main>
+  <article>
 
     <div class="hero">
       <div class="hero-left">
@@ -1702,8 +1706,8 @@ footer .footer-meta strong { color: var(--ink-on-inverse); }
       </div>
     </section>
 
-  </main>
-</div>
+  </article>
+</main>
 
 <footer>
   <h4>— 数据来源</h4>
