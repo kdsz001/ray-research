@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cerebras Systems · 深度调研报告 · 2026-05-15</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec;
+  --bg-paper: #fbf9f4;
+  --bg-card: #ffffff;
+  --bg-dark: #14110d;
+  --bg-dark2: #1f1b16;
+  --ink: #14110d;
+  --ink-2: #2c2620;
+  --muted: #6e6358;
+  --light: #a39787;
+  --rule: #14110d;
+  --rule-light: #d8d1c2;
+  --accent-warn: #a73121;
+  --accent-data: #1c4d6b;
+  --accent-pos: #2c5e3f;
+  --accent-yellow: #c89a2c;
+  --serif: "Source Serif 4", "Source Serif Pro", "Charter", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+  --max-w: 820px;
+  --bg-inverse: #14110d;
+  --bg-inverse-2: #1f1b16;
+  --ink-on-inverse: #f6f3ec;
+  --text-on-inverse: rgba(246, 243, 236, 0.85);
+  --muted-on-inverse: rgba(246, 243, 236, 0.7);
+  --faint-on-inverse: rgba(246, 243, 236, 0.55);
+  --light-on-inverse: rgba(246, 243, 236, 0.5);
+  --rule-on-inverse: rgba(246, 243, 236, 0.18);
+  --accent-yellow-on-inverse: #c89a2c;
+  --accent-warn-on-inverse: #e87a5f;
+  --accent-pos-on-inverse: #6db389;
+  --accent-data-on-inverse: #6ba8ce;
+}
+[data-theme="dark"] {
+  --bg: #1a1714;
+  --bg-paper: #221d18;
+  --bg-card: #2a241e;
+  --ink: #ede5d3;
+  --ink-2: #d4c9b3;
+  --muted: #9a8e7c;
+  --light: #6e6358;
+  --rule: #ede5d3;
+  --rule-light: #3d352c;
+  --accent-warn: #e87a5f;
+  --accent-data: #6ba8ce;
+  --accent-pos: #6db389;
+  --accent-yellow: #d4a93f;
+  --bg-inverse: #ede5d3;
+  --bg-inverse-2: #e0d6c1;
+  --ink-on-inverse: #14110d;
+  --text-on-inverse: rgba(20, 17, 13, 0.85);
+  --muted-on-inverse: rgba(20, 17, 13, 0.7);
+  --faint-on-inverse: rgba(20, 17, 13, 0.55);
+  --light-on-inverse: rgba(20, 17, 13, 0.5);
+  --rule-on-inverse: rgba(20, 17, 13, 0.18);
+  --accent-yellow-on-inverse: #8a6a1e;
+  --accent-warn-on-inverse: #a73121;
+  --accent-pos-on-inverse: #2c5e3f;
+  --accent-data-on-inverse: #1c4d6b;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s, color 0.2s;
+}
+.metabar {
+  border-bottom: 1px solid var(--rule);
+  padding: 14px 32px;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+}
+.metabar strong { color: var(--ink); font-weight: 500; }
+#theme-toggle {
+  position: fixed;
+  top: 14px;
+  right: 32px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: var(--bg-paper);
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+#theme-toggle:hover { background: var(--bg-card); }
+#theme-toggle svg { width: 16px; height: 16px; stroke: var(--ink); fill: none; stroke-width: 2; }
+[data-theme="light"] #theme-toggle .moon, html:not([data-theme]) #theme-toggle .moon { display: block; }
+[data-theme="light"] #theme-toggle .sun, html:not([data-theme]) #theme-toggle .sun { display: none; }
+[data-theme="dark"] #theme-toggle .sun { display: block; }
+[data-theme="dark"] #theme-toggle .moon { display: none; }
+.container { display: flex; max-width: 1280px; margin: 0 auto; padding: 0 32px; gap: 60px; }
+nav.toc {
+  width: 200px;
+  position: sticky;
+  top: 40px;
+  align-self: flex-start;
+  padding: 60px 0;
+  flex-shrink: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+nav.toc h5 {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--light);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+nav.toc ol { list-style: none; }
+nav.toc li { margin-bottom: 14px; }
+nav.toc a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s;
+  display: block;
+  line-height: 1.4;
+}
+nav.toc a:hover { color: var(--accent-warn); }
+nav.toc .num { display: inline-block; width: 22px; color: var(--light); }
+main { flex: 1; max-width: var(--max-w); padding: 60px 0 100px; min-width: 0; }
+.hero { display: grid; grid-template-columns: 1fr 220px; gap: 50px; padding-bottom: 70px; border-bottom: 1px solid var(--rule); margin-bottom: 80px; }
+.eyebrow { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-warn); margin-bottom: 24px; display: flex; align-items: center; gap: 14px; }
+.eyebrow::before { content: ""; width: 30px; height: 1px; background: var(--accent-warn); display: inline-block; }
+h1.hero-title {
+  font-family: var(--serif);
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  margin-bottom: 28px;
+  color: var(--ink);
+}
+h1.hero-title em { font-style: italic; color: var(--accent-warn); }
+.hero-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--muted);
+  font-weight: 400;
+  max-width: 560px;
+}
+.hero-meta { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding-top: 20px; }
+.hero-meta dl { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.hero-meta dt { color: var(--light); font-size: 10px; }
+.hero-meta dd { color: var(--ink); font-weight: 500; margin-top: 2px; }
+.quickfacts-wrap {
+  background: var(--bg-inverse);
+  color: var(--ink-on-inverse);
+  margin: 0 -32px 90px;
+  padding: 60px 32px;
+  transition: background-color 0.2s, color 0.2s;
+}
+.quickfacts-inner { max-width: var(--max-w); margin: 0 auto; padding-left: 260px; }
+.qf-eyebrow { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-yellow-on-inverse); margin-bottom: 14px; }
+.qf-title { font-family: var(--serif); font-style: italic; font-size: 36px; font-weight: 500; line-height: 1.1; margin-bottom: 36px; color: var(--ink-on-inverse); }
+.qf-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; border-top: 1px solid var(--rule-on-inverse); border-left: 1px solid var(--rule-on-inverse); }
+.qf-cell { border-right: 1px solid var(--rule-on-inverse); border-bottom: 1px solid var(--rule-on-inverse); padding: 22px 18px 18px; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between; }
+.qf-cell.verdict-cell { background: var(--accent-warn); }
+.qf-cell.verdict-cell .qf-label,
+.qf-cell.verdict-cell .qf-num,
+.qf-cell.verdict-cell .qf-sub { color: #fbf9f4; }
+.qf-label { font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--faint-on-inverse); margin-bottom: 18px; }
+.qf-num { font-family: var(--serif); font-size: 30px; font-weight: 500; line-height: 1; color: var(--ink-on-inverse); }
+.qf-num .unit { font-size: 16px; color: var(--muted-on-inverse); margin-left: 4px; }
+.qf-num.warn { color: var(--accent-warn-on-inverse); }
+.qf-num.pos { color: var(--accent-pos-on-inverse); }
+.qf-num.data { color: var(--accent-data-on-inverse); }
+.qf-cell.verdict-cell .qf-verdict { font-family: var(--serif); font-style: italic; font-size: 18px; line-height: 1.2; }
+.qf-sub { font-family: var(--sans); font-size: 10px; color: var(--muted-on-inverse); margin-top: 8px; }
+section { margin-bottom: 100px; scroll-margin-top: 40px; }
+.sec-num { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-warn); display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.sec-num::before { content: ""; width: 30px; height: 1px; background: var(--accent-warn); }
+section h2 { font-family: var(--serif); font-size: 44px; font-weight: 600; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 32px; color: var(--ink); }
+section h3 { font-family: var(--serif); font-size: 24px; font-weight: 600; line-height: 1.3; margin: 40px 0 18px; color: var(--ink); }
+section p { margin-bottom: 18px; color: var(--ink-2); }
+section p strong { color: var(--ink); font-weight: 600; }
+section a { color: var(--accent-data); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+section a:hover { color: var(--accent-warn); }
+.tldr {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  padding: 60px 50px 50px;
+  margin: 40px 0;
+  position: relative;
+  transition: background-color 0.2s, color 0.2s;
+}
+.tldr-ribbon { position: absolute; top: -14px; left: 40px; background: var(--accent-warn); color: #fbf9f4; padding: 8px 18px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 600; }
+.tldr h3 { font-family: var(--serif); font-style: italic; font-size: 28px; font-weight: 500; color: var(--ink-on-inverse); margin-bottom: 24px; line-height: 1.3; }
+.tldr ol, .tldr ul { padding-left: 24px; }
+.tldr li { font-family: var(--sans); font-size: 16px; line-height: 1.65; margin-bottom: 14px; color: var(--text-on-inverse); }
+.tldr li strong { color: var(--ink-on-inverse); }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin: 30px 0; }
+.stat { padding: 22px 0 18px; border-top: 2px solid var(--rule); }
+.stat-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 12px; }
+.stat-num { font-family: var(--serif); font-size: 36px; font-weight: 500; line-height: 1; color: var(--ink); }
+.stat-num.warn { color: var(--accent-warn); }
+.stat-num.pos { color: var(--accent-pos); }
+.stat-num.data { color: var(--accent-data); }
+.stat-num .unit { font-size: 16px; color: var(--muted); margin-left: 4px; }
+.stat-sub { font-family: var(--sans); font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.4; }
+.metric-list { margin: 30px 0; border-top: 2px solid var(--rule); border-bottom: 2px solid var(--rule); }
+.metric-row { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--rule-light); }
+.metric-row:last-child { border-bottom: none; }
+.metric-label { font-family: var(--sans); font-size: 14px; color: var(--ink-2); }
+.metric-label .src { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--light); margin-left: 12px; }
+.metric-num { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); }
+.metric-num.warn { color: var(--accent-warn); }
+.metric-num.pos { color: var(--accent-pos); }
+.twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 30px 0; }
+.col-card { background: var(--bg-card); border: 1px solid var(--rule-light); padding: 26px 24px; transition: background-color 0.2s, border-color 0.2s; }
+.col-card h4 { font-family: var(--sans); font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+.col-card.pos h4 { color: var(--accent-pos); }
+.col-card.warn h4 { color: var(--accent-warn); }
+.col-card.pos h4::before { content: "✓"; width: 18px; height: 18px; border-radius: 50%; background: var(--accent-pos); color: #fbf9f4; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+.col-card.warn h4::before { content: "!"; width: 18px; height: 18px; border-radius: 50%; background: var(--accent-warn); color: #fbf9f4; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; font-weight: 700; }
+.col-card ul { list-style: none; padding: 0; }
+.col-card li { font-size: 14px; line-height: 1.55; margin-bottom: 14px; padding-left: 14px; position: relative; color: var(--ink-2); }
+.col-card li::before { content: "—"; position: absolute; left: 0; color: var(--light); }
+.quote { border-left: 3px solid var(--accent-warn); padding: 8px 0 8px 22px; margin: 28px 0; }
+.quote-text { font-family: var(--serif); font-style: italic; font-size: 18px; line-height: 1.55; color: var(--ink-2); margin-bottom: 12px; }
+.quote-attr { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.quote-attr::before { content: "— "; }
+.score-box { border: 1px solid var(--rule); background: var(--bg-paper); padding: 26px 28px; margin: 30px 0; transition: background-color 0.2s, border-color 0.2s; }
+.score-row { display: grid; grid-template-columns: 130px 1fr 50px; gap: 18px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--rule-light); }
+.score-row:last-child { border-bottom: none; }
+.score-name { font-family: var(--serif); font-weight: 600; font-size: 14px; color: var(--ink); }
+.score-bar { height: 8px; background: var(--rule-light); position: relative; }
+.score-fill { height: 100%; background: var(--accent-data); }
+.score-fill.pos { background: var(--accent-pos); }
+.score-fill.warn { background: var(--accent-warn); }
+.score-fill.yellow { background: var(--accent-yellow); }
+.score-num { font-family: var(--serif); font-size: 20px; font-weight: 500; text-align: right; color: var(--ink); }
+table.compare { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 13px; }
+table.compare thead { border-bottom: 2px solid var(--rule); border-top: 2px solid var(--rule); }
+table.compare th { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); padding: 14px 10px; text-align: left; font-weight: 500; }
+table.compare td { padding: 14px 10px; vertical-align: top; border-bottom: 1px solid var(--rule-light); color: var(--ink-2); line-height: 1.45; }
+table.compare tr:last-child td { border-bottom: 1px solid var(--rule); }
+table.compare .product-name { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: 14px; }
+table.compare .tag { font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; background: var(--rule-light); color: var(--ink); padding: 2px 6px; margin-left: 6px; }
+table.compare .highlight-row { background: rgba(167, 49, 33, 0.06); }
+table.compare .highlight-row td { color: var(--ink); }
+.callout { padding: 22px 26px; margin: 28px 0; border-left: 3px solid var(--ink); background: var(--bg-paper); transition: background-color 0.2s, border-color 0.2s; }
+.callout.warn { border-left-color: var(--accent-warn); }
+.callout.data { border-left-color: var(--accent-data); }
+.callout.pos { border-left-color: var(--accent-pos); }
+.callout-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-warn); margin-bottom: 10px; font-weight: 500; }
+.callout.data .callout-label { color: var(--accent-data); }
+.callout.pos .callout-label { color: var(--accent-pos); }
+.callout-quote { font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1.55; color: var(--ink-2); }
+.callout p { font-size: 14px; line-height: 1.6; margin-bottom: 8px; }
+.timeline { margin: 30px 0; }
+.tl-row { display: grid; grid-template-columns: 110px 30px 1fr; gap: 18px; padding: 14px 0; align-items: start; position: relative; }
+.tl-date { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); text-align: right; padding-top: 4px; }
+.tl-dot { position: relative; height: 100%; display: flex; justify-content: center; }
+.tl-dot::before { content: ""; position: absolute; top: 0; bottom: 0; width: 1px; background: var(--rule-light); left: 50%; transform: translateX(-50%); }
+.tl-dot::after { content: ""; position: absolute; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--bg); border: 2px solid var(--ink); z-index: 1; }
+.tl-row.warn .tl-dot::after { border-color: var(--accent-warn); background: var(--accent-warn); }
+.tl-row.data .tl-dot::after { border-color: var(--accent-data); background: var(--accent-data); }
+.tl-row.pos .tl-dot::after { border-color: var(--accent-pos); background: var(--accent-pos); }
+.tl-content h5 { font-family: var(--serif); font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.tl-content p { font-size: 13px; line-height: 1.5; color: var(--muted); margin: 0; }
+.verdict-block { background: var(--bg-inverse); color: var(--text-on-inverse); padding: 50px 44px; margin: 40px 0; transition: background-color 0.2s, color 0.2s; }
+.verdict-title { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent-yellow-on-inverse); margin-bottom: 18px; }
+.verdict-block h3 { font-family: var(--serif); font-size: 30px; font-weight: 500; line-height: 1.2; color: var(--ink-on-inverse); margin-bottom: 18px; }
+.verdict-block > p { font-size: 15px; line-height: 1.65; color: var(--text-on-inverse); margin-bottom: 28px; }
+.verdict-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.verdict-option { padding-top: 20px; border-top: 1px solid var(--rule-on-inverse); }
+.verdict-option .vo-num { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-yellow-on-inverse); margin-bottom: 12px; }
+.verdict-option h4 { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--ink-on-inverse); margin-bottom: 10px; line-height: 1.3; }
+.verdict-option p { font-size: 13px; line-height: 1.55; color: var(--muted-on-inverse); }
+.path-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 30px 0; }
+.path-card { background: var(--bg-card); border: 1px solid var(--rule-light); padding: 26px 24px; position: relative; transition: background-color 0.2s, border-color 0.2s; }
+.path-card.a { border-top: 4px solid var(--accent-pos); }
+.path-card.b { border-top: 4px solid var(--accent-yellow); }
+.path-card.c { border-top: 4px solid var(--accent-warn); }
+.path-card .pc-num { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 8px; }
+.path-card h4 { font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 12px; line-height: 1.3; }
+.path-card p { font-size: 13px; line-height: 1.55; color: var(--ink-2); margin-bottom: 14px; }
+.path-card ol, .path-card ul { padding-left: 18px; font-size: 13px; line-height: 1.55; color: var(--ink-2); }
+.path-card li { margin-bottom: 6px; }
+.divider-quote { text-align: center; padding: 60px 20px; margin: 40px 0; position: relative; }
+.divider-quote::before, .divider-quote::after { content: ""; position: absolute; left: 50%; transform: translateX(-50%); width: 40px; height: 1px; background: var(--rule); }
+.divider-quote::before { top: 30px; }
+.divider-quote::after { bottom: 30px; }
+.divider-quote p { font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 1.4; color: var(--muted); margin: 0; }
+footer { background: var(--bg-inverse); color: var(--text-on-inverse); padding: 60px 32px 40px; margin-top: 60px; transition: background-color 0.2s, color 0.2s; }
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+footer h5 { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-yellow-on-inverse); margin-bottom: 18px; }
+footer ul.sources { columns: 2; column-gap: 50px; list-style: none; padding: 0; margin-bottom: 40px; }
+footer li { font-family: var(--mono); font-size: 11px; line-height: 1.5; margin-bottom: 8px; break-inside: avoid; }
+footer a { color: var(--text-on-inverse); text-decoration: none; border-bottom: 1px solid var(--rule-on-inverse); }
+footer a:hover { color: var(--accent-yellow-on-inverse); border-bottom-color: var(--accent-yellow-on-inverse); }
+.footer-meta { border-top: 1px solid var(--rule-on-inverse); padding-top: 24px; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint-on-inverse); line-height: 1.7; }
+@media (max-width: 1100px) {
+  nav.toc { display: none; }
+  .container { padding: 0 24px; }
+  .hero { grid-template-columns: 1fr; gap: 30px; }
+  .quickfacts-inner { padding-left: 0; }
+  .qf-grid { grid-template-columns: repeat(3, 1fr); }
+  .verdict-options { grid-template-columns: 1fr; }
+  .path-cards { grid-template-columns: 1fr; }
+  .twocol { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  h1.hero-title { font-size: 48px; }
+  section h2 { font-size: 32px; }
+  .qf-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats { grid-template-columns: 1fr; }
+  table.compare { font-size: 11px; }
+  table.compare th, table.compare td { padding: 10px 6px; }
+  .metabar { padding: 12px 20px; font-size: 10px; flex-direction: column; gap: 6px; }
+  #theme-toggle { top: 12px; right: 20px; }
+}
+@media print {
+  .metabar, nav.toc, #theme-toggle { display: none; }
+  body { background: white; color: #14110d; }
+  .tldr, .verdict-block, .quickfacts-wrap, footer { background: white; color: #14110d; border: 1px solid #14110d; }
+  .tldr h3, .verdict-block h3, .qf-title, footer h5 { color: #14110d; }
+  .qf-cell { color: #14110d; border-color: #14110d; }
+  .qf-num, .qf-label, .qf-sub, .footer-meta { color: #14110d; }
+  section { page-break-inside: avoid; }
+  .hero { page-break-after: always; }
+  a { color: #14110d; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<div class="metabar">
+  <span><strong>RAY DEEP RESEARCH</strong> · CEREBRAS SYSTEMS · BRIEF #008</span>
+  <span>2026-05-15 · v1.0 · IPO+1</span>
+</div>
+<button id="theme-toggle" aria-label="切换深色模式">
+  <svg class="sun" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  <svg class="moon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+
+<div class="container">
+<nav class="toc">
+  <h5>目录 · TABLE OF CONTENTS</h5>
+  <ol>
+    <li><a href="#sec1"><span class="num">01</span>公司档案</a></li>
+    <li><a href="#sec2"><span class="num">02</span>晶圆级产品</a></li>
+    <li><a href="#sec3"><span class="num">03</span>市场反馈</a></li>
+    <li><a href="#sec4"><span class="num">04</span>客户结构</a></li>
+    <li><a href="#sec5"><span class="num">05</span>竞品格局</a></li>
+    <li><a href="#sec6"><span class="num">06</span>中国市场</a></li>
+    <li><a href="#sec7"><span class="num">07</span>关键争议</a></li>
+    <li><a href="#sec8"><span class="num">08</span>投资可行性</a></li>
+    <li><a href="#sec9"><span class="num">09</span>决策建议</a></li>
+  </ol>
+</nav>
+
+<main>
+<div class="hero">
+  <div>
+    <div class="eyebrow">深度调研 · 2026 年最大 AI IPO</div>
+    <h1 class="hero-title">晶圆级的<em>速度神话</em>，押对了 OpenAI。</h1>
+    <p class="hero-sub">Cerebras Systems（Nasdaq:CBRS）昨日（2026-05-14）开盘 +89%，市值飙至 $560 亿美元——但 86% 营收依赖阿联酋两家关联实体、GAAP 净亏损 $4.82 亿美元、单一 OpenAI 长合同决定未来五年估值合理性。这是一个技术真本事 + 商业极度脆弱的故事。</p>
+  </div>
+  <div class="hero-meta">
+    <dl>
+      <dt>调研对象</dt><dd>Cerebras Systems Inc.</dd>
+      <dt>股票代码</dt><dd>Nasdaq:CBRS</dd>
+      <dt>调研深度</dt><dd>5 并行 Agent</dd>
+      <dt>覆盖平台</dt><dd>SEC·HN·Reddit·X·SemiAnalysis·知乎·B站·微信</dd>
+      <dt>读者画像</dt><dd>非技术创业者·投资人·技术决策者</dd>
+      <dt>正文字数</dt><dd>约 11,800 字</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="quickfacts-wrap">
+<div class="quickfacts-inner">
+  <div class="qf-eyebrow">10 秒看完</div>
+  <h2 class="qf-title">Cerebras at a Glance</h2>
+  <div class="qf-grid">
+    <div class="qf-cell"><span class="qf-label">阶段</span><div><span class="qf-num data">IPO+1</span><div class="qf-sub">2026-05-14 Nasdaq 上市</div></div></div>
+    <div class="qf-cell"><span class="qf-label">市值</span><div><span class="qf-num">$56B</span><div class="qf-sub">首日开盘后 / ¥4,060亿</div></div></div>
+    <div class="qf-cell"><span class="qf-label">2025 营收</span><div><span class="qf-num">$510M</span><div class="qf-sub">同比 +76% / ¥36.7亿</div></div></div>
+    <div class="qf-cell"><span class="qf-label">2025 GAAP 亏损</span><div><span class="qf-num warn">$482M</span><div class="qf-sub">几近全年营收</div></div></div>
+    <div class="qf-cell"><span class="qf-label">员工数</span><div><span class="qf-num">708</span><div class="qf-sub">美 426 + 加印阿</div></div></div>
+    <div class="qf-cell"><span class="qf-label">客户集中度</span><div><span class="qf-num warn">86<span class="unit">%</span></span><div class="qf-sub">UAE 两家 = MBZUAI+G42</div></div></div>
+    <div class="qf-cell"><span class="qf-label">OpenAI 合同</span><div><span class="qf-num pos">$20B+</span><div class="qf-sub">750MW · 多年 MRA</div></div></div>
+    <div class="qf-cell"><span class="qf-label">真实 dense 算力</span><div><span class="qf-num data">15.6<span class="unit">PFLOPS</span></span><div class="qf-sub">官标 125 的 1/8</div></div></div>
+    <div class="qf-cell"><span class="qf-label">推理速度</span><div><span class="qf-num pos">2,500<span class="unit">tok/s</span></span><div class="qf-sub">Llama 3.3 70B 实测</div></div></div>
+    <div class="qf-cell"><span class="qf-label">市销率</span><div><span class="qf-num warn">110<span class="unit">×</span></span><div class="qf-sub">vs NVIDIA ≈18×</div></div></div>
+    <div class="qf-cell"><span class="qf-label">复刻可行性</span><div><span class="qf-num warn">2<span class="unit">/10</span></span><div class="qf-sub">硬件创业 ≠ 普通 SaaS</div></div></div>
+    <div class="qf-cell verdict-cell"><span class="qf-label">最终判断</span><div class="qf-verdict">值得关注<br>不建议入场</div></div>
+  </div>
+</div>
+</div>
+
+<section>
+<p>Cerebras Systems（中文译"塞雷布拉斯"）是 2015 年由五位前 SeaMicro/AMD 高管在硅谷创立的 AI 芯片公司。它用一种"反 GPU"的物理路线——把整片 12 英寸晶圆（直径约 21.5 cm）做成<strong>一颗芯片</strong>——挑战 NVIDIA。这件事在 2024 年之前听起来像疯子叙事；2026 年 5 月 14 日它以 Nasdaq:CBRS 完成 2026 年迄今最大科技 IPO，募资 <strong>$55.5 亿美元（约 ¥400 亿）</strong>，首日盘中翻倍。</p>
+
+<p>但这份报告的真正主题不是"它有多牛"。是<strong>三个互相撕扯的事实</strong>：（1）它的推理速度物理上确实碾压 GPU，DHH、OpenAI 工程师、Cognition、Perplexity 都在用；（2）它 2025 年 <strong>86% 营收</strong>来自阿联酋两家关联实体（MBZUAI + G42），<strong>GAAP 净亏损 $4.82 亿美元（约 ¥34.7 亿），亏损金额已等同全年营收</strong>；（3）OpenAI 在 2025 年 12 月签下 $200 亿美元（约 ¥1,440 亿）多年合同，同时持有 Cerebras 11% warrant（认股权证），是客户 + 贷款方 + 股东的三重身份——分析师称这是"循环交易（circular financing）"嫌疑。</p>
+
+<div class="tldr">
+<div class="tldr-ribbon">TL;DR · 一页纸结论</div>
+<h3>如果你只能记住三件事</h3>
+<ol>
+  <li><strong>这是技术真本事 + 商业极度脆弱的故事。</strong>WSE-3 在 batch=1（单用户低延迟生成）场景物理碾压 GPU，速度 2,500 tok/s 是 H100 集群的 25-50 倍；但 2025 年营收 86% 来自一个国家的两家关联实体，GAAP 净亏损接近全年营收。</li>
+  <li><strong>OpenAI 是救星，也是悬在头顶的剑。</strong>$200 亿美元（约 ¥1,440 亿）多年合同把 Cerebras 从"中东依赖"救出来，但 OpenAI 同时拿了 33.4M 股 warrant（11% 股权按里程碑授予）+ 提供 $10 亿美元（约 ¥72 亿）营运贷款。OpenAI 正与 Broadcom 合作自研推理芯片——一旦成型，Cerebras 故事会被瞬间撕开。</li>
+  <li><strong>"晶圆级推理三杰" Cerebras / Groq / SambaNova 中，只剩 Cerebras 还独立。</strong>2025-12 NVIDIA 以 $200 亿美元（约 ¥1,440 亿）吞了 Groq；2026 年初 Intel 以 $16 亿美元（约 ¥115 亿）吞了 SambaNova。Cerebras 拒绝了 NVIDIA 和 Arm/软银的收购意向，选择独立 IPO——这是稀缺性溢价，也是赌注。</li>
+</ol>
+</div>
+</section>
+
+<section id="sec1">
+<div class="sec-num"><span>01</span>公司档案</div>
+<h2>五个 AMD 出来的人，搞了 10 年。</h2>
+<p>Cerebras 的故事必须从 <strong>SeaMicro</strong> 讲起。2007 年 Andrew Feldman 和 Gary Lauterbach 创办的微服务器公司 SeaMicro，2012 年被 AMD 以 <strong>$334M（约 $3.34 亿美元 / ¥24 亿）</strong>收购。Feldman、Lauterbach、Sean Lie、Michael James、Jean-Philippe Fricker 五人在 AMD 干了三年后集体出走，2015 年在硅谷 Sunnyvale 创办 Cerebras——所有人都是同一支团队，且都来自同一段"做不出大芯片就死磕到底"的执念。</p>
+
+<h3>五位联合创始人</h3>
+<div class="metric-list">
+  <div class="metric-row"><span class="metric-label">Andrew Feldman · CEO<span class="src">STANFORD MBA · 连续创业者</span></span></div>
+  <div class="metric-row"><span class="metric-label">Sean Lie · CTO<span class="src">前 AMD 首席数据中心架构师</span></span></div>
+  <div class="metric-row"><span class="metric-label">Gary Lauterbach · CTO Emeritus<span class="src">芯片架构资深专家</span></span></div>
+  <div class="metric-row"><span class="metric-label">Michael James · Chief Architect, Advanced Tech<span class="src">前 AMD 首席软件架构师</span></span></div>
+  <div class="metric-row"><span class="metric-label">JP Fricker · Chief System Architect<span class="src">30 项计算系统专利 / 前 DSSD-EMC</span></span></div>
+</div>
+
+<h3>融资史 · 一手 SEC S-1/A2（2026-05-11）</h3>
+<div class="metric-list">
+  <div class="metric-row"><span class="metric-label">Seed (2015–2016)<span class="src">天使含 SAM ALTMAN / SUTSKEVER / BROCKMAN / D'ANGELO</span></span><span class="metric-num">未披露</span></div>
+  <div class="metric-row"><span class="metric-label">Series A (2016-05)<span class="src">BENCHMARK / FOUNDATION / ECLIPSE 领投</span></span><span class="metric-num">~$27M</span></div>
+  <div class="metric-row"><span class="metric-label">Series E (2019)<span class="src">媒体二手</span></span><span class="metric-num">~$270M</span></div>
+  <div class="metric-row"><span class="metric-label">Series F-1 (2024-05)<span class="src">ALPHA WAVE · $14/股</span></span><span class="metric-num">~$81M</span></div>
+  <div class="metric-row"><span class="metric-label">Series F-2 / G42 入股<span class="src">CFIUS 拦下重组为无投票权股</span></span><span class="metric-num warn">$335M 取消</span></div>
+  <div class="metric-row"><span class="metric-label">Series G (2025-09)<span class="src">FIDELITY 加入 · $36/股 · 投后估值 $8.1B</span></span><span class="metric-num">$1.1B</span></div>
+  <div class="metric-row"><span class="metric-label">Series H (2026-01)<span class="src">TIGER GLOBAL 领投 · $89/股 · 投后估值 $23B</span></span><span class="metric-num">$1.0B</span></div>
+  <div class="metric-row"><span class="metric-label">IPO (2026-05-13/14)<span class="src">$185/股 · 开盘 $350 · MORGAN STANLEY/CITI/BARCLAYS/UBS</span></span><span class="metric-num pos">$5.55B</span></div>
+</div>
+
+<div class="callout warn">
+  <div class="callout-label">关键风险 · 双重股权结构</div>
+  <p>S-1/A2 一手披露：Class A（1 票/股）+ Class B（20 票/股）+ Class N（无投票权）。<strong>IPO 后 Class B 持有人控制约 99% 投票权</strong>。公众股东几乎没有公司治理影响力——这是典型硅谷"创始人友好"结构，但对二级市场投资者意味着重大公司事项无投票影响力。</p>
+</div>
+
+<h3>IPO 时间线（CFIUS 阴影 → 转危为机）</h3>
+<div class="timeline">
+  <div class="tl-row warn"><div class="tl-date">2024-09-30</div><div class="tl-dot"></div><div class="tl-content"><h5>第一次提交 S-1</h5><p>当时披露 G42 占 2024 上半年营收 87%</p></div></div>
+  <div class="tl-row warn"><div class="tl-date">2024-10</div><div class="tl-dot"></div><div class="tl-content"><h5>CFIUS 审查触发，IPO 暂停</h5><p>CFIUS = 美国外资投资委员会，审查外国投资是否威胁国安</p></div></div>
+  <div class="tl-row data"><div class="tl-date">2025-03-27</div><div class="tl-dot"></div><div class="tl-content"><h5>CFIUS 放行</h5><p>G42 持股重组为无投票权 Class N 股 + warrant</p></div></div>
+  <div class="tl-row data"><div class="tl-date">2025-09</div><div class="tl-dot"></div><div class="tl-content"><h5>Series G 募 $1.1B 美元</h5><p>估值 $8.1 亿美元 · Fidelity 首次加入</p></div></div>
+  <div class="tl-row pos"><div class="tl-date">2025-12-24</div><div class="tl-dot"></div><div class="tl-content"><h5>签下 OpenAI 主合作协议 (MRA)</h5><p>750MW 算力 · $20B+ 多年合同 · 含 $1B 营运贷款</p></div></div>
+  <div class="tl-row pos"><div class="tl-date">2026-01</div><div class="tl-dot"></div><div class="tl-content"><h5>Series H 募 $1.0B 美元</h5><p>Tiger Global 领投 · 估值跳到 $23B</p></div></div>
+  <div class="tl-row pos"><div class="tl-date">2026-03</div><div class="tl-dot"></div><div class="tl-content"><h5>AWS 战略合作</h5><p>CS-3 系统进 Amazon 数据中心 · 通过 Bedrock 暴露</p></div></div>
+  <div class="tl-row pos"><div class="tl-date">2026-05-14</div><div class="tl-dot"></div><div class="tl-content"><h5>Nasdaq:CBRS 上市，开盘 +89%</h5><p>定价 $185 · 开盘 $350 · 募资 $55.5 亿美元（约 ¥400 亿）</p></div></div>
+</div>
+</section>
+
+<section id="sec2">
+<div class="sec-num"><span>02</span>晶圆级产品</div>
+<h2>把整片晶圆做成一颗芯片。</h2>
+<p>一片标准的 12 英寸（300mm）硅晶圆，在正常的芯片厂里被切成几百颗小芯片——每颗几百 mm²。Cerebras 反过来：<strong>整片晶圆当作一颗芯片用</strong>。这听起来违反芯片产业 60 年的常识，但 Cerebras 用"小核心 + 故障容忍设计"工程上跑通了：晶圆物理上有 970,000 个核心，启用 900,000 个，靠冗余路由动态绕开坏点。</p>
+
+<h3>WSE-3 vs NVIDIA H100 / B200（一手实测对比）</h3>
+<div class="stats">
+  <div class="stat"><div class="stat-label">Die 面积</div><div class="stat-num data">46,225<span class="unit">mm²</span></div><div class="stat-sub">H100 仅 814 mm² · 大 57 倍</div></div>
+  <div class="stat"><div class="stat-label">片上 SRAM</div><div class="stat-num data">44<span class="unit">GB</span></div><div class="stat-sub">H100 仅 0.05 GB · 大 880 倍</div></div>
+  <div class="stat"><div class="stat-label">片上内存带宽</div><div class="stat-num data">21<span class="unit">PB/s</span></div><div class="stat-sub">H100 HBM 3 TB/s · 大 7,000 倍</div></div>
+  <div class="stat"><div class="stat-label">晶体管数</div><div class="stat-num">4<span class="unit">万亿</span></div><div class="stat-sub">H100 800 亿 · 大 50 倍</div></div>
+  <div class="stat"><div class="stat-label">核心数</div><div class="stat-num">900,000</div><div class="stat-sub">单核仅 0.05 mm²</div></div>
+  <div class="stat"><div class="stat-label">真实 dense FP16</div><div class="stat-num warn">15.6<span class="unit">PFLOPS</span></div><div class="stat-sub">官标 125 PFLOPS 是 8:1 稀疏假设</div></div>
+</div>
+
+<div class="callout warn">
+  <div class="callout-label">Feldman's Formula · SemiAnalysis 揭露</div>
+  <p class="callout-quote">"Cerebras assumes 8:1 unstructured sparsity in its sparse number, so dense FLOPS is actually 1/8th or 15.6 PFLOPS of FP16 compute throughput. We call this 'Feldman's Formula.' An even bigger sparsity factor than the hallmark 2:1 rule of Jensen Math!"</p>
+  <p style="margin-top:14px;font-size:13px;color:var(--muted);">白话：Cerebras 官方宣传的 125 PFLOPS 是用 8:1 稀疏假设（假设权重 87.5% 是 0，只算非零部分）算的理论峰值。真实 dense（稠密计算）FP16 算力只有 15.6 PFLOPS——大约等于 1-2 颗 NVIDIA B200。SemiAnalysis 戏称这是"Feldman 公式"，比 NVIDIA 的"Jensen 数学"还激进。 — <a href="https://newsletter.semianalysis.com/p/cerebras-faster-tokens-please">SemiAnalysis 2026-05-14</a></p>
+</div>
+
+<h3>CS-3 系统与定价</h3>
+<p>CS-3 是装一片 WSE-3 的 15U 机柜，功耗 23 kW，闭环水冷。Cerebras 从不公开报价——分析师估算单机 <strong>$2-3M（约 ¥1,440-2,160 万）</strong>。SemiAnalysis 拆物料：CS-3 + 配套节点 BoM（物料成本）约 $450k（约 ¥324 万），意味着 5-7 倍毛利。</p>
+
+<h3>Cerebras Inference 推理服务（2024-08 上线，已成主战场）</h3>
+<div class="metric-list">
+  <div class="metric-row"><span class="metric-label">Llama 3.3 70B 速度<span class="src">2025-04 自报</span></span><span class="metric-num pos">2,500 tok/s</span></div>
+  <div class="metric-row"><span class="metric-label">Llama 4 Maverick 速度<span class="src">vs Blackwell 1,038 tok/s</span></span><span class="metric-num pos">2,522 tok/s</span></div>
+  <div class="metric-row"><span class="metric-label">gpt-oss-120B 速度<span class="src">ARTIFICIAL ANALYSIS 实测</span></span><span class="metric-num pos">2,265 tok/s</span></div>
+  <div class="metric-row"><span class="metric-label">Llama 3.1 405B 速度<span class="src">2024-11 公告</span></span><span class="metric-num">969 tok/s</span></div>
+  <div class="metric-row"><span class="metric-label">免费层<span class="src">业内最慷慨</span></span><span class="metric-num">1M tokens/day</span></div>
+  <div class="metric-row"><span class="metric-label">Llama 70B 定价<span class="src">INPUT / OUTPUT</span></span><span class="metric-num">$0.85 / $1.20 USD per 1M</span></div>
+  <div class="metric-row"><span class="metric-label">上下文上限<span class="src">真实流量 50% &gt; 128k</span></span><span class="metric-num warn">128k</span></div>
+</div>
+</section>
+
+<section id="sec3">
+<div class="sec-num"><span>03</span>市场反馈</div>
+<h2>速度震撼一片，运营窘境另一片。</h2>
+<p>整理了 HN（高分讨论 8 个）、Reddit（r/LocalLLaMA 主要讨论 5 个）、SemiAnalysis 长文、Tim Dettmers 学术批评、6 位顶级 KOL 推文。综合英文世界真实口碑评分 <strong>7.0 / 10</strong>——技术爱好者 8.5、企业客户 5.5、学术圈 6.5、投资圈 8.5、媒体 6.0。</p>
+
+<h3>多平台评分</h3>
+<div class="score-box">
+  <div class="score-row"><span class="score-name">技术爱好者口碑</span><div class="score-bar"><div class="score-fill pos" style="width:85%"></div></div><span class="score-num">8.5</span></div>
+  <div class="score-row"><span class="score-name">企业客户体验</span><div class="score-bar"><div class="score-fill warn" style="width:55%"></div></div><span class="score-num">5.5</span></div>
+  <div class="score-row"><span class="score-name">学术圈认可</span><div class="score-bar"><div class="score-fill yellow" style="width:65%"></div></div><span class="score-num">6.5</span></div>
+  <div class="score-row"><span class="score-name">投资圈情绪</span><div class="score-bar"><div class="score-fill pos" style="width:85%"></div></div><span class="score-num">8.5</span></div>
+  <div class="score-row"><span class="score-name">主流媒体</span><div class="score-bar"><div class="score-fill" style="width:60%"></div></div><span class="score-num">6.0</span></div>
+</div>
+
+<div class="twocol">
+  <div class="col-card pos">
+    <h4>用户最爱的 3 件事</h4>
+    <ul>
+      <li><strong>速度物理碾压。</strong>Llama 70B 2,500 tok/s 是 H100 集群的 25-50 倍。DHH（Ruby on Rails 创造者）："BLOWN AWAY by the speed. Real window into the future of AI."</li>
+      <li><strong>OpenAI 兼容 API。</strong>开发者改个 base URL 就能用，配合 Qwen 系列代码模型，"半美分一次重构"（HN 用户原话）。</li>
+      <li><strong>$50/月 Cerebras Code Pro 订阅。</strong>vs Claude Max $200/月便宜很多，speed-first 场景是真实差异化。</li>
+    </ul>
+  </div>
+  <div class="col-card warn">
+    <h4>用户最骂的 3 件事</h4>
+    <ul>
+      <li><strong>限额欺诈感（137 票热帖）。</strong>宣传"1,000 messages/day"，实际是 7.5M tokens 硬上限——轻度编程 3 小时就触顶。"basically a legal scam"。</li>
+      <li><strong>企业客户被踢出平台。</strong>HN 用户爆料：Cerebras 下架 Llama 3.3 70B 时不提供迁移方案，"Their own support staff is telling them to migrate to Groq."</li>
+      <li><strong>可用模型窄 + 长上下文不行 + 高 TTFT。</strong>只支持有限 LLaMA/Qwen 系；128k context 上限（真实 agentic 流量近 50% 超过 128k）；首 token 延迟 5-6 秒抵消 throughput 优势。无多模态、无视觉、无 diffusion。</li>
+    </ul>
+  </div>
+</div>
+
+<h3>真实用户原话</h3>
+<div class="quote">
+  <p class="quote-text">"I was an Enterprise customer on their platform. Cerebras began terminating production models and replacing them every few months... Instead of offering us an alternative plan they told us all others are sold out and have kicked us off their platform. Their own support staff is telling them to migrate to Groq."</p>
+  <p class="quote-attr">HN 用户 remusomega · Tell HN: Avoid Cerebras if you are a founder · 2026-01</p>
+</div>
+<div class="quote">
+  <p class="quote-text">"This is an apple to oranges comparison. Cerebras is fast for batch size 1 but slow for batch size n. GPUs are slow for batch size 1 but fast for batch size n... Cerebras' system is great for batch size=1 inference, but usually, this is only effective for personal use or latency-critical applications since it has too high a token/$ cost for deployments."</p>
+  <p class="quote-attr">Tim Dettmers · CMU 教授 / bitsandbytes 作者 · X · 2024-11</p>
+</div>
+<div class="quote">
+  <p class="quote-text">"GLM4.7 on @cerebras is insane. I was impressed with the model performance on my sample test, but I was BLOWN AWAY by the speed. Real window into the future of AI."</p>
+  <p class="quote-attr">DHH · Ruby on Rails 创造者 / 37Signals 创始人 · X · 2026-02</p>
+</div>
+<div class="quote">
+  <p class="quote-text">"@cerebras made GPT-5.3-Codex-Spark so fast that we had to rethink how Codex uses the Responses API – leading us to build WebSocket support for ultra fast latency. Cerebras speed is just different."</p>
+  <p class="quote-attr">Sherwin Wu · OpenAI 产品工程师 · X · 2026-04</p>
+</div>
+</section>
+
+<section id="sec4">
+<div class="sec-num"><span>04</span>客户结构</div>
+<h2>从 G42 一家依赖，到 OpenAI 一份合同。</h2>
+<p>客户结构是 Cerebras 故事的核心矛盾。2024 上半年 87% 来自 G42 一家；2025 年表面"分散"——但 MBZUAI（阿布扎比 AI 大学，阿联酋政府机构）接棒到 62%，G42 还在 24%。<strong>合计 86%——都是阿联酋阵营</strong>。S-1 注明二者构成 ASC 850 关联方（同一控股阵营）。</p>
+
+<h3>2025 全年营收结构（一手 S-1/A2）</h3>
+<div class="metric-list">
+  <div class="metric-row"><span class="metric-label">MBZUAI (阿联酋 AI 大学)<span class="src">应收账款占比 77%</span></span><span class="metric-num warn">62%</span></div>
+  <div class="metric-row"><span class="metric-label">G42 (阿联酋 AI 公司)<span class="src">2024 全年还是 85%</span></span><span class="metric-num warn">24%</span></div>
+  <div class="metric-row"><span class="metric-label">OpenAI<span class="src">2026 起开始计入</span></span><span class="metric-num pos">未计入</span></div>
+  <div class="metric-row"><span class="metric-label">AWS · Meta · Perplexity · Mistral · 其他<span class="src">含 ARGONNE / MAYO / GSK / 阿斯利康</span></span><span class="metric-num">~14%</span></div>
+</div>
+
+<div class="callout warn">
+  <div class="callout-label">"循环交易"质疑 · OpenAI 三重身份</div>
+  <p class="callout-quote">"When the revenue is circular, the valuation is circular, and the IPO exists to let the people who manufactured the revenue cash out, that's not a market. That's a scheme with better branding."</p>
+  <p style="margin-top:14px;font-size:13px;color:var(--muted);">Medium 分析师评 OpenAI ↔ Cerebras 关系。OpenAI 同时是：（1）<strong>客户</strong>—签 $20B+ 算力合同；（2）<strong>贷款方</strong>—提供 $1B 营运贷款（履约免息 / 违约 6% 利率）；（3）<strong>股东</strong>—持 33,445,026 股 Class N warrant（行权价 $0.00001，按 OpenAI 履行 2GW 里程碑分批 vesting，最高 ≈11% 股权）。三重身份意味着 OpenAI 的"购买"既贡献 Cerebras 营收又用 OpenAI 自己的股权稀释，存在自我交易的会计争议。</p>
+</div>
+
+<h3>财务一手数据（SEC S-1/A2）</h3>
+<div class="stats">
+  <div class="stat"><div class="stat-label">2024 营收</div><div class="stat-num">$290<span class="unit">M</span></div><div class="stat-sub">约 ¥20.9 亿</div></div>
+  <div class="stat"><div class="stat-label">2025 营收</div><div class="stat-num pos">$510<span class="unit">M</span></div><div class="stat-sub">同比 +76% · 约 ¥36.7 亿</div></div>
+  <div class="stat"><div class="stat-label">2025 GAAP 净亏损</div><div class="stat-num warn">$482<span class="unit">M</span></div><div class="stat-sub">几近营收等额 · 约 ¥34.7 亿</div></div>
+  <div class="stat"><div class="stat-label">2025 Non-GAAP 亏损</div><div class="stat-num warn">$75<span class="unit">M</span></div><div class="stat-sub">剔除股权激励后 · 约 ¥5.4 亿</div></div>
+  <div class="stat"><div class="stat-label">OpenAI 合同总额</div><div class="stat-num pos">$20B+</div><div class="stat-sub">3 年起 · 可扩至 2030</div></div>
+  <div class="stat"><div class="stat-label">OpenAI 算力承诺</div><div class="stat-num pos">750<span class="unit">MW</span></div><div class="stat-sub">可扩至 2GW</div></div>
+</div>
+</section>
+
+<section id="sec5">
+<div class="sec-num"><span>05</span>竞品格局</div>
+<h2>推理三杰只剩一家独立。</h2>
+<p>AI 芯片赛道在 2025-2026 经历了一次"大整合"。Groq → NVIDIA 体内（2025-12 以 $200 亿美元/约 ¥1,440 亿吞下）；SambaNova → Intel 体内（2026 初 $16 亿美元/约 ¥115 亿）；Graphcore → SoftBank 体内（2024-07 全资收购）。<strong>Cerebras 是当下唯一冲过独立 IPO 的推理新秀</strong>——这本身就是稀缺性溢价。</p>
+
+<h3>完整横向对比（10 家主要 AI 芯片玩家）</h3>
+<table class="compare">
+<thead>
+<tr><th>公司</th><th>主打产品</th><th>商业模式</th><th>主要客户</th><th>关键事件</th></tr>
+</thead>
+<tbody>
+<tr class="highlight-row"><td class="product-name">Cerebras<span class="tag">调研对象</span></td><td>WSE-3 / CS-3 / Inference API</td><td>卖系统 + 卖云推理</td><td>OpenAI · MBZUAI · G42 · Meta · AWS</td><td>2026-05-14 IPO 估值 $56B</td></tr>
+<tr><td class="product-name">NVIDIA<span class="tag">霸主</span></td><td>B200 / GB200 / NVL72</td><td>卖芯片 + 卖系统 + CUDA</td><td>微软 / Meta / Google / AWS / xAI</td><td>市值 $4T · FY26 数据中心 $193.7B</td></tr>
+<tr><td class="product-name">Groq</td><td>LPU / GroqCloud</td><td>被 NVIDIA 收编</td><td>沙特 $1.5B · 75% 财富 100 强注册</td><td>2025-12 NVIDIA $20B 收编</td></tr>
+<tr><td class="product-name">SambaNova</td><td>SN40L / SN50 RDU</td><td>被 Intel 收购</td><td>美国能源部 · Aramco</td><td>2026 初 Intel $1.6B 收购</td></tr>
+<tr><td class="product-name">Tenstorrent</td><td>Wormhole / Blackhole RISC-V</td><td>卖芯片 + 卖 IP</td><td>LG · 现代 · 三星 ($150M+)</td><td>估值 $3.2B · Jim Keller 操刀</td></tr>
+<tr><td class="product-name">Graphcore</td><td>IPU Bow / Izanagi</td><td>SoftBank 全资</td><td>日本 · 中东 · 印度</td><td>2026-05 SoftBank 追投 $457M</td></tr>
+<tr><td class="product-name">AMD</td><td>MI300X / MI350X / MI400</td><td>卖芯片 + ROCm 开源</td><td>微软 Azure · Meta · OpenAI</td><td>市值 $250B · 训练性能落后 B200 40-50%</td></tr>
+<tr><td class="product-name">Google TPU</td><td>v6e Trillium / v7 Ironwood</td><td>仅 GCP 对外</td><td>Anthropic 100 万颗承诺</td><td>Ironwood vs v5p 算力 10×</td></tr>
+<tr><td class="product-name">Intel Gaudi</td><td>Gaudi 3 → Jaguar Shores</td><td>卖芯片（市占极低）</td><td>Inflection · IBM Cloud</td><td>2025-01 砍 Falcon Shores · "missed the boat"</td></tr>
+<tr><td class="product-name">AWS Trainium</td><td>Trainium 2 / Inferentia</td><td>仅 AWS 云对外</td><td>Anthropic 100 万 Trainium2 · Apple</td><td>Project Rainier 50 万颗已上线</td></tr>
+<tr><td class="product-name">华为昇腾</td><td>910C / 910D / 950 / CloudMatrix 384</td><td>整柜系统 (中国境内)</td><td>中国大厂 · 政企 · 运营商</td><td>美国 2025 全球禁令 · CloudMatrix 384 内存 3.6× NVL72</td></tr>
+</tbody>
+</table>
+
+<div class="callout data">
+  <div class="callout-label">关键判断 · 训练 vs 推理已分化为两个独立战场</div>
+  <p>判断任何一家 AI 芯片公司前，先问它打的是哪一块。<strong>训练</strong>几乎是 NVIDIA + Google TPU + AWS Trainium 三家封闭俱乐部；<strong>推理</strong>才是新玩家真正战场。Cerebras 主动转向推理（2024-08 上线），是看清了"在 NVIDIA CUDA 生态护城河外，只剩推理这块新战场可打"。</p>
+</div>
+
+<h3>Cerebras 在格局中的位置（5 维度评分）</h3>
+<div class="score-box">
+  <div class="score-row"><span class="score-name">技术 (推理速度)</span><div class="score-bar"><div class="score-fill pos" style="width:95%"></div></div><span class="score-num">9.5</span></div>
+  <div class="score-row"><span class="score-name">生态 (软件栈)</span><div class="score-bar"><div class="score-fill warn" style="width:30%"></div></div><span class="score-num">3.0</span></div>
+  <div class="score-row"><span class="score-name">资本 (融资+IPO)</span><div class="score-bar"><div class="score-fill pos" style="width:90%"></div></div><span class="score-num">9.0</span></div>
+  <div class="score-row"><span class="score-name">客户多样性</span><div class="score-bar"><div class="score-fill warn" style="width:25%"></div></div><span class="score-num">2.5</span></div>
+  <div class="score-row"><span class="score-name">地缘政治 (美国本土+CFIUS 已过)</span><div class="score-bar"><div class="score-fill yellow" style="width:65%"></div></div><span class="score-num">6.5</span></div>
+</div>
+</section>
+
+<section id="sec6">
+<div class="sec-num"><span>06</span>中国市场</div>
+<h2>中国买不到，但中国模型在跑它。</h2>
+<p>Cerebras 在中文世界呈现典型的"<strong>窄而深</strong>"认知模式：半导体行业观察、机器之心、量子位、虎嗅、芯东西都有报道（半导体行业观察转译了 SemiAnalysis 万字长文）；但 B 站 0 个技术 UP 主深度评测，全是美股 IPO 投资解读；小红书、即刻、少数派几乎零。</p>
+
+<h3>中文圈认知度分布</h3>
+<div class="metric-list">
+  <div class="metric-row"><span class="metric-label">中文专业半导体媒体 (半导体行业观察 / 机器之心 / 芯东西)<span class="src">IPO 节点头部账号都有报道</span></span><span class="metric-num pos">高</span></div>
+  <div class="metric-row"><span class="metric-label">综合科技媒体 (36氪 / 虎嗅 / 钛媒体)<span class="src">多篇 · "远方故事"视角</span></span><span class="metric-num">中-高</span></div>
+  <div class="metric-row"><span class="metric-label">知乎技术圈<span class="src">问答数偏少 · 无中国工程师实测</span></span><span class="metric-num">中</span></div>
+  <div class="metric-row"><span class="metric-label">B 站 (全是投资圈)<span class="src">0 个技术 UP 主深度评测</span></span><span class="metric-num warn">低</span></div>
+  <div class="metric-row"><span class="metric-label">小红书 / 少数派 / 即刻 (消费 / 产品圈)<span class="src">平台属性不匹配</span></span><span class="metric-num warn">几乎零</span></div>
+</div>
+
+<div class="callout warn">
+  <div class="callout-label">最大反讽 · DeepSeek 在给 Cerebras 引流</div>
+  <p class="callout-quote">"Cerebras 部署 DeepSeek-R1 服务爆单，已被订单压垮。"</p>
+  <p style="margin-top:14px;font-size:13px;color:var(--muted);">2025-02 IT之家报道。Cerebras 在自家推理服务上跑 DeepSeek-R1 70B 蒸馏版（1,508 tokens/s），因为太火爆"被订单压垮"。CEO Feldman 公开承认产能不足。这是 Cerebras 和中国 AI 生态的关键关联——<strong>中国开源模型反过来变成 Cerebras 推理服务的引流内容，而中国 AI 公司却无法合法买到 Cerebras 系统</strong>。 — <a href="https://www.ithome.com/0/830/411.htm">IT之家 2025-02</a></p>
+</div>
+
+<h3>中国可访问性 + 是否可购买</h3>
+<div class="twocol">
+  <div class="col-card pos">
+    <h4>API 层面：可访问</h4>
+    <ul>
+      <li><code>inference.cerebras.ai</code> · <code>cloud.cerebras.ai</code> 中国 IP 可直连（区别于 OpenAI / Anthropic 官网在中国被墙）</li>
+      <li>API 403 是缺 key 的标准拒绝，<strong>不是地区封锁</strong></li>
+      <li>中国开发者理论上可注册并调用 API</li>
+      <li>实操中若大量中国账户被识别可能被风控</li>
+    </ul>
+  </div>
+  <div class="col-card warn">
+    <h4>系统层面：几乎不可能</h4>
+    <ul>
+      <li>CS-3 远超 BIS（美国商务部出口管制门槛）2022/2023 年对中国管制门槛</li>
+      <li>Cerebras 给 G42 出口许可，需 G42 切断中国关系、移除华为设备才换来</li>
+      <li>中国 AI 公司<strong>不可能合法购买 Cerebras 系统</strong></li>
+      <li>晶圆级路线学术上有清华 SDSoW / 尹首一团队，商业化落后 3-5 年</li>
+    </ul>
+  </div>
+</div>
+
+<h3>国产 AI 芯片对照（2026 Q1 现状）</h3>
+<div class="metric-list">
+  <div class="metric-row"><span class="metric-label">华为昇腾 910C<span class="src">128GB HBM · CloudMatrix 384 内存 3.6× NVL72</span></span><span class="metric-num">国产市占 37%</span></div>
+  <div class="metric-row"><span class="metric-label">寒武纪思元 590<span class="src">7nm · 256 TFLOPS FP16 · 96GB HBM2e</span></span><span class="metric-num">Q1 营收 ¥28.9亿 (+160%)</span></div>
+  <div class="metric-row"><span class="metric-label">清华 SDSoW 联盟<span class="src">2024 走通晶圆级全流程 · 学术对标 CEREBRAS</span></span><span class="metric-num">无商业产品</span></div>
+  <div class="metric-row"><span class="metric-label">摩尔线程 / 壁仞 / 燧原 / 沐曦 / 海光<span class="src">DEEPSEEK-V4 DAY0 适配</span></span><span class="metric-num">可用→规模商用</span></div>
+</div>
+</section>
+
+<section id="sec7">
+<div class="sec-num"><span>07</span>关键争议</div>
+<h2>三颗定时炸弹。</h2>
+<p>报告完整收集了三大类争议——独立分析师、企业客户、学术圈各有维度。这些不是"营销 vs 现实"的简单对立，而是 Cerebras 商业模式本身的结构性矛盾。</p>
+
+<h3>争议 1 · FLOPS 虚标（"Feldman's Formula"）</h3>
+<div class="quote">
+  <p class="quote-text">"Up until just 6 months ago, we felt that the Wafer Scale Engine, despite its bold innovations, had some technical weaknesses that were too hard to cover up... Cerebras assumes 8:1 unstructured sparsity in its sparse number, so dense FLOPS is actually 1/8th or 15.6 PFLOPS of FP16 compute throughput. We call this 'Feldman's Formula.'"</p>
+  <p class="quote-attr">SemiAnalysis · Dylan Patel · 2026-05-14 IPO 当天 40+ 页深度</p>
+</div>
+
+<h3>争议 2 · 企业客户运营窘境</h3>
+<div class="quote">
+  <p class="quote-text">"Hardware company LARPing as infrastructure provider. Their wafer-scale chips can't multi-tenant like GPUs, so 'enterprise' means 'first in line for deprecation' apparently. Cool tech, zero operational maturity."</p>
+  <p class="quote-attr">HN 用户 varshith17 · 评 Cerebras 下架 Llama 70B 踢用户事件</p>
+</div>
+
+<h3>争议 3 · 循环交易 + 客户集中</h3>
+<p>S-1/A2 风险章节原文："we depend on our relationships with OpenAI, G42, and MBZUAI..."。MBZUAI 应收账款 77% 集中度——意味着如果一个客户付款延迟，Cerebras 现金流立刻紧张。OpenAI 既是客户、贷方、又是股东（warrant），关联交易的会计争议会持续到至少 2027 年。</p>
+
+<div class="callout data">
+  <div class="callout-label">SemiAnalysis 立场翻转 · 重要信号</div>
+  <p>SemiAnalysis 在 IPO 当天发文承认：6 个月前还看衰 Cerebras，但因 <strong>Claude Code 引发"快速 token 拐点"</strong>（开发者愿意为速度付溢价）+ OpenAI $20B 合同，改变观感。<strong>结论：Cerebras 正在通往"健康快速增长的业务"，但护城河仅限"快推理"细分。</strong>不是 NVIDIA killer，是细分赢家。</p>
+</div>
+
+<h3>真实弱点清单（SemiAnalysis 认证）</h3>
+<div class="metric-list">
+  <div class="metric-row"><span class="metric-label">片外网络带宽<span class="src">仅 150GB/S OFF-WAFER</span></span><span class="metric-num warn">GPU 一小部分</span></div>
+  <div class="metric-row"><span class="metric-label">SRAM 缩放已死<span class="src">5nm → 3nm 几乎不再增长</span></span><span class="metric-num warn">硬上限</span></div>
+  <div class="metric-row"><span class="metric-label">单晶圆功耗<span class="src">需 5°C 冷冻水厂房</span></span><span class="metric-num warn">23 kW</span></div>
+  <div class="metric-row"><span class="metric-label">不支持 FP8<span class="src">H100/B200 都支持</span></span><span class="metric-num warn">生态硬伤</span></div>
+  <div class="metric-row"><span class="metric-label">从未提交 MLPerf<span class="src">行业最权威标准化测试</span></span><span class="metric-num warn">缺标准化验证</span></div>
+  <div class="metric-row"><span class="metric-label">集群上限<span class="src">100GBE 铜缆物理极限</span></span><span class="metric-num warn">~64 台 / 集群</span></div>
+</div>
+</section>
+
+<section id="sec8">
+<div class="sec-num"><span>08</span>投资可行性</div>
+<h2>关注 vs 入场 vs 借鉴。</h2>
+<p>用户画像是"产品型创业者"，所以这里不是传统的"复刻可行性"——硬件创业需要 10 年 / $5B+ 启动资金，没有可比。改为<strong>"投资可行性 + 关注价值 + 借鉴空间"</strong>三维度。</p>
+
+<h3>投资可行性五维度评分</h3>
+<div class="score-box">
+  <div class="score-row"><span class="score-name">技术叙事</span><div class="score-bar"><div class="score-fill pos" style="width:90%"></div></div><span class="score-num">9.0</span></div>
+  <div class="score-row"><span class="score-name">财务基本面</span><div class="score-bar"><div class="score-fill warn" style="width:30%"></div></div><span class="score-num">3.0</span></div>
+  <div class="score-row"><span class="score-name">客户多样性</span><div class="score-bar"><div class="score-fill warn" style="width:25%"></div></div><span class="score-num">2.5</span></div>
+  <div class="score-row"><span class="score-name">竞争地位</span><div class="score-bar"><div class="score-fill yellow" style="width:70%"></div></div><span class="score-num">7.0</span></div>
+  <div class="score-row"><span class="score-name">估值合理性</span><div class="score-bar"><div class="score-fill warn" style="width:35%"></div></div><span class="score-num">3.5</span></div>
+  <div class="score-row"><span class="score-name">综合判断</span><div class="score-bar"><div class="score-fill yellow" style="width:50%"></div></div><span class="score-num">5.0</span></div>
+</div>
+
+<h3>留给 Cerebras 的真实机会窗口</h3>
+<div class="twocol">
+  <div class="col-card pos">
+    <h4>真实优势 · 不可复制</h4>
+    <ul>
+      <li>推理单用户延迟 + 单 stream 速度 = 物理碾压（带宽 7,000× H100）</li>
+      <li>小核晶圆良率工程上跑通了，证明 2D 晶圆级路线可商业化</li>
+      <li>编程模型简单（只需 data parallelism，不需 tensor parallelism）</li>
+      <li>主权 AI 浪潮 → 中东、印度、东南亚需要 NVIDIA 替代品</li>
+    </ul>
+  </div>
+  <div class="col-card warn">
+    <h4>真实短板 · 很难解决</h4>
+    <ul>
+      <li>Dense 算力 15.6 PFLOPS 只是 B200 的 1-2 倍，但功耗、面积、价格、生态远更差</li>
+      <li>单机 44GB SRAM 死结，700B+ 超大模型必须多机切分，优势打折</li>
+      <li>互联卡在 100GbE 铜缆物理极限，单超算上限 ~64 台</li>
+      <li>不支持 FP8、不参加 MLPerf、CUDA 生态壁垒——软件至少落后 5 年</li>
+      <li>高度依赖 UAE + 押注 OpenAI 一份合同——商业基础脆弱</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<div class="divider-quote">
+<p>"速度物理上是真的。<br>商业基础上是赌的。<br>两者同时为真——这才是 Cerebras 的故事。"</p>
+</div>
+
+<section id="sec9">
+<div class="sec-num"><span>09</span>决策建议</div>
+<h2>三条路径。</h2>
+<p>给读者三种结局——分别对应：你是投资者 / 创业者 / 技术决策者。</p>
+
+<div class="verdict-block">
+<div class="verdict-title">最终判断 · FINAL VERDICT</div>
+<h3>值得关注，不建议入场。</h3>
+<p>Cerebras 是一个技术真本事 + 商业极度脆弱的故事。它的速度物理上无可争议；它的财务和客户结构脆弱到任何一个变量翻转都可能崩塌。三种姿态。</p>
+<div class="verdict-options">
+  <div class="verdict-option"><div class="vo-num">PATH A · 低风险</div><h4>不入场，长期观察</h4><p>看 OpenAI 2027 年是否自研推理芯片成型；看 Cerebras 能否把客户从阿联酋阵营拓展开。</p></div>
+  <div class="verdict-option"><div class="vo-num">PATH B · 中风险</div><h4>用它的服务，不持它的股</h4><p>把 Cerebras Inference 当作 backup 推理供应商（速度场景下不可替代），但不押注它的股票。</p></div>
+  <div class="verdict-option"><div class="vo-num">PATH C · 高风险</div><h4>建仓 CBRS 股票，押 OpenAI 履约</h4><p>认为 OpenAI 不会自研推理芯片 + Cerebras 能扩客户 + 110× PS 合理——值得 5% 仓位长期持有。</p></div>
+</div>
+</div>
+
+<h3>Path A · 创业者 / 产品决策者的关注清单</h3>
+<div class="path-cards">
+  <div class="path-card a">
+    <div class="pc-num">第 1-6 个月 · 学习</div>
+    <h4>把它当作"AI 硬件创业教学案例"</h4>
+    <p>不入场，但要学三件事：</p>
+    <ol>
+      <li>SeaMicro→Cerebras 这种"团队连续创业 10 年同一支人马"对深度技术 startup 多重要</li>
+      <li>"客户集中度风险"如何从命门（87% G42）转化为筹码（$20B OpenAI 合同）</li>
+      <li>"软硬协同效率"（训 GPT-3 用 565 行代码 vs H100 需 20,507 行）这种工程价值</li>
+    </ol>
+  </div>
+  <div class="path-card a">
+    <div class="pc-num">第 6 个月起 · 跟踪</div>
+    <h4>三个先行指标</h4>
+    <p>盯三个数字，任一翻转都意味着 Cerebras 故事翻篇：</p>
+    <ol>
+      <li>客户集中度（MBZUAI+G42 占比）是否在 2026 Q4 降到 50% 以下</li>
+      <li>OpenAI 是否官宣 Broadcom 合作的推理芯片量产时间表</li>
+      <li>第二个"超大客户"（沙特 / 欧洲主权 AI / 美国国家实验室）何时出现</li>
+    </ol>
+  </div>
+</div>
+
+<h3>Path B · 投资者的真实风险点</h3>
+<div class="path-cards">
+  <div class="path-card b">
+    <div class="pc-num">短期 (0-6 个月)</div>
+    <h4>2026 财年 Q1/Q2 关键里程碑</h4>
+    <ul>
+      <li>OpenAI 第一笔 250MW 部署是否按计划交付（2026 年内）</li>
+      <li>2026 Q1 财报：客户集中度是否实质改善（非财技分散）</li>
+      <li>NVIDIA Rubin 架构推理 SKU 价格（是否压 Cerebras 毛利）</li>
+      <li>$5.55B IPO 募资是否用于扩 TSMC 产能保证</li>
+    </ul>
+  </div>
+  <div class="path-card c">
+    <div class="pc-num">长期 (6-36 个月)</div>
+    <h4>三种潜在崩盘剧本</h4>
+    <ul>
+      <li>OpenAI 自研推理芯片成型 → Cerebras 头号客户消失</li>
+      <li>CFIUS 重启对 UAE 阵营审查 → MBZUAI 合同被强制变更</li>
+      <li>NVIDIA 通过 Groq + 自家 inference SKU 大幅压低推理价格 → Cerebras 速度溢价崩溃</li>
+      <li>TSMC 优先给 NVIDIA / Apple 让路 → Cerebras 产能被卡</li>
+    </ul>
+  </div>
+</div>
+
+<h3>不论选哪条路，都要避开的 3 个坑</h3>
+<ul style="padding-left:20px;font-size:15px;line-height:1.7;color:var(--ink-2);">
+  <li style="margin-bottom:10px;"><strong>不要把"125 PFLOPS"当真实算力。</strong>那是 8:1 稀疏假设值，真实 dense FP16 只有 15.6 PFLOPS。任何基于"125 PFLOPS"做的成本估算都是错的。</li>
+  <li style="margin-bottom:10px;"><strong>不要把首日开盘 +89% 当作"市场已认可"。</strong>2026 年技术 IPO 普遍首日翻倍现象普遍（Sherwin Wu 在 OpenAI 工作并不代表 OpenAI 不会自研），真正考验在 6-12 个月后第二轮锁定期解禁时。</li>
+  <li style="margin-bottom:10px;"><strong>不要把"晶圆级"当作可复制的工程路线。</strong>清华 SDSoW 联盟和尹首一团队走了 6 年才流片首颗 12 英寸晶圆级原型，且尚未商业化。这条路至少 $5B+ 启动资金 + 10 年工程积累。</li>
+</ul>
+
+<div class="callout">
+  <div class="callout-label">最后一句 · A NOTE TO ASPIRING FOUNDERS</div>
+  <p class="callout-quote">"如果你是产品型创业者，Cerebras 是教科书——告诉你'专注一个不可能的物理优势 + 死磕 10 年同一支团队'真的能成。但它也告诉你：'技术真本事 ≠ 商业稳健'——这两件事必须分开看。"</p>
+</div>
+</section>
+
+</main>
+</div>
+
+<footer>
+<div class="footer-inner">
+<h5>关键数据来源 · 全部一手或权威第三方</h5>
+<ul class="sources">
+<li><a href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm">SEC EDGAR S-1/A #2 (2026-05-11)</a></li>
+<li><a href="https://www.cerebras.ai/press-release/cerebras-systems-announces-pricing-of-initial-public-offering">Cerebras IPO 定价新闻稿</a></li>
+<li><a href="https://newsletter.semianalysis.com/p/cerebras-faster-tokens-please">SemiAnalysis · Faster Tokens Please</a></li>
+<li><a href="https://news.ycombinator.com/item?id=46707904">HN · Avoid Cerebras if you are a founder</a></li>
+<li><a href="https://news.ycombinator.com/item?id=45477162">HN · Cerebras imminent collapse (前员工)</a></li>
+<li><a href="https://old.reddit.com/r/LocalLLaMA/comments/1mfeazc/cerebras_pro_coder_deceptive_limits/">Reddit · Pro Coder Deceptive Limits</a></li>
+<li><a href="https://old.reddit.com/r/LocalLLaMA/comments/1pw8nfk/nvidia_acquired_groq_but_why_not_cerebras/">Reddit · Why not Cerebras</a></li>
+<li><a href="https://x.com/Tim_Dettmers/status/1858977311569440955">Tim Dettmers · 学术批评 X</a></li>
+<li><a href="https://www.cnbc.com/2026/05/13/cerebras-prices-ipo-above-expected-range-wall-street-expects-ai-flood.html">CNBC · IPO 定价</a></li>
+<li><a href="https://www.cnbc.com/2026/01/14/cerebras-scores-openai-deal-worth-over-10-billion.html">CNBC · OpenAI $10B+ 合作</a></li>
+<li><a href="https://www.reuters.com/business/openai-is-unsatisfied-with-some-nvidia-chips-looking-alternatives-sources-say-2026-02-02/">Reuters · NVIDIA 接洽被拒</a></li>
+<li><a href="https://artificialanalysis.ai/providers/cerebras">Artificial Analysis · 速度实测</a></li>
+<li><a href="https://arxiv.org/html/2503.11698v1">arXiv · WSE-3 vs H100/B200 学术对比</a></li>
+<li><a href="https://www.cerebras.ai/chip">Cerebras WSE-3 官方页</a></li>
+<li><a href="https://www.cerebras.ai/inference">Cerebras Inference 官方页</a></li>
+<li><a href="https://www.huxiu.com/article/4853553.html">虎嗅 · 英伟达面临 AI 芯片市场竞争加剧</a></li>
+<li><a href="https://www.36kr.com/p/3801571065553160">36氪 · Cerebras 上市背后</a></li>
+<li><a href="https://www.ithome.com/0/830/411.htm">IT之家 · Cerebras 部署 DeepSeek 服务爆单</a></li>
+<li><a href="https://www.jiqizhixin.com/articles/2024-03-14-6">机器之心 · 24 万亿参数大模型</a></li>
+<li><a href="https://www.leiphone.com/category/ai/7y21hz6iZQgBt2nO.html">雷锋网 · 3Cap 王康曼访谈</a></li>
+<li><a href="https://www.zhihu.com/question/665524008">知乎 · 全球最快 AI 推理解决方案</a></li>
+<li><a href="https://www.bloomberg.com/news/articles/2026-05-13/ai-chipmaker-cerebras-said-poised-to-price-ipo-at-185-per-share">Bloomberg · IPO 定价分析</a></li>
+<li><a href="https://www.hpcwire.com/2026/05/14/cerebras-ipo-signals-growing-pressure-on-the-gpu-scaling-model/">HPCwire · IPO 对 GPU scaling 模型施压</a></li>
+<li><a href="https://www.crunchbase.com/organization/cerebras-systems">Crunchbase · Cerebras 融资轮次</a></li>
+</ul>
+<div class="footer-meta">
+RAY DEEP RESEARCH · BRIEF #008 · 2026-05-15<br>
+研究员：5 并行子 Agent (英文社区 / 中文社区 / 横向对比 / 团队融资 / 技术深度) · 主 Agent 整合<br>
+本报告不构成投资建议。报告中所有数字来自公开一手来源（SEC EDGAR / 公司官网 / 权威第三方），引用原话保留原文不改。<br>
+报告完成时距 Cerebras IPO 仅 1 个交易日，所有事件性信息以时间戳为锚。
+</div>
+</div>
+</footer>
+
+<script>
+document.getElementById('theme-toggle').addEventListener('click', function() {
+  var current = document.documentElement.getAttribute('data-theme');
+  var next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  try { localStorage.setItem('ray-theme', next); } catch(e) {}
+});
+if (window.matchMedia) {
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+    if (!localStorage.getItem('ray-theme')) {
+      document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+    }
+  });
+}
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      var id = entry.target.id;
+      document.querySelectorAll('nav.toc a').forEach(function(link) {
+        link.style.color = '';
+        link.style.fontWeight = '';
+      });
+      var activeLink = document.querySelector('nav.toc a[href="#' + id + '"]');
+      if (activeLink) {
+        activeLink.style.color = 'var(--accent-warn)';
+        activeLink.style.fontWeight = '600';
+      }
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+document.querySelectorAll('section[id]').forEach(function(s) { observer.observe(s); });
+</script>
+</body>
+</html>

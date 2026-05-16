@@ -118,6 +118,18 @@
           "title": "初版投资调研 · 链上币安，仁慈独裁"
         }
       ]
+    },
+    {
+      "slug": "cerebras",
+      "name": "Cerebras Systems (CBRS)",
+      "tagline": "美国晶圆级 AI 芯片 · 2026 年最大科技 IPO · 押注 OpenAI",
+      "reports": [
+        {
+          "date": "2026-05-15",
+          "file": "2026-05-15-cerebras.html",
+          "title": "初版调研 · 晶圆级速度神话，押对了 OpenAI"
+        }
+      ]
     }
   ]
 }

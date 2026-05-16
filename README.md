@@ -66,6 +66,12 @@
 |------|------|---------|
 | 2026-05-15 | [初版投资调研 · 链上币安，仁慈独裁](hyperliquid/2026-05-15-hyperliquid.html) | [↗ Open](https://kdsz001.github.io/ray-research/hyperliquid/2026-05-15-hyperliquid.html) |
 
+### 🧠 [Cerebras Systems (CBRS)](cerebras/) · 美国晶圆级 AI 芯片 · 2026 年最大科技 IPO
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-15 | [初版调研 · 晶圆级速度神话，押对了 OpenAI](cerebras/2026-05-15-cerebras.html) | [↗ Open](https://kdsz001.github.io/ray-research/cerebras/2026-05-15-cerebras.html) |
+
 <!-- INDEX-END -->
 
 ---
