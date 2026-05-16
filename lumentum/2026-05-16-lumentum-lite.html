@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumentum (LITE) · AI 数据中心点灯人 · 深度调研 · 2026-05-16</title>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<style>
+:root {
+  --bg: #f6f3ec;
+  --bg-paper: #fbf9f4;
+  --bg-card: #ffffff;
+  --bg-dark: #14110d;
+  --bg-dark2: #1f1b16;
+  --ink: #14110d;
+  --ink-2: #2c2620;
+  --muted: #6e6358;
+  --light: #a39787;
+  --rule: #14110d;
+  --rule-light: #d8d1c2;
+  --accent-warn: #a73121;
+  --accent-data: #1c4d6b;
+  --accent-pos: #2c5e3f;
+  --accent-yellow: #c89a2c;
+  --serif: "Source Serif 4", "Charter", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+  --max-w: 820px;
+  /* inverse */
+  --bg-inverse: #14110d;
+  --bg-inverse2: #1f1b16;
+  --ink-on-inverse: #f6f3ec;
+  --text-on-inverse: rgba(246, 243, 236, 0.88);
+  --muted-on-inverse: rgba(246, 243, 236, 0.7);
+  --faint-on-inverse: rgba(246, 243, 236, 0.55);
+  --light-on-inverse: rgba(246, 243, 236, 0.5);
+  --rule-on-inverse: rgba(246, 243, 236, 0.18);
+  --accent-warn-on-inverse: #e87a5f;
+  --accent-yellow-on-inverse: #d4b04a;
+  --accent-pos-on-inverse: #6fae7a;
+  --accent-data-on-inverse: #5ea4c7;
+}
+
+[data-theme="dark"] {
+  --bg: #14110d;
+  --bg-paper: #1f1b16;
+  --bg-card: #2a241d;
+  --ink: #f6f3ec;
+  --ink-2: #e0d7c4;
+  --muted: #a39787;
+  --light: #6e6358;
+  --rule: #f6f3ec;
+  --rule-light: #3a342c;
+  --accent-warn: #e87a5f;
+  --accent-data: #5ea4c7;
+  --accent-pos: #6fae7a;
+  --accent-yellow: #d4b04a;
+  --bg-inverse: #ede5d3;
+  --bg-inverse2: #f6f3ec;
+  --ink-on-inverse: #14110d;
+  --text-on-inverse: rgba(20, 17, 13, 0.85);
+  --muted-on-inverse: rgba(20, 17, 13, 0.65);
+  --faint-on-inverse: rgba(20, 17, 13, 0.5);
+  --light-on-inverse: rgba(20, 17, 13, 0.45);
+  --rule-on-inverse: rgba(20, 17, 13, 0.15);
+  --accent-warn-on-inverse: #a73121;
+  --accent-yellow-on-inverse: #c89a2c;
+  --accent-pos-on-inverse: #2c5e3f;
+  --accent-data-on-inverse: #1c4d6b;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  font-feature-settings: "kern", "liga", "ss01";
+  transition: background-color 0.2s, color 0.2s;
+}
+
+a { color: var(--accent-data); text-decoration: none; border-bottom: 1px solid currentColor; }
+a:hover { color: var(--accent-warn); }
+
+/* Top bar */
+.topbar {
+  border-bottom: 1px solid var(--rule);
+  padding: 12px 32px;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.topbar .title { font-weight: 600; }
+.topbar .meta { color: var(--muted); }
+
+/* Theme toggle */
+#theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: var(--bg-card);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+}
+#theme-toggle:hover { transform: rotate(30deg); }
+#theme-toggle svg { width: 16px; height: 16px; color: var(--ink); }
+#theme-toggle .icon-moon { display: none; }
+#theme-toggle .icon-sun { display: block; }
+[data-theme="dark"] #theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+
+/* Layout */
+.layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 32px 0;
+  gap: 60px;
+}
+.toc {
+  position: sticky;
+  top: 80px;
+  align-self: start;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 2;
+  height: fit-content;
+}
+.toc h5 {
+  font-size: 10px;
+  color: var(--muted);
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 8px;
+}
+.toc ol { list-style: none; }
+.toc li { margin: 6px 0; display: flex; gap: 8px; }
+.toc .num { color: var(--light); flex-shrink: 0; }
+.toc a {
+  color: var(--ink-2);
+  border-bottom: none;
+  transition: color 0.15s;
+}
+.toc a:hover { color: var(--accent-warn); }
+
+/* Main content */
+.main { max-width: var(--max-w); }
+
+/* Hero */
+.hero { padding: 40px 0 60px; border-bottom: 1px solid var(--rule); }
+.hero .eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-warn);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero .eyebrow::before {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--accent-warn);
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: 76px;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent-warn);
+  font-weight: 500;
+}
+.hero .subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 720px;
+  margin-bottom: 40px;
+}
+.hero-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  border-top: 1px solid var(--rule-light);
+  padding-top: 24px;
+}
+.hero-meta dt { color: var(--light); font-size: 10px; margin-bottom: 4px; }
+.hero-meta dd { color: var(--ink-2); font-weight: 600; font-size: 12px; }
+
+/* Quick Facts */
+.quickfacts-wrap {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  margin: 0 -32px;
+  padding: 60px 32px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  transition: background-color 0.2s, color 0.2s;
+}
+.quickfacts-wrap .qf-inner { max-width: var(--max-w); margin: 0 auto; }
+.quickfacts-wrap .qf-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 16px;
+}
+.quickfacts-wrap h2 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 38px;
+  font-weight: 500;
+  color: var(--ink-on-inverse);
+  margin-bottom: 40px;
+}
+.qf-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: var(--rule-on-inverse);
+  border: 1px solid var(--rule-on-inverse);
+}
+.qf-cell {
+  background: var(--bg-inverse);
+  padding: 20px 16px;
+  min-height: 130px;
+  transition: background-color 0.2s;
+}
+.qf-cell .qf-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted-on-inverse);
+  margin-bottom: 12px;
+}
+.qf-cell .qf-value {
+  font-family: var(--serif);
+  font-size: 30px;
+  line-height: 1.05;
+  font-weight: 500;
+  color: var(--ink-on-inverse);
+  margin-bottom: 8px;
+}
+.qf-cell .qf-value .unit { font-size: 14px; color: var(--muted-on-inverse); margin-left: 3px; }
+.qf-cell .qf-sub {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--faint-on-inverse);
+  line-height: 1.4;
+}
+.qf-cell.verdict {
+  background: var(--accent-warn);
+  color: #fef9f1;
+}
+.qf-cell.verdict .qf-label { color: rgba(254, 249, 241, 0.7); }
+.qf-cell.verdict .qf-value { color: #fef9f1; font-size: 18px; font-family: var(--serif); font-style: italic; font-weight: 500; line-height: 1.25; }
+.qf-cell.verdict .qf-sub { color: rgba(254, 249, 241, 0.75); }
+
+/* TL;DR */
+.tldr {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  padding: 56px 48px;
+  margin: 60px 0 80px;
+  position: relative;
+  border-radius: 0;
+  transition: background-color 0.2s, color 0.2s;
+}
+.tldr::before {
+  content: "TL;DR";
+  position: absolute;
+  top: -14px;
+  left: 32px;
+  background: var(--accent-warn);
+  color: #fef9f1;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  padding: 6px 14px;
+}
+.tldr h3 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--ink-on-inverse);
+  margin-bottom: 28px;
+  line-height: 1.3;
+}
+.tldr ol {
+  list-style: none;
+  counter-reset: tldr-counter;
+}
+.tldr ol li {
+  counter-increment: tldr-counter;
+  position: relative;
+  padding-left: 48px;
+  margin-bottom: 22px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-on-inverse);
+}
+.tldr ol li::before {
+  content: counter(tldr-counter, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent-yellow-on-inverse);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.tldr ol li strong { color: var(--ink-on-inverse); font-weight: 600; }
+.tldr ol li em { color: var(--accent-warn-on-inverse); font-style: italic; font-family: var(--serif); }
+
+/* Sections */
+section {
+  margin: 80px 0;
+  scroll-margin-top: 80px;
+}
+section .section-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-warn);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+section .section-num::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--accent-warn);
+  opacity: 0.5;
+}
+section h2 {
+  font-family: var(--serif);
+  font-size: 44px;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+  color: var(--ink);
+}
+section h3 {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+section h4 {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-2);
+  margin-top: 32px;
+  margin-bottom: 14px;
+}
+section p { margin-bottom: 16px; color: var(--ink-2); }
+section p strong { color: var(--ink); font-weight: 600; }
+section ul, section ol { margin-left: 24px; margin-bottom: 16px; color: var(--ink-2); }
+section ul li, section ol li { margin-bottom: 8px; }
+
+/* Stats cards */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 24px 0 32px;
+}
+.stat {
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  padding: 24px 20px;
+}
+.stat .stat-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.stat .stat-value {
+  font-family: var(--serif);
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.stat .stat-value .unit { font-size: 14px; color: var(--muted); margin-left: 4px; }
+.stat .stat-sub {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.stat.warn .stat-value { color: var(--accent-warn); }
+.stat.pos .stat-value { color: var(--accent-pos); }
+.stat.data .stat-value { color: var(--accent-data); }
+
+/* Metric list */
+.metric-list {
+  border-top: 2px solid var(--rule);
+  border-bottom: 2px solid var(--rule);
+  margin: 24px 0;
+}
+.metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-light);
+}
+.metric-row:last-child { border-bottom: none; }
+.metric-row .m-left { display: flex; flex-direction: column; }
+.metric-row .m-label {
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.metric-row .m-source {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.metric-row .m-value {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.metric-row .m-value.warn { color: var(--accent-warn); }
+.metric-row .m-value.pos { color: var(--accent-pos); }
+.metric-row .m-value .delta { font-size: 13px; margin-left: 6px; color: var(--muted); }
+.metric-row .m-value .delta.pos { color: var(--accent-pos); }
+.metric-row .m-value .delta.warn { color: var(--accent-warn); }
+
+/* Two col card */
+.twocol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 24px 0;
+}
+.twocol-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  padding: 24px;
+}
+.twocol-card h4 {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.twocol-card h4::before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  background: var(--muted);
+  color: white;
+  text-align: center;
+  line-height: 22px;
+  font-size: 12px;
+  font-family: var(--sans);
+  font-weight: 700;
+}
+.twocol-card.pos h4 { color: var(--accent-pos); }
+.twocol-card.pos h4::before { content: "✓"; background: var(--accent-pos); color: white; font-size: 13px; }
+.twocol-card.warn h4 { color: var(--accent-warn); }
+.twocol-card.warn h4::before { content: "!"; background: var(--accent-warn); color: white; font-weight: 700; }
+.twocol-card ul { margin-left: 0; list-style: none; }
+.twocol-card ul li {
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.twocol-card ul li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--light);
+}
+.twocol-card ul li strong { color: var(--ink); font-weight: 600; }
+
+/* Quote */
+.quote {
+  border-left: 3px solid var(--accent-warn);
+  padding: 8px 0 8px 22px;
+  margin: 28px 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.quote .attr {
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-top: 12px;
+  display: block;
+}
+.quote .attr::before { content: "— "; }
+
+/* Callout */
+.callout {
+  background: var(--bg-paper);
+  border-left: 3px solid var(--ink);
+  padding: 20px 24px;
+  margin: 28px 0;
+}
+.callout.warn { border-left-color: var(--accent-warn); }
+.callout.data { border-left-color: var(--accent-data); }
+.callout.pos { border-left-color: var(--accent-pos); }
+.callout .callout-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.callout .callout-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.callout p { margin: 0; color: var(--ink-2); font-size: 14px; line-height: 1.6; }
+.callout p + p { margin-top: 8px; }
+
+/* Tables */
+table.compare {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13.5px;
+}
+table.compare thead th {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 2px solid var(--rule);
+  font-weight: 600;
+}
+table.compare tbody td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--rule-light);
+  vertical-align: top;
+  color: var(--ink-2);
+}
+table.compare tbody tr:last-child td { border-bottom: 1px solid var(--rule); }
+table.compare .product-name {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+table.compare .tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: white;
+  padding: 2px 6px;
+  margin-left: 4px;
+  vertical-align: middle;
+  font-weight: 500;
+}
+table.compare .tag.warn { background: var(--accent-warn); }
+table.compare .tag.pos { background: var(--accent-pos); }
+table.compare tr.hi { background: rgba(167, 49, 33, 0.06); }
+[data-theme="dark"] table.compare tr.hi { background: rgba(232, 122, 95, 0.08); }
+table.compare td.num { font-family: var(--serif); font-weight: 600; color: var(--ink); white-space: nowrap; }
+table.compare td .small { font-size: 11px; color: var(--muted); display: block; margin-top: 2px; }
+
+/* Risk table */
+table.risk-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+}
+table.risk-table thead th {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 2px solid var(--rule);
+}
+table.risk-table tbody td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--rule-light);
+  vertical-align: top;
+  color: var(--ink-2);
+}
+table.risk-table tbody td:first-child {
+  font-family: var(--serif);
+  font-weight: 600;
+  color: var(--ink);
+}
+.sev {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.sev.high { background: var(--accent-warn); color: white; }
+.sev.mid { background: var(--accent-yellow); color: #14110d; }
+.sev.low { background: var(--accent-pos); color: white; }
+
+/* Timeline */
+.timeline {
+  display: grid;
+  grid-template-columns: 100px 24px 1fr;
+  gap: 0;
+  margin: 24px 0 32px;
+  position: relative;
+}
+.timeline-row {
+  display: contents;
+}
+.timeline-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  padding: 14px 12px 14px 0;
+  text-align: right;
+  letter-spacing: 0.04em;
+}
+.timeline-dot-col {
+  position: relative;
+  padding: 14px 0;
+}
+.timeline-dot-col::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--rule-light);
+  transform: translateX(-50%);
+}
+.timeline-dot {
+  position: relative;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--ink);
+  margin: 0 auto;
+  margin-top: 6px;
+  z-index: 1;
+}
+.timeline-dot.warn { border-color: var(--accent-warn); }
+.timeline-dot.data { border-color: var(--accent-data); }
+.timeline-dot.pos { border-color: var(--accent-pos); }
+.timeline-content {
+  padding: 14px 0 14px 20px;
+  border-bottom: 1px solid var(--rule-light);
+}
+.timeline-row:last-child .timeline-content { border-bottom: none; }
+.timeline-title {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+.timeline-desc {
+  font-size: 13.5px;
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+
+/* Verdict */
+.verdict {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  padding: 60px 48px;
+  margin: 60px 0;
+  position: relative;
+  transition: background-color 0.2s, color 0.2s;
+}
+.verdict .verdict-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 16px;
+}
+.verdict h3 {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--ink-on-inverse);
+  margin-bottom: 22px;
+  line-height: 1.15;
+}
+.verdict h3 em { font-style: italic; color: var(--accent-warn-on-inverse); }
+.verdict p {
+  color: var(--text-on-inverse);
+  font-size: 15.5px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.verdict-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+.verdict-option {
+  background: var(--bg-inverse2);
+  padding: 22px 20px;
+  border-top: 3px solid var(--accent-yellow-on-inverse);
+}
+.verdict-option .vo-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 10px;
+}
+.verdict-option h4 {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink-on-inverse);
+  margin-bottom: 10px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.verdict-option p {
+  font-size: 13px;
+  color: var(--muted-on-inverse);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Path cards */
+.paths {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin: 28px 0;
+}
+.path-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  padding: 24px;
+  border-top: 4px solid var(--accent-yellow);
+}
+.path-card.a { border-top-color: var(--accent-pos); }
+.path-card.b { border-top-color: var(--accent-yellow); }
+.path-card.c { border-top-color: var(--accent-warn); }
+.path-card .path-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.path-card h4 {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: var(--ink);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.path-card h4 .risk {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  margin-left: 6px;
+  padding: 2px 7px;
+  vertical-align: middle;
+}
+.path-card.a h4 .risk { background: var(--accent-pos); color: white; }
+.path-card.b h4 .risk { background: var(--accent-yellow); color: #14110d; }
+.path-card.c h4 .risk { background: var(--accent-warn); color: white; }
+.path-card p { font-size: 13px; color: var(--ink-2); margin-bottom: 12px; line-height: 1.55; }
+.path-card ul { font-size: 12.5px; margin-left: 16px; }
+.path-card ul li { margin-bottom: 6px; line-height: 1.5; color: var(--ink-2); }
+
+/* Industry map */
+.industry-map {
+  background: var(--bg-paper);
+  border: 1px solid var(--rule-light);
+  padding: 28px 24px;
+  margin: 24px 0;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--ink-2);
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+.industry-map .hi { color: var(--accent-warn); font-weight: 600; }
+.industry-map .arrow { color: var(--muted); }
+
+/* Divider quote */
+.divider-quote {
+  text-align: center;
+  margin: 80px auto 80px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 600px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule-light);
+  border-bottom: 1px solid var(--rule-light);
+}
+
+/* Footer */
+footer {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  margin-top: 80px;
+  padding: 60px 32px 40px;
+  transition: background-color 0.2s, color 0.2s;
+}
+footer .footer-inner { max-width: 1180px; margin: 0 auto; }
+footer h5 {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 16px;
+}
+footer .sources {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px 32px;
+  margin-bottom: 40px;
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.7;
+}
+footer .sources a {
+  color: var(--muted-on-inverse);
+  border: none;
+  display: inline-block;
+  text-decoration: none;
+  word-break: break-all;
+}
+footer .sources a:hover { color: var(--accent-warn-on-inverse); }
+footer .footer-meta {
+  border-top: 1px solid var(--rule-on-inverse);
+  padding-top: 20px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--faint-on-inverse);
+  line-height: 1.7;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .layout { grid-template-columns: 1fr; gap: 24px; padding: 24px 24px 0; }
+  .toc { position: relative; top: 0; border-bottom: 1px solid var(--rule-light); padding-bottom: 20px; margin-bottom: 24px; }
+  .toc ol { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 24px; }
+  .verdict-options, .paths { grid-template-columns: 1fr; }
+  .qf-grid { grid-template-columns: repeat(3, 1fr); }
+  .quickfacts-wrap, .tldr, .verdict, footer { margin-left: -24px; margin-right: -24px; padding-left: 24px; padding-right: 24px; }
+}
+@media (max-width: 720px) {
+  .hero h1 { font-size: 48px; }
+  .hero .subtitle { font-size: 18px; }
+  section h2 { font-size: 32px; }
+  .qf-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid, .twocol { grid-template-columns: 1fr; }
+  .tldr, .verdict { padding: 40px 24px; }
+  .timeline { grid-template-columns: 80px 24px 1fr; }
+  .timeline-date { font-size: 10px; }
+  table.compare { font-size: 12px; }
+}
+
+@media print {
+  body { background: white; color: black; }
+  #theme-toggle, .topbar, .toc, footer { display: none; }
+  .layout { grid-template-columns: 1fr; padding: 0; max-width: 100%; }
+  .tldr, .verdict, .quickfacts-wrap, .qf-cell { background: white !important; color: black !important; border: 1px solid #333 !important; }
+  .tldr h3, .verdict h3, .verdict-option h4, .qf-cell .qf-value, .quickfacts-wrap h2 { color: black !important; }
+  .tldr ol li, .verdict p { color: #333 !important; }
+  a { color: black !important; text-decoration: none; }
+  section { page-break-inside: avoid; margin: 30px 0; }
+  .hero { page-break-after: always; }
+}
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="切换深浅模式">
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.93" y1="4.93" x2="6.93" y2="6.93"/><line x1="17.07" y1="17.07" x2="19.07" y2="19.07"/><line x1="4.93" y1="19.07" x2="6.93" y2="17.07"/><line x1="17.07" y1="6.93" x2="19.07" y2="4.93"/></svg>
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+
+<div class="topbar">
+<span class="title">RAY · DEEP RESEARCH</span>
+<span class="meta">Lumentum (LITE) · 2026-05-16 · v1.0</span>
+</div>
+
+<div class="layout">
+
+<nav class="toc">
+<h5>目录 / Contents</h5>
+<ol>
+<li><span class="num">01</span><a href="#facts">速览板</a></li>
+<li><span class="num">02</span><a href="#tldr">一页纸结论</a></li>
+<li><span class="num">03</span><a href="#fundamentals">基本面 + AI 产品线</a></li>
+<li><span class="num">04</span><a href="#financials">财务表现</a></li>
+<li><span class="num">05</span><a href="#competition">竞争格局</a></li>
+<li><span class="num">06</span><a href="#wallstreet">华尔街视角</a></li>
+<li><span class="num">07</span><a href="#risks">风险点</a></li>
+<li><span class="num">08</span><a href="#china">中文产业链</a></li>
+<li><span class="num">09</span><a href="#decision">决策建议</a></li>
+</ol>
+</nav>
+
+<main class="main">
+
+<section class="hero" id="hero">
+<div class="eyebrow">AI 算力 / 光通信 / 投资调研</div>
+<h1>AI 数据中心的 <em>点灯人</em>——以及它正被 price-in 的 <em>未来三年</em></h1>
+<div class="subtitle">一份关于 EML 寡头、CPO 转型、NVIDIA $2B 赌注，与一只 12 个月暴涨 13 倍的股票，怎样在「业绩兑现」与「估值透支」之间走钢丝的深度调研。</div>
+<dl class="hero-meta">
+<div><dt>调研对象</dt><dd>Lumentum (Nasdaq: LITE)</dd></div>
+<div><dt>调研深度</dt><dd>6 子 Agent / 5 章核心 / 50+ 来源</dd></div>
+<div><dt>覆盖维度</dt><dd>基本面 · 财务 · 竞争 · 华尔街 · 风险 · 中文圈</dd></div>
+<div><dt>读者画像</dt><dd>产品创业者，非职业投资人</dd></div>
+<div><dt>调研日期</dt><dd>2026-05-16</dd></div>
+</dl>
+</section>
+
+<section class="quickfacts-wrap" id="facts">
+<div class="qf-inner">
+<div class="qf-eyebrow">— LITE at a Glance · 10 秒看完</div>
+<h2>Lumentum, in twelve cells.</h2>
+<div class="qf-grid">
+
+<div class="qf-cell">
+<div class="qf-label">当前股价 (5/15)</div>
+<div class="qf-value">$965.80</div>
+<div class="qf-sub">52 周区间 $71 – $1,086</div>
+</div>
+
+<div class="qf-cell">
+<div class="qf-label">市值</div>
+<div class="qf-value">$67<span class="unit">B</span></div>
+<div class="qf-sub">≈ ¥482 亿美元市值规模</div>
+</div>
+
+<div class="qf-cell">
+<div class="qf-label">1 年股价</div>
+<div class="qf-value">+1,283<span class="unit">%</span></div>
+<div class="qf-sub">从 ~$70 到 $965</div>
+</div>
+
+<div class="qf-cell">
+<div class="qf-label">Q3 FY26 营收</div>
+<div class="qf-value">$808<span class="unit">M</span></div>
+<div class="qf-sub">YoY +90% · 2026/3 季度</div>
+</div>
+
+<div class="qf-cell">
+<div class="qf-label">Q4 指引中值</div>
+<div class="qf-value">$985<span class="unit">M</span></div>
+<div class="qf-sub">单季首次破 $1B 在望</div>
+</div>
+
+<div class="qf-cell">
+<div class="qf-label">毛利率</div>
+<div class="qf-value">47.9<span class="unit">%</span></div>
+<div class="qf-sub">一年前 30% → 现在 48%</div>
+</div>
+
+<div class="qf-cell">
+<div class="qf-label">EML 全球市占</div>
+<div class="qf-value">50–60<span class="unit">%</span></div>
+<div class="qf-sub">200G/lane 唯一量产</div>
+</div>
+
+<div class="qf-cell">
+<div class="qf-label">NVIDIA 投资</div>
+<div class="qf-value">$2<span class="unit">B</span></div>
+<div class="qf-sub">2026/3 锁产能 · COHR 另拿 $2B</div>
+</div>
+
+<div class="qf-cell">
+<div class="qf-label">Forward PE</div>
+<div class="qf-value">55<span class="unit">x</span></div>
+<div class="qf-sub">硬件行业中位 25x · 溢价 120%</div>
+</div>
+
+<div class="qf-cell">
+<div class="qf-label">共识目标价</div>
+<div class="qf-value">$782</div>
+<div class="qf-sub">vs 现价 $965 · 倒挂 −19%</div>
+</div>
+
+<div class="qf-cell">
+<div class="qf-label">内部人 6 个月</div>
+<div class="qf-value">72 卖 / 0 买</div>
+<div class="qf-sub">最强微观警讯</div>
+</div>
+
+<div class="qf-cell verdict">
+<div class="qf-label">最终判断</div>
+<div class="qf-value">基本面无可挑剔，估值透支预期 —— 等回调再买</div>
+<div class="qf-sub">B 类机会 · 不追高 · 分批建仓</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="tldr">
+<div class="tldr">
+<h3>如果你只能记住七件事</h3>
+<ol>
+<li><strong>LITE 是 AI 光通信价值链的「上游寡头」</strong>。它卖的不是光模块成品，是做光模块所必需的 <em>EML</em>（电吸收调制激光器，800G/1.6T 光模块里把电信号变成光信号的关键芯片）激光器芯片。中际旭创、新易盛、AAOI 这些做"光模块成品"的厂商，绝大部分都要回头向 LITE / Coherent 买 EML——它们是它的<strong>客户</strong>，不是对手。</li>
+<li><strong>200G/lane EML 接近垄断</strong>。LITE 是目前全球唯一量产 200G EML（1.6T 模块的必需件）的厂商，订单已经排到 2028 年，components effectively sold out。中文圈给的标签是<em>「卖铲人」</em>——AI 淘金时代卖工具的反而稳赚。</li>
+<li><strong>NVIDIA 在 2026/3 砸 $2B 锁产能</strong>（Coherent 另拿 $2B，共 $4B），同时把 LITE 选为 Spectrum-X / Quantum-X CPO 交换机的核心 CW laser 供应商。这是同业（Coherent / Marvell / Broadcom）都没有的「皇冠级背书」。</li>
+<li><strong>基本面是结构性切换，不是周期反弹</strong>。FY26 Q3 营收 +90%、毛利率从 30% 飙到 48%、EPS 一年翻 5 倍。原来"Apple Face ID + 电信"的旧叙事彻底死了，现在是"AI 光器件 + hyperscaler"。Apple 业务残值已基本出清。</li>
+<li><strong>但估值已经把未来 3 年都 price-in 了</strong>。Forward PE 55x、PS 27x（硬件中位 12x）。<em>共识目标价 $782 已经低于现价 $965</em>——这种倒挂本身就是警讯。GuruFocus GF Value 仅 $91，bear case 看 $547。</li>
+<li><strong>内部人 6 个月 72 笔交易、0 笔买入</strong>。前 CEO Alan Lowe 近 5 年 9 笔交易全是卖出。当管理层用脚投票、华尔街目标价跟不上股价时，散户接最后一棒的概率会很高。</li>
+<li><strong>真正的中长期对手是 Coherent (COHR)</strong>——COHR 的 InP（磷化铟，做 EML 的衬底材料）产能 2026 年底翻倍，是双寡头格局向价格战演化的转折点。中国 200G EML 国产替代窗口期是 <em>2026-2027</em>——东山精密、长光华芯、源杰、光迅都在赶。中文圈给的标签更精准：<em>「有时限的卖铲人」——3 年内安全，5 年后存疑</em>。</li>
+</ol>
+</div>
+</section>
+
+<section id="fundamentals">
+<div class="section-num">— 03 / Fundamentals</div>
+<h2>从 Apple 命脉到 AI 卖铲人：基本面与产品线</h2>
+
+<p>Lumentum 在 FY2025（截至 2025 年 6 月底）完成了一次重要的财报分部重组，把<strong>原来按技术划分</strong>（Optical Communications + Lasers）改为<strong>按下游终端市场划分</strong>。两个分部的对比一目了然：</p>
+
+<div class="metric-list">
+<div class="metric-row">
+<div class="m-left">
+<div class="m-label">Cloud &amp; Networking · 云与网络（含 EML/CW 激光、CloudLight 模块、ROADM、电信）</div>
+<div class="m-source">FY2025 全年</div>
+</div>
+<div class="m-value pos">$1.41B<span class="delta pos">+30% YoY</span></div>
+</div>
+
+<div class="metric-row">
+<div class="m-left">
+<div class="m-label">Industrial Tech · 工业科技（含 Apple VCSEL、工业激光器、显示用激光）</div>
+<div class="m-source">FY2025 全年</div>
+</div>
+<div class="m-value warn">$234M<span class="delta warn">−14.6% YoY</span></div>
+</div>
+
+<div class="metric-row">
+<div class="m-left">
+<div class="m-label">AI / 数据中心业务占总营收</div>
+<div class="m-source">截至 FY26 Q3 估算</div>
+</div>
+<div class="m-value">约 90%</div>
+</div>
+</div>
+
+<p>这意味着<strong>「Apple VCSEL = Lumentum 命脉」的旧叙事，到 2026 年已经被「AI 光器件 = 公司命脉」彻底取代</strong>。下面把 AI 业务的四条产品线拆开来看。</p>
+
+<h3>3.1 — EML 激光芯片（核心壁垒）</h3>
+
+<div class="stats-grid">
+<div class="stat pos">
+<div class="stat-label">全球市占</div>
+<div class="stat-value">50–60<span class="unit">%</span></div>
+<div class="stat-sub">高速 EML 寡头</div>
+</div>
+<div class="stat pos">
+<div class="stat-label">200G/lane</div>
+<div class="stat-value">独家</div>
+<div class="stat-sub">全球唯一量产厂商</div>
+</div>
+<div class="stat data">
+<div class="stat-label">供需缺口</div>
+<div class="stat-value">−25 至 −30<span class="unit">%</span></div>
+<div class="stat-sub">需求超供给</div>
+</div>
+</div>
+
+<p>EML 芯片的下游是 800G / 1.6T 可插拔光模块。<strong>每年消耗 200–500M 颗 EML 芯片</strong>，2025 年全球 800G+ 模块需求约 24M 台 → 2026 年约 63M 台（2.6 倍）。200G EML 单价是 100G 的两倍、毛利更高，已从年初占整体 EML 出货 10% 提升到年底 25%。San Jose 工厂 EML 产能在 2025 H2 已扩 40%。</p>
+
+<h3>3.2 — CW Laser & UHP（CPO 时代的「光电池」）</h3>
+
+<p><strong>CPO</strong>（Co-Packaged Optics，把光器件直接焊到交换机芯片旁边，比传统插拔模块省电约 3.5 倍）是下一代 AI 数据中心架构。CPO 需要一种叫 <strong>UHP CW Laser</strong>（ultra-high-power continuous wave laser，超高功率连续波激光器）的外置光源，给硅光调制器持续供光。</p>
+
+<p>2026 年 3 月，NVIDIA 直接砸 <strong>$2B 投资 Lumentum</strong>（同时给 Coherent $2B，共 $4B），结构是「多年采购承诺 + 锁定未来产能」，覆盖 CPO 用激光模块、可插拔光模块、光路交换机（OCS）。Lumentum 当日股价涨 10%+。这是同业（Marvell、Broadcom）都没有的待遇。</p>
+
+<div class="callout data">
+<div class="callout-label">关键事实</div>
+<p><strong>NVIDIA Quantum-X (InfiniBand) CPO 已 2026 年初量产</strong>，Spectrum-X (Ethernet) CPO 计划 2H26 上量。LITE 是这两条线的核心 CW laser 供应商。NVIDIA 在 OFC 2026 上公开把 Lumentum 称为「optical engine partner」。</p>
+</div>
+
+<h3>3.3 — Cloud Light 收购（向下游延伸）</h3>
+
+<p>2023 年 11 月以 <strong>$750M 现金</strong>（不是市面常误报的 9 亿）完成对香港 Cloud Light 的收购。Cloud Light 当时已有一半收入来自 800G 模块。收购的战略意义：</p>
+
+<ul>
+<li>从「卖芯片给模块厂」升级为「直接卖整模块给云厂」</li>
+<li>可服务市场（TAM）扩大约 <strong>5 倍</strong></li>
+<li>泰国工厂二期洁净车间已就绪，800G/1.6T 模块产能在持续放量</li>
+<li>FY26 Q3 Cloud Light Systems 业务出货量环比 <strong>+40%</strong></li>
+</ul>
+
+<p>意图是<strong>绕过中际旭创、新易盛，直接对接 NVIDIA / 超大规模云厂</strong>。1-2 年内仍很难撼动中际旭创地位（中际旭创占 NVIDIA 800G 模块 50%+），但有 NVIDIA 的 $2B 加持，有钱有客户去抢份额。</p>
+
+<h3>3.4 — Apple VCSEL 与商业激光（已基本出清）</h3>
+
+<div class="metric-list">
+<div class="metric-row">
+<div class="m-left">
+<div class="m-label">Apple Face ID VCSEL 业务（巅峰期 FY2018）</div>
+<div class="m-source">占总营收</div>
+</div>
+<div class="m-value">~30% ($375M)</div>
+</div>
+<div class="metric-row">
+<div class="m-left">
+<div class="m-label">Apple Face ID VCSEL 业务（FY2026 Q3）</div>
+<div class="m-source">合并入 Industrial Tech</div>
+</div>
+<div class="m-value warn">~$57M/季 (个位数占比)</div>
+</div>
+</div>
+
+<p>iPhone 15 Pro 起 Sony 拿走独家 LiDAR VCSEL，LITE 在 iPhone 14 时还有 50% 份额，到 iPhone 15 降至 30-40%。这块业务的"流血期"基本结束，现在<strong>不再是关键变量</strong>。</p>
+
+<h3>3.5 — 管理层最新定调</h3>
+
+<div class="quote">
+需求的回归现在由 AI 驱动，而非传统云建设。
+<span class="attr">CEO Michael Hurlston · Q3 FY2026 电话会议（2026-05-06）</span>
+</div>
+
+<p>2026 年 OFC 大会上，管理层公开把<strong>单季营收 $2B（年化 $8B）</strong>作为中期目标——这是当前营收的 4 倍。CPO 与光路交换机（OCS）被点名为「驱动下一轮盈利能力跃升的引擎」。</p>
+</section>
+
+<section id="financials">
+<div class="section-num">— 04 / Financials</div>
+<h2>从 30% 毛利率到 48%：财报里的转折点</h2>
+
+<p>"AI 转型"这种叙事话术其实满地都是，但 Lumentum 的财报数字非常硬：<strong>过去 6 个季度营收同比从 +10% 加速到 +90%、毛利率从 33% 提升到 48%、EPS 从 $0.42 涨到 $2.37</strong>。这不是周期性反弹的样子，是结构性切换。</p>
+
+<h3>4.1 — 6 个季度营收/利润趋势</h3>
+
+<table class="compare">
+<thead>
+<tr>
+<th>季度</th>
+<th>总营收</th>
+<th>YoY</th>
+<th>Non-GAAP 毛利率</th>
+<th>Non-GAAP EPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="product-name">FY25 Q1 <span class="small">2024/9 季</span></td>
+<td class="num">$336.9M</td>
+<td>—</td>
+<td>~30%</td>
+<td>低个位数</td>
+</tr>
+<tr>
+<td class="product-name">FY25 Q2 <span class="small">2024/12 季</span></td>
+<td class="num">$402.2M</td>
+<td>+10%</td>
+<td>33.4%</td>
+<td>$0.42</td>
+</tr>
+<tr>
+<td class="product-name">FY25 Q3 <span class="small">2025/3 季</span></td>
+<td class="num">$425.2M</td>
+<td>+16%</td>
+<td>~34%</td>
+<td>$0.57</td>
+</tr>
+<tr>
+<td class="product-name">FY25 Q4 <span class="small">2025/6 季</span></td>
+<td class="num">$480.7M</td>
+<td>+56%</td>
+<td>37.7%</td>
+<td>$0.81</td>
+</tr>
+<tr>
+<td class="product-name">FY26 Q1 <span class="small">2025/9 季</span></td>
+<td class="num">$533.8M</td>
+<td>+58%</td>
+<td>~39%</td>
+<td>$1.10</td>
+</tr>
+<tr>
+<td class="product-name">FY26 Q2 <span class="small">2025/12 季</span></td>
+<td class="num">$665.5M</td>
+<td>+65%</td>
+<td>~43%</td>
+<td>$1.67</td>
+</tr>
+<tr class="hi">
+<td class="product-name">FY26 Q3 <span class="tag warn">最新</span><span class="small">2026/3 季</span></td>
+<td class="num">$808.4M</td>
+<td>+90%</td>
+<td>47.9%</td>
+<td>$2.37</td>
+</tr>
+</tbody>
+</table>
+
+<h3>4.2 — Q4 FY26 指引</h3>
+
+<div class="stats-grid">
+<div class="stat pos">
+<div class="stat-label">Q4 营收指引中值</div>
+<div class="stat-value">$985<span class="unit">M</span></div>
+<div class="stat-sub">区间 $960M – $1.01B · 单季有望破 $1B</div>
+</div>
+<div class="stat pos">
+<div class="stat-label">Q4 营业利润率</div>
+<div class="stat-value">35–36<span class="unit">%</span></div>
+<div class="stat-sub">比 Q3 32.2% 再升 3 点</div>
+</div>
+<div class="stat pos">
+<div class="stat-label">Q4 EPS 指引</div>
+<div class="stat-value">$2.95</div>
+<div class="stat-sub">区间 $2.85 – $3.05</div>
+</div>
+</div>
+
+<p><strong>FY2026 全年隐含</strong>：~$3.0B 营收（vs FY25 的 $1.645B，几乎翻倍）。<br>
+<strong>长期目标</strong>：管理层 2026 OFC 公开喊出<strong>季度 $2B 营收</strong>（年化 $8B）的中期目标，对应当前 4 倍。没给具体时间表，但暗示 2028-2030 财年。</p>
+
+<h3>4.3 — 资产负债表（FY26 Q3 末，2026/3/28）</h3>
+
+<div class="metric-list">
+<div class="metric-row">
+<div class="m-left">
+<div class="m-label">现金 + 短期投资</div>
+<div class="m-source">充沛</div>
+</div>
+<div class="m-value pos">$3.17B</div>
+</div>
+<div class="metric-row">
+<div class="m-left">
+<div class="m-label">可转换债（Convertible Notes）总额</div>
+<div class="m-source">2032 到期为主</div>
+</div>
+<div class="m-value">$3.18B</div>
+</div>
+<div class="metric-row">
+<div class="m-left">
+<div class="m-label">净债务</div>
+<div class="m-source">现金与债务接近持平</div>
+</div>
+<div class="m-value pos">≈ 0</div>
+</div>
+<div class="metric-row">
+<div class="m-left">
+<div class="m-label">Cloud Light 整合状态</div>
+<div class="m-source">4 季度内</div>
+</div>
+<div class="m-value pos">burden → growth engine</div>
+</div>
+</div>
+
+<p>2025 年 9 月 LITE 发行 $1.25B 新可转债（2032 到期），并用 $843M 现金回购 2026 年到期的旧可转债——把短债压力大幅缓释。<strong>但可转债的潜在股权稀释，是 bear case 之一</strong>（市场已经把潜在稀释 price-in，估值口径要看 fully diluted）。</p>
+</section>
+
+<section id="competition">
+<div class="section-num">— 05 / Competition</div>
+<h2>价值链：LITE 卖芯片，中际旭创卖模块，NVIDIA 三条路都买</h2>
+
+<p>中文投资圈最常见的误读是「LITE vs 中际旭创谁赢」。<strong>这是问错了问题</strong>——LITE 是芯片厂，中际旭创是模块厂，两者关系是<strong>客户与供应商</strong>而不是对手。真正全维度对打的只有一家：<strong>Coherent (COHR)</strong>。</p>
+
+<h3>5.1 — 产业链关系（关键）</h3>
+
+<div class="industry-map"><span class="hi">[LITE / COHR：EML + CW laser 芯片]</span>
+        <span class="arrow">↓ 卖给</span>
+[中际旭创 / 新易盛 / AAOI / Cloud Light：光模块成品]
+        <span class="arrow">↓ 由</span>
+[Fabrinet 代工组装]
+        <span class="arrow">↓ 卖给</span>
+<span class="hi">[NVIDIA / 微软 / Meta / Google：超大规模数据中心]</span>
+
+CPO 路线下：
+<span class="hi">[LITE：CW laser]</span> <span class="arrow">→ 直接给 →</span> <span class="hi">[NVIDIA / Broadcom 的 CPO 交换机]</span>（绕过模块层）</div>
+
+<p>NVIDIA 通过<strong>三条路径</strong>采购 LITE 的产品：</p>
+<ol>
+<li><strong>直接采购</strong> CPO 用 CW laser（最直接 + NVIDIA $2B 加持）</li>
+<li><strong>通过 Cloud Light 子公司</strong>采购可插拔模块</li>
+<li><strong>间接采购</strong>——NVIDIA 给中际旭创/新易盛下单后，它们回头向 LITE 买 EML 芯片</li>
+</ol>
+<p>LITE 是少数几家「三条路都吃到」的公司——这是非常稀缺的产业链位置。</p>
+
+<h3>5.2 — 直接竞争对手对比</h3>
+
+<table class="compare">
+<thead>
+<tr>
+<th>公司</th>
+<th>角色</th>
+<th>最近季营收</th>
+<th>YoY</th>
+<th>关键定位</th>
+</tr>
+</thead>
+<tbody>
+<tr class="hi">
+<td class="product-name">Lumentum (LITE)<span class="tag warn">本研究对象</span></td>
+<td>EML / CW laser / 模块</td>
+<td class="num">$808M (FY26Q3)</td>
+<td>+90%</td>
+<td>EML 寡头 + NVIDIA 战略伙伴</td>
+</tr>
+<tr>
+<td class="product-name">Coherent (COHR)<span class="tag">真正对手</span></td>
+<td>EML / VCSEL / CW / 模块</td>
+<td class="num">$1.81B (FQ3)</td>
+<td>+21%</td>
+<td>规模 2x，但增速远慢；Datacom 段 +54%</td>
+</tr>
+<tr>
+<td class="product-name">Fabrinet (FN)</td>
+<td>代工厂</td>
+<td class="num">$1.21B</td>
+<td>+39%</td>
+<td>NVIDIA 占 28%；1.6T 模块 100% 份额</td>
+</tr>
+<tr>
+<td class="product-name">Marvell (MRVL)</td>
+<td>光通信 DSP</td>
+<td class="num">—</td>
+<td>—</td>
+<td>不同层；1.6T Ara 平台 2025 量产</td>
+</tr>
+<tr>
+<td class="product-name">Broadcom (AVGO)</td>
+<td>交换芯片 + CPO 路线</td>
+<td class="num">—</td>
+<td>—</td>
+<td>Tomahawk 6 Davisson CPO 已出货</td>
+</tr>
+<tr>
+<td class="product-name">AAOI</td>
+<td>800G 模块厂</td>
+<td class="num">$456M (FY25)</td>
+<td>+120% (指引)</td>
+<td>受益 800G/1.6T 周期</td>
+</tr>
+<tr>
+<td class="product-name">中际旭创 (300308)<span class="tag pos">LITE 客户</span></td>
+<td>光模块成品</td>
+<td class="num">¥382 亿 (约 $5.3B)</td>
+<td>+123%</td>
+<td>全球第一；NVIDIA 800G 占 50%+</td>
+</tr>
+<tr>
+<td class="product-name">新易盛 (300502)<span class="tag pos">LITE 客户</span></td>
+<td>800G 光模块</td>
+<td class="num">¥95 亿净利 (约 $1.3B)</td>
+<td>+179%</td>
+<td>净利率 33%，行业最高</td>
+</tr>
+<tr>
+<td class="product-name">光迅 (002281)</td>
+<td>光器件 + 自研 EML</td>
+<td class="num">前 9 月 ¥85 亿 (约 $1.2B)</td>
+<td>—</td>
+<td>国家队；自研 EML 最积极</td>
+</tr>
+</tbody>
+</table>
+
+<h3>5.3 — 三大核心维度博弈</h3>
+
+<div class="twocol">
+
+<div class="twocol-card pos">
+<h4>LITE 的护城河</h4>
+<ul>
+<li><strong>EML 寡头格局</strong>：全球只有 LITE + COHR 能量产高速 EML，光迅追赶但量级小</li>
+<li><strong>200G/lane 独家</strong>：1.6T 模块必需件，目前供应紧缺 25-30%</li>
+<li><strong>NVIDIA $2B 战略锁定</strong>：CPO 时代的核心 CW laser 供应商</li>
+<li><strong>三路通吃</strong>：直接卖 NVIDIA + 通过 Cloud Light + 通过中国模块厂</li>
+<li><strong>CPO 受益</strong>：CW laser 单台 CPO 交换机用量是传统模块的数倍</li>
+</ul>
+</div>
+
+<div class="twocol-card warn">
+<h4>结构性威胁</h4>
+<ul>
+<li><strong>Coherent InP 衬底扩产 2026 年底翻倍</strong>——是双寡头转向价格战的转折点</li>
+<li><strong>中国 200G EML 自研突破窗口期 2026-2027</strong>：东山精密、长光华芯、源杰、光迅都在赶</li>
+<li><strong>CPO 普及节奏不确定</strong>：若慢于预期估值承压；若全面替代可插拔模块，传统 EML 业务受损</li>
+<li><strong>Cloud Light 抢中际旭创地位难度大</strong>：中际旭创+新易盛合占 NVIDIA 800G 模块 60%</li>
+<li><strong>客户集中度上升</strong>：NVIDIA 单一客户依赖度提升是双刃剑</li>
+</ul>
+</div>
+
+</div>
+
+<h3>5.4 — 股价表现对比（2026 年 YTD）</h3>
+
+<div class="metric-list">
+<div class="metric-row">
+<div class="m-left"><div class="m-label">AAOI</div><div class="m-source">800G 模块小盘股</div></div>
+<div class="m-value pos">+488%</div>
+</div>
+<div class="metric-row">
+<div class="m-left"><div class="m-label">Lumentum (LITE)</div><div class="m-source">本研究对象</div></div>
+<div class="m-value pos">+180% YTD / +1,283% 12 月</div>
+</div>
+<div class="metric-row">
+<div class="m-left"><div class="m-label">Coherent (COHR)</div><div class="m-source">直接对手</div></div>
+<div class="m-value pos">+112%</div>
+</div>
+<div class="metric-row">
+<div class="m-left"><div class="m-label">Fabrinet (FN)</div><div class="m-source">代工厂</div></div>
+<div class="m-value">温和上涨</div>
+</div>
+</div>
+</section>
+
+<div class="divider-quote">"在 AI 价值链里，<em>最难的位置</em>不是做最强的 GPU，而是做不可替代的零件——LITE 的 EML 接近这个位置。"</div>
+
+<section id="wallstreet">
+<div class="section-num">— 06 / Wall Street</div>
+<h2>分析师在追，目标价跟不上：共识与现价的倒挂</h2>
+
+<p>Q3 FY26 财报（2026/5/6）后掀起一波密集上调潮，<strong>但即便是最激进的目标价也只比现价高 35%，最保守的已经落后于现价 19%</strong>——这种格局在专业投资视角里有个名字叫「分析师 chasing the tape」（追涨）。</p>
+
+<h3>6.1 — 主要券商评级 + 目标价</h3>
+
+<table class="compare">
+<thead>
+<tr>
+<th>券商</th>
+<th>评级</th>
+<th>目标价</th>
+<th>vs 现价 $965 隐含 upside</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="product-name">Rosenblatt <span class="tag warn">最激进</span></td>
+<td>Buy</td>
+<td class="num">$1,300</td>
+<td>+35%</td>
+</tr>
+<tr>
+<td class="product-name">中信证券</td>
+<td>Buy</td>
+<td class="num">$1,186</td>
+<td>+23%</td>
+</tr>
+<tr>
+<td class="product-name">Jefferies</td>
+<td>Buy</td>
+<td class="num">$1,200</td>
+<td>+24%</td>
+</tr>
+<tr>
+<td class="product-name">Mizuho</td>
+<td>Outperform</td>
+<td class="num">$1,100</td>
+<td>+14%</td>
+</tr>
+<tr>
+<td class="product-name">Raymond James</td>
+<td>Outperform</td>
+<td class="num">$1,014</td>
+<td>+5%</td>
+</tr>
+<tr class="hi">
+<td class="product-name">Morgan Stanley <span class="tag">中性</span></td>
+<td>Equal-Weight</td>
+<td class="num">$900</td>
+<td>−7%</td>
+</tr>
+<tr>
+<td class="product-name">共识中位（17 位分析师）</td>
+<td>—</td>
+<td class="num">$782</td>
+<td><strong>−19%</strong> 倒挂</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>评级分布</strong>：47% Strong Buy / 20% Buy / 33% Hold / 0% Sell。<br>
+<strong>FY26 EPS 共识</strong>：~$6.00 · <strong>FY27 EPS 共识</strong>：~$14.55（normalized）。</p>
+
+<h3>6.2 — Bull vs Bear 论点</h3>
+
+<div class="twocol">
+
+<div class="twocol-card pos">
+<h4>Bull Case · 看多逻辑</h4>
+<ul>
+<li><strong>NVIDIA $2B 战略投资</strong>，订单排到 2028 年；EML 50-60% 市占 + 200G 独家</li>
+<li><strong>三条增长曲线齐发</strong>：800G→1.6T 升级、CPO 量产、OCS 在多家 hyperscaler 部署</li>
+<li><strong>管理层 2028 目标</strong>：季度 run-rate $2B、margin 接近 40%、EPS ~$30</li>
+<li>按 25x PE × $30 EPS = <strong>$750+ 合理价</strong>（即使现在也不太远）</li>
+<li>Apple 流失已出清，未来增长纯 AI 驱动</li>
+<li>Cloud Light 整合教科书级成功，4 季度从 burden 变 growth engine</li>
+</ul>
+</div>
+
+<div class="twocol-card warn">
+<h4>Bear Case · 看空逻辑</h4>
+<ul>
+<li><strong>估值极度拉伸</strong>：Forward PE 55x（行业中位 25x，溢价 120%），TTM PS 27x（同业 12x）</li>
+<li><strong>GuruFocus GF Value 仅 $91</strong>（认为现价高估约 990%）</li>
+<li><strong>内部人 72 笔卖出 / 0 笔买入</strong>，前 CEO Alan Lowe 近 5 年 9 笔全是卖出</li>
+<li><strong>2x Short ETF 已上线</strong>——市场开始押注估值回归</li>
+<li>客户集中度（NVIDIA + Meta + Google）：单一砍单风险被放大</li>
+<li>Bear case 目标 $547，潜在下行 45%+</li>
+<li>1.6T 模块时代若中国厂商打价格战，Cloud Light Systems 业务毛利会被压</li>
+</ul>
+</div>
+
+</div>
+
+<h3>6.3 — 最近三次 earnings 后股价反应</h3>
+
+<div class="timeline">
+
+<div class="timeline-row">
+<div class="timeline-date">2025/11</div>
+<div class="timeline-dot-col"><div class="timeline-dot"></div></div>
+<div class="timeline-content">
+<div class="timeline-title">Q1 FY26 财报：营收 $533.8M (+58%)</div>
+<div class="timeline-desc">Beat 街口预期，但盘后 <strong>−5.6%</strong> 至 $188 ——「好消息不够好」引发短暂获利了结</div>
+</div>
+</div>
+
+<div class="timeline-row">
+<div class="timeline-date">2026/2/3</div>
+<div class="timeline-dot-col"><div class="timeline-dot pos"></div></div>
+<div class="timeline-content">
+<div class="timeline-title">Q2 FY26 财报：营收 $665.5M (+65.5%)</div>
+<div class="timeline-desc">Beat 20% surprise，盘后 <strong>+6.75%</strong>，股价从 $423 涨至 $452 → 后续翻倍至 $800</div>
+</div>
+</div>
+
+<div class="timeline-row">
+<div class="timeline-date">2026/3/2</div>
+<div class="timeline-dot-col"><div class="timeline-dot warn"></div></div>
+<div class="timeline-content">
+<div class="timeline-title">NVIDIA 战略投资公告</div>
+<div class="timeline-desc">$2B + 多年采购协议；当日 +10%+；Jefferies 同步上调 PT 至 $1,200</div>
+</div>
+</div>
+
+<div class="timeline-row">
+<div class="timeline-date">2026/5/6</div>
+<div class="timeline-dot-col"><div class="timeline-dot pos"></div></div>
+<div class="timeline-content">
+<div class="timeline-title">Q3 FY26 财报：营收 $808.4M (+90%)</div>
+<div class="timeline-desc">EPS $2.37 vs 街口 $2.26；Q4 指引 $985M 中值；触发 <strong>+16-17%</strong> 至 $1,072 历史新高；行业共振（AAOI +24%、COHR +13%）</div>
+</div>
+</div>
+
+<div class="timeline-row">
+<div class="timeline-date">2026/5/11</div>
+<div class="timeline-dot-col"><div class="timeline-dot warn"></div></div>
+<div class="timeline-content">
+<div class="timeline-title">单日 +16.52% 至 $1,053</div>
+<div class="timeline-desc">Nasdaq-100 入选预热（5/18 替换 CoStar）+ 中信证券新报告 PT $1,186</div>
+</div>
+</div>
+
+</div>
+
+<h3>6.4 — 内部人 / 机构持仓信号</h3>
+
+<div class="callout warn">
+<div class="callout-label">最强警讯</div>
+<p>过去 6 个月 LITE 内部人交易 <strong>72 次全部是卖出，0 笔买入</strong>。前 CEO Alan Lowe（已转任 Director）近 5 年 9 笔交易全是卖出，最近 6 个月卖出 5 万股套现约 $447 万。当管理层用脚投票、华尔街目标价跟不上股价时，散户接最后一棒的概率会很高。</p>
+</div>
+
+<p><strong>机构持仓</strong>：812 家机构合计 8,019 万股，前 5 大股东 Fidelity / BlackRock / Vanguard / Capital World Investors / Invesco。<strong>NVIDIA 直接持股</strong>（$2B 战略投资）是最强背书。<strong>暂未发现 activist investor 入场</strong>。</p>
+</section>
+
+<section id="risks">
+<div class="section-num">— 07 / Risks</div>
+<h2>七个风险，按时间窗口排序</h2>
+
+<p>Ray 担心的是 NVDA 2022-23 + LITE FY23-24 那种「基本面 + 库存 + 估值三杀」。把 LITE 的所有下行风险拆开看，<strong>当前只触发了第 7 项（估值）</strong>——但历史经验是：基本面顶部往往在估值顶部之后才到，所以现在是观察期，而不是 panic 期。</p>
+
+<h3>7.1 — 风险评级表</h3>
+
+<table class="risk-table">
+<thead>
+<tr>
+<th>#</th>
+<th>风险</th>
+<th>严重度</th>
+<th>时间窗口</th>
+<th>当前观察迹象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>AI capex 放缓 / ROI 破口</td>
+<td><span class="sev mid">中→高</span></td>
+<td>2H 2026 – 2027</td>
+<td>2026 capex 仍 +77%，但 hyperscaler FCF 转负、循环融资争议升温</td>
+</tr>
+<tr>
+<td>2</td>
+<td>CPO 颠覆 EML 模块</td>
+<td><span class="sev mid">中</span></td>
+<td>2027 – 2029</td>
+<td>NVIDIA CPO 2H26 量产，LITE 借 CW laser 卡位（净效应偏正面）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>客户集中度（NVIDIA / Google）</td>
+<td><span class="sev high">高</span></td>
+<td>持续</td>
+<td>NVIDIA $2B 采购合同 + Google 占比攀升</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Apple VCSEL 流失</td>
+<td><span class="sev low">低</span></td>
+<td>已发生</td>
+<td>季度 ~$57M，从 30% 降到个位数（已出清）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>中国出口管制 / 本土替代</td>
+<td><span class="sev mid">中</span></td>
+<td>2026 BIS 调查 / 2027+ 国产化</td>
+<td>BIS + DOJ 在调查 Huawei 涉嫌违规出货；Accelink 100G EML 在验证</td>
+</tr>
+<tr>
+<td>6</td>
+<td>库存周期反转</td>
+<td><span class="sev mid">中</span></td>
+<td>2027 中下半年</td>
+<td>当前缺货 30%+，但 1.6T 转换 + 新产能同时上线是潜在拐点</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>估值压缩</strong></td>
+<td><span class="sev high">高</span></td>
+<td><strong>任意季度财报</strong></td>
+<td>Fwd PE 55-67x，PS 30x，bear case 下行 45%</td>
+</tr>
+</tbody>
+</table>
+
+<h3>7.2 — DeepSeek 时刻 vs Hyperscaler capex 现状</h3>
+
+<p>2025 年 1 月 DeepSeek 用 1/10 成本做出对标模型后，市场担心推理效率提升 → GPU 集群更小 → 光模块需求减少。<strong>但截至 2026 年没有一家 hyperscaler 砍单</strong>——相反推理需求增长比训练更快。</p>
+
+<div class="metric-list">
+<div class="metric-row">
+<div class="m-left"><div class="m-label">2025 年 4 大 hyperscaler capex</div><div class="m-source">AWS+MSFT+GOOG+META</div></div>
+<div class="m-value">$410B</div>
+</div>
+<div class="metric-row">
+<div class="m-left"><div class="m-label">2026 年 4 大 hyperscaler capex（共识）</div><div class="m-source">YoY +70-77%</div></div>
+<div class="m-value pos">$700–725B</div>
+</div>
+<div class="metric-row">
+<div class="m-left"><div class="m-label">分项：MSFT / GOOG / AMZN / META</div><div class="m-source">2026 年</div></div>
+<div class="m-value">$190B / $185B / $200B / $135B</div>
+</div>
+</div>
+
+<p>真正的风险点是 <strong>ROI 焦虑</strong>：hyperscaler capex 占营收 45-57%（SaaS 时代 11-16%），而 OpenAI + Anthropic 合计营收不到 $35B——「每 $20 capex 对应 $1 实际 AI 软件营收」的循环融资质疑（OpenAI ↔ NVIDIA ↔ Oracle ↔ Microsoft 互投）若在 2026 年下半年某次财报中破口，资本市场情绪可能瞬间反转。</p>
+
+<h3>7.3 — CPO 颠覆是双刃剑</h3>
+
+<div class="twocol">
+
+<div class="twocol-card pos">
+<h4>CPO 对 LITE 的利好</h4>
+<ul>
+<li>CPO 需要外置 <strong>CW laser</strong>——单台交换机用量是传统架构的数倍</li>
+<li>LITE + COHR 是全球仅有的两家能量产 UHP CW laser 的厂商</li>
+<li>NVIDIA $2B 战略投资就是为了锁产能</li>
+<li>LightCounting：LPO+CPO scale-out 市场从 $5B (2024) → $10B+ (2026)</li>
+</ul>
+</div>
+
+<div class="twocol-card warn">
+<h4>CPO 对 LITE 的利空</h4>
+<ul>
+<li>CPO 会吃掉「可插拔光模块」市场——LITE 的 EML 业务受影响</li>
+<li>Cloud Light 模块业务可能被部分边缘化</li>
+<li>2028+ 若 CPO 全面取代可插拔，传统模块业务会遭遇结构性下行</li>
+<li>所以 LITE 的赌注是「卡位 CW laser 端 + 自然过渡」</li>
+</ul>
+</div>
+
+</div>
+
+<div class="callout">
+<div class="callout-label">净效应判断</div>
+<p>短期（2026-27）EML 仍紧缺、CW laser 加码，<strong>对 LITE 正面</strong>。2028+ 若 CPO 全面取代可插拔，传统模块受损，但 LITE 已经卡位 CW laser 端，<strong>转型路径相对清晰</strong>。CPO 转型的关键风险其实不是「会不会发生」，而是「速度」——速度太快 LITE 来不及切换、速度太慢估值预期落空。</p>
+</div>
+</section>
+
+<section id="china">
+<div class="section-num">— 08 / China</div>
+<h2>中文圈视角：「有时限的卖铲人」</h2>
+
+<p>中文产业链对 LITE 的判断更精准，因为中际旭创、新易盛、光迅、华工科技都是 A 股大牛股，整个产业链都在密切跟踪 EML / CW laser 的国产化进度。</p>
+
+<h3>8.1 — 中文圈给 LITE 的标签</h3>
+
+<div class="quote">
+LITE 是卖铲人没错，但它的铲子（EML）在被中国徒弟仿造。<br>
+所以 LITE 是<strong>有时限的卖铲人</strong>——3 年内安全，5 年后存疑。
+<span class="attr">雪球 / 知乎 / 东财股吧 共识表述（2026 年 5 月）</span>
+</div>
+
+<p>中文圈的整体情绪：<strong>"该买，但别 all in；它是配置盘的'桩'，不是 alpha 弹性盘"</strong>——alpha 弹性留给中际旭创、新易盛。</p>
+
+<h3>8.2 — 中国光模块产业链与 LITE 的关系</h3>
+
+<table class="compare">
+<thead>
+<tr>
+<th>公司</th>
+<th>2025 营收</th>
+<th>与 LITE 关系</th>
+<th>角色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="product-name">中际旭创 (300308)<span class="tag pos">客户</span></td>
+<td class="num">¥382 亿 (约 $5.3B)</td>
+<td><strong>EML 采购中 LITE 占 70%</strong>，是中际旭创第一大供应商（占采购总额 35.76%）</td>
+<td>800G/1.6T 模组全球第一</td>
+</tr>
+<tr>
+<td class="product-name">新易盛 (300502)<span class="tag pos">客户</span></td>
+<td class="num">¥95 亿净利 (约 $1.3B)</td>
+<td>同样大量采购 LITE + COHR 的 EML</td>
+<td>800G 强者，LPO 领跑</td>
+</tr>
+<tr>
+<td class="product-name">光迅科技 (002281)<span class="tag warn">最积极对手</span></td>
+<td class="num">—</td>
+<td>客户，但 <strong>自研 EML 最积极</strong>：100G EML 量产、200G EML 客户验证</td>
+<td>国家队；"中国版 Lumentum" 候选</td>
+</tr>
+<tr>
+<td class="product-name">天孚通信 (300394)<span class="tag">LITE 供应商</span></td>
+<td class="num">—</td>
+<td>LITE 核心 CPO 光引擎供应商，份额 65-70%</td>
+<td>LITE 上游 (是它的供应商)</td>
+</tr>
+<tr>
+<td class="product-name">东山精密</td>
+<td class="num">—</td>
+<td>国内唯一 200G EML 大规模量产并对外供货的 IDM（截至 2026/3）</td>
+<td>国产替代先锋</td>
+</tr>
+<tr>
+<td class="product-name">长光华芯</td>
+<td class="num">—</td>
+<td>单通道 200G PAM4 EML 完成 2000 小时可靠性测试，2026 H2 批量交付</td>
+<td>200G 国产替代追赶者</td>
+</tr>
+<tr>
+<td class="product-name">源杰科技</td>
+<td class="num">—</td>
+<td>100G EML 量产，200G EML 客户验证，预计 2026 年底量产</td>
+<td>200G 国产替代追赶者</td>
+</tr>
+</tbody>
+</table>
+
+<h3>8.3 — 国产 200G EML 突破窗口期：2026-2027</h3>
+
+<div class="callout warn">
+<div class="callout-label">关键时间窗口</div>
+<p>中文研报口径："2026-2027 年是 <strong>200G EML 黄金窗口期</strong>，谁先量产谁就是中国版 Lumentum"——这本身就是一个对 LITE 的长期对赌。</p>
+<p>当前判断：全行业 200G EML 缺口 &gt; 60%、产能锁到 2027 年——<strong>短期内国产突破不会撼动 LITE 定价权</strong>。2027-2028 年开始，中国 EML 国产化率每提升 10 个百分点，LITE 在中国市场的 ASP（平均售价）就会承受压力。</p>
+</div>
+
+<p>但 LITE 也在主动迁移到 <strong>400G EML / CPO 光引擎 / 铌酸锂调制器</strong>这些更上游、更难追的环节——属于「主动放掉旧战场抢新战场」。<strong>这套路类似 NVIDIA 用 CUDA + 系统级方案护盘 GPU 周期</strong>。</p>
+
+<h3>8.4 — 中美贸易战影响</h3>
+
+<ul>
+<li><strong>EML 当前未被列入出口管制清单</strong>（不像 HBM、先进 GPU）。LITE 卖 EML 给中际旭创、新易盛在 2026 年仍是合规生意</li>
+<li>2025 年 4 月美国"对等关税过山车"中，光模块（HS 8517.62.00）最终被豁免</li>
+<li><strong>Huawei 已清零</strong>：2024 年初 LITE 停止所有 Huawei 出货；BIS + DOJ 仍在调查涉嫌违规出货的历史问题</li>
+<li><strong>"反向 de-risk"</strong>：中国客户一边大手笔下单（保供），一边砸钱扶持东山精密、长光华芯、源杰、光迅——复制"HBM 经验"（先依赖、再国产、最后反向卡脖子）</li>
+</ul>
+
+<h3>8.5 — 中文散户主流配置</h3>
+
+<div class="callout data">
+<div class="callout-label">来自雪球 / 富途多篇高频说法</div>
+<p>"A 股配中际旭创 + 新易盛打弹性，美股配 LITE + COHR 打稳健，比例 6:4 或 7:3"——这是中文散户对 AI 光通信赛道最高频的仓位建议（不构成机构共识）。</p>
+</div>
+
+<p><strong>估值定位</strong>：LITE 当前 forward PE 55x，中际旭创实际 PE 约 60x、新易盛波动剧烈。<strong>三者的 forward PE 差距已经不大</strong>——意味着 LITE 的"美股稳健 + 估值便宜"叙事正在被市场修正。</p>
+</section>
+
+<div class="divider-quote">"AI 投资里最难的不是看到机会，<em>是判断自己有没有迟到</em>。"</div>
+
+<section id="decision">
+<div class="section-num">— 09 / Decision</div>
+<h2>三条路径，按你的 Ray 风险偏好选</h2>
+
+<p>Ray 你不是职业投资人，没有持续跟踪 LITE 季度营收数据的精力。所以这里不给"买入价 / 卖出价"这种伪精确的建议，而是给三条策略路径——根据你愿意承受的最大回撤选一条。</p>
+
+<div class="verdict">
+<div class="verdict-title">— Final Verdict</div>
+<h3>基本面无可挑剔，估值已 <em>price-in 大量预期</em>。<br>不是"该不该买"的问题，是"哪种买法不会让你睡不着"的问题。</h3>
+<p>LITE 是 AI 数据中心光通信价值链最稀缺的位置之一。但 12 个月涨 13 倍、Forward PE 55x、共识目标价 $782 已经倒挂——意味着接下来 12 个月最可能的剧本是「业绩继续兑现，但 multiple 压缩 20-30%」。这种情况下，分批进比一把梭好，等回调比追高好，对冲比裸多好。</p>
+<div class="verdict-options">
+<div class="verdict-option">
+<div class="vo-num">Path A · 低风险</div>
+<h4>等回调再买</h4>
+<p>等一次 10-15% multiple 压缩（任何噪音都行：MSFT/META capex 指引疲软、NVIDIA 财报 miss、行业卖方下调），分 3 批进入。错过的概率约 30%。</p>
+</div>
+<div class="verdict-option">
+<div class="vo-num">Path B · 中风险</div>
+<h4>分批定投</h4>
+<p>把目标仓位拆成 6-12 个月分批进。LITE 跌就多买、涨就少买。不预测顶底，用时间稀释入场点风险。</p>
+</div>
+<div class="verdict-option">
+<div class="vo-num">Path C · 高风险</div>
+<h4>现在追入 + 严止损</h4>
+<p>相信 NVIDIA 系叙事会持续 6-12 个月。仓位上限 5-8%，止损位 -25%（约 $725）。准备好接受 30-50% 的最大回撤。</p>
+</div>
+</div>
+</div>
+
+<h3>9.1 — Path A · 30 天行动指南（推荐给 Ray）</h3>
+
+<div class="paths">
+
+<div class="path-card a">
+<div class="path-num">PATH A · 1-15 天</div>
+<h4>建观察清单<span class="risk">LOW</span></h4>
+<p>在富途/雪球建立 LITE 监控，盯三个信号：</p>
+<ul>
+<li><strong>NVIDIA / MSFT / META 季报 capex 指引</strong>（任何一家下调 → 触发器）</li>
+<li><strong>LITE 月度股价波动</strong>（10% 跌幅触发分批 1）</li>
+<li><strong>200G EML 国产化新闻</strong>（东山精密 / 长光华芯量产里程碑）</li>
+</ul>
+</div>
+
+<div class="path-card a">
+<div class="path-num">PATH A · 16-30 天</div>
+<h4>准备好弹药 + 分批方案<span class="risk">LOW</span></h4>
+<p>把要投 LITE 的总资金分成 3 份：</p>
+<ul>
+<li>第一份：触发 -10% 时入场（约 $870）</li>
+<li>第二份：触发 -20% 时入场（约 $770）</li>
+<li>第三份：触发 -30% 时入场（约 $675）</li>
+<li>如果 12 个月内都没跌到第一档，那就承认错过，不追</li>
+</ul>
+</div>
+
+</div>
+
+<h3>9.2 — Path B · 定投方案</h3>
+
+<ol>
+<li><strong>目标仓位 5-8%</strong>（不超过总资产的 8%，避免单一标的过度暴露）</li>
+<li><strong>分 6-12 期</strong>，每月或每两月一笔，金额相同</li>
+<li><strong>跌就买更多</strong>：股价跌 10% 当期加倍；跌 20% 当期再加倍</li>
+<li><strong>不看顶</strong>：股价创新高时坚持原计划，不追加</li>
+<li><strong>季报后复评</strong>：每次财报后看 EPS guidance 有没有下修，下修两次连续就停止后续定投</li>
+</ol>
+
+<h3>9.3 — Path C · 必备前置条件 + 关键决策</h3>
+
+<div class="paths">
+
+<div class="path-card c">
+<div class="path-num">PATH C · 必备前置条件</div>
+<h4>4 个红线<span class="risk">HIGH</span></h4>
+<ul>
+<li>仓位上限 5-8%——这是基本面 + 估值 + 内部人卖出综合警讯下的最大暴露</li>
+<li>必须设硬止损：跌破 $725（约 -25%）无条件清仓一半</li>
+<li>必须每周看一次 NVIDIA / MSFT capex 新闻；任何一家下调 capex 立刻减仓 1/3</li>
+<li>不加杠杆、不买期权（IV 已经被 1283% 涨幅推高到无法做有效保护）</li>
+</ul>
+</div>
+
+<div class="path-card c">
+<div class="path-num">PATH C · 30 天关键决策</div>
+<h4>3 个 trigger<span class="risk">HIGH</span></h4>
+<ul>
+<li>5/18 Nasdaq-100 入选后，被动资金流入是否推高短期股价（很可能但有限）</li>
+<li>下次财报（约 8 月初 Q4 FY26）：guidance 比 Q4 中值 $985M 高 / 低 → 决定加仓 / 减仓</li>
+<li>若内部人卖出节奏从月均 12 笔加速到 20+，立刻减仓——这是管理层视角的最强信号</li>
+</ul>
+</div>
+
+</div>
+
+<h3>9.4 — 三条路都要避开的 3 个坑</h3>
+
+<ul>
+<li><strong>不要把 LITE 当成"我已经错过 NVDA 不能再错过 LITE"的补救</strong>——AI 行情里，"错过感"是最贵的情绪</li>
+<li><strong>不要被「订单排到 2028 年」误导</strong>——订单可见性高的公司在估值压缩时往往跌得更狠（因为没有"低预期"可以触发）</li>
+<li><strong>不要忽略 Coherent (COHR)</strong>——它是 LITE 唯一全维度对手，估值更低（COHR forward PE 约 35x vs LITE 55x），增速虽慢但确定性更高，可作为对冲或 LITE 的"安全替代品"</li>
+</ul>
+
+<div class="callout warn">
+<div class="callout-label">最后一句</div>
+<p class="callout-quote">在 AI 投资里，<strong>最好的 deal 往往不是「这家公司多牛」，而是「这家公司多便宜地能买到」</strong>。LITE 是好公司，但目前不是好价格——你的最大优势不是看清基本面（华尔街都看清了），是<em>愿意等</em>。</p>
+</div>
+</section>
+
+</main>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+
+<h5>— 数据来源 / Sources</h5>
+<div class="sources">
+<a href="https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Third-Quarter-of-Fiscal-Year-2026-Financial-Results/default.aspx">LITE Q3 FY26 Press Release</a>
+<a href="https://www.sec.gov/Archives/edgar/data/1633978/000162828025039896/lite_ex991xq4fy25.htm">LITE FY2025 Q4 8-K (SEC)</a>
+<a href="https://www.fool.com/earnings/call-transcripts/2026/05/06/lumentum-lite-q3-2026-earnings-transcript/">Motley Fool Q3 FY26 Transcript</a>
+<a href="https://www.fool.com/earnings/call-transcripts/2026/02/03/lumentum-lite-q2-2026-earnings-call-transcript/">Motley Fool Q2 FY26 Transcript</a>
+<a href="https://seekingalpha.com/news/4586129-lumentum-q3-revenue-surges-90-q4-outlook-tops-estimates">Seeking Alpha Q3 +90% Revenue</a>
+<a href="https://seekingalpha.com/news/4586526-lumentum-anticipates-960m-1_01b-q4-fy2026-revenue-while-targeting-2b-quarterly-revenue-goal">SA Q4 Guidance + $2B Target</a>
+<a href="https://siliconangle.com/2026/03/02/nvidia-invests-4b-co-packaged-optics-suppliers-lumentum-coherent/">SiliconANGLE NVIDIA $4B Investment</a>
+<a href="https://www.cnbc.com/2026/03/02/nvidia-investment-coherent-lumentum.html">CNBC NVIDIA Strategic Partnership</a>
+<a href="https://nvidianews.nvidia.com/news/nvidia-announces-strategic-partnership-with-lumentum-to-develop-state-of-the-art-optics-technology">NVIDIA Press Release</a>
+<a href="https://www.lumentum.com/en/blog/emls-unsung-heroes-powering-ais-digital-arteries">Lumentum EML Blog</a>
+<a href="https://www.convequity.com/lumentum-holdings-the-optical-engine-behind-the-ai-data-center-revolution/">Convequity Deep Dive</a>
+<a href="https://markets.financialcontent.com/stocks/article/finterra-2026-3-26-the-light-engine-of-ai-a-deep-dive-into-lumentum-holdings-lite-and-the-16t-revolution">FinancialContent 1.6T Analysis</a>
+<a href="https://www.businesswire.com/news/home/20231107580882/en/Lumentum-Announces-Completion-of-Cloud-Light-Acquisition">Cloud Light Acquisition Closure</a>
+<a href="https://optics.org/news/14/11/4">Optics.org Cloud Light $750M</a>
+<a href="https://www.semiconductor-today.com/news_items/2026/may/lumentum-140526.shtml">Semiconductor Today Q3 +90%</a>
+<a href="https://www.marketbeat.com/stocks/NASDAQ/LITE/forecast/">MarketBeat LITE Analyst Targets</a>
+<a href="https://stockanalysis.com/stocks/lite/forecast/">Stock Analysis LITE Forecast</a>
+<a href="https://www.gurufocus.com/term/forward-pe-ratio/LITE">GuruFocus Forward PE</a>
+<a href="https://seekingalpha.com/article/4851282-lumentums-premium-valuation-ignores-cyclicality-and-competitive-pressure">SA Premium Valuation Risk</a>
+<a href="https://247wallst.com/investing/2026/03/02/even-nvidia-sees-lumentum-as-lighting-the-way-forward/">247WallSt NVIDIA Light the Way</a>
+<a href="https://simplywall.st/stocks/us/tech/nasdaq-lite/lumentum-holdings/news/does-lumentum-holdings-lite-attracting-a-2x-short-etf-reflec">Simply Wall St 2X Short ETF</a>
+<a href="https://www.gurufocus.com/insider/55029/alan-s-lowe">Alan Lowe Insider Trades</a>
+<a href="https://www.marketbeat.com/stocks/NASDAQ/LITE/institutional-ownership/">MarketBeat Institutional Ownership</a>
+<a href="https://futurumgroup.com/insights/coherent-q3-fy-2026-ai-data-center-demand-accelerates-optical-growth/">Coherent Q3 FY26 Earnings</a>
+<a href="https://www.insidermonkey.com/blog/fabrinet-fn-leverages-ai-surge-to-drive-150-growth-in-datacom-revenue-fueled-by-800g-technology-demand-and-key-partnership-with-nvidia-1367661/">Fabrinet AI Surge</a>
+<a href="https://www.marvell.com/company/newsroom/marvell-1-6t-optical-dsp-ai-data-center-connectivity.html">Marvell 1.6T DSP</a>
+<a href="https://247wallst.com/investing/2026/04/10/applied-optoelectronics-could-double-revenue-to-1-billion-in-2026/">AAOI 2026 $1B Outlook</a>
+<a href="https://ip-fiber.com/blogs/news/nvidia-orders-surge-innolight-and-eoptolink-dominate-60-of-800g-sfp-optical-modules-supply">Innolight + Eoptolink 60% Share</a>
+<a href="https://www.semiconductor-today.com/news_items/2025/mar/lumentum-180325.shtml">NVIDIA Spectrum-X Photonics CPO</a>
+<a href="https://investors.broadcom.com/news-releases/news-release-details/broadcom-announces-tomahawkr-6-davisson-industrys-first-1024">Broadcom Tomahawk 6 CPO</a>
+<a href="https://newsletter.semianalysis.com/p/co-packaged-optics-cpo-book-scaling">SemiAnalysis CPO Deep Dive</a>
+<a href="https://www.tomshardware.com/tech-industry/big-tech/big-techs-ai-spending-plans-reach-725-billion">Tom's Hardware $725B Capex 2026</a>
+<a href="https://introl.com/blog/hyperscaler-capex-600b-2026-ai-infrastructure-debt-january-2026">Introl Hyperscaler Capex Analysis</a>
+<a href="https://www.lightcounting.com/newsletter/en/january-2025-optics-for-ai-clusters-319">LightCounting AI Optics Market</a>
+<a href="https://www.tomshardware.com/networking/nvidia-outlines-plans-for-using-light-for-communication-between-ai-gpus-by-2026-silicon-photonics-and-co-packaged-optics-may-become-mandatory-for-next-gen-ai-data-centers">NVIDIA Spectrum-X Photonics 2026</a>
+<a href="https://www.lightwaveonline.com/home/article/55338753/lumentums-ceo-sees-growing-customer-interest-in-co-packaged-optics-cpo">Lumentum CEO on CPO</a>
+<a href="https://communicationsdaily.com/news/2024/11/12/bis-doj-investigating-telecom-supplier-for-violating-export-controls-on-huawei-2411080027">BIS DOJ Investigating Huawei Violations</a>
+<a href="https://appleinsider.com/articles/23/02/24/apple-shifting-suppliers-for-face-id-component-on-iphone-15-pro">Apple Shifting Face ID Suppliers</a>
+<a href="https://www.gurufocus.com/news/8848404/lumentum-lite-stock-rises-on-nasdaq-100-inclusion-amid-ai-data-center-focus">Nasdaq-100 Inclusion</a>
+<a href="https://xueqiu.com/4043855103/384780731">雪球 LITE 标签讨论</a>
+<a href="https://finance.sina.com.cn/roll/2026-05-12/doc-inhxqvav0004616.shtml">新浪财经 LITE 晋级纳指 100</a>
+<a href="https://caifuhao.eastmoney.com/news/20260421222312248216960">东方财富 光模块大厂调研</a>
+<a href="https://caifuhao.eastmoney.com/news/20260422202720429529270">东财 LITE/COHR A 股供应链</a>
+<a href="https://caifuhao.eastmoney.com/news/20260416201445091825520">东财 中际旭创 Q1 财报</a>
+<a href="https://caifuhao.eastmoney.com/news/20260328210922451438650">东财 200G EML 美日垄断缺口 60%</a>
+<a href="https://zhuanlan.zhihu.com/p/16522576783">知乎 美股易中天之 Lumentum</a>
+<a href="https://wallstreetcn.com/articles/3755411">华尔街见闻 大摩光模块获利了结</a>
+<a href="https://stocktitan.net/sec-filings/LITE/10-q-lumentum-holdings-inc-quarterly-earnings-report-2860cf52a45e.html">StockTitan 10-Q</a>
+<a href="https://www.semiconductor-today.com/news_items/2025/sep/lumentum-040925.shtml">Semi-Today $1.1B Convertible</a>
+<a href="https://www.semiconductor-today.com/news_items/2026/feb/lumentum-090226.shtml">Semi-Today Q2 FY26 Results</a>
+<a href="https://www.tikr.com/blog/lumentum-stock-soar-964-last-year-analysts-see-more-upside-in-2026">TIKR LITE +964% Surge</a>
+</div>
+
+<div class="footer-meta">
+RAY DEEP RESEARCH · LUMENTUM HOLDINGS (LITE) · v1.0 · 2026-05-16<br>
+报告由 6 个并行子 Agent（基本面 / 财务 / 竞争格局 / 华尔街视角 / 风险 / 中文产业链）整合而成 · 50+ 一手来源<br>
+免责声明：本报告仅供学习与讨论使用，不构成投资建议。所有数据截至 2026-05-16，市场情况随时变化。投资有风险，决策需自行承担。
+</div>
+
+</div>
+</footer>
+
+<script>
+// Theme toggle
+document.getElementById('theme-toggle').addEventListener('click', function() {
+  var current = document.documentElement.getAttribute('data-theme');
+  var next = current === 'dark' ? 'light' : 'dark';
+  if (next === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+  try { localStorage.setItem('ray-theme', next); } catch (e) {}
+});
+
+// Follow system preference if no saved
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+  try {
+    if (!localStorage.getItem('ray-theme')) {
+      if (e.matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+    }
+  } catch (err) {}
+});
+
+// TOC active section
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      document.querySelectorAll('nav.toc a').forEach(link => {
+        link.style.color = '';
+        link.style.fontWeight = '';
+      });
+      const activeLink = document.querySelector(`nav.toc a[href="#${id}"]`);
+      if (activeLink) {
+        activeLink.style.color = 'var(--accent-warn)';
+        activeLink.style.fontWeight = '600';
+      }
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

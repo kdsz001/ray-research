@@ -130,6 +130,18 @@
           "title": "初版调研 · 晶圆级速度神话，押对了 OpenAI"
         }
       ]
+    },
+    {
+      "slug": "lumentum",
+      "name": "Lumentum Holdings (LITE)",
+      "tagline": "AI 数据中心光通信「上游卖铲人」· EML 寡头 · NVIDIA $2B 锁产能",
+      "reports": [
+        {
+          "date": "2026-05-16",
+          "file": "2026-05-16-lumentum-lite.html",
+          "title": "初版投资调研 · AI 数据中心的点灯人"
+        }
+      ]
     }
   ]
 }
