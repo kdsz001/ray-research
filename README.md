@@ -103,6 +103,12 @@
 |------|------|---------|
 | 2026-05-16 | [初版投资调研 · 全栈 AI 玩家里估值最便宜的一家](googl/2026-05-16-googl.html) | [↗ Open](https://kdsz001.github.io/ray-research/googl/2026-05-16-googl.html) |
 
+### 🦾 [Physical AI · 物理 AI 投资全景](physical-ai/) · 具身智能 / 人形机器人 / 世界模型 · 全景调研
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-16 | [初版全景调研 · 真趋势 + 真泡沫 + 真有标的可买](physical-ai/2026-05-16-physical-ai.html) | [↗ Open](https://kdsz001.github.io/ray-research/physical-ai/2026-05-16-physical-ai.html) |
+
 <!-- INDEX-END -->
 
 ---

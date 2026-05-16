@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>物理 AI 投资全景 · 2026-05 · Ray Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec;
+  --bg-paper: #fbf9f4;
+  --bg-card: #ffffff;
+  --bg-dark: #14110d;
+  --bg-dark2: #1f1b16;
+
+  --ink: #14110d;
+  --ink-2: #2c2620;
+  --muted: #6e6358;
+  --light: #a39787;
+
+  --rule: #14110d;
+  --rule-light: #d8d1c2;
+
+  --accent-warn: #a73121;
+  --accent-data: #1c4d6b;
+  --accent-pos: #2c5e3f;
+  --accent-yellow: #c89a2c;
+
+  --bg-inverse: #14110d;
+  --ink-on-inverse: #f6f3ec;
+  --text-on-inverse: rgba(246, 243, 236, 0.85);
+  --muted-on-inverse: rgba(246, 243, 236, 0.7);
+  --faint-on-inverse: rgba(246, 243, 236, 0.55);
+  --light-on-inverse: rgba(246, 243, 236, 0.5);
+  --rule-on-inverse: rgba(246, 243, 236, 0.18);
+  --accent-yellow-on-inverse: #c89a2c;
+  --accent-warn-on-inverse: #e87a5f;
+
+  --serif: "Source Serif 4", "Source Serif Pro", "Charter", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+
+  --max-w: 820px;
+}
+
+[data-theme="dark"] {
+  --bg: #1a1612;
+  --bg-paper: #221c16;
+  --bg-card: #2a2319;
+  --ink: #ede5d3;
+  --ink-2: #d6cdb8;
+  --muted: #968874;
+  --light: #6b6253;
+  --rule: #ede5d3;
+  --rule-light: #3a3128;
+
+  --accent-warn: #e87a5f;
+  --accent-data: #6ba9c7;
+  --accent-pos: #6fb084;
+  --accent-yellow: #d8b04a;
+
+  --bg-inverse: #ede5d3;
+  --ink-on-inverse: #14110d;
+  --text-on-inverse: rgba(20, 17, 13, 0.85);
+  --muted-on-inverse: rgba(20, 17, 13, 0.7);
+  --faint-on-inverse: rgba(20, 17, 13, 0.55);
+  --light-on-inverse: rgba(20, 17, 13, 0.5);
+  --rule-on-inverse: rgba(20, 17, 13, 0.18);
+  --accent-yellow-on-inverse: #a47c1e;
+  --accent-warn-on-inverse: #a73121;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.metabar {
+  border-bottom: 1px solid var(--rule-light);
+  padding: 10px 32px;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.metabar .right { color: var(--accent-warn); }
+
+#theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--rule-light);
+  background: var(--bg-card);
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  transition: all 0.2s;
+}
+
+#theme-toggle:hover { background: var(--bg-paper); }
+#theme-toggle .moon { display: none; }
+[data-theme="dark"] #theme-toggle .sun { display: none; }
+[data-theme="dark"] #theme-toggle .moon { display: block; }
+
+.hero {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 70px 32px 60px;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 60px;
+  align-items: end;
+  border-bottom: 2px solid var(--rule);
+}
+
+.hero .eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-warn);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero .eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--accent-warn);
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 76px;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent-warn);
+  font-weight: 600;
+}
+
+.hero .subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.4;
+  color: var(--muted);
+  margin-top: 28px;
+  max-width: 640px;
+}
+
+.hero-meta { font-family: var(--mono); font-size: 11px; text-transform: uppercase; }
+.hero-meta dt { color: var(--light); margin-top: 14px; letter-spacing: 0.06em; }
+.hero-meta dt:first-child { margin-top: 0; }
+.hero-meta dd { color: var(--ink-2); font-weight: 500; margin-top: 4px; letter-spacing: 0.04em; }
+
+.quickfacts-wrap {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  padding: 72px 32px;
+  transition: background-color 0.2s, color 0.2s;
+}
+.quickfacts-inner { max-width: 1240px; margin: 0 auto; }
+.quickfacts-wrap .eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 8px;
+}
+.quickfacts-wrap h2 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 38px;
+  color: var(--ink-on-inverse);
+  margin-bottom: 38px;
+}
+.quickfacts {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: var(--rule-on-inverse);
+  border: 1px solid var(--rule-on-inverse);
+}
+.qf-cell {
+  background: var(--bg-inverse);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.qf-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--faint-on-inverse);
+}
+.qf-value {
+  font-family: var(--serif);
+  font-size: 30px;
+  line-height: 1.0;
+  color: var(--ink-on-inverse);
+  font-weight: 600;
+}
+.qf-value .unit { font-size: 14px; color: var(--muted-on-inverse); margin-left: 4px; font-weight: 400; }
+.qf-sub {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--muted-on-inverse);
+  line-height: 1.45;
+  margin-top: auto;
+}
+.qf-cell.verdict { background: var(--accent-warn); color: #fff; }
+.qf-cell.verdict .qf-label { color: rgba(255,255,255,0.7); }
+.qf-cell.verdict .qf-value { color: #fff; font-size: 20px; line-height: 1.2; }
+.qf-cell.verdict .qf-sub { color: rgba(255,255,255,0.85); }
+
+main {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 60px;
+  padding: 60px 32px;
+}
+
+nav.toc {
+  position: sticky;
+  top: 40px;
+  align-self: start;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  height: fit-content;
+}
+nav.toc .toc-title {
+  font-family: var(--mono);
+  color: var(--light);
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule-light);
+}
+nav.toc ol { list-style: none; counter-reset: toc; }
+nav.toc li { counter-increment: toc; margin-bottom: 12px; line-height: 1.5; }
+nav.toc li::before {
+  content: counter(toc, decimal-leading-zero);
+  color: var(--light);
+  margin-right: 10px;
+}
+nav.toc a {
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+nav.toc a:hover { color: var(--accent-warn); }
+
+article { min-width: 0; max-width: var(--max-w); }
+article section { margin-bottom: 88px; scroll-margin-top: 40px; }
+article section:last-child { margin-bottom: 0; }
+
+.section-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-warn);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.section-num::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+article h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+article h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 40px 0 16px;
+}
+article h4 {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  margin: 28px 0 12px;
+}
+
+article p { margin-bottom: 16px; color: var(--ink-2); }
+article p:last-child { margin-bottom: 0; }
+article ul, article ol { margin: 12px 0 20px 22px; }
+article li { margin-bottom: 8px; color: var(--ink-2); }
+
+article a {
+  color: var(--accent-data);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  transition: color 0.15s;
+}
+article a:hover { color: var(--accent-warn); }
+
+strong { font-weight: 600; color: var(--ink); }
+
+.tldr {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  padding: 50px 44px 44px;
+  position: relative;
+  margin: 40px 0 60px;
+}
+.tldr::before {
+  content: "TL;DR";
+  position: absolute;
+  top: -14px;
+  left: 32px;
+  background: var(--accent-warn);
+  color: #fff;
+  padding: 6px 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+.tldr h3 {
+  color: var(--ink-on-inverse);
+  margin-top: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 26px;
+}
+.tldr p, .tldr li { color: var(--text-on-inverse); }
+.tldr ol { margin-left: 22px; counter-reset: tldr; list-style: none; }
+.tldr ol li {
+  counter-increment: tldr;
+  position: relative;
+  padding-left: 8px;
+  margin-bottom: 14px;
+}
+.tldr ol li::before {
+  content: counter(tldr) ".";
+  font-family: var(--mono);
+  color: var(--accent-yellow-on-inverse);
+  position: absolute;
+  left: -22px;
+  font-weight: 600;
+}
+.tldr strong { color: var(--ink-on-inverse); }
+.tldr a { color: var(--accent-yellow-on-inverse); }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin: 28px 0;
+}
+.stat {
+  padding: 22px 24px;
+  border-right: 1px solid var(--rule-light);
+}
+.stat:last-child { border-right: none; }
+.stat-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--light);
+  margin-bottom: 8px;
+}
+.stat-value {
+  font-family: var(--serif);
+  font-size: 36px;
+  line-height: 1.0;
+  color: var(--ink);
+  font-weight: 600;
+}
+.stat-value.warn { color: var(--accent-warn); }
+.stat-value.pos { color: var(--accent-pos); }
+.stat-value.data { color: var(--accent-data); }
+.stat-value .unit { font-size: 14px; color: var(--muted); margin-left: 4px; font-weight: 400; }
+.stat-note { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.4; }
+
+.metric-list {
+  border-top: 2px solid var(--rule);
+  border-bottom: 2px solid var(--rule);
+  margin: 24px 0;
+}
+.metric-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule-light);
+}
+.metric-row:last-child { border-bottom: none; }
+.metric-name { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: 17px; }
+.metric-src { display: block; font-family: var(--mono); font-size: 10px; color: var(--light); text-transform: uppercase; margin-top: 4px; letter-spacing: 0.06em; }
+.metric-value { font-family: var(--serif); font-size: 28px; color: var(--ink); font-weight: 600; }
+.metric-value .unit { font-size: 12px; color: var(--muted); margin-left: 3px; font-weight: 400; }
+.metric-value.warn { color: var(--accent-warn); }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin: 28px 0;
+}
+.two-col .card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  padding: 24px;
+}
+.card h4 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 0;
+}
+.card h4.pos::before, .card h4.warn::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  font-size: 10px;
+  text-align: center;
+  line-height: 14px;
+  color: #fff;
+  flex-shrink: 0;
+}
+.card h4.pos::before { content: "✓"; background: var(--accent-pos); }
+.card h4.warn::before { content: "!"; background: var(--accent-warn); }
+.card ul { margin: 8px 0 0 18px; }
+.card li { font-size: 14px; line-height: 1.55; }
+
+.quote {
+  border-left: 3px solid var(--accent-warn);
+  padding-left: 24px;
+  margin: 28px 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.quote .attr {
+  display: block;
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-top: 12px;
+  letter-spacing: 0.06em;
+}
+.quote .attr::before { content: "— "; }
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+}
+.compare-table thead th {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--light);
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 2px solid var(--rule);
+  font-weight: 600;
+}
+.compare-table tbody td {
+  padding: 14px 10px;
+  border-bottom: 1px solid var(--rule-light);
+  vertical-align: top;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+.compare-table tbody tr:last-child td { border-bottom: 1px solid var(--rule); }
+.compare-table .product-name {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+}
+.compare-table .tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  background: var(--accent-warn);
+  color: #fff;
+  padding: 2px 6px;
+  margin-left: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.compare-table .tag.pos { background: var(--accent-pos); }
+.compare-table .tag.data { background: var(--accent-data); }
+.compare-table tr.highlight td { background: rgba(167, 49, 33, 0.04); }
+[data-theme="dark"] .compare-table tr.highlight td { background: rgba(232, 122, 95, 0.08); }
+.compare-table .num { font-family: var(--mono); white-space: nowrap; }
+
+.callout {
+  border-left: 3px solid var(--rule);
+  background: var(--bg-paper);
+  padding: 20px 24px;
+  margin: 24px 0;
+}
+.callout.warn { border-color: var(--accent-warn); }
+.callout.data { border-color: var(--accent-data); }
+.callout.pos { border-color: var(--accent-pos); }
+.callout-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.callout.warn .callout-label { color: var(--accent-warn); }
+.callout.data .callout-label { color: var(--accent-data); }
+.callout.pos .callout-label { color: var(--accent-pos); }
+.callout p { margin: 0; }
+.callout-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.timeline { margin: 28px 0; }
+.timeline-row {
+  display: grid;
+  grid-template-columns: 100px 24px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding-bottom: 20px;
+  position: relative;
+}
+.timeline-row::after {
+  content: "";
+  position: absolute;
+  left: 110px;
+  top: 22px;
+  bottom: -8px;
+  width: 1px;
+  background: var(--rule-light);
+}
+.timeline-row:last-child::after { display: none; }
+.timeline-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: right;
+  padding-top: 4px;
+  letter-spacing: 0.06em;
+}
+.timeline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  background: var(--bg);
+  margin: 6px auto 0;
+  position: relative;
+  z-index: 1;
+}
+.timeline-dot.warn { border-color: var(--accent-warn); background: var(--accent-warn); }
+.timeline-dot.data { border-color: var(--accent-data); background: var(--accent-data); }
+.timeline-dot.pos { border-color: var(--accent-pos); background: var(--accent-pos); }
+.timeline-title { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: 16px; }
+.timeline-desc { font-size: 14px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+
+.path-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 28px 0;
+}
+.path {
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  border-top: 4px solid var(--rule);
+  padding: 28px 24px;
+}
+.path.a { border-top-color: var(--accent-pos); }
+.path.b { border-top-color: var(--accent-yellow); }
+.path.c { border-top-color: var(--accent-warn); }
+.path-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.path h4 { font-family: var(--serif); font-size: 20px; margin: 0 0 12px; text-transform: none; letter-spacing: normal; font-weight: 600; }
+.path p { font-size: 14px; color: var(--muted); margin-bottom: 14px; }
+.path ul { margin: 0 0 0 18px; }
+.path li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; }
+
+.verdict {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  padding: 60px 44px;
+  margin: 60px 0;
+}
+.verdict-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 14px;
+}
+.verdict h3 {
+  font-family: var(--serif);
+  font-size: 36px;
+  color: var(--ink-on-inverse);
+  margin: 0 0 22px;
+  line-height: 1.15;
+}
+.verdict p { color: var(--text-on-inverse); font-size: 16px; line-height: 1.65; }
+.verdict-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule-on-inverse);
+  margin-top: 40px;
+  border: 1px solid var(--rule-on-inverse);
+}
+.verdict-option {
+  background: var(--bg-inverse);
+  padding: 24px 22px;
+}
+.verdict-option .num {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 10px;
+}
+.verdict-option h4 {
+  font-family: var(--serif);
+  font-size: 20px;
+  color: var(--ink-on-inverse);
+  margin: 0 0 8px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.verdict-option p { font-size: 13px; color: var(--text-on-inverse); margin: 0; line-height: 1.5; }
+
+.divider-quote {
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--muted);
+  line-height: 1.4;
+  margin: 60px 0;
+  padding: 32px 0;
+  position: relative;
+}
+.divider-quote::before, .divider-quote::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 1px;
+  background: var(--rule);
+  margin: 0 auto;
+}
+.divider-quote::before { margin-bottom: 28px; }
+.divider-quote::after { margin-top: 28px; }
+
+footer.site {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  padding: 60px 32px 40px;
+  margin-top: 80px;
+}
+footer.site .inner { max-width: 1240px; margin: 0 auto; }
+footer.site h4 {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 18px;
+}
+footer.site .sources {
+  columns: 2;
+  column-gap: 40px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-on-inverse);
+  line-height: 1.7;
+  margin-bottom: 50px;
+}
+footer.site .sources a { color: var(--text-on-inverse); text-decoration: none; border-bottom: 1px solid var(--rule-on-inverse); }
+footer.site .sources a:hover { color: var(--accent-yellow-on-inverse); border-color: var(--accent-yellow-on-inverse); }
+footer.site .footer-meta {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+  border-top: 1px solid var(--rule-on-inverse);
+  padding-top: 30px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--faint-on-inverse);
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 1100px) {
+  .hero { grid-template-columns: 1fr; padding: 50px 24px 40px; }
+  .hero h1 { font-size: 56px; }
+  main { grid-template-columns: 1fr; padding: 40px 24px; gap: 0; }
+  nav.toc { position: relative; top: 0; margin-bottom: 40px; }
+  nav.toc ol { columns: 2; column-gap: 24px; }
+  .quickfacts { grid-template-columns: repeat(3, 1fr); }
+  .verdict-options { grid-template-columns: 1fr; }
+  .path-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .hero h1 { font-size: 40px; }
+  .quickfacts { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .stats { grid-template-columns: 1fr; }
+  .stat { border-right: none; border-bottom: 1px solid var(--rule-light); }
+  .compare-table { font-size: 12px; }
+  .compare-table thead th, .compare-table tbody td { padding: 10px 6px; }
+  footer.site .sources { columns: 1; }
+  footer.site .footer-meta { grid-template-columns: 1fr; }
+}
+
+@media print {
+  .metabar, nav.toc, #theme-toggle { display: none; }
+  body { background: white; color: #14110d; }
+  .quickfacts-wrap, .tldr, .verdict, footer.site { background: white; color: #14110d; border: 1px solid #14110d; }
+  .qf-cell, .verdict-option { background: white; color: #14110d; }
+  a { color: #14110d; text-decoration: none; }
+  section { page-break-inside: avoid; }
+  .hero { page-break-after: always; }
+}
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="切换主题">
+  <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+  <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+
+<div class="metabar">
+  <span>Ray Research · 物理 AI 投资全景</span>
+  <span class="right">v1.0 · 2026-05-16</span>
+</div>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">DEEP RESEARCH · PHYSICAL AI</div>
+    <h1>物理 AI 是<em>真泡沫</em>，<br>但泡沫之下藏着<em>真生意</em></h1>
+    <p class="subtitle">14 家海外基础模型、14 家中国本体厂、$14B 估值的脑、$39B 估值的身——一份给非职业投资者的"哪里能上车、哪里别去碰"决策手册。</p>
+  </div>
+  <dl class="hero-meta">
+    <dt>调研对象</dt><dd>Physical AI / 具身智能 全景</dd>
+    <dt>覆盖维度</dt><dd>基础模型 · 整机 · 资本 · 技术 · 风险 · 二级</dd>
+    <dt>子调研员</dt><dd>7 个并行 Agent</dd>
+    <dt>字数</dt><dd>约 18,000 字</dd>
+    <dt>读者画像</dt><dd>非职业投资者 / 想用看得见的标的参与赛道</dd>
+    <dt>方法论</dt><dd>多源并行 · 一手优先 · 营销话术与事实分离</dd>
+  </dl>
+</header>
+
+<div class="quickfacts-wrap">
+  <div class="quickfacts-inner">
+    <div class="eyebrow">Quick Facts</div>
+    <h2>Physical AI at a Glance</h2>
+    <div class="quickfacts">
+      <div class="qf-cell">
+        <div class="qf-label">2025 全球出货</div>
+        <div class="qf-value">~18,000<span class="unit">台</span></div>
+        <div class="qf-sub">IDC 口径，中国占 ~90%</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">海外估值之王</div>
+        <div class="qf-value">$39<span class="unit">B</span></div>
+        <div class="qf-sub">Figure AI · 18 个月 15×</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">中国估值之王</div>
+        <div class="qf-value">¥211<span class="unit">亿</span></div>
+        <div class="qf-sub">银河通用 ≈ $30B</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">最贵机器人大脑</div>
+        <div class="qf-value">$14<span class="unit">B</span></div>
+        <div class="qf-sub">Skild AI · 7 个月 3×</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">实际部署最深</div>
+        <div class="qf-value">1,250<span class="unit">小时</span></div>
+        <div class="qf-sub">Figure 02 @ BMW</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">最快 IPO</div>
+        <div class="qf-value">2026 H2</div>
+        <div class="qf-sub">宇树科技 · 科创板已受理</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">价格白菜价</div>
+        <div class="qf-value">$5,900</div>
+        <div class="qf-sub">宇树 R1 Air 起步价</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">资本涌入</div>
+        <div class="qf-value">$14<span class="unit">B</span></div>
+        <div class="qf-sub">2025 全球机器人 VC（高于 2021 峰值）</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">Optimus 跳票</div>
+        <div class="qf-value">5<span class="unit">次</span></div>
+        <div class="qf-sub">2021→2026 累计</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">A 股可买标的</div>
+        <div class="qf-value">19<span class="unit">支</span></div>
+        <div class="qf-sub">含本体 / 零件 / 算力</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">怀疑论旗手</div>
+        <div class="qf-value">4<span class="unit">位</span></div>
+        <div class="qf-sub">LeCun · Brooks · Marcus · Brin</div>
+      </div>
+      <div class="qf-cell verdict">
+        <div class="qf-label">Ray 的判断</div>
+        <div class="qf-value">卖铲 &gt; 押本体</div>
+        <div class="qf-sub">押 NVDA + 等宇树 IPO 比追 Figure 安全</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<nav class="toc">
+  <div class="toc-title">目录</div>
+  <ol>
+    <li><a href="#tldr">一页纸结论</a></li>
+    <li><a href="#layers">三层结构</a></li>
+    <li><a href="#overseas">海外玩家</a></li>
+    <li><a href="#china">中国玩家</a></li>
+    <li><a href="#capital">资本与观点</a></li>
+    <li><a href="#tech">技术路线</a></li>
+    <li><a href="#real">商业化现实</a></li>
+    <li><a href="#risks">风险与泡沫</a></li>
+    <li><a href="#assets">可投标的清单</a></li>
+    <li><a href="#decision">决策建议</a></li>
+  </ol>
+</nav>
+
+<article>
+
+<section id="tldr">
+  <div class="section-num">01 · 一页纸结论</div>
+  <h2>三句话讲清整个赛道</h2>
+
+  <div class="tldr">
+    <h3>物理 AI = 真趋势 + 真泡沫 + 真有标的可买，但不在你想买的地方。</h3>
+    <ol>
+      <li><strong>现状</strong>：2025 年全球出货约 1.8 万台机器人（中国占 90%），但产业层"真在干活"的只有 2 个组合——<strong>Figure 02 @ BMW</strong>（11 个月 1,250 小时）和 <strong>Agility Digit @ GXO</strong>（搬了 10 万箱）。其余多数是试点、演示或科研订单。</li>
+      <li><strong>关键张力</strong>：海外是"软件叙事 + 天价估值"（Figure $39B、Skild $14B），中国是"硬件量产 + 白菜价"（宇树 G1 $16K、R1 $5,900）。中国厂商一旦冲到海外，海外整机估值会有崩盘风险——剧本和当年光伏、电池、电动车一模一样。</li>
+      <li><strong>核心建议</strong>：个人投资者最务实的玩法是<strong>「卖铲」</strong>——买 NVDA / GOOGL 吃底层 beta，买 9880.HK 优必选拿"唯一已上市纯本体股"敞口，重点蹲 <strong>2026 H2 宇树科创板 IPO</strong>。Figure / 银河通用这类 $30-39B 估值的标的，能不能上车都不要追高。</li>
+    </ol>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">2025 头部估值斜率</div>
+      <div class="stat-value warn">15<span class="unit">×</span></div>
+      <div class="stat-note">Figure 18 个月从 $2.6B 涨到 $39B，比 metaverse 泡沫期更陡</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">中国 2025 出货量</div>
+      <div class="stat-value pos">10,668<span class="unit">台</span></div>
+      <div class="stat-note">宇树 5,500 + 智元 5,168 = 全球前二之和 &gt; 美国三强总和</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">真实"在工厂干活"案例</div>
+      <div class="stat-value data">2<span class="unit">个</span></div>
+      <div class="stat-note">Figure@BMW + Agility@GXO，其余 90% 仍在试点</div>
+    </div>
+  </div>
+</section>
+
+<section id="layers">
+  <div class="section-num">02 · 三层结构</div>
+  <h2>看懂物理 AI，先看清这<em>三层利润蛋糕</em></h2>
+  <p>整个赛道现在分成清晰的三层。每一层的竞争格局、确定性、估值水平都不一样——把它们当成"同一个东西"是最常见的误判。</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>层级</th>
+        <th>做什么</th>
+        <th>代表玩家</th>
+        <th>个人能买</th>
+        <th>确定性</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td><span class="product-name">底层 · 大脑</span><br><span class="tag pos">最确定</span></td>
+        <td>世界模型 + 仿真 + AI 算力平台。所有人都得用。</td>
+        <td>NVIDIA Cosmos / Google Gemini Robotics / World Labs / Skild AI / Physical Intelligence</td>
+        <td class="num">✅ NVDA / GOOGL</td>
+        <td>★★★★★</td>
+      </tr>
+      <tr>
+        <td><span class="product-name">中层 · 本体</span><br><span class="tag">最贵最热</span></td>
+        <td>造能行走、能抓东西的人形机器人 / 四足机器人。</td>
+        <td>Figure / Tesla Optimus / 1X / Agility / 宇树 / 智元 / 优必选 / 银河通用</td>
+        <td class="num">⚠️ 9880.HK + 等宇树 IPO</td>
+        <td>★★★（估值已透支）</td>
+      </tr>
+      <tr>
+        <td><span class="product-name">顶层 · 场景</span><br><span class="tag data">营收最实</span></td>
+        <td>把机器人塞到具体工作里——仓储、汽车装配、手术、清洁。</td>
+        <td>Waymo（robotaxi）/ Boston Dynamics / Intuitive Surgical / Symbotic / 优必选工厂方案</td>
+        <td class="num">✅ Symbotic / ISRG / 现代</td>
+        <td>★★★★（垂直应用已盈利）</td>
+      </tr>
+      <tr>
+        <td><span class="product-name">侧链 · 卖铲</span><br><span class="tag pos">最朴素</span></td>
+        <td>给机器人造零件：减速器、丝杠、电机、传感器、灵巧手。</td>
+        <td>绿的谐波 / 双环传动 / 汇川 / 三花 / 拓普 / 兆威</td>
+        <td class="num">✅ A 股直接可买</td>
+        <td>★★★★（但估值已被炒过头）</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout data">
+    <div class="callout-label">Ray 的关键判断</div>
+    <p class="callout-quote">底层和卖铲层在赚真钱，中层在赚估值。买中层等于买预期；买底层和卖铲层等于买现金流。</p>
+  </div>
+</section>
+
+<section id="overseas">
+  <div class="section-num">03 · 海外玩家</div>
+  <h2>$39B、$14B、$5.6B——海外这局赌的是<em>模型</em>，不是机器</h2>
+
+  <h3>基础模型层（赌"机器人界的 Android"）</h3>
+  <table class="compare-table">
+    <thead>
+      <tr><th>公司</th><th>累计融资</th><th>最新估值</th><th>路线</th><th>关键事实</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="product-name">Physical Intelligence (π)</td>
+        <td class="num">$1.07B</td>
+        <td class="num">$5.6B → $11B（谈判中）</td>
+        <td>VLA · 开源 π0</td>
+        <td>团队最强：Sergey Levine + Chelsea Finn + DeepMind 机器人组半个搬过来。CapitalG（Alphabet）+ Lux + Sequoia 领投。</td>
+      </tr>
+      <tr class="highlight">
+        <td class="product-name">Skild AI</td>
+        <td class="num">&gt; $2B</td>
+        <td class="num">$14B</td>
+        <td>跨形态 VLA</td>
+        <td>2026/01 SoftBank + NVIDIA 联合领投 $1.4B Series C，7 个月估值 3×。CMU 教授系。</td>
+      </tr>
+      <tr>
+        <td class="product-name">Wayve</td>
+        <td class="num">~$2.75B</td>
+        <td class="num">$8.6B</td>
+        <td>自动驾驶世界模型 GAIA-3</td>
+        <td>英国伦敦，Uber + 日产合作，2026 年底东京试 robotaxi。AMD + Arm + Qualcomm 追投。</td>
+      </tr>
+      <tr>
+        <td class="product-name">World Labs（李飞飞）</td>
+        <td class="num">~$1.23B</td>
+        <td class="num">~$5B</td>
+        <td>3D 世界生成</td>
+        <td>2026/02 Autodesk 战略入股 $200M，与 CAD 工作流绑定。首款产品 Marble 已开放。</td>
+      </tr>
+      <tr>
+        <td class="product-name">FieldAI</td>
+        <td class="num">~$405M</td>
+        <td class="num">$2B</td>
+        <td>Physics-first 基础模型</td>
+        <td>洛杉矶，创始人 Ali Agha 来自 NASA JPL。Khosla + Bezos + Temasek。</td>
+      </tr>
+      <tr>
+        <td class="product-name">Generalist AI</td>
+        <td class="num">~$140M</td>
+        <td>未披露</td>
+        <td>VLA</td>
+        <td>三个创始人都是 RT-2 / PaLM-E 原班人马。NVIDIA + boldstart + Bezos 投。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>整机层（赌"硬件做出来 + AI 装进去"）</h3>
+  <table class="compare-table">
+    <thead>
+      <tr><th>公司</th><th>累计融资</th><th>最新估值</th><th>商业订单</th><th>近况</th></tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="product-name">Figure AI <span class="tag">$39B</span></td>
+        <td class="num">~$1.9B</td>
+        <td class="num">$39B（2025/09 Series C）</td>
+        <td>BMW Spartanburg 11 个月真实部署</td>
+        <td>2025/11 安全主管 Robert Gruendel 联邦诉讼曝出"力超过击碎头骨 2 倍"，Series C 前为融资砍掉 E-Stop 认证项目。</td>
+      </tr>
+      <tr>
+        <td class="product-name">Apptronik (Apollo)</td>
+        <td class="num">~$935M</td>
+        <td class="num">$5B</td>
+        <td>Mercedes-Benz · GXO · Jabil</td>
+        <td>与 Google DeepMind 独家合作，把 Gemini Robotics 大模型装进 Apollo。2026/02 Series B 估值 $5B。</td>
+      </tr>
+      <tr>
+        <td class="product-name">Agility Robotics (Digit)</td>
+        <td class="num">~$641M</td>
+        <td class="num">$2.12B</td>
+        <td>GXO 已搬 10 万+ 箱 · Amazon · Schaeffler</td>
+        <td>业内首个有偿 RaaS 合同。CEO Peggy Johnson 有 IPO 履历——业内最可能近期 IPO 的标的。</td>
+      </tr>
+      <tr>
+        <td class="product-name">1X Technologies (Neo)</td>
+        <td class="num">~$135M（在谈 $1B）</td>
+        <td class="num">~$10B 目标</td>
+        <td>EQT 10K 台 LOI · Amazon 仓储</td>
+        <td>OpenAI 早期投资。$20K 一次性 / $499/月订阅。⚠️ WSJ 实测家用版需远程人工"附身"操作。</td>
+      </tr>
+      <tr>
+        <td class="product-name">Tesla Optimus</td>
+        <td>—</td>
+        <td>含于 TSLA 市值</td>
+        <td>自家工厂内部测试</td>
+        <td>Musk Q4 2025 财报亲口承认："is doing no useful work"。2025 原目标 5,000-10,000 台，实际仅交付约 150 台。</td>
+      </tr>
+      <tr>
+        <td class="product-name">Boston Dynamics</td>
+        <td>—</td>
+        <td>含于现代汽车</td>
+        <td>现代汽车订购"数万台"</td>
+        <td>1992 创立，30 年没盈利。2024 年净亏 ¥5,542 亿韩元（≈ $4 亿）。计划 2027-2028 NASDAQ 分拆 IPO。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <div class="callout-label">Figure 估值的水分警告</div>
+    <p>Figure 估值 2024/02 $2.6B → 2025/09 $39B，<strong>18 个月 15×</strong>。期间核心商业进展仅 BMW 1 个试点。Figure 同时向二级市场 broker（Forge / Hiive）发律师函禁止未授权交易——业内典型的"晚期估值不实"信号。</p>
+  </div>
+</section>
+
+<section id="china">
+  <div class="section-num">04 · 中国玩家</div>
+  <h2>中国这局赌的是<em>量产 + 白菜价</em>——估值更狂、出货更猛</h2>
+
+  <h3>"百亿俱乐部"6 强（一级市场视角）</h3>
+  <table class="compare-table">
+    <thead>
+      <tr><th>排名</th><th>公司</th><th>估值</th><th>核心人 + 背景</th><th>关键事件</th></tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td>#1</td>
+        <td class="product-name">银河通用 Galbot <span class="tag">最贵</span></td>
+        <td class="num">¥211 亿（约 $30B）</td>
+        <td>王鹤（清华本科 + 斯坦福 PhD）北大具身实验室</td>
+        <td>2026/03 国家大基金三期领投 ¥25 亿，2026/02 习近平在亦庄会见王鹤。</td>
+      </tr>
+      <tr>
+        <td>#2</td>
+        <td class="product-name">星海图 Galaxea</td>
+        <td class="num">¥200 亿（约 $27.6B）</td>
+        <td>高继扬（清华+USC）+ 赵行（浙大+MIT）</td>
+        <td>2026 年 49 天估值翻倍：B 轮 ¥10 亿 → B+ 轮 ¥20 亿。今日资本 + 美团领投。</td>
+      </tr>
+      <tr>
+        <td>#3</td>
+        <td class="product-name">它石智航 TARS</td>
+        <td class="num">¥180 亿（约 $25B）</td>
+        <td>陈亦伦（华为自动驾驶前 CTO）</td>
+        <td>2026/04 Pre-A 轮 <strong>$4.55 亿</strong>——创中国具身智能单轮纪录。高瓴 + 红杉 + 美团联合领投。</td>
+      </tr>
+      <tr>
+        <td>#4</td>
+        <td class="product-name">智元 AgiBot</td>
+        <td class="num">¥150 亿（约 $20.7B）</td>
+        <td>稚晖君（前华为天才少年）</td>
+        <td>2025 出货 5,168 台（Omdia 第二）。2025/07 收购 A 股 <strong>上纬新材 688585</strong> 29.99% 股份，明确承诺 36 个月不借壳。</td>
+      </tr>
+      <tr class="highlight">
+        <td>#5</td>
+        <td class="product-name">宇树科技 Unitree <span class="tag pos">最接近 IPO</span></td>
+        <td class="num">¥127 亿（约 $18B+）</td>
+        <td>王兴兴（上海大学硕士）</td>
+        <td><strong>2026/03/20 科创板已受理招股书</strong>，拟募资 ¥42 亿。2025 营收 ¥17.08 亿（+335%），扣非净利 ¥6 亿（+674%）——少有的真盈利。</td>
+      </tr>
+      <tr>
+        <td>#6</td>
+        <td class="product-name">千寻智能 Spirit AI</td>
+        <td class="num">¥100 亿+（约 $13.8B）</td>
+        <td>韩峰涛（珞石机器人前联创）</td>
+        <td>2026/05 <strong>华为哈勃首次入股机器人公司</strong>——选了千寻。Spirit v1.5 是首个性能超 Pi 0.5 的中国开源模型。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>三大巨头入局对比</h3>
+  <div class="two-col">
+    <div class="card">
+      <h4 class="pos">小米 · 重投自研</h4>
+      <ul>
+        <li>CyberOne 第三代 2025-10 完成著作权登记</li>
+        <li>亦庄工厂上岗（地板压铸拧紧）</li>
+        <li>目标 2026 年部署 2,000+ 台</li>
+        <li>未来 3 年 AI 投入 ¥600 亿</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 class="pos">华为 · 平台 + 投资</h4>
+      <ul>
+        <li>不做本体，做"教培"——盘古具身大模型</li>
+        <li>哈勃入股千寻（首次）+ 优必选战略合作</li>
+        <li>签约乐聚、兆威、埃夫特等 16 家产业链</li>
+        <li>深圳前海"全球具身智能产业创新中心"</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 class="pos">比亚迪 · 自研 + 合作</h4>
+      <ul>
+        <li>十五事业部"尧舜禹"项目，已迭代 6 代</li>
+        <li>2012 年天使投资优必选</li>
+        <li>工厂已部署 150 台自研机器人</li>
+        <li>目标 2025 年产线超 2,000 台</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 class="warn">美团 · 重金押注（覆盖最广）</h4>
+      <ul>
+        <li>三年投 30+ 家，"具身智能第一投资人"</li>
+        <li>持有银河通用、它石智航、星海图、自变量</li>
+        <li>智元第二大股东，宇树 C 轮入股</li>
+        <li>龙珠 + 战投双线</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout data">
+    <div class="callout-label">中国玩家最重要的一件事</div>
+    <p class="callout-quote">宇树 2025 营收 ¥17 亿（+335%）、扣非净利 ¥6 亿（+674%）——这是整个全球人形赛道里<strong>唯一已经赚钱的整机公司</strong>。Figure、Physical Intelligence、Skild AI 估值再贵，营收数据全部没披露或基本为零。</p>
+  </div>
+</section>
+
+<section id="capital">
+  <div class="section-num">05 · 资本与观点</div>
+  <h2>聪明钱去了哪里，怀疑论者又在说什么</h2>
+
+  <h3>2025-2026 顶级 VC 矩阵</h3>
+  <table class="compare-table">
+    <thead><tr><th>机构</th><th>核心论点</th><th>代表持仓</th></tr></thead>
+    <tbody>
+      <tr><td class="product-name">a16z</td><td>"American Dynamism"——美国必须重建制造业</td><td>Anduril 领投 $2.5B、Waymo、Skild AI 周边</td></tr>
+      <tr><td class="product-name">Sequoia US</td><td>押"机器人大脑"模型层</td><td>Physical Intelligence 领投、Factory</td></tr>
+      <tr><td class="product-name">SoftBank Vision Fund</td><td>孙正义重启 humanoid 押注</td><td>Skild $1.4B Series C 领投、Agility $400M、收购 ABB 机器人 $5.375B</td></tr>
+      <tr><td class="product-name">Khosla Ventures</td><td>"humanoid 市场 20 年大于汽车业"</td><td>FieldAI、Skild 跟投、OpenAI 早期</td></tr>
+      <tr><td class="product-name">Founders Fund</td><td>国家利益叙事 + 防务</td><td>Anduril 领投 $1B（史上最大单笔）</td></tr>
+      <tr><td class="product-name">红杉中国 HongShan</td><td>中国头部全覆盖</td><td>宇树 7.13%、智元、星海图</td></tr>
+      <tr class="highlight"><td class="product-name">美团（王兴）</td><td>"具身智能第一投资人"</td><td>3 年投 30+ 家，宇树最大外部股东 8.65%</td></tr>
+      <tr><td class="product-name">腾讯</td><td>全产业链占位</td><td>11 家：智元（加仓至 2.7%）、优必选、乐聚、云迹...</td></tr>
+    </tbody>
+  </table>
+
+  <h3>过去 12 个月 Top 融资事件</h3>
+  <div class="timeline">
+    <div class="timeline-row">
+      <div class="timeline-date">2025/06</div><div class="timeline-dot data"></div>
+      <div><div class="timeline-title">Anduril Series G $2.5B @ $30.5B</div><div class="timeline-desc">Founders Fund $1B 史上最大单笔。国防 + 机器人。</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2025/09</div><div class="timeline-dot warn"></div>
+      <div><div class="timeline-title">Figure AI Series C 超 $1B @ $39B</div><div class="timeline-desc">Parkway VC 领投。18 个月估值 15×。</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2025/11</div><div class="timeline-dot warn"></div>
+      <div><div class="timeline-title">Figure 安全吹哨人诉讼</div><div class="timeline-desc">前安全主管 Robert Gruendel 联邦起诉：力超过击碎头骨 2 倍。</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2025/11</div><div class="timeline-dot"></div>
+      <div><div class="timeline-title">Physical Intelligence Series B $600M @ $5.6B</div><div class="timeline-desc">CapitalG（Alphabet）领投。</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2026/01</div><div class="timeline-dot"></div>
+      <div><div class="timeline-title">Skild AI Series C $1.4B @ $14B</div><div class="timeline-desc">SoftBank 领投，NVIDIA 跟投。7 个月估值 3×。</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2026/02</div><div class="timeline-dot data"></div>
+      <div><div class="timeline-title">Waymo 战略融资 $16B @ $126B</div><div class="timeline-desc">Alphabet 出 $13B。年化 1500 万次乘车——这才是真正"AI 在物理世界做出钱的事"。</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2026/02</div><div class="timeline-dot"></div>
+      <div><div class="timeline-title">Apptronik Series B $520M @ $5B</div><div class="timeline-desc">Google 持续加注，绑 Gemini Robotics。</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2026/03</div><div class="timeline-dot pos"></div>
+      <div><div class="timeline-title">宇树科技递交科创板招股书</div><div class="timeline-desc">拟募资 ¥42 亿，2025 营收 ¥17 亿、扣非净利 ¥6 亿。预期 2026 H2 挂牌。</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2026/04</div><div class="timeline-dot"></div>
+      <div><div class="timeline-title">它石智航 Pre-A $4.55 亿（约 ¥33 亿）</div><div class="timeline-desc">中国具身智能单轮纪录。高瓴 + 红杉 + 美团。</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2026/05</div><div class="timeline-dot"></div>
+      <div><div class="timeline-title">华为哈勃首次入股机器人公司：千寻智能</div><div class="timeline-desc">华为押"卖铲 + 大脑"，不押本体。</div></div>
+    </div>
+  </div>
+
+  <h3>关键人物原话</h3>
+
+  <div class="quote">
+    I predict that this will likely be the first multi-trillion-dollar robotics industry. The truly huge industry is the one that combines information and the real world, with a value of $90 trillion.
+    <span class="attr">黄仁勋 · NVIDIA CEO · CES 2025 + GTC 2025</span>
+  </div>
+
+  <div class="quote">
+    Robotics will have a ChatGPT moment in the next two to three years... The humanoid robotics business will be larger than the autos business in the next 20 years.
+    <span class="attr">Vinod Khosla · Khosla Ventures · 2025</span>
+  </div>
+
+  <div class="quote">
+    What we should do is lean hard into the manufacturing jobs of the future... If you don't do this, you're living in a world of Chinese robots everywhere.
+    <span class="attr">Marc Andreessen · a16z · Reagan National Economic Forum 2025</span>
+  </div>
+
+  <div class="quote">
+    我们正在批量退出人形机器人公司——看不到商业化路径，共识又高度聚焦，一般就是退出的时候了。CEO 说的客户都是他们自己想象出来的客户。
+    <span class="attr">朱啸虎 · 金沙江创投 · 2025-03</span>
+  </div>
+
+  <div class="quote">
+    朱老板别闹。机器人领域蓬勃发展，大赛道百花齐放，过程中有点泡沫也非常正常。
+    <span class="attr">张颖 · 经纬创投 · 朋友圈回怼 · 2025-03</span>
+  </div>
+</section>
+
+<div class="divider-quote">
+"现在是 demo 满天飞、估值满天飞、但工厂里仍然只有人在干活的阶段。"
+</div>
+
+<section id="tech">
+  <div class="section-num">06 · 技术路线</div>
+  <h2>五条<em>技术路线</em>之争——你押的不是公司，是教法</h2>
+  <p>所谓"技术路线"就是"教机器人学会干活"的不同方法。每家公司选的"教法"不同，本质是在赌——哪种教法能让机器人最快学会做有用的事。</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr><th>路线</th><th>原理（白话）</th><th>代表玩家</th><th>优势</th><th>局限</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="product-name">VLA 模型</td>
+        <td>看图 + 听话 + 动手三合一大模型。给摄像头 + 一句话，直接输出动作</td>
+        <td>Google RT-2 / π 系列 / Figure Helix</td>
+        <td>可跨形态通用、能听懂自然语言</td>
+        <td>需海量真实数据、推理慢</td>
+      </tr>
+      <tr>
+        <td class="product-name">世界模型</td>
+        <td>让 AI 在脑子里预演"如果我这么动，下一秒会怎样"</td>
+        <td>NVIDIA Cosmos / Wayve GAIA / Genie 3</td>
+        <td>极大降低真机数据需求、生成无限合成数据</td>
+        <td>生成的"想象"和真实物理偏差大</td>
+      </tr>
+      <tr>
+        <td class="product-name">端到端模仿</td>
+        <td>看人遥操作几百遍，AI 直接学映射</td>
+        <td>Tesla Optimus / 1X Neo / Figure 02</td>
+        <td>数据驱动、迭代快</td>
+        <td>遥操作数据贵（$118-200/小时）、泛化弱</td>
+      </tr>
+      <tr>
+        <td class="product-name">RL + Sim2Real</td>
+        <td>仿真器里反复试错，再迁移到真机</td>
+        <td>Boston Dynamics Atlas / Skild AI / 宇树运动控制</td>
+        <td>训练快、不消耗真硬件</td>
+        <td>仿真和现实差距（Sim2Real Gap）</td>
+      </tr>
+      <tr>
+        <td class="product-name">模块化（传统）</td>
+        <td>感知 / 规划 / 控制分模块拼装</td>
+        <td>优必选 / ABB / Fanuc / 银河通用</td>
+        <td>确定场景可靠性高</td>
+        <td>泛化差、扩展贵</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout pos">
+    <div class="callout-label">行业共识趋势</div>
+    <p>正在从"模块化"向 <strong>"VLA + 世界模型 + 仿真 RL"</strong> 融合的方向收敛。NVIDIA 在做基础设施（Isaac Sim + Cosmos）让所有人共用，Physical Intelligence 在做"机器人的安卓系统"卖给硬件厂商。这是 2026 年最确定的一条投资主线。</p>
+  </div>
+</section>
+
+<section id="real">
+  <div class="section-num">07 · 商业化现实</div>
+  <h2>"5,000 台订单" ≠ "5,000 台在干活"</h2>
+  <p>这是这次调研里最重要的一节——区分<strong>营销数字</strong>和<strong>生产事实</strong>。</p>
+
+  <h3>真实在持续运行的部署案例</h3>
+
+  <div class="metric-list">
+    <div class="metric-row">
+      <div>
+        <div class="metric-name">Figure 02 @ BMW Spartanburg</div>
+        <span class="metric-src">来源：Figure 官方 + BMW Press Release</span>
+      </div>
+      <div class="metric-value">1,250<span class="unit">小时</span></div>
+    </div>
+    <div class="metric-row">
+      <div>
+        <div class="metric-name">Figure 02 累计搬运板金</div>
+        <span class="metric-src">11 个月，5 天/周 × 10 小时/班</span>
+      </div>
+      <div class="metric-value">90,000<span class="unit">+ 件</span></div>
+    </div>
+    <div class="metric-row">
+      <div>
+        <div class="metric-name">Agility Digit @ GXO Flowery Branch</div>
+        <span class="metric-src">业内首个有偿 RaaS 合同</span>
+      </div>
+      <div class="metric-value">100,000<span class="unit">+ 箱</span></div>
+    </div>
+    <div class="metric-row">
+      <div>
+        <div class="metric-name">智元 2025 出货量（Omdia 数据）</div>
+        <span class="metric-src">注：含数据采集自用 + 科研 + 展示</span>
+      </div>
+      <div class="metric-value">5,168<span class="unit">台</span></div>
+    </div>
+    <div class="metric-row">
+      <div>
+        <div class="metric-name">宇树 2025 出货量（全球第一）</div>
+        <span class="metric-src">注：主流买家为科研、教育、展示</span>
+      </div>
+      <div class="metric-value">5,500<span class="unit">+ 台</span></div>
+    </div>
+    <div class="metric-row">
+      <div>
+        <div class="metric-name">Tesla Optimus 2025 实际交付</div>
+        <span class="metric-src">原目标 5,000-10,000 台</span>
+      </div>
+      <div class="metric-value warn">~150<span class="unit">台</span></div>
+    </div>
+  </div>
+
+  <h3>"营销 vs 现实"差距清单</h3>
+  <div class="two-col">
+    <div class="card">
+      <h4 class="warn">营销叙事</h4>
+      <ul>
+        <li>Optimus "2025 量产 10,000 台"</li>
+        <li>"5,000 台订单已签约"</li>
+        <li>"全球 90% 出货量在中国"</li>
+        <li>"VLA 模型 demo 灵巧抓苹果"</li>
+        <li>"1X Neo 家用机器人 $20K"</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 class="pos">现实</h4>
+      <ul>
+        <li>实际仅交付 ~150 台，Musk 自承"没干有用的活"</li>
+        <li>"5,000 台" ≠ "5,000 台在工厂干活"，多数仍是数据采集自用</li>
+        <li>大量是科研教育级，价值量与 Figure 进 BMW 不可比</li>
+        <li>抓勺子 / 螺丝刀等不规则物体成功率只有约 30%</li>
+        <li>WSJ 实测发现 Neo 在家中几乎所有任务需远程人工"附身"操作</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>ROI 拐点已被部分场景验证</h3>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">汽车制造</div>
+      <div class="stat-value pos">&lt; 2<span class="unit">年</span></div>
+      <div class="stat-note">单台 $130K 替代 0.5 FTE。Figure @ BMW 已验证</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">仓储物流</div>
+      <div class="stat-value pos">18-24<span class="unit">月</span></div>
+      <div class="stat-note">Agility @ GXO 已签 RaaS 合同</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">家用 / 低强度</div>
+      <div class="stat-value warn">算不过</div>
+      <div class="stat-note">家用机器人坟场已经够大了：Jibo / Anki / Astro for Business...</div>
+    </div>
+  </div>
+</section>
+
+<section id="risks">
+  <div class="section-num">08 · 风险与泡沫</div>
+  <h2>四位行业元老的"<em>这是泡沫</em>"判决书</h2>
+
+  <div class="quote">
+    (Those companies) have no idea how to make those robots smart enough to be generally useful... Your domestic robot — there is a bunch of breakthroughs that need to arrive in AI before that's possible.
+    <span class="attr">Yann LeCun · Meta 首席 AI 科学家 · MIT 演讲 2025-10</span>
+  </div>
+
+  <div class="quote">
+    We are in a humanoid robot bubble. Using human videos to train robots for dexterous manipulation is pure fantasy thinking.
+    <span class="attr">Rodney Brooks · iRobot 联合创始人 · TechCrunch 专访 2025-09</span>
+  </div>
+
+  <div class="quote">
+    Humanoid robots pose a whole set of challenges that lie well beyond our current grasp. What makes a robot a robot is autonomy.
+    <span class="attr">Gary Marcus · NYU 名誉教授 · Scientific American 2025</span>
+  </div>
+
+  <div class="quote">
+    I might be an outlier — I am not bullish on humanoid robots.
+    <span class="attr">Sergey Brin · Google 联合创始人 · Google I/O 2025</span>
+  </div>
+
+  <h3>泡沫信号清单</h3>
+  <div class="callout warn">
+    <div class="callout-label">估值与收入的天文学错位</div>
+    <p>Figure 估值 <strong>$39B</strong>，公开 ARR 业内估计低于 $50M → 估值/收入 <strong>800×+</strong>。Physical Intelligence 估值 <strong>$5.6B</strong>，<strong>零商业化收入</strong>。Tesla Optimus 隐含估值 $1T+，工厂"零有用工作"。</p>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">公司在封堵二级市场（典型晚期估值不实信号）</div>
+    <p>Figure AI 2025-04 向 Forge / Hiive / EquityZen 发律师函禁止未授权交易。原因是早期员工 / 投资人愿意以<strong>低于 $39B</strong> 的价格出售，会"打脸"新一轮定价。</p>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">Figure 安全诉讼（业内第一个先例）</div>
+    <p>2025-11-21 前安全主管 Robert Gruendel 联邦起诉：Figure 02 内部"冲击测试"产生的力 <strong>超过击碎成人头骨所需 2 倍以上</strong>，机器人故障曾在不锈钢冰箱门留下 3/4 英寸深凹痕。公司为 Series C 融资 <strong>"砍掉了安全计划，取消 E-Stop 认证"</strong>。</p>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">Tesla Optimus demo 多次被证 teleoperated</div>
+    <p>2024-11-29 工程师 Milan Kovac 承认"to some extent assisted"。2025-12 Miami 经销店翻车视频里 Optimus 摔倒时双手做 <strong>摘 VR 头显的动作</strong>——但机器人头上根本没东西，说明背后有真人在用动作捕捉操控。</p>
+  </div>
+
+  <h3>跳票冠军：Tesla Optimus 时间线</h3>
+  <div class="timeline">
+    <div class="timeline-row">
+      <div class="timeline-date">2021/08</div><div class="timeline-dot warn"></div>
+      <div><div class="timeline-title">承诺：2023 量产就绪</div><div class="timeline-desc">AI Day 首次官宣</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2024/07</div><div class="timeline-dot warn"></div>
+      <div><div class="timeline-title">承诺：2026 卖给其他公司</div><div class="timeline-desc">推迟</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2025/01</div><div class="timeline-dot warn"></div>
+      <div><div class="timeline-title">承诺：今年造 10,000 台</div><div class="timeline-desc">实际只有 ~150 台</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2025/12</div><div class="timeline-dot warn"></div>
+      <div><div class="timeline-title">Gen 3 推迟到 2026 下半年</div><div class="timeline-desc">原定 Q1 2026 揭幕</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2026/Q4 财报</div><div class="timeline-dot warn"></div>
+      <div><div class="timeline-title">Musk 亲口："工厂里 0 有用工作"</div><div class="timeline-desc">"still in R&amp;D phase"</div></div>
+    </div>
+  </div>
+
+  <h3>历史教训：家用机器人坟场</h3>
+  <div class="callout">
+    <div class="callout-label">已经死亡的家用机器人</div>
+    <p>Jibo（2018）· Anki Cozmo / Vector（2019 破产）· Buddy（破产）· Kuri（2018）· <strong>Amazon Astro for Business（2024-07 停掉，仅一年）</strong>· Honda Asimo（2018 退役）· SoftBank Pepper（2021 停产，10 年仅造 27,000 台，三年合约续约率仅 15%）· Rethink Robotics（2018 倒闭，CEO 就是现在最严厉的怀疑论者 Rodney Brooks）。</p>
+  </div>
+</section>
+
+<section id="assets">
+  <div class="section-num">09 · 可投标的清单</div>
+  <h2>个人投资者真正能买到的——清单 + 估值 + 警告</h2>
+  <p>这是这次调研里<strong>最有操作价值的一节</strong>。所有可投标的按市场分类，含 PE / 估值 / 52 周波动 / 风险提示。</p>
+
+  <h3>立即可买（已上市）</h3>
+  <table class="compare-table">
+    <thead>
+      <tr><th>代码</th><th>公司</th><th>市场</th><th>市值</th><th>PE</th><th>52 周振幅</th><th>机器人纯度</th></tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="num"><strong>NVDA</strong></td>
+        <td class="product-name">NVIDIA</td>
+        <td>NASDAQ</td>
+        <td class="num">~$4T</td>
+        <td class="num">45</td>
+        <td class="num">129 - 237</td>
+        <td>"卖铲"——Cosmos / GR00T / Isaac，所有机器人都用它</td>
+      </tr>
+      <tr>
+        <td class="num"><strong>GOOGL</strong></td>
+        <td class="product-name">Alphabet</td>
+        <td>NASDAQ</td>
+        <td class="num">~$4.8T</td>
+        <td class="num">30</td>
+        <td class="num">162 - 404</td>
+        <td>Gemini Robotics + 独家投 Apptronik</td>
+      </tr>
+      <tr>
+        <td class="num"><strong>TSLA</strong></td>
+        <td class="product-name">特斯拉</td>
+        <td>NASDAQ</td>
+        <td class="num">~$1.6T</td>
+        <td class="num">410</td>
+        <td class="num">273 - 499</td>
+        <td>Optimus 是估值故事一部分，现金流贡献为零</td>
+      </tr>
+      <tr class="highlight">
+        <td class="num"><strong>9880.HK</strong></td>
+        <td class="product-name">优必选</td>
+        <td>港股</td>
+        <td class="num">HK$556 亿（~$71 亿）</td>
+        <td class="num">亏损</td>
+        <td class="num">74 - 161</td>
+        <td>★★★★★ <strong>唯一已上市的纯人形股</strong>；2025 订单 ¥14 亿但仍亏 ¥7.9 亿</td>
+      </tr>
+      <tr>
+        <td class="num">005380.KS</td>
+        <td class="product-name">现代汽车</td>
+        <td>韩交所</td>
+        <td class="num">~$480 亿</td>
+        <td>—</td>
+        <td class="num">179K - 730K KRW</td>
+        <td>持有 Boston Dynamics 80%（计划 2027-28 NASDAQ 分拆）</td>
+      </tr>
+      <tr>
+        <td class="num">SYM</td>
+        <td class="product-name">Symbotic</td>
+        <td>NASDAQ</td>
+        <td class="num">$28.5 亿</td>
+        <td class="num">亏损</td>
+        <td class="num">26 - 88</td>
+        <td>仓储机器人，⚠️ <strong>Walmart 占营收 84%</strong>（客户集中度极高）</td>
+      </tr>
+      <tr>
+        <td class="num">BOTZ / ROBO</td>
+        <td class="product-name">机器人 ETF</td>
+        <td>NASDAQ / ARCA</td>
+        <td class="num">~$40-44 亿</td>
+        <td>—</td>
+        <td>—</td>
+        <td>分散持仓，2025 TR ~+34%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>A 股零部件（"卖铲股"）</h3>
+  <table class="compare-table">
+    <thead>
+      <tr><th>代码</th><th>公司</th><th>主营</th><th>PE</th><th>纯度评估</th></tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="num">688017</td>
+        <td class="product-name">绿的谐波</td>
+        <td>谐波减速器全球龙二</td>
+        <td class="num warn">409</td>
+        <td>★★★★★ 纯度最高，但券商目标价 258 元低于现价 305 → <strong>已透支</strong></td>
+      </tr>
+      <tr>
+        <td class="num">002472</td>
+        <td class="product-name">双环传动</td>
+        <td>主业齿轮 + RV 减速器</td>
+        <td class="num">28</td>
+        <td>★★★ 子公司环动科技拟分拆科创板</td>
+      </tr>
+      <tr>
+        <td class="num">300124</td>
+        <td class="product-name">汇川技术</td>
+        <td>伺服龙头，国内市占率 32%</td>
+        <td class="num">44</td>
+        <td>★★★★ 业务真实，估值合理</td>
+      </tr>
+      <tr>
+        <td class="num">003021</td>
+        <td class="product-name">兆威机电</td>
+        <td>微型传动 + 灵巧手</td>
+        <td class="num warn">118</td>
+        <td>★★★ 估值高</td>
+      </tr>
+      <tr>
+        <td class="num">603662</td>
+        <td class="product-name">柯力传感</td>
+        <td>力传感器龙头</td>
+        <td class="num">59</td>
+        <td>★★★ 六维力是稀缺品类</td>
+      </tr>
+      <tr>
+        <td class="num">002979</td>
+        <td class="product-name">雷赛智能</td>
+        <td>步进 / 伺服电机</td>
+        <td class="num">78</td>
+        <td>★★★ 近 30 日 +68%，警惕</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>蹲点 IPO（2026 H2 - 2027）</h3>
+  <div class="path-grid">
+    <div class="path a">
+      <div class="path-num">机会 #1</div>
+      <h4>宇树科技</h4>
+      <p>上交所科创板，已受理</p>
+      <ul>
+        <li>2025 营收 ¥17 亿（+335%）</li>
+        <li>扣非净利 ¥6 亿（+674%）</li>
+        <li>少有的真盈利人形整机厂</li>
+        <li>预期市值 ~$10-15B 挂牌</li>
+        <li>A 股开户即可打新</li>
+      </ul>
+    </div>
+    <div class="path b">
+      <div class="path-num">机会 #2</div>
+      <h4>Agility Robotics</h4>
+      <p>美股 NASDAQ，CEO 有 IPO 履历</p>
+      <ul>
+        <li>GXO 已搬 10 万+ 箱（业内最实）</li>
+        <li>Series C $400M @ $2.12B（2025-03）</li>
+        <li>RaaS 月租 ~$3-4K</li>
+        <li>2026-2027 是大概率窗口</li>
+      </ul>
+    </div>
+    <div class="path c">
+      <div class="path-num">机会 #3</div>
+      <h4>Figure AI</h4>
+      <p>$39B，但市场预期 2027+</p>
+      <ul>
+        <li>Brett Adcock 多次表态不急</li>
+        <li>估值已严重透支</li>
+        <li>Forge / Hiive 二级流动性最好</li>
+        <li>⚠️ 安全诉讼是黑天鹅</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>远离清单（伪概念 + 高风险）</h3>
+  <div class="callout warn">
+    <div class="callout-label">不要为了"参与赛道"去买这些</div>
+    <p><strong>iRobot (IRBT)</strong> 市值仅 $1,484 万，已近退市 · <strong>上纬新材 688585</strong>（智元入主壳股，明确承诺 36 个月不借壳）· <strong>北特科技 603009</strong> PE 145 倍纯概念 · <strong>鸣志电器 603728</strong> PE 401 倍估值严重透支 · <strong>科大讯飞 002230</strong> 机器人不是核心收入。</p>
+  </div>
+</section>
+
+<section id="decision">
+  <div class="section-num">10 · 决策建议</div>
+  <h2>Ray 给你的<em>三条路径</em>——按风险偏好选</h2>
+
+  <div class="path-grid">
+    <div class="path a">
+      <div class="path-num">PATH A · 保守</div>
+      <h4>买"卖铲股" + ETF</h4>
+      <p>核心逻辑：不知道谁会赢，但所有人都得买铲子。</p>
+      <ul>
+        <li>30-40% <strong>NVDA</strong> · Cosmos 平台</li>
+        <li>20% <strong>GOOGL</strong> · Gemini Robotics</li>
+        <li>15-20% <strong>BOTZ / ROBO</strong> ETF 分散</li>
+        <li>10-15% <strong>9880.HK</strong> 优必选（敞口控制）</li>
+        <li>15% <strong>等宇树 IPO</strong> 打新仓位</li>
+      </ul>
+    </div>
+    <div class="path b">
+      <div class="path-num">PATH B · 平衡</div>
+      <h4>叠加 A 股零部件 + 中国 IPO</h4>
+      <p>核心逻辑：吃"中国卷"的红利，但只押真业绩的"卖铲股"。</p>
+      <ul>
+        <li>30% <strong>NVDA + GOOGL</strong> 海外底层</li>
+        <li>20% <strong>汇川 300124 + 双环 002472</strong> 业绩派</li>
+        <li>15% <strong>9880.HK</strong> 优必选</li>
+        <li>20% <strong>等宇树 + Agility IPO</strong> 打新</li>
+        <li>10% <strong>1810.HK 小米 + 1211.HK 比亚迪</strong> 机器人远期期权</li>
+        <li>5% 现金等回调</li>
+      </ul>
+    </div>
+    <div class="path c">
+      <div class="path-num">PATH C · 进取</div>
+      <h4>合资格投资者 · 加 Pre-IPO 二级</h4>
+      <p>核心逻辑：高净值 + 美国合资格身份，通过 Hiive / Forge 配置顶级团队。</p>
+      <ul>
+        <li>25% NVDA + GOOGL 海外底层</li>
+        <li>20% <strong>Physical Intelligence</strong> Hiive 二级（团队最强）</li>
+        <li>15% <strong>Wayve</strong> Forge 二级（GAIA 世界模型）</li>
+        <li>15% <strong>9880.HK + 宇树 IPO</strong> 中国双轨</li>
+        <li>15% <strong>A 股零部件</strong> 减速器 / 伺服</li>
+        <li>10% 现金 + 等"幻灭谷底"低位入</li>
+        <li>⚠️ <strong>不追 Figure 当前估值</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>三个一定要避开的坑</h3>
+  <ol>
+    <li><strong>不要追 Figure AI $39B</strong>——18 个月 15× 的估值斜率比 metaverse 泡沫期还陡，安全诉讼是黑天鹅。如果想要 Figure 敞口，可以等 IPO 后看市场定价。</li>
+    <li><strong>不要为了"机器人故事"买伪概念股</strong>——上纬新材（智元 36 个月不借壳）、北特科技（PE 145）、鸣志电器（PE 401）、三花智控 / 拓普集团（高盛实地调研未获大额订单）。题材股近 1-3 个月波动剧烈（52 周振幅 70-300%），追高风险极高。</li>
+    <li><strong>不要把"出货 5,000 台"当真实部署</strong>——智元 / 宇树的中国出货量里有相当部分是科研、教育、展示。真正"在工厂干活"的目前只有 Figure@BMW（40 台）和 Agility@GXO（持续运行）两个组合。</li>
+  </ol>
+
+  <div class="verdict">
+    <div class="verdict-title">FINAL VERDICT</div>
+    <h3>"<em>卖铲 &gt; 押本体</em>"——这是 2026 年最朴素也最锋利的判断。</h3>
+    <p>物理 AI 与 metaverse 的本质区别是：<strong>底层硬件供应链和工业需求真实存在</strong>（中国制造 + NVIDIA + 防务 + Waymo），但<strong>顶层估值和媒体热度已经显著领先实际营收</strong>。在大脑 / 整机层有明显泡沫风险（朱啸虎正确），但供应链层（减速器、丝杠、传感器）和"少数成年公司"（Anduril、Waymo、NVIDIA、优必选、宇树）有真实业绩兑现。</p>
+    <p>对你（Ray）这种非职业投资者来说，<strong>2026 H2 蹲点宇树 IPO + 已上市底层股 NVDA / GOOGL / 9880.HK</strong> 这个组合，能在不踩泡沫的前提下吃到赛道 70% 的 beta。其余的 30% 留着看市场怎么破灭——破灭后才是真正的好买点。</p>
+    <div class="verdict-options">
+      <div class="verdict-option">
+        <div class="num">最稳的路径</div>
+        <h4>NVDA + 9880.HK + 等宇树</h4>
+        <p>三个标的覆盖底层 / 已上市 / 即将上市三个时点。</p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">最有想象空间</div>
+        <h4>宇树 IPO 首日</h4>
+        <p>A 股科创板新股有"暴涨开局"模式，是 2026 年最确定性的物理 AI 事件。</p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">最该警惕的</div>
+        <h4>题材股近期暴涨</h4>
+        <p>雷赛 +68%、绿的谐波 PE 409——估值已透支 2027 年订单。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout pos">
+    <div class="callout-label">30 天行动 Checklist</div>
+    <ul>
+      <li><strong>本周</strong>：开 A 股账户（如未开）；港股账户准备港股通额度；研究 NVDA / GOOGL 当前估值是否买入区间</li>
+      <li><strong>本月</strong>：盯宇树招股书更新、科创板审核进度；关注 Figure 安全诉讼判决进度</li>
+      <li><strong>未来 12 个月</strong>：宇树 IPO（最确定）、Agility IPO（次确定）、Figure 是否调整估值</li>
+      <li><strong>定期看</strong>：BMW 工厂 Figure 03 部署是否从 40 台扩到 400 台；1X-EQT 10K 台 LOI 兑现进度；Tesla Optimus 是否又跳票</li>
+    </ul>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="site">
+  <div class="inner">
+    <h4>数据来源 · 一手优先</h4>
+    <div class="sources">
+      <a href="https://www.figure.ai/news/series-c">Figure Series C 官方公告</a><br>
+      <a href="https://www.skild.ai/blogs/series-c">Skild AI Series C 官方</a><br>
+      <a href="https://www.bloomberg.com/news/articles/2025-11-20/robotics-startup-physical-intelligence-valued-at-5-6-billion-in-new-funding">Bloomberg · Physical Intelligence</a><br>
+      <a href="https://wayve.ai/press/series-d/">Wayve Series D 官方</a><br>
+      <a href="https://nvidianews.nvidia.com/news/nvidia-announces-major-release-of-cosmos-world-foundation-models-and-physical-ai-data-tools">NVIDIA Cosmos Newsroom</a><br>
+      <a href="https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/">DeepMind Genie 3</a><br>
+      <a href="https://www.cnbc.com/2025/11/21/figure-ai-sued.html">CNBC · Figure 安全诉讼</a><br>
+      <a href="https://techcrunch.com/2025/09/26/famed-roboticist-says-humanoid-robot-bubble-is-doomed-to-burst/">TechCrunch · Rodney Brooks 专访</a><br>
+      <a href="https://rodneybrooks.com/why-todays-humanoids-wont-learn-dexterity/">rodneybrooks.com · 灵巧操作怀疑论</a><br>
+      <a href="https://www.humanoidsdaily.com/news/meta-ai-chief-yann-lecun-claims-humanoid-firms-lack-path-to-general-ai">Humanoids Daily · LeCun MIT 演讲</a><br>
+      <a href="https://www.agilityrobotics.com/content/digit-moves-over-100k-totes">Agility · 10 万箱里程碑</a><br>
+      <a href="https://www.press.bmwgroup.com/global/article/detail/T0455864EN/">BMW · Figure 部署 Press Release</a><br>
+      <a href="https://caifuhao.eastmoney.com/news/20260320193002285691540">东方财富 · 宇树招股书首发</a><br>
+      <a href="https://static.sse.com.cn/stock/disclosure/announcement/c/202603/002178_20260320_QFQD.pdf">上交所 · 宇树招股书</a><br>
+      <a href="https://www.qbitai.com/2026/02/381766.html">量子位 · 千寻智能融资</a><br>
+      <a href="https://www.qbitai.com/2025/07/306495.html">量子位 · 智元收购上纬</a><br>
+      <a href="http://www.news.cn/tech/20260417/aa7c5116da7648fc99470a6b4a56ef35/c.html">新华网 · 它石智航 Pre-A</a><br>
+      <a href="https://wallstreetcn.com/articles/3766500">华尔街见闻 · 大基金注入银河通用</a><br>
+      <a href="https://xueqiu.com/S/09880">雪球 · 优必选 9880.HK</a><br>
+      <a href="https://www.bain.com/insights/humanoid-robots-from-demos-to-deployment-technology-report-2025/">Bain · Humanoid Robots: From Demos to Deployment</a><br>
+      <a href="https://institute.bankofamerica.com/content/dam/transformation/humanoid-robots.pdf">BofA · Humanoid 101 Report</a><br>
+      <a href="https://www.bloomberg.com/news/articles/2026-01-08/chinese-firms-dominated-global-humanoid-robot-shipments-in-2025">Bloomberg · 中国主导 2025 出货</a><br>
+      <a href="https://electrek.co/2025/12/07/tesla-optimus-robot-takes-suspicious-tumble-in-new-demo/">Electrek · Optimus 摔倒翻车</a><br>
+      <a href="https://gizmodo.com/elon-musks-optimus-robot-collapses-in-a-hilariously-suspicious-way-2000696760">Gizmodo · Optimus VR 头显动作</a><br>
+      <a href="https://www.federalregister.gov/documents/2025/09/16/2025-17893/additions-and-revisions-to-the-entity-list">Federal Register · BIS Entity List</a><br>
+      <a href="https://www.news.cn/tech/20260302/3d0ff411d1d94995b4f0277d29e58e19/c.html">新华网 · 中国人形机器人标准体系</a>
+    </div>
+
+    <div class="footer-meta">
+      <div>报告生成 · 2026-05-16 · v1.0<br>由 Ray Deep Research 引擎（7 个并行子 Agent · 海外英文 · 中文社区 · 横向对比 · 资本 · 技术 · 风险 · 二级标的）生成<br>HTML 渲染：Source Serif 4 + Inter + JetBrains Mono · 严肃商业杂志风</div>
+      <div>本报告所有信息基于公开来源，仅供研究参考，不构成任何投资建议。所有融资金额、估值数据均尽量采用一手来源；中国一级市场存在 20-30% PR 口径夸大空间。所有题材股近期波动剧烈，追高风险极高。投资决策请咨询合资格顾问。</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      document.querySelectorAll('nav.toc a').forEach(link => {
+        link.style.color = '';
+        link.style.fontWeight = '';
+      });
+      const activeLink = document.querySelector(`nav.toc a[href="#${id}"]`);
+      if (activeLink) {
+        activeLink.style.color = 'var(--accent-warn)';
+        activeLink.style.fontWeight = '600';
+      }
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+
+const toggle = document.getElementById('theme-toggle');
+toggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  if (next === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+  localStorage.setItem('ray-theme', next);
+});
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  if (!localStorage.getItem('ray-theme')) {
+    if (e.matches) document.documentElement.setAttribute('data-theme', 'dark');
+    else document.documentElement.removeAttribute('data-theme');
+  }
+});
+</script>
+</body>
+</html>
