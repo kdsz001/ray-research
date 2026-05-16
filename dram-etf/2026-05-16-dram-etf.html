@@ -129,46 +129,12 @@ a:hover { color: var(--accent-warn); }
 
 /* Layout */
 .layout {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 60px;
-  max-width: 1200px;
+  max-width: var(--max-w);
   margin: 0 auto;
   padding: 40px 24px;
 }
-nav.toc {
-  position: sticky;
-  top: 40px;
-  align-self: start;
-  font-family: var(--mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-nav.toc h4 {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--muted);
-  margin: 0 0 12px;
-  letter-spacing: 0.08em;
-}
-nav.toc ol { list-style: none; padding: 0; margin: 0; }
-nav.toc li { margin-bottom: 10px; }
-nav.toc a {
-  color: var(--muted);
-  text-decoration: none;
-  display: flex;
-  gap: 8px;
-  line-height: 1.4;
-  transition: color 0.15s;
-}
-nav.toc a:hover { color: var(--accent-warn); }
-nav.toc .num { color: var(--light); flex-shrink: 0; }
-
-main {
-  max-width: var(--max-w);
-  min-width: 0;
-}
+nav.toc { display: none; }
+main { min-width: 0; }
 
 /* Hero */
 .hero {
@@ -830,10 +796,7 @@ footer h3 {
 
 /* Responsive */
 @media (max-width: 1100px) {
-  .layout { grid-template-columns: 1fr; gap: 32px; padding: 24px 20px; }
-  nav.toc { position: static; }
-  nav.toc ol { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
-  nav.toc li { margin-bottom: 0; }
+  .layout { padding: 24px 20px; }
   .hero { grid-template-columns: 1fr; gap: 24px; }
   .hero h1 { font-size: 48px; }
   .qf-grid { grid-template-columns: repeat(3, 1fr); }
