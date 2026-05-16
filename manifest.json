@@ -171,6 +171,18 @@
           "title": "初版投资调研 · 工业版可口可乐，被市场充分认知后剩下的是耐心"
         }
       ]
+    },
+    {
+      "slug": "dram-etf",
+      "name": "DRAM ETF",
+      "tagline": "Roundhill Memory ETF · AI 存储主题 · 史上最快 $10B AUM · 散户接力盘风险评估",
+      "reports": [
+        {
+          "date": "2026-05-16",
+          "file": "2026-05-16-dram-etf.html",
+          "title": "初版调研 · 三只股票包成 ETF，尾段烟花还能点多久"
+        }
+      ]
     }
   ]
 }

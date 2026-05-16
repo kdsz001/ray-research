@@ -91,6 +91,12 @@
 |------|------|---------|
 | 2026-05-16 | [初版投资调研 · 工业版可口可乐，被市场充分认知后剩下的是耐心](linde/2026-05-16-linde.html) | [↗ Open](https://kdsz001.github.io/ray-research/linde/2026-05-16-linde.html) |
 
+### 💾 [DRAM ETF](dram-etf/) · Roundhill Memory ETF · AI 存储主题 · 史上最快 $10B AUM · 散户接力盘风险评估
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-16 | [初版调研 · 三只股票包成 ETF，尾段烟花还能点多久](dram-etf/2026-05-16-dram-etf.html) | [↗ Open](https://kdsz001.github.io/ray-research/dram-etf/2026-05-16-dram-etf.html) |
+
 <!-- INDEX-END -->
 
 ---
