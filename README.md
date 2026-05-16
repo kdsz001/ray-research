@@ -97,6 +97,12 @@
 |------|------|---------|
 | 2026-05-16 | [初版调研 · 三只股票包成 ETF，尾段烟花还能点多久](dram-etf/2026-05-16-dram-etf.html) | [↗ Open](https://kdsz001.github.io/ray-research/dram-etf/2026-05-16-dram-etf.html) |
 
+### 🌐 [Alphabet (GOOGL/GOOG)](googl/) · 谷歌母公司 · 巴菲特建仓 + Greg Abel 三倍加仓 · 全栈 AI 估值再审视
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-16 | [初版投资调研 · 全栈 AI 玩家里估值最便宜的一家](googl/2026-05-16-googl.html) | [↗ Open](https://kdsz001.github.io/ray-research/googl/2026-05-16-googl.html) |
+
 <!-- INDEX-END -->
 
 ---

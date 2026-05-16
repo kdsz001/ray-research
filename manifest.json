@@ -183,6 +183,18 @@
           "title": "初版调研 · 三只股票包成 ETF，尾段烟花还能点多久"
         }
       ]
+    },
+    {
+      "slug": "googl",
+      "name": "Alphabet (GOOGL/GOOG)",
+      "tagline": "谷歌母公司 · 巴菲特建仓 + Greg Abel 三倍加仓 · 全栈 AI 估值再审视",
+      "reports": [
+        {
+          "date": "2026-05-16",
+          "file": "2026-05-16-googl.html",
+          "title": "初版投资调研 · 全栈 AI 玩家里估值最便宜的一家"
+        }
+      ]
     }
   ]
 }
