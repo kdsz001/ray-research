@@ -190,18 +190,18 @@ h1.hero-title em { font-style: italic; color: var(--accent-warn); }
   padding: 60px 32px;
   transition: background-color 0.2s, color 0.2s;
 }
-.quickfacts-inner { max-width: var(--max-w); margin: 0 auto; padding-left: 260px; }
+.quickfacts-inner { max-width: var(--max-w); margin: 0 auto; }
 .qf-eyebrow { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-yellow-on-inverse); margin-bottom: 14px; }
 .qf-title { font-family: var(--serif); font-style: italic; font-size: 36px; font-weight: 500; line-height: 1.1; margin-bottom: 36px; color: var(--ink-on-inverse); }
-.qf-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; border-top: 1px solid var(--rule-on-inverse); border-left: 1px solid var(--rule-on-inverse); }
-.qf-cell { border-right: 1px solid var(--rule-on-inverse); border-bottom: 1px solid var(--rule-on-inverse); padding: 22px 18px 18px; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between; }
+.qf-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--rule-on-inverse); border-left: 1px solid var(--rule-on-inverse); }
+.qf-cell { border-right: 1px solid var(--rule-on-inverse); border-bottom: 1px solid var(--rule-on-inverse); padding: 22px 16px 18px; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; overflow: hidden; }
 .qf-cell.verdict-cell { background: var(--accent-warn); }
 .qf-cell.verdict-cell .qf-label,
 .qf-cell.verdict-cell .qf-num,
 .qf-cell.verdict-cell .qf-sub { color: #fbf9f4; }
-.qf-label { font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--faint-on-inverse); margin-bottom: 18px; }
-.qf-num { font-family: var(--serif); font-size: 30px; font-weight: 500; line-height: 1; color: var(--ink-on-inverse); }
-.qf-num .unit { font-size: 16px; color: var(--muted-on-inverse); margin-left: 4px; }
+.qf-label { font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--faint-on-inverse); margin-bottom: 14px; line-height: 1.3; }
+.qf-num { font-family: var(--serif); font-size: 26px; font-weight: 500; line-height: 1.05; color: var(--ink-on-inverse); white-space: nowrap; }
+.qf-num .unit { font-size: 13px; color: var(--muted-on-inverse); margin-left: 3px; }
 .qf-num.warn { color: var(--accent-warn-on-inverse); }
 .qf-num.pos { color: var(--accent-pos-on-inverse); }
 .qf-num.data { color: var(--accent-data-on-inverse); }
