@@ -115,6 +115,12 @@
 |------|------|---------|
 | 2026-05-16 | [初版深度调研 · 是叙事冠军，不是物理 AI 基础设施](51world/2026-05-16-51world.html) | [↗ Open](https://kdsz001.github.io/ray-research/51world/2026-05-16-51world.html) |
 
+### 🤖 [优必选 UBTECH 9880.HK](ubtech/) · 港股「人形机器人第一股」· 中国唯一上市纯本体股 · 稀缺溢价 vs 财务地狱
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-17 | [初版深度调研 · 稀缺标的，但不是确定胜者](ubtech/2026-05-17-ubtech.html) | [↗ Open](https://kdsz001.github.io/ray-research/ubtech/2026-05-17-ubtech.html) |
+
 <!-- INDEX-END -->
 
 ---
