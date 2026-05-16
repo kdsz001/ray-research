@@ -109,6 +109,12 @@
 |------|------|---------|
 | 2026-05-16 | [初版全景调研 · 真趋势 + 真泡沫 + 真有标的可买](physical-ai/2026-05-16-physical-ai.html) | [↗ Open](https://kdsz001.github.io/ray-research/physical-ai/2026-05-16-physical-ai.html) |
 
+### 🌐 [五一视界 51WORLD 6651.HK](51world/) · 港股 18C 「Physical AI 第一股」· 数字孪生 + 智驾仿真 · 反 hype 调研
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-16 | [初版深度调研 · 是叙事冠军，不是物理 AI 基础设施](51world/2026-05-16-51world.html) | [↗ Open](https://kdsz001.github.io/ray-research/51world/2026-05-16-51world.html) |
+
 <!-- INDEX-END -->
 
 ---
