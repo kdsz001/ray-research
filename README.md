@@ -121,6 +121,12 @@
 |------|------|---------|
 | 2026-05-17 | [初版深度调研 · 稀缺标的，但不是确定胜者](ubtech/2026-05-17-ubtech.html) | [↗ Open](https://kdsz001.github.io/ray-research/ubtech/2026-05-17-ubtech.html) |
 
+### 🦿 [Figure AI](figure-ai/) · 硅谷人形机器人 · $39B 一级 vs $28B 二级 · 单一公司深扒
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-17 | [深度调研 v1 · 市场已经在说话](figure-ai/2026-05-17-figure-ai.html) | [↗ Open](https://kdsz001.github.io/ray-research/figure-ai/2026-05-17-figure-ai.html) |
+
 <!-- INDEX-END -->
 
 ---

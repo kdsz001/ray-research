@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Figure AI 深度调研 · $39B 与 $28B 之间的真相 · Ray Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec; --bg-paper: #fbf9f4; --bg-card: #ffffff;
+  --bg-dark: #14110d; --bg-dark2: #1f1b16;
+  --ink: #14110d; --ink-2: #2c2620; --muted: #6e6358; --light: #a39787;
+  --rule: #14110d; --rule-light: #d8d1c2;
+  --accent-warn: #a73121; --accent-data: #1c4d6b; --accent-pos: #2c5e3f; --accent-yellow: #c89a2c;
+  --bg-inverse: #14110d;
+  --ink-on-inverse: #f6f3ec;
+  --text-on-inverse: rgba(246, 243, 236, 0.85);
+  --muted-on-inverse: rgba(246, 243, 236, 0.7);
+  --faint-on-inverse: rgba(246, 243, 236, 0.55);
+  --light-on-inverse: rgba(246, 243, 236, 0.5);
+  --rule-on-inverse: rgba(246, 243, 236, 0.18);
+  --accent-yellow-on-inverse: #c89a2c;
+  --serif: "Source Serif 4", "Charter", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  --max-w: 820px;
+}
+[data-theme="dark"] {
+  --bg: #1a1612; --bg-paper: #221c16; --bg-card: #2a2319;
+  --ink: #ede5d3; --ink-2: #d6cdb8; --muted: #968874; --light: #6b6253;
+  --rule: #ede5d3; --rule-light: #3a3128;
+  --accent-warn: #e87a5f; --accent-data: #6ba9c7; --accent-pos: #6fb084; --accent-yellow: #d8b04a;
+  --bg-inverse: #ede5d3;
+  --ink-on-inverse: #14110d;
+  --text-on-inverse: rgba(20, 17, 13, 0.85);
+  --muted-on-inverse: rgba(20, 17, 13, 0.7);
+  --faint-on-inverse: rgba(20, 17, 13, 0.55);
+  --light-on-inverse: rgba(20, 17, 13, 0.5);
+  --rule-on-inverse: rgba(20, 17, 13, 0.18);
+  --accent-yellow-on-inverse: #a47c1e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans); background: var(--bg); color: var(--ink);
+  font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.metabar {
+  border-bottom: 1px solid var(--rule-light); padding: 10px 32px;
+  font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--muted);
+  display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+}
+.metabar .right { color: var(--accent-warn); }
+
+#theme-toggle {
+  position: fixed; top: 16px; right: 16px;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--rule-light); background: var(--bg-card);
+  cursor: pointer; z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink); transition: all 0.2s;
+}
+#theme-toggle:hover { background: var(--bg-paper); }
+#theme-toggle .moon { display: none; }
+[data-theme="dark"] #theme-toggle .sun { display: none; }
+[data-theme="dark"] #theme-toggle .moon { display: block; }
+
+.hero {
+  max-width: 1240px; margin: 0 auto;
+  padding: 70px 32px 60px;
+  display: grid; grid-template-columns: 1fr 280px;
+  gap: 60px; align-items: end;
+  border-bottom: 2px solid var(--rule);
+}
+.hero .eyebrow {
+  font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--accent-warn); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--accent-warn); }
+.hero h1 {
+  font-family: var(--serif); font-weight: 600;
+  font-size: 76px; line-height: 1.0; letter-spacing: -0.03em; color: var(--ink);
+}
+.hero h1 em { font-style: italic; color: var(--accent-warn); font-weight: 600; }
+.hero .subtitle {
+  font-family: var(--serif); font-style: italic;
+  font-size: 22px; line-height: 1.4; color: var(--muted);
+  margin-top: 28px; max-width: 660px;
+}
+.hero-meta { font-family: var(--mono); font-size: 11px; text-transform: uppercase; }
+.hero-meta dt { color: var(--light); margin-top: 14px; letter-spacing: 0.06em; }
+.hero-meta dt:first-child { margin-top: 0; }
+.hero-meta dd { color: var(--ink-2); font-weight: 500; margin-top: 4px; letter-spacing: 0.04em; }
+
+.quickfacts-wrap { background: var(--bg-inverse); color: var(--text-on-inverse); padding: 72px 32px; transition: background-color 0.2s, color 0.2s; }
+.quickfacts-inner { max-width: 1240px; margin: 0 auto; }
+.quickfacts-wrap .eyebrow { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-yellow-on-inverse); margin-bottom: 8px; }
+.quickfacts-wrap h2 { font-family: var(--serif); font-style: italic; font-weight: 600; font-size: 38px; color: var(--ink-on-inverse); margin-bottom: 38px; }
+.quickfacts { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--rule-on-inverse); border: 1px solid var(--rule-on-inverse); }
+.qf-cell { background: var(--bg-inverse); padding: 24px 20px; display: flex; flex-direction: column; gap: 8px; }
+.qf-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--faint-on-inverse); }
+.qf-value { font-family: var(--serif); font-size: 30px; line-height: 1.0; color: var(--ink-on-inverse); font-weight: 600; }
+.qf-value .unit { font-size: 14px; color: var(--muted-on-inverse); margin-left: 4px; font-weight: 400; }
+.qf-sub { font-family: var(--sans); font-size: 12px; color: var(--muted-on-inverse); line-height: 1.45; margin-top: auto; }
+.qf-cell.verdict { background: var(--accent-warn); color: #fff; }
+.qf-cell.verdict .qf-label { color: rgba(255,255,255,0.7); }
+.qf-cell.verdict .qf-value { color: #fff; font-size: 20px; line-height: 1.2; }
+.qf-cell.verdict .qf-sub { color: rgba(255,255,255,0.85); }
+
+main {
+  max-width: 1240px; margin: 0 auto;
+  display: grid; grid-template-columns: 200px 1fr;
+  gap: 60px; padding: 60px 32px;
+}
+
+nav.toc {
+  position: sticky; top: 40px; align-self: start;
+  font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.08em; height: fit-content;
+}
+nav.toc .toc-title { color: var(--light); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--rule-light); }
+nav.toc ol { list-style: none; counter-reset: toc; }
+nav.toc li { counter-increment: toc; margin-bottom: 12px; line-height: 1.5; }
+nav.toc li::before { content: counter(toc, decimal-leading-zero); color: var(--light); margin-right: 10px; }
+nav.toc a { color: var(--ink-2); text-decoration: none; transition: color 0.15s; }
+nav.toc a:hover { color: var(--accent-warn); }
+
+article { min-width: 0; max-width: var(--max-w); }
+article section { margin-bottom: 88px; scroll-margin-top: 40px; }
+article section:last-child { margin-bottom: 0; }
+
+.section-num {
+  font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--accent-warn);
+  display: flex; align-items: center; gap: 14px; margin-bottom: 22px;
+}
+.section-num::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+
+article h2 {
+  font-family: var(--serif); font-weight: 600;
+  font-size: 44px; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--ink); margin-bottom: 28px;
+}
+article h2 em { font-style: italic; color: var(--accent-warn); }
+article h3 {
+  font-family: var(--serif); font-weight: 600;
+  font-size: 24px; line-height: 1.25; color: var(--ink);
+  margin: 40px 0 16px;
+}
+article h4 {
+  font-family: var(--sans); font-weight: 600;
+  font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--ink); margin: 28px 0 12px;
+}
+article p { margin-bottom: 16px; color: var(--ink-2); }
+article p:last-child { margin-bottom: 0; }
+article ul, article ol { margin: 12px 0 20px 22px; }
+article li { margin-bottom: 8px; color: var(--ink-2); }
+article a { color: var(--accent-data); text-decoration: none; border-bottom: 1px solid currentColor; transition: color 0.15s; }
+article a:hover { color: var(--accent-warn); }
+
+strong { font-weight: 600; color: var(--ink); }
+
+.tldr {
+  background: var(--bg-inverse); color: var(--text-on-inverse);
+  padding: 50px 44px 44px; position: relative; margin: 40px 0 60px;
+}
+.tldr::before {
+  content: "TL;DR"; position: absolute; top: -14px; left: 32px;
+  background: var(--accent-warn); color: #fff; padding: 6px 14px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; font-weight: 600;
+}
+.tldr h3 { color: var(--ink-on-inverse); margin-top: 0; font-family: var(--serif); font-style: italic; font-size: 26px; }
+.tldr p, .tldr li { color: var(--text-on-inverse); }
+.tldr ol { margin-left: 22px; counter-reset: tldr; list-style: none; }
+.tldr ol li { counter-increment: tldr; position: relative; padding-left: 8px; margin-bottom: 14px; }
+.tldr ol li::before { content: counter(tldr) "."; font-family: var(--mono); color: var(--accent-yellow-on-inverse); position: absolute; left: -22px; font-weight: 600; }
+.tldr strong { color: var(--ink-on-inverse); }
+.tldr a { color: var(--accent-yellow-on-inverse); }
+
+.stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin: 28px 0;
+}
+.stat { padding: 22px 24px; border-right: 1px solid var(--rule-light); }
+.stat:last-child { border-right: none; }
+.stat-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--light); margin-bottom: 8px; }
+.stat-value { font-family: var(--serif); font-size: 36px; line-height: 1.0; color: var(--ink); font-weight: 600; }
+.stat-value.warn { color: var(--accent-warn); }
+.stat-value.pos { color: var(--accent-pos); }
+.stat-value.data { color: var(--accent-data); }
+.stat-value .unit { font-size: 14px; color: var(--muted); margin-left: 4px; font-weight: 400; }
+.stat-note { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.4; }
+
+.metric-list { border-top: 2px solid var(--rule); border-bottom: 2px solid var(--rule); margin: 24px 0; }
+.metric-row {
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: baseline; gap: 24px;
+  padding: 16px 0; border-bottom: 1px solid var(--rule-light);
+}
+.metric-row:last-child { border-bottom: none; }
+.metric-name { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: 17px; }
+.metric-src { display: block; font-family: var(--mono); font-size: 10px; color: var(--light); text-transform: uppercase; margin-top: 4px; letter-spacing: 0.06em; }
+.metric-value { font-family: var(--serif); font-size: 28px; color: var(--ink); font-weight: 600; }
+.metric-value .unit { font-size: 12px; color: var(--muted); margin-left: 3px; font-weight: 400; }
+.metric-value.warn { color: var(--accent-warn); }
+.metric-value.pos { color: var(--accent-pos); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 28px 0; }
+.two-col .card { background: var(--bg-card); border: 1px solid var(--rule-light); padding: 24px; }
+.card h4 { display: flex; align-items: center; gap: 10px; margin-top: 0; }
+.card h4.pos::before, .card h4.warn::before {
+  content: ""; display: inline-block; width: 14px; height: 14px;
+  border-radius: 50%; font-size: 10px; text-align: center; line-height: 14px;
+  color: #fff; flex-shrink: 0;
+}
+.card h4.pos::before { content: "✓"; background: var(--accent-pos); }
+.card h4.warn::before { content: "!"; background: var(--accent-warn); }
+.card ul { margin: 8px 0 0 18px; }
+.card li { font-size: 14px; line-height: 1.55; }
+
+.quote {
+  border-left: 3px solid var(--accent-warn);
+  padding-left: 24px; margin: 28px 0;
+  font-family: var(--serif); font-style: italic; font-size: 18px;
+  line-height: 1.5; color: var(--ink-2);
+}
+.quote .attr {
+  display: block; font-family: var(--mono); font-style: normal; font-size: 11px;
+  color: var(--muted); text-transform: uppercase; margin-top: 12px; letter-spacing: 0.06em;
+}
+.quote .attr::before { content: "— "; }
+
+.compare-table {
+  width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 13px;
+}
+.compare-table thead th {
+  font-family: var(--mono); font-size: 10px; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--light); text-align: left;
+  padding: 12px 10px; border-bottom: 2px solid var(--rule); font-weight: 600;
+}
+.compare-table tbody td {
+  padding: 14px 10px; border-bottom: 1px solid var(--rule-light);
+  vertical-align: top; line-height: 1.45; color: var(--ink-2);
+}
+.compare-table tbody tr:last-child td { border-bottom: 1px solid var(--rule); }
+.compare-table .product-name { font-family: var(--serif); font-weight: 600; font-size: 15px; color: var(--ink); }
+.compare-table .tag {
+  display: inline-block; font-family: var(--mono); font-size: 9px;
+  background: var(--accent-warn); color: #fff; padding: 2px 6px;
+  margin-left: 6px; text-transform: uppercase; letter-spacing: 0.08em;
+}
+.compare-table .tag.pos { background: var(--accent-pos); }
+.compare-table .tag.data { background: var(--accent-data); }
+.compare-table tr.highlight td { background: rgba(167, 49, 33, 0.04); }
+[data-theme="dark"] .compare-table tr.highlight td { background: rgba(232, 122, 95, 0.08); }
+.compare-table .num { font-family: var(--mono); white-space: nowrap; }
+
+.callout {
+  border-left: 3px solid var(--rule);
+  background: var(--bg-paper);
+  padding: 20px 24px; margin: 24px 0;
+}
+.callout.warn { border-color: var(--accent-warn); }
+.callout.data { border-color: var(--accent-data); }
+.callout.pos { border-color: var(--accent-pos); }
+.callout-label {
+  font-family: var(--mono); font-size: 10px; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--muted); margin-bottom: 8px;
+}
+.callout.warn .callout-label { color: var(--accent-warn); }
+.callout.data .callout-label { color: var(--accent-data); }
+.callout.pos .callout-label { color: var(--accent-pos); }
+.callout p { margin: 0 0 12px; }
+.callout p:last-child { margin-bottom: 0; }
+.callout-quote {
+  font-family: var(--serif); font-style: italic; font-size: 17px;
+  color: var(--ink); line-height: 1.5;
+}
+
+.correction {
+  background: rgba(167, 49, 33, 0.06);
+  border: 1px solid var(--accent-warn);
+  padding: 22px 24px;
+  margin: 20px 0;
+  position: relative;
+}
+[data-theme="dark"] .correction { background: rgba(232, 122, 95, 0.1); }
+.correction::before {
+  content: "v1 修正"; position: absolute; top: -10px; left: 20px;
+  background: var(--accent-warn); color: #fff;
+  font-family: var(--mono); font-size: 10px; padding: 4px 10px;
+  letter-spacing: 0.1em; font-weight: 600;
+}
+.correction h4 { margin-top: 6px; color: var(--accent-warn); }
+.correction-before, .correction-after {
+  font-family: var(--mono); font-size: 12px; line-height: 1.6;
+  padding: 8px 12px; margin: 6px 0;
+}
+.correction-before { background: rgba(167, 49, 33, 0.08); text-decoration: line-through; color: var(--muted); }
+.correction-after { background: rgba(44, 94, 63, 0.08); color: var(--ink); }
+[data-theme="dark"] .correction-before { background: rgba(232, 122, 95, 0.15); }
+[data-theme="dark"] .correction-after { background: rgba(111, 176, 132, 0.12); }
+
+.timeline { margin: 28px 0; }
+.timeline-row {
+  display: grid; grid-template-columns: 100px 24px 1fr;
+  gap: 16px; align-items: start;
+  padding-bottom: 20px; position: relative;
+}
+.timeline-row::after {
+  content: ""; position: absolute; left: 110px; top: 22px; bottom: -8px;
+  width: 1px; background: var(--rule-light);
+}
+.timeline-row:last-child::after { display: none; }
+.timeline-date { font-family: var(--mono); font-size: 11px; text-transform: uppercase; color: var(--muted); text-align: right; padding-top: 4px; letter-spacing: 0.06em; }
+.timeline-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  border: 2px solid var(--ink); background: var(--bg);
+  margin: 6px auto 0; position: relative; z-index: 1;
+}
+.timeline-dot.warn { border-color: var(--accent-warn); background: var(--accent-warn); }
+.timeline-dot.data { border-color: var(--accent-data); background: var(--accent-data); }
+.timeline-dot.pos { border-color: var(--accent-pos); background: var(--accent-pos); }
+.timeline-title { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: 16px; }
+.timeline-desc { font-size: 14px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+
+.path-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 28px 0; }
+.path {
+  background: var(--bg-card); border: 1px solid var(--rule-light);
+  border-top: 4px solid var(--rule); padding: 28px 24px;
+}
+.path.a { border-top-color: var(--accent-pos); }
+.path.b { border-top-color: var(--accent-yellow); }
+.path.c { border-top-color: var(--accent-warn); }
+.path-num { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 8px; }
+.path h4 { font-family: var(--serif); font-size: 20px; margin: 0 0 12px; text-transform: none; letter-spacing: normal; font-weight: 600; }
+.path p { font-size: 14px; color: var(--muted); margin-bottom: 14px; }
+.path ul { margin: 0 0 0 18px; }
+.path li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; }
+.path .rec {
+  display: inline-block; font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em;
+  background: var(--accent-pos); color: #fff; padding: 3px 8px; margin-bottom: 12px; font-weight: 600;
+}
+
+.verdict {
+  background: var(--bg-inverse); color: var(--text-on-inverse);
+  padding: 60px 44px; margin: 60px 0;
+}
+.verdict-title { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-yellow-on-inverse); margin-bottom: 14px; }
+.verdict h3 { font-family: var(--serif); font-size: 36px; color: var(--ink-on-inverse); margin: 0 0 22px; line-height: 1.15; }
+.verdict p { color: var(--text-on-inverse); font-size: 16px; line-height: 1.65; margin-bottom: 16px; }
+.verdict-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule-on-inverse); margin-top: 40px; border: 1px solid var(--rule-on-inverse); }
+.verdict-option { background: var(--bg-inverse); padding: 24px 22px; }
+.verdict-option .num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--accent-yellow-on-inverse); margin-bottom: 10px; }
+.verdict-option h4 { font-family: var(--serif); font-size: 20px; color: var(--ink-on-inverse); margin: 0 0 8px; text-transform: none; letter-spacing: normal; }
+.verdict-option p { font-size: 13px; color: var(--text-on-inverse); margin: 0; line-height: 1.5; }
+
+.divider-quote {
+  text-align: center; font-family: var(--serif); font-style: italic;
+  font-size: 22px; color: var(--muted); line-height: 1.4;
+  margin: 60px 0; padding: 32px 0; position: relative;
+}
+.divider-quote::before, .divider-quote::after {
+  content: ""; display: block; width: 56px; height: 1px;
+  background: var(--rule); margin: 0 auto;
+}
+.divider-quote::before { margin-bottom: 28px; }
+.divider-quote::after { margin-top: 28px; }
+
+.score-bar {
+  display: grid; grid-template-columns: 200px 1fr 40px;
+  align-items: center; gap: 14px;
+  padding: 10px 0; border-bottom: 1px solid var(--rule-light);
+}
+.score-bar:last-child { border-bottom: none; }
+.score-name { font-family: var(--serif); font-weight: 600; font-size: 14px; color: var(--ink); }
+.score-bar-track { height: 8px; background: var(--rule-light); position: relative; }
+.score-bar-fill { height: 100%; background: var(--accent-warn); }
+.score-bar-fill.pos { background: var(--accent-pos); }
+.score-bar-fill.data { background: var(--accent-data); }
+.score-bar-num { font-family: var(--mono); font-size: 12px; color: var(--ink); font-weight: 600; text-align: right; }
+
+footer.site {
+  background: var(--bg-inverse); color: var(--text-on-inverse);
+  padding: 60px 32px 40px; margin-top: 80px;
+}
+footer.site .inner { max-width: 1240px; margin: 0 auto; }
+footer.site h4 { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-yellow-on-inverse); margin-bottom: 18px; }
+footer.site .sources { columns: 2; column-gap: 40px; font-family: var(--mono); font-size: 11px; color: var(--text-on-inverse); line-height: 1.7; margin-bottom: 50px; }
+footer.site .sources a { color: var(--text-on-inverse); text-decoration: none; border-bottom: 1px solid var(--rule-on-inverse); }
+footer.site .sources a:hover { color: var(--accent-yellow-on-inverse); border-color: var(--accent-yellow-on-inverse); }
+footer.site .footer-meta {
+  display: grid; grid-template-columns: 2fr 1fr; gap: 32px;
+  border-top: 1px solid var(--rule-on-inverse); padding-top: 30px;
+  font-family: var(--mono); font-size: 10px; color: var(--faint-on-inverse);
+  line-height: 1.6; letter-spacing: 0.04em;
+}
+
+@media (max-width: 1100px) {
+  .hero { grid-template-columns: 1fr; padding: 50px 24px 40px; }
+  .hero h1 { font-size: 56px; }
+  main { grid-template-columns: 1fr; padding: 40px 24px; gap: 0; }
+  nav.toc { position: relative; top: 0; margin-bottom: 40px; }
+  nav.toc ol { columns: 2; column-gap: 24px; }
+  .quickfacts { grid-template-columns: repeat(3, 1fr); }
+  .verdict-options { grid-template-columns: 1fr; }
+  .path-grid { grid-template-columns: 1fr; }
+  .score-bar { grid-template-columns: 140px 1fr 36px; }
+}
+@media (max-width: 720px) {
+  .hero h1 { font-size: 40px; }
+  .quickfacts { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .stats { grid-template-columns: 1fr; }
+  .stat { border-right: none; border-bottom: 1px solid var(--rule-light); }
+  .compare-table { font-size: 12px; }
+  .compare-table thead th, .compare-table tbody td { padding: 10px 6px; }
+  footer.site .sources { columns: 1; }
+  footer.site .footer-meta { grid-template-columns: 1fr; }
+}
+
+@media print {
+  .metabar, nav.toc, #theme-toggle { display: none; }
+  body { background: white; color: #14110d; }
+  .quickfacts-wrap, .tldr, .verdict, footer.site { background: white; color: #14110d; border: 1px solid #14110d; }
+  .qf-cell, .verdict-option { background: white; color: #14110d; }
+  a { color: #14110d; text-decoration: none; }
+  section { page-break-inside: avoid; }
+  .hero { page-break-after: always; }
+}
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="切换主题">
+  <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+  <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+
+<div class="metabar">
+  <span>Ray Research · Figure AI 深度调研</span>
+  <span class="right">v1.0 · 2026-05-17</span>
+</div>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">DEEP DIVE · 单一公司 · FIGURE AI</div>
+    <h1>$39B 一级 vs <em>$28B 二级</em>——<br>市场已经在说话了</h1>
+    <p class="subtitle">5 个 Agent 深扒：BMW 部署是真的，但"舰队 + 端到端"是营销；Helix 是真的，但没 paper、没 benchmark、没专利；BotQ 是真的，但月产仅目标的 15%。一份给非职业投资者的"为什么我现在不上车"决策手册。</p>
+  </div>
+  <dl class="hero-meta">
+    <dt>调研对象</dt><dd>Figure AI Inc.（硅谷人形机器人）</dd>
+    <dt>调研日期</dt><dd>2026-05-17</dd>
+    <dt>子 Agent 数</dt><dd>5（公司 / 技术 / 商业化 / 行业地位 / 投资决策）</dd>
+    <dt>核心修正</dt><dd>v1 全景报告里 3 个事实错误</dd>
+    <dt>读者画像</dt><dd>Ray · 非职业投资者 · 中国大陆身份</dd>
+    <dt>Ray 当前建议</dt><dd>PATH A · 观望不上车（6 个月）</dd>
+  </dl>
+</header>
+
+<div class="quickfacts-wrap">
+  <div class="quickfacts-inner">
+    <div class="eyebrow">Quick Facts</div>
+    <h2>Figure AI at a Glance</h2>
+    <div class="quickfacts">
+      <div class="qf-cell">
+        <div class="qf-label">一级估值（Series C）</div>
+        <div class="qf-value">$39<span class="unit">B</span></div>
+        <div class="qf-sub">2025-09-17 · 每股 $194.93</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">Hiive 二级隐含</div>
+        <div class="qf-value">~$28<span class="unit">B</span></div>
+        <div class="qf-sub">$140.74/股 · 折价 -28%</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">Forge 二级</div>
+        <div class="qf-value">$34<span class="unit">B</span></div>
+        <div class="qf-sub">$174/股 · 单日 -10.31%</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">累计融资</div>
+        <div class="qf-value">$1.9<span class="unit">B</span></div>
+        <div class="qf-sub">含 Adcock 自掏 $100M Founder Seed</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">2026-04 月产</div>
+        <div class="qf-value">~150<span class="unit">台</span></div>
+        <div class="qf-sub">独立估算，仅目标 15%</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">真实付费部署</div>
+        <div class="qf-value">0<span class="unit">台</span></div>
+        <div class="qf-sub">F.02 已退役，F.03 商业付费无一手证据</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">单台估值</div>
+        <div class="qf-value">$111<span class="unit">M/台</span></div>
+        <div class="qf-sub">是宇树 G1 的 100×</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">专利数（USPTO）</div>
+        <div class="qf-value">2</div>
+        <div class="qf-sub">vs Sanctuary AI 77 · 唯一一项已被驳回</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">Helix 学界三件套</div>
+        <div class="qf-value">0/3</div>
+        <div class="qf-sub">无 paper · 无 benchmark · 无开源</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">安全诉讼</div>
+        <div class="qf-value">5:25-cv-10094</div>
+        <div class="qf-sub">加州北区联邦法院 · 双方互诉中</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">2035 全行业 TAM</div>
+        <div class="qf-value">$38<span class="unit">B</span></div>
+        <div class="qf-sub">Goldman Sachs · Figure 已超过 9 年后天花板</div>
+      </div>
+      <div class="qf-cell verdict">
+        <div class="qf-label">Ray 的判断</div>
+        <div class="qf-value">PATH A · 观望</div>
+        <div class="qf-sub">等 2026 Q4 三个观察点出结果再升级</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<nav class="toc">
+  <div class="toc-title">目录</div>
+  <ol>
+    <li><a href="#tldr">一页纸结论</a></li>
+    <li><a href="#correction">v1 修正</a></li>
+    <li><a href="#company">公司本体</a></li>
+    <li><a href="#product">产品 + 技术</a></li>
+    <li><a href="#commercial">商业化现实</a></li>
+    <li><a href="#industry">行业地位</a></li>
+    <li><a href="#risk">风险打分</a></li>
+    <li><a href="#secondary">二级市场</a></li>
+    <li><a href="#decision">投资决策</a></li>
+    <li><a href="#checklist">30 天 Checklist</a></li>
+  </ol>
+</nav>
+
+<article>
+
+<section id="tldr">
+  <div class="section-num">01 · 一页纸结论</div>
+  <h2>市场已经在说话了——只是<em>一级与二级</em>说的不一样</h2>
+
+  <div class="tldr">
+    <h3>Figure 是人形机器人赛道目前最贵、最高曝光的标的；但执行真相和营销话术之间有显著鸿沟。</h3>
+    <ol>
+      <li><strong>一级 vs 二级已经背离</strong>：Series C $39B（2025-09 一级），但 Hiive 二级 $140.74/股 = 隐含 $28B（折价 -28%）、Forge $174/股 = $34.22B（-12%，单日跌 10%）。<strong>二级市场用脚投票</strong>，down round 信号已出。</li>
+      <li><strong>v1 报告里 3 个事实错误</strong>已纠正：(a) Figure 02 在 BMW 不是"还在跑"——<strong>已于 2025-11-19 退役撤回 HQ</strong>；(b) "Figure 03 在 BMW 商业部署 40 台 $25/小时"是孤源（仅一家小媒体），<strong>主流媒体无复述</strong>；(c) 2026-02 <strong>BMW 莱比锡新厂选了 Hexagon Robotics AEON</strong>，不是 Figure——这是去年 v1 没赶上的重大不利。</li>
+      <li><strong>Ray 的判断：PATH A · 观望不上车</strong>。理由：估值已透支、二级流动性被 cease-and-desist 锁死、安全诉讼黑天鹅未消化、中国身份合规通道摩擦大（需 BVI + 37 号文）、Goldman 2035 全行业 TAM $38B 已小于 Figure 当前估值。等 2026-Q4 三个观察点（Helix 03 / BMW 续约 / 诉讼判决）翻牌再决定。</li>
+    </ol>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">最大新发现</div>
+      <div class="stat-value warn">BMW</div>
+      <div class="stat-note">F.02 已退役，莱比锡新厂选了 Hexagon AEON。Figure 不再是 BMW 独家伙伴</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">最强讽刺</div>
+      <div class="stat-value">$39B &gt; $38B</div>
+      <div class="stat-note">Figure 当前估值已超过 Goldman 预测的 2035 年整个人形机器人 TAM</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">最关键 quote</div>
+      <div class="stat-value data">"I would not"</div>
+      <div class="stat-note">Adcock 自己承认：不会让机器人在有小孩的家里自由跑</div>
+    </div>
+  </div>
+</section>
+
+<section id="correction">
+  <div class="section-num">02 · v1 修正</div>
+  <h2>3 个事实<em>必须先纠正</em></h2>
+  <p>用户要求"先核对最新数据"——这次调研的最大产出之一，就是修正了 v1 全景报告里的 3 个事实错误。这些错误来自营销话术的滞后传播，主流媒体和 Figure 官网在过去 6 个月已经"悄悄改口"。</p>
+
+  <div class="correction">
+    <h4>修正 #1：Figure 02 在 BMW 的部署</h4>
+    <div class="correction-before">v1 说："Figure 02 在 BMW Spartanburg 跑了 1,250 小时，至今仍在运行"</div>
+    <div class="correction-after">事实：根据 Figure 官网 2025-11-19 原文，Figure 02 已"return to HQ from BMW as part of our fleet-wide retirement"——<strong>试点已结束，机器人已撤回</strong>。1,250 小时 / 90,000 件 / 30,000 X3 是历史成绩单，不是进行时。</div>
+  </div>
+
+  <div class="correction">
+    <h4>修正 #2："Figure 03 在 BMW 商业付费部署 40 台 + $25/小时"</h4>
+    <div class="correction-before">v1 说："2025-11 起 Figure 03 转入首个商业付费部署 40 台"</div>
+    <div class="correction-after">事实：这一说法<strong>只出现在 The Platinum Capital 2026-05-09 一家小媒体的报道</strong>。检索 Figure 官网、BMW 官网、CNBC、Bloomberg、Reuters、The Information——<strong>主流媒体均无复述</strong>。Figure 2026-04-29 官方说法是"350 台 F.03 用于内部 R&D + 数据采集 + 商业 use-case 开发"——即"开发用例"不是"已部署"。<strong>视为未经独立核实的孤源</strong>。</div>
+  </div>
+
+  <div class="correction">
+    <h4>修正 #3：BMW 是否会扩部署</h4>
+    <div class="correction-before">v1 暗示："BMW 部署有望从 40 台扩到 400 台"</div>
+    <div class="correction-after">事实：BMW PressClub 2026-02-27 + 2026-03-09 公告确认：<strong>BMW 欧洲首个人形机器人试点选用的是 Hexagon Robotics AEON</strong>（不是 Figure）。BMW 把 Figure 降格为"Center of Competence for Physical AI"中的<strong>多个供应商之一</strong>。Figure 不再是 BMW 独家伙伴——这是 Figure 估值最大商业证明被相对化的关键事件。</div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">为什么这些修正重要</div>
+    <p>Figure 估值的核心论据是"已有一个真实的财富 500 强工厂客户在量产场景里跑"。这 3 个修正叠加之后，这个论据基本被悬置：Figure 02 试点已结束 + Figure 03 商业付费证据缺失 + BMW 开始用 Hexagon 多供应商策略——<strong>"BMW 商业故事"的可信度从 v1 时的 70% 降到现在的 30%</strong>。</p>
+  </div>
+</section>
+
+<section id="company">
+  <div class="section-num">03 · 公司本体</div>
+  <h2>Brett Adcock 是<em>谁</em>，团队是<em>谁</em>，钱从<em>哪里来</em></h2>
+
+  <h3>创始人 Brett Adcock（1986 年生）</h3>
+  <table class="compare-table">
+    <thead><tr><th>项目</th><th>关键事实</th></tr></thead>
+    <tbody>
+      <tr><td class="product-name">出身</td><td>中央伊利诺伊州一个三代农场。佛罗里达大学商科 2008 毕业。<strong>非机器人科班出身</strong>。</td></tr>
+      <tr><td class="product-name">第一次创业 Vettery</td><td>2012-2018，AI 招聘市场。2018-02 卖给 The Adecco Group <strong>$110M</strong>。</td></tr>
+      <tr><td class="product-name">第二次创业 Archer Aviation</td><td>2018 创办 eVTOL 飞行出租车。2021 SPAC 上市，ticker <strong>ACHR</strong>。当前股价 $6.05（2026-05-15），市值 $4.6B。Q1 2026 净亏 $2.17 亿。</td></tr>
+      <tr class="highlight"><td class="product-name">Figure（2022-至今）</td><td><strong>自掏 $100M 做 Founder Seed</strong>（Vettery + Archer 套现的钱）。截至 2026-05-17 推特 43.6 万粉丝。</td></tr>
+      <tr><td class="product-name">第四次 Cover（2024）</td><td>AI 安全 / 校园枪击检测，与 NASA JPL 合作。说明 Adcock 同时管多家公司。</td></tr>
+    </tbody>
+  </table>
+
+  <h3>团队（关键人员变动）</h3>
+  <div class="callout warn">
+    <div class="callout-label">前 CTO 已离职</div>
+    <p><strong>Jerry Pratt 博士</strong>（IHMC 资深机器人科学家，Atlas 项目背景）2022 加盟 Figure 任 CTO，<strong>2024 年离职</strong>创办竞争对手 <strong>Persona AI</strong>（与 Nic Radford 合伙）。Forge / Hiive 等二级平台的数据库仍把 Pratt 标为现任 CTO，是过时数据。Figure 公开渠道<strong>无明确 CTO 在任名号</strong>，Helix 项目具体负责人也未公开。</p>
+  </div>
+
+  <h3>融资完整版（精确每股价）</h3>
+  <table class="compare-table">
+    <thead>
+      <tr><th>轮次</th><th>日期</th><th>金额</th><th>估值</th><th>每股</th><th>关键投资人</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="product-name">Founder Seed</td>
+        <td class="num">2022-09</td>
+        <td class="num">$100M</td>
+        <td class="num">n/a</td>
+        <td class="num">n/a</td>
+        <td>Adcock 自掏</td>
+      </tr>
+      <tr>
+        <td class="product-name">Series A-1/A-2</td>
+        <td class="num">2023-05-24</td>
+        <td class="num">$70.3M</td>
+        <td class="num">$297M</td>
+        <td class="num">$2.40-$3.00</td>
+        <td>Parkway VC 领投，Aliya / Audeo / Big Sky / FJ Labs / Tamarack</td>
+      </tr>
+      <tr>
+        <td class="product-name">Series B</td>
+        <td class="num">2024-02-23</td>
+        <td class="num">$675M</td>
+        <td class="num">$2.6B</td>
+        <td class="num">$13.22</td>
+        <td><strong>Microsoft · NVIDIA · OpenAI Fund · Bezos · Intel · Samsung · LG · ARK</strong> · Parkway · Align · FJ Labs</td>
+      </tr>
+      <tr class="highlight">
+        <td class="product-name">Series C</td>
+        <td class="num">2025-09-17</td>
+        <td class="num">$1B+</td>
+        <td class="num warn">$39B</td>
+        <td class="num">$194.93</td>
+        <td><strong>Parkway VC 领投</strong> + <strong>Brookfield</strong> + NVIDIA + Macquarie + Intel + Salesforce + T-Mobile + Qualcomm + Arcapita</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <div class="callout-label">B → C 投资人结构性换血（重要信号）</div>
+    <p><strong>Microsoft / OpenAI Fund / Bezos / Samsung / LG / ARK / Bold Capital</strong>——Series B 这些跟投的大牌投资人，<strong>几乎全部未跟投 Series C</strong>。这是 19 个月内估值跳 15× 的代价：老股东要么不信新估值、要么被高门槛挤出、要么因 2025-02 OpenAI 解约关系冷却。<strong>对外讲是"换血升级"，对内看是"早期信仰者退出"</strong>。</p>
+  </div>
+</section>
+
+<section id="product">
+  <div class="section-num">04 · 产品 + 技术</div>
+  <h2>Helix 是真的，但<em>没 paper、没 benchmark、没专利</em></h2>
+
+  <h3>硬件三代迭代</h3>
+  <table class="compare-table">
+    <thead><tr><th>型号</th><th>身高 / 体重</th><th>载荷 / 续航</th><th>DoF</th><th>发布日期 / 状态</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="product-name">Figure 01</td>
+        <td class="num">1.6m / 60kg</td>
+        <td class="num">20kg / 5h</td>
+        <td class="num">42</td>
+        <td>2023-03 立项（仅渲染图）→ 2024-08 后转 legacy</td>
+      </tr>
+      <tr>
+        <td class="product-name">Figure 02</td>
+        <td class="num">1.68m / 70kg</td>
+        <td class="num">25kg / 5h</td>
+        <td class="num">35</td>
+        <td>2024-08-06 发布 → <strong>2025-11-19 全队退役</strong></td>
+      </tr>
+      <tr class="highlight">
+        <td class="product-name">Figure 03</td>
+        <td class="num">1.68m / 60kg</td>
+        <td class="num">20kg / 5h</td>
+        <td class="num">44</td>
+        <td>2025-10-09 发布。掌心摄像头 + 指尖触觉（自研，可感 3g 力）+ 2kW 无线充电 + 从 CNC 转模具压铸</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Helix VLA 模型（三系统架构）</h3>
+  <p><strong>白话</strong>：VLA（Vision-Language-Action）= 看到画面 + 听懂指令 → 直接输出关节动作，相当于机器人的"大脑"。Helix 02（2026-01-27 发布）的三层架构：</p>
+  <ul>
+    <li><strong>S0</strong>：10M 参数神经网络，1 kHz 全身控制，用 <strong>1,000+ 小时人类动作捕捉数据</strong>训练。官方原话"<em>replaces 109,504 lines of hand-engineered C++</em>"</li>
+    <li><strong>S1</strong>：80M 参数 transformer，200 Hz 高频动作输出</li>
+    <li><strong>S2</strong>：7B 参数 VLM 主干（基于开源 VLM 微调），7-9 Hz 慢速推理，做语义理解</li>
+  </ul>
+
+  <div class="callout warn">
+    <div class="callout-label">学界三件套全空</div>
+    <p>Helix 02 发布至今 4 个月——<strong>无 arxiv paper</strong>、<strong>无开源权重</strong>、<strong>无第三方公开 benchmark</strong>。学界对比 π0（Physical Intelligence）/ RT-2（Google DeepMind）/ Gemini Robotics（DeepMind）三家都发了论文 + 开了部分权重 + 给了 benchmark。Figure 一个都没给。<strong>外界无法独立判断 Helix 是否真比同行强</strong>——这是 Figure 最大的"自说自话"漏洞。</p>
+    <p>2025-04 学界有人按 Figure blog 描述做了 <strong>OpenHelix</strong>（GitHub + arxiv 2505.03912），复现了"双系统架构"。<strong>说明这个架构不是 Figure 的独家秘密</strong>。</p>
+  </div>
+
+  <h3>BotQ 工厂：声明 12K/年 vs 实测 1.8K/年</h3>
+  <div class="metric-list">
+    <div class="metric-row">
+      <div>
+        <div class="metric-name">官方年产能目标</div>
+        <span class="metric-src">来源：figure.ai/news/botq · 2025-03-15</span>
+      </div>
+      <div class="metric-value">12,000<span class="unit">台</span></div>
+    </div>
+    <div class="metric-row">
+      <div>
+        <div class="metric-name">4 年累计目标</div>
+        <span class="metric-src">来源：figure.ai/news/introducing-figure-03</span>
+      </div>
+      <div class="metric-value">100,000<span class="unit">台</span></div>
+    </div>
+    <div class="metric-row">
+      <div>
+        <div class="metric-name">Figure 自报：累计交付 F.03</div>
+        <span class="metric-src">来源：figure.ai/news/ramping-figure-03-production · 2026-04-29</span>
+      </div>
+      <div class="metric-value">350+<span class="unit">台</span></div>
+    </div>
+    <div class="metric-row">
+      <div>
+        <div class="metric-name">Humanoids Daily 独立估算 2026-04 月产</div>
+        <span class="metric-src">来源：humanoidsdaily.com · 反推自 Adcock chart</span>
+      </div>
+      <div class="metric-value warn">~150<span class="unit">台</span></div>
+    </div>
+    <div class="metric-row">
+      <div>
+        <div class="metric-name">按当前速度达成 10 万台需要</div>
+        <span class="metric-src">推算：100,000 ÷ 150/月 ÷ 12</span>
+      </div>
+      <div class="metric-value warn">~56<span class="unit">年</span></div>
+    </div>
+  </div>
+
+  <h3>专利护城河（最尖锐的弱点）</h3>
+  <table class="compare-table">
+    <thead><tr><th>公司</th><th>专利家族数</th><th>护城河评估</th></tr></thead>
+    <tbody>
+      <tr><td class="product-name">Sanctuary AI</td><td class="num">77</td><td>全球前 20 持有方中唯一初创</td></tr>
+      <tr><td class="product-name">UBTECH</td><td class="num">数百</td><td>港股龙头，深圳系</td></tr>
+      <tr><td class="product-name">Apptronik</td><td class="num">中等</td><td>机械硬件 IP 强，软件薄</td></tr>
+      <tr><td class="product-name">Agility</td><td class="num">中等</td><td>聚焦双足移动 + 物流集成</td></tr>
+      <tr class="highlight"><td class="product-name">Figure AI <span class="tag">仅 2 项</span></td><td class="num warn">2</td><td><strong>唯一一项 pending 申请已被 USPTO 正式驳回</strong>（理由"缺乏新颖性、对已知人形架构显而易见"）</td></tr>
+    </tbody>
+  </table>
+  <p>来源：PatentVest 2025 报告。原文判决："Verdict: Narrative-Driven Hype Machine — with the most capital and the least defensible IP position, reliant on vision over protection."</p>
+</section>
+
+<div class="divider-quote">
+"我不会让我的机器人在我有小孩的家里自由跑几个小时几个星期。"
+<br><span style="font-family: var(--mono); font-style: normal; font-size: 11px; color: var(--light); display: block; margin-top: 8px; letter-spacing: 0.06em;">— Brett Adcock · Nikhil Kamath 访谈 · 2025-11</span>
+</div>
+
+<section id="commercial">
+  <div class="section-num">05 · 商业化现实</div>
+  <h2>Fortune 的<em>实锤</em>：BMW 不是舰队，是 1 台</h2>
+
+  <h3>BMW 部署：营销 vs 真实</h3>
+  <table class="compare-table">
+    <thead><tr><th>Adcock 公开口径</th><th>BMW 发言人 Steve Wilson 实际回应</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>2025-02 LinkedIn：「我们有一<strong>支舰队（fleet）</strong>机器人执行<strong>端到端（end-to-end）</strong>操作」</td>
+        <td>「<strong>任何时间只有单一一台 Figure 机器人</strong>在工厂内工作」「<strong>只在非生产时段练习</strong>」</td>
+      </tr>
+      <tr>
+        <td>2025-03 大会：「他们现在每天都在跑」「在 BMW 最大的工厂跑」</td>
+        <td>「单一机器人做单一任务」「被一个 work cell 围着」「焊接由另一种机器人完成」</td>
+      </tr>
+      <tr>
+        <td>2025-04 LinkedIn 视频：「这不是测试——这是自主机器人在生产中」+ 镜头里站着第二台机器人</td>
+        <td>BMW 拒答 Fortune 关于"第二台机器人是真在工作还是营销道具"的问题</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>来源：<strong>Fortune 2025-04-06 Jason Del Rey 调查报道</strong>。Adcock 公开威胁起诉 Fortune 诽谤，<strong>但至今未真的起诉</strong>，事实层面没反驳 BMW 发言人的具体描述。</p>
+
+  <h3>真实运行中的客户清单（截至 2026-05-17）</h3>
+  <div class="metric-list">
+    <div class="metric-row">
+      <div>
+        <div class="metric-name">BMW Spartanburg · Figure 02</div>
+        <span class="metric-src">2025-01 至 2025-11 · 已完工，机器人已撤回 HQ</span>
+      </div>
+      <div class="metric-value">已结束</div>
+    </div>
+    <div class="metric-row">
+      <div>
+        <div class="metric-name">BMW · Figure 03 商业付费部署 40 台 $25/hr</div>
+        <span class="metric-src">仅 The Platinum Capital 2026-05-09 一家媒体 · 主流媒体无复述</span>
+      </div>
+      <div class="metric-value warn">孤源不可靠</div>
+    </div>
+    <div class="metric-row">
+      <div>
+        <div class="metric-name">BMW 莱比锡新厂</div>
+        <span class="metric-src">BMW PressClub 2026-02-27</span>
+      </div>
+      <div class="metric-value warn">选了 Hexagon</div>
+    </div>
+    <div class="metric-row">
+      <div>
+        <div class="metric-name">UPS</div>
+        <span class="metric-src">2023 接触 · 2025-04 in talks · 此后零进展</span>
+      </div>
+      <div class="metric-value">未启动</div>
+    </div>
+    <div class="metric-row">
+      <div>
+        <div class="metric-name">Brookfield</div>
+        <span class="metric-src">Figure 官网 2025-09-17 原文：「explore opportunities to deploy ... over time」</span>
+      </div>
+      <div class="metric-value">数据合作</div>
+    </div>
+    <div class="metric-row">
+      <div>
+        <div class="metric-name">Adcock 2025-11 承诺"60 天内公布 2 个新客户"</div>
+        <span class="metric-src">综合检索 · 截至 2026-05-17</span>
+      </div>
+      <div class="metric-value warn">未兑现</div>
+    </div>
+    <div class="metric-row">
+      <div>
+        <div class="metric-name">真实"在客户付费场地中运行"的机器人</div>
+        <span class="metric-src">综合判断</span>
+      </div>
+      <div class="metric-value warn">0 台</div>
+    </div>
+  </div>
+
+  <h3>安全诉讼最新进展</h3>
+  <div class="timeline">
+    <div class="timeline-row">
+      <div class="timeline-date">2024-10-07</div><div class="timeline-dot"></div>
+      <div><div class="timeline-title">Robert Gruendel 入职 Figure</div><div class="timeline-desc">Principal Robotic Safety Engineer / Head of Product Safety</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2025-09-02</div><div class="timeline-dot warn"></div>
+      <div><div class="timeline-title">Gruendel 被解雇</div><div class="timeline-desc">距他"最直接、文档最齐全的安全投诉"只差几天</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2025-09-16</div><div class="timeline-dot data"></div>
+      <div><div class="timeline-title">Series C 关账 $39B</div><div class="timeline-desc">起诉书指控：安全 roadmap 在 C 轮关账"同月"被 gutted（掏空）</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2025-11-21</div><div class="timeline-dot warn"></div>
+      <div><div class="timeline-title">Gruendel 起诉 Figure</div><div class="timeline-desc">案号 5:25-cv-10094-EJD（加州北区联邦法院）· wrongful termination + whistleblower + 涉嫌投资人欺诈</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2026-01</div><div class="timeline-dot warn"></div>
+      <div><div class="timeline-title">Figure 反诉 Gruendel</div><div class="timeline-desc">指控违反商业秘密法（把公司文档存到个人 Google 账号），索赔 ≥ $75,000</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2026-05-17</div><div class="timeline-dot"></div>
+      <div><div class="timeline-title">案件仍 pending</div><div class="timeline-desc">双方互诉已 reciprocal pleadings · 公开报道未显示 motion to dismiss 裁决</div></div>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">起诉书核心指控（CNBC 引用原文）</div>
+    <p class="callout-quote">"Figure 02 的冲击力超过击碎成人头骨阈值的 2 倍以上"。"一台机器人故障时在不锈钢冰箱门上砸出 1/4 英寸深的口子，险些击中工人"。"产品安全计划在 Figure 关闭投资轮的同一个月被 gutted，这种行为可能被解读为欺诈"——这是诉状里指控投资人欺诈的关键句。</p>
+  </div>
+</section>
+
+<section id="industry">
+  <div class="section-num">06 · 行业地位</div>
+  <h2>横向<em>对比</em>：Figure 单台估值是宇树 100×</h2>
+
+  <h3>vs 海外同行</h3>
+  <table class="compare-table">
+    <thead><tr><th>公司</th><th>估值</th><th>累计融资</th><th>2025 出货</th><th>真实付费部署</th><th>专利</th></tr></thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="product-name">Figure AI <span class="tag">$39B</span></td>
+        <td class="num">$39B</td>
+        <td class="num">~$1.9B</td>
+        <td class="num">~150 台（自报）</td>
+        <td>0（F.02 已撤）</td>
+        <td class="num warn">2 (1 已驳回)</td>
+      </tr>
+      <tr>
+        <td class="product-name">Tesla Optimus</td>
+        <td>含于 TSLA</td>
+        <td>—</td>
+        <td>~150 台（Omdia）</td>
+        <td>自家工厂内部</td>
+        <td class="num">中</td>
+      </tr>
+      <tr>
+        <td class="product-name">Apptronik</td>
+        <td class="num">$5B</td>
+        <td class="num">~$935M</td>
+        <td>数十台 pilot</td>
+        <td>Mercedes / Jabil / GXO</td>
+        <td class="num">中</td>
+      </tr>
+      <tr>
+        <td class="product-name">Agility (Digit)</td>
+        <td class="num">$2.12B</td>
+        <td class="num">~$641M</td>
+        <td>~数百台</td>
+        <td>GXO 已搬 10 万+ 箱 · Schaeffler · Toyota</td>
+        <td class="num">中</td>
+      </tr>
+      <tr>
+        <td class="product-name">1X (Neo)</td>
+        <td class="num">~$10B</td>
+        <td class="num">~$135M</td>
+        <td>NEO 2026 才发货</td>
+        <td>EQT 10K 台 LOI</td>
+        <td class="num">中</td>
+      </tr>
+      <tr>
+        <td class="product-name">Sanctuary AI</td>
+        <td class="num">~$148M</td>
+        <td class="num">~$148M</td>
+        <td>0 商业化</td>
+        <td>0</td>
+        <td class="num pos">77 ★</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>vs 中国玩家（价差 100×）</h3>
+  <table class="compare-table">
+    <thead><tr><th>公司</th><th>估值</th><th>2025 出货</th><th>单价</th><th>单台估值</th></tr></thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="product-name">Figure AI</td>
+        <td class="num">$39B</td>
+        <td class="num">~150 台</td>
+        <td class="num">未公开</td>
+        <td class="num warn">$111M / 台</td>
+      </tr>
+      <tr>
+        <td class="product-name">宇树 Unitree</td>
+        <td class="num">~$18B（pre-IPO）</td>
+        <td class="num">5,500 台</td>
+        <td class="num">G1 $13.5K / H2 $29.9K</td>
+        <td class="num">~$1M / 台</td>
+      </tr>
+      <tr>
+        <td class="product-name">智元 AgiBot</td>
+        <td class="num">~$20.7B</td>
+        <td class="num">5,168 台</td>
+        <td class="num">远征 A2 目标 ¥20 万内</td>
+        <td class="num">~$4M / 台</td>
+      </tr>
+      <tr>
+        <td class="product-name">优必选 9880.HK</td>
+        <td class="num">$7.9B（港股）</td>
+        <td class="num">1,079 台（人形）</td>
+        <td class="num">未公开</td>
+        <td class="num">~$7M / 台</td>
+      </tr>
+      <tr>
+        <td class="product-name">银河通用 Galbot</td>
+        <td class="num">$30B</td>
+        <td class="num">千台级</td>
+        <td class="num">未公开</td>
+        <td class="num">~$30M / 台</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <div class="callout-label">Goldman 2035 TAM vs Figure 当前估值</div>
+    <p>Goldman Sachs 预测<strong>整个人形机器人市场到 2035 年 TAM 仅 $38B</strong>。Figure 当前一级估值 <strong>$39B 已经超过 9 年后的全行业天花板</strong>。即使 Figure 拿下 100% 市场份额（不可能），按 9 年贴现，回报率也跑不赢国债。</p>
+  </div>
+
+  <h3>2025-2026 关键人物对 Figure 的最新评论</h3>
+
+  <h4>负面 / 怀疑（影响估值）</h4>
+  <div class="quote">
+    We are in a humanoid robot bubble. Using human videos to train robots for dexterous manipulation is pure fantasy thinking.
+    <span class="attr">Rodney Brooks · iRobot 联合创始人 · TechCrunch 2025-09</span>
+  </div>
+  <div class="quote">
+    人形机器人公司"have no idea how to make those robots smart enough to be generally useful"。
+    <span class="attr">Yann LeCun · Meta AI 首席 · MIT 演讲 2025-10 · Adcock 公开回怼"someone should tell LeCun to stop being so high-and-mighty"</span>
+  </div>
+  <div class="quote">
+    Humanoid robots like Optimus and Figure will be all demo and very little product. Nobody knows how to build a single safe, reliable, generally useful humanoid right now, at any price.
+    <span class="attr">Gary Marcus · 2025-12 / 2026 TED 预测</span>
+  </div>
+  <div class="quote">
+    I might be an outlier — I am not bullish on humanoid robots.
+    <span class="attr">Sergey Brin · Google 联合创始人 · Google I/O 2025</span>
+  </div>
+
+  <h4>正面 / 支持（支撑估值）</h4>
+  <div class="quote">
+    Physical AI has arrived. Every industrial company will become a robotics company. I predict this will be the first multi-trillion-dollar robotics industry.
+    <span class="attr">Jensen Huang · NVIDIA CEO · GTC 2026 · NVIDIA 是 Figure Series C 投资人</span>
+  </div>
+  <div class="quote">
+    人形机器人将是 AI 最大机会。ARK Venture Fund 在 Series B 后持仓 15× 增值，进入 Fund Top 10 持仓。
+    <span class="attr">Cathie Wood · CNBC 2025-10</span>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="section-num">07 · 风险打分</div>
+  <h2>七大风险因子（1-10 分）</h2>
+
+  <div style="border: 1px solid var(--rule); padding: 24px; margin: 24px 0; background: var(--bg-card);">
+    <div class="score-bar">
+      <div class="score-name">二级流动性枯竭</div>
+      <div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div>
+      <div class="score-bar-num">9/10</div>
+    </div>
+    <div class="score-bar">
+      <div class="score-name">中国玩家屠杀价格</div>
+      <div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div>
+      <div class="score-bar-num">8/10</div>
+    </div>
+    <div class="score-bar">
+      <div class="score-name">安全诉讼黑天鹅</div>
+      <div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div>
+      <div class="score-bar-num">8/10</div>
+    </div>
+    <div class="score-bar">
+      <div class="score-name">量产爬坡跳票</div>
+      <div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div>
+      <div class="score-bar-num">6/10</div>
+    </div>
+    <div class="score-bar">
+      <div class="score-name">Down round / Anti-dilution</div>
+      <div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div>
+      <div class="score-bar-num">6/10</div>
+    </div>
+    <div class="score-bar">
+      <div class="score-name">AI 模型差距扩大</div>
+      <div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div>
+      <div class="score-bar-num">5/10</div>
+    </div>
+    <div class="score-bar">
+      <div class="score-name">Adcock 个人风险</div>
+      <div class="score-bar-track"><div class="score-bar-fill" style="width: 40%;"></div></div>
+      <div class="score-bar-num">4/10</div>
+    </div>
+  </div>
+  <p style="text-align: center; font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 16px;">综合风险评分：6.6 / 10（高风险）</p>
+</section>
+
+<section id="secondary">
+  <div class="section-num">08 · 二级市场</div>
+  <h2>$39B 一级和 $28B 二级，<em>哪个是真</em>？</h2>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Hiive 当前</div>
+      <div class="stat-value warn">$140.74</div>
+      <div class="stat-note">2026-05-17 实抓 · 40 个 live orders · 隐含 ~$28B · 折价 -28%</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Forge 最新</div>
+      <div class="stat-value">$174</div>
+      <div class="stat-note">2026-05-16 抓取 · 单日 -10.31% · 隐含 $34.22B · 折价 -12%</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Series C 一级</div>
+      <div class="stat-value pos">$194.93</div>
+      <div class="stat-note">2025-09-17 · $39B post-money · "标准价"</div>
+    </div>
+  </div>
+
+  <h3>三种情景估值（建模假设：RaaS $1,000/月 / 毛利 30% / PS 50×）</h3>
+  <table class="compare-table">
+    <thead><tr><th>情景</th><th>2027 部署</th><th>2027 ARR</th><th>PS</th><th>隐含估值</th><th>vs $39B</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="product-name">保守</td>
+        <td class="num">5,000 台</td>
+        <td class="num">$60M</td>
+        <td class="num">50×</td>
+        <td class="num">$3B</td>
+        <td class="num warn">-92%</td>
+      </tr>
+      <tr class="highlight">
+        <td class="product-name">基准</td>
+        <td class="num">12,000 台（BotQ 满产）</td>
+        <td class="num">$144M</td>
+        <td class="num">50×</td>
+        <td class="num">$7.2B</td>
+        <td class="num warn">-82%</td>
+      </tr>
+      <tr>
+        <td class="product-name">激进</td>
+        <td class="num">30,000 台</td>
+        <td class="num">$360M</td>
+        <td class="num">60×</td>
+        <td class="num">$21.6B</td>
+        <td class="num">-45%</td>
+      </tr>
+      <tr>
+        <td class="product-name">狂热</td>
+        <td class="num">200,000 台（2029 目标）</td>
+        <td class="num">$2.4B</td>
+        <td class="num">30×</td>
+        <td class="num">$72B</td>
+        <td class="num pos">+85%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout data">
+    <div class="callout-label">二级市场已 price in 什么</div>
+    <p>Hiive 隐含 $28B 大约对应"激进情景的折扣价"——已经在向"30,000 台 / $360M ARR"的乐观假设靠拢，但还没到狂热。<strong>如果你认为 Helix 03 + BMW 续约 + 1-2 新工业客户都能在 2026 内兑现，$28B 是合理买入价；如果你认为更可能落到基准情景（12K 台），合理价应该在 $7-10B = 二级再砍 70%</strong>。</p>
+  </div>
+
+  <h3>二级流动性的连锁恶化</h3>
+  <div class="timeline">
+    <div class="timeline-row">
+      <div class="timeline-date">2025-04-30</div><div class="timeline-dot warn"></div>
+      <div><div class="timeline-title">Figure 首次发 cease-and-desist</div><div class="timeline-desc">向 Forge / Hiive 等 broker 发律师函禁止未授权二级转让</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2025-11-24</div><div class="timeline-dot warn"></div>
+      <div><div class="timeline-title">Figure 第二波 cease-and-desist</div><div class="timeline-desc">继续收紧二级流动性</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2026-05-12</div><div class="timeline-dot warn"></div>
+      <div><div class="timeline-title">Anthropic 跟进警告</div><div class="timeline-desc">公开点名 Hiive / Forge / UpMarket / Sydecar 为"未授权"挂牌平台。pre-IPO AI 板块 broker 业务全面收缩</div></div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">2026-05-13</div><div class="timeline-dot warn"></div>
+      <div><div class="timeline-title">代币化 SPV 暴跌</div><div class="timeline-desc">Anthropic / OpenAI 代币化 SPV "plunge nearly 40%"（CoinDesk）。Figure 二级 Forge 单日 -10.31% 是连锁反应的一部分</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="decision">
+  <div class="section-num">09 · 投资决策</div>
+  <h2>Ray 的<em>三种路径</em>——明确表态，不骑墙</h2>
+
+  <div class="path-grid">
+    <div class="path a">
+      <div class="rec">RAY 推荐</div>
+      <div class="path-num">PATH A · 观望不上车</div>
+      <h4>等 2026-Q4 三个观察点</h4>
+      <p>估值已透支 + 二级流动性冻结 + 黑天鹅未消化 + 中国身份合规摩擦大。</p>
+      <ul>
+        <li>本周：不开账户、不汇款、不签 SPV</li>
+        <li>本月：注册 Forge / Hiive 免费 watch，订阅价格 alert</li>
+        <li>等三件事翻牌任意两件再升级到 PATH B</li>
+      </ul>
+    </div>
+    <div class="path b">
+      <div class="path-num">PATH B · 小额二级</div>
+      <h4>仓位 ≤ 2% / 入场 ≤ $130</h4>
+      <p>仅当你已有 BVI + 37 号文 + 流动资产 &gt; ¥1,500 万 + 能接受全损时启动。</p>
+      <ul>
+        <li>仓位：不超过总流动资产的 2%</li>
+        <li>入场价：Hiive ≤ $130/股（隐含估值 ≤ $26B）</li>
+        <li>退出：跌至 $90 止损 / S-1 提交持有 / $250+ 套现 50%</li>
+        <li>平台优先级：Hiive &gt; EquityZen &gt; Forge &gt; SPV</li>
+      </ul>
+    </div>
+    <div class="path c">
+      <div class="path-num">PATH C · 重仓押注</div>
+      <h4>Ray 强烈不推荐</h4>
+      <p>需要 6 个前提全部兑现（含庭外和解 + Helix 03 超越 Gemini + BMW 续约 + 2 新工业客户 + BotQ 1,000 台/月稳态 + 中国未拿 Tier-1）。</p>
+      <ul>
+        <li>即便满足，重仓也 ≤ 总流动资产 5%</li>
+        <li>任何让你押到 10%+ 的论证 = 编故事</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>三个 2026-Q4 观察点（PATH A → PATH B 的升级条件）</h3>
+  <table class="compare-table">
+    <thead><tr><th>时间</th><th>观察点</th><th>翻牌后的动作</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="num">2026-Q4</td>
+        <td><strong>Helix 03 是否发布 + 公开 benchmark</strong></td>
+        <td>如压住 Gemini Robotics / π0.5 → 技术差距未拉大，加分</td>
+      </tr>
+      <tr>
+        <td class="num">2026-Q4 - 2027-Q1</td>
+        <td><strong>BMW 续约 + 2-3 个新工业客户披露</strong></td>
+        <td>如续约 + 新客户实约（不是 LOI） → 商业模型证据，加分</td>
+      </tr>
+      <tr>
+        <td class="num">2027-H1</td>
+        <td><strong>Gruendel 安全诉讼判决 / 庭外和解</strong></td>
+        <td>如庭外和解 / Figure 胜诉 → 黑天鹅消化，加分</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="verdict">
+    <div class="verdict-title">FINAL VERDICT</div>
+    <h3>"<em>性感不等于可投资</em>"——这是 Figure AI 现在最朴素的判断。</h3>
+    <p>Figure 不是 Theranos——机器人确实存在，BMW 部署可被第三方目睹，BotQ 工厂在产。但它有 WeWork 式的<strong>叙事溢价</strong>：18 月 15× 估值斜率配上几乎无法量化的收入端，是典型的"故事驱动估值"。</p>
+    <p>对你（Ray，中国大陆身份非职业投资者）来说，<strong>当前最理性的动作是认真观察 6 个月，而不是抢上车</strong>。等 2026-Q4 三个观察点出结果，那时再决定是否升级到 PATH B 才是 EV（期望价值）最高的选择。</p>
+    <div class="verdict-options">
+      <div class="verdict-option">
+        <div class="num">如果非要参与赛道</div>
+        <h4>不通过 Figure 上车</h4>
+        <p>买 NVDA / GOOGL 吃底层 beta，买 9880.HK 优必选拿唯一已上市纯本体股，蹲点 2026 H2 宇树科创板 IPO。</p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">如果一定要押 Figure</div>
+        <h4>等下一次估值压力测试</h4>
+        <p>如果 2027 之前出现 down round 或 IPO 后破发，那时的价格才是合理 entry。</p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">最该警惕的</div>
+        <h4>"独角兽稀缺 = 必涨"叙事</h4>
+        <p>2035 全行业 TAM $38B 已小于 Figure 当前估值——这个时候追，就是接最后一棒。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="checklist">
+  <div class="section-num">10 · 30 天 Checklist</div>
+  <h2>从今天开始可以做的<em>具体动作</em></h2>
+
+  <h3>本周（5/17 - 5/24）</h3>
+  <ul>
+    <li><strong>不开账户、不汇款、不签 SPV</strong>——这是默认行动</li>
+    <li>在 Forge 和 Hiive <strong>免费注册</strong>（不需要 KYC 验证），订阅 Figure AI 的价格 alert，观察 4 周价格走势</li>
+    <li>关注 Figure GitHub / careers 页面动态——Safety 团队是否大幅扩招（回应诉讼的正面信号）</li>
+    <li>阅读 Gruendel v. Figure AI 起诉书原文（PACER 系统，案号 5:25-cv-10094-EJD）</li>
+  </ul>
+
+  <h3>本月（5 月内）</h3>
+  <ul>
+    <li>如果你考虑搭海外架构：约 2 个香港律师 + 1 个新加坡律师做架构咨询，<strong>只问报价，先不签</strong>（37 号文一次性合规成本估 $15-30K，年度维护 $5K+）</li>
+    <li>想 expose 公开股板块：可小仓位（≤1%）建仓 <strong>KOID 人形机器人 ETF</strong>——不是 ACHR（与 Figure 无业务重叠）</li>
+    <li>研究 9880.HK 优必选当前估值是否合理（v1 报告里推荐过）</li>
+  </ul>
+
+  <h3>6-12 个月监控点</h3>
+  <table class="compare-table">
+    <thead><tr><th>时间</th><th>监控点</th><th>翻牌动作</th></tr></thead>
+    <tbody>
+      <tr><td class="num">2026-Q3</td><td>Figure 03 累计交付是否突破 1,500 台</td><td>达到 → 量产证据加分</td></tr>
+      <tr><td class="num">2026-Q4</td><td>Helix 03 发布 + 公开 benchmark</td><td>跑过 Gemini / π → 技术差距未拉大</td></tr>
+      <tr><td class="num">2026-Q4</td><td>宇树 / 智元 / Apptronik 是否拿到北美 Tier-1 订单</td><td>拿到 → Figure 护城河预警</td></tr>
+      <tr><td class="num">2026-Q4</td><td>Figure 是否官方披露 2025 / H1 2026 收入</td><td>披露 → 透明度信号</td></tr>
+      <tr><td class="num">2027-Q1</td><td>Gruendel 诉讼一审 / 庭外和解</td><td>有利结果 → 黑天鹅消化</td></tr>
+      <tr><td class="num">2027-H1</td><td>S-1 是否提交</td><td>提交 → 退出路径清晰化</td></tr>
+      <tr><td class="num">2027-H1</td><td>BMW 续约 + 第二客户披露</td><td>续约 → 真实商业模型证据</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout pos">
+    <div class="callout-label">最重要的一句话</div>
+    <p class="callout-quote">你完全可以错过 Figure。Figure 不是稀缺资产——人形机器人赛道有 14 家百亿估值玩家，5 家会 IPO，A 股有 19 支可买零件股。错过 Figure 不等于错过赛道，<strong>但买错 Figure 等于在赛道顶部接最后一棒</strong>。</p>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="site">
+  <div class="inner">
+    <h4>关键一手来源</h4>
+    <div class="sources">
+      <a href="https://www.figure.ai/news/series-c">Figure Series C 官方公告</a><br>
+      <a href="https://www.figure.ai/news/introducing-figure-03">Figure 03 发布</a><br>
+      <a href="https://www.figure.ai/news/helix-02">Helix 02 发布</a><br>
+      <a href="https://www.figure.ai/news/botq">BotQ 工厂介绍</a><br>
+      <a href="https://www.figure.ai/news/ramping-figure-03-production">Figure 03 量产进度</a><br>
+      <a href="https://www.figure.ai/news/production-at-bmw">BMW 部署完工（F.02 撤回 HQ 关键页面）</a><br>
+      <a href="https://www.brettadcock.com/bio">Brett Adcock 官方 bio</a><br>
+      <a href="https://forgeglobal.com/figure-ai_stock/">Forge Global · Figure AI 二级</a><br>
+      <a href="https://www.hiive.com/securities/figure-ai-stock">Hiive · Figure AI 二级</a><br>
+      <a href="https://www.press.bmwgroup.com/global/article/detail/T0455864EN/">BMW PressClub · 莱比锡 Hexagon 公告</a><br>
+      <a href="https://fortune.com/2025/04/06/figure-ai-bmw-humanoid-robot-partnership-details-reality-exaggeration/">Fortune · Jason Del Rey · BMW 夸大调查</a><br>
+      <a href="https://www.cnbc.com/2025/11/21/figure-ai-sued.html">CNBC · Gruendel 诉讼报道</a><br>
+      <a href="https://oecd.ai/en/incidents/2025-11-18-11e6">OECD AI Incidents · 案件登记</a><br>
+      <a href="https://www.humanoidsdaily.com/news/the-shape-of-scale-new-figure-production-data-hints-at-exponential-ramp-up">Humanoids Daily · BotQ 产能反推</a><br>
+      <a href="https://www.patentvest.com/patentvest-pulse/humanoid-robots-the-disconnect-between-ip-strength-and-vc-funding-of-us-and-european-humanoid-robot-startups/">PatentVest · 人形机器人 IP 报告</a><br>
+      <a href="https://techcrunch.com/2025/09/26/famed-roboticist-says-humanoid-robot-bubble-is-doomed-to-burst/">TechCrunch · Rodney Brooks 专访</a><br>
+      <a href="https://www.humanoidsdaily.com/news/meta-ai-chief-yann-lecun-claims-humanoid-firms-lack-path-to-general-ai">Humanoids Daily · LeCun MIT 演讲</a><br>
+      <a href="https://techcrunch.com/2025/02/04/figure-drops-openai-in-favor-of-in-house-models/">TechCrunch · Figure 与 OpenAI 解约</a><br>
+      <a href="https://techcrunch.com/2025/04/29/figure-ai-sent-cease-and-desist-letters-to-secondary-markets-brokers/">TechCrunch · 二级市场律师函</a><br>
+      <a href="https://www.bloomberg.com/news/articles/2026-05/anthropic-pre-ipo-warning">Bloomberg · Anthropic 5/12 二级市场警告</a><br>
+      <a href="https://techmarketbriefs.com/pre-ipo/figure-ai/">TechMarketBriefs · Figure pre-IPO 综合</a><br>
+      <a href="https://arxiv.org/abs/2505.03912">arxiv 2505.03912 · OpenHelix 学界复现</a><br>
+      <a href="https://www.figure.ai/careers">Figure 招聘页（团队规模反查）</a><br>
+      <a href="https://dockets.justia.com/docket/california/candce/5:2025cv10094/460223">Justia · Gruendel v. Figure AI 案件 docket</a>
+    </div>
+
+    <div class="footer-meta">
+      <div>报告生成 · 2026-05-17 · v1.0 · Figure AI 深度调研<br>由 Ray Deep Research 引擎（5 个并行子 Agent · 公司本体 · 产品技术 · 商业化 · 行业地位 · 投资决策）生成<br>所有二级市场报价均经 CDP 直访一手平台核对 · Hiive 数据为 2026-05-17 实抓 · Forge 数据为 2026-05-16 抓取</div>
+      <div>本报告所有信息基于公开来源，仅供研究参考，不构成任何投资建议。一级 / 二级市场估值波动剧烈，融资金额、估值数据均尽量采用一手来源；私募公司部分数据为推算，已标注。中国身份投资者参与境外 pre-IPO 涉及合规风险，请咨询律师。</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      document.querySelectorAll('nav.toc a').forEach(link => {
+        link.style.color = '';
+        link.style.fontWeight = '';
+      });
+      const activeLink = document.querySelector(`nav.toc a[href="#${id}"]`);
+      if (activeLink) {
+        activeLink.style.color = 'var(--accent-warn)';
+        activeLink.style.fontWeight = '600';
+      }
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+
+const toggle = document.getElementById('theme-toggle');
+toggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  if (next === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+  localStorage.setItem('ray-theme', next);
+});
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  if (!localStorage.getItem('ray-theme')) {
+    if (e.matches) document.documentElement.setAttribute('data-theme', 'dark');
+    else document.documentElement.removeAttribute('data-theme');
+  }
+});
+</script>
+</body>
+</html>

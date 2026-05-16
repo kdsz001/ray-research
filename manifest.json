@@ -231,6 +231,18 @@
           "title": "初版深度调研 · 稀缺标的，但不是确定胜者"
         }
       ]
+    },
+    {
+      "slug": "figure-ai",
+      "name": "Figure AI",
+      "tagline": "硅谷人形机器人 · $39B 一级 vs $28B 二级 · 单一公司深扒",
+      "reports": [
+        {
+          "date": "2026-05-17",
+          "file": "2026-05-17-figure-ai.html",
+          "title": "深度调研 v1 · $39B 一级 vs $28B 二级，市场已经在说话"
+        }
+      ]
     }
   ]
 }
