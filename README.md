@@ -133,6 +133,12 @@
 |------|------|---------|
 | 2026-05-18 | [创始人手册（中文译本）· The Founder's Playbook 2026](founders-playbook/2026-05-18-founders-playbook-zh.html) | [↗ Open](https://kdsz001.github.io/ray-research/founders-playbook/2026-05-18-founders-playbook-zh.html) |
 
+### 📊 [川沐｜Trumoo🐮 交易实证](xiaomustock/) · 500 条推文复盘（非 Ray 调研，交易员回测）
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-18 | [500 条推文复盘 · 长线胜率 68.2%](xiaomustock/2026-05-18-xiaomustock.html) | [↗ Open](https://kdsz001.github.io/ray-research/xiaomustock/2026-05-18-xiaomustock.html) |
+
 <!-- INDEX-END -->
 
 ---

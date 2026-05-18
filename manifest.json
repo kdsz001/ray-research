@@ -255,6 +255,18 @@
           "title": "创始人手册 · 打造 AI 原生初创公司（中文译本）"
         }
       ]
+    },
+    {
+      "slug": "xiaomustock",
+      "name": "川沐｜Trumoo🐮 交易实证",
+      "tagline": "500 条推文复盘 · 长线胜率 68%",
+      "reports": [
+        {
+          "date": "2026-05-18",
+          "file": "2026-05-18-xiaomustock.html",
+          "title": "500 条推文复盘 · 长线胜率 68.2%"
+        }
+      ]
     }
   ]
 }
