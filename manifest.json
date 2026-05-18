@@ -243,6 +243,18 @@
           "title": "深度调研 v1 · $39B 一级 vs $28B 二级，市场已经在说话"
         }
       ]
+    },
+    {
+      "slug": "founders-playbook",
+      "name": "创始人手册 · 打造 AI 原生初创公司",
+      "tagline": "Anthropic 官方手册（2026 Edition）· 中文译本存档 · 不是 Ray 原创调研",
+      "reports": [
+        {
+          "date": "2026-05-18",
+          "file": "2026-05-18-founders-playbook-zh.html",
+          "title": "创始人手册 · 打造 AI 原生初创公司（中文译本）"
+        }
+      ]
     }
   ]
 }

@@ -127,6 +127,12 @@
 |------|------|---------|
 | 2026-05-17 | [深度调研 v1 · 市场已经在说话](figure-ai/2026-05-17-figure-ai.html) | [↗ Open](https://kdsz001.github.io/ray-research/figure-ai/2026-05-17-figure-ai.html) |
 
+### 📓 [创始人手册 · 打造 AI 原生初创公司](founders-playbook/) · Anthropic 官方手册 · 中文译本存档（非 Ray 调研）
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-18 | [创始人手册（中文译本）· The Founder's Playbook 2026](founders-playbook/2026-05-18-founders-playbook-zh.html) | [↗ Open](https://kdsz001.github.io/ray-research/founders-playbook/2026-05-18-founders-playbook-zh.html) |
+
 <!-- INDEX-END -->
 
 ---

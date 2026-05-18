@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>创始人手册 · 打造 AI 原生初创公司</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --ink-soft: #4a4640;
+    --ink-fade: #8c857c;
+    --paper: #faf7f2;
+    --paper-warm: #f3ede2;
+    --rule: #d9d1c2;
+    --accent: #c9532b;
+    --accent-soft: #f4d9cc;
+    --gold: #b8893b;
+    --serif: "Noto Serif SC", "Songti SC", "STSong", serif;
+    --sans: "Inter", -apple-system, "PingFang SC", "Hiragino Sans GB", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--serif);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.85;
+    font-feature-settings: "palt";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== Cover ===== */
+  .cover {
+    min-height: 92vh;
+    background:
+      radial-gradient(ellipse at top left, #f4ede0 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, #f0e4cf 0%, transparent 55%),
+      var(--paper);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 64px 48px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 720px; height: 720px;
+    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 65%);
+    opacity: 0.5;
+    z-index: 0;
+  }
+  .cover-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-fade);
+    position: relative;
+    z-index: 1;
+  }
+  .cover-header .brand {
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .cover-main { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; width: 100%; }
+  .cover-eyebrow {
+    font-family: var(--sans);
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    font-weight: 500;
+  }
+  .cover h1 {
+    font-size: clamp(56px, 8vw, 104px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .cover h1 .accent { color: var(--accent); display: block; }
+  .cover-lead {
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.8;
+    color: var(--ink-soft);
+    max-width: 680px;
+    margin-bottom: 48px;
+  }
+  .cover-meta {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-fade);
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .cover-meta span::before { content: "·"; margin-right: 12px; color: var(--rule); }
+  .cover-meta span:first-child::before { display: none; }
+  .cover-footer {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--ink-fade);
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== Layout ===== */
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+  .container-wide { max-width: 920px; margin: 0 auto; padding: 0 32px; }
+
+  /* ===== TOC ===== */
+  .toc {
+    background: var(--paper-warm);
+    padding: 80px 32px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .toc-inner { max-width: 760px; margin: 0 auto; }
+  .toc-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--ink-fade);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .toc h2 {
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 40px;
+    color: var(--ink);
+  }
+  .toc-list { list-style: none; }
+  .toc-list li {
+    display: flex;
+    align-items: baseline;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+    gap: 24px;
+  }
+  .toc-num {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    width: 36px;
+  }
+  .toc-title { font-size: 20px; font-weight: 500; color: var(--ink); flex: 1; text-decoration: none; transition: color 0.2s; }
+  .toc-title:hover { color: var(--accent); }
+  .toc-pages { font-family: var(--sans); font-size: 13px; color: var(--ink-fade); font-variant-numeric: tabular-nums; }
+
+  /* ===== Chapter ===== */
+  .chapter {
+    padding: 100px 0 80px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .chapter:nth-child(even) { background: var(--paper-warm); }
+  .chapter-header {
+    max-width: 760px;
+    margin: 0 auto 56px;
+    padding: 0 32px;
+  }
+  .chapter-num {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .chapter h2 {
+    font-size: clamp(38px, 5vw, 56px);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .chapter-lead {
+    font-size: 19px;
+    color: var(--ink-soft);
+    line-height: 1.85;
+    max-width: 620px;
+  }
+
+  /* ===== Prose ===== */
+  .prose { max-width: 720px; margin: 0 auto; padding: 0 32px; }
+  .prose p {
+    font-size: 17px;
+    line-height: 1.95;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+  .prose p strong { font-weight: 700; color: var(--ink); }
+  .prose h3 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 56px;
+    margin-bottom: 20px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .prose h4 {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 40px;
+    margin-bottom: 14px;
+  }
+
+  /* ===== Pull-quote ===== */
+  .pullquote {
+    margin: 56px auto;
+    max-width: 860px;
+    padding: 48px 56px;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    text-align: center;
+  }
+  .pullquote-text {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--ink);
+    font-style: italic;
+    letter-spacing: -0.005em;
+  }
+  .pullquote-text::before { content: "「"; color: var(--accent); }
+  .pullquote-text::after { content: "」"; color: var(--accent); }
+
+  /* ===== Callout boxes ===== */
+  .callout {
+    background: white;
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent);
+    padding: 28px 32px;
+    margin: 32px 0;
+    border-radius: 4px;
+  }
+  .callout-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .callout p { font-size: 16px; margin-bottom: 0; color: var(--ink-soft); }
+
+  /* ===== Stage card ===== */
+  .stage-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 40px 0;
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .stage-meta > div {
+    padding: 24px 28px;
+    border-right: 1px solid var(--rule);
+  }
+  .stage-meta > div:last-child { border-right: none; }
+  .stage-meta-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-fade);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .stage-meta-value { font-size: 16px; color: var(--ink); line-height: 1.75; }
+
+  /* ===== Challenge list ===== */
+  .challenges { margin: 32px 0; }
+  .challenge {
+    padding: 24px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .challenge:last-child { border-bottom: 1px solid var(--rule); }
+  .challenge-title {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .challenge-icon {
+    font-family: var(--sans);
+    font-size: 11px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+  .challenge-title h4 {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .challenge-desc { font-size: 16px; color: var(--ink-soft); line-height: 1.85; }
+
+  /* ===== Exercise list ===== */
+  .exercises {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 32px;
+    margin: 40px 0;
+  }
+  .exercises-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .exercises-header h4 {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0;
+  }
+  .exercise {
+    padding: 14px 0;
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .exercise-num {
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    width: 22px;
+  }
+  .exercise-text { font-size: 15px; color: var(--ink-soft); line-height: 1.8; }
+
+  /* ===== Tool table ===== */
+  .tool-table {
+    margin: 40px 0;
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .tool-row {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1.5fr;
+    border-bottom: 1px solid var(--rule);
+  }
+  .tool-row:last-child { border-bottom: none; }
+  .tool-row.header {
+    background: var(--paper-warm);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-fade);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .tool-row > div { padding: 18px 22px; border-right: 1px solid var(--rule); font-size: 15px; line-height: 1.7; }
+  .tool-row > div:last-child { border-right: none; color: var(--ink-soft); }
+  .tool-name { font-weight: 600; color: var(--ink); }
+
+  /* ===== Closing ===== */
+  .closing {
+    padding: 120px 32px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse at center, #f0e4cf 0%, transparent 60%),
+      var(--paper);
+  }
+  .closing-eyebrow {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+  .closing h2 {
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 900;
+    line-height: 1.2;
+    max-width: 800px;
+    margin: 0 auto 32px;
+    letter-spacing: -0.015em;
+  }
+  .closing-body {
+    font-size: 19px;
+    line-height: 1.85;
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .closing-final {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 2px solid var(--ink);
+    font-size: 24px;
+    font-weight: 700;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--accent);
+  }
+
+  /* ===== Footer ===== */
+  footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 64px 32px 48px;
+    text-align: center;
+    font-family: var(--sans);
+  }
+  footer p { font-size: 13px; color: rgba(250,247,242,0.6); margin-bottom: 8px; letter-spacing: 0.05em; }
+  footer .footer-brand { font-size: 18px; font-weight: 600; letter-spacing: 0.1em; color: var(--paper); margin-bottom: 16px; }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 720px) {
+    .cover { padding: 40px 24px; }
+    .stage-meta { grid-template-columns: 1fr; }
+    .stage-meta > div { border-right: none; border-bottom: 1px solid var(--rule); }
+    .stage-meta > div:last-child { border-bottom: none; }
+    .tool-row { grid-template-columns: 1fr; }
+    .tool-row > div { border-right: none; border-bottom: 1px solid var(--rule); }
+    .tool-row > div:last-child { border-bottom: none; }
+    .pullquote { padding: 32px 24px; }
+    .exercises { padding: 24px; }
+  }
+
+  ::selection { background: var(--accent); color: var(--paper); }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<section class="cover">
+  <div class="cover-header">
+    <span class="brand">ANTHROPIC</span>
+    <span>2026 年版</span>
+  </div>
+  <div class="cover-main">
+    <div class="cover-eyebrow">The Founder's Playbook</div>
+    <h1>
+      创始人手册
+      <span class="accent">打造 AI 原生初创公司</span>
+    </h1>
+    <p class="cover-lead">
+      AI 正在重塑初创公司的构建方式。当一个 10 人独角兽从草根逆袭故事变成可执行的行动计划，创始人的工作并没有变——找到真实的问题、做出能解决它的东西、再把它扩展成有影响力的公司。改变的，是通往目标的路径。
+    </p>
+    <div class="cover-meta">
+      <span>共 7 章</span>
+      <span>4 个生命周期阶段</span>
+      <span>面向 2026 重新启动</span>
+    </div>
+  </div>
+  <div class="cover-footer">
+    <span>中文译本</span>
+    <span>For Builders of the AI-Native Era</span>
+  </div>
+</section>
+
+<!-- ============ TOC ============ -->
+<section class="toc">
+  <div class="toc-inner">
+    <div class="toc-label">Table of Contents</div>
+    <h2>目录</h2>
+    <ul class="toc-list">
+      <li><span class="toc-num">01</span><a class="toc-title" href="#ch1">创业生命周期，面向 2026 重新启动</a><span class="toc-pages">第 03 页</span></li>
+      <li><span class="toc-num">02</span><a class="toc-title" href="#ch2">成为创始人的意义正在改变</a><span class="toc-pages">第 05 页</span></li>
+      <li><span class="toc-num">03</span><a class="toc-title" href="#ch3">构思阶段</a><span class="toc-pages">第 08 页</span></li>
+      <li><span class="toc-num">04</span><a class="toc-title" href="#ch4">MVP 阶段</a><span class="toc-pages">第 15 页</span></li>
+      <li><span class="toc-num">05</span><a class="toc-title" href="#ch5">启动阶段</a><span class="toc-pages">第 21 页</span></li>
+      <li><span class="toc-num">06</span><a class="toc-title" href="#ch6">缩放阶段</a><span class="toc-pages">第 25 页</span></li>
+      <li><span class="toc-num">07</span><a class="toc-title" href="#ch7">同样的工作，新的规则</a><span class="toc-pages">第 31 页</span></li>
+      <li><span class="toc-num">08</span><a class="toc-title" href="#resources">资源</a><span class="toc-pages">第 33 页</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CH1 ============ -->
+<article id="ch1" class="chapter">
+  <header class="chapter-header">
+    <div class="chapter-num">Chapter 01</div>
+    <h2>创业生命周期，<br>面向 2026 重新启动</h2>
+    <p class="chapter-lead">AI 不只是让创业变得更容易，它正在改写创业的形状本身。</p>
+  </header>
+
+  <div class="prose">
+    <p>AI 正在重塑初创公司的构建方式。如今，从未写过一行代码的创始人也能发布生产级应用，而精干的 10 人独角兽已经从草根逆袭故事，变成了有意识的行动计划。</p>
+
+    <p>到 2026 年，AI 已经能够编写生产级代码、开展市场研究、综合分析竞争格局、起草投资人材料，并自动化运营工作流。通过消除即便是经验丰富的技术型创始人在整合工具、平台和系统时也曾面临的陡峭学习曲线，<strong>AI 最重要的是拉平了创业的准入门槛</strong>。</p>
+
+    <p>传统的初创公司增长曲线假定，从想法到规模化的路径是：验证 → 融资 → 招聘 → 构建 → 再次融资 → 增长 → 招更多人，然后重复。如今，AI 已经打破了这样一种预期：每个新阶段都需要更大的团队、不同的技能组合以及新一轮融资。</p>
+  </div>
+
+  <div class="pullquote">
+    <div class="pullquote-text">2026 年，一个好想法能让创始人比以往走得更远。智能体式编程将过去需要一个工程师团队完成的工作，压缩成创始人自己就能交付的成果。</div>
+  </div>
+
+  <div class="prose">
+    <p>本手册根据这些新现实，重新梳理了创业旅程的四个核心阶段——<strong>创意、MVP、发布和规模化</strong>。我们将探讨：当 AI 成为你技术与组织发展的核心时，每个阶段会呈现什么样貌；每个阶段适合使用哪些工具；以及使用这些工具的创始人如何压缩时间线。</p>
+  </div>
+</article>
+
+<!-- ============ CH2 ============ -->
+<article id="ch2" class="chapter">
+  <header class="chapter-header">
+    <div class="chapter-num">Chapter 02</div>
+    <h2>成为创始人的意义<br>正在发生变化</h2>
+    <p class="chapter-lead">创始人从"个人贡献者"转向"智能体的协调者"。注意力沿着技术栈上移，转向更高阶的工作。</p>
+  </header>
+
+  <div class="prose">
+    <p>过去，创始人常常由他们能做什么来定义：技术型创始人编写代码，非技术型创始人负责业务运营。但到 2026 年，AI 已经打破了<strong>"能构建产品的人"和"拥有值得构建的想法的人"之间的壁垒</strong>。</p>
+
+    <p>AI 原生初创公司正在从根本上改变"创始人"的含义。没有工程背景的人也能构建生产级软件；技术能力强但商业知识有限的创始人，也能轻松制作上市策略、财务模型和精美的路演幻灯片。</p>
+
+    <p>从历史上看，创始人大部分时间处于执行模式：写代码、管人、处理日常运营。在 AI 原生创业公司中，创始人的角色更像智能体的协调者——这些智能体是专门化的 AI 助手，可以读取文件、运行命令、执行代码，甚至浏览网页。<strong>创始人的注意力沿着技术栈上移，转向更高阶的工作</strong>：产生想法，并指挥那些将想法落地的系统。</p>
+
+    <p>更具革命性的结果是：让拥有专业领域知识的非技术型创始人不再受阻。当创始人群体不再局限于具有工程背景的人，就会出现由拥有截然不同生活经历的人创建的初创公司，它们解决的是<strong>真实存在的、传统科技创始人培养路径从未优先考虑的问题</strong>。</p>
+
+    <h3>精益创业公司的三种 AI 能力</h3>
+
+    <h4>1 · 对话智能与研究</h4>
+    <p>把 AI 视作覆盖每一个可想象领域的随叫随到的专家。如何设置工资单？如何规划产品开发冲刺？如何起草一份紧凑的投资者备忘录？过去这些问题的答案是"找一个懂行的人"，现在变成了直接问 AI。</p>
+    <ul style="font-size:16px; color:var(--ink-soft); line-height:1.9; padding-left:22px; margin-bottom:22px;">
+      <li>深度研究：竞争分析、市场规模测算、财务建模</li>
+      <li>文档撰写：融资演示、案例研究、投资者备忘录、PRD</li>
+      <li>战略思维伙伴：反向质疑、事前验尸、情景规划、路线图优化</li>
+    </ul>
+
+    <h4>2 · 智能体式编程</h4>
+    <p>过去构建软件需要技术联合创始人、外包公司，或足够的资金组建工程团队。智能体式编码工具让每一位有志创业者都能用自然语言描述要构建什么，并指挥 AI 以整个工程团队的速度生成、测试、调试并重构生产级代码库。<strong>从"我有一个想法"到"我有一个产品"的时间线已被压缩</strong>。</p>
+
+    <h4>3 · 工作流自动化</h4>
+    <p>安排日程、更新 CRM、生成每周报告、维护文档、发布内容、跟踪合规——在精益创业公司中这些负担主要落在创始人身上。AI 工具驱动的工作流自动化可以卸下它，让创始人把时间和注意力投入到更高层次的决策中。</p>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">核心洞察</div>
+    <p>能够有效利用 AI 研究、自动化和代理式编码能力的创始人，可以打造一家运营杠杆远超其团队规模的初创公司。但这项工作不会自动完成——统筹这些 AI 工具的创始人需要知道如何（以及何时）应用它们。</p>
+  </div>
+</article>
+
+<!-- ============ CH3 ============ -->
+<article id="ch3" class="chapter">
+  <header class="chapter-header">
+    <div class="chapter-num">Chapter 03 · Stage 1</div>
+    <h2>构思阶段</h2>
+    <p class="chapter-lead">这是创意遇见现实的阶段：在 2026 年，成功需要一种纪律——在证据足以证明合理性之前，不要贸然开始构建。</p>
+  </header>
+
+  <div class="prose">
+    <p>每一位初创企业创始人都从同一个起点出发：一个让他们无法停止思考的问题。这一阶段的工作包括研究、客户发现、竞争分析，以及对反证证据的诚实评估——所有这些都应在要求 Claude Code 生成第一行代码之前完成。</p>
+
+    <div class="stage-meta">
+      <div>
+        <div class="stage-meta-label">阶段目标</div>
+        <div class="stage-meta-value">以研究为导向的验证：在投入资源构建之前，收集可靠证据证明真实问题存在，并且你的解决方案能有效解决它。</div>
+      </div>
+      <div>
+        <div class="stage-meta-label">退出标准</div>
+        <div class="stage-meta-value">找到"问题—解决方案"契合点。通过与真实用户的交流，你已经获得定性证据，证明你在为真实的人解决真实的问题。</div>
+      </div>
+    </div>
+
+    <h4>必须能对这三个问题回答"是"</h4>
+    <div class="prose" style="padding:0;">
+      <p>1. <strong>问题真实且具体吗？</strong> 你能精确说出谁遇到这个问题、多频繁、影响多大、目前如何应对。</p>
+      <p>2. <strong>你的解决方案是否针对实际问题？</strong> 不是你最初假设的那个，而是验证过程揭示出来的那个。</p>
+      <p>3. <strong>是否有足够信号证明值得构建？</strong> 你不会有确定性——等待确定性本身就是失败模式——但你需要足够的定性证据，让投入 MVP 是一个理性判断。</p>
+    </div>
+
+    <h3>这个阶段的三大挑战</h3>
+
+    <div class="challenges">
+      <div class="challenge">
+        <div class="challenge-title">
+          <span class="challenge-icon">挑战 1</span>
+          <h4>把"构建"误认为"验证"</h4>
+        </div>
+        <p class="challenge-desc">42% 的初创公司失败是因为做出了没人想要的东西。智能体式编码大幅缩短了"我有想法"和"我有产品"之间的距离，让创始人太容易在尚未验证现实世界实用性之前就开始构建。<strong>原型成了让人相信假设一直正确的理由——但它并不是证据，对话才是。</strong></p>
+      </div>
+      <div class="challenge">
+        <div class="challenge-title">
+          <span class="challenge-icon">挑战 2</span>
+          <h4>过早扩展</h4>
+        </div>
+        <p class="challenge-desc">当构建毫不费力且即时完成，你可能在毫无察觉的情况下，把执行规模扩大得远远超前于业务真实需求。AI 会围绕一个根本上有缺陷的前提，热情地生成、测试、调试代码——<strong>系统中的智能来自你自己</strong>。让你的理解始终走在构建之前。</p>
+      </div>
+      <div class="challenge">
+        <div class="challenge-title">
+          <span class="challenge-icon">挑战 3</span>
+          <h4>客观性丧失</h4>
+        </div>
+        <p class="challenge-desc">向 AI 索取支持你既有信念的证据，它就会找到。让 AI 验证你的想法，它会找到支持性证据；让它估算 TAM，它会给出一个让你看起来值得融资的数字。<strong>解药是同一个工具——只是反向使用：让 AI 像验证想法一样彻底地压力测试它。</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    <div class="pullquote-text">一个可运行的原型很容易被误认为是你正在解决真实问题的确凿证据，但它并不是。它只是一个有用的"压力测试"道具，用于与潜在用户进行对话。</div>
+  </div>
+
+  <div class="prose">
+    <h3>Claude 如何帮助构思阶段的创始人</h3>
+
+    <h4>选择合适的 Claude 界面</h4>
+    <p>三个界面背后是同一个 Claude；变化的是它周围的工作空间。</p>
+
+    <div class="tool-table">
+      <div class="tool-row header">
+        <div>任务类型</div>
+        <div>使用</div>
+        <div>为什么</div>
+      </div>
+      <div class="tool-row">
+        <div>提问、改写、快速头脑风暴</div>
+        <div class="tool-name">Chat</div>
+        <div>快速、对话式，无需配置</div>
+      </div>
+      <div class="tool-row">
+        <div>调研、分析或从你的文件构建完整文档</div>
+        <div class="tool-name">Claude Cowork</div>
+        <div>文件夹访问、连接器、技能、定时运行</div>
+      </div>
+      <div class="tool-row">
+        <div>编写、测试或交付软件</div>
+        <div class="tool-name">Claude Code</div>
+        <div>代码库访问、diff、git、开发环境</div>
+      </div>
+    </div>
+
+    <h4>问题假设打磨</h4>
+    <p>把它打磨到真正可测试的程度。<em>"合同审查太慢"</em>并不可测试；<em>"中端市场公司的内部法务团队每个合同审查周期要花 3+ 天，因为修订意见在邮件线程里管理而不是单一版本控制文档"</em> 非常可测试。</p>
+
+    <h4>市场研究与竞争分析</h4>
+    <p>让 Claude 提出最有说服力的论证，说明为什么这个领域里某个竞争对手会成功而你不会。这有助于打破"竞争对手忽视"——过于专注自己愿景而系统性低估其他人在做什么。</p>
+
+    <h4>客户访谈设计</h4>
+    <p>新手创始人常犯的错误是问关于未来的开放问题（"你会用这样的东西吗？"），而不是具体询问过去经历（"告诉我你上一次遇到这个问题时的情况"）。让 Claude 标出问题草稿中哪些地方在引导受访者、过于宽泛、或会产生噪音而非信号。</p>
+
+    <div class="exercises">
+      <div class="exercises-header">
+        <h4>构思阶段练习清单</h4>
+      </div>
+      <div class="exercise"><span class="exercise-num">01</span><span class="exercise-text">与 Claude 一起打磨问题陈述，直到它成为一个可测试的假设。让 Claude 反驳你的想法，寻找能推翻假设的反证。</span></div>
+      <div class="exercise"><span class="exercise-num">02</span><span class="exercise-text">让 Claude 按层级梳理竞争格局：直接、间接、潜在收购方、相邻玩家，然后论证为何每一类都构成真正威胁。</span></div>
+      <div class="exercise"><span class="exercise-num">03</span><span class="exercise-text">用 Claude Cowork 汇总你的关键来源中竞品评价，识别现有方案尚未解决的主要抱怨。</span></div>
+      <div class="exercise"><span class="exercise-num">04</span><span class="exercise-text">基于公开数据构建 TAM/SAM/SOM 模型，并压力测试背后的假设。</span></div>
+      <div class="exercise"><span class="exercise-num">05</span><span class="exercise-text">让 Claude 识别三个外部趋势（监管/技术/人口结构），评估每个对你的具体假设是顺风还是逆风。</span></div>
+      <div class="exercise"><span class="exercise-num">06</span><span class="exercise-text">手写访谈问题草稿，请 Claude 审核——标出引导性、面向未来、过于宽泛或会引出社会期许型回答的问题。</span></div>
+      <div class="exercise"><span class="exercise-num">07</span><span class="exercise-text">每完成 5 次访谈后，让 Claude Cowork 综合笔记生成两个列表：支持假设的证据 / 挑战假设的证据。如果第一个明显长于第二个，问 Claude 这是数据中的实际情况，还是你希望发现的东西。</span></div>
+      <div class="exercise"><span class="exercise-num">08</span><span class="exercise-text">向 Claude 展示解决方案概念，请它识别你最依赖的三个假设，以及任一不成立会产生什么后果。</span></div>
+      <div class="exercise"><span class="exercise-num">09</span><span class="exercise-text">定义解决方案所依赖的单一核心交互。让 Claude Code 只构建它，给 5 位符合目标画像的人试用。</span></div>
+    </div>
+  </div>
+</article>
+
+<!-- ============ CH4 ============ -->
+<article id="ch4" class="chapter">
+  <header class="chapter-header">
+    <div class="chapter-num">Chapter 04 · Stage 2</div>
+    <h2>MVP 阶段</h2>
+    <p class="chapter-lead">许多创始人把它视为建设阶段，但它从根本上仍然是收集证据的工作——只是现在收集的是关于"解决方案"的证据。</p>
+  </header>
+
+  <div class="prose">
+    <div class="stage-meta">
+      <div>
+        <div class="stage-meta-label">阶段目标</div>
+        <div class="stage-meta-value">将经过验证的问题转化为真实用户会实际使用的可用产品。最小、最聚焦的一次迭代——同时不积累会复合增长的技术债。</div>
+      </div>
+      <div>
+        <div class="stage-meta-label">退出标准</div>
+        <div class="stage-meta-value">产品市场契合的真实证据：具体可识别的用户群体认为它有足够价值，愿意持续使用（留存）、付费（收入）或推荐（推荐）。</div>
+      </div>
+    </div>
+
+    <p>现在构建的方式决定了未来的可能性。这意味着 MVP 阶段还有第二个同样重要的目标：在快速推进的同时，不积累那种会不断叠加的技术债——一旦真实用户达到有意义的规模，它就会立刻成为噩梦。</p>
+
+    <p>从第一天起就投入建设持久化上下文，才能让 AI 始终成为力量倍增器，而不是熵增的来源。在 AI 原生创业公司中，<strong>你的代码库是你与 AI 协作的对象</strong>，这使可读性成为基础。跳过规格说明、架构决策和上下文文件（如 CLAUDE.md）的创始人，都会撞上一堵可预见的墙。</p>
+
+    <h3>MVP 阶段的四大挑战</h3>
+
+    <div class="challenges">
+      <div class="challenge">
+        <div class="challenge-title">
+          <span class="challenge-icon">挑战 1</span>
+          <h4>智能体技术债的复合增长</h4>
+        </div>
+        <p class="challenge-desc">AI 移除了几乎每一个曾控制代码进入生产的自然瓶颈，速度是必然的。但当速度成为创始人唯一考虑的变量，你会积累难以偿还的技术债。<strong>如果不把规格和架构约束写在 AI 能读到的地方，每次会话都会从零推导基础决策——这些决策会逐渐漂移。</strong>最终你得到的是一个背后没有连贯心智模型的代码库。</p>
+      </div>
+      <div class="challenge">
+        <div class="challenge-title">
+          <span class="challenge-icon">挑战 2</span>
+          <h4>陷入虚假的产品—市场契合陷阱</h4>
+        </div>
+        <p class="challenge-desc">发布时的热度来自短暂因素：朋友、投资人组合公司、一条 Hacker News 头条。这些都无法可靠预测第六周或第十二周的情况。<strong>早期势头并不等同于产品市场契合。</strong></p>
+      </div>
+      <div class="challenge">
+        <div class="challenge-title">
+          <span class="challenge-icon">挑战 3</span>
+          <h4>零摩擦的范围蔓延</h4>
+        </div>
+        <p class="challenge-desc">过去用来遏制范围蔓延的约束——工程时间的真实成本——已不再以同样方式存在。每一个单独的新增功能看起来都站得住脚。解药是在开始构建前制定书面的范围定义，把决策点从<em>"我们应该构建这个吗？"</em>转移到<em>"已经有相当数量的用户告诉我们，没有这个就无法获得价值了吗？"</em></p>
+      </div>
+      <div class="challenge">
+        <div class="challenge-title">
+          <span class="challenge-icon">挑战 4</span>
+          <h4>因缺乏经验而不安全</h4>
+        </div>
+        <p class="challenge-desc">代理式编码工具生成的是能运行的代码，而不是天生安全的代码。功能要么能用要么不能用，但<strong>安全漏洞在被利用之前是不可见的</strong>，没有自然的反馈循环来提醒初次创业者哪里出了问题。在任何用户接触你的应用之前进行安全审查，是发布 MVP 的最低负责任门槛。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    <div class="pullquote-text">那些跳过规格说明、架构决策和上下文文件的创始人，都会撞上一堵可预见的墙：每次新会话都需要重新解释代码库。</div>
+  </div>
+
+  <div class="prose">
+    <h3>Claude 如何帮助 MVP 阶段的创始人</h3>
+
+    <h4>在构建之前定义你的架构</h4>
+    <p>在 Claude Code 写下任何一行代码之前，先用 Claude 定义并记录将约束此阶段的所有架构决策。把输出保存为 <code style="background:var(--paper-warm);padding:2px 6px;border-radius:3px;font-family:var(--sans);font-size:14px;">CLAUDE.md</code> 文件——这是你的项目级指令，是后续每个会话所依赖的文档。从功能上讲，它就是你项目的持久化"记忆"。</p>
+
+    <h4>定义并执行你的 MVP 范围</h4>
+    <p>用 Claude 创建一份范围文档：MVP 能做什么、刻意不做什么、什么样的真实用户证据足以证明添加新功能是合理的。当新功能想法出现时（一定会出现），用 Claude 压力测试它究竟来自用户的真实信号，还是创始人热情披上了产品思维的外衣。</p>
+
+    <h4>用 Claude Code 构建 MVP</h4>
+    <p>每次会话视为对你已做出决策的执行，而不是借机加入新决策。每次会话开始：(1) 重新查看范围文档；(2) 提供 CLAUDE.md。每次会话结束：用浮现的决策更新文档。<strong>目标是构建一个你能解释其结构的代码库，而不仅仅是一个能运行的代码库。</strong></p>
+
+    <h4>在任何用户接触它之前进行安全审查</h4>
+    <p>Claude 可以对 AI 生成的代码进行有用的初步安全审查，识别常见漏洞。但它不能替代安全工具——在高风险情况下也不能替代人工审查者。把它当作替代品的创始人，最终往往出现在数据泄露事件的报道里。</p>
+
+    <h4>在发布前建立衡量框架</h4>
+    <p>将早期牵引力误判为 PMF 的创始人，通常也是那些在上线后才开始跟踪数据的人——他们选指标是为了评估哪些方面有效，而不是揭示哪些方面无效。<strong>在第一个用户出现前，就建立你的衡量框架</strong>：留存基准、激活标准、第 7 天和第 30 天目标。同时定义"假阳性"是什么样子：有注册无激活、有收入无留存、有热情无重复使用。</p>
+
+    <h4>判断 PMF 的两个试金石</h4>
+    <ul style="font-size:16px; color:var(--ink-soft); line-height:1.9; padding-left:22px; margin-bottom:22px;">
+      <li><strong>Sean Ellis 测试：</strong>问活跃用户"如果不能再用这个产品，你会有什么感受？"超过 40% 回答"非常失望"，是有意义的 PMF 信号。</li>
+      <li><strong>努力测试：</strong>PMF 前，留存需要创始人投入近乎英雄式的精力来维持。PMF 后，产品开始自行承担这项工作。<strong>当事情从"推"转向"拉"，这是最清晰的信号。</strong></li>
+    </ul>
+
+    <div class="exercises">
+      <div class="exercises-header">
+        <h4>MVP 阶段练习清单</h4>
+      </div>
+      <div class="exercise"><span class="exercise-num">01</span><span class="exercise-text">打开 Claude Code 之前先打开 Claude，描述要构建的内容。让它定义架构原则、要避免的依赖、当前阶段有意识接受的取舍——保存为 CLAUDE.md。</span></div>
+      <div class="exercise"><span class="exercise-num">02</span><span class="exercise-text">为 Claude Code 工作创建会话模板：架构上下文 + 本次任务 + 必须遵守的约束。会话结束写五分钟日志：构建了什么、做了哪些决策、引入了哪些假设。</span></div>
+      <div class="exercise"><span class="exercise-num">03</span><span class="exercise-text">部署给真实用户之前，让 Claude 审查核心代码：身份验证、会话处理、API 响应数据暴露、输入验证和注入风险、有已知漏洞的依赖。涉及身份验证/密钥/数据处理的，由人工审查。</span></div>
+      <div class="exercise"><span class="exercise-num">04</span><span class="exercise-text">配置 Claude Cowork 运行 MVP 反馈循环：起草外联、安排会话、结构化收集错误报告和功能请求、每周综合反馈。先自审，再让 Claude 分析有没有遗漏的重要要点。</span></div>
+      <div class="exercise"><span class="exercise-num">05</span><span class="exercise-text">3+ 个迭代周期后还没达到 PMF 基准，用 Claude 诊断：是否存在反应不同的细分群体？设计价值与体验价值差距是定位问题还是产品问题？要让当前产品实现 PMF 需要什么条件？这些条件现实吗？</span></div>
+    </div>
+  </div>
+</article>
+
+<!-- ============ CH5 ============ -->
+<article id="ch5" class="chapter">
+  <header class="chapter-header">
+    <div class="chapter-num">Chapter 05 · Stage 3</div>
+    <h2>启动阶段</h2>
+    <p class="chapter-lead">如果 MVP 阶段是证明产品值得存在，启动阶段就是证明业务值得增长。</p>
+  </header>
+
+  <div class="prose">
+    <div class="stage-meta">
+      <div>
+        <div class="stage-meta-label">阶段目标</div>
+        <div class="stage-meta-value">把早期牵引力转化为可重复、可持续的增长引擎。强化基础设施，同时围绕产品打造一家真正的公司。</div>
+      </div>
+      <div>
+        <div class="stage-meta-label">退出标准（三要素）</div>
+        <div class="stage-meta-value">① 增长可重复、由渠道驱动，CAC/LTV/回本周期清晰；② 产品能处理生产工作负载；③ 运营不再受创始人瓶颈限制。</div>
+      </div>
+    </div>
+
+    <p>在创意和 MVP 阶段，初创公司天然以创始人为中心——你需要全面情境感知和紧密反馈循环。但到了启动阶段，<strong>如果创始人仍然试图亲自掌控每一条线索，就会成为瓶颈</strong>。目标不是让你抽身，而是建立运营系统，释放注意力，让你专注于只有创始人才能做的决策。</p>
+
+    <h3>启动阶段的四大挑战</h3>
+
+    <div class="challenges">
+      <div class="challenge">
+        <div class="challenge-title">
+          <span class="challenge-icon">挑战 1</span>
+          <h4>技术债终须偿还</h4>
+        </div>
+        <p class="challenge-desc">MVP 为速度而积累的技术债，在启动阶段开始产生利息——拖得越久，修复成本越高。需要系统性的架构审计 + 针对最严重问题的定向重构 + 有意义地扩大测试覆盖。</p>
+      </div>
+      <div class="challenge">
+        <div class="challenge-title">
+          <span class="challenge-icon">挑战 2</span>
+          <h4>创始人成为瓶颈</h4>
+        </div>
+        <p class="challenge-desc">MVP 时"创始人在每个循环里"是资产；启动阶段是约束。出现这种情况的迹象：本应一小时完成的决策要等你一周；只有你知道答案所以支持请求堆积；只有你想起来才会执行的运营任务。<strong>从亲自做事转向设计能完成这些工作的系统，是创业生命周期中最难的转变之一。</strong></p>
+      </div>
+      <div class="challenge">
+        <div class="challenge-title">
+          <span class="challenge-icon">挑战 3</span>
+          <h4>安全与合规不容推迟</h4>
+        </div>
+        <p class="challenge-desc">在 MVP 阶段，安全漏洞只是理论风险。一旦真实用户依赖你，理论风险变成现实暴露。处理客户数据、支付或销售给受监管行业的那一刻，合规要求就开始适用——必须在生产规模到来之前完成系统性审查。</p>
+      </div>
+      <div class="challenge">
+        <div class="challenge-title">
+          <span class="challenge-icon">挑战 4</span>
+          <h4>未准备好就扩张</h4>
+        </div>
+        <p class="challenge-desc">新市场和融资机会看起来像增长机会，但它们也可能是 PMF 死亡的地方。<strong>过早扩展到差异显著的市场，会带来新的用户行为、合规要求和基准期望</strong>——突然新变量太多，你失去清晰解读数据的能力。</p>
+      </div>
+    </div>
+
+    <h3>Claude 如何帮助启动阶段的创始人</h3>
+
+    <p>启动阶段是 Claude 三种形态首次全部投入使用：每个工具的输出成为另外两个的输入。结果自然叠加，同时使用三种工具的创始人获得的价值超过各部分之和。<strong>这正是超精益创业模式在结构上成为可能的原因。</strong></p>
+
+    <h4>在技术债累积之前进行修复</h4>
+    <p>让 Claude Code 进行完整架构审计：脆弱的部分、维护成本会变高的捷径、覆盖率薄弱到下一轮功能开发可能重新引入相同问题的地方。把审计结果给 Claude 分诊：哪些必须在下个版本前修、哪些可以等、哪些是可接受的持续技术债。<strong>这也是把 MVP 阶段那些只存在于你脑中的架构决策写入 CLAUDE.md 的时刻。</strong></p>
+
+    <h4>构建能替代创始人注意力的系统</h4>
+    <p>用 Claude Cowork 审计你当前的运营负荷：每一项周期性任务、每一个落到你桌面上的决策、每一个只因为你记得才会发生的工作流。分类：完全自动化候选、需要人但不一定是你、真正需要创始人判断的。</p>
+
+    <h4>把安全与合规作为产品工作流</h4>
+    <p>用 Claude Code 发现 SOC 2、GDPR、HIPAA 等审计经常出现的代码级问题。把合规工作流纳入开发周期，而不是当一次性项目运行——合规文档需要持续维护。<strong>AI 扫描是辅助但不能替代合规审查。</strong></p>
+
+    <h4>建立你一直在跳过的产品管理流程</h4>
+    <p>启动阶段需要轻量、可重复的流程，无需创始人干预即可触发或运行：产品时间线、规格说明要求、错误报告分级分派、每周指标报告内容和分发方式。设计完成后，用 Claude Cowork 运行运营层。</p>
+
+    <div class="exercises">
+      <div class="exercises-header">
+        <h4>启动阶段练习清单</h4>
+      </div>
+      <div class="exercise"><span class="exercise-num">01</span><span class="exercise-text">让 Claude Code 审计 MVP 代码库，生成按优先级排序的列表：结构性弱点、测试覆盖缺口、重构候选项。把列表给 Claude 排进冲刺：必须优先、可与功能并行、可暂缓。</span></div>
+      <div class="exercise"><span class="exercise-num">02</span><span class="exercise-text">让 Claude 设计一个轻量级产品管理操作系统：冲刺节奏、最小规格模板、缺陷分诊决策树、从实际数据源提取的每周指标简报。然后让 Claude Cowork 实施日程、任务分派、报告汇编等重复环节。</span></div>
+      <div class="exercise"><span class="exercise-num">03</span><span class="exercise-text">用 Claude Code 针对目标市场所需框架运行代码级安全审查。让 Claude 生成两项：按优先级排序的修复顺序 + 满足企业买家合规审查所需的文档和控制措施清单。</span></div>
+    </div>
+  </div>
+</article>
+
+<!-- ============ CH6 ============ -->
+<article id="ch6" class="chapter">
+  <header class="chapter-header">
+    <div class="chapter-num">Chapter 06 · Stage 4</div>
+    <h2>缩放阶段</h2>
+    <p class="chapter-lead">创始人的角色从建设者重新转向面向公众的高管。产品仍是核心，但你的日常工作越来越围绕公司本身展开。</p>
+  </header>
+
+  <div class="prose">
+    <div class="stage-meta">
+      <div>
+        <div class="stage-meta-label">阶段目标</div>
+        <div class="stage-meta-value">从数千用户增长到数百万，从单一市场扩展到多个市场。通过积累深度构建可防御的护城河：融入产品的专业能力、深度集成、专有数据和工作流。</div>
+      </div>
+      <div>
+        <div class="stage-meta-label">退出条件</div>
+        <div class="stage-meta-value">阈值事件：即使创始人越来越不直接负责日常，公司仍能持续运转。通常表现为：可持续盈利、具备 IPO 条件、或被收购。</div>
+      </div>
+    </div>
+
+    <p>在规模化阶段，公众投资者、分析师、监管机构、企业采购团队和收购方会施加更大压力——也抱有更多怀疑——因为利害关系更高。<strong>你的产品和组织必须经受外部审视：不仅是能力，还有围绕它的治理、合规态势、财务控制和战略叙事。</strong></p>
+
+    <h3>缩放阶段的四大挑战</h3>
+
+    <div class="challenges">
+      <div class="challenge">
+        <div class="challenge-title">
+          <span class="challenge-icon">挑战 1</span>
+          <h4>委派运营层</h4>
+        </div>
+        <p class="challenge-desc">启动阶段的工作是创建系统；缩放阶段的工作是让这些系统成熟到完全值得信赖，然后真正信任它们。这比听起来要难——根本挑战在于识别只存在于创始人头脑中或未成文工作流中的"机构知识"，然后将其编纂成有文档、可审计、可转移的系统。</p>
+      </div>
+      <div class="challenge">
+        <div class="challenge-title">
+          <span class="challenge-icon">挑战 2</span>
+          <h4>扩展技术运营</h4>
+        </div>
+        <p class="challenge-desc">前三阶段的技术挑战集中在代码库本身；现在挑战转向<strong>围绕代码库构建的一切</strong>：支持基础设施、文档、可靠性保障。机构买家在签多年期合同前会要求这些。</p>
+      </div>
+      <div class="challenge">
+        <div class="challenge-title">
+          <span class="challenge-icon">挑战 3</span>
+          <h4>扩展组织职能</h4>
+        </div>
+        <p class="challenge-desc">规模化阶段的初创公司需要更广泛的运营职能：财务报告、合规监控、合同管理、客户支持——无论团队有多少人。</p>
+      </div>
+      <div class="challenge">
+        <div class="challenge-title">
+          <span class="challenge-icon">挑战 4</span>
+          <h4>构建 GTM 函数</h4>
+        </div>
+        <p class="challenge-desc">有机增长有天花板，大多数规模化阶段的创始人在没建立过真正的 GTM 之前就撞上去了。迹象：增长曲线平缓、CAC 上升、销售管道只有你亲自参与时才推进。<strong>规模化的增长需要构建专门的引擎</strong>——新的系统、流程、品牌声音和叙事方式。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    <div class="pullquote-text">那些始终朝着同一个方向、基于一致的基础设施持续构建的创始人，如今已经拥有了真正难以复制的东西。</div>
+  </div>
+
+  <div class="prose">
+    <h3>Claude 如何帮助缩放阶段的创始人</h3>
+
+    <h4>把日常任务交给 Claude Cowork</h4>
+    <p>明确这一阶段只有你应该亲自做的事——产品叙事决策、董事会关系、企业级交易、创始人对创始人的对话。不在这份清单上的事项，都可考虑委派或自动化。</p>
+
+    <h4>把技术运营扩展为企业级基础设施</h4>
+    <p>买家需要确信你的产品和组织可以作为长期基础设施被信任。第一步是<strong>把机构知识转化为可规模化的体系</strong>：用 Claude 起草维护企业采购期望看到的书面基础设施——产品文档、支持手册、SLA。让 Claude Code 审计加固代码库以符合企业合同要求的可靠性和安全标准。</p>
+
+    <h4>构建一个真正的 GTM 函数</h4>
+    <p>创始人的拼劲让你走到今天，但扩展需要真正的 GTM。Claude 帮助从零构建基础性 GTM 资源：市场细分、信息架构、分析师关系策略、销售手册、面向公开市场投资者的投资者指标叙事。Claude Cowork 成为战术执行层。Claude Code 构建产品营销基础设施：交互式演示、集成文档、沙盒租户、API 参考。</p>
+
+    <h4>把领域专业知识转化为 AI 上下文</h4>
+    <p>许多超精益创业公司的创始人正在为特定行业的现实问题打造高度具体化的工具。把你所知道的一切——行业术语、监管陷阱、边缘案例、为什么显而易见的答案不通——都注入结构化、可搜索的上下文中。<strong>经过数月，这会形成一种专有的知识基底，是任何通用型 AI 都无法匹敌的。</strong></p>
+
+    <h4>把累积的用户数据转化为可防御优势</h4>
+    <p>用户在你产品中的行为信号是<strong>时间锁定的、特定语境的</strong>——模仿者不可能复刻。你买不到成千上万用户在你的产品中不断优化工作流所形成的行为指纹。让 Claude 审计交互数据，识别信号最强的行为模式，设计反馈循环把持续使用转化为系统性的模型改进。</p>
+
+    <h4>创建工作流锁定</h4>
+    <p>复合型数据网络效应让产品更难被复制；用户工作流锁定让产品更难被放弃。<strong>到了这个阶段，切换产品不再是产品决策，而是一个全面的运营项目。</strong>你提供的集成越多，客户就越有空间构建依赖你产品的工作流。</p>
+
+    <div class="exercises">
+      <div class="exercises-header">
+        <h4>缩放阶段练习清单</h4>
+      </div>
+      <div class="exercise"><span class="exercise-num">01</span><span class="exercise-text">用 Claude 绘制运营层瓶颈图，列出所有经由你处理的工作流和审批。让 Claude 推演当你一周不在时每项会发生什么——停滞的就是你仍然亲力亲为到影响进展的地方。</span></div>
+      <div class="exercise"><span class="exercise-num">02</span><span class="exercise-text">挑选三个最难拿下的潜在客户。让 Claude 生成差距分析：每家企业采购团队会期望看到什么文档、SLA、支持基础设施，你目前哪些方面不足。</span></div>
+      <div class="exercise"><span class="exercise-num">03</span><span class="exercise-text">找出通用竞争对手在你垂直领域肯定会处理错的边缘案例。与 Claude Code 协作，基于你实际见过的场景构建专门测试用例。<strong>你的测试套件会成为你护城河的地图。</strong></span></div>
+      <div class="exercise"><span class="exercise-num">04</span><span class="exercise-text">向 Claude 输入产品交互数据摘要。请它识别三个信号最强的行为模式，设计反馈闭环。然后请它起草一页护城河叙事：数据飞轮如何运转、运转了多久、为什么资源充足的新进入者无法在两年内复制。</span></div>
+      <div class="exercise"><span class="exercise-num">05</span><span class="exercise-text">为前十大客户构建工作流集成审计：他们构建的自动化、依赖的集成、运行的团队工作流、转换成本估算。让 Claude 识别共性，找出能加深锁定的能力。</span></div>
+    </div>
+  </div>
+</article>
+
+<!-- ============ CH7 ============ -->
+<article id="ch7" class="chapter">
+  <header class="chapter-header">
+    <div class="chapter-num">Chapter 07 · Closing</div>
+    <h2>同样的工作，<br>新的规则</h2>
+  </header>
+
+  <div class="prose">
+    <p>在 AI 领域，创始人的工作并没有改变：<strong>找到一个真实的问题，打造出能够解决它的东西，并将其扩展成一家有影响力的公司</strong>。改变的是通往目标的路径。</p>
+
+    <p>在"想法、MVP、发布和规模化"这四个阶段中，AI 将原本需要几个季度的进程压缩到了几周。过去需要数月的验证周期，如今一个下午就能完成。一个可运行的原型不再需要一位掌握合适技术栈的联合创始人；它需要的是一个清晰的问题，以及与编码智能体进行几次专注的协作。</p>
+
+    <p>发布准备从上线前的手忙脚乱，压缩为一条持续推进的工作流。而在规模化阶段，过去常常迫使早期员工陷入救火角色的运营负担，正越来越多地可以交给 AI 处理，从而让你的团队把注意力投入到那些会成为你护城河的判断性决策上。</p>
+  </div>
+</article>
+
+<!-- ============ CLOSING ============ -->
+<section class="closing">
+  <div class="closing-eyebrow">FINAL TAKEAWAY</div>
+  <h2>瓶颈不再是你能构建什么，<br>而是你选择构建什么。</h2>
+  <p class="closing-body">这意味着创始人最重要的能力，不再是动手能力，而是判断力——在无穷多的可能性中，识别出真正值得投入的那一个。</p>
+  <div class="closing-final">— THE FOUNDER'S PLAYBOOK</div>
+</section>
+
+<!-- ============ RESOURCES ============ -->
+<article id="resources" class="chapter" style="background: var(--paper-warm);">
+  <header class="chapter-header">
+    <div class="chapter-num">Appendix · Resources</div>
+    <h2>资源</h2>
+    <p class="chapter-lead">用于构建、学习和加入创始人社区的扩展阅读。</p>
+  </header>
+
+  <div class="prose">
+    <h3>使用 Claude 构建</h3>
+    <ul style="font-size:16px; color:var(--ink-soft); line-height:1.95; padding-left:22px; margin-bottom:32px;">
+      <li><strong>为初创公司构建 AI 智能体</strong>——初创公司如何利用智能体减少对创始人的依赖。</li>
+      <li><strong>Claude Code 文档</strong>——从初始安装到高级智能体式工作流。建议从「How Claude Code works」开始。</li>
+      <li><strong>Claude Code 最佳实践</strong>——Anthropic 内部行之有效的模式：上下文管理、权限、规划和验证。</li>
+      <li><strong>使用 CLAUDE.md 文件</strong>——MVP 阶段创始人必读，逐步说明如何为特定代码库配置 Claude Code。</li>
+      <li><strong>Claude Code 高级用户技巧</strong>——并行会话、验证循环等团队自身的工作模式。</li>
+      <li><strong>Claude Cowork 入门</strong>——如何设置技能、插件等功能扩大其影响。</li>
+    </ul>
+
+    <h3>创始人故事</h3>
+    <p>来自 YC（HumanLayer F24、Ambral W25、Vulcan Technologies S25），以及 GC AI、Carta Healthcare、Anything、Cogent、Airtree、Duvo、Zingage、Kindora、Wordsmith 等公司的实战案例——他们如何用 Claude 把领域专业知识转化为可防御的产品深度。</p>
+
+    <h3>创业支持与机会</h3>
+    <ul style="font-size:16px; color:var(--ink-soft); line-height:1.95; padding-left:22px;">
+      <li><strong>Anthropic 初创企业计划</strong>——面向与 Anthropic 风投合作伙伴合作的初创公司：免费 API 额度、最高级别速率限制、专属创始人活动邀请。</li>
+      <li><strong>Claude 社区</strong>——开发者论坛和社区空间。</li>
+      <li><strong>实时学习资源</strong>——会议、网络研讨会、直播和录音。</li>
+    </ul>
+  </div>
+</article>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-brand">ANTHROPIC</div>
+  <p>The Founder's Playbook · 中文译本</p>
+  <p>claude.ai</p>
+</footer>
+
+</body>
+</html>
