@@ -8,24 +8,75 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if ((saved || (prefersDark ? 'dark' : 'light')) === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
 <style>
   :root {
     --bg: #f7f5f1;
+    --bg-hero-grad: linear-gradient(to bottom, #fcfaf6, var(--bg));
     --bg-card: #ffffff;
+    --bg-card-hover: #fcfaf6;
+    --bg-table-head: #fafaf8;
+    --bg-toc: rgba(247, 245, 241, 0.96);
+    --bg-foot: #efebe3;
+    --bg-chip: rgba(0,0,0,0.04);
+    --bg-badge: rgba(0,0,0,0.05);
     --text: #18191a;
     --text-muted: #6b6b6b;
     --text-light: #9a9a9a;
+    --text-strong: #0a0a0a;
     --border: #e4e1da;
     --border-strong: #d1ccc1;
     --win: #1f7a3a;
     --win-bg: #e8f3ec;
     --loss: #b91c1c;
     --loss-bg: #fbe9e9;
+    --amber: #d97706;
     --neutral: #6b6b6b;
+    --neutral-bar: #cccccc;
     --accent: #c8331f;
     --accent-soft: #e8d9d5;
+    --accent-evidence-bg: rgba(200, 51, 31, 0.05);
+    --accent-disclaimer-bg: rgba(200, 51, 31, 0.08);
+    --chart-grid: #eeeae3;
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
     --shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  [data-theme="dark"] {
+    --bg: #15120e;
+    --bg-hero-grad: linear-gradient(to bottom, #1c1814, var(--bg));
+    --bg-card: #1f1b16;
+    --bg-card-hover: #2a241d;
+    --bg-table-head: #1a1612;
+    --bg-toc: rgba(21, 18, 14, 0.94);
+    --bg-foot: #100d0a;
+    --bg-chip: rgba(255,255,255,0.05);
+    --bg-badge: rgba(255,255,255,0.07);
+    --text: #ebe3d3;
+    --text-muted: #8d8170;
+    --text-light: #5c5346;
+    --text-strong: #f5ecd9;
+    --border: #3a342c;
+    --border-strong: #4c4435;
+    --win: #4ea968;
+    --win-bg: #1a3528;
+    --loss: #d8645e;
+    --loss-bg: #3a1e1c;
+    --amber: #e0a235;
+    --neutral: #8d8170;
+    --neutral-bar: #5c5346;
+    --accent: #e87a5f;
+    --accent-soft: #4a322a;
+    --accent-evidence-bg: rgba(232, 122, 95, 0.08);
+    --accent-disclaimer-bg: rgba(232, 122, 95, 0.12);
+    --chart-grid: #2a241d;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -36,6 +87,7 @@
     line-height: 1.6;
     font-size: 15px;
     -webkit-font-smoothing: antialiased;
+    transition: background 0.2s, color 0.2s;
   }
   .container { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
   @media (max-width: 640px) { .container { padding: 0 20px; } }
@@ -44,7 +96,7 @@
   header.hero {
     padding: 80px 0 60px;
     border-bottom: 1px solid var(--border);
-    background: linear-gradient(to bottom, #fcfaf6, var(--bg));
+    background: var(--bg-hero-grad);
   }
   .eyebrow {
     font-family: 'JetBrains Mono', monospace;
@@ -62,7 +114,7 @@
     line-height: 1.15;
     letter-spacing: -0.02em;
     margin-bottom: 20px;
-    color: #0a0a0a;
+    color: var(--text-strong);
   }
   h1.title em { font-style: normal; color: var(--accent); }
   .subtitle {
@@ -78,7 +130,7 @@
     font-size: 12px;
     color: var(--text-muted);
     padding: 6px 12px;
-    background: rgba(0,0,0,0.04);
+    background: var(--bg-chip);
     border-radius: 4px;
   }
 
@@ -194,7 +246,7 @@
     font-style: italic;
     color: var(--text);
     padding: 14px 16px;
-    background: rgba(200, 51, 31, 0.05);
+    background: var(--accent-evidence-bg);
     border-radius: 4px;
     border-left: 2px solid var(--accent-soft);
     line-height: 1.65;
@@ -263,7 +315,7 @@
     font-size: 14px;
   }
   table.holdings thead th {
-    background: #fafaf8;
+    background: var(--bg-table-head);
     text-align: left;
     padding: 14px 16px;
     font-weight: 500;
@@ -279,14 +331,14 @@
     border-bottom: 1px solid var(--border);
   }
   table.holdings tbody tr:last-child td { border-bottom: none; }
-  table.holdings tbody tr:hover { background: #fcfaf6; }
+  table.holdings tbody tr:hover { background: var(--bg-card-hover); }
   td.num { font-family: 'JetBrains Mono', monospace; }
   .badge {
     display: inline-block;
     padding: 2px 8px;
     border-radius: 3px;
     font-size: 11px;
-    background: rgba(0,0,0,0.05);
+    background: var(--bg-badge);
     color: var(--text-muted);
     font-family: 'JetBrains Mono', monospace;
     letter-spacing: 0.05em;
@@ -415,7 +467,7 @@
   .theme-row { display: grid; grid-template-columns: 220px 1fr 60px; align-items: center; gap: 16px; }
   @media (max-width: 720px) { .theme-row { grid-template-columns: 150px 1fr 40px; gap: 10px; } }
   .theme-name { font-size: 14px; color: var(--text); }
-  .theme-bar-track { background: rgba(0,0,0,0.04); height: 10px; border-radius: 2px; overflow: hidden; }
+  .theme-bar-track { background: var(--bg-chip); height: 10px; border-radius: 2px; overflow: hidden; }
   .theme-bar { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.8s ease; }
   .theme-count { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text-muted); text-align: right; }
 
@@ -451,7 +503,7 @@
   /* ============ Footer ============ */
   footer.foot {
     padding: 60px 0;
-    background: #efebe3;
+    background: var(--bg-foot);
     border-top: 1px solid var(--border);
     font-size: 13px;
     color: var(--text-muted);
@@ -464,7 +516,7 @@
   .disclaimer {
     margin-top: 32px;
     padding: 16px 20px;
-    background: rgba(200, 51, 31, 0.08);
+    background: var(--accent-disclaimer-bg);
     border-left: 3px solid var(--accent);
     font-size: 12px;
     color: var(--text);
@@ -475,7 +527,7 @@
   .toc {
     position: sticky;
     top: 0;
-    background: rgba(247, 245, 241, 0.96);
+    background: var(--bg-toc);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
     padding: 14px 0;
@@ -487,9 +539,34 @@
   .toc .brand { font-family: 'Noto Serif SC', serif; font-weight: 600; color: var(--text); margin-right: 8px; }
   @media (max-width: 720px) { .toc { display: none; } section { scroll-margin-top: 0; } }
 
+  /* Theme toggle */
+  #theme-toggle {
+    position: fixed; top: 12px; right: 24px; z-index: 200;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text); cursor: pointer; padding: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  #theme-toggle:hover { border-color: var(--text); }
+  #theme-toggle .icon-moon { display: none; }
+  [data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+  [data-theme="dark"] #theme-toggle .icon-moon { display: block; }
+  @media (max-width: 720px) { #theme-toggle { top: 12px; right: 16px; } }
+
 </style>
 </head>
 <body>
+
+<button id="theme-toggle" aria-label="切换夜间模式">
+  <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
 
 <nav class="toc">
   <div class="container">
@@ -20583,83 +20660,132 @@ const windowLabels = { '7d': '7 天窗口', '30d': '30 天窗口', 'now': '至�
   windowGrid.appendChild(card);
 });
 
-// ===== Market chart =====
+// ===== Charts (theme-aware) =====
+const chartInstances = {};
+
+function cssVar(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+function chartColors() {
+  return {
+    win: cssVar('--win'),
+    loss: cssVar('--loss'),
+    amber: cssVar('--amber'),
+    neutralBar: cssVar('--neutral-bar'),
+    grid: cssVar('--chart-grid'),
+    text: cssVar('--text-muted'),
+  };
+}
+
 const markets = Object.entries(sum.by_market)
   .map(([m, d]) => ({ market: m, total: d.total, now: d.now }))
   .filter(x => x.now.decided > 0)
   .sort((a, b) => (b.now.win_rate || 0) - (a.now.win_rate || 0));
 
-new Chart(document.getElementById('market-chart'), {
-  type: 'bar',
-  data: {
-    labels: markets.map(m => m.market),
-    datasets: [{
-      label: '胜率',
-      data: markets.map(m => (m.now.win_rate * 100).toFixed(1)),
-      backgroundColor: markets.map(m => m.now.win_rate >= 0.6 ? '#1f7a3a' : m.now.win_rate >= 0.4 ? '#c8a23f' : '#b91c1c'),
-      borderRadius: 3,
-      maxBarThickness: 36,
-    }]
-  },
-  options: {
-    indexAxis: 'y',
-    plugins: {
-      legend: { display: false },
-      tooltip: {
-        callbacks: {
-          label: ctx => {
-            const m = markets[ctx.dataIndex];
-            return `胜率 ${ctx.parsed.x}% · ${m.now.wins} 胜 / ${m.now.losses} 负 (${m.total} 次表态)`;
-          }
-        }
-      }
-    },
-    scales: {
-      x: { max: 100, ticks: { callback: v => v + '%' }, grid: { color: '#eeeae3' } },
-      y: { grid: { display: false } }
-    },
-    maintainAspectRatio: false,
-  }
-});
-
-// ===== Stance chart =====
 const stances = [
-  { key: 'bullish', label: '看多', color: '#1f7a3a' },
-  { key: 'bearish', label: '看空', color: '#b91c1c' },
-  { key: 'exit', label: '复盘止盈', color: '#d97706' },
+  { key: 'bullish', label: '看多' },
+  { key: 'bearish', label: '看空' },
+  { key: 'exit', label: '复盘止盈' },
 ];
 
-new Chart(document.getElementById('stance-chart'), {
-  type: 'bar',
-  data: {
-    labels: stances.map(s => s.label),
-    datasets: [{
-      label: '胜率',
-      data: stances.map(s => sum.by_stance[s.key]?.now?.win_rate * 100 || 0),
-      backgroundColor: stances.map(s => s.color),
-      borderRadius: 3,
-      maxBarThickness: 60,
-    }]
-  },
-  options: {
-    plugins: {
-      legend: { display: false },
-      tooltip: {
-        callbacks: {
-          label: ctx => {
-            const s = sum.by_stance[stances[ctx.dataIndex].key];
-            return `胜率 ${ctx.parsed.y.toFixed(1)}% · ${s.now.wins} 胜 / ${s.now.losses} 负 (共 ${s.total} 次)`;
+const ts = DATA.time_series;
+
+function renderCharts() {
+  const c = chartColors();
+  // 销毁旧实例
+  Object.values(chartInstances).forEach(inst => inst && inst.destroy());
+
+  // Market chart
+  chartInstances.market = new Chart(document.getElementById('market-chart'), {
+    type: 'bar',
+    data: {
+      labels: markets.map(m => m.market),
+      datasets: [{
+        label: '胜率',
+        data: markets.map(m => (m.now.win_rate * 100).toFixed(1)),
+        backgroundColor: markets.map(m => m.now.win_rate >= 0.6 ? c.win : m.now.win_rate >= 0.4 ? c.amber : c.loss),
+        borderRadius: 3,
+        maxBarThickness: 36,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const m = markets[ctx.dataIndex];
+              return `胜率 ${ctx.parsed.x}% · ${m.now.wins} 胜 / ${m.now.losses} 负 (${m.total} 次表态)`;
+            }
           }
         }
-      }
+      },
+      scales: {
+        x: { max: 100, ticks: { callback: v => v + '%', color: c.text }, grid: { color: c.grid } },
+        y: { ticks: { color: c.text }, grid: { display: false } }
+      },
+      maintainAspectRatio: false,
+    }
+  });
+
+  // Stance chart
+  const stanceColors = [c.win, c.loss, c.amber];
+  chartInstances.stance = new Chart(document.getElementById('stance-chart'), {
+    type: 'bar',
+    data: {
+      labels: stances.map(s => s.label),
+      datasets: [{
+        label: '胜率',
+        data: stances.map(s => sum.by_stance[s.key]?.now?.win_rate * 100 || 0),
+        backgroundColor: stanceColors,
+        borderRadius: 3,
+        maxBarThickness: 60,
+      }]
     },
-    scales: {
-      y: { max: 100, ticks: { callback: v => v + '%' }, grid: { color: '#eeeae3' } },
-      x: { grid: { display: false } }
+    options: {
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const s = sum.by_stance[stances[ctx.dataIndex].key];
+              return `胜率 ${ctx.parsed.y.toFixed(1)}% · ${s.now.wins} 胜 / ${s.now.losses} 负 (共 ${s.total} 次)`;
+            }
+          }
+        }
+      },
+      scales: {
+        y: { max: 100, ticks: { callback: v => v + '%', color: c.text }, grid: { color: c.grid } },
+        x: { ticks: { color: c.text }, grid: { display: false } }
+      },
+      maintainAspectRatio: false,
+    }
+  });
+
+  // Timeline
+  chartInstances.timeline = new Chart(document.getElementById('timeline-chart'), {
+    type: 'bar',
+    data: {
+      labels: ts.map(w => w.week),
+      datasets: [
+        { label: '看多', data: ts.map(w => w.bullish), backgroundColor: c.win, stack: 's' },
+        { label: '看空', data: ts.map(w => w.bearish), backgroundColor: c.loss, stack: 's' },
+        { label: '复盘', data: ts.map(w => w.exit), backgroundColor: c.amber, stack: 's' },
+        { label: '中性', data: ts.map(w => w.neutral), backgroundColor: c.neutralBar, stack: 's' },
+      ]
     },
-    maintainAspectRatio: false,
-  }
-});
+    options: {
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { stacked: true, grid: { display: false }, ticks: { color: c.text, font: { family: 'JetBrains Mono', size: 10 } } },
+        y: { stacked: true, grid: { color: c.grid }, beginAtZero: true, ticks: { color: c.text } }
+      },
+      maintainAspectRatio: false,
+    }
+  });
+}
 
 // ===== Holdings table =====
 const holdings = Object.entries(sum.by_ticker)
@@ -20718,29 +20844,6 @@ DATA.themes.forEach(t => {
   themeList.appendChild(row);
 });
 
-// ===== Timeline =====
-const ts = DATA.time_series;
-new Chart(document.getElementById('timeline-chart'), {
-  type: 'bar',
-  data: {
-    labels: ts.map(w => w.week),
-    datasets: [
-      { label: '看多', data: ts.map(w => w.bullish), backgroundColor: '#1f7a3a', stack: 's' },
-      { label: '看空', data: ts.map(w => w.bearish), backgroundColor: '#b91c1c', stack: 's' },
-      { label: '复盘', data: ts.map(w => w.exit), backgroundColor: '#d97706', stack: 's' },
-      { label: '中性', data: ts.map(w => w.neutral), backgroundColor: '#cccccc', stack: 's' },
-    ]
-  },
-  options: {
-    plugins: { legend: { display: false } },
-    scales: {
-      x: { stacked: true, grid: { display: false }, ticks: { color: '#9a9a9a', font: { family: 'JetBrains Mono', size: 10 } } },
-      y: { stacked: true, grid: { color: '#eeeae3' }, beginAtZero: true }
-    },
-    maintainAspectRatio: false,
-  }
-});
-
 // ===== Viral =====
 const viralList = document.getElementById('viral-list');
 DATA.top_viral.forEach(v => {
@@ -20755,6 +20858,34 @@ DATA.top_viral.forEach(v => {
     </div>
   `;
   viralList.appendChild(card);
+});
+
+// ===== 初始渲染图表 =====
+renderCharts();
+
+// ===== 更新时间轴 legend dot 颜色为主题色 =====
+function syncLegendDots() {
+  const c = chartColors();
+  const map = { '看多': c.win, '看空': c.loss, '复盘/止盈': c.amber, '中性/转述': c.neutralBar };
+  document.querySelectorAll('.legend-inline span').forEach(span => {
+    const dot = span.querySelector('.legend-dot');
+    if (!dot) return;
+    const label = span.textContent.trim();
+    if (map[label]) dot.style.background = map[label];
+  });
+}
+syncLegendDots();
+
+// ===== Theme toggle =====
+document.getElementById('theme-toggle').addEventListener('click', function() {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  if (next === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  else document.documentElement.removeAttribute('data-theme');
+  try { localStorage.setItem('ray-theme', next); } catch (e) {}
+  // 重新渲染图表与 legend dot 颜色
+  renderCharts();
+  syncLegendDots();
 });
 </script>
 
