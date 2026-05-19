@@ -307,7 +307,22 @@ footer a:hover { color: var(--accent-yellow-on-inverse); }
 <body>
 <div class="metabar">
   <span><strong>RAY DEEP RESEARCH</strong> · CEREBRAS · BRIEF #008-V2 · 投资追加</span>
-  <span>2026-05-19 · IPO+5 · v2.0</span>
+  <span>2026-05-19 · IPO+5 · v2.0 · Codex Verified</span>
+</div>
+
+<div style="background: #fef3e8; border-top: 3px solid #a73121; border-bottom: 1px solid #d8d1c2; padding: 18px 32px; max-width: 1100px; margin: 0 auto; font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.6;">
+  <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #a73121; margin-bottom: 8px; font-weight: 600;">⚠ Stage 2.5 数据真伪验证 · 已修正</div>
+  <p style="color: #2c2620; margin-bottom: 8px;">本 v2 初版包含 <strong>9 项 HIGH 级别数据错误</strong>（经 Codex CLI 用 reasoning_effort=high + 30+ 次 web_search 独立核查后发现），现已修正。关键修正点：</p>
+  <ol style="margin: 0 0 8px 20px; color: #2c2620;">
+    <li><strong>NVIDIA-Groq 不是 $20B 收购</strong>，是非排他技术许可 + 团队转移（Groq 官方公告确认），NVIDIA 年报披露 $13B closing + $4B payable，无股权交易</li>
+    <li><strong>Intel 没有收购 SambaNova</strong>——EE Times 后续报道：acquisition abandoned，Intel 只是参投 SambaNova $350M Series E</li>
+    <li><strong>市值 / P/S 多个口径并存</strong>：Reuters $56.4B (IPO FDV) / TechCrunch $66B (收盘) / Futurum $95B (完全稀释) → P/S 区间 111×-186×，原 186× 只是其中一个口径</li>
+    <li><strong>OpenAI 排他条款</strong>禁 Anthropic/DeepMind/Meta/xAI 四家——SEC Exhibit 10.11 公开版"Named Competitor"被 redacted，原文未明示，已标注"⚠ 未完整一手验证"</li>
+    <li><strong>Lumentum $62.7B（非 $650B）+ Vertiv $124.2B（非 $900B）</strong>——小数点错位修正</li>
+    <li><strong>IBKR USD 融资率 5.14%（非 5.83%）</strong>——数据过期修正</li>
+    <li><strong>Astera Labs 2024 触底约 $40（非 $36）</strong>——IPO 价 vs 市场低点混淆</li>
+  </ol>
+  <p style="font-size: 12px; color: #6e6358; margin: 0;">验证工具：Codex CLI 0.128.0 + web-access · 验证流程：Stage 2.5 数据真实性验证（详见 <a href="https://github.com/kdsz001/ray-research" style="color: #1c4d6b;">ray-deep-research skill</a>）· 验证时点：2026-05-19</p>
 </div>
 <button id="theme-toggle" aria-label="切换深色模式">
   <svg class="sun" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -335,13 +350,13 @@ footer a:hover { color: var(--accent-yellow-on-inverse); }
   <div>
     <div class="eyebrow">投资追加调研 · v2 · IPO+5 天</div>
     <h1 class="hero-title">现在<em>不是</em>好买点。</h1>
-    <p class="hero-sub">六个 AI 调研员并行调研后的统一结论：CBRS 现价 $296、市值 $80-95B、186× P/S——8 月 Q2 财报和 11 月 Lock-up 解禁是数学确定的供给冲击；13 家 100×+ P/S IPO 历史样本中位 18 个月跌幅 -60% 到 -70%。耐心等。</p>
+    <p class="hero-sub">六个 AI 调研员并行调研 + Codex 独立验证后的统一结论：CBRS 现价 $296、市值口径区间 $56-95B（取决于流通 / 收盘 / FDV）、P/S 111-186×——8 月 Q2 财报和 11 月 Lock-up 解禁是数学确定的供给冲击；13 家 100×+ P/S IPO 历史样本中位 18 个月跌幅 -60% 到 -70%。耐心等。</p>
   </div>
   <div class="hero-meta">
     <dl>
       <dt>当前股价</dt><dd>$296.65 USD</dd>
-      <dt>市值（完全稀释）</dt><dd>~$80-95B</dd>
-      <dt>TTM P/S</dt><dd>186×</dd>
+      <dt>市值（区间）</dt><dd>$56-95B</dd>
+      <dt>TTM P/S（区间）</dt><dd>111-186×</dd>
       <dt>距 IPO 开盘高点</dt><dd>-23%</dd>
       <dt>调研深度</dt><dd>6 并行 Agent</dd>
       <dt>聚焦</dt><dd>4 原问题 + 5 类补充</dd>
@@ -355,12 +370,12 @@ footer a:hover { color: var(--accent-yellow-on-inverse); }
   <h2 class="qf-title">v2 关键数据更新</h2>
   <div class="qf-grid">
     <div class="qf-cell"><span class="qf-label">当前股价</span><div><span class="qf-num">$296</span><div class="qf-sub">IPO 价 $185 · 开盘 $350</div></div></div>
-    <div class="qf-cell"><span class="qf-label">市值（FD）</span><div><span class="qf-num">$80-95B</span><div class="qf-sub">完全稀释口径</div></div></div>
-    <div class="qf-cell"><span class="qf-label">TTM P/S</span><div><span class="qf-num warn">186<span class="unit">×</span></span><div class="qf-sub">NVIDIA 仅 27×</div></div></div>
+    <div class="qf-cell"><span class="qf-label">市值（多口径）</span><div><span class="qf-num">$56-95B</span><div class="qf-sub">FDV/收盘/Futurum 区间</div></div></div>
+    <div class="qf-cell"><span class="qf-label">TTM P/S</span><div><span class="qf-num warn">111-186<span class="unit">×</span></span><div class="qf-sub">依口径 · NVIDIA 仅 27×</div></div></div>
     <div class="qf-cell"><span class="qf-label">首批 Lock-up</span><div><span class="qf-num warn">2026-08</span><div class="qf-sub">6,000 万股 · 早于标准 180 天</div></div></div>
     <div class="qf-cell"><span class="qf-label">全部解禁</span><div><span class="qf-num warn">2026-11</span><div class="qf-sub">1.71 亿股 · 约 78% 总股本</div></div></div>
     <div class="qf-cell"><span class="qf-label">B200 推理速度</span><div><span class="qf-num data">10K<span class="unit">tok/s</span></span><div class="qf-sub">反超 Cerebras 2,500</div></div></div>
-    <div class="qf-cell"><span class="qf-label">OpenAI 自研芯片</span><div><span class="qf-num warn">2027</span><div class="qf-sub">Broadcom Titan 量产</div></div></div>
+    <div class="qf-cell"><span class="qf-label">OpenAI 自研芯片</span><div><span class="qf-num warn">2027</span><div class="qf-sub">Project Nexus / Jalapeno</div></div></div>
     <div class="qf-cell"><span class="qf-label">2025 GAAP 净利</span><div><span class="qf-num pos">$238M</span><div class="qf-sub">含 $363M 一次性收益</div></div></div>
     <div class="qf-cell"><span class="qf-label">Non-GAAP 亏损</span><div><span class="qf-num warn">$76M</span><div class="qf-sub">剔除一次性后</div></div></div>
     <div class="qf-cell"><span class="qf-label">100×PS IPO 跌幅</span><div><span class="qf-num warn">-60-70<span class="unit">%</span></span><div class="qf-sub">13 家样本中位 18 个月</div></div></div>
@@ -376,7 +391,7 @@ footer a:hover { color: var(--accent-yellow-on-inverse); }
 
 <h3>Q1 · 技术段位 + 竞争关系</h3>
 <p><strong>段位：细分推理之王，非全栈挑战者。</strong>WSE-3 真实 dense FP16 算力 15.6 PFLOPS（官标 125 PFLOPS 是 8:1 稀疏假设值，被 SemiAnalysis 戏称 "Feldman's Formula"），等于 1-2 颗 NVIDIA B200。NVIDIA B200 跑 Llama 70B 已突破 **10,000 tok/s**（反超 Cerebras 2,500 tok/s）。</p>
-<p><strong>NVIDIA 是竞争还是合作？</strong>不是合作——Cerebras 在 S-1 里明确写"无意挑战 NVIDIA 在训练上"，**主动放弃训练市场**只打推理。但 NVIDIA 2025-12 用 $200 亿（约 ¥1,440 亿）收编 Groq 后，**Rubin + Groq 混合推理方案**已正式吸收 SRAM 极速优势——Cerebras 的差异化正在被消解。</p>
+<p><strong>NVIDIA 是竞争还是合作？</strong>不是合作——Cerebras 在 S-1 里明确写"无意挑战 NVIDIA 在训练上"，**主动放弃训练市场**只打推理。但 NVIDIA 2025-12 用 $13B 现金 + $4B 应付（≈$17B 总值）的非排他技术许可 + 团队转移（NON acquisition · NVIDIA 年报披露） 后，**Rubin + Groq 混合推理方案**已正式吸收 SRAM 极速优势——Cerebras 的差异化正在被消解。</p>
 
 <h3>Q2 · 市场需求 + 落地情况</h3>
 <p><strong>独立推理芯片有需求但被高估</strong>——推理市场 TAM（总可寻址市场）确实 $300B 级别，但 Cerebras 能吃到的"&lt;200B 参数 + 极致低延迟"细分仅占 5-10%。**速度溢价 5-10×，但单价只比 Groq 便宜 26%**——速度溢价没完全反映在价格里。</p>
@@ -393,8 +408,8 @@ footer a:hover { color: var(--accent-yellow-on-inverse); }
 <div class="tldr-ribbon">v2 TL;DR · 一页纸结论</div>
 <h3>如果你只能记住三件事</h3>
 <ol>
-  <li><strong>现在不是好买点。</strong>186× P/S 是历史极端（Snowflake 当年 140× 已是天花板）；2026-08 Q2 财报触发 6,000 万股首批解禁 + 2026-11 全部 1.71 亿股解禁，是数学确定的供给冲击；100×+ P/S IPO 公司 13 家历史样本，18 个月中位跌幅 -60% 到 -70%。</li>
-  <li><strong>最大黑天鹅是 OpenAI 自研芯片，2027 量产。</strong>OpenAI 与 Broadcom 联合开发 10GW XPU（代号 Titan），2026 H2 试产，2027 大量交付 "Jalapeno" 首款。一旦成型，Cerebras 失去最大客户的扩展期权（$34B 追加合同）几乎确定。</li>
+  <li><strong>现在不是好买点。</strong>P/S 即使取最低口径 111×（Reuters IPO FDV）仍是历史极端（Snowflake 当年 140× 已是天花板），最高口径 186×（Futurum 完全稀释）；2026-08 Q2 财报触发 ~6,000 万股首批解禁 <span style="color:#a73121">⚠ 未一手核实</span> + 2026-11 全部 1.71 亿股解禁，是数学确定的供给冲击；100×+ P/S IPO 公司 13 家历史样本，18 个月中位跌幅 -60% 到 -70%。</li>
+  <li><strong>最大黑天鹅是 OpenAI 自研芯片，2027 量产。</strong>OpenAI 与 Broadcom 联合开发 10GW XPU（项目名 <strong>Project Nexus</strong>，首款代号 Jalapeno），2026 H2 试产，2027 大量交付。一旦成型，Cerebras 失去最大客户的扩展期权（$34B 追加合同）几乎确定。<span style="color:#a73121">⚠ 完整时间线 / 1GW 节奏暂无一手公开来源</span></li>
   <li><strong>最理性的中国散户做法</strong>：等到 2026-11 月底 Lock-up 解禁后 4-8 周接盘（参照 Snowflake / Astera 历史，触底通常在解禁后 4-8 周）；这之前用 SMH ETF（盈透 0.35% 费率）做 AI 推理主题暴露。要现在追涨，用盈透 Pro Tiered 而非富途（成本 $1.34 vs $4.62/往返），仓位 ≤ 美股仓位 5%。</li>
 </ol>
 </div>
@@ -426,7 +441,8 @@ footer a:hover { color: var(--accent-yellow-on-inverse); }
 <h3>OpenAI 合同含排他条款（重大新发现）</h3>
 <div class="callout warn">
   <div class="callout-label">SemiAnalysis 披露 · OpenAI MRA 主合作协议</div>
-  <p class="callout-quote">"OpenAI 合同含排他条款，禁止 Cerebras 服务 Anthropic、DeepMind、Meta AI、xAI 四大 AI lab"</p>
+  <p class="callout-quote">"OpenAI MRA 含 'Named Competitor' 排他条款 + change-of-control / termination 机制（具体 AI lab 名单 SEC Exhibit 10.11 公开版中被 redacted，未明示）"</p>
+  <p style="margin-top:12px;font-size:13px;color:var(--accent-warn);"><strong>⚠ 未完整一手验证</strong>：v2 初版称"禁止服务 Anthropic / DeepMind / Meta AI / xAI 四家"——Codex 复核 SEC Exhibit 10.11 公开版，"Named Competitor" 整段被 redacted，**没有任何一手文件证实**具体四家。Agent A 此判断是推测，证据级别从 HIGH 降为 MEDIUM。</p>
   <p style="margin-top:14px;font-size:13px;color:var(--muted);">这意味着 Cerebras 的"潜在可拓客户池"已被锁死——4 大 AI lab 全被排除，剩下只有二线主权 AI 项目（沙特 Humain、印度 IndiaAI、欧洲 Mistral）。如果 OpenAI 2027 年自研芯片成型，Cerebras 几乎找不到等量级替代客户。</p>
 </div>
 
@@ -434,7 +450,7 @@ footer a:hover { color: var(--accent-yellow-on-inverse); }
 <div class="metric-list">
   <div class="metric-row"><span class="metric-label">威胁 1 · OpenAI 自研芯片<span class="src">BROADCOM TITAN · 2027 量产 1GW</span></span><span class="metric-num warn">-40-60%</span></div>
   <div class="metric-row"><span class="metric-label">威胁 2 · NVIDIA Rubin + Groq<span class="src">2026 H2 出货 · 吸收 SRAM 优势</span></span><span class="metric-num warn">-20-40%</span></div>
-  <div class="metric-row"><span class="metric-label">威胁 3 · 客户多样化无解<span class="src">OPENAI 合同含排他条款</span></span><span class="metric-num warn">长期天花板</span></div>
+  <div class="metric-row"><span class="metric-label">威胁 3 · 客户多样化无解<span class="src">OPENAI 含 NAMED COMPETITOR 条款 · ⚠ 名单 REDACTED</span></span><span class="metric-num warn">长期天花板</span></div>
   <div class="metric-row"><span class="metric-label">缓解信号 · Anthropic 全锁 AWS<span class="src">$100B / 10 年承诺 · 永远不是 CBRS 客户</span></span><span class="metric-num">已锁定</span></div>
   <div class="metric-row"><span class="metric-label">Microsoft Maia 200 已部署<span class="src">跑 GPT-5.2 · MICROSOFT 也排除</span></span><span class="metric-num warn">客户失血</span></div>
 </div>
@@ -452,7 +468,7 @@ footer a:hover { color: var(--accent-yellow-on-inverse); }
 <tbody>
 <tr class="highlight-row"><td class="product-name">Cerebras</td><td>gpt-oss-120B</td><td><span class="num pos">3,000</span></td><td>$0.35 / $0.75</td></tr>
 <tr class="highlight-row"><td class="product-name">Cerebras</td><td>Llama 3.1 8B</td><td>2,347</td><td>$0.10</td></tr>
-<tr><td class="product-name">Groq (NVIDIA)</td><td>gpt-oss-120B</td><td>476</td><td><span class="num pos">$0.26</span></td></tr>
+<tr><td class="product-name">Groq</td><td>gpt-oss-120B</td><td>476</td><td><span class="num pos">$0.26</span></td></tr>
 <tr><td class="product-name">Together AI</td><td>Llama 3.3 70B</td><td>~200</td><td>$0.88</td></tr>
 <tr><td class="product-name">DeepInfra</td><td>gpt-oss-120B</td><td>—</td><td><span class="num pos">$0.08</span></td></tr>
 <tr><td class="product-name">AWS Bedrock</td><td>Llama 3.3 70B</td><td>—</td><td><span class="num warn">$2.65</span></td></tr>
@@ -565,7 +581,7 @@ footer a:hover { color: var(--accent-yellow-on-inverse); }
   <div class="tl-row"><div class="tl-date">2026-05 末</div><div class="tl-dot"></div><div class="tl-content"><h5>承销商集体发起覆盖</h5><p>Morgan Stanley/Citi/Barclays/UBS 4 家承销商。EGC 状态无 25 天 Quiet Period 限制，预期 Overweight + 目标价 $300-400 → <strong>短期上行 catalyst</strong></p></div></div>
   <div class="tl-row data"><div class="tl-date">2026-06</div><div class="tl-dot"></div><div class="tl-content"><h5>NVIDIA Rubin R200 出货</h5><p>首次公开性能对比 vs Cerebras</p></div></div>
   <div class="tl-row pos"><div class="tl-date">2026-07</div><div class="tl-dot"></div><div class="tl-content"><h5>OpenAI 首批 250MW 上线（如顺利）</h5><p>11.1M warrant 股 vest 解锁</p></div></div>
-  <div class="tl-row crit"><div class="tl-date">2026-08</div><div class="tl-dot"></div><div class="tl-content"><h5>🚨 Q2 2026 财报 + 首批 60M 股 Lock-up 释放</h5><p><strong>双重冲击</strong>。首次接受市场考试，且早于标准 180 天 lockup。预计股价 -15-30%</p></div></div>
+  <div class="tl-row crit"><div class="tl-date">2026-08</div><div class="tl-dot"></div><div class="tl-content"><h5>🚨 Q2 2026 财报 + 首批 ~60M 股 Lock-up 释放（⚠ Seeking Alpha 二手数字，SEC 一手仅披露 171.1M 总锁定股）</h5><p><strong>双重冲击</strong>。首次接受市场考试，且早于标准 180 天 lockup。预计股价 -15-30%</p></div></div>
   <div class="tl-row warn"><div class="tl-date">2026-09-10</div><div class="tl-dot"></div><div class="tl-content"><h5>10 月底前还有 6 次小额分批释放</h5><p>持续供给压力</p></div></div>
   <div class="tl-row crit"><div class="tl-date">2026-11</div><div class="tl-dot"></div><div class="tl-content"><h5>🚨🚨 Q3 2026 财报 + 剩余 1.1 亿股 Lock-up 全部解禁</h5><p><strong>最大供给冲击</strong>。理论"内部人想兑现"天花板 ≈ $500 亿（实际首次卖 5% 即 $25 亿抛压）</p></div></div>
   <div class="tl-row pos"><div class="tl-date">2026-12</div><div class="tl-dot"></div><div class="tl-content"><h5>NVIDIA Blackwell Ultra (B300) 量产</h5><p>250MW OpenAI 第一里程碑结清，11.1M warrant 股 vest</p></div></div>
@@ -606,7 +622,7 @@ footer a:hover { color: var(--accent-yellow-on-inverse); }
 <tr><td class="product-name">AppLovin (APP)</td><td>2021-04</td><td>~15×</td><td class="num warn">-86%</td><td class="num pos">现 +775%</td></tr>
 <tr><td class="product-name">Bumble (BMBL)</td><td>2021-02</td><td>~15×</td><td class="num warn">-94%</td><td class="num warn">-97%</td></tr>
 <tr><td class="product-name">DoorDash (DASH)</td><td>2020-12</td><td>~25×</td><td class="num warn">-60%</td><td class="num warn">-84%</td></tr>
-<tr class="highlight-row"><td class="product-name">Astera Labs (ALAB)</td><td>2024-03</td><td>~80×</td><td>0%（触底 $36 vs IPO $36）</td><td class="num warn">-62%</td></tr>
+<tr class="highlight-row"><td class="product-name">Astera Labs (ALAB)</td><td>2024-03</td><td>~80×</td><td>+11%（2024-08 触底 ~$40 vs IPO $36）</td><td class="num warn">-62%</td></tr>
 <tr><td class="product-name">Reddit (RDDT)</td><td>2024-03</td><td>~15×</td><td>+35%</td><td>未触 -50%</td></tr>
 <tr><td class="product-name">Arm (ARM)</td><td>2023-09</td><td>~20×</td><td>-9%</td><td class="num pos">现 +364%</td></tr>
 <tr class="highlight-row"><td class="product-name">Cerebras (CBRS)</td><td>2026-05</td><td class="num warn">186×</td><td>?（推算 -60-70%）</td><td>?</td></tr>
@@ -615,7 +631,7 @@ footer a:hover { color: var(--accent-yellow-on-inverse); }
 
 <div class="callout warn">
   <div class="callout-label">关键观察</div>
-  <p>1. 2020-21 高估值科技 IPO 公司，<strong>几乎无例外在 18 个月内经历 -60% 到 -95% 的最大跌幅</strong>；2. 触底时间集中在 IPO 后 14-24 个月（Cerebras 对应 2027 Q3-Q4）；3. <strong>Astera Labs 是与 Cerebras 直接可比的最近 AI IPO 样本</strong>——5 个月内跌回 IPO 价（$36），与 Cerebras "8 月起 Lock-up 释放"时点高度重合；4. C3.ai / UiPath 是与 Cerebras 风格最接近的"高 P/S + AI 概念 + 客户集中"组合，两者均 18 个月内跌至 -74%/-79%。</p>
+  <p>1. 2020-21 高估值科技 IPO 公司，<strong>几乎无例外在 18 个月内经历 -60% 到 -95% 的最大跌幅</strong>；2. 触底时间集中在 IPO 后 14-24 个月（Cerebras 对应 2027 Q3-Q4）；3. <strong>Astera Labs 是与 Cerebras 直接可比的最近 AI IPO 样本</strong>——5 个月内触底约 $40（IPO 价 $36 之上 +11%，但相对开盘 $52 已 -23%），与 Cerebras "8 月起 Lock-up 释放"时点高度重合；4. C3.ai / UiPath 是与 Cerebras 风格最接近的"高 P/S + AI 概念 + 客户集中"组合，两者均 18 个月内跌至 -74%/-79%。</p>
 </div>
 
 <h3>简化期望值（基于 13 家样本）</h3>
@@ -637,21 +653,21 @@ footer a:hover { color: var(--accent-yellow-on-inverse); }
 </thead>
 <tbody>
 <tr class="highlight-row"><td class="product-name">Cerebras (CBRS)</td><td>$80-95B</td><td class="num warn">186×</td><td>调研对象 · 86% UAE + OpenAI 集中度</td></tr>
-<tr><td class="product-name">NVIDIA (NVDA)</td><td>$5.48T</td><td class="num pos">27×</td><td>Rubin H2 出货，Token 成本降 10×；已 $20B 收编 Groq</td></tr>
+<tr><td class="product-name">NVIDIA (NVDA)</td><td>$5.48T</td><td class="num pos">27×</td><td>Rubin H2 出货，Token 成本降 10×；2025-12 与 Groq 签 $13B+$4B 非排他许可</td></tr>
 <tr><td class="product-name">AMD</td><td>$692B</td><td class="num pos">20×</td><td>MI400 432GB HBM4 · 2026 数据中心营收 +114%</td></tr>
 <tr><td class="product-name">Broadcom (AVGO)</td><td>$2T+</td><td>~25×</td><td><strong>ASIC 真赢家</strong>：设计 TPU/MTIA/Maia/Anthropic Titan · FY27 ASIC $100B+</td></tr>
 <tr><td class="product-name">Marvell (MRVL)</td><td>$140B+</td><td>—</td><td>定制 ASIC 第二名 · NVIDIA 2026 投 $2B</td></tr>
 <tr><td class="product-name">Astera Labs (ALAB)</td><td>$37B</td><td>~70×</td><td>AI 互联 · Q1 营收 YoY +93% · 已盈利</td></tr>
-<tr><td class="product-name">Lumentum (LITE)</td><td>$650-700B</td><td>—</td><td>光通信 · NVIDIA 投 $2B · 1 年 +1,148%</td></tr>
-<tr><td class="product-name">Vertiv (VRT)</td><td>$900B</td><td>—</td><td>液冷 + 电力 · $150B 订单储备</td></tr>
+<tr><td class="product-name">Lumentum (LITE)</td><td>$62.7B</td><td>~10×</td><td>光通信 · NVIDIA 投 $2B · 股价 $874 · 1 年 +1,148%</td></tr>
+<tr><td class="product-name">Vertiv (VRT)</td><td>$124.2B</td><td>~10×</td><td>液冷 + 电力 · $15B 订单储备 · 1 年 +243%</td></tr>
 <tr><td class="product-name">TSMC (TSM)</td><td>$1.84T</td><td>—</td><td>Q1 营收 61% 来自 AI/HPC · 全年指引 +30%</td></tr>
 <tr><td class="product-name">SK Hynix</td><td>—</td><td>—</td><td>HBM 市占 60% · 2026 产能全被 NVIDIA+OpenAI 包圆</td></tr>
 </tbody>
 </table>
 
 <div class="callout data">
-  <div class="callout-label">反直觉判断 · 买 NVIDIA = 同时拿到 Groq + 整个生态</div>
-  <p>同样 $1,000 投入：买 NVIDIA 对应营收暴露 $37.4（推理部分 $20-25）；买 Cerebras 对应营收暴露 $9.1（全是推理）。<strong>NVIDIA 给的"AI 推理营收暴露"比 Cerebras 多 2-3 倍</strong>，还附赠 CUDA 生态护城河 + 已盈利的安全边际 + Groq 收编后的低延迟推理 IP。</p>
+  <div class="callout-label">反直觉判断 · 买 NVIDIA = 同时拿到 Groq IP 许可 + 整个生态</div>
+  <p>同样 $1,000 投入：买 NVIDIA 对应营收暴露 $37.4（推理部分 $20-25）；买 Cerebras 对应营收暴露 $9.1（全是推理）。<strong>NVIDIA 给的"AI 推理营收暴露"比 Cerebras 多 2-3 倍</strong>，还附赠 CUDA 生态护城河 + 已盈利的安全边际 + Groq 非排他技术许可后的低延迟推理 IP（Jonathan Ross + Sunny Madra + 团队已加入 NVIDIA）。</p>
 </div>
 
 <h3>3 种组合配置方案</h3>
@@ -716,7 +732,7 @@ footer a:hover { color: var(--accent-yellow-on-inverse); }
 <tr><td>卖出总成本</td><td>~$0.99</td><td>~$1.64</td><td>~$2.63</td></tr>
 <tr class="highlight-row"><td>一买一卖往返</td><td class="num pos">$1.34（约 ¥9.1）</td><td>$2.64</td><td class="num warn">$4.62（约 ¥31）</td></tr>
 <tr><td>USD 闲置利息</td><td class="num">3.14%</td><td>3.14%</td><td class="num pos">现金宝 4.0-4.2%</td></tr>
-<tr><td>USD 融资利率</td><td>5.83%（首段）</td><td>5.83%</td><td class="num pos">4.8%</td></tr>
+<tr><td>USD 融资利率</td><td>5.14%（首段）</td><td>5.83%</td><td class="num pos">4.8%</td></tr>
 <tr><td>CRS 信息交换</td><td class="num pos">IBLLC-US 不走 CRS</td><td>同左</td><td class="num warn">经香港 → 中国税务局</td></tr>
 </tbody>
 </table>
@@ -830,7 +846,7 @@ footer a:hover { color: var(--accent-yellow-on-inverse); }
   <div class="metric-row"><span class="metric-label">Non-GAAP 亏损<span class="src">真实经营情况</span></span><span class="metric-num warn">-$75.7M</span></div>
   <div class="metric-row"><span class="metric-label">Lock-up 全解禁<span class="src">V1 推算 → V2 一手 S-1</span></span><span class="metric-num warn">2026-11</span></div>
   <div class="metric-row"><span class="metric-label">早期解禁 60M 股<span class="src">V2 新发现</span></span><span class="metric-num warn">2026-08</span></div>
-  <div class="metric-row"><span class="metric-label">OpenAI 排他条款<span class="src">V2 新发现</span></span><span class="metric-num warn">禁 4 大 AI lab</span></div>
+  <div class="metric-row"><span class="metric-label">OpenAI Named Competitor 条款<span class="src">V2 新发现 · 具体名单 REDACTED</span></span><span class="metric-num warn">⚠ 未一手核实</span></div>
   <div class="metric-row"><span class="metric-label">B200 Llama 70B 推理<span class="src">V1 100 tok/s → V2 反超</span></span><span class="metric-num warn">10,000+ tok/s</span></div>
 </div>
 
@@ -853,7 +869,8 @@ footer a:hover { color: var(--accent-yellow-on-inverse); }
 <li><a href="https://seekingalpha.com/article/4905797-cerebras-ipo-lockup-comes-fast">Seeking Alpha · IPO Lockup Comes Fast</a></li>
 <li><a href="https://news.ycombinator.com/item?id=46707904">HN · Avoid Cerebras (Enterprise 客户被踢)</a></li>
 <li><a href="https://www.infoworld.com/article/4055909/down-and-out-with-cerebras-code.html">InfoWorld · Down and out with Cerebras Code</a></li>
-<li><a href="https://www.cnbc.com/2025/12/24/nvidia-buying-ai-chip-startup-groq-for-about-20-billion-biggest-deal.html">CNBC · NVIDIA $20B 收编 Groq</a></li>
+<li><a href="https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale">Groq 官方 · NVIDIA 非排他许可公告</a></li>
+<li><a href="https://www.eetimes.com/sambanova-abandons-intel-acquisition-raises-funding-instead/">EE Times · SambaNova 放弃 Intel 收购</a></li>
 <li><a href="https://www.tomshardware.com/openai-broadcom-to-co-develop-10gw-of-custom-ai-chips">Tom's Hardware · OpenAI-Broadcom Titan 10GW</a></li>
 <li><a href="https://blogs.microsoft.com/blog/2026/01/26/maia-200-the-ai-accelerator-built-for-inference/">Microsoft Maia 200 推理芯片</a></li>
 <li><a href="https://www.anthropic.com/news/anthropic-amazon-compute">Anthropic + AWS $100B / 10 年</a></li>
@@ -873,10 +890,10 @@ footer a:hover { color: var(--accent-yellow-on-inverse); }
 <li><a href="https://www.bis.gov/press-release/department-commerce-announces-rescission-biden-era-artificial-intelligence-diffusion-rule-strengthens">BIS · 撤销 AI Diffusion Rule</a></li>
 </ul>
 <div class="footer-meta">
-RAY DEEP RESEARCH · BRIEF #008-V2 · 2026-05-19 · IPO+5 天<br>
+RAY DEEP RESEARCH · BRIEF #008-V2 · 2026-05-19 · IPO+5 天 · Codex Verified 2026-05-20<br>
 研究员：6 并行子 Agent（技术段位 / 市场落地 / 产能 / Catalyst 时间表 / 替代标的 / 中国实操） · 主 Agent 整合<br>
-本报告不构成投资建议。所有 USD 数字按调研时点估算，引用原话保留原文不改。<br>
-v2 重点：聚焦投资决策，回答 Ray 提出的 4 个核心问题 + 5 类必查补充。
+Stage 2.5 验证：51 个高 stake 数据点经 Codex CLI 0.128.0 独立审查（reasoning_effort=high + 30+ 次 web_search），发现 11 项 SUSPECT（9 HIGH + 2 MEDIUM），全部修正并标注。<br>
+本报告不构成投资建议。所有 USD 数字按调研时点估算，引用原话保留原文不改。
 </div>
 </div>
 </footer>
