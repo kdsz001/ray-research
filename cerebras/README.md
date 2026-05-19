@@ -7,7 +7,8 @@
 
 | 日期 | 报告 | 在线浏览 |
 |------|------|---------|
-| 2026-05-15 | [初版调研 · 晶圆级速度神话，押对了 OpenAI](2026-05-15-cerebras.html) | [↗ 在线打开](https://kdsz001.github.io/ray-research/cerebras/2026-05-15-cerebras.html) |
+| 2026-05-15 | [v1 · 晶圆级速度神话，押对了 OpenAI](2026-05-15-cerebras.html) | [↗ 在线打开](https://kdsz001.github.io/ray-research/cerebras/2026-05-15-cerebras.html) |
+| 2026-05-19 | [v2 · 投资追加调研 · 等到 11 月再看](2026-05-19-cerebras-v2.html) | [↗ 在线打开](https://kdsz001.github.io/ray-research/cerebras/2026-05-19-cerebras-v2.html) |
 
 ## 核心结论
 
