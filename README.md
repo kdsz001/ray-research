@@ -139,6 +139,12 @@
 |------|------|---------|
 | 2026-05-18 | [500 条推文复盘 · 长线胜率 68.2%](xiaomustock/2026-05-18-xiaomustock.html) | [↗ Open](https://kdsz001.github.io/ray-research/xiaomustock/2026-05-18-xiaomustock.html) |
 
+### 🛒 [PDD Holdings (NASDAQ: PDD)](pdd/) · 拼多多 / Temu 母公司 · 中概股投资深度
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-19 | [初版投资调研 · 最便宜的中概股，便宜得有理由](pdd/2026-05-19-pdd.html) | [↗ Open](https://kdsz001.github.io/ray-research/pdd/2026-05-19-pdd.html) |
+
 <!-- INDEX-END -->
 
 ---

@@ -1,0 +1,1142 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>PDD Holdings 投资调研 · 最便宜的中概股，便宜得有理由</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="拼多多 / Temu 母公司 PDD Holdings (NASDAQ: PDD) 是否值得投资？财务、Temu、监管、投资者情绪四维深度调研。">
+<script>
+(function(){try{var s=localStorage.getItem('ray-theme');var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var t=s||(p?'dark':'light');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500;1,8..60,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" media="all">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<style>
+:root{
+  --bg:#f6f3ec; --bg-paper:#fbf9f4; --bg-card:#ffffff;
+  --bg-dark:#14110d; --bg-dark2:#1f1b16;
+  --ink:#14110d; --ink-2:#2c2620; --muted:#6e6358; --light:#a39787;
+  --rule:#14110d; --rule-light:#d8d1c2;
+  --accent-warn:#a73121; --accent-data:#1c4d6b; --accent-pos:#2c5e3f; --accent-yellow:#c89a2c;
+  --bg-inverse:#14110d; --bg-inverse-2:#1f1b16;
+  --ink-on-inverse:#f6f3ec;
+  --text-on-inverse:rgba(246,243,236,0.85);
+  --muted-on-inverse:rgba(246,243,236,0.7);
+  --faint-on-inverse:rgba(246,243,236,0.55);
+  --rule-on-inverse:rgba(246,243,236,0.18);
+  --accent-warn-on-inverse:#e87a5f;
+  --accent-pos-on-inverse:#71b18a;
+  --accent-data-on-inverse:#6db2d6;
+  --accent-yellow-on-inverse:#e0b651;
+  --serif:"Source Serif 4","Source Serif Pro","Charter","Iowan Old Style",Georgia,serif;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  --mono:"JetBrains Mono","SF Mono","Menlo","Consolas",monospace;
+  --max-w:820px;
+}
+[data-theme="dark"]{
+  --bg:#15120e; --bg-paper:#1c1813; --bg-card:#211c16;
+  --ink:#ede5d3; --ink-2:#d8cfba; --muted:#a39787; --light:#6e6358;
+  --rule:#ede5d3; --rule-light:#3a3229;
+  --accent-warn:#e87a5f; --accent-data:#6db2d6; --accent-pos:#71b18a; --accent-yellow:#e0b651;
+  --bg-inverse:#ede5d3; --bg-inverse-2:#dcd2bd;
+  --ink-on-inverse:#14110d;
+  --text-on-inverse:rgba(20,17,13,0.85);
+  --muted-on-inverse:rgba(20,17,13,0.66);
+  --faint-on-inverse:rgba(20,17,13,0.5);
+  --rule-on-inverse:rgba(20,17,13,0.18);
+  --accent-warn-on-inverse:#a73121;
+  --accent-pos-on-inverse:#2c5e3f;
+  --accent-data-on-inverse:#1c4d6b;
+  --accent-yellow-on-inverse:#9a721f;
+}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;transition:background-color .2s,color .2s}
+a{color:inherit;text-decoration:underline;text-decoration-color:var(--rule-light);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{text-decoration-color:var(--accent-warn);color:var(--accent-warn)}
+p{margin:0 0 1em}em{font-style:italic}strong{font-weight:600;color:var(--ink)}
+
+.topbar{border-bottom:1px solid var(--rule-light);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:14px 32px;display:flex;justify-content:space-between;align-items:center;background:var(--bg-paper)}
+.topbar span+span:before{content:" / ";color:var(--light);margin:0 .5em}
+
+#theme-toggle{position:fixed;top:14px;right:24px;z-index:99;width:36px;height:36px;border-radius:50%;border:1px solid var(--rule);background:var(--bg-card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink);padding:0;transition:background-color .2s,color .2s,border-color .2s,transform .2s}
+#theme-toggle:hover{transform:rotate(15deg)}
+#theme-toggle svg{width:18px;height:18px}
+#theme-toggle .icon-moon{display:none}
+[data-theme="dark"] #theme-toggle .icon-sun{display:none}
+[data-theme="dark"] #theme-toggle .icon-moon{display:block}
+
+.shell{display:grid;grid-template-columns:200px 1fr;gap:80px;max-width:1180px;margin:0 auto;padding:60px 32px 100px}
+.toc{position:sticky;top:40px;align-self:start;font-family:var(--mono);font-size:11px;line-height:1.8}
+.toc-title{text-transform:uppercase;letter-spacing:.12em;color:var(--light);margin-bottom:14px;font-size:10px}
+.toc a{display:block;color:var(--muted);text-decoration:none;padding:3px 0;border-left:1px solid transparent;padding-left:10px;margin-left:-10px}
+.toc a:hover{color:var(--accent-warn)}
+.toc-num{color:var(--light);margin-right:6px}
+
+main{max-width:var(--max-w)}
+
+.hero{display:grid;grid-template-columns:1.4fr .8fr;gap:40px;padding-bottom:60px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--accent-warn);display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.eyebrow:before{content:"";width:24px;height:1px;background:var(--accent-warn)}
+h1.hero-title{font-family:var(--serif);font-weight:600;font-size:70px;line-height:1.03;letter-spacing:-.025em;margin:0 0 28px;color:var(--ink)}
+h1.hero-title em{font-style:italic;color:var(--accent-warn);font-weight:600}
+.hero-sub{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.45;color:var(--muted);max-width:560px;margin:0}
+.hero-meta{font-family:var(--mono);font-size:11px;line-height:1.9;color:var(--muted)}
+.hero-meta dt{color:var(--light);text-transform:uppercase;letter-spacing:.08em;font-size:10px;margin-top:14px}
+.hero-meta dd{margin:0;color:var(--ink-2);font-weight:500}
+.hero-meta dt:first-child{margin-top:0}
+
+.quickfacts-wrap{background:var(--bg-inverse);color:var(--ink-on-inverse);margin:60px 0;border-radius:2px;overflow:hidden;transition:background-color .2s,color .2s}
+.qf-head{padding:36px 40px 28px;border-bottom:1px solid var(--rule-on-inverse)}
+.qf-head .eyebrow{color:var(--accent-yellow-on-inverse)}
+.qf-head .eyebrow:before{background:var(--accent-yellow-on-inverse)}
+.qf-head h2{font-family:var(--serif);font-weight:600;font-style:italic;font-size:34px;line-height:1.1;margin:0;color:var(--ink-on-inverse)}
+.qf-grid{display:grid;grid-template-columns:repeat(6,1fr)}
+.qf-cell{padding:24px 22px;border-right:1px solid var(--rule-on-inverse);border-bottom:1px solid var(--rule-on-inverse)}
+.qf-cell:nth-child(6n){border-right:none}
+.qf-cell:nth-child(n+7){border-bottom:none}
+.qf-label{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--faint-on-inverse);margin-bottom:8px;min-height:22px;line-height:1.3}
+.qf-num{font-family:var(--serif);font-weight:500;font-size:28px;line-height:1.05;color:var(--ink-on-inverse);letter-spacing:-.015em}
+.qf-num .unit{font-size:13px;color:var(--muted-on-inverse);font-weight:400;margin-left:3px}
+.qf-num.pos{color:var(--accent-pos-on-inverse)}
+.qf-num.warn{color:var(--accent-warn-on-inverse)}
+.qf-num.data{color:var(--accent-data-on-inverse)}
+.qf-sub{font-family:var(--mono);font-size:9.5px;color:var(--muted-on-inverse);margin-top:8px;line-height:1.4;text-transform:uppercase;letter-spacing:.04em}
+.qf-cell.verdict{background:var(--accent-warn);border-right:none;border-bottom:none}
+[data-theme="dark"] .qf-cell.verdict{background:var(--accent-warn-on-inverse)}
+.qf-cell.verdict .qf-label{color:rgba(255,255,255,.75)}
+.qf-cell.verdict .qf-num{color:#fff;font-style:italic;font-size:18px;line-height:1.25}
+[data-theme="dark"] .qf-cell.verdict .qf-num{color:var(--bg)}
+.qf-cell.verdict .qf-sub{color:rgba(255,255,255,.8)}
+
+section{padding:70px 0;border-bottom:1px solid var(--rule-light);scroll-margin-top:30px}
+section:last-of-type{border-bottom:none}
+.sec-num{font-family:var(--mono);font-size:11px;color:var(--accent-warn);letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.sec-num:after{content:"";flex:1;height:1px;background:var(--rule-light)}
+h2.sec-title{font-family:var(--serif);font-weight:600;font-size:42px;line-height:1.1;letter-spacing:-.02em;margin:0 0 18px;color:var(--ink)}
+.sec-lede{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.55;color:var(--muted);margin:0 0 36px;max-width:680px}
+h3{font-family:var(--serif);font-weight:600;font-size:22px;line-height:1.2;margin:36px 0 14px;color:var(--ink)}
+h4{font-family:var(--sans);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:24px 0 12px}
+
+.tldr{background:var(--bg-inverse);color:var(--text-on-inverse);padding:44px 44px 40px;margin:36px 0;position:relative;border-radius:2px;transition:background-color .2s,color .2s}
+.tldr:before{content:"TL;DR";position:absolute;top:-12px;left:24px;background:var(--accent-warn);color:#fff;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.16em;padding:6px 14px}
+[data-theme="dark"] .tldr:before{background:var(--accent-warn-on-inverse);color:var(--ink-on-inverse)}
+.tldr h3{font-family:var(--serif);font-weight:600;font-style:italic;font-size:24px;line-height:1.3;margin:0 0 18px;color:var(--ink-on-inverse)}
+.tldr p{color:var(--text-on-inverse);margin:0 0 12px}
+.tldr ol{margin:14px 0 0;padding-left:24px;color:var(--text-on-inverse)}
+.tldr ol li{margin-bottom:10px}
+.tldr strong{color:var(--ink-on-inverse)}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule);margin:24px 0}
+.stat{padding:24px;border-right:1px solid var(--rule-light);border-bottom:1px solid var(--rule-light)}
+.stat:nth-child(3n){border-right:none}
+.stat:nth-child(n+4){border-top:1px solid var(--rule-light)}
+.stat-label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px;min-height:24px;line-height:1.3}
+.stat-num{font-family:var(--serif);font-weight:500;font-size:32px;line-height:1.05;color:var(--ink);letter-spacing:-.015em}
+.stat-num .unit{font-size:14px;color:var(--muted);font-weight:400;margin-left:4px}
+.stat-sub{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:8px;text-transform:uppercase;letter-spacing:.04em}
+.stat-num.warn{color:var(--accent-warn)}
+.stat-num.pos{color:var(--accent-pos)}
+.stat-num.data{color:var(--accent-data)}
+
+.metric-list{border-top:2px solid var(--rule);border-bottom:2px solid var(--rule);margin:24px 0}
+.metric-row{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--rule-light)}
+.metric-row:last-child{border-bottom:none}
+.metric-label{font-family:var(--serif);font-size:16px;line-height:1.4;color:var(--ink)}
+.metric-label .src{display:block;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--light);margin-top:4px}
+.metric-num{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--ink);letter-spacing:-.01em}
+.metric-num.warn{color:var(--accent-warn)}
+.metric-num.pos{color:var(--accent-pos)}
+.metric-num.data{color:var(--accent-data)}
+
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:24px 0}
+.card{background:var(--bg-card);border:1px solid var(--rule-light);padding:24px;border-radius:2px;transition:background-color .2s,border-color .2s}
+.card-title{font-family:var(--serif);font-weight:600;font-size:18px;margin:0 0 14px;display:flex;align-items:center;gap:10px;color:var(--ink)}
+.card-title.pos:before{content:"✓";color:var(--accent-pos);font-weight:700;width:22px;height:22px;border:1.5px solid var(--accent-pos);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px}
+.card-title.warn:before{content:"!";color:var(--accent-warn);font-weight:700;width:22px;height:22px;border:1.5px solid var(--accent-warn);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px}
+.card ul{margin:0;padding-left:18px}
+.card li{font-size:14px;line-height:1.55;margin-bottom:8px;color:var(--ink-2)}
+.card li strong{color:var(--ink)}
+
+blockquote.q{margin:24px 0;padding-left:20px;border-left:3px solid var(--accent-warn);font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.5;color:var(--ink-2)}
+blockquote.q .attribution{display:block;font-family:var(--mono);font-size:10px;font-style:normal;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:10px}
+blockquote.q .attribution:before{content:"— "}
+blockquote.q.big{font-size:22px;line-height:1.45;padding:8px 0 8px 24px;border-left-width:4px}
+
+.tbl{width:100%;border-collapse:collapse;margin:24px 0;font-size:13.5px}
+.tbl thead th{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:2px solid var(--rule);font-weight:600}
+.tbl tbody td{padding:12px;border-bottom:1px solid var(--rule-light);vertical-align:top;line-height:1.45}
+.tbl tbody tr:last-child td{border-bottom:1px solid var(--rule)}
+.tbl .product-name{font-family:var(--serif);font-weight:600;font-size:15px;color:var(--ink)}
+.tbl .tag{display:inline-block;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;background:var(--accent-data);color:#fff;padding:2px 6px;margin-left:6px;border-radius:1px;vertical-align:middle}
+.tbl .tag.pop{background:var(--accent-warn)}
+.tbl .tag.pos{background:var(--accent-pos)}
+.tbl tr.highlight{background:rgba(167,49,33,0.06)}
+[data-theme="dark"] .tbl tr.highlight{background:rgba(232,122,95,0.08)}
+.tbl tr.highlight-pos{background:rgba(44,94,63,0.06)}
+[data-theme="dark"] .tbl tr.highlight-pos{background:rgba(113,177,138,0.08)}
+.tbl td.num{font-family:var(--mono);white-space:nowrap}
+.tbl td.warn{color:var(--accent-warn)}
+.tbl td.pos{color:var(--accent-pos)}
+.table-wrap{overflow-x:auto}
+
+.callout{background:var(--bg-paper);border-left:3px solid var(--ink);padding:18px 22px;margin:24px 0;border-radius:0 2px 2px 0}
+.callout.warn{border-left-color:var(--accent-warn)}
+.callout.data{border-left-color:var(--accent-data)}
+.callout.pos{border-left-color:var(--accent-pos)}
+.callout-label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.callout-quote{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.55;color:var(--ink-2);margin:0}
+
+.timeline{margin:30px 0;position:relative}
+.tl-row{display:grid;grid-template-columns:100px 30px 1fr;gap:14px;padding:16px 0;align-items:start}
+.tl-date{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:right;padding-top:4px;letter-spacing:.04em}
+.tl-dot{position:relative;display:flex;justify-content:center;padding-top:6px}
+.tl-dot:before{content:"";position:absolute;top:6px;bottom:-22px;left:14px;width:1px;background:var(--rule-light)}
+.tl-row:last-child .tl-dot:before{display:none}
+.tl-dot:after{content:"";width:11px;height:11px;border-radius:50%;background:var(--bg);border:1.5px solid var(--ink);z-index:1;margin-top:2px}
+.tl-row.warn .tl-dot:after{border-color:var(--accent-warn);background:var(--accent-warn)}
+.tl-row.data .tl-dot:after{border-color:var(--accent-data);background:var(--accent-data)}
+.tl-row.pos .tl-dot:after{border-color:var(--accent-pos);background:var(--accent-pos)}
+.tl-title{font-family:var(--serif);font-weight:600;font-size:15px;line-height:1.35;color:var(--ink);margin-bottom:3px}
+.tl-desc{font-size:13.5px;color:var(--muted);line-height:1.5}
+
+.scores{border:1px solid var(--rule);background:var(--bg-card);padding:24px;margin:24px 0;transition:background-color .2s,border-color .2s}
+.score-row{display:grid;grid-template-columns:200px 1fr 60px;gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid var(--rule-light)}
+.score-row:last-child{border-bottom:none}
+.score-name{font-family:var(--serif);font-weight:600;font-size:14px;color:var(--ink)}
+.score-bar-wrap{height:8px;background:var(--rule-light);border-radius:1px;overflow:hidden}
+.score-fill{height:100%;background:var(--accent-data)}
+.score-fill.pos{background:var(--accent-pos)}
+.score-fill.warn{background:var(--accent-warn)}
+.score-fill.mid{background:var(--accent-yellow)}
+.score-val{font-family:var(--mono);font-size:13px;font-weight:600;text-align:right;color:var(--ink)}
+
+.verdict{background:var(--bg-inverse);color:var(--text-on-inverse);padding:44px 40px 36px;margin:36px 0;transition:background-color .2s,color .2s}
+.verdict-title{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--accent-yellow-on-inverse);margin-bottom:18px}
+.verdict h3{font-family:var(--serif);font-weight:600;font-style:italic;font-size:30px;line-height:1.2;margin:0 0 18px;color:var(--ink-on-inverse)}
+.verdict p{color:var(--text-on-inverse);margin:0 0 22px}
+.verdict-options{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule-on-inverse);margin-top:14px}
+.vo{padding:22px 22px 18px;border-right:1px solid var(--rule-on-inverse)}
+.vo:last-child{border-right:none}
+.vo-num{font-family:var(--mono);font-size:10px;color:var(--accent-yellow-on-inverse);letter-spacing:.12em;margin-bottom:10px}
+.vo h4{font-family:var(--serif);font-weight:600;font-size:17px;color:var(--ink-on-inverse);margin:0 0 8px;text-transform:none;letter-spacing:0}
+.vo p{font-size:13.5px;line-height:1.5;color:var(--text-on-inverse);margin:0}
+
+.divq{text-align:center;font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.4;color:var(--muted);margin:50px 0;padding:0 40px;position:relative}
+.divq:before,.divq:after{content:"";display:block;width:40px;height:1px;background:var(--rule-light);margin:18px auto}
+
+footer{background:var(--bg-inverse);color:var(--text-on-inverse);padding:50px 40px;margin-top:80px;transition:background-color .2s,color .2s}
+.foot-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1180px;margin:0 auto}
+footer h4{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent-yellow-on-inverse);margin:0 0 14px}
+footer ul{margin:0;padding:0;list-style:none;font-family:var(--mono);font-size:11px;line-height:1.9;color:var(--muted-on-inverse)}
+footer ul li a{color:var(--text-on-inverse);text-decoration-color:var(--rule-on-inverse)}
+footer ul li a:hover{color:var(--accent-warn-on-inverse)}
+.foot-meta{font-family:var(--mono);font-size:10px;color:var(--faint-on-inverse);margin-top:30px;padding-top:24px;border-top:1px solid var(--rule-on-inverse);max-width:1180px;margin-left:auto;margin-right:auto;line-height:1.7}
+
+.minigrid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--rule-light);margin:20px 0;background:var(--bg-card)}
+.minigrid .mc{padding:16px;border-right:1px solid var(--rule-light)}
+.minigrid .mc:last-child{border-right:none}
+.minigrid .mc-label{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
+.minigrid .mc-num{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--ink);line-height:1.05}
+.minigrid .mc-num.warn{color:var(--accent-warn)}
+.minigrid .mc-num.pos{color:var(--accent-pos)}
+.minigrid .mc-num.data{color:var(--accent-data)}
+.minigrid .mc-sub{font-family:var(--mono);font-size:9px;color:var(--light);margin-top:4px;text-transform:uppercase}
+
+ul.plain{list-style:none;padding-left:0}
+ul.plain li{padding:6px 0 6px 22px;position:relative}
+ul.plain li:before{content:"›";position:absolute;left:0;color:var(--accent-warn);font-weight:700}
+
+@media (max-width:1100px){
+  .shell{grid-template-columns:1fr;gap:30px;padding:32px 24px 80px}
+  .toc{position:relative;top:0;border-bottom:1px solid var(--rule-light);padding-bottom:18px}
+  .toc a{display:inline-block;margin-right:14px}
+  .hero{grid-template-columns:1fr;gap:30px}
+  h1.hero-title{font-size:50px}
+  .qf-grid{grid-template-columns:repeat(3,1fr)}
+  .qf-cell:nth-child(6n){border-right:1px solid var(--rule-on-inverse)}
+  .qf-cell:nth-child(3n){border-right:none}
+  .qf-cell:nth-child(n+7){border-bottom:1px solid var(--rule-on-inverse)}
+  .qf-cell:nth-child(n+10){border-bottom:none}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(3n){border-right:1px solid var(--rule-light)}
+  .stat:nth-child(2n){border-right:none}
+  .verdict-options{grid-template-columns:1fr;border-top:none}
+  .vo{border-right:none;border-bottom:1px solid var(--rule-on-inverse)}
+  .vo:last-child{border-bottom:none}
+  .twocol{grid-template-columns:1fr}
+  .minigrid{grid-template-columns:repeat(2,1fr)}
+  .minigrid .mc:nth-child(4n){border-right:1px solid var(--rule-light)}
+  .minigrid .mc:nth-child(2n){border-right:none}
+  .foot-grid{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  h1.hero-title{font-size:36px}h2.sec-title{font-size:30px}
+  .qf-grid{grid-template-columns:repeat(2,1fr)}
+  .qf-cell:nth-child(3n){border-right:1px solid var(--rule-on-inverse)}
+  .qf-cell:nth-child(2n){border-right:none}
+  .stats{grid-template-columns:1fr}.stat{border-right:none!important}
+  .score-row{grid-template-columns:140px 1fr 50px}
+  .tl-row{grid-template-columns:74px 24px 1fr}
+  .topbar{padding:12px 20px;flex-wrap:wrap;font-size:9.5px}
+  .topbar span+span:before{content:" · "}
+  .tbl{font-size:12px}.tbl thead th,.tbl tbody td{padding:8px}
+}
+@media print{
+  body{background:white;color:black}
+  .topbar,#theme-toggle,.toc{display:none}
+  .shell{display:block;padding:0}main{max-width:100%}
+  .tldr,.qf-cell.verdict,.verdict,footer,.quickfacts-wrap{background:white;color:black}
+  .tldr h3,.tldr p,.tldr strong,.qf-num,.qf-label,.qf-sub,.verdict h3,.verdict p,.vo h4,.vo p,.vo-num,footer ul,footer h4{color:black!important}
+  .qf-cell.verdict .qf-num{color:black!important;font-style:italic}
+  .tldr:before{background:black;color:white}
+  a{color:black;text-decoration:none}
+  section{page-break-inside:avoid;border-bottom:1px solid #ccc}
+  .hero{page-break-after:always}
+}
+</style>
+</head>
+<body>
+<button id="theme-toggle" aria-label="切换主题">
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+
+<div class="topbar">
+  <span>Ray Deep Research · PDD Holdings</span>
+  <span>投资视角 · 中概股深度调研</span>
+  <span>2026-05-19</span>
+</div>
+
+<div class="shell">
+  <nav class="toc">
+    <div class="toc-title">CONTENTS</div>
+    <a href="#sec-1"><span class="toc-num">01</span>一页纸结论</a>
+    <a href="#sec-2"><span class="toc-num">02</span>公司档案</a>
+    <a href="#sec-3"><span class="toc-num">03</span>财务全景</a>
+    <a href="#sec-4"><span class="toc-num">04</span>Temu 海外</a>
+    <a href="#sec-5"><span class="toc-num">05</span>国内格局</a>
+    <a href="#sec-6"><span class="toc-num">06</span>监管风险</a>
+    <a href="#sec-7"><span class="toc-num">07</span>投资者情绪</a>
+    <a href="#sec-8"><span class="toc-num">08</span>资本配置</a>
+    <a href="#sec-9"><span class="toc-num">09</span>决策建议</a>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div>
+        <div class="eyebrow">投资调研 · 中概股深度</div>
+        <h1 class="hero-title">PDD 是 <em>最便宜的</em>，但便宜得有理由。</h1>
+        <p class="hero-sub">Forward PE 7.88、净现金占市值 44%、净利率 22%，所有中概互联里基本面最强；但 Co-CEO 个人被罚"暴力抗法"、Temu 美国 DAU 一度腰斩、不分红不回购、没港股兜底——市场每一项不信任都有真实证据。</p>
+      </div>
+      <dl class="hero-meta">
+        <dt>调研对象</dt><dd>PDD Holdings · NASDAQ: PDD</dd>
+        <dt>核心问题</dt><dd>"$95 的 PDD 是不是深度价值机会？还是价值陷阱？"</dd>
+        <dt>调研深度</dt><dd>5 个并行子 Agent + Codex 数据交叉验证</dd>
+        <dt>覆盖维度</dt><dd>财务 / Temu / 国内格局 / 监管 / 投资者情绪</dd>
+        <dt>关键一手来源</dt><dd>SEC 6-K / 20-F · stockanalysis · WhaleWisdom · Sensor Tower · 国务院新闻办 · 21经济网 · 雪球 · Reddit · Seeking Alpha</dd>
+        <dt>调研截止</dt><dd>2026-05-19（Q1 2026 财报 5-29 公布前 10 天）</dd>
+        <dt>报告字数</dt><dd>约 16,000 字</dd>
+      </dl>
+    </header>
+
+    <!-- QUICK FACTS -->
+    <div class="quickfacts-wrap">
+      <div class="qf-head">
+        <div class="eyebrow">10 秒看完 · 关键数字速览</div>
+        <h2>PDD at a Glance</h2>
+      </div>
+      <div class="qf-grid">
+        <div class="qf-cell">
+          <div class="qf-label">当前股价</div>
+          <div class="qf-num">$94.97</div>
+          <div class="qf-sub">2026-05-18 收盘</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">市值</div>
+          <div class="qf-num">$135<span class="unit">B</span></div>
+          <div class="qf-sub">≈ ¥9,760 亿</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">Forward PE（市盈率）</div>
+          <div class="qf-num data">7.88</div>
+          <div class="qf-sub">中概互联最低</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">EV/EBITDA</div>
+          <div class="qf-num data">5.64</div>
+          <div class="qf-sub">vs BABA 20.3 / JD 21.1</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">净现金占市值</div>
+          <div class="qf-num pos">44%</div>
+          <div class="qf-sub">现金 $60.4B</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">2025 营收增速</div>
+          <div class="qf-num">+10%</div>
+          <div class="qf-sub">从 +59% (2024) 砸落</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">2025 净利同比</div>
+          <div class="qf-num warn">-12%</div>
+          <div class="qf-sub">千亿扶持反哺商家</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">净利率</div>
+          <div class="qf-num pos">22.7%</div>
+          <div class="qf-sub">vs BABA 10% / JD 1%</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">华尔街共识 PT</div>
+          <div class="qf-num">$137.86</div>
+          <div class="qf-sub">15 家活跃 · +45% 空间</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">分红 + 回购</div>
+          <div class="qf-num warn">0</div>
+          <div class="qf-sub">从未派发 · 永久承诺</div>
+        </div>
+        <div class="qf-cell">
+          <div class="qf-label">距 52 周低</div>
+          <div class="qf-num">+1.2%</div>
+          <div class="qf-sub">52 周高低 $93.81 / $139.41</div>
+        </div>
+        <div class="qf-cell verdict">
+          <div class="qf-label">最终判断</div>
+          <div class="qf-num">深度价值<br>但要能等</div>
+          <div class="qf-sub">不催化剂玩家慎入</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 1 · TL;DR -->
+    <section id="sec-1">
+      <div class="sec-num">01 / 一页纸结论</div>
+      <h2 class="sec-title">这是一只<em style="color:var(--accent-warn);font-style:italic">基本面胜利、定价失败</em>的股票。</h2>
+      <p class="sec-lede">所有理性的财务指标说 PDD 应该值更多；所有非财务的现实——监管、治理、地缘——又解释了它为什么不值那么多。市场不傻，但市场也累了。</p>
+
+      <p>调研截止 <strong>2026-05-19</strong>，PDD Holdings 收盘 <strong>$94.97</strong>，距 52 周低点 $93.81 只剩 1.2%。Forward PE <strong>7.88</strong>——在 BABA、JD、MELI、Amazon、Sea、Coupang 这一票电商里是最低的；净现金 + 短投 <strong>$60.4B（约 ¥4223 亿）</strong>占市值 <strong>44%</strong>——市场实际只在为公司剩下 $75B 业务估值；2025 全年净利率 <strong>22.66%</strong>，是 BABA 的 2.2 倍、JD 的 21 倍。</p>
+
+      <p>同时，过去 12 个月发生了：① 2024-08-26 单日暴跌 <strong>-28.5%</strong>，市值蒸发约 $55B；② 2025-05-02 特朗普取消对华 de minimis（$800 以下小包裹免税），Temu 美国 DAU 一周内下跌 <strong>-58%</strong>；③ 2026-04-17 国家市场监督管理总局对拼多多罚没 <strong>RMB 15.22 亿（约 $2.1 亿）</strong>，Co-CEO 赵佳臻个人被罚 <strong>RMB 693.73 万（约 $96 万）</strong>，并被官方定性"以暴力、软对抗手段阻碍监管执法"——这是电商行业史上最大单笔罚单 + 在岸高管个人责任。</p>
+
+      <div class="tldr">
+        <h3>如果你只能记住三件事——</h3>
+        <ol>
+          <li><strong>这是统计意义上偏多的赔率，但赌的不是基本面</strong>——基本面已经足够好。赌的是"管理层是否愿意把账上 $60B 现金部分还给股东、或证明再投资能产生回报"。</li>
+          <li><strong>三道刀同时悬挂：美国关税（已落）+ 国内监管（已落）+ AI 缺位（持续）</strong>——前两道刀已经砍下，股价已大致定价；AI 缺位是结构性折价，短期看不到反转。</li>
+          <li><strong>没有港股兜底</strong>是 PDD 与阿里 / 京东 / 百度 / 网易 / 美团最核心的差异。一旦中美关系恶化触发 PCAOB 接入被切断，PDD 强制退市股东只能拿粉单（OTC）流动性极差的票。这一项风险无法对冲。</li>
+        </ol>
+      </div>
+
+      <h3>看多 / 看空 一句话对照</h3>
+      <div class="twocol">
+        <div class="card">
+          <h4 class="card-title pos">看多核心逻辑</h4>
+          <ul>
+            <li><strong>$60B 现金堡垒</strong>占市值 44%，下行有底</li>
+            <li><strong>Forward PE 7.88 / EV/EBITDA 5.64</strong>，5 年估值 band 底部 15-20% 分位</li>
+            <li><strong>净利率 22.7%</strong>仍是中概互联天花板</li>
+            <li><strong>Temu 减亏曲线</strong>已开始，2025 半托管模型获得 70% 流量倾斜</li>
+            <li><strong>李录 Himalaya 死守 14.71%</strong>仓位，Renaissance / Citadel / Tudor 量化 Q1 大举建仓</li>
+            <li>共识 PT $136 隐含 <strong>+43%</strong> 上行空间</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4 class="card-title warn">看空核心逻辑</h4>
+          <ul>
+            <li><strong>营收增速从 +59% 砸到 +10%</strong>，"狂奔时代"已结束</li>
+            <li><strong>不分红 + 不回购 + 不开 Investor Day + 不接受媒体专访</strong>，治理黑箱永久压估值</li>
+            <li><strong>2026-04 Co-CEO 个人被罚"暴力抗法"</strong>，ESG 评分永久受损</li>
+            <li><strong>Temu 商业模式根基（de minimis）已被掀掉</strong>，转向半托管+本地仓的资本支出周期开启</li>
+            <li><strong>VIE 实体直接挂在两位现任 CEO 名下</strong>（陈磊 86.6% / 赵佳臻 13.4%），结构性利益冲突</li>
+            <li><strong>没有港股兜底</strong>，HFCAA 退市风险无对冲</li>
+            <li>"AI loser" 标签——AI 浪潮中 PDD 缺位</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="divq">"市场给最高利润率的公司最低估值——这件事，要么它是错的，要么它是对的。"</p>
+    </section>
+
+    <!-- SEC 2 · 公司档案 -->
+    <section id="sec-2">
+      <div class="sec-num">02 / 公司档案</div>
+      <h2 class="sec-title">一家<em style="font-style:italic">没有创始人、没有 CFO、没有 Investor Day</em>的千亿美元巨头。</h2>
+      <p class="sec-lede">黄峥 2021 年退出董事会以来，公司由两位非创始人 Co-CEO 接管；VIE 实体直接挂在他们个人名下；从未召开过一次投资者日；从未接受过任何主流媒体专访。这是中概里最"低调"的千亿美元公司。</p>
+
+      <h3>关键事实</h3>
+      <div class="metric-list">
+        <div class="metric-row">
+          <div class="metric-label">公司名称（2023 改名）<span class="src">SEC 20-F · 已交叉验证</span></div>
+          <div class="metric-num">PDD Holdings Inc.</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">注册地<span class="src">开曼群岛 · BVI VIE 架构</span></div>
+          <div class="metric-num">Cayman Islands</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">总部<span class="src">2023 从上海迁册 · 已交叉验证</span></div>
+          <div class="metric-num">Dublin, Ireland</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">上市地<span class="src">2018-07-26 上市 · 未做港股 H 股兜底</span></div>
+          <div class="metric-num data">NASDAQ: PDD</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">员工人数<span class="src">stockanalysis.com</span></div>
+          <div class="metric-num">25,474</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">现任 Co-CEO（双 CEO 制 2023-04 启动）<span class="src">PDD IR 页面</span></div>
+          <div class="metric-num" style="font-size:16px;font-family:var(--sans)">陈磊 + 赵佳臻</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">VIE 实体<span class="src">杭州爱米网络科技</span></div>
+          <div class="metric-num" style="font-size:14px;font-family:var(--mono)">陈磊 86.6% / 赵佳臻 13.4%</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">VIE 营收占比（持续下降）<span class="src">2022→2025 数据</span></div>
+          <div class="metric-num">56% → 13%</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">审计师切换<span class="src">2025-07 公告 · 为 FY2025 审计</span></div>
+          <div class="metric-num" style="font-size:14px;font-family:var(--mono)">EY 北京 → EY 香港</div>
+        </div>
+      </div>
+
+      <h3>股东结构（截至 2026-03-18 20-F 披露）</h3>
+      <div class="table-wrap"><table class="tbl">
+        <thead><tr><th>持有人</th><th>持股数（普通股）</th><th>占比</th><th>关键备注</th></tr></thead>
+        <tbody>
+          <tr class="highlight"><td class="product-name">黄峥相关实体 <span class="tag pop">创始人</span></td><td class="num">1,409,744,080</td><td class="num">24.8%</td><td>通过 BVI Walnut Street Investment Ltd. + Walnut Street Management Ltd.；最终由 Steam Water Limited（不可撤销信托）控制；黄峥本人为 settlor 兼 beneficiary</td></tr>
+          <tr><td class="product-name">Tencent 腾讯 <span class="tag">战略股东</span></td><td class="num">783,468,116</td><td class="num">13.8%</td><td>通过 Tencent Mobility Limited 持有</td></tr>
+          <tr><td class="product-name">PDD Partnership <span class="tag">合伙制</span></td><td class="num">370,772,220</td><td class="num">6.5%</td><td>通过 Quantum Dot Limited 持有；含早期 7.7% 捐赠的"科学探索基金"</td></tr>
+          <tr><td class="product-name">所有董事 + 高管合计</td><td class="num">50,737,152</td><td class="num">0.9%</td><td>包括陈磊、赵佳臻在内</td></tr>
+          <tr class="highlight-pos"><td class="product-name">公众流通股</td><td class="num">≈ 3,079M</td><td class="num">≈ 54%</td><td>约 14.23 亿 ADS（1 ADS = 4 普通股）</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>主要机构持仓（截至 2026 Q1 13F）</h3>
+      <p>机构合计持有约 4.39 亿 ADS（约占流通 ADS 的 30%）。Top 10 包括 <strong>BlackRock</strong>（3940 万 ADS / $40 亿，最大单一持有人）、<strong>Vanguard</strong>、<strong>Baillie Gifford</strong>（爱丁堡老牌长期基金）、<strong>State Street</strong>、<strong>红杉中国</strong>、<strong>Goldman Sachs</strong>、<strong>挪威主权基金 Norges Bank</strong>、<strong>淡马锡 Temasek</strong>（Q1 加仓 +5.19%）、以及 <strong>NetEase 网易</strong>。</p>
+
+      <h3>黄峥时间线</h3>
+      <div class="timeline">
+        <div class="tl-row pos">
+          <div class="tl-date">2018-07-26</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">拼多多 NASDAQ IPO</div><div class="tl-desc">发行价 $19，开盘大涨 41%。黄峥成中国最年轻亿万富翁之一。</div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2020-07</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">卸任 CEO</div><div class="tl-desc">陈磊接任。黄峥宣布把 7.7% 个人股份转入合伙制公司、2.4% 转入 Starry Night Charitable Trust。</div></div>
+        </div>
+        <div class="tl-row data">
+          <div class="tl-date">2021-03-17</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">辞任董事长，彻底退出董事会</div><div class="tl-desc">理由"研究食品科学和生命科学"。放弃 1:10 超级投票权。陈磊接任 Chairman。</div></div>
+        </div>
+        <div class="tl-row pos">
+          <div class="tl-date">2024-08-09</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">个人财富 $51.1B 短暂登顶中国首富</div><div class="tl-desc">距上市 6 年。在 17 天后跌落。</div></div>
+        </div>
+        <div class="tl-row warn">
+          <div class="tl-date">2024-08-26</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">PDD 单日 -28.5%，黄峥财富缩水 $14B</div><div class="tl-desc">Q2'24 财报后，陈磊在电话会上 8 次用 "inevitably"（不可避免）形容未来增速下滑。20 天后被钟睒睒重新超越。</div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2025-12</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">赵佳臻升任 Co-Chairman</div><div class="tl-desc">与陈磊并列。双 CEO 制升级为双 Chairman 制。</div></div>
+        </div>
+        <div class="tl-row warn">
+          <div class="tl-date">2026-04-17</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">赵佳臻个人被罚 ¥693.73 万</div><div class="tl-desc">"幽灵外卖"案件，国家市场监管总局对法定代表人个人处罚。"暴力抗法"标签——ESG 永久受损。</div></div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-label">⚠ 治理黑箱 6 大信号</div>
+        <p class="callout-quote">① 2018 以来从未设 CFO（只有 VP Finance 轮替）<br>② 上市 8 年未召开过一次 Investor Day<br>③ 管理层几乎不接受任何主流财经媒体专访<br>④ 不分红 + 不回购的"可预见未来"永久承诺<br>⑤ VIE 实体直接挂在两位现任 CEO 个人名下，结构性利益冲突<br>⑥ 披露口径渐次收缩——DAU / GMV / 活跃买家数已不再披露</p>
+      </div>
+    </section>
+
+    <!-- SEC 3 · 财务全景 -->
+    <section id="sec-3">
+      <div class="sec-num">03 / 财务全景</div>
+      <h2 class="sec-title">利润率<em style="font-style:italic">仍是天花板</em>，但增速曲线已折断。</h2>
+      <p class="sec-lede">2024 全年营收 +59%、2025 全年 +10%。增速一年砍掉 5/6。但毛利率、净利率、经营利润率三件套依然碾压所有同行——这是市场最矛盾的地方。</p>
+
+      <h3>四个季度连读（2025）</h3>
+      <div class="table-wrap"><table class="tbl">
+        <thead><tr><th>指标（GAAP，单位 ¥M）</th><th>Q1 2025</th><th>Q2 2025</th><th>Q3 2025</th><th>Q4 2025</th><th>2025 全年</th></tr></thead>
+        <tbody>
+          <tr><td class="product-name">总营收</td><td class="num">95,672</td><td class="num">103,985</td><td class="num">108,277</td><td class="num">123,912</td><td class="num"><strong>431,846</strong></td></tr>
+          <tr><td>· 在线营销（广告）</td><td class="num">48,722</td><td class="num">55,703</td><td class="num">53,348</td><td class="num">60,010</td><td class="num">217,783</td></tr>
+          <tr><td>· 交易服务（含 Temu）</td><td class="num">46,950</td><td class="num">48,282</td><td class="num">54,929</td><td class="num">63,902</td><td class="num">214,063</td></tr>
+          <tr><td class="product-name">营业利润</td><td class="num">16,086</td><td class="num">25,793</td><td class="num">25,026</td><td class="num">27,720</td><td class="num">94,625</td></tr>
+          <tr><td class="product-name">GAAP 净利润</td><td class="num warn">14,742</td><td class="num">30,754</td><td class="num">29,328</td><td class="num">24,541</td><td class="num"><strong>99,365</strong></td></tr>
+          <tr><td class="product-name">同比净利变化</td><td class="num warn">-47%</td><td class="num">+?</td><td class="num">+9%</td><td class="num warn">-11%</td><td class="num warn"><strong>-12%</strong></td></tr>
+          <tr><td>经营性现金流 OCF</td><td class="num">15,516</td><td class="num">21,641</td><td class="num">45,660</td><td class="num">24,120</td><td class="num">106,937</td></tr>
+          <tr class="highlight"><td>期末现金 + 短投</td><td class="num">364B</td><td class="num">387B</td><td class="num">423B</td><td class="num pos"><strong>422.3B</strong></td><td class="num pos"><strong>≈ $60.4B</strong></td></tr>
+        </tbody>
+      </table></div>
+
+      <p>剧情线很清楚——<strong>Q1'25 是分水岭</strong>：营业利润从去年同期 ¥25,974M 砸到 ¥16,086M（<strong>-38%</strong>），GAAP 净利润 <strong>-47%</strong>。这一砸把市场对 PDD 的"自动续命"叙事打掉了。Q2/Q3 反弹，Q4 再回落 -11%。整年净利下滑 -12%。同时<strong>现金从 ¥331.6B 涨到 ¥422.3B（+27%）</strong>——公司一边表演"扶持商家"，一边把现金堆得越来越高。</p>
+
+      <div class="callout warn">
+        <div class="callout-label">CFO 刘珺 · Q4'25 电话会原话</div>
+        <p class="callout-quote">"These investments are firm and long-term, and will inevitably affect our financial performance."<br><span style="font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--muted);text-transform:none">这些投资是坚定和长期的，将不可避免地影响我们的财务表现。"inevitably" 这个词，2024-08 那次崩盘的电话会上她用了 8 次。</span></p>
+      </div>
+
+      <h3>估值倍数全行业横向对比</h3>
+      <div class="table-wrap"><table class="tbl">
+        <thead><tr><th>指标</th><th class="num">PDD</th><th class="num">BABA</th><th class="num">JD</th><th class="num">MELI</th></tr></thead>
+        <tbody>
+          <tr><td>市值</td><td class="num">$135.2B</td><td class="num">$304.3B</td><td class="num">$42.7B</td><td class="num">$80.4B</td></tr>
+          <tr><td>TTM 营收</td><td class="num">$61.7B</td><td class="num">$148.4B</td><td class="num">$191.9B</td><td class="num">$31.8B</td></tr>
+          <tr class="highlight-pos"><td><strong>Trailing PE</strong>（市盈率）</td><td class="num pos"><strong>10.06</strong></td><td class="num">20.89</td><td class="num">23.90</td><td class="num">41.88</td></tr>
+          <tr class="highlight-pos"><td><strong>Forward PE</strong>（预期 PE）</td><td class="num pos"><strong>7.88</strong></td><td class="num">19.59</td><td class="num">8.83</td><td class="num">39.62</td></tr>
+          <tr><td>PS（市销率）</td><td class="num">2.19</td><td class="num">2.05</td><td class="num">0.22</td><td class="num">2.53</td></tr>
+          <tr class="highlight-pos"><td><strong>EV/EBITDA</strong></td><td class="num pos"><strong>5.64</strong></td><td class="num">20.29</td><td class="num">21.06</td><td class="num">22.10</td></tr>
+          <tr><td>PEG（&lt;1 偏便宜）</td><td class="num">0.82</td><td class="num">0.58</td><td class="num">0.33</td><td class="num">1.25</td></tr>
+          <tr><td>P/FCF</td><td class="num pos">8.69</td><td class="num">n/a</td><td class="num">16.43</td><td class="num">6.80</td></tr>
+          <tr class="highlight-pos"><td><strong>经营利润率</strong></td><td class="num pos"><strong>21.6%</strong></td><td class="num">5.83%</td><td class="num">-0.23%</td><td class="num">9.59%</td></tr>
+          <tr class="highlight-pos"><td><strong>净利率</strong></td><td class="num pos"><strong>22.7%</strong></td><td class="num">10.12%</td><td class="num">1.05%</td><td class="num">6.04%</td></tr>
+          <tr class="highlight"><td>股息率</td><td class="num warn">0%</td><td class="num">0.79%</td><td class="num">3.16%</td><td class="num">0%</td></tr>
+          <tr class="highlight"><td>回购收益率</td><td class="num warn">-0.22%</td><td class="num">+0.43%</td><td class="num pos">+3.72%</td><td class="num">0%</td></tr>
+        </tbody>
+      </table></div>
+
+      <p>看这张表会发现一个奇怪的事实：<strong>PDD 在每一个"基本面"指标上都赢，但在每一个"股东回报"指标上都输</strong>。这正是市场不肯给它高估值的核心理由。</p>
+
+      <h3>股价 5 年走势骨架</h3>
+      <div class="timeline">
+        <div class="tl-row pos">
+          <div class="tl-date">2021-02-17</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">历史峰值 $202.82</div><div class="tl-desc">中概股最后狂欢顶点。市值约 $2,900 亿。</div></div>
+        </div>
+        <div class="tl-row warn">
+          <div class="tl-date">2022-10</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">5 年低点 $25.53</div><div class="tl-desc">滴滴下架 + VIE 退市恐慌 + 二十大前夕，从顶点跌 -87%。</div></div>
+        </div>
+        <div class="tl-row pos">
+          <div class="tl-date">2023</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">+79.4%</div><div class="tl-desc">Temu 故事启动，市场重新定价"全球化期权"。</div></div>
+        </div>
+        <div class="tl-row warn">
+          <div class="tl-date">2024-08-26</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">单日 -28.5%</div><div class="tl-desc">陈磊电话会 8 次 "inevitably"，市值蒸发 ~$55B。黄峥财富 -$14B。</div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2025</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">区间震荡 $88-138</div><div class="tl-desc">de minimis 取消、增速放缓、千亿扶持启动，年涨 +16.9%。</div></div>
+        </div>
+        <div class="tl-row warn">
+          <div class="tl-date">2026-05-18</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">$94.97（贴 52 周低）</div><div class="tl-desc">距历史高 -53%、距 2024 局部高 -40%。Beta 5Y = 0.03（与美股大盘几乎不相关）。</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEC 4 · Temu 海外 -->
+    <section id="sec-4">
+      <div class="sec-num">04 / Temu 海外</div>
+      <h2 class="sec-title">5.3 亿月活的<em style="font-style:italic">增长机器</em>，正在被三道刀同时砍。</h2>
+      <p class="sec-lede">这家不到 4 年的子业务，已经成为 PDD 交易服务收入的 50% 主力 + 估值故事的核心助力。但 2025 美国 de minimis 取消、欧盟 DSA 6% 罚款上限、5+ 州 AG 起诉为 spyware——每一道刀都还在头上。</p>
+
+      <div class="minigrid">
+        <div class="mc"><div class="mc-label">全球月活 MAU</div><div class="mc-num">5.30<span class="unit" style="font-size:14px;color:var(--muted)">亿</span></div><div class="mc-sub">Sensor Tower · 2025-08 峰值</div></div>
+        <div class="mc"><div class="mc-label">累计下载</div><div class="mc-num">12<span class="unit" style="font-size:14px;color:var(--muted)">亿+</span></div><div class="mc-sub">Sensor Tower · 2025-10</div></div>
+        <div class="mc"><div class="mc-label">覆盖国家</div><div class="mc-num">80+</div><div class="mc-sub">Temu 官方</div></div>
+        <div class="mc"><div class="mc-label">2024 全球 GMV</div><div class="mc-num">$70.8<span class="unit" style="font-size:14px;color:var(--muted)">B</span></div><div class="mc-sub">≈ ¥5,027 亿 · Backlinko</div></div>
+      </div>
+
+      <h3>美国市场——主战场的崩塌与重建</h3>
+      <div class="minigrid">
+        <div class="mc"><div class="mc-label">美国 MAU（2025-10）</div><div class="mc-num warn">1.34<span class="unit" style="font-size:14px;color:var(--muted)">亿</span></div><div class="mc-sub">同比 -28%</div></div>
+        <div class="mc"><div class="mc-label">美国 DAU 单月跌幅</div><div class="mc-num warn">-48~58%</div><div class="mc-sub">2025-05 · Reuters/RetailWire</div></div>
+        <div class="mc"><div class="mc-label">美国 GMV 估算</div><div class="mc-num">$22<span class="unit" style="font-size:14px;color:var(--muted)">B</span></div><div class="mc-sub">≈ ¥1,562 亿 · 2025E</div></div>
+        <div class="mc"><div class="mc-label">美国电商市占</div><div class="mc-num">0.75%</div><div class="mc-sub">vs SHEIN 0.50%</div></div>
+      </div>
+
+      <h3>关税三连击时间线</h3>
+      <div class="timeline">
+        <div class="tl-row warn">
+          <div class="tl-date">2025-02</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">Trump 首签行政令：暂停中国 / 香港 de minimis 豁免</div><div class="tl-desc">de minimis 是美国关税法 §321 条款，单包裹 ≤$800 免税进境，过去是 Temu / SHEIN 全托管商业模式的根基。</div></div>
+        </div>
+        <div class="tl-row warn">
+          <div class="tl-date">2025-04</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">中国小包关税最高 145%</div><div class="tl-desc">Temu 紧急砍美国 Google Shopping 广告投放（占比从 19% → 0%）。App Store 美区免费榜 No.3 → No.69（NBC News）。</div></div>
+        </div>
+        <div class="tl-row warn">
+          <div class="tl-date">2025-05-02</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">中国 de minimis 豁免正式取消</div><div class="tl-desc">Temu 当天宣布所有美国订单<strong>改由本地仓发货</strong>。美国 DAU 一周内下跌 58%。</div></div>
+        </div>
+        <div class="tl-row warn">
+          <div class="tl-date">2025-08-29</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">全球 de minimis 豁免全面终结</div><div class="tl-desc">扩大到所有国家。美国 800 美元以下小包数量比废除前减少 54%。消费者代价：每年多花约 $109 亿。</div></div>
+        </div>
+      </div>
+
+      <h3>欧洲——DSA 监管风暴</h3>
+      <p><strong>2024-05-31</strong> 欧委会指定 Temu 为 <strong>VLOP（Very Large Online Platform，欧盟"超大平台"标签）</strong>，月活超 4500 万。<strong>2025-07-28</strong> 欧委会作出<strong>初步认定</strong>——Temu 违反 DSA <span style="border-bottom:1px dashed var(--accent-warn)" title="子 Agent 报告写 Article 23，Codex 核查疑为 Article 34，原始公告以欧委会发布为准">系统性风险评估条款</span>，没有妥善评估"非法和不安全商品"风险。罚款上限：<strong>全球年营收 6%</strong>。后续调查还在进行：算法操纵性设计、推荐系统透明度、研究人员数据访问权。</p>
+
+      <h3>用户口碑：U 形分布</h3>
+      <p>Trustpilot temu.com（51,109 条评论）综合 <strong>1.9/5 (Poor)</strong>，星级呈典型廉价电商 U 形：<strong>56.2% 1 星 + 25.4% 5 星</strong>。BBB（Better Business Bureau）累计投诉 <strong>5,840 条</strong>。</p>
+
+      <div class="twocol">
+        <div class="card">
+          <h4 class="card-title pos">用户最大三好评</h4>
+          <ul>
+            <li><strong>价格离谱便宜</strong>——能接受偶尔翻车</li>
+            <li><strong>退货流程</strong>一旦走通体感不错</li>
+            <li><strong>多语言客服 + 实时物流追踪</strong>界面好</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4 class="card-title warn">用户最大三抱怨</h4>
+          <ul>
+            <li><strong>退款拖延 / AI 客服模板</strong>回复，永远"在升级中"</li>
+            <li><strong>商品质量与描述严重不符</strong>（包括到货空盒）</li>
+            <li><strong>物流地址错投 / 包裹丢失 / 派送照片对不上</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <blockquote class="q">"STAY AWAY! TOTAL SCAM IN UAE! Delivered an empty box instead of a Tablet. I provided full continuous unboxing video proof immediately. They kept systematically canceling my return requests for a whole month... after 4 months and 8 tickets, they fraudulently denied my 141.57 AED refund."<span class="attribution">Muntaha Shaikh · Trustpilot · UAE · 1 star</span></blockquote>
+
+      <blockquote class="q">"I ordered some clothes, but their size was a little bigger, they accept my return without any question and refund my money in seconds, I had no similar experience with ebay. I think its good alternative for ebay."<span class="attribution">robab mirzadeh · Trustpilot · UK · 5 stars</span></blockquote>
+
+      <h3>vs SHEIN 对比</h3>
+      <div class="table-wrap"><table class="tbl">
+        <thead><tr><th>维度</th><th>Temu</th><th>SHEIN</th></tr></thead>
+        <tbody>
+          <tr><td>母公司</td><td>PDD Holdings（已美股上市）</td><td>SHEIN 独立公司，新加坡 HQ（未上市）</td></tr>
+          <tr><td>2025 美国 GMV</td><td class="num">≈ $22B</td><td class="num">≈ $15-20B</td></tr>
+          <tr><td>美国电商市占</td><td class="num">≈ 0.75%</td><td class="num">≈ 0.50%</td></tr>
+          <tr><td>2025-01 美国成年人渗透</td><td class="num pos">44%</td><td class="num">31%</td></tr>
+          <tr><td>主要品类</td><td>长尾百货（家居 / 玩具 / 配件）</td><td><strong>快时尚 + 童装</strong>（成衣 50%+）</td></tr>
+          <tr><td>2025-05 关税 DAU 冲击</td><td class="num warn">-48~58%</td><td class="num warn">-25%</td></tr>
+          <tr><td>SHEIN IPO 进度</td><td>—</td><td>伦敦 IPO 2025-03 获 FCA 批准，但中证监因新疆供应链披露语言<strong>拒绝放行</strong>；2025-07 转向<strong>香港交易所秘密递表</strong>。估值从 2022 峰值 $1,000 亿砍到 $300-500 亿</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="callout data">
+        <div class="callout-label">⚡ 一句话定性</div>
+        <p class="callout-quote">Temu 既是 PDD 估值故事的核心助力，也是定时炸弹——左手撑起 PDD 50%+ 的 Transaction Services 收入，右手把整个集团绑在了美中贸易战、欧盟 6% 罚款、UFLPA 强制劳动红线、多州 AG 数据起诉、东南亚封禁五条引信上。</p>
+      </div>
+    </section>
+
+    <!-- SEC 5 · 国内格局 -->
+    <section id="sec-5">
+      <div class="sec-num">05 / 国内格局</div>
+      <h2 class="sec-title">国内份额<em style="font-style:italic">已经触顶</em>——抖音 24% 反超 PDD 19%。</h2>
+      <p class="sec-lede">"狂奔时代"结束，"防守 + 反哺 + 转向高质价比"的换血期开始。商家口碑灾难性差。</p>
+
+      <h3>国内电商五巨头横向对比（2024-25 口径）</h3>
+      <div class="table-wrap"><table class="tbl">
+        <thead><tr><th>维度</th><th>拼多多</th><th>淘天（阿里）</th><th>京东</th><th>抖音电商</th><th>快手电商</th></tr></thead>
+        <tbody>
+          <tr><td>GMV（万亿 RMB）</td><td class="num"><strong>5.2</strong></td><td class="num">8.3</td><td class="num">4.2</td><td class="num pos">4.3</td><td class="num">1.4</td></tr>
+          <tr><td>GMV 增速</td><td class="num warn">个位数</td><td class="num">+6%</td><td class="num">+2-4%</td><td class="num pos">+30%+</td><td class="num">个位数</td></tr>
+          <tr><td>双 11 市占率（易观）</td><td class="num">14.8%</td><td class="num">50%+</td><td class="num">18.9%</td><td class="num">12.2%</td><td>—</td></tr>
+          <tr><td>高盛 Q4'25 总盘份额预测</td><td class="num warn"><strong>19%</strong></td><td class="num">31%</td><td class="num">16%</td><td class="num pos"><strong>24%</strong></td><td>—</td></tr>
+          <tr><td>净利润率</td><td class="num pos"><strong>23%</strong></td><td>中高个位数</td><td class="num">1-2%</td><td>未披露</td><td>微利</td></tr>
+          <tr><td>商业模式</td><td>3P + 算法压价</td><td>3P + 88VIP</td><td>1P 自营 70%+ 物流</td><td>直播兴趣电商</td><td>信任电商</td></tr>
+          <tr><td>客单价</td><td class="num warn">&lt; ¥100</td><td>中等</td><td class="num">高（3C 占 45%）</td><td>中低</td><td>低</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>三业务区分</h3>
+      <div class="stats">
+        <div class="stat"><div class="stat-label">拼多多 APP（主站）</div><div class="stat-num">¥5.2<span class="unit">万亿</span></div><div class="stat-sub">国内 GMV · 2024</div></div>
+        <div class="stat"><div class="stat-label">多多买菜</div><div class="stat-num pos">¥3,000<span class="unit">亿</span></div><div class="stat-sub">2025 GMV · 社区团购市占 44%</div></div>
+        <div class="stat"><div class="stat-label">Temu（海外）</div><div class="stat-num data">20%+</div><div class="stat-sub">PDD 营收占比 · 战略优先级最高</div></div>
+      </div>
+
+      <h3>商家端口碑——本次调研最炸的发现</h3>
+      <blockquote class="q big">"10 元的东西，降到 5 元可以了把，还降，到 3 元总可以了吧，它不，它会一直让你降、降、降……降到 8 毛它还要让你降！而且它的降价按钮是这样设定的，如果 24 小时你不点不同意，它就直接给你降价了……<strong>我有五个店，每个店每天恶心我一次就是五次！</strong>"<span class="attribution">雪球商家调研 · 林文丰</span></blockquote>
+
+      <blockquote class="q">"这就是流氓平台，把人性丑恶的一面无限放大出来。"<span class="attribution">虎嗅采访 · 拼多多小商家阿杰</span></blockquote>
+
+      <blockquote class="q">"京东，贵但质量好；拼多多，低价但别苛求质量；淘宝，介乎两者之间。"<span class="attribution">雪球用户对三家共识 · 转引新浪财经</span></blockquote>
+
+      <h3>关键事件时间线（国内）</h3>
+      <div class="timeline">
+        <div class="tl-row warn">
+          <div class="tl-date">2023-03</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">炸店事件</div><div class="tl-desc">拼多多自营店"多多福利社"上线 4 小时被商家集体"恶意下单 + 仅退款 + 差评"攻陷。</div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2024-08</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">淘宝率先松绑"仅退款"</div><div class="tl-desc">PDD 被动跟进。</div></div>
+        </div>
+        <div class="tl-row warn">
+          <div class="tl-date">2025-03</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">陈磊承认"利润将受很大压力"</div><div class="tl-desc">财报会原话。市场预期重置。</div></div>
+        </div>
+        <div class="tl-row data">
+          <div class="tl-date">2025-04</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">"千亿扶持"启动</div><div class="tl-desc">三年 ¥1,000 亿（约 $139 亿）反哺商家。"短期甚至相当一段时间内，我们的利润将受到很大的压力和挑战。"</div></div>
+        </div>
+        <div class="tl-row pos">
+          <div class="tl-date">2025-04-22</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">五大平台同步取消"仅退款"</div><div class="tl-desc">淘宝 / PDD / 京东 / 抖音 / 快手联合。商家利好。</div></div>
+        </div>
+        <div class="tl-row pos">
+          <div class="tl-date">2025-06</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">美团优选除浙粤外全面撤退</div><div class="tl-desc">多多买菜独占社区团购 44% 市占。</div></div>
+        </div>
+        <div class="tl-row warn">
+          <div class="tl-date">2025-12</div>
+          <div class="tl-dot"></div>
+          <div><div class="tl-title">抖音电商 GMV 4.3 万亿，反超 PDD 份额</div><div class="tl-desc">"狂奔时代"正式结束。</div></div>
+        </div>
+      </div>
+
+      <p class="divq">"PDD 国内能继续慢吞，但'狂奔时代'正式结束。"</p>
+    </section>
+
+    <!-- SEC 6 · 监管风险 -->
+    <section id="sec-6">
+      <div class="sec-num">06 / 监管风险</div>
+      <h2 class="sec-title">五道引信<em style="font-style:italic">同时悬挂</em>——并且彼此高度相关。</h2>
+      <p class="sec-lede">最值得警惕的不是"哪类风险会触发"，而是这五类风险高度相关——中美关系恶化会同时触发关税升级、HFCAA 退市、UFLPA 加码三个"无港股兜底"的炸弹。</p>
+
+      <h3>五大风险评级</h3>
+      <div class="scores">
+        <div class="score-row"><div class="score-name">① 美国关税 / de minimis 取消</div><div class="score-bar-wrap"><div class="score-fill warn" style="width:100%"></div></div><div class="score-val">已触发</div></div>
+        <div class="score-row"><div class="score-name">② UFLPA 强迫劳动</div><div class="score-bar-wrap"><div class="score-fill warn" style="width:85%"></div></div><div class="score-val">高</div></div>
+        <div class="score-row"><div class="score-name">③ HFCAA / 退市 / VIE</div><div class="score-bar-wrap"><div class="score-fill mid" style="width:55%"></div></div><div class="score-val">中</div></div>
+        <div class="score-row"><div class="score-name">④ 国内反垄断 / "暴力抗法"</div><div class="score-bar-wrap"><div class="score-fill warn" style="width:100%"></div></div><div class="score-val">已触发</div></div>
+        <div class="score-row"><div class="score-name">⑤ 治理黑箱 / 创始人撤退</div><div class="score-bar-wrap"><div class="score-fill mid" style="width:60%"></div></div><div class="score-val">中</div></div>
+      </div>
+
+      <h3>① 关税：商业模式根基已塌</h3>
+      <p>de minimis 取消的直接打击：Temu 美国 DAU 立刻下降 <strong>58%</strong>，PDD Q1 2025 净利同比 <strong>-47%</strong>，总营收 <strong>¥95.7B</strong> 低于市场预期 ¥102.5B。Co-CEO 陈磊财报会原话："radical change in external policy environment such as tariffs has created significant pressure for our merchants." CFO 刘珺："profitability is likely to face challenges in the near term, and potentially over a longer period."</p>
+
+      <h3>② UFLPA（防止强迫维吾尔人劳动法）</h3>
+      <p><strong>2023-06-22</strong> 美国众议院"中国共产党特别委员会"发布 <em>《Fast Fashion and the Uyghur Genocide: Interim Findings》</em> 中期报告。<strong>原文照录</strong>对 Temu 四条定性：</p>
+      <ul class="plain">
+        <li>"Temu and Shein alone are likely responsible for more than 30 percent of all packages shipped to the United States daily under the de minimis provision."</li>
+        <li>"Temu's business model... is to avoid bearing responsibility for compliance with the UFLPA."</li>
+        <li>"Temu conducts no audits and reports no compliance system to affirmatively examine and ensure compliance with the UFLPA."</li>
+        <li>"Temu does not expressly prohibit third-party sellers from selling products based on their origin in the Xinjiang Autonomous Region."</li>
+      </ul>
+      <p><strong>2024-11</strong>，多家美国媒体报道国土安全部（DHS）已就 Temu UFLPA 合规进行调查（具体立案状态以官方公告为准）。21 个州司法部长 2024-07 联名致信 Chen Lei。<strong>2024-06-25 阿肯色州</strong> AG Griffin 起诉 PDD + WhaleCo（首例），后续<strong>肯塔基、内布拉斯加、亚利桑那</strong>跟进。<strong>2026-02 得克萨斯州</strong> AG Paxton 联邦起诉 Temu 为"伪装成购物 App 的中国共产党间谍软件"。</p>
+
+      <h3>③ HFCAA / VIE / 港股兜底缺失</h3>
+      <p><strong>VIE</strong>（可变利益实体）— PDD 的杭州爱米网络科技直接挂在两位 CEO 个人名下（陈磊 86.6% / 赵佳臻 13.4%）。<strong>HFCAA</strong>（外国公司问责法）规定 PCAOB 若连续两年无法审计中概股，强制退市。</p>
+      <p>当前 PDD 不在 Commission-Identified Issuer 名单上，但是<strong>大型中概股里唯一一家没做香港"第二上市"兜底</strong>的公司——阿里 / 京东 / 百度 / 网易 / 美团都已经在 HK 主要上市。一旦 PCAOB 接入被切断，PDD 股东只能拿粉单（OTC）流动性极差的票。</p>
+
+      <h3>④ 国内监管：2026-04-17 黑天鹅</h3>
+      <div class="callout warn">
+        <div class="callout-label">⚠ 黑天鹅级事件 · 2026-04-17</div>
+        <p class="callout-quote">国家市场监督管理总局对 7 家电商"幽灵外卖"系列罚没合计 <strong>¥35.97 亿元</strong>。<br>· 拼多多被罚没 <strong>¥15.22 亿（约 $2.1 亿）</strong>——史上电商行业最大单笔罚单<br>· 处罚依据"一店一罚"——9,463 家未审店铺×¥16 万<br>· <strong>Co-CEO / 法定代表人赵佳臻个人被罚 ¥693.73 万（约 $96 万）</strong><br>· 监管定性"以暴力、软对抗手段阻碍监管执法"，违法性质"恶劣"<br>· 执法人员被企业员工故意关门，"导致左手食指骨折及右脚脚踝软组织挫伤"</p>
+      </div>
+      <p>这是 ESG 评分和港股估值定价的<strong>结构性下调</strong>——不会被"业绩超预期"修复。黄峥"本分文化"招牌的彻底破产。</p>
+
+      <h3>⑤ 治理 / 空头报告</h3>
+      <p>PDD <strong>没有被 Hindenburg / Muddy Waters / Citron / Wolfpack 这种顶级"杀手级"机构正式做空过</strong>。最严重的两份报告：</p>
+      <ul class="plain">
+        <li><strong>2018-11 Blue Orca</strong>：指控 GMV / 营收数据造假，SAIC 工商口径 vs SEC 招股书差 RMB 7.05 亿元（36%），目标价 $7.49（彼时 -56%）</li>
+        <li><strong>2023-09-06 Grizzly Research</strong>：标题 <em>"We Believe PDD is a Dying Fraudulent Company and TEMU is Cleverly Hidden Spyware"</em>，指控 Temu APP 是 spyware（JoeSandbox 恶意性 68/100），PDD 母公司无 CFO，关联方支付公司转账</li>
+      </ul>
+      <p>反过来想：做空机构都打不进去，恰恰反映 PDD 信息披露极少、证据收集难度高。Grizzly 报告里"无 CFO、口径不透明"的指控正是这种"难以做空"的体现。</p>
+    </section>
+
+    <!-- SEC 7 · 投资者情绪 -->
+    <section id="sec-7">
+      <div class="sec-num">07 / 投资者情绪</div>
+      <h2 class="sec-title">大佬<em style="font-style:italic">分裂</em>，量化下场。</h2>
+      <p class="sec-lede">35 家券商覆盖 / 6 Buy 9 Hold 0 Sell / 平均目标价 $136 / 上行 +43%——华尔街共识温和偏多。但 13F 一打开，多头大佬正在分裂。</p>
+
+      <h3>大行评级（最近 12 个月活跃覆盖）</h3>
+      <div class="table-wrap"><table class="tbl">
+        <thead><tr><th>日期</th><th>机构</th><th>动作</th><th>评级</th><th>目标价</th></tr></thead>
+        <tbody>
+          <tr><td>2026-03-27</td><td class="product-name">Nomura（野村）</td><td>Upgrade Neutral→Buy</td><td class="pos">Buy</td><td class="num pos">$136</td></tr>
+          <tr><td>2026-01-15</td><td class="product-name">Morgan Stanley</td><td>Set Target</td><td class="pos">Overweight</td><td class="num pos">$148</td></tr>
+          <tr><td>2026-01-06</td><td class="product-name">Loop Capital</td><td>Set Target</td><td class="pos">Strong Buy</td><td class="num pos">$170</td></tr>
+          <tr><td>2025-11-19</td><td class="product-name">Bank of America</td><td>Lower Target</td><td>Hold</td><td class="num">$140</td></tr>
+          <tr><td>2025-05-28</td><td class="product-name">JP Morgan</td><td>Lower Target $125→$105</td><td class="warn">Neutral</td><td class="num warn">$105</td></tr>
+        </tbody>
+      </table></div>
+      <p>评级分布（15 家活跃覆盖，MarketBeat 口径）：<strong>Buy 6（40%）/ Hold 9（60%）/ Sell 0</strong>。目标价区间 <strong>$105-$170</strong>，共识 <strong>$137.86</strong>，对当前 $94.97 隐含 <strong>+45% 上行</strong>。<span style="font-family:var(--mono);font-size:11px;color:var(--muted)">注：stockanalysis 用 12 个月全覆盖口径给出 35 家分析师，结果接近 ($136)。</span></p>
+
+      <h3>机构持仓 Q1'26 多空分裂表</h3>
+      <div class="table-wrap"><table class="tbl">
+        <thead><tr><th>基金 / 经理人</th><th>仓位占比</th><th>变动</th><th>解读</th></tr></thead>
+        <tbody>
+          <tr class="highlight"><td class="product-name">高瓴 HHLR Advisors（张磊）<span class="tag pop">大幅减仓</span></td><td class="num pos">25.44%</td><td class="num warn"><strong>-61.15%</strong></td><td>仍是头号重仓，但减持 660 万股 ADS</td></tr>
+          <tr class="highlight-pos"><td class="product-name">Himalaya Capital（李录）<span class="tag pos">死守</span></td><td class="num pos"><strong>14.71%</strong></td><td class="num">维持不动</td><td>芒格门生，中概信仰股</td></tr>
+          <tr><td class="product-name">Tiger Pacific Capital</td><td class="num">12.94%</td><td class="num pos"><strong>NEW</strong></td><td>新进者直接重仓 27.2 万 ADS</td></tr>
+          <tr><td class="product-name">Baillie Gifford</td><td class="num">2.96%</td><td class="num warn">-8.63%</td><td>仓位 $29 亿，最大被动型持有人之一</td></tr>
+          <tr><td class="product-name">Temasek 淡马锡</td><td class="num">1.69%</td><td class="num pos">+5.19%</td><td>新加坡主权基金加仓</td></tr>
+          <tr class="highlight"><td class="product-name">Appaloosa（David Tepper）<span class="tag pop">大幅减仓</span></td><td class="num">1.55%</td><td class="num warn"><strong>-49.3%</strong></td><td>大佬腰斩减仓</td></tr>
+          <tr class="highlight-pos"><td class="product-name">Renaissance（量化）<span class="tag pos">大举建仓</span></td><td class="num">0.18%</td><td class="num pos"><strong>+306%</strong></td><td>量化看好短线反弹</td></tr>
+          <tr><td class="product-name">Citadel（Ken Griffin）</td><td class="num">0.06%</td><td class="num pos">+184%</td><td>多策略大举加码</td></tr>
+          <tr><td class="product-name">Tudor（Paul Tudor Jones）</td><td class="num">0.21%</td><td class="num pos">+155%</td><td>宏观对冲基金加码</td></tr>
+          <tr><td class="product-name">BlackRock 贝莱德</td><td class="num">0.07%</td><td class="num">+0.65%</td><td>最大单一持有人 3940 万 ADS / $40 亿</td></tr>
+        </tbody>
+      </table></div>
+
+      <p>关键解读：<strong>多空分裂明显</strong>——高瓴减仓 61%、Tepper 减仓 49%（两位重磅多头部分获利）vs Tiger Pacific 新建仓 + Renaissance / Citadel / Tudor 大举增持（量化和宏观对冲基金看好短线反弹）。<strong>李录死守不动</strong>仍把 14.71% 仓位押在 PDD 上——这是芒格"中国巴菲特"的招牌持仓，质化背书。</p>
+
+      <h3>散户社区情绪</h3>
+      <p><strong>雪球（中文，142 万球友关注）</strong>讨论核心：价值低估 + 5/27 财报。多头明显占主导。空头主要担心：中概估值下杀、AI 缺位、Temu 国际逆风。</p>
+
+      <blockquote class="q">"贝莱德持仓 40 亿美金，但拼多多持仓<strong>仅仅占其基金总仓位的 0.07%</strong>……像贝莱德一样资金量级的资本在美国更是数不胜数。"<span class="attribution">雪球 · @张玄机 · 结构性看多</span></blockquote>
+
+      <blockquote class="q">"AI loser."<span class="attribution">雪球 · @浊静徐清 · 看空一句</span></blockquote>
+
+      <p><strong>Reddit r/ValueInvesting</strong> 12 天前一条 DD 帖《PDD Is taking over the world and no one cares》（32 赞、79 评）：</p>
+      <blockquote class="q">"PDD operates in a winner takes all market... Even if THE ENTIRETY of PDD's historical selling and marketing expense were capitalized as an INDEFINITE LIVED ASSET, returns on capital consistently exceed 50%. COMPARED TO A $75 BILLION ENTERPRISE VALUE. AND TEMU IS JUST REACHING PROFITABILITY NOW... I'm already full ported into this fucker on margin too baby. Munger style."<span class="attribution">@Murky_Obligation_677 · r/ValueInvesting · 看多</span></blockquote>
+
+      <blockquote class="q">"Temu's recent pullbacks in promotions and shipping limits <strong>strongly resemble the early collapse signs we saw with Wish</strong>."<span class="attribution">Julia Ostian · Seeking Alpha · 2025-11-18 · 看空</span></blockquote>
+
+      <h3>卖空数据</h3>
+      <div class="minigrid">
+        <div class="mc"><div class="mc-label">Short Interest 总量</div><div class="mc-num">2,838<span class="unit" style="font-size:14px;color:var(--muted)">万股</span></div><div class="mc-sub">Fintel</div></div>
+        <div class="mc"><div class="mc-label">占流通股比</div><div class="mc-num">2.99%</div><div class="mc-sub">温和偏低</div></div>
+        <div class="mc"><div class="mc-label">Days to Cover</div><div class="mc-num">4.1<span class="unit" style="font-size:14px;color:var(--muted)">天</span></div><div class="mc-sub">远未达 squeeze 条件</div></div>
+        <div class="mc"><div class="mc-label">月度环比</div><div class="mc-num warn">+5.3%</div><div class="mc-sub">空头近一月在加强</div></div>
+      </div>
+
+      <div class="callout data">
+        <div class="callout-label">📌 历史误传纠正</div>
+        <p class="callout-quote">网上常被传"芒格说 PDD 是 absolute miracle"——经多源核实，<strong>这句原话是芒格评价比亚迪 BYD，不是 PDD</strong>。但芒格门生李录的 Himalaya 长期把 PDD 当作 Top 1 持仓（14.71% 仓位），这才是芒格家族基金对 PDD 的实质背书。</p>
+      </div>
+    </section>
+
+    <!-- SEC 8 · 资本配置 -->
+    <section id="sec-8">
+      <div class="sec-num">08 / 资本配置</div>
+      <h2 class="sec-title">$60B 现金<em style="font-style:italic">趴在账上</em>——既不分红，也不回购。</h2>
+      <p class="sec-lede">这是 PDD 估值长期被压制的核心结构性原因。市场对"管理层会理性配置资本"完全没信心。</p>
+
+      <h3>账上有多少钱</h3>
+      <div class="stats">
+        <div class="stat"><div class="stat-label">现金 + 短期投资</div><div class="stat-num pos">$60.4<span class="unit">B</span></div><div class="stat-sub">¥422.3B · 2025-Q4</div></div>
+        <div class="stat"><div class="stat-label">+ 长期定存 / 债券</div><div class="stat-num pos">$15.0<span class="unit">B</span></div><div class="stat-sub">¥104.7B</div></div>
+        <div class="stat"><div class="stat-label">合计可投资资产</div><div class="stat-num pos">≈ $75.4<span class="unit">B</span></div><div class="stat-sub">¥527B · 占市值 55%</div></div>
+        <div class="stat"><div class="stat-label">分红</div><div class="stat-num warn">0</div><div class="stat-sub">史上从未派发</div></div>
+        <div class="stat"><div class="stat-label">回购</div><div class="stat-num warn">0</div><div class="stat-sub">回购收益率 -0.22%</div></div>
+        <div class="stat"><div class="stat-label">同业对比（股东回报率）</div><div class="stat-num data">6.88%</div><div class="stat-sub">京东 vs PDD 0%</div></div>
+      </div>
+
+      <h3>20-F 原文（2026-03 提交）</h3>
+      <blockquote class="q big">"We do not have any present plan to pay any cash dividends on our ordinary shares in the foreseeable future. The primary use of our capital continues to be to invest for the long-term growth of our business."<span class="attribution">PDD Holdings 20-F · Dividend Policy · 2026-03-26</span></blockquote>
+
+      <p>翻译：<strong>"可预见未来"我们不会派任何现金股息</strong>。这是一个"永久性"措辞——管理层不仅"暂时不分红"，是"无限期不分红"。</p>
+
+      <h3>为什么市场介意</h3>
+      <ul class="plain">
+        <li>美国机构投资者（尤其价值型）非常在意股东回报。账上 $60B 不分红不回购，等于"我有钱但不还给你"，市场只能给现金按 1:1 估值，甚至打折</li>
+        <li>同业对比：阿里 2025 年宣布大规模回购 + 启动股息，京东更激进（股息 3.16% + 回购 3.72%）—— <strong>PDD 是中概互联里唯一一家完全不回报股东的大盘股</strong></li>
+        <li>管理层连续 3 年强调"all-in 投入生态"——这话已经讲了 3 年，市场需要看到回报</li>
+      </ul>
+
+      <div class="callout warn">
+        <div class="callout-label">💸 一句话</div>
+        <p class="callout-quote">这是 PDD 估值长期被压在 Forward PE 7.88 的核心结构性原因——直到管理层公布首次回购或股息，否则估值难以系统性重估。</p>
+      </div>
+    </section>
+
+    <!-- SEC 9 · 决策建议 -->
+    <section id="sec-9">
+      <div class="sec-num">09 / 决策建议</div>
+      <h2 class="sec-title">三条路径，三种风险偏好。</h2>
+      <p class="sec-lede">不论选哪条路，先回答自己：你能不能接受这笔投资 12-24 个月内"不涨"或随时 -20% 单日跳水？答案如果是"不能"——PDD 现在不是合适的标的。</p>
+
+      <div class="verdict">
+        <div class="verdict-title">三条路径 · 按 Ray 的资金量 + 风险承受决定</div>
+        <h3>"基本面已经够好，但赌的不是基本面——赌的是管理层能不能把现金还给股东。"</h3>
+        <p>Ray 是非职业投资人 + 产品型创业者。这意味着：<strong>不应该重仓任何单一中概股 / 任何单一公司</strong>。下面三条路径按风险偏好排序，每条都给出 30 天行动指南。</p>
+        <div class="verdict-options">
+          <div class="vo">
+            <div class="vo-num">PATH A · 低风险</div>
+            <h4>不直接持仓 PDD，买 KWEB</h4>
+            <p>KraneShares CSI 中概互联 ETF（KWEB）里 PDD 占 7.88%，分散给 BABA / Tencent / Meituan / JD 等。对冲单一公司治理黑箱风险。</p>
+          </div>
+          <div class="vo">
+            <div class="vo-num">PATH B · 中风险</div>
+            <h4>小仓位价值入场 + 等催化剂</h4>
+            <p>把不超过 5% 流动性资产配置到 PDD，下行靠 $60B 现金堡垒做底。等 5/27 财报、Q2'26 财报、或管理层首次宣布回购 / 股息这三个明确催化剂出现再加码。</p>
+          </div>
+          <div class="vo">
+            <div class="vo-num">PATH C · 高风险</div>
+            <h4>价值派死守，跟着李录走</h4>
+            <p>李录 Himalaya 14.71% 仓位是质化背书。如果你愿意 3-5 年持有不动，承受过程中 -30% 跌幅，那就买入并忽略短期噪声。同时备好对冲——美中关系恶化的 tail risk 用 KWEB Put 或 VIX 做保护。</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Path A · 30 天行动指南（低风险）</h3>
+      <div class="twocol">
+        <div class="card" style="border-top:4px solid var(--accent-pos)">
+          <h4 class="card-title pos">第 1-15 天：KWEB / MCHI / FXI 三选一</h4>
+          <ul>
+            <li>看 <a href="https://www.kraneshares.com/kweb/">KWEB</a> Holdings 页面，确认 PDD 占比当前数据</li>
+            <li>对比 MCHI / FXI 的 PDD 占比 + 整体费率</li>
+            <li>按总资产 5-10% 试配 KWEB，控制单一国家风险敞口</li>
+            <li>读 KWEB 招股书风险章节，明白 VIE 结构 + HFCAA 退市风险如何作用于 ETF</li>
+          </ul>
+        </div>
+        <div class="card" style="border-top:4px solid var(--accent-pos)">
+          <h4 class="card-title pos">第 16-30 天：分批建仓 + 设监控</h4>
+          <ul>
+            <li>分 3-4 批等比买入，避免一次梭哈</li>
+            <li>设三个监控触发点：① 美中关税升级 ② PCAOB 接入被切断 ③ KWEB 跌破前低</li>
+            <li>每月看一次 13F 头部基金对 PDD / BABA / Tencent 的持仓变化</li>
+            <li>不要每天看股价，每月看一次估值水位</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Path B · 30 天行动指南（中风险）</h3>
+      <ol>
+        <li><strong>等 2026-05-29 Q1 财报</strong>——这是下一个明确催化剂。若财报 + 电话会出现以下任意一项：① 首次明示回购 / 股息 / ② Temu 减亏曲线明确 / ③ 营收增速回到 +15% 以上——加仓信号</li>
+        <li>若财报 miss + 管理层继续强调"all-in 投入"+"inevitably"用词回归——观望，不要进场</li>
+        <li>仓位上限 5% 流动性资产。<strong>用现金买正股</strong>，不用 margin、不卖 PUT（PDD 隐含波动率高，无杠杆纪律的人会被打爆）</li>
+        <li>设止损：买入价 -25% 自动减仓一半。中概股没有"价值回归一定会发生"的逻辑——只有"概率上偏多"</li>
+        <li>不要用此仓位影响其他投资决策。$60B 现金堡垒给你的不是"涨"的承诺，是"不归零"的保险</li>
+      </ol>
+
+      <h3>Path C · 30 天行动指南（高风险价值派）</h3>
+      <div class="twocol">
+        <div class="card" style="border-top:4px solid var(--accent-warn)">
+          <h4 class="card-title warn">必备前置条件（4 项缺一不可）</h4>
+          <ul>
+            <li>能接受 12-36 个月持仓不涨</li>
+            <li>能接受随时单日 -20-30% 跳水（如 2024-08-26 -28.5%）</li>
+            <li>仓位 ≤ 总资产 10%</li>
+            <li>愿意每季度读 PDD 6-K 完整原文，不依赖财经媒体二手解读</li>
+          </ul>
+        </div>
+        <div class="card" style="border-top:4px solid var(--accent-warn)">
+          <h4 class="card-title warn">30 天关键决策</h4>
+          <ul>
+            <li>分 3 批建仓，第一批不超过目标仓位 1/3</li>
+            <li>读 Himalaya Capital 历年 13F 看李录买卖节奏（公开免费）</li>
+            <li>买 KWEB 6 个月 ATM Put（约 3-5% 仓位）做 tail hedge，专门对冲 HFCAA 强制退市风险</li>
+            <li>设 24 个月持仓闹钟——到期重新评估，不被自己沉没成本绑架</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>不论选哪条路，都要避开的 3 个坑</h3>
+      <ul class="plain">
+        <li><strong>不要因为 PE 看上去便宜就重仓</strong>——中概股 PE 便宜了 5 年，没"均值回归"的承诺。PDD 当前估值合理性建立在公司治理透明 + 管理层归还现金两个未来事件上，这两个事件未发生前，估值就只值这么多</li>
+        <li><strong>不要单一仓位超过流动性资产 10%</strong>——HFCAA 强制退市是真实尾部风险，PDD 没有港股兜底。粉单市场流动性极差，深度套牢时连出货都困难</li>
+        <li><strong>不要拿 PDD 当"短线 trade"</strong>——隐含波动率高、催化剂事件密集（5/27 财报 / SAMR 复议 / 关税新闻），新闻一出就 ±10%。无纪律的短线只会被打爆</li>
+      </ul>
+
+      <p class="divq">"$60 亿现金堡垒给你的不是涨的承诺，是不归零的保险——把它当保险买，不要当 lottery ticket 玩。"</p>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <h4>财务 / 监管 / 一手来源</h4>
+      <ul>
+        <li><a href="https://www.sec.gov/Archives/edgar/data/1737806/000110465926034813/tm269789d1_ex99-1.htm">PDD Q4 2025 6-K Earnings Release (SEC)</a></li>
+        <li><a href="https://www.sec.gov/Archives/edgar/data/1737806/000110465925113490/tm2531580d1_ex99-1.htm">PDD Q3 2025 6-K</a></li>
+        <li><a href="https://www.sec.gov/Archives/edgar/data/1737806/000110465925053013/tm2516198d1_ex99-1.htm">PDD Q1 2025 6-K</a></li>
+        <li><a href="https://www.sec.gov/Archives/edgar/data/1737806/000110465926050727/pdd-20251231x20f.htm">PDD 2025 Form 20-F Annual Report</a></li>
+        <li><a href="https://stockanalysis.com/stocks/pdd/">StockAnalysis PDD Overview</a></li>
+        <li><a href="https://stockanalysis.com/stocks/pdd/ratings/">StockAnalysis PDD Analyst Ratings</a></li>
+        <li><a href="https://hedgefollow.com/stocks/PDD">HedgeFollow PDD Institutional Holdings</a></li>
+        <li><a href="https://www.macrotrends.net/stocks/charts/PDD/pdd-holdings/stock-price-history">Macrotrends PDD Stock Price History</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>监管 / 媒体 / 投资者社区</h4>
+      <ul>
+        <li><a href="https://chinaselectcommittee.house.gov/media/press-releases/select-committee-releases-interim-findings-shein-temu-forced-labor">House Select Committee on CCP · Temu / Shein 强迫劳动报告</a></li>
+        <li><a href="https://digital-strategy.ec.europa.eu/en/news/commission-designates-temu-very-large-online-platform-under-digital-services-act">欧委会 Temu VLOP 指定公告</a></li>
+        <li><a href="https://tech.eu/2025/07/28/temu-flagged-for-potential-dsa-breach-due-to-unsafe-products/">欧委会 2025-07-28 DSA 初步认定</a></li>
+        <li><a href="https://www.21jingji.com/article/20260418/herald/ed9b8eb2cf90164a59c0ef85adc74255.html">21经济网 · 拼多多 15 亿罚单决定书</a></li>
+        <li><a href="https://www.trustpilot.com/review/temu.com">Trustpilot · Temu 评论页</a></li>
+        <li><a href="https://krebsonsecurity.com/2023/03/google-suspends-chinese-e-commerce-app-pinduoduo-over-malware/">Krebs on Security · Google 下架拼多多 APP</a></li>
+        <li><a href="https://grizzlyreports.com/we-believe-pdd-is-a-dying-fraudulent-company-and-its-shopping-app-temu-is-cleverly-hidden-spyware-that-poses-an-urgent-security-threat-to-u-s-national-interests/">Grizzly Research 2023-09 PDD/Temu 报告</a></li>
+        <li><a href="https://xueqiu.com/S/PDD">雪球 PDD 个股页</a></li>
+        <li><a href="https://research.mintventures.fund/2025/9/22/zh-Deep-Dive-into-Pinduoduo-The-Current-Landscape-Moat-Valuation-and-Growth-Potential-of-a-Chinese-ECommerce-Legend/">Mint Ventures · 深入理解拼多多</a></li>
+        <li><a href="https://seekingalpha.com/article/4885906-pdd-holdings-temu-pessimism-creates-deep-value-opportunity">Seeking Alpha · IWA Research 看多</a></li>
+        <li><a href="https://seekingalpha.com/article/4845031-pdd-growth-slowing-temu-hype-fading">Seeking Alpha · Julia Ostian 看空</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-meta">
+    <strong style="color:var(--accent-warn-on-inverse)">⚠ 数据真伪提醒</strong>：本报告 24 个高 stake 数据点经 Codex 独立审查 + 主 Agent 复核。仍存在以下"单一来源 / 未充分交叉验证"的项，请谨慎采信：① Temu 全球 GMV（公司不披露，第三方估算）② PDD 国内 GMV ¥5.2 万亿（业内估算）③ 多多买菜 ¥3,000 亿 / 市占 44%（晚点 LatePost 估算）④ 抖音电商 GMV 4.3 万亿 / +30%（业内估算）⑤ 各家 Q1'26 13F 持仓变动百分比（hedgefollow 数据，原始 EDGAR 13F-HR 为准）⑥ DSA 具体违反条款编号（欧委会公告为准）。<br><br>
+    本报告由 Ray Deep Research Engine 生成 · 调研截止 <strong>2026-05-19</strong> · 5 个并行子 Agent + Codex 高推理事实核查 · 涵盖财务 / Temu / 国内 / 监管 / 投资者情绪 5 维度 · 仅供学习与参考，<strong>不构成任何投资建议</strong>。所有财务数字均来自 SEC 一手 6-K / 20-F filings 或 stockanalysis.com / MarketBeat 公开数据，部分时效性数据可能在发布后变化。Ray 不持有 PDD 多空头寸（截至发布时点）。
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      document.querySelectorAll('nav.toc a').forEach(link => {
+        link.style.color = '';
+        link.style.fontWeight = '';
+      });
+      const activeLink = document.querySelector(`nav.toc a[href="#${id}"]`);
+      if (activeLink) {
+        activeLink.style.color = 'var(--accent-warn)';
+        activeLink.style.fontWeight = '600';
+      }
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  const next = current === 'dark' ? 'light' : 'dark';
+  if (next === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  else document.documentElement.removeAttribute('data-theme');
+  try { localStorage.setItem('ray-theme', next); } catch(e) {}
+});
+if (window.matchMedia) {
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('ray-theme')) {
+      if (e.matches) document.documentElement.setAttribute('data-theme', 'dark');
+      else document.documentElement.removeAttribute('data-theme');
+    }
+  });
+}
+</script>
+
+</body>
+</html>
