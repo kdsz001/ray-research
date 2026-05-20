@@ -7,6 +7,18 @@
   },
   "topics": [
     {
+      "slug": "ai-semiconductor-2026",
+      "name": "AI 半导体 2026",
+      "tagline": "智能体 AI + 物理 AI 瓶颈 · 半导体产业链全景 · 投资机会",
+      "reports": [
+        {
+          "date": "2026-05-20",
+          "file": "2026-05-20-ai-semiconductor-2026.html",
+          "title": "智能体觉醒，机器苏醒，硅与电的新一轮稀缺"
+        }
+      ]
+    },
+    {
       "slug": "typeless",
       "name": "Typeless",
       "tagline": "AI 语音输入法 · 竞品调研",

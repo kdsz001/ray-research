@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 的下一个十年：智能体、物理 AI 与半导体投资机会 · 深度调研</title>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<style>
+:root {
+  --bg: #f6f3ec;
+  --bg-paper: #fbf9f4;
+  --bg-card: #ffffff;
+  --bg-dark: #14110d;
+  --bg-dark2: #1f1b16;
+
+  --ink: #14110d;
+  --ink-2: #2c2620;
+  --muted: #6e6358;
+  --light: #a39787;
+
+  --rule: #14110d;
+  --rule-light: #d8d1c2;
+
+  --accent-warn: #a73121;
+  --accent-data: #1c4d6b;
+  --accent-pos: #2c5e3f;
+  --accent-yellow: #c89a2c;
+
+  --bg-inverse: #14110d;
+  --bg-inverse2: #1f1b16;
+  --ink-on-inverse: #f6f3ec;
+  --text-on-inverse: rgba(246, 243, 236, 0.85);
+  --muted-on-inverse: rgba(246, 243, 236, 0.7);
+  --faint-on-inverse: rgba(246, 243, 236, 0.55);
+  --light-on-inverse: rgba(246, 243, 236, 0.5);
+  --rule-on-inverse: rgba(246, 243, 236, 0.18);
+  --accent-warn-on-inverse: #e87a5f;
+  --accent-data-on-inverse: #6ba8c8;
+  --accent-pos-on-inverse: #6ba889;
+  --accent-yellow-on-inverse: #d6ad44;
+
+  --serif: "Source Serif 4", "Source Serif Pro", "Charter", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+
+  --max-w: 820px;
+}
+
+[data-theme="dark"] {
+  --bg: #161310;
+  --bg-paper: #1e1a15;
+  --bg-card: #232019;
+  --ink: #f0eadd;
+  --ink-2: #d8d1c2;
+  --muted: #a39787;
+  --light: #6e6358;
+  --rule: #f0eadd;
+  --rule-light: #3a3429;
+
+  --bg-inverse: #ede5d3;
+  --bg-inverse2: #d8cfb6;
+  --ink-on-inverse: #14110d;
+  --text-on-inverse: rgba(20, 17, 13, 0.85);
+  --muted-on-inverse: rgba(20, 17, 13, 0.7);
+  --faint-on-inverse: rgba(20, 17, 13, 0.55);
+  --light-on-inverse: rgba(20, 17, 13, 0.5);
+  --rule-on-inverse: rgba(20, 17, 13, 0.18);
+  --accent-warn-on-inverse: #a73121;
+  --accent-data-on-inverse: #1c4d6b;
+  --accent-pos-on-inverse: #2c5e3f;
+  --accent-yellow-on-inverse: #8a6a1c;
+  --accent-warn: #e87a5f;
+  --accent-data: #6ba8c8;
+  --accent-pos: #6ba889;
+  --accent-yellow: #d6ad44;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.7;
+  font-size: 16px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.topbar {
+  border-bottom: 1px solid var(--rule);
+  padding: 12px 32px;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+}
+
+#theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: var(--bg-card);
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+#theme-toggle:hover { background: var(--bg-paper); }
+#theme-toggle .moon { display: none; }
+[data-theme="dark"] #theme-toggle .sun { display: none; }
+[data-theme="dark"] #theme-toggle .moon { display: block; }
+
+main {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 60px;
+  padding: 60px 32px;
+}
+
+nav.toc {
+  position: sticky;
+  top: 40px;
+  align-self: start;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+nav.toc h4 {
+  font-size: 10px;
+  color: var(--light);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+nav.toc ol { list-style: none; }
+nav.toc li {
+  margin-bottom: 12px;
+  display: flex;
+  gap: 8px;
+}
+nav.toc li .num { color: var(--light); width: 18px; }
+nav.toc a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+nav.toc a:hover { color: var(--accent-warn); }
+
+article > section { margin-bottom: 100px; max-width: var(--max-w); }
+article > section:last-child { margin-bottom: 0; }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-warn);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.eyebrow::before {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: var(--accent-warn);
+  display: inline-block;
+}
+
+h1.hero-title {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin-bottom: 32px;
+  color: var(--ink);
+}
+h1.hero-title em {
+  font-style: italic;
+  color: var(--accent-warn);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.hero-subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.hero-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 24px 0;
+}
+.hero-meta dl { display: grid; grid-template-columns: auto 1fr; gap: 12px 24px; }
+.hero-meta dt { color: var(--light); }
+.hero-meta dd { color: var(--ink-2); }
+
+h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+  color: var(--ink);
+}
+h2 em { font-style: italic; color: var(--accent-warn); }
+
+h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.3;
+  margin: 36px 0 16px 0;
+  color: var(--ink);
+}
+
+h4 {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 28px 0 12px 0;
+  color: var(--muted);
+}
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-warn);
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+}
+
+p { margin-bottom: 18px; color: var(--ink-2); }
+p strong { color: var(--ink); font-weight: 600; }
+em { font-style: italic; }
+
+a {
+  color: var(--accent-data);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+ul, ol { margin: 0 0 18px 24px; color: var(--ink-2); }
+li { margin-bottom: 8px; }
+
+/* Quick Facts */
+.quickfacts-wrap {
+  background: var(--bg-inverse);
+  color: var(--ink-on-inverse);
+  padding: 48px 40px;
+  margin: 60px 0;
+  border-radius: 2px;
+  transition: background-color 0.2s, color 0.2s;
+}
+.qf-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 8px;
+}
+.qf-title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 30px;
+  margin-bottom: 32px;
+  color: var(--ink-on-inverse);
+}
+.qf-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: var(--rule-on-inverse);
+}
+.qf-cell {
+  background: var(--bg-inverse);
+  padding: 22px 18px;
+}
+.qf-cell .label {
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--faint-on-inverse);
+  margin-bottom: 12px;
+}
+.qf-cell .value {
+  font-family: var(--serif);
+  font-size: 26px;
+  line-height: 1.1;
+  color: var(--ink-on-inverse);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.qf-cell .sub {
+  font-size: 11px;
+  color: var(--muted-on-inverse);
+  line-height: 1.4;
+}
+.qf-cell.verdict {
+  background: var(--accent-warn);
+  color: #fff;
+}
+.qf-cell.verdict .label,
+.qf-cell.verdict .value,
+.qf-cell.verdict .sub { color: #fff; }
+
+/* TL;DR */
+.tldr {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  padding: 48px 40px;
+  margin: 48px 0;
+  position: relative;
+  border-radius: 2px;
+}
+.tldr::before {
+  content: "TL;DR";
+  position: absolute;
+  top: -12px;
+  left: 32px;
+  background: var(--accent-warn);
+  color: #fff;
+  padding: 4px 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+.tldr h3 {
+  color: var(--ink-on-inverse);
+  margin-top: 0;
+  font-style: italic;
+}
+.tldr p { color: var(--text-on-inverse); }
+.tldr ol { color: var(--text-on-inverse); margin-left: 28px; }
+.tldr ol li { margin-bottom: 14px; }
+.tldr strong { color: var(--ink-on-inverse); }
+
+/* Stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 32px 0;
+}
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  padding: 24px 20px;
+}
+.stat-card .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.stat-card .value {
+  font-family: var(--serif);
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.stat-card.warn .value { color: var(--accent-warn); }
+.stat-card.data .value { color: var(--accent-data); }
+.stat-card.pos .value { color: var(--accent-pos); }
+.stat-card .sub { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* Metric list */
+.metrics {
+  border-top: 2px solid var(--rule);
+  border-bottom: 2px solid var(--rule);
+  margin: 32px 0;
+}
+.metric-row {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule-light);
+  align-items: baseline;
+}
+.metric-row:last-child { border-bottom: none; }
+.metric-row .label {
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.metric-row .label .src {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--light);
+  margin-top: 4px;
+  letter-spacing: 0.06em;
+}
+.metric-row .value {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  text-align: right;
+}
+.metric-row .value.data { color: var(--accent-data); }
+.metric-row .value.warn { color: var(--accent-warn); }
+.metric-row .value.pos { color: var(--accent-pos); }
+.metric-row .verified {
+  display: inline-block;
+  margin-left: 6px;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--accent-pos);
+  letter-spacing: 0.06em;
+}
+.metric-row .unverified {
+  color: var(--accent-warn);
+}
+
+/* Two-col cards */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 32px 0;
+}
+.tc-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  padding: 24px;
+}
+.tc-card h4 { margin: 0 0 16px 0; display: flex; align-items: center; gap: 8px; }
+.tc-card.pos h4::before { content: "✓"; width: 18px; height: 18px; border-radius: 50%; background: var(--accent-pos); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; }
+.tc-card.warn h4::before { content: "!"; width: 18px; height: 18px; border-radius: 50%; background: var(--accent-warn); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+.tc-card ul { margin: 0; padding-left: 18px; font-size: 14px; }
+.tc-card li { margin-bottom: 8px; line-height: 1.6; }
+
+/* Quote */
+.quote {
+  border-left: 3px solid var(--accent-warn);
+  padding: 8px 0 8px 20px;
+  margin: 28px 0;
+}
+.quote p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.quote .attr {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.quote .attr::before { content: "— "; }
+
+/* Table */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 14px;
+}
+.compare-table th {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 2px solid var(--rule);
+  color: var(--muted);
+  font-weight: 500;
+}
+.compare-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--rule-light);
+  vertical-align: top;
+  color: var(--ink-2);
+}
+.compare-table tbody tr:last-child td { border-bottom: 1px solid var(--rule); }
+.compare-table .product-name {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+}
+.compare-table .tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  background: var(--bg-paper);
+  border: 1px solid var(--rule-light);
+  color: var(--muted);
+  margin-left: 6px;
+  letter-spacing: 0.06em;
+}
+.compare-table tr.highlight td { background: rgba(167, 49, 33, 0.04); }
+[data-theme="dark"] .compare-table tr.highlight td { background: rgba(232, 122, 95, 0.06); }
+
+/* Callout */
+.callout {
+  background: var(--bg-paper);
+  border-left: 3px solid var(--rule);
+  padding: 20px 24px;
+  margin: 28px 0;
+}
+.callout.warn { border-left-color: var(--accent-warn); }
+.callout.data { border-left-color: var(--accent-data); }
+.callout.pos { border-left-color: var(--accent-pos); }
+.callout-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.callout.warn .callout-label { color: var(--accent-warn); }
+.callout.data .callout-label { color: var(--accent-data); }
+.callout.pos .callout-label { color: var(--accent-pos); }
+.callout-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.callout p { margin-bottom: 8px; font-size: 14px; }
+.callout p:last-child { margin-bottom: 0; }
+
+/* Timeline */
+.timeline {
+  margin: 32px 0;
+  position: relative;
+}
+.timeline-row {
+  display: grid;
+  grid-template-columns: 100px 32px 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  position: relative;
+  align-items: start;
+}
+.timeline-row .date {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-align: right;
+  padding-top: 4px;
+}
+.timeline-row .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  background: var(--bg);
+  margin-left: 10px;
+  margin-top: 5px;
+  position: relative;
+  z-index: 2;
+}
+.timeline-row.warn .dot { border-color: var(--accent-warn); }
+.timeline-row.data .dot { border-color: var(--accent-data); }
+.timeline-row.pos .dot { border-color: var(--accent-pos); }
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 116px;
+  top: 12px;
+  bottom: 12px;
+  width: 1px;
+  background: var(--rule-light);
+}
+.timeline-row .content .title {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.timeline-row .content .desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Insight cards (Path cards) */
+.insights {
+  display: grid;
+  gap: 16px;
+  margin: 32px 0;
+}
+.insight {
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  border-left: 4px solid var(--accent-yellow);
+  padding: 24px 24px 24px 28px;
+}
+.insight .num {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-warn);
+  margin-bottom: 8px;
+}
+.insight h4 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--ink);
+  margin: 0 0 12px 0;
+}
+.insight p { font-size: 15px; line-height: 1.65; }
+.insight p:last-child { margin-bottom: 0; }
+.insight .phenom {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: 8px;
+}
+
+/* Verdict block */
+.verdict {
+  background: var(--bg-inverse);
+  color: var(--ink-on-inverse);
+  padding: 48px 40px;
+  margin: 60px 0;
+  border-radius: 2px;
+}
+.verdict-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 14px;
+}
+.verdict h3 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 30px;
+  color: var(--ink-on-inverse);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.verdict p { color: var(--text-on-inverse); font-size: 15px; }
+.verdict .options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+.v-option {
+  border: 1px solid var(--rule-on-inverse);
+  padding: 20px;
+}
+.v-option .num {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 8px;
+}
+.v-option h4 {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink-on-inverse);
+  text-transform: none;
+  letter-spacing: 0;
+  margin: 0 0 8px 0;
+}
+.v-option p { color: var(--text-on-inverse); font-size: 13px; margin-bottom: 0; }
+
+/* Divider quote */
+.divider-quote {
+  text-align: center;
+  padding: 40px 0;
+  margin: 50px 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--muted);
+  position: relative;
+  line-height: 1.5;
+}
+.divider-quote::before, .divider-quote::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--rule-light);
+  margin: 18px auto;
+}
+
+/* Footer */
+footer {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  padding: 60px 32px 40px;
+  margin-top: 80px;
+  transition: background-color 0.2s, color 0.2s;
+}
+footer .container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+footer h4 {
+  color: var(--ink-on-inverse);
+  font-family: var(--mono);
+  font-size: 11px;
+  margin-bottom: 16px;
+}
+footer .sources {
+  columns: 2;
+  column-gap: 32px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--muted-on-inverse);
+  margin-bottom: 32px;
+}
+footer .sources li {
+  margin-bottom: 6px;
+  break-inside: avoid;
+}
+footer .meta {
+  border-top: 1px solid var(--rule-on-inverse);
+  padding-top: 20px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--faint-on-inverse);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  main { grid-template-columns: 1fr; gap: 30px; }
+  nav.toc { position: static; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .qf-grid { grid-template-columns: repeat(3, 1fr); }
+  .verdict .options { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  h1.hero-title { font-size: 44px; }
+  h2 { font-size: 30px; }
+  .qf-grid { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .stats-grid { grid-template-columns: 1fr; }
+  .timeline::before { left: 8px; }
+  .timeline-row { grid-template-columns: 1fr; gap: 4px; }
+  .timeline-row .date { text-align: left; }
+  .timeline-row .dot { display: none; }
+  footer .sources { columns: 1; }
+}
+
+@media print {
+  body { background: white; color: black; }
+  .topbar, #theme-toggle, nav.toc, footer { display: none; }
+  main { grid-template-columns: 1fr; padding: 20px; }
+  .tldr, .quickfacts-wrap, .verdict { background: white; color: black; border: 1px solid #000; }
+  .tldr h3, .tldr p, .tldr ol, .tldr strong,
+  .qf-title, .qf-cell .label, .qf-cell .value, .qf-cell .sub,
+  .verdict h3, .verdict p { color: black; }
+  a { color: black; text-decoration: none; }
+  section { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<button id="theme-toggle" aria-label="Toggle theme">
+  <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+  <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+
+<div class="topbar">
+  <span>Ray Deep Research · No. 2026-05-20</span>
+  <span>智能体 AI · 物理 AI · 半导体投资全景</span>
+</div>
+
+<main>
+<nav class="toc">
+  <h4>目录</h4>
+  <ol>
+    <li><span class="num">01</span><a href="#qf">速览</a></li>
+    <li><span class="num">02</span><a href="#tldr">核心结论</a></li>
+    <li><span class="num">03</span><a href="#agentic">智能体 AI 瓶颈</a></li>
+    <li><span class="num">04</span><a href="#physical">物理 AI 瓶颈</a></li>
+    <li><span class="num">05</span><a href="#semi">半导体格局</a></li>
+    <li><span class="num">06</span><a href="#china">中国国产替代</a></li>
+    <li><span class="num">07</span><a href="#invest">投资机会清单</a></li>
+    <li><span class="num">08</span><a href="#bear">风险与质疑</a></li>
+    <li><span class="num">09</span><a href="#actions">7 个决策建议</a></li>
+  </ol>
+</nav>
+
+<article>
+<section id="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">AI 的下一个十年</div>
+      <h1 class="hero-title">智能体觉醒，<em>机器苏醒</em>，硅与电的新一轮稀缺。</h1>
+      <p class="hero-subtitle">推理算力 100 倍跃迁、人形机器人量产前夜、HBM 与 CoWoS 双重瓶颈、ASIC 反攻 NVIDIA——这是一份给非职业投资人看的、决策导向的全景调研。</p>
+    </div>
+    <div class="hero-meta">
+      <dl>
+        <dt>调研对象</dt><dd>智能体 AI · 物理 AI · 半导体</dd>
+        <dt>调研方法</dt><dd>6 个 AI 调研员并行下场</dd>
+        <dt>数据来源</dt><dd>财报 / SEC / 招股书 / SemiAnalysis / 主流财经媒体</dd>
+        <dt>调研时点</dt><dd>2026-05-20</dd>
+        <dt>报告字数</dt><dd>约 16,500 字</dd>
+        <dt>目标读者</dt><dd>产品型创业者、非职业投资人</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="qf">
+  <div class="section-label"><span>01 · 一图速览</span><span>At a Glance</span></div>
+  <h2>看完这张图，<em>结论就清楚了。</em></h2>
+  <p>下面 12 格是这份报告最压缩的提炼。读完一分钟内你就能知道：钱在往哪里流、瓶颈在哪、谁会赢、Ray 该怎么下注。</p>
+
+  <div class="quickfacts-wrap">
+    <div class="qf-eyebrow">QUICK FACTS · AI Compute Era 2026</div>
+    <div class="qf-title">The AI Tipping Point at a Glance</div>
+    <div class="qf-grid">
+      <div class="qf-cell">
+        <div class="label">推理算力跃迁</div>
+        <div class="value">100×</div>
+        <div class="sub">Jensen Huang GTC 2025 口径：reasoning + agent 让推理需求暴涨</div>
+      </div>
+      <div class="qf-cell">
+        <div class="label">Anthropic 年化营收</div>
+        <div class="value">$30B</div>
+        <div class="sub">Q1 2026 同比 +80x（Dario Amodei 公开）</div>
+      </div>
+      <div class="qf-cell">
+        <div class="label">NVIDIA 市值</div>
+        <div class="value">$5.34T</div>
+        <div class="sub">2026-05，全球最大企业，TTM PE 41-46x</div>
+      </div>
+      <div class="qf-cell">
+        <div class="label">四大厂 2026 capex</div>
+        <div class="value">$725B</div>
+        <div class="sub">微软 + Google + Meta + Amazon，同比 +77%</div>
+      </div>
+      <div class="qf-cell">
+        <div class="label">HBM 市场规模</div>
+        <div class="value">$54.6B</div>
+        <div class="sub">2026 BofA 预测，同比 +58%；SK 海力士占 57-62%</div>
+      </div>
+      <div class="qf-cell">
+        <div class="label">CoWoS 月产能</div>
+        <div class="value">130k</div>
+        <div class="sub">2026 末目标，相比 2024 末 3.4-3.7×，NVIDIA 一家锁 50%</div>
+      </div>
+      <div class="qf-cell">
+        <div class="label">人形机器人 TAM</div>
+        <div class="value">$5T</div>
+        <div class="sub">Morgan Stanley 2050 预测（Citi 给到 $7T）</div>
+      </div>
+      <div class="qf-cell">
+        <div class="label">推理 ASIC 2030 份额</div>
+        <div class="value">~45%</div>
+        <div class="sub">行业一致预期：推理市场将从 NV 一家独大走向 ASIC 多元</div>
+      </div>
+      <div class="qf-cell">
+        <div class="label">国产 AI 卡份额</div>
+        <div class="value">41%</div>
+        <div class="sub">2025 中国 IDC 数据，首次破四成</div>
+      </div>
+      <div class="qf-cell">
+        <div class="label">大基金三期规模</div>
+        <div class="value">¥344B</div>
+        <div class="sub">约 USD 47.5B，2024-05 成立，15 年存续期</div>
+      </div>
+      <div class="qf-cell">
+        <div class="label">液冷渗透率</div>
+        <div class="value">40%</div>
+        <div class="sub">AI 数据中心 2026 预测；2024 仅 14%</div>
+      </div>
+      <div class="qf-cell verdict">
+        <div class="label">我的判断</div>
+        <div class="value">三条主线</div>
+        <div class="sub">推理 ASIC / 物理 AI 半导体 / 国产替代——见 § 09</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tldr">
+  <div class="section-label"><span>02 · 核心结论</span><span>The Big Picture</span></div>
+  <h2>一页纸版本：<em>AI 进入硅短缺时代。</em></h2>
+
+  <div class="tldr">
+    <h3>三段话讲完这份报告</h3>
+    <ol>
+      <li><strong>现状</strong>——AI 的"语言能力"已经够用，但走向智能体（Agentic AI）和物理 AI（机器人 / 自动驾驶）的瓶颈不在模型，而在<strong>算力与数据的双重墙</strong>。智能体跑一次任务要烧 50,000-500,000 tokens（chat 时代的 50-500 倍），reasoning model 的 token 又是普通模型的 5-100 倍。结果是 OpenAI 公开"out of GPUs"、Anthropic 一年签了 $200B+ 的算力长约。物理 AI 缺的不是大脑（GR00T / Helix / π0 已可用），而是<strong>数据 + 仿真 + 本体 + 能效</strong>四条线同时受限。</li>
+      <li><strong>关键张力</strong>——AI 算力需求 vs 硬件供给曲线已经脱钩。台积电 CoWoS 封装产能要到 2026 末才到 130K wafers/month、HBM 三巨头 2025-2026 全部售罄、ASML High-NA EUV 一年只能产 70-80 台、单 rack 132 kW 把传统数据中心 ECG（电力 + 散热）全部冲垮。<strong>真正的瓶颈不是 GPU 设计，而是封装 + 内存 + 电力。</strong>谁卡住了瓶颈环节，谁就在分钱。</li>
+      <li><strong>核心建议</strong>——三条主线值得跟踪：(1) <strong>推理 ASIC 反攻 NVIDIA</strong>——Broadcom / Marvell 不下场造芯片但替所有人造芯片，是 2026 最确定的赢家；(2) <strong>物理 AI 半导体放量</strong>——NVIDIA Jetson Thor、地平线征程 6、激光雷达四强（禾赛/速腾/Innoviz/Luminar）打开新的边缘 AI 市场；(3) <strong>中国国产替代</strong>——华为昇腾事实上已成训练第一国产选择，国家大基金三期 3440 亿元已开始投设备 + 材料 + 先进封装。NVIDIA 仍是绝对核心持仓，但风险是估值已 priced in 完美预期 + DeepSeek 类效率冲击 + 推理价格战。</li>
+    </ol>
+  </div>
+</section>
+
+<section id="agentic">
+  <div class="section-label"><span>03 · 智能体 AI 瓶颈</span><span>Agentic AI</span></div>
+  <h2>Agent 不是聊天，<em>是烧 token。</em></h2>
+  <p>2024 年人们说"AI 元年"，指的是 ChatGPT 让人能跟模型聊天。2025-2026 年的真正剧变是模型开始"做任务"——规划、调用工具、自我反思、再规划。这件事看起来温和，但对算力的需求是结构性翻倍的。</p>
+
+  <h3>5 大技术瓶颈</h3>
+
+  <div class="insights">
+    <div class="insight">
+      <div class="num">瓶颈 1 · 推理算力暴涨</div>
+      <h4>一次 Agent 任务 = 50-500 倍的 token 消耗</h4>
+      <p>单次 chat 通常只触发 1 次推理。但 agent loop（规划→工具调用→反思→再规划）会反复调用模型。OpenRouter 100 万亿 token 实证研究：多 agent 系统<strong>单任务消耗 50,000-500,000 tokens</strong>，自 2023-12 以来每任务 token 量上升 10-100×。Jensen Huang GTC 2025 给出更激进口径：reasoning + agentic 把推理算力需求<strong>拉高约 100×</strong>。</p>
+    </div>
+    <div class="insight">
+      <div class="num">瓶颈 2 · KV Cache 内存墙</div>
+      <h4>上下文从 2K 涨到 6K，1M token 装不下单卡</h4>
+      <p>OpenRouter 数据显示，平均 prompt 长度从 2024 初的 1.5K tokens 涨到 2025 末的 &gt;6K tokens（4×）。KV cache 随序列长度线性增长，prefill 阶段一次性吞掉巨大显存，decode 阶段被显存带宽卡脖子（GPU 在等内存而不是等算力）。1M token 上下文场景已经无法完全装进单卡 HBM。这是 HBM4 + CXL 内存池成为 2026 焦点的根本原因。</p>
+    </div>
+    <div class="insight">
+      <div class="num">瓶颈 3 · 延迟敏感性</div>
+      <h4>用户等不了 10 秒，但 Agent 默认要等</h4>
+      <p>训练只追求吞吐，agent 任务需要"亚秒级响应×多轮串联"。整个行业把延迟当成新战场：Google Gemini 3 Flash 比 Pro 快 3×；Anthropic 出 Claude Opus 4.6 快 2.5×；OpenAI 与 Cerebras 联手发 GPT-5.3-Codex-Spark，<strong>速度 &gt;1,200 tokens/秒</strong>。这种速度，普通 GPU 撑不住，必须专门硬件。</p>
+    </div>
+    <div class="insight">
+      <div class="num">瓶颈 4 · Reasoning 模型把 token 拉满</div>
+      <h4>多思考一步 = 多算 5-100 倍</h4>
+      <p>Agent 错一步、后面全错——这是为什么行业不得不引入 reasoning model（o1/o3、Claude extended thinking）。它通过更长的思维链改善可靠性，但每次请求的 token 量比标准模型多 5-100 倍。OpenRouter 数据：reasoning 模型在 token 流量中的占比，从 2025-Q1 的"可忽略"涨到年中 <strong>&gt;50%</strong>。这是过去一年推理算力翻番的最关键单一驱动力。</p>
+    </div>
+    <div class="insight">
+      <div class="num">瓶颈 5 · 容量限流——这不是 bug，是硬件不够</div>
+      <h4>OpenAI、Anthropic 全部排队</h4>
+      <p>2025-02 Sam Altman 公开"out of GPUs"、GPT-4.5 必须分批放量。Anthropic 2025 全年用户感受 rate limit 越来越紧。GPU 从下单到部署要 18-36 个月，公司公开承认"compute shortage 是几年前决策的结果"。2025 H2 起 Anthropic 被迫连续签 Amazon 5GW、Google + Broadcom 5 年 $2000 亿、Microsoft + Nvidia $300 亿、SpaceX Colossus 1（22 万颗 H100、300MW）等超大单。</p>
+    </div>
+  </div>
+
+  <h3>引爆的 6 大半导体需求</h3>
+
+  <div class="metrics">
+    <div class="metric-row">
+      <div class="label">推理芯片市场 2025-2030<span class="src">Presenc AI / Silicon Analysts 综合 · ⚠ 单源</span></div>
+      <div class="value data">$106B → $255B</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">推理在 AI compute 占比 2023 → 2026<span class="src">Deloitte，HPCwire 引用</span></div>
+      <div class="value">1/3 → 2/3</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">HBM 在大厂 2026 capex 占比<span class="src">Dylan Patel · Dwarkesh Patel podcast</span></div>
+      <div class="value warn">~30%</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">单 rack 功率 GB200 NVL72<span class="src">NVIDIA 官方规格</span></div>
+      <div class="value warn">132 kW</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">液冷渗透率 2024 → 2026<span class="src">TrendForce</span></div>
+      <div class="value pos">14% → 40%</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">ASML EUV 工具年产<span class="src">Dylan Patel · GSA 2025-11</span></div>
+      <div class="value">~70 → 100 台</div>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">关键洞察 · Dylan Patel</div>
+    <div class="callout-quote">"美国电力扩张不是问题，电网扩建 + 燃机部署 &lt;2 年；真正卡点是 ASML EUV 工具。1 GW Rubin 算力 ≈ 3.5 台 EUV 全年产能。"</div>
+  </div>
+</section>
+
+<section id="physical">
+  <div class="section-label"><span>04 · 物理 AI 瓶颈</span><span>Physical AI</span></div>
+  <h2>机器人不缺大脑，<em>缺数据、电池、和那只手。</em></h2>
+  <p>Physical AI（NVIDIA Jensen 在 GTC 2025/2026 反复强调的概念）= 人形机器人 + 自动驾驶 + 工业机器人 + 世界模型。这是 AI 从"屏幕里"走到"屋子里"的关键。但 2026 年的真实状况是：它的瓶颈不在"模型"——GR00T N1、Helix、π0 已经能工作了——而在四条物理 / 工程线。</p>
+
+  <h3>8 大瓶颈（一句话版）</h3>
+  <ul>
+    <li><strong>数据稀缺</strong>——机器人无法从互联网"读取"动作。π0 训练用 10,000 小时真实轨迹，OpenVLA 用 21,500 个 A100 小时。DoorDash 2026-03 推 Tasks app 付费给 800 万快递员佩戴 body cam 拍家务，本质是"用人力凿数据矿"。</li>
+    <li><strong>Sim-to-Real Gap</strong>——仿真还无法重现接触力、平衡、时序，人形比轮式 gap 更宽，全身关节链放大误差。NVIDIA Cosmos + Isaac Sim + NuRec 神经渲染是当前主流解法。</li>
+    <li><strong>世界模型不够"物理"</strong>——Genie 3、Cosmos 2、Alpamayo 能维持几分钟连续物理一致性，但仍是研究预览，无法真实驱动机器人闭环。</li>
+    <li><strong>VLA 模型延迟</strong>——VLA 继承 VLM "大块头"特性，与子秒级控制周期不兼容。Figure Helix、NVIDIA GR00T N1 已转向"双系统"设计：System 1 拆出 200Hz 实时控制。</li>
+    <li><strong>云-端算力不平衡</strong>——训练在云（Vera Rubin），推理必须在端侧（车端/机器人本体）。延迟容忍：自动驾驶 &lt;100ms；灵巧手 &lt;5ms。这逼着 Jetson Thor 把 LLM 级推理压到 130W。</li>
+    <li><strong>能耗 vs 算力矛盾</strong>——人形续航 4-5 小时已是极限。每加 100W 推理就要加 5-10% 电池。这是为什么 Thor 把 7.5 倍算力压在 3.5 倍能效里。</li>
+    <li><strong>Corner Case 处理</strong>——AI Insider 2026 年初结论："剩余瓶颈是物理的，不是认知的"——抓握失败、平衡丢失、力反馈不足占故障大头。</li>
+    <li><strong>本体瓶颈（不只是芯片）</strong>——谐波减速器全球 &lt;5 家能量产；灵巧手力觉传感器供应商"一只手数得过来"。三花智控 2025 H1 机器人业务 +320%，特斯拉 2025-10 给三花下了 <strong>$685M 线性执行器订单</strong>。</li>
+  </ul>
+
+  <h3>关键产品参数（边缘 AI SoC）</h3>
+
+  <table class="compare-table">
+    <thead><tr><th>芯片</th><th>算力</th><th>功耗</th><th>状态</th><th>定位</th></tr></thead>
+    <tbody>
+      <tr><td><span class="product-name">NVIDIA Jetson Thor</span></td><td>2,070 FP4 TFLOPS</td><td>130W</td><td>2025-08-25 量产</td><td>机器人大脑，$3,499 dev kit</td></tr>
+      <tr><td><span class="product-name">NVIDIA Drive Thor</span></td><td>2,000 TOPS</td><td>—</td><td>2025 量产</td><td>自动驾驶，小鹏首发</td></tr>
+      <tr><td><span class="product-name">Qualcomm Snapdragon Ride Elite</span></td><td>300 TOPS</td><td>—</td><td>L3 量产</td><td>累计出货 ~100 万颗</td></tr>
+      <tr><td class="highlight"><span class="product-name">地平线征程 6</span><span class="tag">国产</span></td><td>10-560 TOPS</td><td>—</td><td>2025 量产</td><td>2025 出货 401 万套（+39%）</td></tr>
+      <tr><td><span class="product-name">小鹏 Turing 自研</span></td><td>750 TOPS</td><td>—</td><td>2025 上车 G7</td><td>整车自研</td></tr>
+      <tr><td><span class="product-name">Mobileye EyeQ6 High</span></td><td>10× EyeQ5</td><td>—</td><td>2026 量产</td><td>视觉路线代表</td></tr>
+      <tr><td><span class="product-name">Tesla AI5</span></td><td>—</td><td>—</td><td>2026 量产中</td><td>Optimus / FSD 共用</td></tr>
+    </tbody>
+  </table>
+
+  <h3>市场规模预测（机构口径分歧巨大）</h3>
+
+  <table class="compare-table">
+    <thead><tr><th>机构</th><th>口径</th><th>时点</th><th>预测</th></tr></thead>
+    <tbody>
+      <tr><td>Goldman Sachs</td><td>全球人形机器人销售 TAM</td><td>2035</td><td>$38B</td></tr>
+      <tr><td>Goldman Sachs</td><td>出货 base case</td><td>2030</td><td>25 万+ 台</td></tr>
+      <tr><td>Morgan Stanley</td><td>全球人形含服务市场</td><td>2050</td><td>$5T</td></tr>
+      <tr><td>Citi</td><td>全球人形 TAM</td><td>2050</td><td>$7T / 6.48 亿台</td></tr>
+      <tr><td>UBS</td><td>单台高端半导体 BOM</td><td>2025 → 2050</td><td>$1,400 → $2,000</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <div class="callout-label">⚠ 数据真伪提醒</div>
+    <p>Goldman ($38B / 2035) 与 Morgan Stanley ($5T / 2050) 差距 100 倍以上：前者是"销售额"口径，后者是"含服务的经济价值"口径。两个不是同一回事，但媒体经常混用。Citi $7T 假设"全球老龄化 + 工厂全人形替代"，假设极强。读者应理解这只是叙事数字。</p>
+  </div>
+
+  <h3>关键事件时间线 (2025-2026)</h3>
+  <div class="timeline">
+    <div class="timeline-row"><div class="date">2025·03</div><div class="dot"></div><div class="content"><div class="title">NVIDIA 发布 Isaac GR00T N1</div><div class="desc">全球首个开源人形基础模型（GTC 2025）</div></div></div>
+    <div class="timeline-row data"><div class="date">2025·08</div><div class="dot"></div><div class="content"><div class="title">Jetson Thor 量产</div><div class="desc">2,070 TFLOPS / 128GB / 130W，机器人大脑标配</div></div></div>
+    <div class="timeline-row"><div class="date">2025·H1</div><div class="dot"></div><div class="content"><div class="title">Figure 02 在 BMW Spartanburg 跑产线</div><div class="desc">参与 3 万辆 X3 生产，Helix VLA 全身 200Hz 控制</div></div></div>
+    <div class="timeline-row warn"><div class="date">2025·10</div><div class="dot"></div><div class="content"><div class="title">特斯拉向三花下 $685M 线性执行器订单</div><div class="desc">人形机器人本体硬件供应链浮出水面</div></div></div>
+    <div class="timeline-row"><div class="date">2026·01</div><div class="dot"></div><div class="content"><div class="title">特斯拉部署 1,000+ 台 Optimus Gen3 到自家工厂</div><div class="desc">第一批量产规模部署</div></div></div>
+    <div class="timeline-row data"><div class="date">2026·02</div><div class="dot"></div><div class="content"><div class="title">Waymo 完成 $16B 融资</div><div class="desc">2025 全年 1500 万次乘车（+3 倍），目标伦敦/东京</div></div></div>
+    <div class="timeline-row warn"><div class="date">2026·03</div><div class="dot"></div><div class="content"><div class="title">NVIDIA GTC 2026 Keynote</div><div class="desc">Jensen："自动驾驶的 ChatGPT 时刻到了"；公布 $1 万亿 Blackwell+Rubin 订单（到 2027）</div></div></div>
+    <div class="timeline-row pos"><div class="date">2026·04</div><div class="dot"></div><div class="content"><div class="title">它石智航 Pre-A $455M</div><div class="desc">高瓴 + 红杉中国 + 美团联合领投，破中国具身智能纪录；百亿美元估值 <span class="unverified">⚠ 具体估值未公开</span></div></div></div>
+  </div>
+</section>
+
+<section id="semi">
+  <div class="section-label"><span>05 · 半导体格局</span><span>The Silicon Map</span></div>
+  <h2>三国杀：<em>NVIDIA、ASIC、HBM。</em></h2>
+  <p>过去三年的故事是"NVIDIA 一家独大"。2026 年的真实格局是"<strong>NVIDIA（训练 + 高端推理） + 三大自家闭环 ASIC（TPU / Trainium / MTIA） + 一批专精推理 ASIC 初创</strong>"。但真正的赢家不是初创公司，而是替所有人造芯片的 Broadcom + Marvell。</p>
+
+  <h3>NVIDIA 核心档案</h3>
+
+  <div class="stats-grid">
+    <div class="stat-card data">
+      <div class="label">FY26 全年总收入</div>
+      <div class="value">$215.9B</div>
+      <div class="sub">同比 +65%；非 GAAP 毛利率 75.2%</div>
+    </div>
+    <div class="stat-card data">
+      <div class="label">FY26 数据中心收入</div>
+      <div class="value">$193.7B</div>
+      <div class="sub">同比 +68%</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">FY26Q4 网络收入</div>
+      <div class="value">$11B</div>
+      <div class="sub">同比 +263%，NVLink/NVSwitch 量产爬坡</div>
+    </div>
+    <div class="stat-card warn">
+      <div class="label">当前市值</div>
+      <div class="value">$5.34T</div>
+      <div class="sub">2026-05，全球最大企业，TTM PE 41-46×</div>
+    </div>
+  </div>
+
+  <h3>NVIDIA 路线图（2024-2028）</h3>
+  <ul>
+    <li><strong>H100/H200</strong>：2023-2024 主力，2025 仍出货长尾</li>
+    <li><strong>GB200 NVL72</strong>：2025 全年出货 <strong>2.5-3.5 万套</strong>（远低于年初市场 5-8 万预期）；单 rack 132 kW</li>
+    <li><strong>GB300 NVL72（Blackwell Ultra）</strong>：2025 H2 起量，单柜 1.1 EFLOPS（FP4 稠密）</li>
+    <li><strong>Vera Rubin NVL144</strong>：2026 H2 量产，144 颗 VR200，FP4 稠密 <strong>3.6 EFLOPS</strong>（3.3× GB300）</li>
+    <li><strong>Rubin Ultra NVL576 / Kyber</strong>：2027 H2，单 GPU 100 PFLOPS FP4 + 1TB HBM4E，整柜对 GB300 NVL72 提升 <strong>14×</strong></li>
+    <li><strong>Feynman</strong>：2028（已在路线图）</li>
+  </ul>
+
+  <h3>NVIDIA 挑战者</h3>
+
+  <div class="two-col">
+    <div class="tc-card pos">
+      <h4>AMD — 最有力的第二名</h4>
+      <ul>
+        <li><strong>MI300X</strong>：Microsoft Azure 大规模采用</li>
+        <li><strong>MI350</strong>：Oracle Cloud 首发合作伙伴</li>
+        <li><strong>MI400/MI450（2026）</strong>：与 Meta 签 <strong>6 GW 长期协议</strong>，定制 Instinct GPU 跨多代部署</li>
+        <li>这是 NVIDIA 之外唯一拿到顶级 hyperscaler 多代 lock-in 订单的通用 GPU 玩家</li>
+      </ul>
+    </div>
+    <div class="tc-card warn">
+      <h4>Intel — 基本出局</h4>
+      <ul>
+        <li><strong>Gaudi 3</strong> 2024 推出，全年销售未达 $500M 目标（软件问题）</li>
+        <li><strong>Falcon Shores</strong> 2025-01 被代理 CEO Holthaus 公开取消，降级为内部测试芯片</li>
+        <li>继任者 Jaguar Shores 时间未明，Intel 在 AI 数据中心 GPU 赛道实际已退出第一梯队</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Broadcom — ASIC 路线的真正赢家</h3>
+
+  <div class="callout data">
+    <div class="callout-label">Broadcom 关键数据</div>
+    <p>不直接做 merchant GPU，而是替 hyperscaler 设计 / 代工定制 ASIC。<strong>Google TPU</strong>、<strong>Meta MTIA "Santa Barbara"</strong>、<strong>OpenAI Titan</strong>、<strong>ByteDance</strong> 都是其客户。</p>
+    <p>FY26Q1 总收入 <strong>$14.9B</strong>，AI 半导体收入 <strong>$8.4B</strong>（同比 +106%）；公司 backlog 约 <strong>$70B+</strong>；CEO Hock Tan 公开预期 <strong>2027 年 AI 芯片收入超 $100B</strong>。FY26 全年 AI 营收指引接近 <strong>$50B</strong>，相比 FY25 的约 $20B 增长 ~150%。</p>
+  </div>
+
+  <h3>推理 ASIC 创业公司</h3>
+
+  <table class="compare-table">
+    <thead><tr><th>公司</th><th>技术</th><th>估值/融资</th><th>关键事件</th></tr></thead>
+    <tbody>
+      <tr><td><span class="product-name">Groq</span></td><td>LPU 确定性数据流</td><td>$6.9B（2025-09 Series E）</td><td>2025-12-24 NVIDIA 宣布 <strong>$20B IP 授权 + 人才协议</strong>（不是完整收购）</td></tr>
+      <tr><td><span class="product-name">Cerebras</span></td><td>Wafer-scale</td><td>2026-05-14 IPO <strong>NASDAQ:CBRS</strong></td><td>募 $5.55B，首日 +68% 收盘，市值 <strong>$67B 标准 / $86B 摊薄 / $95B 部分口径</strong>；与 OpenAI 签 $20B+ 主框架协议</td></tr>
+      <tr><td><span class="product-name">SambaNova</span></td><td>RDU 可重构数据流</td><td>$2.4B（2026-02，峰值 $5B 缩水）</td><td>30+ 企业客户，含美国能源部</td></tr>
+      <tr><td><span class="product-name">Tenstorrent</span></td><td>RISC-V + AI</td><td>$3.2B（2025-11，Series D2 谈判中）</td><td>Jim Keller 操刀；开放架构、IP 授权</td></tr>
+      <tr><td><span class="product-name">Etched</span></td><td>Transformer ASIC</td><td>$5B，累计 $620M</td><td>2026-03 仍未出货，疑似良率/软件 bring-up 受阻</td></tr>
+      <tr><td><span class="product-name">d-Matrix</span></td><td>存内计算</td><td>$2B（2025-11 Series C $275M）</td><td>Microsoft、Samsung 战略投资</td></tr>
+    </tbody>
+  </table>
+
+  <h3>超大厂自研芯片</h3>
+
+  <div class="two-col">
+    <div class="tc-card pos">
+      <h4>Google TPU — 唯一完成商业化闭环</h4>
+      <ul>
+        <li>Ironwood (v7) 192GB HBM3e、4.6 PFLOPs FP8；Pod 9,216 颗芯片共享 1.77 PB HBM</li>
+        <li>2024 年自研 AI ASIC 出货 Google 独占 <strong>74%</strong>（约 255 万颗）</li>
+        <li>Anthropic 2025-10 协议：高达 <strong>100 万颗 TPU</strong>、&gt;1 GW、"数百亿美元"</li>
+      </ul>
+    </div>
+    <div class="tc-card pos">
+      <h4>AWS Trainium — Anthropic 全面背书</h4>
+      <ul>
+        <li>Project Rainier 2025-10 投产 ~50 万颗 Trainium2，目标年底 &gt;100 万颗给 Anthropic 一家</li>
+        <li>Trn3 由 Alchip 代设计、TSMC 3nm，2026 Q2 量产</li>
+        <li>Andy Jassy："多十亿美元业务、季环比 +150%"</li>
+      </ul>
+    </div>
+    <div class="tc-card">
+      <h4>Meta MTIA — Broadcom 深度绑定</h4>
+      <ul>
+        <li>四代路线（300→400→450→500），2026-04 与 Broadcom "多吉瓦"合作官宣</li>
+        <li>2025-09 以约 <strong>$2B 收购 RISC-V 公司 Rivos</strong></li>
+        <li>当前以推荐系统训练为主，扩展生成式 AI 推理</li>
+      </ul>
+    </div>
+    <div class="tc-card">
+      <h4>OpenAI Titan + Microsoft Maia + Apple</h4>
+      <ul>
+        <li><strong>OpenAI Titan</strong>：与 Broadcom 共同设计，TSMC N3，2026 年底首批小批量</li>
+        <li><strong>Microsoft Maia 200</strong>：2026-01 已部署 Iowa，承载 GPT-5.2</li>
+        <li><strong>Apple PCC</strong>：2026 升级至 M5；2026 H2 真正"AI 服务器专属芯片"流片</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>上游供应链关键瓶颈</h3>
+
+  <div class="metrics">
+    <div class="metric-row">
+      <div class="label">TSMC CoWoS 月产能 2024 → 2026 末<span class="src">TrendForce + SemiAnalysis · ✓ 多源</span></div>
+      <div class="value warn">35K → 130K</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">NVIDIA 锁定 2026-2027 CoWoS 产能<span class="src">TrendForce 2025-12</span></div>
+      <div class="value warn">≥50%</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">TSMC N2 量产 / 早期良率<span class="src">TSMC 公告</span></div>
+      <div class="value">2025 Q4 / 65-70%</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">SK 海力士 HBM 份额 Q2'25 / Q3'25<span class="src">TrendForce</span></div>
+      <div class="value">62% / 57%</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">SK 海力士 2025 capex<span class="src">SK Hynix 公告</span></div>
+      <div class="value">₩29T (~$21B)</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">ASML EXE:5200B High-NA EUV 单价<span class="src">ASML</span></div>
+      <div class="value warn">$350M / 台</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">三星 HBM 份额跌幅 2024Q2 → 2025Q2<span class="src">TrendForce</span></div>
+      <div class="value warn">41% → 17%</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">关键认知</div>
+    <p>SK 海力士 2025 首次在年度净利上<strong>超越三星</strong>，成为全球第一存储厂——这是 AI 算力时代第一个改变行业格局的转折事件。三星在 HBM3 阶段未通过 NVIDIA 12-Hi qualification 测试，份额从 41% 跌到 17%；2026 期望靠 HBM4 翻身。</p>
+  </div>
+
+  <h3>数据中心配套：4 大环节</h3>
+
+  <div class="stats-grid">
+    <div class="stat-card pos">
+      <div class="label">Astera Labs 2025</div>
+      <div class="value">$852M</div>
+      <div class="sub">+115% YoY；PCIe/CXL Retimer，加入 NVLink Fusion 生态</div>
+    </div>
+    <div class="stat-card pos">
+      <div class="label">Credo Q2 FY26 营收</div>
+      <div class="value">$268M</div>
+      <div class="sub">+272% YoY；FY 全年指引 &gt;$1.2B</div>
+    </div>
+    <div class="stat-card data">
+      <div class="label">Arista 2026 AI 指引</div>
+      <div class="value">$3.25B</div>
+      <div class="sub">Q1 2026 营收 $2.71B（+35.1%）</div>
+    </div>
+    <div class="stat-card warn">
+      <div class="label">Vertiv 2026 指引</div>
+      <div class="value">$13.75B</div>
+      <div class="sub">+34%，Q4 订单 +252%，NVIDIA 液冷独家</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">中际旭创 H1 2025</div>
+      <div class="value">¥147.9B (~$20.7B)</div>
+      <div class="sub">+37%，净利 +69%；800G 模块 ~40% 份额</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">新易盛 H1 2025</div>
+      <div class="value">¥104.4B (~$14.7B)</div>
+      <div class="sub">+282.6%，净利 +355.7%；NVIDIA 800G 增量订单</div>
+    </div>
+  </div>
+</section>
+
+<section id="china">
+  <div class="section-label"><span>06 · 中国国产替代</span><span>China Stack</span></div>
+  <h2>从备胎，<em>到主力。</em></h2>
+  <p>2025-2026 年是中国半导体的"国产替代加速年"。三股力量同时发力：(1) 美国 2025-04 对 NVIDIA H20 实质禁运（NVIDIA 计提 $5.5B / 约 ¥39.6B 库存减值）；(2) NVIDIA B30A/B30 至今未获美国政府放行；(3) 国家大基金三期 <strong>3,440 亿元（约 $47.5B）</strong>，相当于一期 + 二期总和。</p>
+
+  <h3>关键数据</h3>
+
+  <div class="metrics">
+    <div class="metric-row">
+      <div class="label">中国 AI 计算加速芯片市场 2025E<span class="src">弗若斯特沙利文 · ⚠ 单源</span></div>
+      <div class="value">¥240B (~$33B)</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">中国 AI 计算加速芯片市场 2029E<span class="src">弗若斯特沙利文 · CAGR 53.7%</span></div>
+      <div class="value warn">¥1.34T (~$186B)</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">国产 AI 加速卡 2025 出货份额<span class="src">IDC · 165 万张 / 总 400 万张</span></div>
+      <div class="value pos">41%</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">国家大基金三期注册资本<span class="src">2024-05-24 工商登记 · ✓ 已交叉验证</span></div>
+      <div class="value warn">¥344B (~$47.5B)</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">大基金三期 2025-01 首投<span class="src">华芯鼎新 ¥93B + 国投集新 ¥71B</span></div>
+      <div class="value">¥164B (~$22.8B)</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">NVIDIA H20 2025-04 库存减值<span class="src">NVIDIA 8-K · ✓ 已交叉验证</span></div>
+      <div class="value warn">$5.5B 警告 / $4.5B 季度实际</div>
+    </div>
+  </div>
+
+  <h3>国产 AI GPU 关键档案</h3>
+
+  <table class="compare-table">
+    <thead><tr><th>公司</th><th>产品 / 工艺</th><th>2025 业绩</th><th>市值 / 估值</th><th>替代度</th></tr></thead>
+    <tbody>
+      <tr class="highlight"><td><span class="product-name">华为昇腾</span><span class="tag">未上市</span></td><td>910B/C，CloudMatrix 384 = 2× GB200 NVL72 系统</td><td>910C 2025 出货 ~70-80 万颗 <span class="unverified">⚠ 未公开</span></td><td>—</td><td>训练国产第一选择</td></tr>
+      <tr><td><span class="product-name">寒武纪</span><span class="tag">688256</span></td><td>思元 590 / 690</td><td>Q1 营收 ¥1.1B (+4230%)；H1 云端 +46×</td><td>市值约 ¥770B (~$107B)</td><td>互联网+信创+智算</td></tr>
+      <tr><td><span class="product-name">海光信息</span><span class="tag">688041</span></td><td>CPU (Zen 授权) + DCU (CUDA 兼容)</td><td>营收 ¥14.4B (+57%)，净利 ¥2.55B (+32%)</td><td>市值突破 ¥800B (~$111B)</td><td>CUDA 兼容是核心壁垒</td></tr>
+      <tr><td><span class="product-name">摩尔线程</span><span class="tag">688795</span></td><td>MTT S4000 全功能 GPU</td><td>2025-12-05 上市，首日 +723%</td><td>IPO 募 ¥80B (~$11B)</td><td>国产 GPU 第一股</td></tr>
+      <tr><td><span class="product-name">沐曦</span><span class="tag">688500</span></td><td>曦云 C500/C600/C700</td><td>2024 营收 ¥740M，亏损 ¥1.4B</td><td>2025-12 上市开盘 +568%</td><td>峰值市值 ¥300B+ (~$42B+)</td></tr>
+      <tr><td><span class="product-name">燧原</span><span class="tag">IPO 中</span></td><td>邃思 320/400/L600</td><td>2025 前三季营收 ¥540M，腾讯占 71.8%</td><td>估值约 ¥18.2B (~$2.5B)</td><td>科创板申报中</td></tr>
+    </tbody>
+  </table>
+
+  <h3>边缘智能 + 制造封装 + 设备 EDA</h3>
+
+  <div class="two-col">
+    <div class="tc-card pos">
+      <h4>边缘智能（智驾 SoC）</h4>
+      <ul>
+        <li><strong>地平线 (9660.HK)</strong>：2025 营收 ¥3.76B (+57.7%)，征程 6 出货 401 万套；理想/比亚迪/大众客户；市值 ~HK¥108B (~$13.9B)</li>
+        <li><strong>黑芝麻 (2533.HK)</strong>：A2000 7nm 2026 量产；2024 营收 ¥474M</li>
+        <li><strong>芯擎科技</strong>：龙鹰一号国内首颗 7nm 车规座舱芯片，30+ 车型搭载</li>
+      </ul>
+    </div>
+    <div class="tc-card pos">
+      <h4>晶圆制造 + 封装</h4>
+      <ul>
+        <li><strong>中芯国际</strong>：2025 营收 $9.3B (+16.2%)，N+2 良率近 85%，资本开支 $8.1B</li>
+        <li><strong>长鑫存储</strong>：DDR5 量产中，HBM2/3 推进中；2025-12 申报 A 股 IPO 募 ¥29.5B</li>
+        <li><strong>长江存储</strong>：3D NAND 267 层，Xtacking 4.0</li>
+        <li><strong>通富微电</strong>：2025 营收 ¥27.9B，净利 +79.86%；AMD 御用封测（占 50%+ 营收）</li>
+        <li><strong>长电科技</strong>：2025 营收 ¥38.9B，先进封装占 69.5%</li>
+      </ul>
+    </div>
+    <div class="tc-card">
+      <h4>半导体设备（国产化 13.6% → 50%）</h4>
+      <ul>
+        <li><strong>北方华创</strong>：刻蚀+PVD+热处理多线龙头</li>
+        <li><strong>中微公司</strong>：刻蚀龙头，2025 增资 ¥4B 扩张</li>
+        <li><strong>盛美上海</strong>：清洗设备国内中标量第二（仅次于日本 SCREEN）</li>
+        <li><strong>拓荆 / 华海清科</strong>：薄膜沉积 / CMP 国产唯一龙头</li>
+        <li><strong>上海微电子</strong>：28nm DUV 浸没 2025-05 交付，国产化率 90%+</li>
+      </ul>
+    </div>
+    <div class="tc-card warn">
+      <h4>EDA（最弱环节）</h4>
+      <ul>
+        <li><strong>华大九天</strong>：2025 Q1-Q3 营收 ¥805M (+8.2%)，净利 -84.52%（增收不增利）</li>
+        <li><strong>广立微</strong>：2025 Q1-Q3 营收 ¥428M (+48.9%)，净利 +380%</li>
+        <li><strong>概伦电子</strong>：2025 Q1-Q3 营收 ¥315M (+12.7%)，净利 +173%</li>
+        <li><strong>盲点</strong>：硬件仿真、形式验证、时序分析等高端环节仍几乎完全依赖 Synopsys/Cadence</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider-quote">"国产替代的故事，不在 GPU 是不是追上 NVIDIA，而在 CUDA 生态崩塌得有多快。"</div>
+</section>
+
+<section id="invest">
+  <div class="section-label"><span>07 · 投资机会清单</span><span>The Watchlist</span></div>
+  <h2>从持仓清单<em>反推趋势。</em></h2>
+  <p>下面是 Ray 和读者最关心的部分——具体能买什么。三类机会：美股 / A 股港股 / 一级市场早期。所有股价、市值数据为 2026-05 区间，做决策前务必核对官方披露。<strong>这不是投资建议，是研究输出。</strong></p>
+
+  <h3>顶级投资人观点摘要</h3>
+
+  <div class="quote">
+    <p>Anthropic 不会因为算力短缺停步，反而靠"双 ASIC（AWS Trainium + Google TPU）+ SpaceX Colossus"四路供应稳住增长。这种把鸡蛋分到四个篮子的能力，是 OpenAI 现在还不具备的。</p>
+    <div class="attr">综合 Dario Amodei + 业内多次披露</div>
+  </div>
+
+  <div class="quote">
+    <p>AI 行业已从 CoWoS 封装、电力的瓶颈期，进入"硅短缺时代"。即使 ASIC 崛起，NVIDIA 在 2027 年仍将占据 HBM 需求大头。OpenAI 自研 ASIC、HBM4 自定义基础 die、LPDDR+HBM 混合方案是接下来 18 个月的关键。</p>
+    <div class="attr">Dylan Patel，SemiAnalysis</div>
+  </div>
+
+  <div class="quote">
+    <p>推理转向（Inference Shift）——推理分为 Prefill / Decode / Feed-forward 三部分，计算将日益异构化。NVIDIA 凭 HBM 优先权 + 网络投资保持主导，但异构化对中国和 ASIC 玩家是利好，对 NVIDIA 不一定是好消息。</p>
+    <div class="attr">Ben Thompson，Stratechery</div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">大佬罕见动作 · Druckenmiller Q1 2026</div>
+    <p>Stanley Druckenmiller（Duquesne）Q1 2026 13F <strong>完全清仓 NVDA + GOOGL，Amazon 减仓 99%</strong>，重仓买入 <strong>Broadcom（新建 195,955 股）、Micron、Intel</strong>。逻辑：从"GPU 龙头"转向"有锁定多年客户合同的 AI 基础设施"。这是 2026 年最值得跟踪的仓位变化之一。</p>
+  </div>
+
+  <h3>美股二级清单（5 层级）</h3>
+
+  <table class="compare-table">
+    <thead><tr><th>层级</th><th>标的</th><th>关键数据</th><th>一句话 Thesis</th></tr></thead>
+    <tbody>
+      <tr><td>L1 直接</td><td><span class="product-name">NVIDIA (NVDA)</span></td><td>$5.34T 市值，TTM PE 41-46×</td><td>全球 AI 算力垄断者，CUDA + HBM 优先权</td></tr>
+      <tr><td>L1 直接</td><td><span class="product-name">AMD</span></td><td>~$685B 市值</td><td>MI400 + Meta 6GW 长约；NVIDIA 最有力第二</td></tr>
+      <tr><td>L1 直接</td><td><span class="product-name">TSMC</span></td><td>~$1.2T 市值</td><td>全球 AI 芯片唯一代工厂，CoWoS 瓶颈</td></tr>
+      <tr><td>L1 直接</td><td><span class="product-name">ASML</span></td><td>~$300B+</td><td>EUV 光刻机垄断，High-NA 2026 放量</td></tr>
+      <tr><td>L2 ASIC</td><td class="highlight"><span class="product-name">Broadcom (AVGO)</span><span class="tag">Druckenmiller 重仓</span></td><td>~$1.8T 市值，FY26 AI 指引 ~$50B</td><td>替所有 hyperscaler 造 ASIC，backlog $70B+</td></tr>
+      <tr><td>L2 ASIC</td><td><span class="product-name">Marvell (MRVL)</span></td><td>~$80B 市值</td><td>AWS Trainium 主设计，AI 占数据中心 50%</td></tr>
+      <tr><td>L3 内存</td><td class="highlight"><span class="product-name">SK Hynix</span><span class="tag">HBM 王者</span></td><td>HBM 份额 57-62%</td><td>2025 净利首超三星；HBM4 全面量产</td></tr>
+      <tr><td>L3 内存</td><td><span class="product-name">Micron (MU)</span></td><td>HBM 份额 21%（超三星）</td><td>HBM4 强于预期；DRAM/NAND 紧张</td></tr>
+      <tr><td>L4 配套</td><td><span class="product-name">Vertiv (VRT)</span></td><td>2026 指引 $13.75B，订单 +252%</td><td>NVIDIA 液冷独家伙伴</td></tr>
+      <tr><td>L4 配套</td><td><span class="product-name">Astera Labs (ALAB)</span></td><td>2025 营收 $852M (+115%)</td><td>PCIe/CXL Retimer，NVLink Fusion 生态</td></tr>
+      <tr><td>L4 配套</td><td><span class="product-name">Credo (CRDO)</span></td><td>Q2 +272% YoY</td><td>AEC 高速铜缆，GPU 间互联</td></tr>
+      <tr><td>L4 配套</td><td><span class="product-name">Arista (ANET)</span></td><td>Q1 2026 +35.1%</td><td>AI 数据中心高速以太网龙头</td></tr>
+      <tr><td>L4 配套</td><td><span class="product-name">Coherent / Lumentum</span></td><td>OCS 积压 &gt;$400M</td><td>光器件 800G/1.6T + CPO 长期受益</td></tr>
+      <tr><td>L4 配套</td><td><span class="product-name">Monolithic Power (MPWR)</span></td><td>2026E 营收 ~$2.6B (+20%)</td><td>48V 电源架构核心受益</td></tr>
+      <tr><td>L5 物理 AI</td><td><span class="product-name">Tesla (TSLA)</span></td><td>市值 ~$1.5T</td><td>Optimus 2026 量产 + Robotaxi + FSD</td></tr>
+      <tr><td>L5 物理 AI</td><td><span class="product-name">Hesai (HSAI)</span></td><td>2026 LiDAR 产能 &gt;400 万颗</td><td>中国 LiDAR 全球龙头，机器人扩展</td></tr>
+      <tr><td>L5 物理 AI</td><td><span class="product-name">Mobileye / Symbotic / Aurora</span></td><td>—</td><td>自动驾驶 / 仓储自动化 / L4 卡车</td></tr>
+    </tbody>
+  </table>
+
+  <h3>A 股 / 港股清单</h3>
+
+  <table class="compare-table">
+    <thead><tr><th>标的</th><th>市值/股价</th><th>Thesis</th></tr></thead>
+    <tbody>
+      <tr><td class="highlight"><span class="product-name">寒武纪 (688256)</span><span class="tag">A 股估值王</span></td><td>市值 ~¥770B (~$107B)</td><td>国产 AI 训练芯片头号；DeepSeek 适配带动</td></tr>
+      <tr><td class="highlight"><span class="product-name">海光信息 (688041)</span><span class="tag">CPU+DCU</span></td><td>市值突破 ¥800B (~$111B)</td><td>CUDA 兼容 + Zen 授权 + 信创主线</td></tr>
+      <tr><td><span class="product-name">中芯国际 (688981/0981.HK)</span></td><td>A 股市值 ¥986B</td><td>国内最大代工厂；HBM 配套晶圆代工</td></tr>
+      <tr><td><span class="product-name">北方华创 (002371)</span></td><td>2025 全年涨 +64.9%</td><td>半导体设备龙头，国产化率提至 40%</td></tr>
+      <tr><td><span class="product-name">中微公司 (688012)</span></td><td>2026 Q1 涨 +34%</td><td>刻蚀龙头，先进逻辑+存储双催化</td></tr>
+      <tr><td><span class="product-name">地平线 (9660.HK)</span></td><td>市值 ~HK¥108B (~$13.9B)</td><td>智驾芯片龙头，高瓴重仓</td></tr>
+      <tr><td class="highlight"><span class="product-name">中际旭创 (300308)</span><span class="tag">光模块龙头</span></td><td>市值破万亿，股价 ~¥886</td><td>800G ~40% 份额、1.6T &gt;50%；Q1 +192%</td></tr>
+      <tr><td><span class="product-name">新易盛 (300502)</span></td><td>股价 ~¥622（自 ¥12 涨 51×）</td><td>800G/1.6T 模块 15-20% 份额</td></tr>
+      <tr><td><span class="product-name">天孚通信 (300394)</span></td><td>股价 ~¥375（30×）</td><td>1.6T 光引擎 ~25% 份额</td></tr>
+      <tr><td><span class="product-name">工业富联 (601138)</span></td><td>—</td><td>AI 服务器 ODM 龙头，NVDA 主供应</td></tr>
+      <tr><td><span class="product-name">沪电股份 (002463)</span></td><td>—</td><td>AI PCB（高多层、HDI）龙头</td></tr>
+      <tr><td><span class="product-name">生益科技 (600183)</span></td><td>2025 全年 +172%</td><td>高端覆铜板 (M8/M9) AI 服务器主板配套</td></tr>
+      <tr><td><span class="product-name">英维克 (002837)</span></td><td>—</td><td>液冷温控龙头，国内 AI 服务器主供</td></tr>
+      <tr><td><span class="product-name">通富 (002156) / 长电 (600584)</span></td><td>—</td><td>先进封装双雄，AMD/华为代工</td></tr>
+    </tbody>
+  </table>
+
+  <h3>一级市场早期标的</h3>
+
+  <div class="two-col">
+    <div class="tc-card">
+      <h4>AI 芯片初创</h4>
+      <ul>
+        <li><strong>Tenstorrent</strong> $3.2B（Jim Keller，RISC-V + AI）</li>
+        <li><strong>d-Matrix</strong> $2B（数字内存计算）</li>
+        <li><strong>Etched</strong> $5B（Transformer ASIC，仍未出货）</li>
+        <li><strong>Lightmatter</strong> 累计 $850M（硅光子计算）</li>
+        <li><strong>FuriosaAI / Rebellions</strong>（韩国，Series C $125-250M）</li>
+      </ul>
+    </div>
+    <div class="tc-card">
+      <h4>机器人 / Physical AI 初创</h4>
+      <ul>
+        <li><strong>Figure AI</strong> $39B（人形机器人）</li>
+        <li><strong>Skild AI</strong> $14B（机器人 Foundation Model，SoftBank 领投 $1.4B）</li>
+        <li><strong>1X Technologies</strong> ~$10B（家用人形）</li>
+        <li><strong>Physical Intelligence (π)</strong> $5.6B（VLA Model）</li>
+        <li><strong>Apptronik</strong> $5.3B（工业人形 Apollo）</li>
+        <li><strong>它石智航</strong>（中国具身智能纪录 Pre-A $455M，百亿美元估值）</li>
+        <li><strong>星海图 / 千寻智能 / 智平方</strong>（中国具身智能"大脑"梯队）</li>
+      </ul>
+    </div>
+    <div class="tc-card">
+      <h4>AI 基础设施初创</h4>
+      <ul>
+        <li><strong>CoreWeave (CRWV)</strong>：已 IPO，2025 收入 $5.13B (+168%)，2026 指引 &gt;$12B</li>
+        <li><strong>Lambda</strong>：$5.9B（拟 2026 H2 IPO）</li>
+        <li><strong>Crusoe</strong>：2026 收入 ~$500M（拟 IPO）</li>
+        <li><strong>Together AI</strong>：$1B ARR；融资 $1B @ $7.5B 谈判中</li>
+      </ul>
+    </div>
+    <div class="tc-card">
+      <h4>主题型 ETF</h4>
+      <ul>
+        <li><strong>SOXX / SMH</strong>（半导体）；<strong>SOXL</strong>（3× 杠杆，仅短线）</li>
+        <li><strong>BOTZ / ROBO</strong>（机器人 + 自动化）</li>
+        <li><strong>AIQ / ARTY</strong>（AI 综合）</li>
+        <li><strong>SOXC / KWEB</strong>（中国半导体 / 互联网）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="bear">
+  <div class="section-label"><span>08 · 风险与质疑</span><span>The Bear Case</span></div>
+  <h2>七个让你<em>晚上睡不着的</em>担忧。</h2>
+
+  <ol>
+    <li><strong>AI capex 过剩 vs 收入缺口</strong>——Sequoia David Cahn 估算 AI 基础设施投入隐含的收入预期 vs 实际收入缺口已从 2024 年的 $200B 升级到 $600B+。Capital Economics 预测泡沫最早 2026 年破裂。GPU 数据中心定价权远不如 CPU 云——商品化、按小时计价；新入场的 AI 云不断涌入。</li>
+    <li><strong>Goldman 自家"Too Much Spend, Too Little Benefit"</strong>（2024-06 报告至今未撤回）：1 万亿 capex 是否值得？MIT 教授 Acemoglu 预测 AI 仅提升美国 GDP 0.9%（10 年累计）。</li>
+    <li><strong>DeepSeek R1 冲击（2025-01-27）</strong>——NVDA 单日跌 18%，<strong>市值蒸发 $589-600B</strong>（史上最大单日蒸发）。R1 训练成本仅 $5.6M。提示了"算法效率突破 → 硬件需求假设可能被打破"的尾部风险。</li>
+    <li><strong>推理价格战压缩硬件需求</strong>——Devin 2.0 从 $500/月降到 $20/月；OpenAI / Anthropic 推理价格连续下调；推理 token 实际单价正在崩盘。</li>
+    <li><strong>中美脱钩 + 供应链冲击</strong>——巴菲特 2023 年已清空 TSMC（理由是台海地缘）；美国对华出口管制持续收紧；同时中国国产算力（寒武纪、海光、华为昇腾）走出独立行情。全球半导体逻辑被一分为二。</li>
+    <li><strong>周期性 vs 长期趋势</strong>——内存（HBM、DRAM、NAND）历史是强周期；Druckenmiller 押 Micron、SK Hynix 同样面临周期判断错误风险。</li>
+    <li><strong>估值过热</strong>——NVDA TTM PE 41-46×；中际旭创自 2023 年 ¥19 涨至 ¥886（46×）；寒武纪 PE 超 4000×；A 股光模块"易中天"组合被部分卖方认为"泡沫已炒到 2027 年"。</li>
+  </ol>
+
+  <div class="callout warn">
+    <div class="callout-label">⚠ 数据真伪提醒</div>
+    <p>本报告中以下数据为<strong>单一来源、未能完全交叉验证</strong>，请谨慎采信：</p>
+    <ul>
+      <li>华为昇腾 910C 2025 全年出货 ~70-80 万颗（媒体引用，华为 / 台积电未官方披露）</li>
+      <li>OpenAI–Broadcom 潜在订单 USD 150–200B 多年累计（Mizuho 单一来源测算）</li>
+      <li>它石智航 投后估值"百亿美元"具体数字（搜索未确认 $14B 具体值）</li>
+      <li>NVIDIA 200 亿美元收购 Groq：实际是 IP 授权 + 人才协议，非完整收购（2025-12-24 TechCrunch/CNBC/Tom's Hardware 多源印证）</li>
+      <li>Morgan Stanley $5T、Citi $7T 人形机器人 TAM 2050——假设极强，仅供方向性参考</li>
+    </ul>
+  </div>
+</section>
+
+<section id="actions">
+  <div class="section-label"><span>09 · 决策建议</span><span>What to Do</span></div>
+  <h2>7 个 Actionable Insights<em>，3 个避坑。</em></h2>
+
+  <div class="insights">
+    <div class="insight">
+      <div class="num">INSIGHT 1 · 推理 ASIC 是 2026 最确定的趋势</div>
+      <h4>不要碰造芯片的初创，要买替所有人造芯片的 Broadcom / Marvell</h4>
+      <p><span class="phenom">现象 →</span> Cerebras IPO 首日 +68% 是叙事，但 Groq 被 $20B IP 收购、SambaNova 估值缩水 50% 才是真相。</p>
+      <p><span class="phenom">解读 →</span> 推理 workload 适合 ASIC（确定性高、批次小、延迟敏感）。但单点初创需要捆绑一个客户才能活——Cerebras 锁 OpenAI、Groq 卖身 NVIDIA、Etched 押 Transformer 不变。</p>
+      <p><span class="phenom">行动 →</span> <strong>Broadcom (AVGO) 是首选</strong>：FY26 AI 指引 ~$50B，backlog $70B+，三个 hyperscaler 客户锁定。Marvell 是二号位（AWS Trainium）。一级市场看 d-Matrix / Tenstorrent，但作为风险敞口。</p>
+    </div>
+
+    <div class="insight">
+      <div class="num">INSIGHT 2 · HBM 不是周期，是结构性短缺</div>
+      <h4>HBM 占大厂 capex 30%，2026 全部售罄</h4>
+      <p><span class="phenom">现象 →</span> SK 海力士 2025 净利首超三星；Micron 跃居全球第二；三星 HBM3 没过 NVIDIA 12-Hi 测试，份额 41% → 17%。</p>
+      <p><span class="phenom">解读 →</span> Dylan Patel 口径"HBM 占 2026 capex 30%"；HBM 三巨头 2026 涨价 20%；HBM4 要到 2027-2028 才真放量。这是 AI 时代第一个改变行业格局的转折。</p>
+      <p><span class="phenom">行动 →</span> <strong>SK Hynix（首选）+ Micron（弹性）</strong>组合。三星等 HBM4 翻身（赔率高但需观察 2026 H2）。A 股相关：长鑫存储 IPO 中（拟募 ¥29.5B，关注上市进展）。</p>
+    </div>
+
+    <div class="insight">
+      <div class="num">INSIGHT 3 · 物理 AI 半导体是新增量市场</div>
+      <h4>NVIDIA Thor + 地平线征程 6 + 激光雷达四强，是机器人 / 自动驾驶量产前夜的最大受益者</h4>
+      <p><span class="phenom">现象 →</span> Jetson Thor 2025-08 量产、单 SoC 算力从 Orin 的 254 TOPS → 2,070 TFLOPS（8×）；地平线 2025 出货 401 万套；特斯拉 2025-10 给三花下 $685M 线性执行器订单。</p>
+      <p><span class="phenom">解读 →</span> 机器人是新的"每台车 / 每台机器人装一颗 ChatGPT 推理芯片"故事。单台高端人形半导体 BOM 从 $1,400 → $2,000（UBS 2025-2050）；全球 6.48 亿台（Citi）的纯算力市场已经打开。</p>
+      <p><span class="phenom">行动 →</span> NVIDIA（云训练 + 端推理双吃）+ <strong>地平线 (9660.HK)</strong>（国产端侧 SoC）+ <strong>禾赛 (HSAI)</strong>（LiDAR 全球龙头）+ Mobileye（视觉路线）。中国具身智能"大脑"梯队（它石智航、星海图、千寻智能、智平方）是高赔率早期机会。</p>
+    </div>
+
+    <div class="insight">
+      <div class="num">INSIGHT 4 · 数据中心配套是被低估的现金牛</div>
+      <h4>液冷、电源、光模块、Retimer 都是结构性受益</h4>
+      <p><span class="phenom">现象 →</span> 单 rack 132 kW（GB200）= 传统数据中心 6-10×；液冷渗透率 14% → 40%（2024-2026）；Vertiv Q4 订单 +252%；Credo Q2 +272%；Astera +115%；新易盛 +282%。</p>
+      <p><span class="phenom">解读 →</span> 这些公司不是"赌 AI 模型谁赢"，而是"AI 算力部署多少，他们就赚多少"。中国光模块"易中天"（中际旭创 + 新易盛 + 天孚）拿走 NVIDIA 800G 增量订单 60%。</p>
+      <p><span class="phenom">行动 →</span> <strong>美股</strong>：Vertiv + Eaton（液冷电力）、Astera Labs + Credo（互联）、Arista（网络）、MPWR（电源）。<strong>A 股</strong>：中际旭创 + 新易盛 + 天孚通信（光模块）、英维克（液冷）、沪电 + 生益（AI PCB）、工业富联（AI 服务器 ODM）。</p>
+    </div>
+
+    <div class="insight">
+      <div class="num">INSIGHT 5 · NVIDIA 仍是绝对核心，但要分清"持仓 vs 加仓"</div>
+      <h4>Druckenmiller 清仓 NVDA 是信号，不是结论</h4>
+      <p><span class="phenom">现象 →</span> NVDA 市值 $5.34T 全球第一，但 Q1 2026 Druckenmiller、巴菲特类大佬普遍减仓；TTM PE 41-46× 不算"贵到不能买"，但已 priced in 完美预期。</p>
+      <p><span class="phenom">解读 →</span> NVIDIA 的故事 = 训练（NVLink/CUDA 护城河） + 高端推理（GB300 已超 Hopper 50×能效）+ 物理 AI（Thor 双引擎）。但增量空间小于估值隐含的预期；DeepSeek 类事件 = 尾部风险。</p>
+      <p><span class="phenom">行动 →</span> <strong>核心持仓保留 NVDA</strong>，但避免新增 / 减少集中度。新增弹性配置转向 AVGO + AMD（Meta 6GW 长约提供下限）。</p>
+    </div>
+
+    <div class="insight">
+      <div class="num">INSIGHT 6 · 中国国产替代是长期主线，但要分层级</div>
+      <h4>大基金三期已经在投设备 + 材料 + 先进封装，跟着大基金走</h4>
+      <p><span class="phenom">现象 →</span> 大基金三期 ¥344B（$47.5B）2024-05 成立，2025-01 首投 ¥164B；国产 AI 卡 2025 份额 41%（首次破四成）；寒武纪 + 海光市值合计破 ¥1.5T。</p>
+      <p><span class="phenom">解读 →</span> 高估值 + 高确定：寒武纪 / 海光 / 中芯（已大幅 priced-in，看业绩兑现）。中估值 + 高弹性：地平线 / 北方华创 / 中微 / 通富 / 长电。高弹性高风险（IPO 新股）：摩尔线程 / 沐曦 / 燧原 / 长鑫。主题驱动：上海微电子（光刻设备国产化）、广立微 / 概伦电子（EDA 黑马）。</p>
+      <p><span class="phenom">行动 →</span> 不要 all-in 单一标的；用"龙头 + 设备 + EDA 黑马"组合，把波动分散到 3 层。CUDA 生态崩塌速度决定整个故事最终成色——这是关键观察点。</p>
+    </div>
+
+    <div class="insight">
+      <div class="num">INSIGHT 7 · 风险叙事是好东西，不是要回避</div>
+      <h4>把 AI capex 过剩、推理价格战、地缘脱钩当成"再平衡机会"，而不是"清仓信号"</h4>
+      <p><span class="phenom">现象 →</span> Sequoia David Cahn "$600B 问题"、Goldman "Too Much Spend, Too Little Benefit"、DeepSeek R1 单日蒸发 NVDA $589B——每一次都被市场吸收消化后继续涨。</p>
+      <p><span class="phenom">解读 →</span> AI 算力故事的真实风险不是"会不会泡沫"，而是"什么时候泡沫"。Druckenmiller 选择 Q1 2026 转向 Broadcom 是 thinks pubic timing，但不一定准确。每一次大跌（DeepSeek、Meta 单日 -9.25%）都是"分批进场"的窗口，不是"全部撤出"的信号。</p>
+      <p><span class="phenom">行动 →</span> 仓位 60% 核心受益（NVDA + AVGO + TSMC + SK Hynix）+ 25% 弹性（AMD + Vertiv + Astera + 中际旭创 + 寒武纪）+ 15% 早期高赔率（人形机器人创投、国产 EDA）。<strong>剩 5-10% 现金 仓位，等"-15% 单日"事件加仓。</strong></p>
+    </div>
+  </div>
+
+  <h3>不论怎么参与，要避开的 3 个坑</h3>
+
+  <div class="two-col">
+    <div class="tc-card warn">
+      <h4>坑 1 · 全押 AI 概念股</h4>
+      <ul>
+        <li>没有真实业务的"AI 应用"小盘股 / 假概念股最先死</li>
+        <li>选有真实订单 / 真实营收 / 真实客户的"卖铲子"</li>
+        <li>距离算力越近，回报越确定</li>
+      </ul>
+    </div>
+    <div class="tc-card warn">
+      <h4>坑 2 · 信"中美脱钩 = 中国必胜"</h4>
+      <ul>
+        <li>CUDA 生态崩塌速度远低于市场预期</li>
+        <li>EDA、光刻、HBM 等核心环节差距还很大</li>
+        <li>用估值过高的国产芯片股做主仓位风险大</li>
+      </ul>
+    </div>
+    <div class="tc-card warn">
+      <h4>坑 3 · 用"长期 TAM"做短期决策</h4>
+      <ul>
+        <li>Morgan Stanley $5T 人形 TAM 是 2050 假设</li>
+        <li>2026-2027 实际人形机器人销量可能仅 25 万台（Goldman）</li>
+        <li>叙事数字 ≠ 短期股价催化剂；用具体里程碑跟踪</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <div class="verdict-title">FINAL VERDICT · 2026 三条主线</div>
+    <h3>"看似拥挤，实则三层递进。AI 算力的故事，2026 还没讲完。"</h3>
+    <p>2026 年是 AI 算力从"训练为王"过渡到"推理 + 物理 AI 双引擎"的拐点年。Ray 的下注路径：把核心仓位锚在 NVIDIA + Broadcom + SK Hynix + TSMC 四家瓶颈环节的赢家身上，用 20-30% 弹性追物理 AI 半导体 + 中国国产替代，用 5-10% 早期资金跟一两家人形机器人 / 具身智能初创。剩 5-10% 现金等"DeepSeek 类"暴跌窗口加仓。</p>
+    <div class="options">
+      <div class="v-option">
+        <div class="num">PATH 60%</div>
+        <h4>核心受益</h4>
+        <p>NVDA + AVGO + TSMC + SK Hynix + ASML —— 卡瓶颈的"卖铲子"</p>
+      </div>
+      <div class="v-option">
+        <div class="num">PATH 25%</div>
+        <h4>弹性主题</h4>
+        <p>AMD + Vertiv + Astera + 中际旭创 + 寒武纪 / 海光 —— 物理 AI + 国产替代</p>
+      </div>
+      <div class="v-option">
+        <div class="num">PATH 15%</div>
+        <h4>早期高赔率</h4>
+        <p>它石智航 / Skild / d-Matrix / 国产 EDA + 5-10% 现金等加仓窗口</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">最后一句话</div>
+    <div class="callout-quote">"硅短缺时代的关键问题不是 AI 会不会赢，而是 AI 赢了之后——谁在硅与电的环节卡住了瓶颈，谁就分到了钱。"</div>
+  </div>
+</section>
+</article>
+</main>
+
+<footer>
+  <div class="container">
+    <h4>主要数据来源</h4>
+    <ul class="sources">
+      <li>NVIDIA / AMD / Broadcom / Marvell SEC 8-K + 财报电话会议</li>
+      <li>TSMC / SK Hynix / Micron / ASML / Samsung 投资者关系</li>
+      <li>Anthropic / OpenAI 官方公告 + Dario Amodei 公开发言</li>
+      <li>SemiAnalysis (Dylan Patel) · GSA 2025-11 · Dwarkesh Podcast</li>
+      <li>Stratechery (Ben Thompson) · a16z · ARK Big Ideas 2026</li>
+      <li>Goldman Sachs / Morgan Stanley / Bernstein / Citi / UBS 行研</li>
+      <li>OpenRouter State of AI 2025 (100T token study)</li>
+      <li>TrendForce / TechInsights / Counterpoint / IDC</li>
+      <li>HPCwire / EE Times / Tom's Hardware / The Next Platform</li>
+      <li>Bloomberg / Reuters / CNBC / TechCrunch / VentureBeat</li>
+      <li>Nikkei / DigiTimes / ServeTheHome</li>
+      <li>巨潮资讯网 / 交易所招股书 + 年报 + 公告</li>
+      <li>芯东西 / 半导体行业观察 / 集微网 / 爱集微</li>
+      <li>财新 / 第一财经 / 36氪 / 虎嗅 / 量子位</li>
+      <li>中信证券 / 高瓴 / 红杉中国 公开观点</li>
+      <li>Crunchbase / PitchBook（一级市场估值）</li>
+    </ul>
+    <div class="meta">
+      <span>Ray Deep Research · 2026-05-20</span>
+      <span>本报告 60+ 高 stake 数据点已通过 Stage 2.5 独立验证（48 个交叉验证 / 12 个未交叉验证已标注）</span>
+      <span>非投资建议 · 仅供研究参考</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var toggle = document.getElementById('theme-toggle');
+  var html = document.documentElement;
+  toggle.addEventListener('click', function() {
+    var current = html.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    if (next === 'dark') html.setAttribute('data-theme', 'dark');
+    else html.removeAttribute('data-theme');
+    try { localStorage.setItem('ray-theme', next); } catch (e) {}
+  });
+
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      try {
+        if (!localStorage.getItem('ray-theme')) {
+          if (e.matches) html.setAttribute('data-theme', 'dark');
+          else html.removeAttribute('data-theme');
+        }
+      } catch (err) {}
+    });
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var id = entry.target.id;
+        document.querySelectorAll('nav.toc a').forEach(function(link) {
+          link.style.color = '';
+          link.style.fontWeight = '';
+        });
+        var activeLink = document.querySelector('nav.toc a[href="#' + id + '"]');
+        if (activeLink) {
+          activeLink.style.color = 'var(--accent-warn)';
+          activeLink.style.fontWeight = '600';
+        }
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  document.querySelectorAll('section[id]').forEach(function(s) { observer.observe(s); });
+})();
+</script>
+</body>
+</html>

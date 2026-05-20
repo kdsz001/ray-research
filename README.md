@@ -11,6 +11,12 @@
 
 <!-- INDEX-START -->
 
+### 🧬 [AI 半导体 2026](ai-semiconductor-2026/) · 智能体 AI + 物理 AI + 半导体投资机会全景
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-20 | [智能体觉醒，机器苏醒，硅与电的新一轮稀缺](ai-semiconductor-2026/2026-05-20-ai-semiconductor-2026.html) | [↗ Open](https://kdsz001.github.io/ray-research/ai-semiconductor-2026/2026-05-20-ai-semiconductor-2026.html) |
+
 ### 🎯 [Typeless](typeless/) · AI 语音输入法
 
 | 日期 | 报告 | 在线浏览 |

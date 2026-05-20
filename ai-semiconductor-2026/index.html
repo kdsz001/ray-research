@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 半导体 2026 · 调研话题 · Ray Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if ((saved || (prefersDark ? 'dark' : 'light')) === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec; --bg-card: #ffffff; --ink: #14110d; --muted: #6e6358; --light: #a39787;
+  --rule: #14110d; --rule-light: #d8d1c2; --accent: #a73121; --link: #1c4d6b;
+  --serif: "Source Serif 4", Georgia, serif;
+  --sans: "Inter", -apple-system, "PingFang SC", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", monospace;
+}
+[data-theme="dark"] {
+  --bg: #15120e; --bg-card: #1f1b16; --ink: #ebe3d3; --muted: #8d8170; --light: #5c5346;
+  --rule: #ebe3d3; --rule-light: #3a342c; --accent: #e87a5f; --link: #6cb1d6;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--sans); background: var(--bg); color: var(--ink);
+  line-height: 1.65; font-size: 16px; max-width: 720px; margin: 0 auto; padding: 80px 32px;
+  -webkit-font-smoothing: antialiased; transition: background 0.2s, color 0.2s;
+}
+.eyebrow {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 12px;
+}
+.eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--accent); }
+.eyebrow a { color: var(--accent); text-decoration: none; }
+h1 {
+  font-family: var(--serif); font-weight: 600; font-size: 56px;
+  line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 18px;
+}
+.lead { font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--muted); margin-bottom: 50px; }
+h2 {
+  font-family: var(--serif); font-weight: 600; font-size: 22px;
+  margin: 48px 0 18px; letter-spacing: -0.01em;
+}
+.report-list { border-top: 1px solid var(--ink); list-style: none; }
+.report-list li {
+  padding: 20px 0; border-bottom: 1px solid var(--rule-light);
+  display: grid; grid-template-columns: 110px 1fr; gap: 20px; align-items: baseline;
+}
+.report-list .date { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+.report-list .title { font-family: var(--serif); font-size: 19px; font-weight: 600; }
+.report-list a { color: var(--ink); text-decoration: none; }
+.report-list a:hover { color: var(--accent); }
+ul.findings { list-style: none; margin: 0; }
+ul.findings li {
+  padding: 12px 0 12px 22px; position: relative; line-height: 1.55; color: var(--muted);
+  border-bottom: 1px dashed var(--rule-light);
+}
+ul.findings li::before {
+  content: "→"; position: absolute; left: 0; color: var(--accent); font-family: var(--mono);
+}
+ul.findings li:last-child { border: none; }
+ul.findings li strong { color: var(--ink); }
+
+#theme-toggle {
+  position: fixed; top: 14px; right: 24px; z-index: 1000;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--bg-card); border: 1px solid var(--rule-light);
+  color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center;
+  padding: 0; transition: all 0.15s;
+}
+#theme-toggle:hover { border-color: var(--ink); }
+#theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] #theme-toggle .icon-moon { display: block; }
+
+footer {
+  margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--rule-light);
+  font-family: var(--mono); font-size: 11px; color: var(--light); letter-spacing: 0.05em;
+}
+footer a { color: var(--muted); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="切换夜间模式">
+  <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<div class="eyebrow"><a href="../">← 返回 Ray Research</a> · 调研话题</div>
+<h1>AI 半导体 2026</h1>
+<p class="lead">智能体 AI + 物理 AI 瓶颈 · 半导体产业链全景 · 二级 + 一级市场投资机会</p>
+
+<h2>报告列表</h2>
+<ul class="report-list">
+  <li>
+    <span class="date">2026-05-20</span>
+    <a class="title" href="2026-05-20-ai-semiconductor-2026.html">智能体觉醒，机器苏醒，硅与电的新一轮稀缺 →</a>
+  </li>
+</ul>
+
+<h2>跨报告核心结论</h2>
+<ul class="findings">
+  <li><strong>瓶颈在硅</strong>——AI 算力需求与硬件供给曲线已脱钩：CoWoS 封装、HBM 内存、ASML High-NA EUV 都是 2-3 年消化不完的卡点</li>
+  <li><strong>推理 ASIC 反攻</strong>——Broadcom + Marvell 替所有 hyperscaler 造芯片，2026 最确定赢家；Cerebras IPO 首日 +68% 是新势力第一个完整退出</li>
+  <li><strong>物理 AI 半导体新增量</strong>——NVIDIA Jetson Thor + 地平线征程 6 + 激光雷达四强打开机器人 / 自动驾驶量产前夜市场</li>
+  <li><strong>国产替代分层</strong>——华为昇腾事实上已成训练国产第一选择；寒武纪 + 海光估值已 priced in；设备 + EDA 是长尾高弹性</li>
+  <li><strong>NVIDIA 仍是核心，但 Druckenmiller Q1 2026 已清仓</strong>——TTM PE 41-46x 已计入完美预期；DeepSeek 类效率冲击是尾部风险</li>
+</ul>
+
+<footer>
+  <a href="../">← Ray Research 主页</a>
+</footer>
+
+</body>
+</html>
