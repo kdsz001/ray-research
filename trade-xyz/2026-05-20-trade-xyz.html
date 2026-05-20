@@ -1,0 +1,2174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>trade.xyz 深度调研报告 · Hyperliquid HIP-3 龙一 · 2026.05</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+// 防 FOUC：必须在 head 内同步执行，body 渲染前就设好主题
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec;
+  --bg-paper: #fbf9f4;
+  --bg-card: #ffffff;
+  --bg-dark: #14110d;
+  --bg-dark2: #1f1b16;
+  --ink: #14110d;
+  --ink-2: #2c2620;
+  --muted: #6e6358;
+  --light: #a39787;
+  --rule: #14110d;
+  --rule-light: #d8d1c2;
+  --accent-warn: #a73121;
+  --accent-data: #1c4d6b;
+  --accent-pos: #2c5e3f;
+  --accent-yellow: #c89a2c;
+  --grad-warn: rgba(167, 49, 33, 0.04);
+  --grad-data: rgba(28, 77, 107, 0.04);
+  --shadow-card: 0 0 0 transparent;
+  /* Inverse block tokens（用于 TL;DR / verdict / Quick Facts / footer 等"反色块"） */
+  --bg-inverse: #14110d;
+  --bg-inverse-2: #1f1b16;
+  --ink-on-inverse: #f6f3ec;
+  --text-on-inverse: rgba(246, 243, 236, 0.85);
+  --muted-on-inverse: rgba(246, 243, 236, 0.7);
+  --faint-on-inverse: rgba(246, 243, 236, 0.55);
+  --light-on-inverse: rgba(246, 243, 236, 0.5);
+  --rule-on-inverse: rgba(246, 243, 236, 0.18);
+  --accent-yellow-on-inverse: #c89a2c;
+  --serif: "Source Serif 4", "Source Serif Pro", "Charter", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+  --max-w: 820px;
+}
+
+[data-theme="dark"] {
+  --bg: #15120e;
+  --bg-paper: #1c1814;
+  --bg-card: #1f1b16;
+  --bg-dark: #0a0907;
+  --bg-dark2: #0f0d0a;
+  --ink: #ebe3d3;
+  --ink-2: #c9bfae;
+  --muted: #8d8170;
+  --light: #5c5346;
+  --rule: #ebe3d3;
+  --rule-light: #3a342c;
+  --accent-warn: #e87a5f;
+  --accent-data: #6cb1d6;
+  --accent-pos: #6db98c;
+  --accent-yellow: #e6b945;
+  --grad-warn: rgba(232, 122, 95, 0.06);
+  --grad-data: rgba(108, 177, 214, 0.06);
+  --shadow-card: 0 1px 0 rgba(235, 227, 211, 0.04);
+  /* Inverse 反相：dark 模式下反色块变成浅色块，保持视觉对比 */
+  --bg-inverse: #ede5d3;
+  --bg-inverse-2: #e0d8c5;
+  --ink-on-inverse: #14110d;
+  --text-on-inverse: rgba(20, 17, 13, 0.85);
+  --muted-on-inverse: rgba(20, 17, 13, 0.7);
+  --faint-on-inverse: rgba(20, 17, 13, 0.55);
+  --light-on-inverse: rgba(20, 17, 13, 0.5);
+  --rule-on-inverse: rgba(20, 17, 13, 0.18);
+  --accent-yellow-on-inverse: #a47a18;
+}
+
+/* 平滑切换动画（不影响视觉，但让切换不刺眼） */
+body, .tldr, .verdict, .quickfacts-wrap, footer, table, th, td, .stat, .col-card, .callout, .path-card, .verdict-option, .qf-cell {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  font-size: 16px;
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(167, 49, 33, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 80% 100%, rgba(28, 77, 107, 0.04) 0%, transparent 40%);
+}
+
+/* ---------- Top metadata bar ---------- */
+.topbar {
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg-paper);
+  padding: 14px 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.topbar-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  color: var(--muted);
+}
+.topbar strong { color: var(--ink); font-weight: 600; }
+
+/* ---------- Hero ---------- */
+.hero {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 80px 32px 100px;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: end;
+}
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-warn);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--accent-warn);
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 78px;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 28px;
+  font-feature-settings: "ss01";
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent-warn);
+  font-weight: 500;
+}
+.hero-subtitle {
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--muted);
+  font-style: italic;
+  max-width: 560px;
+}
+.hero-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  border-left: 1px solid var(--rule);
+  padding-left: 24px;
+}
+.hero-meta dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
+.hero-meta dt { color: var(--light); font-weight: 400; }
+.hero-meta dd { color: var(--ink); font-weight: 500; }
+
+/* ---------- Quick Facts (10s glance) ---------- */
+.quickfacts-wrap {
+  background: var(--bg-inverse);
+  color: var(--ink-on-inverse);
+  padding: 60px 0 80px;
+  border-bottom: 1px solid var(--rule);
+}
+.quickfacts {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.qf-header { margin-bottom: 36px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.qf-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-yellow-on-inverse);
+}
+.qf-title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text-on-inverse);
+  letter-spacing: -0.01em;
+}
+.qf-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: var(--rule-on-inverse);
+  border: 1px solid var(--rule-on-inverse);
+}
+.qf-cell {
+  background: var(--bg-inverse);
+  padding: 22px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 120px;
+}
+.qf-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--light-on-inverse);
+}
+.qf-value {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--ink-on-inverse);
+  letter-spacing: -0.02em;
+  margin-top: auto;
+  margin-bottom: 4px;
+}
+.qf-value.warn { color: var(--accent-warn); }
+.qf-value.pos { color: var(--accent-pos); }
+.qf-value.data { color: var(--accent-data); }
+.qf-value .qf-unit { font-size: 14px; color: var(--faint-on-inverse); margin-left: 2px; font-weight: 400; }
+.qf-sub {
+  font-size: 11.5px;
+  color: var(--faint-on-inverse);
+  line-height: 1.35;
+}
+.qf-cell-verdict { background: var(--accent-warn); color: white; }
+.qf-cell-verdict .qf-label { color: rgba(255, 255, 255, 0.8); }
+.qf-cell-verdict .qf-verdict {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: white;
+  margin-top: auto;
+  letter-spacing: -0.01em;
+}
+.qf-cell-verdict .qf-sub { color: rgba(255, 255, 255, 0.85); }
+
+/* ---------- Layout containers ---------- */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+main {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 60px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px 120px;
+}
+
+/* ---------- Sticky TOC ---------- */
+nav.toc {
+  position: sticky;
+  top: 40px;
+  align-self: start;
+  height: fit-content;
+  padding-top: 80px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+nav.toc h4 {
+  font-size: 10px;
+  color: var(--light);
+  margin-bottom: 18px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+}
+nav.toc ol { list-style: none; counter-reset: toc; }
+nav.toc li {
+  counter-increment: toc;
+  margin-bottom: 14px;
+  border-left: 1px solid var(--rule-light);
+  padding-left: 14px;
+  transition: border-color 0.2s;
+}
+nav.toc li:hover { border-left-color: var(--ink); }
+nav.toc li::before {
+  content: "0" counter(toc);
+  display: block;
+  color: var(--light);
+  font-size: 10px;
+  margin-bottom: 2px;
+}
+nav.toc a {
+  color: var(--ink-2);
+  text-decoration: none;
+  line-height: 1.3;
+  display: block;
+  font-weight: 500;
+}
+nav.toc a:hover { color: var(--accent-warn); }
+
+article { max-width: var(--max-w); padding-top: 60px; }
+
+/* ---------- Sections ---------- */
+section { padding: 60px 0; border-top: 1px solid var(--rule-light); scroll-margin-top: 30px; }
+section:first-of-type { border-top: none; padding-top: 20px; }
+
+.section-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-warn);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-num::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule-light);
+}
+section h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 32px;
+  font-feature-settings: "ss01";
+}
+section h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.3;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+section h4 {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  margin-top: 36px;
+  margin-bottom: 12px;
+}
+section p {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-2);
+  margin-bottom: 16px;
+}
+section p strong { color: var(--ink); font-weight: 600; }
+section a { color: var(--accent-data); text-decoration: underline; text-decoration-color: rgba(28, 77, 107, 0.3); text-underline-offset: 3px; }
+section a:hover { text-decoration-color: var(--accent-data); }
+
+ul, ol { padding-left: 22px; margin-bottom: 18px; }
+li { margin-bottom: 8px; line-height: 1.7; color: var(--ink-2); }
+li::marker { color: var(--light); }
+
+/* ---------- TL;DR Block ---------- */
+.tldr {
+  background: var(--bg-inverse);
+  color: var(--ink-on-inverse);
+  padding: 56px 56px;
+  border-radius: 0;
+  margin-top: 40px;
+  position: relative;
+}
+.tldr::before {
+  content: "TL;DR";
+  position: absolute;
+  top: -1px;
+  left: 56px;
+  background: var(--accent-warn);
+  color: white;
+  padding: 4px 16px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+}
+.tldr h3 {
+  font-family: var(--serif);
+  color: var(--ink-on-inverse);
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 28px;
+  margin-bottom: 12px;
+}
+.tldr h3:first-of-type { margin-top: 16px; }
+.tldr p, .tldr li { color: var(--text-on-inverse); }
+.tldr p strong, .tldr li strong { color: var(--ink-on-inverse); }
+.tldr ol, .tldr ul { padding-left: 18px; }
+.tldr a { color: var(--ink-on-inverse); text-decoration-color: var(--light-on-inverse); }
+
+/* ---------- Stats grid ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin: 32px 0;
+}
+.stat {
+  background: var(--bg-card);
+  padding: 28px 24px;
+}
+.stat-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.stat-value {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+.stat-value .unit {
+  font-size: 16px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 4px;
+}
+.stat-value.warn { color: var(--accent-warn); }
+.stat-value.pos { color: var(--accent-pos); }
+.stat-value.data { color: var(--accent-data); }
+.stat-note {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ---------- Two col ---------- */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin: 24px 0;
+}
+.col-card {
+  border: 1px solid var(--rule-light);
+  padding: 28px;
+  background: var(--bg-card);
+}
+.col-card h4 {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.col-card.pos h4 { color: var(--accent-pos); }
+.col-card.warn h4 { color: var(--accent-warn); }
+.col-card h4::before {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-family: var(--serif);
+  font-size: 13px;
+  text-align: center;
+  line-height: 18px;
+  font-weight: 600;
+}
+.col-card.pos h4::before { content: "✓"; background: var(--accent-pos); color: white; }
+.col-card.warn h4::before { content: "!"; background: var(--accent-warn); color: white; font-style: italic; }
+.col-card ul { padding-left: 18px; margin-bottom: 0; }
+.col-card li { font-size: 14px; line-height: 1.55; }
+
+/* ---------- Quote ---------- */
+.quote {
+  border-left: 3px solid var(--accent-warn);
+  padding: 8px 0 8px 24px;
+  margin: 24px 0;
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.55;
+  font-style: italic;
+  color: var(--ink-2);
+}
+.quote-attr {
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 12px;
+  font-weight: 500;
+}
+.quote-attr::before { content: "— "; }
+
+/* ---------- Table ---------- */
+.table-wrap { overflow-x: auto; margin: 24px 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: var(--bg-card);
+}
+th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  font-weight: 600;
+  padding: 12px 14px;
+  border-bottom: 2px solid var(--ink);
+  background: var(--bg-paper);
+  white-space: nowrap;
+  vertical-align: bottom;
+}
+td {
+  padding: 14px;
+  border-bottom: 1px solid var(--rule-light);
+  vertical-align: top;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+td.product-name {
+  font-weight: 600;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 15px;
+  white-space: nowrap;
+}
+tr:last-child td { border-bottom: 1px solid var(--ink); }
+td .tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  background: var(--bg-paper);
+  color: var(--muted);
+  border-radius: 2px;
+  margin-right: 4px;
+}
+
+/* ---------- Callout ---------- */
+.callout {
+  background: var(--bg-paper);
+  border-left: 3px solid var(--ink);
+  padding: 24px 28px;
+  margin: 28px 0;
+}
+.callout.warn { border-left-color: var(--accent-warn); background: rgba(167, 49, 33, 0.04); }
+.callout.data { border-left-color: var(--accent-data); background: rgba(28, 77, 107, 0.04); }
+.callout-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.callout.warn .callout-label { color: var(--accent-warn); }
+.callout.data .callout-label { color: var(--accent-data); }
+.callout p { margin-bottom: 12px; }
+.callout p:last-child { margin-bottom: 0; }
+.callout-quote {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* ---------- Hero number rows ---------- */
+.metric-list {
+  margin: 28px 0;
+  border-top: 1px solid var(--ink);
+}
+.metric-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule-light);
+  gap: 24px;
+}
+.metric-row:last-child { border-bottom: 1px solid var(--ink); }
+.metric-row .label {
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.metric-row .label .src {
+  display: block;
+  font-size: 11px;
+  color: var(--light);
+  margin-top: 2px;
+  font-family: var(--mono);
+}
+.metric-row .value {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  text-align: right;
+  white-space: nowrap;
+}
+.metric-row .value.warn { color: var(--accent-warn); }
+.metric-row .value.pos { color: var(--accent-pos); }
+.metric-row .value.data { color: var(--accent-data); }
+.metric-row .value small { font-size: 14px; color: var(--muted); font-weight: 400; }
+
+/* ---------- Section divider with motto ---------- */
+.divider-quote {
+  margin: 80px 0;
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--muted);
+  line-height: 1.5;
+  position: relative;
+  padding: 32px 60px;
+}
+.divider-quote::before, .divider-quote::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 1px;
+  background: var(--rule);
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.divider-quote::after { top: auto; bottom: 0; }
+
+/* ---------- Timeline ---------- */
+.timeline {
+  margin: 32px 0;
+  position: relative;
+  padding-left: 0;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 92px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--rule-light);
+}
+.tl-row {
+  display: grid;
+  grid-template-columns: 80px 14px 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+  align-items: start;
+}
+.tl-row .tl-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  text-align: right;
+  padding-top: 4px;
+  text-transform: uppercase;
+}
+.tl-row .tl-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--ink);
+  margin-top: 4px;
+  position: relative;
+  z-index: 2;
+}
+.tl-row .tl-dot.warn { border-color: var(--accent-warn); background: var(--accent-warn); }
+.tl-row .tl-dot.data { border-color: var(--accent-data); background: var(--accent-data); }
+.tl-row .tl-content { padding-top: 0; }
+.tl-row .tl-title { font-family: var(--serif); font-weight: 600; font-size: 16px; color: var(--ink); line-height: 1.3; margin-bottom: 4px; }
+.tl-row .tl-title.warn { color: var(--accent-warn); }
+.tl-row .tl-desc { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+
+/* ---------- Path A/B/C detail cards ---------- */
+.path-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 28px 0;
+}
+.path-card {
+  border: 1px solid var(--rule-light);
+  background: var(--bg-card);
+  padding: 26px 24px;
+  position: relative;
+}
+.path-card.a { border-top: 4px solid var(--accent-pos); }
+.path-card.c { border-top: 4px solid var(--accent-warn); }
+.path-card .path-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.path-card.a .path-num { color: var(--accent-pos); }
+.path-card.c .path-num { color: var(--accent-warn); }
+.path-card h4 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--ink);
+  text-transform: none;
+  letter-spacing: 0;
+  margin: 0 0 14px 0;
+}
+.path-card p { font-size: 13.5px; line-height: 1.55; color: var(--muted); margin-bottom: 10px; }
+.path-card ul { margin: 0; padding-left: 18px; }
+.path-card li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; color: var(--ink-2); }
+
+/* ---------- Final verdict ---------- */
+.verdict {
+  background: var(--bg-inverse);
+  color: var(--ink-on-inverse);
+  padding: 80px 56px;
+  margin: 80px 0 0;
+  position: relative;
+}
+.verdict-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 24px;
+}
+.verdict h3 {
+  font-family: var(--serif);
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: var(--ink-on-inverse);
+  letter-spacing: -0.02em;
+}
+.verdict p { color: var(--text-on-inverse); font-size: 17px; line-height: 1.65; margin-bottom: 14px; }
+.verdict p strong { color: var(--ink-on-inverse); }
+.verdict-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 40px;
+  background: var(--rule-on-inverse);
+}
+.verdict-option {
+  background: var(--bg-inverse);
+  padding: 28px 24px;
+}
+.verdict-option .num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 12px;
+}
+.verdict-option h4 {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink-on-inverse);
+  margin-bottom: 10px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.verdict-option p { font-size: 14px; line-height: 1.55; margin-bottom: 0; color: var(--muted-on-inverse); }
+
+/* ---------- Score bar ---------- */
+.score-card {
+  border: 1px solid var(--ink);
+  padding: 32px;
+  margin: 24px 0;
+  background: var(--bg-card);
+}
+.score-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 50px;
+  gap: 20px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule-light);
+}
+.score-row:last-child { border-bottom: none; }
+.score-row .name { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: 15px; }
+.score-row .bar { background: var(--bg-paper); height: 8px; position: relative; }
+.score-row .bar-fill { height: 100%; background: var(--accent-data); }
+.score-row .bar-fill.warn { background: var(--accent-warn); }
+.score-row .bar-fill.pos { background: var(--accent-pos); }
+.score-row .num { font-family: var(--mono); font-weight: 600; font-size: 14px; color: var(--ink); text-align: right; }
+
+/* ---------- Footer ---------- */
+footer {
+  border-top: 1px solid var(--rule);
+  background: var(--bg-inverse);
+  color: var(--muted-on-inverse);
+  padding: 60px 32px 80px;
+  margin-top: 0;
+}
+.footer-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+footer h4 { color: var(--ink-on-inverse); margin-bottom: 18px; font-family: var(--serif); font-size: 16px; font-weight: 600; }
+footer ul { padding-left: 0; list-style: none; columns: 2; column-gap: 40px; }
+footer li { font-size: 12px; line-height: 1.5; margin-bottom: 8px; font-family: var(--mono); break-inside: avoid; }
+footer a { color: var(--accent-yellow-on-inverse); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+.footer-meta {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule-on-inverse);
+  font-size: 11px;
+  color: var(--light-on-inverse);
+  font-family: var(--mono);
+  letter-spacing: 0.05em;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  main { grid-template-columns: 1fr; }
+  nav.toc { position: static; padding-top: 40px; }
+  nav.toc ol { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 56px; }
+  .verdict-options { grid-template-columns: 1fr; }
+  .qf-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
+  .hero { padding: 40px 20px 60px; }
+  .hero h1 { font-size: 42px; }
+  .hero-subtitle { font-size: 18px; }
+  main { padding: 0 20px 80px; gap: 0; }
+  .container, .quickfacts { padding: 0 20px; }
+  .quickfacts-wrap { padding: 40px 0 50px; }
+  .qf-grid { grid-template-columns: repeat(2, 1fr); }
+  .qf-value { font-size: 26px; }
+  .qf-cell-verdict .qf-verdict { font-size: 18px; }
+  nav.toc ol { grid-template-columns: 1fr; }
+  section h2 { font-size: 32px; }
+  .stats { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  .verdict, .tldr { padding: 40px 24px; }
+  .verdict h3 { font-size: 26px; }
+  .score-row { grid-template-columns: 120px 1fr 40px; gap: 12px; }
+  footer ul { columns: 1; }
+  .timeline::before { left: 11px; }
+  .tl-row { grid-template-columns: 80px 1fr; }
+  .tl-row .tl-date { font-size: 10px; }
+  .path-detail { grid-template-columns: 1fr; }
+}
+
+/* ---------- Theme toggle button ---------- */
+#theme-toggle {
+  position: fixed;
+  top: 14px;
+  right: 24px;
+  z-index: 1000;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.12s;
+}
+#theme-toggle:hover { background: var(--bg-paper); border-color: var(--ink); }
+#theme-toggle:active { transform: scale(0.92); }
+#theme-toggle .icon-sun, #theme-toggle .icon-moon { transition: opacity 0.15s; }
+#theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] #theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] #theme-toggle {
+  background: var(--bg-paper);
+  border-color: var(--rule-light);
+  color: var(--ink);
+}
+
+@media (max-width: 720px) {
+  #theme-toggle { top: 10px; right: 14px; width: 32px; height: 32px; }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  body { background: white; font-size: 11pt; }
+  .topbar, nav.toc, footer, #theme-toggle { display: none; }
+  main { display: block; max-width: 100%; padding: 0; }
+  article { max-width: 100%; padding-top: 0; }
+  .hero { padding: 30px 0; page-break-after: always; grid-template-columns: 1fr; }
+  .hero h1 { font-size: 36pt; color: black; }
+  .hero h1 em { color: #a73121; }
+  .quickfacts-wrap { background: white; color: black; padding: 20px 0; page-break-after: always; }
+  .qf-grid { background: #ddd; border-color: #ddd; }
+  .qf-cell { background: white; }
+  .qf-label, .qf-sub { color: #666 !important; }
+  .qf-value { color: black !important; }
+  .qf-cell-verdict { background: #f4e6e3 !important; }
+  .qf-cell-verdict .qf-verdict, .qf-cell-verdict .qf-label, .qf-cell-verdict .qf-sub { color: black !important; }
+  section { page-break-inside: avoid; padding: 20px 0; border-top: 2px solid #000; }
+  section h2 { font-size: 22pt; }
+  section h3 { font-size: 14pt; }
+  .tldr, .verdict { background: #f5f5f5 !important; color: black !important; padding: 24px !important; }
+  .tldr *, .verdict * { color: black !important; }
+  .verdict-option { background: white !important; border: 1px solid #ddd; }
+  a { color: black !important; text-decoration: none; }
+  .stats, .two-col, .score-card { page-break-inside: avoid; }
+  .divider-quote { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== THEME TOGGLE ===== -->
+<button id="theme-toggle" aria-label="切换夜间模式" title="切换浅色 / 夜间模式">
+  <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<!-- ===== TOP META BAR ===== -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div><strong>trade.xyz</strong> · 加密项目深度调研</div>
+    <div>调研日期 <strong>2026 · 05 · 20</strong></div>
+    <div>为撸毛 + 复盘"寄生型增长"模板而做 · 第一版</div>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div>
+    <div class="hero-eyebrow">CRYPTO RESEARCH · HIP-3 · AIRDROP FARMING</div>
+    <h1>把美股、黄金、SpaceX <em>搬上链</em>的 Hyperliquid 长子</h1>
+    <p class="hero-subtitle">trade.xyz 不是套壳前端 · 是 Hyperunit 团队亲自部署的 HIP-3 第一个永续 DEX · 占整个 HIP-3 OI 约 90% · 年化跑出 $71.93M 手续费 · 没说有空投, 但 Q2 已经发了 $1.55M USDC "事实空投"</p>
+  </div>
+  <aside class="hero-meta">
+    <dl>
+      <dt>调研对象</dt><dd>trade.xyz</dd>
+      <dt>所属赛道</dt><dd>永续 DEX / RWA 永续</dd>
+      <dt>底层公链</dt><dd>Hyperliquid (HIP-3)</dd>
+      <dt>调研深度</dt><dd>5 个并行子 Agent</dd>
+      <dt>覆盖平台</dt><dd>26 个一手来源</dd>
+      <dt>读者画像</dt><dd>撸毛玩家 + 产品创业者</dd>
+      <dt>关键问题</dt><dd>是什么 / HL 关系 / 空投</dd>
+    </dl>
+  </aside>
+</header>
+
+<!-- ===== QUICK FACTS ===== -->
+<section class="quickfacts-wrap">
+  <div class="quickfacts">
+    <div class="qf-header">
+      <div class="qf-eyebrow">QUICK FACTS · 10 SECOND GLANCE</div>
+      <div class="qf-title">trade.xyz at a Glance</div>
+    </div>
+    <div class="qf-grid">
+      <div class="qf-cell">
+        <div class="qf-label">阶段</div>
+        <div class="qf-value">未发币</div>
+        <div class="qf-sub">已上线 7 个月 · 团队匿名</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">融资</div>
+        <div class="qf-value">$0</div>
+        <div class="qf-sub">无任何公开 VC · 沿袭 HL 11 人零融资文化</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">押 HYPE 门槛</div>
+        <div class="qf-value">500K<span class="qf-unit">HYPE</span></div>
+        <div class="qf-sub">≈ $20-25M USD · 部署 HIP-3 必押</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">30 天成交量</div>
+        <div class="qf-value data">$56.08<span class="qf-unit">B</span></div>
+        <div class="qf-sub">DefiLlama 一手 · 约人民币 4030 亿</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">年化手续费</div>
+        <div class="qf-value data">$71.93<span class="qf-unit">M</span></div>
+        <div class="qf-sub">trade.xyz 拿 50% = $24.74M</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">独立交易员</div>
+        <div class="qf-value">256K<span class="qf-unit">+</span></div>
+        <div class="qf-sub">loris.tools · 累计 all-time</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">占 HIP-3 OI</div>
+        <div class="qf-value warn">~94.9%</div>
+        <div class="qf-sub">绝对垄断 · HIP-3 = trade.xyz</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">Q2 已发 USDC</div>
+        <div class="qf-value pos">$1.55<span class="qf-unit">M</span></div>
+        <div class="qf-sub">推荐返佣 · 事实空投在发了</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">Taker 手续费</div>
+        <div class="qf-value">0.009%</div>
+        <div class="qf-sub">Growth Mode · 标准价砍 90%</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">女巫率</div>
+        <div class="qf-value warn">44%</div>
+        <div class="qf-sub">Arrakis 报告 · 99.9% 来自 Themino 一家</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">中国用户</div>
+        <div class="qf-value pos">可用</div>
+        <div class="qf-sub">不在 Terms 禁止国 · 不强制 KYC</div>
+      </div>
+      <div class="qf-cell qf-cell-verdict">
+        <div class="qf-label">最终判断</div>
+        <div class="qf-verdict">可以撸,但要做真用户</div>
+        <div class="qf-sub">别工业化刷量 · Themino 的坟堆就在那</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAIN LAYOUT ===== -->
+<main>
+  <nav class="toc">
+    <h4>目录</h4>
+    <ol>
+      <li><a href="#tldr">一页纸结论</a></li>
+      <li><a href="#what">trade.xyz 是什么</a></li>
+      <li><a href="#hl">与 Hyperliquid 关系</a></li>
+      <li><a href="#data">链上数据 & 财报</a></li>
+      <li><a href="#team">团队 & 公司档案</a></li>
+      <li><a href="#airdrop">空投真相</a></li>
+      <li><a href="#farming">撸毛策略</a></li>
+      <li><a href="#sybil">女巫风险</a></li>
+      <li><a href="#feedback">市场反馈</a></li>
+      <li><a href="#competitors">竞品格局</a></li>
+      <li><a href="#china">中国市场</a></li>
+      <li><a href="#risk">监管尾部风险</a></li>
+      <li><a href="#decision">决策建议</a></li>
+    </ol>
+  </nav>
+
+  <article>
+
+    <!-- ===== SECTION 01 · TL;DR ===== -->
+    <section id="tldr">
+      <div class="section-num">01 · 一页纸结论</div>
+      <h2>5 个调研员, 一个结论</h2>
+
+      <p>派出去的 5 个并行子 Agent (海外英文 / 中文圈 / HL 关系 / 团队融资 / 空投策略) 都收回数据, 关于 trade.xyz 的真相高度收敛, 没有大的内部分歧。要点如下:</p>
+
+      <p><strong>它不是普通的 Hyperliquid 前端</strong>。Builder Code (HL 允许第三方做前端抽手续费的机制, 比如 PVP.trade、Phantom 走的就是这条路) 是套壳玩法。trade.xyz 走的是更深的 HIP-3 — Hyperliquid Improvement Proposal 3, 一个允许人押 50 万枚 HYPE (约 $20-25M USD) 后, 在 Hyperliquid 链上<em>自己开一个新永续市场</em>的协议。trade.xyz 是 HIP-3 上线首日就部署的第一个项目, 而且占了整个 HIP-3 90% 以上的市场份额。</p>
+
+      <p>建造它的是 <strong>Hyperunit</strong> — Hyperliquid 的资产 tokenization (代币化) 姐妹团队。法律上 trade.xyz 自己是 XYZ Ltd, 团队完全匿名; 但行业默认它是 Hyperliquid 的"长子项目"。手续费 50/50 分给 Hyperliquid 协议金库和 trade.xyz, 这意味着 trade.xyz 跑得越好, HYPE 通过协议费回购销毁吃得越多。</p>
+
+      <div class="tldr">
+        <h3>如果你今天就要做决定, 记住这三件事</h3>
+        <ol>
+          <li><strong>没有官方 Points, 但 USDC "事实空投" 在发。</strong> 官网 docs、Twitter、Telegram 全部没有提到 Points / Season / Airdrop。但 DefiLlama 的财报显示 Q2 2026 trade.xyz 已经发了 $1.55M USDC 的推荐返佣 (Referral & Trading Discounts) — 这就是事实空投, 只不过给的是 USDC 不是代币。</li>
+          <li><strong>双重撸毛是最大价值</strong>。在 trade.xyz 上交易, 同时累计 $HYPE Season 2 权重 + 可能的 $UNIT (Hyperunit 母品牌) 空投权重。"一份资金两份票"是这次调研最关键的撸毛 insight。</li>
+          <li><strong>不要工业化刷量</strong>。Arrakis 4 月报告显示 79K 钱包里 44% 是女巫, 而且 99.9% 来自同一个 Polymarket 老炮 "Themino" 的农场 — 那个人烧了 $34,510 USD 协议费搭起 3.4 万小号, 现在大概率会被一刀切。要撸有效, 必须做真用户形态: $5K-$50K 资金、多种资产、多时段、独立资金链路。</li>
+        </ol>
+      </div>
+
+      <p>剩下要看的是细节: 它在做什么标的、监管会不会动它、KOL 怎么看、中国人能不能用、应该投多少资金。下面 12 章逐条拆。</p>
+    </section>
+
+    <!-- ===== SECTION 02 · What is trade.xyz ===== -->
+    <section id="what">
+      <div class="section-num">02 · trade.xyz 是什么</div>
+      <h2>把美股 / 黄金 / SpaceX 搬上链, 24/7 都能开杠杆</h2>
+
+      <p>trade.xyz 是<strong>第一个规模化把"现实世界资产 (RWA)"放到链上做永续合约 (Perpetual, 没有到期日的杠杆合约) 的去中心化交易所</strong>。当传统美股周末闭市、纳斯达克下午 4 点收盘时, trade.xyz 上的 NVDA、TSLA、Gold、S&amp;P 500 永续都还能交易。这是它和别的永续 DEX 最大的区别 — 别人主要做加密货币 (BTC / ETH / SOL), trade.xyz 主要做<em>非加密资产</em>。</p>
+
+      <h3>61 个标的, 6 个类别</h3>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-label">美股个股</div>
+          <div class="stat-value">40+</div>
+          <div class="stat-note">NVDA / TSLA / AAPL / GOOG / MSFT / META / AMZN / COIN / HOOD / MSTR / PLTR / COST / NFLX / AMD / MU 等</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">韩股 / 日股</div>
+          <div class="stat-value data">8</div>
+          <div class="stat-note">SAMSUNG / SK海力士 / 现代 / KR200 (KOSPI 200) / JP225 (日经)</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">大宗商品</div>
+          <div class="stat-value">9</div>
+          <div class="stat-note">WTI 原油 (CL) / Brent / 天然气 / Gold / Silver / Copper / Platinum / Palladium / 铀矿</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">外汇</div>
+          <div class="stat-value">3</div>
+          <div class="stat-note">USD/JPY · EUR/USD · GBP/USD · 杠杆最高 50x</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">指数</div>
+          <div class="stat-value">3</div>
+          <div class="stat-note">S&amp;P 500 (官方授权) · XYZ100 (纳斯达克 100 复刻) · JP225</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label warn">Pre-IPO 永续 (IPOPs)</div>
+          <div class="stat-value warn">2</div>
+          <div class="stat-note">SPCX (SpaceX, 参考价 $150) · CBRS (Cerebras) · 杀手锏</div>
+        </div>
+      </div>
+
+      <h3>三个"全球首发"</h3>
+
+      <div class="callout data">
+        <div class="callout-label">里程碑事件</div>
+        <p><strong>2026-03-18 — 拿到 S&amp;P 500 官方授权。</strong> 标普道琼斯指数公司 (S&amp;P DJI) 发布官方新闻稿, 正式授权 trade[XYZ] 使用 S&amp;P 500 商标做链上永续合约 — <em>全球第一次</em>有加密原生项目拿到这个级别的传统金融背书。</p>
+        <p><strong>2026-05-18 — 上线 SpaceX Pre-IPO 永续。</strong> SPCX 启动参考价 $150, 对应"参考市值" 约 $1.78 万亿 USD (这是按 $150 × 完全稀释股本算出的隐含估值, 不是 SpaceX 真实公司估值, 但提供了一个交易锚点)。首日成交 $33M USD。这是市场上唯一可以"用永续合约赌 SpaceX 上市前估值"的工具。</p>
+        <p><strong>2025-10-13 — HIP-3 上线首日就部署。</strong> trade.xyz 是 HIP-3 协议生效那一天就跑起来的第一个项目, 不是后来者, 是 day-1 builder。</p>
+      </div>
+
+      <h3>核心定价: Growth Mode 把手续费打到接近免费</h3>
+
+      <div class="metric-list">
+        <div class="metric-row">
+          <div class="label">标准 Taker 费率 (吃单方手续费)<span class="src">docs.trade.xyz / 一手</span></div>
+          <div class="value">0.090%</div>
+        </div>
+        <div class="metric-row">
+          <div class="label">标准 Maker 费率 (挂单方手续费)<span class="src">docs.trade.xyz / 一手</span></div>
+          <div class="value">0.030%</div>
+        </div>
+        <div class="metric-row">
+          <div class="label">Growth Mode 下 Taker 实际收<span class="src">docs.trade.xyz / 当前激活</span></div>
+          <div class="value pos">0.009%</div>
+        </div>
+        <div class="metric-row">
+          <div class="label">Growth Mode 下 Maker 实际收<span class="src">docs.trade.xyz / 当前激活</span></div>
+          <div class="value pos">0.003%</div>
+        </div>
+        <div class="metric-row">
+          <div class="label">vs Binance perp 标准 taker<span class="src">比 Binance 便宜约</span></div>
+          <div class="value data">5-10×</div>
+        </div>
+      </div>
+
+      <p class="hint" style="font-size:13px;color:var(--muted);margin-top:8px;">⚠ Growth Mode 是一种早期激励, 不会永远持续。一旦关闭, taker 费率会跳回 0.090%。判断"撸毛是早是晚", 这一点是关键变量。</p>
+    </section>
+
+    <!-- ===== SECTION 03 · HL Relationship ===== -->
+    <section id="hl">
+      <div class="section-num">03 · 与 Hyperliquid 关系</div>
+      <h2>不是套壳前端, 是亲儿子级 deployer</h2>
+
+      <p>用户最关心的问题之一: trade.xyz 到底是不是 Hyperliquid 的官方产品? 是同一团队吗? 还是套壳?</p>
+
+      <p><strong>简短回答</strong>: 法律上独立 (XYZ Ltd vs Hyperliquid Labs), 技术上深度绑定 (跑在 HL 链上, 共享撮合引擎, 分一半手续费), 团队上是<em>姐妹团队 (Hyperunit)</em>。<strong>不是 Builder Code 套壳</strong>, 是 HIP-3 部署 — 这两者的区别决定了 trade.xyz 的护城河。</p>
+
+      <h3>三种可能性 vs 真相</h3>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>假设</th><th>对不对</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="product-name">是 Hyperliquid Labs 100% 子公司</td>
+            <td><span class="tag">半对</span></td>
+            <td>不是直接子公司, 但<strong>Hyperunit</strong> 团队和 Hyperliquid Labs 共列 "Guardian Set", 资金和人深度同源。</td>
+          </tr>
+          <tr>
+            <td class="product-name">用了 Builder Code 的第三方前端</td>
+            <td><span class="tag" style="background:rgba(167,49,33,0.1);color:var(--accent-warn);">错</span></td>
+            <td>Builder Code 是 PVP.trade、Phantom 走的路 — 只做前端, 抽前端手续费; trade.xyz 走的是更底层的 HIP-3, 自己<strong>定义市场</strong>, 收 50% 手续费分成。</td>
+          </tr>
+          <tr>
+            <td class="product-name">独立竞争对手</td>
+            <td><span class="tag" style="background:rgba(167,49,33,0.1);color:var(--accent-warn);">错</span></td>
+            <td>不是竞争, 是 Hyperliquid 用 trade.xyz 拓展"美股+大宗+外汇"这条第二增长曲线。trade.xyz 越成功, HYPE 通过协议费回购越多。</td>
+          </tr>
+          <tr>
+            <td class="product-name">流动性聚合器</td>
+            <td><span class="tag" style="background:rgba(167,49,33,0.1);color:var(--accent-warn);">错</span></td>
+            <td>流动性只来自 Hyperliquid 撮合引擎, 不聚合任何其他 DEX。</td>
+          </tr>
+          <tr>
+            <td class="product-name">部署在 EVM / Solana</td>
+            <td><span class="tag" style="background:rgba(167,49,33,0.1);color:var(--accent-warn);">错</span></td>
+            <td>直接跑在 Hyperliquid L1 的 HyperCore 上, 不是 HyperEVM 也不是任何外链。</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3>HIP-3 部署的硬门槛</h3>
+
+      <p>HIP-3 是 Hyperliquid 在 2025 年 10 月上线的新机制, 它让 Hyperliquid 从"一个永续交易所"升级为"一个永续基础设施"。其他团队可以借用 Hyperliquid 的撮合引擎和流动性, 但要付出一笔严肃的"皮在桌子上"成本:</p>
+
+      <div class="metric-list">
+        <div class="metric-row">
+          <div class="label">质押要求<span class="src">Hyperliquid 官方 HIP-3 docs</span></div>
+          <div class="value warn">500,000 HYPE</div>
+        </div>
+        <div class="metric-row">
+          <div class="label">按当前 HYPE 价 ~$40-49 折合<span class="src">CoinGecko 现货</span></div>
+          <div class="value">$20-25M <small>USD</small></div>
+        </div>
+        <div class="metric-row">
+          <div class="label">最少锁定时长<span class="src">HIP-3 docs</span></div>
+          <div class="value">183 <small>天</small></div>
+        </div>
+        <div class="metric-row">
+          <div class="label">手续费分给 Hyperliquid<span class="src">trade.xyz docs</span></div>
+          <div class="value data">50%</div>
+        </div>
+        <div class="metric-row">
+          <div class="label">手续费分给 trade.xyz<span class="src">trade.xyz docs</span></div>
+          <div class="value data">50%</div>
+        </div>
+        <div class="metric-row">
+          <div class="label">部署者地址<span class="src">docs.trade.xyz</span></div>
+          <div class="value" style="font-family:var(--mono);font-size:13px;">0x888...0888</div>
+        </div>
+      </div>
+
+      <p><strong>500K HYPE 是一个非常严肃的过滤器</strong> (X 用户 @Yaugourt 原话: <em>"500k HYPE is a serious filter right now. Only well-funded..."</em>)。这个数字未来会随基础设施成熟而下调, 但今天能跨过这道门槛的, 都是有真金白银的团队。</p>
+
+      <h3>Hyperliquid 官方怎么看</h3>
+
+      <div class="quote">
+        Hyperliquid 上的 RWA (现实世界资产) 交易在公开兴趣方面达到了 26 亿美元的新高, 是两个月前的两倍。对 24/7、对链式访问现实世界资产的需求持续增长。
+        <div class="quote-attr">@HyperliquidX 官号 · 2026-05-18 · 333K 浏览</div>
+      </div>
+
+      <p>没点名 trade.xyz, 但 trade.xyz 占整个 Hyperliquid RWA 的 90%+ — HL 在用 trade.xyz 的成绩做生态宣传。这种"心照不宣"是最强的官方背书。</p>
+    </section>
+
+    <!-- ===== SECTION 04 · Data ===== -->
+    <section id="data">
+      <div class="section-num">04 · 链上数据 & 财报</div>
+      <h2>年化跑出 $71.93M 手续费, trade.xyz 拿一半</h2>
+
+      <p>下面所有数据来自 DefiLlama 一手 (trade.xyz 在 DefiLlama 上有独立 protocol 页) + loris.tools HIP-3 看板, 截至 2026-05-20 实测。链上仪表盘的数字是滚动值, 不同时刻刷新会略有差异。</p>
+
+      <h3>核心交易数据</h3>
+
+      <div class="metric-list">
+        <div class="metric-row">
+          <div class="label">累计成交量 (上线 7 个月)<span class="src">DefiLlama / 一手</span></div>
+          <div class="value data">$216.05<small>B</small></div>
+        </div>
+        <div class="metric-row">
+          <div class="label">30 天成交量<span class="src">DefiLlama</span></div>
+          <div class="value">$56.08<small>B</small></div>
+        </div>
+        <div class="metric-row">
+          <div class="label">7 天成交量<span class="src">DefiLlama</span></div>
+          <div class="value">$13.58<small>B</small></div>
+        </div>
+        <div class="metric-row">
+          <div class="label">24 小时成交量<span class="src">DefiLlama</span></div>
+          <div class="value">$2.44<small>B</small></div>
+        </div>
+        <div class="metric-row">
+          <div class="label">当前 OI (Open Interest, 未平仓合约名义价值)<span class="src">DefiLlama</span></div>
+          <div class="value">$2.44<small>B</small></div>
+        </div>
+        <div class="metric-row">
+          <div class="label">累计独立交易员<span class="src">loris.tools / HIP-3 看板</span></div>
+          <div class="value pos">256,851 <small>地址</small></div>
+        </div>
+        <div class="metric-row">
+          <div class="label">占 HIP-3 总 OI 比例<span class="src">loris.tools</span></div>
+          <div class="value warn">~94.9%</div>
+        </div>
+        <div class="metric-row">
+          <div class="label">占 HIP-3 总成交量比例<span class="src">loris.tools</span></div>
+          <div class="value warn">~88.7%</div>
+        </div>
+      </div>
+
+      <h3>财务: 季度财报 (DefiLlama Income Statement 一手)</h3>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>季度</th>
+            <th style="text-align:right;">Gross Revenue</th>
+            <th style="text-align:right;">→ Hyperliquid 那一半</th>
+            <th style="text-align:right;">→ trade.xyz Deployer</th>
+            <th style="text-align:right;">USDC 推荐返佣</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="product-name">Q4 2025</td>
+            <td style="text-align:right;">$3.05M</td>
+            <td style="text-align:right;">$1.52M</td>
+            <td style="text-align:right;">$1.52M</td>
+            <td style="text-align:right;color:var(--muted);">—</td>
+          </tr>
+          <tr>
+            <td class="product-name">Q1 2026</td>
+            <td style="text-align:right;">$15.86M</td>
+            <td style="text-align:right;">$7.93M</td>
+            <td style="text-align:right;">$7.50M</td>
+            <td style="text-align:right;color:var(--accent-pos);">$428K</td>
+          </tr>
+          <tr style="background:rgba(167, 49, 33, 0.04);">
+            <td class="product-name">Q2 2026 <span class="tag">进行中</span></td>
+            <td style="text-align:right;">$9.99M</td>
+            <td style="text-align:right;">$4.99M</td>
+            <td style="text-align:right;">$3.44M</td>
+            <td style="text-align:right;color:var(--accent-pos);font-weight:600;">$1.55M</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-label">关键发现</div>
+        <p class="callout-quote">"USDC 推荐返佣"这一栏从 Q4 0 → Q1 $428K → Q2 $1.55M, <strong>呈火箭曲线</strong>。这本质上就是事实空投, 只不过给的不是 trade.xyz 自己的代币 (因为还没发), 而是直接给 USDC。AlexPaz0X 原话: <em>"It's not in their own token, but distributing money based on points earned through your activity is still effectively an airdrop, even if it's paid in USDC"</em>。</p>
+      </div>
+
+      <h3>年化数据</h3>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-label">年化 Fees (Gross)</div>
+          <div class="stat-value data">$71.93<span class="unit">M</span></div>
+          <div class="stat-note">≈ 人民币 5.2 亿</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">年化 Revenue (trade.xyz 净)</div>
+          <div class="stat-value pos">$24.74<span class="unit">M</span></div>
+          <div class="stat-note">≈ 人民币 1.8 亿 · 50% 分成后</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">同业可比估值 (推断)</div>
+          <div class="stat-value warn">$7-12<span class="unit">亿</span></div>
+          <div class="stat-note">按 HL 同级 30-50x 收入倍数 · "影子估值"</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 05 · Team ===== -->
+    <section id="team">
+      <div class="section-num">05 · 团队 & 公司档案</div>
+      <h2>匿名团队, 没有 VC, "11 人模型"传人</h2>
+
+      <h3>已知事实</h3>
+      <ul>
+        <li><strong>法律实体</strong>: XYZ Ltd (Terms 2025-10-03 更新, 一手)</li>
+        <li><strong>建造方</strong>: <strong>Hyperunit</strong> 团队 — Hyperliquid 的资产 tokenization 姐妹团队, 与 Hyperliquid Labs 共列 Guardian Set</li>
+        <li><strong>团队规模</strong>: 推断 < 20 人 (招聘 JD 仅 2 个高级岗 · 沿袭 HL 11 人模型)</li>
+        <li><strong>招聘</strong>: Sr. DevOps Engineer + Sr. Software Engineer (Asia or NYC, 来自 @tradexyz 主页 Hiring 区)</li>
+        <li><strong>融资</strong>: <strong>无任何公开 VC 融资</strong> (Crunchbase / PitchBook / rootData 均无条目)</li>
+        <li><strong>公开 face</strong>: 创始人 @sershokunin (Shoku), X 账号为 protected (受保护状态), 跟 Jeff Yan 私下对谈被 PANews 流出</li>
+      </ul>
+
+      <h3>背景推断 (未一手验证, 标⚠)</h3>
+      <p>多源转载提到核心团队来自顶级量化机构 <strong>HRT (Hudson River Trading) / Jump Trading / Fortress / IDF Cyber Units (以色列 8200 部队)</strong>。这与 Hyperliquid 本体 (Jeff Yan = Harvard + HRT 校友) 是同一 archetype, 可信度高但缺一手证明。</p>
+
+      <div class="callout">
+        <div class="callout-label">创始人自述 · PANews 流出</div>
+        <p class="callout-quote">"Hyperliquid 有潜力拯救加密货币。如果我没有遇到 Jeff (Yan), 我可能早就离开加密圈了。"</p>
+        <p class="callout-quote">"我们团队不属于 Yan 的核心团队 — 但在 Hyperliquid 上影响力最大的产品, 现在正在由不在 Yan 团队里的人建造。"</p>
+      </div>
+
+      <h3>组织哲学: 反 VC / 反公关</h3>
+      <p>整个 trade.xyz 没有任何融资公告、没有顶级 VC 站台 (a16z / Paradigm / Multicoin / Dragonfly / Variant / Polychain 都没碰)、没有 Crunchbase 条目、Twitter 公告频道仅 1227 订阅、TechCrunch / Bloomberg / Forbes 都没专门报道。这是典型的"链上原生爆款打法" — 不需要外部资本背书, 用真实交易量和收入说话。</p>
+
+      <p>对产品创业者的启示: 在 Web3 这个生态里, "无融资 + lean team + 拿独家授权 + 寄生大平台" 已经被证明是可以做到年化 $25M 收入的可行路径。</p>
+    </section>
+
+    <!-- ===== SECTION 06 · Airdrop Truth ===== -->
+    <section id="airdrop">
+      <div class="section-num">06 · 空投真相</div>
+      <h2>"没有 Points" 但 "USDC 已经在发"</h2>
+
+      <p>这是用户最在意的问题, 也是这次调研最有"反直觉"信号的部分。</p>
+
+      <h3>官方明确: <strong>没有 Points 系统</strong></h3>
+      <ul>
+        <li>官网 trade.xyz · ✗ 无任何 Points 入口</li>
+        <li>docs.trade.xyz · ✗ 全文搜不到 "points" / "season" / "airdrop"</li>
+        <li>官方 X @tradexyz (45.2K 粉) · ✗ 第一条置顶推文只讲"防骗", 无任何积分公告</li>
+        <li>Telegram 官方公告频道 · ✗ 仅 1,227 订阅, 无积分公告</li>
+        <li>airdrops.io 列表 · ⚠ 标 "Airdrop unconfirmed"</li>
+      </ul>
+
+      <h3>KOL 一边倒看好, 但表态保留</h3>
+
+      <div class="two-col">
+        <div class="col-card pos">
+          <h4>强烈看好</h4>
+          <ul>
+            <li><strong>@lanaaielsa (中文区, 51K 浏览)</strong>: "巨毛! 大毛不可错过" · "hyperliquid 生态算是最大方的生态之一"</li>
+            <li><strong>@DidiTrading (英文区)</strong>: "high-conviction equity perp DEX farm... qualify for $HYPE & $UNIT airdrops"</li>
+            <li><strong>@0xSunNFT (21.1 万粉)</strong>: 自己下了 <strong>$200 万 USD (≈ ¥1440 万)</strong> 真金大仓位</li>
+            <li><strong>@dov_wo</strong>: "这个周期最大的创新"</li>
+            <li><strong>@top7ico</strong>: "Real revenue + pre-TGE = the cleanest farming math you can get right now"</li>
+          </ul>
+        </div>
+        <div class="col-card warn">
+          <h4>审慎观望</h4>
+          <ul>
+            <li><strong>AKA羽 (羽的投研笔记)</strong>: "目前他们还没有 tge 相关的线索, 也没有很好的参与角度, 只能再等等了" — 致命缺陷一针见血</li>
+            <li><strong>阿空 (加密星空)</strong>: "trade.xyz 的空投可以指望一下, 有空的可以刷一刷, 我不是太想刷了" — 性价比不够吸引大 KOL 重仓</li>
+            <li><strong>@Airdrop_Lin</strong>: "trade.xyz 大概率是不会發幣的, 而在 Hyperliquid 生態 RWA 的第二把交椅就是 Dreamcash"</li>
+            <li><strong>@abstract4567</strong>: 哲学性批评 Pre-IPO 永续 — "你真的在持有 'pre-IPO SpaceX' 吗? 全是永续合约, cash-settled, 资金费率, 清算线。这不是持有资产, 是在对赌一个价格 feed"</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>"事实空投": Q2 已经发了 $1.55M USDC</h3>
+
+      <p>真正改变 framing 的是 DefiLlama 财报里的一栏数字 — <strong>"Referral & Trading Discounts"</strong>:</p>
+
+      <div class="metric-list">
+        <div class="metric-row">
+          <div class="label">Q4 2025 USDC 返佣<span class="src">DefiLlama Income Statement</span></div>
+          <div class="value" style="color:var(--muted);">$0</div>
+        </div>
+        <div class="metric-row">
+          <div class="label">Q1 2026 USDC 返佣<span class="src">DefiLlama Income Statement</span></div>
+          <div class="value">$428<small>K</small></div>
+        </div>
+        <div class="metric-row">
+          <div class="label">Q2 2026 USDC 返佣 (进行中)<span class="src">DefiLlama Income Statement</span></div>
+          <div class="value pos">$1.55<small>M</small></div>
+        </div>
+        <div class="metric-row">
+          <div class="label">年化推算 Q2 节奏 (×4)<span class="src">主观外推, 仅参考</span></div>
+          <div class="value pos">~$6.2<small>M / 年</small></div>
+        </div>
+      </div>
+
+      <p>翻译: trade.xyz <strong>没说"我有 Points"</strong>, 但<strong>已经在用 USDC 直接奖励高活跃用户和推荐人</strong>, 而且额度在加速。这不是 IOU (代币欠条), 是直接到账的真钱。</p>
+
+      <h3>三层撸毛预期叠加</h3>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-label">第一层 · USDC 事实空投</div>
+          <div class="stat-value pos">已发</div>
+          <div class="stat-note">Q2 $1.55M · 推荐 + 高频 · 已确认</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">第二层 · $HYPE Season 2</div>
+          <div class="stat-value data">预期</div>
+          <div class="stat-note">HL S1 发了 31% 总量 · S2 会再发, trade.xyz 量算 HL 量</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">第三层 · $UNIT (Hyperunit) TGE</div>
+          <div class="stat-value">预期</div>
+          <div class="stat-note">Hyperunit 母品牌大概率发币, trade.xyz 算 GMV 贡献</div>
+        </div>
+      </div>
+
+      <p>这是"一份资金三份票"的撸毛模型 — 即使最坏情况 trade.xyz 自己不发币, 你也能拿到 USDC + 可能的 HYPE S2 + UNIT 三件之中至少一件。</p>
+    </section>
+
+    <!-- ===== SECTION 07 · Farming ===== -->
+    <section id="farming">
+      <div class="section-num">07 · 撸毛策略</div>
+      <h2>30 天行动方案 + ROI 测算</h2>
+
+      <p>注: 以下方案基于历史同类项目空投外推 + 当前 USDC 返佣节奏, 不是承诺。trade.xyz 没有官方 Points 规则, 所有数字都是"假设", 不是"保证"。</p>
+
+      <h3>开户准备 (Day 0)</h3>
+      <ol>
+        <li><strong>钱包</strong>: 全新干净的 EVM 钱包 (Rabby / MetaMask), 避免与已知 HL 主号、Themino 农场资金共用 — 这是反女巫核心</li>
+        <li><strong>资金路径</strong>: CEX (Binance / OKX) 提 USDC → Arbitrum → 桥到 Hyperliquid → 进 trade.xyz</li>
+        <li><strong>激活 HL 主站</strong>: 在 HL 主站先做一笔 $1000+ BTC perp, 同时建立 HL Season 3 资格</li>
+        <li><strong>用 HL 推荐码</strong>: 任何朋友的 HL 推荐码, 首 $25M 量拿 4% 手续费折扣 (净省钱)</li>
+        <li><strong>存入资金</strong>: 至少 $3K USDC, 留余量给保证金</li>
+      </ol>
+
+      <h3>30 天具体行动</h3>
+
+      <div class="path-detail">
+        <div class="path-card a">
+          <div class="path-num">WEEK 1-2 · 建立"真用户"画像</div>
+          <h4>$80K-$230K 累计成交</h4>
+          <ul>
+            <li>每天 2-4 笔, 分散到不同时段 (开盘前 / 盘中 / 盘后 / 亚洲时段都要有)</li>
+            <li>至少 3 种资产 (NVDA / TSLA / XYZ100 / Gold), <strong>不要只刷 CL (原油)</strong> — Themino 99.3% 在 CL 上, 已被打标</li>
+            <li>混用限价单 (Maker rebate 更高) 和市价单, 像真实交易员</li>
+            <li>杠杆 3-10x, 别开 50x 满杠杆</li>
+            <li>每天至少 8-12 小时持有头寸 (OI 时长加权很关键)</li>
+          </ul>
+        </div>
+        <div class="path-card">
+          <div class="path-num">WEEK 3-4 · 深度 + 套利</div>
+          <h4>$300K-$1M 累计成交</h4>
+          <ul>
+            <li>引入 Pre-IPO (SPCX / CBRS) 小仓 $1K-$3K — 新人少, 项目方在推</li>
+            <li>引入大宗 (Gold / Silver) — Themino 浓度比股票低</li>
+            <li>新闻驱动交易 (英伟达财报、美联储) 加大频次</li>
+            <li>用周末 (CME 闭市, trade.xyz 不停) 跑指数 — 差异化护城河, 大概率权重高</li>
+            <li>不要月末突然冲量 — 项目方按持续性 > 单点高峰算分</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>预期 ROI 测算 (基于历史外推 · 假设非保证)</h3>
+
+      <p>参考锚点: HL S1 空投单户均值 ~$74,500 USD (受众 94K 钱包); Aevo 单户均值 $2K (受众 46K); Lighter 头部单户 $5K-$20K (受众 ~50K)。</p>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>档位</th><th>TGE FDV 假设</th><th>空投占比</th><th>单户均值预期</th><th>净 ROI (月化)</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="product-name">保守</td>
+            <td>$300M</td>
+            <td>5%</td>
+            <td>$200-$500</td>
+            <td>1.3-3.3% / 30 天</td>
+          </tr>
+          <tr style="background:rgba(28,77,107,0.04);">
+            <td class="product-name">中性</td>
+            <td>$1.5B (参考 Aevo)</td>
+            <td>10%</td>
+            <td><strong>$1,500-$5,000</strong></td>
+            <td><strong>10-33% / 30 天</strong></td>
+          </tr>
+          <tr>
+            <td class="product-name">乐观</td>
+            <td>$5B (参考 Lighter / HL 同梯队)</td>
+            <td>15%</td>
+            <td>$8,000-$30,000</td>
+            <td>53-200% / 30 天</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3>替代方案对比</h3>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>方案</th><th>资金</th><th>风险</th><th>中性 ROI 预期</th><th>建议</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="product-name">A. trade.xyz 单跑</td>
+            <td>$15K</td>
+            <td>中</td>
+            <td>$1.5K-$5K</td>
+            <td>不如 B</td>
+          </tr>
+          <tr style="background:rgba(44,94,63,0.08);">
+            <td class="product-name">B. trade.xyz + HL S3 双跑</td>
+            <td>$15K 共用</td>
+            <td>中</td>
+            <td>$2K-$8K</td>
+            <td><strong>推荐</strong></td>
+          </tr>
+          <tr style="background:rgba(44,94,63,0.12);">
+            <td class="product-name">C. trade.xyz + HL S3 + Hyperunit 三联</td>
+            <td>$15K 共用</td>
+            <td>中</td>
+            <td><strong>$3K-$10K</strong></td>
+            <td><strong>天花板</strong></td>
+          </tr>
+          <tr>
+            <td class="product-name">D. 单跑 Lighter</td>
+            <td>$15K</td>
+            <td>低 (已发币)</td>
+            <td>$1K-$3K</td>
+            <td>已 TGE, Season 3 单位价值缩水</td>
+          </tr>
+          <tr>
+            <td class="product-name">E. 单跑 Polymarket</td>
+            <td>$5K</td>
+            <td>低</td>
+            <td>$500-$3K</td>
+            <td>分散用</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 08 · Sybil Risk ===== -->
+    <section id="sybil">
+      <div class="section-num">08 · 女巫风险</div>
+      <h2>44% 钱包是同一家农场, 工业化撸毛已死</h2>
+
+      <p>Arrakis 在 2026-04-29 发布、被 ChainCatcher 中文转载的链上分析报告, 拆穿了 trade.xyz 上撸毛玩家的真实结构 — 数据非常惊人:</p>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-label">采样周期</div>
+          <div class="stat-value">21<span class="unit">天</span></div>
+          <div class="stat-note">2026-03-10 至 03-31 · 4 个市场</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">总独立钱包</div>
+          <div class="stat-value">79,622</div>
+          <div class="stat-note">总成交 $51.95B</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label warn">被识别为撸毛号</div>
+          <div class="stat-value warn">35,091</div>
+          <div class="stat-note">占总钱包 44.07%</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">撸毛号贡献成交量</div>
+          <div class="stat-value">$400M</div>
+          <div class="stat-note">仅占总量 0.77% — 量小到无足轻重</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label warn">99.9% 撸毛号追溯到一家</div>
+          <div class="stat-value warn">Themino</div>
+          <div class="stat-note">34,553 / 34,602 — 一个 Polymarket 老炮的农场</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">真做市商占比</div>
+          <div class="stat-value pos">&lt; 0.5%</div>
+          <div class="stat-note">钱包 (Jump / Selini / Wintermute) 贡献 63% 成交</div>
+        </div>
+      </div>
+
+      <h3>Themino 的"模板"</h3>
+      <div class="callout warn">
+        <div class="callout-label">链上指纹</div>
+        <p>每个钱包 26 秒完成 5 步:</p>
+        <p>① 接收资金 → ② 转入子账户 → ③ 在 xyz:CL (原油) 执行一买一卖 IOC (立即成交或取消) 多空对敲 → ④ 转回 → ⑤ 给下一个钱包</p>
+        <p>每笔 internal transfer 损失 $1 USD 协议费, 在 34,510 次内部转账事件中, <strong>Themino 一共烧了 $34,510 USD (≈ ¥24.8 万) 协议费</strong>, 只为搭起 3.4 万小号的撸毛矩阵。</p>
+        <p class="callout-quote">如果团队执行严格的女巫识别, Themino 拿到的是 $0。如果你长得像 Themino, 你拿到的也是 $0。</p>
+      </div>
+
+      <h3>对撸毛玩家的含义</h3>
+      <ul>
+        <li><strong>多账号策略不建议</strong> — 项目方拥有充足的链上聚类工具, 而且 Themino 的指纹太明显, 反女巫规则大概率反它这种模式</li>
+        <li><strong>真账号 + 多样化行为 > 10 个对敲号</strong> — 资金来源独立、IP 独立、设备指纹独立, 多种资产、多种订单类型</li>
+        <li><strong>$5K 以下账号不建议参与</strong> — 手续费 + funding 损耗 + 风险吸收能力都不够</li>
+      </ul>
+    </section>
+
+    <!-- ===== SECTION 09 · Feedback ===== -->
+    <section id="feedback">
+      <div class="section-num">09 · 市场反馈</div>
+      <h2>英文圈 9/10, 中文圈"圈内热, 圈外零"</h2>
+
+      <h3>认知度地图</h3>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>平台</th><th>认知度</th><th>关键证据</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="product-name">英文 X / Crypto Twitter</td><td><span class="tag" style="background:rgba(44,94,63,0.1);color:var(--accent-pos);">高</span></td><td>@DidiTrading / @0xpostrich / @lana 等多位 KOL 反复 cover</td></tr>
+          <tr><td class="product-name">Reddit r/hyperliquid</td><td><span class="tag" style="background:rgba(44,94,63,0.1);color:var(--accent-pos);">高</span></td><td>SpaceX Pre-IPO 是热门话题</td></tr>
+          <tr><td class="product-name">英文媒体 (TheBlock/Coindesk/Defiant)</td><td><span class="tag" style="background:rgba(44,94,63,0.1);color:var(--accent-pos);">高</span></td><td>S&amp;P 500 授权、SpaceX 上线、监管事件各有覆盖</td></tr>
+          <tr><td class="product-name">推特中文 KOL 圈</td><td><span class="tag" style="background:rgba(44,94,63,0.1);color:var(--accent-pos);">高</span></td><td>@0xSunNFT / @lanaaielsa / @dov_wo / @sanyi_eth_ 多次点名</td></tr>
+          <tr><td class="product-name">公众号 (BlockBeats / ChainCatcher / 加密星空)</td><td><span class="tag" style="background:rgba(44,94,63,0.1);color:var(--accent-pos);">中-高</span></td><td>搜狗微信搜 "tradexyz 空投" 约 123 条结果</td></tr>
+          <tr><td class="product-name">币安广场中文区</td><td><span class="tag">中</span></td><td>有官方 zh-CN 帖, 但讨论比英文少</td></tr>
+          <tr><td class="product-name">知乎</td><td><span class="tag" style="background:rgba(167,49,33,0.1);color:var(--accent-warn);">低</span></td><td>无专门讨论</td></tr>
+          <tr><td class="product-name">小红书 / B 站 / 即刻</td><td><span class="tag" style="background:rgba(167,49,33,0.1);color:var(--accent-warn);">几乎零</span></td><td>未破圈到泛中文场</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3>用户最爱 vs 最骂</h3>
+      <div class="two-col">
+        <div class="col-card pos">
+          <h4>最爱的 3 件事</h4>
+          <ul>
+            <li><strong>真正的 24/7 美股 + Pre-IPO</strong> — CEX 没人敢做, Reddit 用户: "the only pre-launch instrument for exposure [to SpaceX] in the world"</li>
+            <li><strong>Hyperliquid 级别撮合体验</strong> + 真实收入 + 可能双空投 — "Real revenue + pre-TGE = the cleanest farming math you can get right now"</li>
+            <li><strong>正版授权 + 创新</strong> — S&amp;P 500 拿到官方授权, Pre-IPO 永续是全球独创</li>
+          </ul>
+        </div>
+        <div class="col-card warn">
+          <h4>最骂的 3 件事</h4>
+          <ul>
+            <li><strong>周末攻击 / 价格操纵风险</strong> — 2025-12-14 周日有大鲸鱼做空 $10M XYZ100 触发清算 $13M 多头, 3.5% 卖压。Ostium 创始人 Kaledora 公开攻击: "A good example of why weekend closure on perps that don't have a 24/7 spot market is a feature, not a bug!"</li>
+            <li><strong>Pre-IPO 本质上是赌价格 feed 而非持股</strong> — 中文用户 @abstract4567: "全是永续合约。Cash-settled, 资金费率, 清算线。这不是持有资产, 是在对赌一个价格 feed。"</li>
+            <li><strong>早期流动性深度</strong> — @DidiTrading: "getting filled on limit orders can take a while which is annoying" (现已大幅改善)</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>0xSun 的真金背书</h3>
+      <div class="quote">
+        这波美股上涨真给了我一点小小的震撼, 看了一下之前在 TradeXYZ 的仓位, 如果多拿半个月, 到现在利润能多接近 $2M, 当然这样的计算并没有什么意义。
+        <div class="quote-attr">@0xSunNFT (21.1 万粉) · 2026-05-01 · 自述 $200 万 USD 真金大仓位</div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 10 · Competitors ===== -->
+    <section id="competitors">
+      <div class="section-num">10 · 竞品格局</div>
+      <h2>永续 DEX 赛道:HL 一家独大, trade.xyz 是 HIP-3 龙一</h2>
+
+      <p>把 trade.xyz 放回整个永续 DEX 赛道 (DefiLlama 30 天成交数据 · 2026-05-20 实测):</p>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>协议</th><th>链 / 部署</th><th style="text-align:right;">30d Vol</th><th>空投状态</th><th>主要差异化</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="product-name">Hyperliquid <span class="tag">老大</span></td>
+            <td>自有 L1</td>
+            <td style="text-align:right;"><strong>$176.97B</strong></td>
+            <td>HYPE 已发 / FDV $48B</td>
+            <td>全栈式 L1 + 链上订单簿 + 99% 费用回购销毁</td>
+          </tr>
+          <tr style="background:rgba(167,49,33,0.06);">
+            <td class="product-name">trade.xyz <span class="tag">本期主角</span></td>
+            <td>Hyperliquid L1 (HIP-3)</td>
+            <td style="text-align:right;"><strong>$56.08B</strong></td>
+            <td><strong>未发 / 强预期</strong></td>
+            <td>第一个把美股/大宗/Pre-IPO 搬上链, 24/7 交易</td>
+          </tr>
+          <tr>
+            <td class="product-name">Aster</td>
+            <td>BNB Chain</td>
+            <td style="text-align:right;">$49.68B</td>
+            <td>ASTER 已发</td>
+            <td>CZ / Binance 系生态</td>
+          </tr>
+          <tr>
+            <td class="product-name">edgeX / Paradex</td>
+            <td>StarkEx 自有链</td>
+            <td style="text-align:right;">$41.88B</td>
+            <td>未发</td>
+            <td>机构级低延迟、StarkWare 系</td>
+          </tr>
+          <tr>
+            <td class="product-name">Lighter</td>
+            <td>zk-rollup on Arbitrum</td>
+            <td style="text-align:right;">$39.11B</td>
+            <td>LIT 已发 / FDV $1.2B / S3 进行中</td>
+            <td>zk 验证 + 机构化做市</td>
+          </tr>
+          <tr>
+            <td class="product-name">Grvt</td>
+            <td>zkSync stack 自有链</td>
+            <td style="text-align:right;">$37.35B</td>
+            <td>未发 / TGE 临近</td>
+            <td>合规向, 亚洲市场</td>
+          </tr>
+          <tr>
+            <td class="product-name">GMTrade</td>
+            <td>自有链</td>
+            <td style="text-align:right;">$35.22B</td>
+            <td>未详</td>
+            <td>3 个月暗马</td>
+          </tr>
+          <tr>
+            <td class="product-name">Pacifica</td>
+            <td>Solana</td>
+            <td style="text-align:right;">$11.17B</td>
+            <td>未发</td>
+            <td>Solana 黑马</td>
+          </tr>
+          <tr>
+            <td class="product-name">Jupiter Perps</td>
+            <td>Solana</td>
+            <td style="text-align:right;">$5.18B</td>
+            <td>JUP 已发</td>
+            <td>聚合器入口流量, 适合新手</td>
+          </tr>
+          <tr>
+            <td class="product-name">dYdX v4 <span class="tag">老牌掉队</span></td>
+            <td>dYdX Chain (Cosmos)</td>
+            <td style="text-align:right;">$3.70B</td>
+            <td>DYDX FDV $144M (-98%)</td>
+            <td>"为什么不直接用 HL"</td>
+          </tr>
+          <tr>
+            <td class="product-name">GMX V2 <span class="tag">老牌掉队</span></td>
+            <td>Arbitrum + Avalanche</td>
+            <td style="text-align:right;">$2.82B</td>
+            <td>GMX FDV $69M (-80%+)</td>
+            <td>GLP/GM 池模型</td>
+          </tr>
+          <tr>
+            <td class="product-name">Aevo <span class="tag">失血严重</span></td>
+            <td>Aevo L2 (OP stack)</td>
+            <td style="text-align:right;">$83M</td>
+            <td>AEVO FDV $25.5M</td>
+            <td>永续 + 期权</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p>关键判断:</p>
+      <ul>
+        <li><strong>赛道整体已是 HL 一家独大</strong>: HL 单月 $177B, 占永续 DEX 总成交约 44%, 且份额还在涨</li>
+        <li><strong>trade.xyz 是 HL 之外最大的"在 HL 身上盖房子"案例</strong>: 30d $56B, 拍第二</li>
+        <li><strong>所有老牌 (dYdX / GMX / Aevo) 都跌去 80-98%</strong>: 永续 DEX 赛道已重新洗牌, 第一梯队是 HL + trade.xyz + Lighter + edgeX + Pacifica</li>
+        <li><strong>留给后来者的机会窗口</strong>: HIP-3 其他垂直 (预测市场、carbon、利率衍生品) + HL 之外的本地化生态 + 合规向</li>
+      </ul>
+    </section>
+
+    <!-- ===== SECTION 11 · China ===== -->
+    <section id="china">
+      <div class="section-num">11 · 中国市场</div>
+      <h2>不屏蔽 · 不强 KYC · 但法律风险自担</h2>
+
+      <div class="metric-list">
+        <div class="metric-row">
+          <div class="label">访问需要梯子吗<span class="src">大陆 / 港台访问</span></div>
+          <div class="value">需要 <small>VPN</small></div>
+        </div>
+        <div class="metric-row">
+          <div class="label">中文界面<span class="src">trade.xyz UI</span></div>
+          <div class="value warn">仅英文</div>
+        </div>
+        <div class="metric-row">
+          <div class="label">KYC 要求<span class="src">Terms / docs</span></div>
+          <div class="value pos">不强制 <small>(钱包接入即用)</small></div>
+        </div>
+        <div class="metric-row">
+          <div class="label">中国大陆 / 港 / 台 / 澳<span class="src">trade.xyz/terms 一手</span></div>
+          <div class="value pos">不在禁止国列表</div>
+        </div>
+        <div class="metric-row">
+          <div class="label">禁止国列表<span class="src">trade.xyz/terms</span></div>
+          <div class="value warn">US / Canada / UK / OFAC</div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-label">中国用户法律提醒</div>
+        <p>虽然 trade.xyz 本身不屏蔽中国 IP, 但中国大陆对加密交易整体禁止。Hyperunit 法律实体在境外不影响中国用户被国内法律追究的可能性。<strong>港 / 台 / 澳门</strong>用户法律环境更宽松, 但仍需自评本地监管。</p>
+      </div>
+
+      <h3>SimilarWeb 流量地理分布 (2026-04)</h3>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-label">🇺🇸 美国</div>
+          <div class="stat-value">34.4%</div>
+          <div class="stat-note">VPN 翻出来 + KYC 软地理限制</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">🇰🇷 韩国</div>
+          <div class="stat-value">14.1%</div>
+          <div class="stat-note">合法接触美股 + 高投机文化</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">🇹🇼 台湾</div>
+          <div class="stat-value">6.9%</div>
+          <div class="stat-note">本地股票交易门槛 + 24/7 需求</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">🇯🇵 日本</div>
+          <div class="stat-value">5.7%</div>
+          <div class="stat-note">日股不在 KOSPI 流动性高</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">🇨🇱 智利</div>
+          <div class="stat-value">5.5%</div>
+          <div class="stat-note">通胀对冲 + 美元资产渴求</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">月总访问</div>
+          <div class="stat-value data">112.5K</div>
+          <div class="stat-note">+8.31% MoM · 76.67% Direct 流量</div>
+        </div>
+      </div>
+
+      <p>韩国 / 台湾 / 智利能排前 5 的项目, 在中文圈很少见 — 反映 trade.xyz 满足的痛点是"<em>这些地区合法门槛高的用户, 想 24/7 杠杆参与美股 / 黄金</em>"的真刚需。</p>
+    </section>
+
+    <!-- ===== SECTION 12 · Regulatory Risk ===== -->
+    <section id="risk">
+      <div class="section-num">12 · 监管尾部风险</div>
+      <h2>2026-05-15 CME + ICE 开始向 CFTC 施压</h2>
+
+      <p>这是 5/15-5/16 突发事件, 是这次调研发现的最大尾部风险:</p>
+
+      <div class="timeline">
+        <div class="tl-row">
+          <div class="tl-date">2025-10-13</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">HIP-3 上线 + trade.xyz 部署</div>
+            <div class="tl-desc">trade.xyz 是 HIP-3 协议生效首日就跑起来的项目</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2025-12-14</div>
+          <div class="tl-dot warn"></div>
+          <div class="tl-content">
+            <div class="tl-title warn">周末攻击事件</div>
+            <div class="tl-desc">单钱包做空 $10M XYZ100, 清算 $13M 多头, 3.5% 卖压。Ostium 创始人公开质疑周末交易设计。</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2026-03-18</div>
+          <div class="tl-dot data"></div>
+          <div class="tl-content">
+            <div class="tl-title">拿到 S&amp;P 500 官方授权</div>
+            <div class="tl-desc">标普道琼斯指数公司 (S&amp;P DJI) 发布官方新闻稿 — 全球首例</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2026-04-29</div>
+          <div class="tl-dot warn"></div>
+          <div class="tl-content">
+            <div class="tl-title warn">Arrakis 公开点名 Themino 农场</div>
+            <div class="tl-desc">"44% 钱包属于一家 Polymarket 老炮" — 工业化撸毛模板被钉死</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2026-05-15</div>
+          <div class="tl-dot warn"></div>
+          <div class="tl-content">
+            <div class="tl-title warn">CME + ICE 联合向 CFTC 施压</div>
+            <div class="tl-desc">两家美国传统衍生品巨头要求监管 Hyperliquid · 主要靶点是油价 perp 操纵风险 (CL 是 trade.xyz 最大市场)</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2026-05-18</div>
+          <div class="tl-dot data"></div>
+          <div class="tl-content">
+            <div class="tl-title">SpaceX Pre-IPO 永续上线</div>
+            <div class="tl-desc">SPCX 启动价 $150 / 参考"隐含市值" $1.78 万亿 USD · 首日 $33M 成交</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>监管事件的真实威胁度</h3>
+      <div class="callout warn">
+        <div class="callout-label">为什么这件事值得关注</div>
+        <p>CME 和 ICE 是美国传统衍生品市场的两大支柱 (CME = 芝商所、ICE = 纽交所母公司), 它们联合施压 CFTC (美国商品期货交易委员会) 表明<strong>传统金融已经认真把 Hyperliquid 当威胁</strong>。trade.xyz 的 CL (原油) perp 和 SPCX (SpaceX) 这种 Pre-IPO 永续, 在 SEC / CFTC 眼里都是<strong>未注册证券/商品衍生品</strong>。</p>
+        <p>已 mitigation: trade.xyz 软地理屏蔽 US/CA/UK, Hyperliquid 已设 Hyperliquid Policy Center 公开应对。但<strong>"CFTC 立案 + 制裁 Hyperliquid 美国节点"</strong>是真实可能性。</p>
+        <p>对撸毛玩家含义: 监管事件可能加速 trade.xyz 发 token (因为没发 token 时, 团队和用户都更难被起诉), 也可能让团队选择"永远不发, 只做服务"。两种情况都不能排除。</p>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 13 · Decision ===== -->
+    <section id="decision">
+      <div class="section-num">13 · 决策建议</div>
+      <h2>三条路径, 按风险偏好选</h2>
+
+      <div class="verdict">
+        <div class="verdict-title">FINAL VERDICT · 三条路径</div>
+        <h3>"双跑甚至三跑"才是 trade.xyz 的最优解</h3>
+        <p>不要把它当作"单一项目撸毛", 它的真正价值在于<strong>"一份资金多份票"</strong>。任何在 trade.xyz 上的真实交易, 同时算 HL Season 3 + 可能的 Hyperunit ($UNIT) + 可能的 trade.xyz 自己 — 三层叠加。</p>
+        <p>但<em>不要工业化刷量</em>。Themino 的坟堆就在那。</p>
+
+        <div class="verdict-options">
+          <div class="verdict-option">
+            <div class="num">PATH A · 低风险</div>
+            <h4>跳过, 撸已发币的 Lighter</h4>
+            <p>资金 &lt; $3K 或受不了"没明牌任务"的不确定性, 直接撸 Lighter Season 3 (有积分公开)。性价比不如 B, 但确定性最高。</p>
+          </div>
+          <div class="verdict-option">
+            <div class="num">PATH B · 中风险</div>
+            <h4>$15K 双跑: trade.xyz + HL S3</h4>
+            <p>本期<strong>推荐方案</strong>。$15K 真实账号, 30 天 $500K-$1M 成交, 多资产多时段, 自动收割 trade.xyz USDC + HL Season 3。中性档预期 $2K-$8K 月化回报。</p>
+          </div>
+          <div class="verdict-option">
+            <div class="num">PATH C · 中风险 (天花板)</div>
+            <h4>$15K 三跑: 加 Hyperunit</h4>
+            <p>同笔 $15K 资金额外接入 Hyperunit (跨链/资产代币化模块), 同时算 trade.xyz + HL S3 + 可能的 $UNIT 空投。中性档预期 $3K-$10K, 天花板最高。</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>PATH B · 30 天行动指南 (推荐方案展开)</h3>
+      <div class="path-detail">
+        <div class="path-card a">
+          <div class="path-num">第 1-15 天 · 真用户画像建立</div>
+          <h4>累计 $230K USD 成交</h4>
+          <ul>
+            <li>开新钱包, CEX → Arbitrum → Hyperliquid → trade.xyz</li>
+            <li>HL 主站先做 $1000 BTC perp 激活 Season 3</li>
+            <li>trade.xyz 上每天 2-4 笔, 5+ 种资产 (NVDA / TSLA / Gold / Silver / XYZ100)</li>
+            <li>每天至少 8-12 小时持有头寸 (OI 加权)</li>
+            <li>限价 + 市价混用, 杠杆 3-10x</li>
+          </ul>
+        </div>
+        <div class="path-card a">
+          <div class="path-num">第 16-30 天 · 深度 + 套利</div>
+          <h4>累计 $1M USD 成交</h4>
+          <ul>
+            <li>试 SPCX / CBRS Pre-IPO 小仓 $1K-$3K (差异化护城河)</li>
+            <li>周末跑指数 (CME 闭市, 权重大概率高)</li>
+            <li>新闻驱动加大频次 (财报 / 美联储)</li>
+            <li>保留头寸进入下月 (空投 snapshot 通常按 30/60 日平均 OI 算)</li>
+            <li>截图保存所有月活记录, 万一申诉用</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>不论选哪条路, 都要避开的 3 个坑</h3>
+      <ul>
+        <li><strong>别工业化刷小号</strong>。Themino 的坟堆就在那, 项目方已点名。多账号 ROI 比真账号低一个数量级。</li>
+        <li><strong>别 all-in 单一资产</strong>。99.3% 撸毛号在 CL (原油), 已被打标。多资产 + 多时段是反女巫核心。</li>
+        <li><strong>别忽视监管尾部</strong>。CME/ICE 已开始施压, 一旦 CFTC 立案, trade.xyz 可能强制下架部分标的 (尤其是 CL 和 SPCX), 撸毛节奏会被打断。配套准备 Plan B (转撸 Lighter / Hyperunit) 很必要。</li>
+      </ul>
+
+      <h3>对产品创业者的额外建议</h3>
+      <p>trade.xyz 本身比"撸毛"更值得研究的, 是它的<strong>商业模式样本</strong>:</p>
+      <ul>
+        <li>匿名小团队 + 0 VC + 寄生大平台 (HIP-3) + 拿独家授权 (S&amp;P 500) + 拒绝公关营销 → 9 个月做到年化 $25M 收入</li>
+        <li>这是 2026 年最干净的"在巨头基础设施上长出新巨头"的案例</li>
+        <li>启示: HIP-3 这类"permissionless 部署 + 收入分成"是新型 Web3 SaaS 模型。护城河在 (a) 拿独家授权 (b) 第一家做合规叙事 (c) 极致 lean team 保持决策速度</li>
+      </ul>
+
+      <div class="divider-quote">
+        "你最大的优势不是资金, 是你不需要赢。<br>真正的撸毛和真正的产品, 都赢在'多份票同时算分'的复用上。"
+      </div>
+    </section>
+
+  </article>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <h4>数据来源 (按可信度排序)</h4>
+    <ul>
+      <li><strong>官方一手</strong>: <a href="https://trade.xyz/">trade.xyz</a></li>
+      <li><a href="https://docs.trade.xyz/">docs.trade.xyz</a></li>
+      <li><a href="https://trade.xyz/terms">trade.xyz/terms (XYZ Ltd)</a></li>
+      <li><a href="https://docs.hyperunit.xyz/">docs.hyperunit.xyz</a></li>
+      <li><a href="https://hyperunit.xyz/">hyperunit.xyz</a></li>
+      <li><strong>HL HIP-3 官方</strong>: <a href="https://hyperliquid.gitbook.io/hyperliquid-docs/hyperliquid-improvement-proposals-hips/hip-3-builder-deployed-perpetuals">HIP-3 文档</a></li>
+      <li><strong>链上数据</strong>: <a href="https://defillama.com/protocol/tradexyz">DefiLlama tradeXYZ</a></li>
+      <li><a href="https://loris.tools/hip3">loris.tools HIP-3 看板</a></li>
+      <li><strong>S&amp;P 500 授权</strong>: <a href="https://press.spglobal.com/2026-03-18-S-P-Dow-Jones-Indices-Licenses-S-P-500-R-to-Trade-XYZ-for-Perpetual-Contracts-on-Hyperliquid">S&amp;P Global 新闻稿</a></li>
+      <li><strong>媒体深报</strong>: <a href="https://www.theblock.co/post/394124/sp-dow-jones-indices-licenses-brand-for-first-official-sp-500-perp-to-trade-on-hyperliquid">The Block</a></li>
+      <li><a href="https://www.coindesk.com/markets/2026/05/18/hype-pops-7-beating-bitcoin-declines-as-spacex-pre-ipo-lands-on-hyperliquid">CoinDesk SpaceX</a></li>
+      <li><a href="https://thedefiant.io/news/defi/tradexyz-lands-official-s-and-p-500-license-for-on-chain-perpetual">The Defiant 授权报道</a></li>
+      <li><a href="https://thedefiant.io/news/defi/cme-and-nyse-owner-push-u-s-regulators-to-crack-down-on-hyperliquid">CME/ICE 监管施压</a></li>
+      <li><a href="https://unchainedcrypto.com/sp-500-perpetual-debuts-on-hyperliquid-with-official-license/">Unchained Laura Shin</a></li>
+      <li><strong>女巫报告</strong>: <a href="https://www.chaincatcher.com/article/2261815">ChainCatcher 转 Arrakis 报告</a></li>
+      <li><strong>中文深报</strong>: <a href="https://www.theblockbeats.info/news/61833">律动 BlockBeats</a></li>
+      <li><a href="https://www.bitget.com/news/detail/12560605082523">Bitget News HIP-3 分析</a></li>
+      <li><a href="https://www.coingecko.com/learn/hyperliquid-hip3-hip4-tokenized-stocks-and-prediction-markets">CoinGecko HIP-3 解释</a></li>
+      <li><strong>撸毛攻略</strong>: <a href="https://airdrops.io/trade-xyz/">airdrops.io 列表</a></li>
+      <li><strong>KOL 一手</strong>: X @0xSunNFT / @lanaaielsa / @dov_wo / @sanyi_eth_ / @DidiTrading / @0xpostrich / @top7ico</li>
+    </ul>
+    <div class="footer-meta">
+      <div>Ray 深度调研引擎 · 5 个并行子 Agent · 26 个一手来源</div>
+      <div>调研时间 2026-05-20 · 数据时点性 · 仅供参考非投资建议</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== JS ===== -->
+<script>
+// IntersectionObserver 让 TOC 自动跟随当前章节高亮
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      document.querySelectorAll('nav.toc a').forEach(link => {
+        link.style.color = '';
+        link.style.fontWeight = '';
+      });
+      const activeLink = document.querySelector(`nav.toc a[href="#${id}"]`);
+      if (activeLink) {
+        activeLink.style.color = 'var(--accent-warn)';
+        activeLink.style.fontWeight = '600';
+      }
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+
+// Theme toggle
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  function setTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+    try { localStorage.setItem('ray-theme', theme); } catch (e) {}
+  }
+  btn.addEventListener('click', function() {
+    var current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
+  // 跟随系统偏好变化
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      try {
+        if (!localStorage.getItem('ray-theme')) {
+          setTheme(e.matches ? 'dark' : 'light');
+        }
+      } catch (err) {}
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -146,6 +146,12 @@
 |------|------|---------|
 | 2026-05-19 | [初版投资调研 · 最便宜的中概股，便宜得有理由](pdd/2026-05-19-pdd.html) | [↗ Open](https://kdsz001.github.io/ray-research/pdd/2026-05-19-pdd.html) |
 
+### 🔱 [trade.xyz](trade-xyz/) · Hyperliquid HIP-3 第一大永续 DEX · 撸毛策略调研
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-20 | [初版深度调研 · 把美股、黄金、SpaceX 搬上链的 HL 长子](trade-xyz/2026-05-20-trade-xyz.html) | [↗ Open](https://kdsz001.github.io/ray-research/trade-xyz/2026-05-20-trade-xyz.html) |
+
 <!-- INDEX-END -->
 
 ---

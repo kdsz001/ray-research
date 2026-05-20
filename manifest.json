@@ -284,6 +284,18 @@
           "title": "初版投资调研 · 最便宜的中概股，便宜得有理由"
         }
       ]
+    },
+    {
+      "slug": "trade-xyz",
+      "name": "trade.xyz",
+      "tagline": "Hyperliquid HIP-3 第一大永续 DEX · 撸毛策略 · 5 维度调研",
+      "reports": [
+        {
+          "date": "2026-05-20",
+          "file": "2026-05-20-trade-xyz.html",
+          "title": "初版深度调研 · 把美股、黄金、SpaceX 搬上链的 HL 长子"
+        }
+      ]
     }
   ]
 }
