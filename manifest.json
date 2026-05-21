@@ -7,6 +7,18 @@
   },
   "topics": [
     {
+      "slug": "sunny-optical",
+      "name": "舜宇光学 2382.HK",
+      "tagline": "港股光学硬件龙头 · 投资决策类调研",
+      "reports": [
+        {
+          "date": "2026-05-22",
+          "file": "2026-05-22-sunny-optical.html",
+          "title": "当前是否值得买入 · 全局发展视角"
+        }
+      ]
+    },
+    {
       "slug": "ai-semiconductor-2026",
       "name": "AI 半导体 2026",
       "tagline": "智能体 AI + 物理 AI 瓶颈 · 半导体产业链全景 · 投资机会",

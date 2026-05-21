@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>舜宇光学 (2382.HK) 投资调研报告 · 2026.05</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec; --bg-paper: #fbf9f4; --bg-card: #ffffff;
+  --bg-dark: #14110d; --bg-dark2: #1f1b16;
+  --ink: #14110d; --ink-2: #2c2620; --muted: #6e6358; --light: #a39787;
+  --rule: #14110d; --rule-light: #d8d1c2;
+  --accent-warn: #a73121; --accent-data: #1c4d6b; --accent-pos: #2c5e3f; --accent-yellow: #c89a2c;
+  --grad-warn: rgba(167, 49, 33, 0.04); --grad-data: rgba(28, 77, 107, 0.04);
+  --bg-inverse: #14110d; --bg-inverse-2: #1f1b16;
+  --ink-on-inverse: #f6f3ec;
+  --text-on-inverse: rgba(246, 243, 236, 0.85);
+  --muted-on-inverse: rgba(246, 243, 236, 0.7);
+  --faint-on-inverse: rgba(246, 243, 236, 0.55);
+  --light-on-inverse: rgba(246, 243, 236, 0.5);
+  --rule-on-inverse: rgba(246, 243, 236, 0.18);
+  --accent-yellow-on-inverse: #c89a2c;
+  --serif: "Source Serif 4", "Source Serif Pro", "Charter", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+  --max-w: 820px;
+}
+[data-theme="dark"] {
+  --bg: #15120e; --bg-paper: #1c1814; --bg-card: #1f1b16;
+  --bg-dark: #0a0907; --bg-dark2: #0f0d0a;
+  --ink: #ebe3d3; --ink-2: #c9bfae; --muted: #8d8170; --light: #5c5346;
+  --rule: #ebe3d3; --rule-light: #3a342c;
+  --accent-warn: #e87a5f; --accent-data: #6cb1d6; --accent-pos: #6db98c; --accent-yellow: #e6b945;
+  --bg-inverse: #ede5d3; --bg-inverse-2: #e0d8c5;
+  --ink-on-inverse: #14110d;
+  --text-on-inverse: rgba(20, 17, 13, 0.85);
+  --muted-on-inverse: rgba(20, 17, 13, 0.7);
+  --faint-on-inverse: rgba(20, 17, 13, 0.55);
+  --light-on-inverse: rgba(20, 17, 13, 0.5);
+  --rule-on-inverse: rgba(20, 17, 13, 0.18);
+  --accent-yellow-on-inverse: #a47a18;
+}
+body, .tldr, .verdict, .quickfacts-wrap, footer, table, th, td, .stat, .col-card, .callout, .path-card, .verdict-option, .qf-cell {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--sans); background: var(--bg); color: var(--ink);
+  line-height: 1.65; font-size: 16px;
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(167, 49, 33, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 80% 100%, rgba(28, 77, 107, 0.04) 0%, transparent 40%);
+}
+.topbar { border-bottom: 1px solid var(--rule); background: var(--bg-paper); padding: 14px 0; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+.topbar-inner { max-width: 1180px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; color: var(--muted); }
+.topbar strong { color: var(--ink); font-weight: 600; }
+
+.hero { max-width: 1180px; margin: 0 auto; padding: 80px 32px 100px; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 2fr 1fr; gap: 60px; align-items: end; }
+.hero-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-warn); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.hero-eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--accent-warn); }
+.hero h1 { font-family: var(--serif); font-weight: 600; font-size: 72px; line-height: 1.0; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 28px; font-feature-settings: "ss01"; }
+.hero h1 em { font-style: italic; color: var(--accent-warn); font-weight: 500; }
+.hero-subtitle { font-family: var(--serif); font-size: 22px; line-height: 1.45; color: var(--muted); font-style: italic; max-width: 580px; }
+.hero-meta { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 24px; }
+.hero-meta dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
+.hero-meta dt { color: var(--light); font-weight: 400; }
+.hero-meta dd { color: var(--ink); font-weight: 500; }
+
+.quickfacts-wrap { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 60px 0 80px; border-bottom: 1px solid var(--rule); }
+.quickfacts { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+.qf-header { margin-bottom: 36px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.qf-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-yellow-on-inverse); }
+.qf-title { font-family: var(--serif); font-style: italic; font-size: 28px; font-weight: 500; color: var(--text-on-inverse); letter-spacing: -0.01em; }
+.qf-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--rule-on-inverse); border: 1px solid var(--rule-on-inverse); }
+.qf-cell { background: var(--bg-inverse); padding: 22px 18px 20px; display: flex; flex-direction: column; gap: 6px; min-height: 120px; }
+.qf-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light-on-inverse); }
+.qf-value { font-family: var(--serif); font-weight: 600; font-size: 30px; line-height: 1; color: var(--ink-on-inverse); letter-spacing: -0.02em; margin-top: auto; margin-bottom: 4px; }
+.qf-value.warn { color: var(--accent-warn); }
+.qf-value.pos { color: var(--accent-pos); }
+.qf-value.data { color: var(--accent-data); }
+.qf-value .qf-unit { font-size: 13px; color: var(--faint-on-inverse); margin-left: 2px; font-weight: 400; }
+.qf-sub { font-size: 11.5px; color: var(--faint-on-inverse); line-height: 1.35; }
+.qf-cell-verdict { background: var(--accent-warn); color: white; }
+.qf-cell-verdict .qf-label { color: rgba(255, 255, 255, 0.8); }
+.qf-cell-verdict .qf-verdict { font-family: var(--serif); font-style: italic; font-size: 20px; font-weight: 600; line-height: 1.2; color: white; margin-top: auto; letter-spacing: -0.01em; }
+.qf-cell-verdict .qf-sub { color: rgba(255, 255, 255, 0.85); }
+
+.container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+main { display: grid; grid-template-columns: 200px 1fr; gap: 60px; max-width: 1180px; margin: 0 auto; padding: 0 32px 120px; }
+
+nav.toc { position: sticky; top: 40px; align-self: start; height: fit-content; padding-top: 80px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+nav.toc h4 { font-size: 10px; color: var(--light); margin-bottom: 18px; font-weight: 500; letter-spacing: 0.15em; }
+nav.toc ol { list-style: none; counter-reset: toc; }
+nav.toc li { counter-increment: toc; margin-bottom: 14px; border-left: 1px solid var(--rule-light); padding-left: 14px; transition: border-color 0.2s; }
+nav.toc li:hover { border-left-color: var(--ink); }
+nav.toc li::before { content: "0" counter(toc); display: block; color: var(--light); font-size: 10px; margin-bottom: 2px; }
+nav.toc a { color: var(--ink-2); text-decoration: none; line-height: 1.3; display: block; font-weight: 500; }
+nav.toc a:hover { color: var(--accent-warn); }
+
+article { max-width: var(--max-w); padding-top: 60px; }
+section { padding: 60px 0; border-top: 1px solid var(--rule-light); scroll-margin-top: 30px; }
+section:first-of-type { border-top: none; padding-top: 20px; }
+.section-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-warn); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+.section-num::after { content: ""; flex: 1; height: 1px; background: var(--rule-light); }
+section h2 { font-family: var(--serif); font-weight: 600; font-size: 42px; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 32px; }
+section h3 { font-family: var(--serif); font-weight: 600; font-size: 24px; line-height: 1.3; margin-top: 48px; margin-bottom: 16px; color: var(--ink); }
+section h4 { font-family: var(--sans); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin-top: 36px; margin-bottom: 12px; }
+section p { font-family: var(--sans); font-size: 16px; line-height: 1.7; color: var(--ink-2); margin-bottom: 16px; }
+section p strong { color: var(--ink); font-weight: 600; }
+section a { color: var(--accent-data); text-decoration: underline; text-decoration-color: rgba(28, 77, 107, 0.3); text-underline-offset: 3px; }
+ul, ol { padding-left: 22px; margin-bottom: 18px; }
+li { margin-bottom: 8px; line-height: 1.7; color: var(--ink-2); }
+li::marker { color: var(--light); }
+
+.tldr { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 56px 56px; margin-top: 40px; position: relative; }
+.tldr::before { content: "TL;DR"; position: absolute; top: -1px; left: 56px; background: var(--accent-warn); color: white; padding: 4px 16px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; font-weight: 600; }
+.tldr h3 { font-family: var(--serif); color: var(--ink-on-inverse); font-size: 22px; font-weight: 500; margin-top: 28px; margin-bottom: 12px; }
+.tldr h3:first-of-type { margin-top: 16px; }
+.tldr p, .tldr li { color: var(--text-on-inverse); }
+.tldr p strong, .tldr li strong { color: var(--ink-on-inverse); }
+.tldr ol, .tldr ul { padding-left: 18px; }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 32px 0; }
+.stat { background: var(--bg-card); padding: 28px 24px; }
+.stat-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 10px; }
+.stat-value { font-family: var(--serif); font-weight: 600; font-size: 36px; line-height: 1; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.02em; }
+.stat-value .unit { font-size: 16px; color: var(--muted); font-weight: 400; margin-left: 4px; }
+.stat-value.warn { color: var(--accent-warn); }
+.stat-value.pos { color: var(--accent-pos); }
+.stat-value.data { color: var(--accent-data); }
+.stat-note { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 24px 0; }
+.col-card { border: 1px solid var(--rule-light); padding: 28px; background: var(--bg-card); }
+.col-card h4 { margin-top: 0; display: flex; align-items: center; gap: 10px; }
+.col-card.pos h4 { color: var(--accent-pos); }
+.col-card.warn h4 { color: var(--accent-warn); }
+.col-card h4::before { display: inline-block; width: 18px; height: 18px; border-radius: 50%; font-family: var(--serif); font-size: 13px; text-align: center; line-height: 18px; font-weight: 600; }
+.col-card.pos h4::before { content: "✓"; background: var(--accent-pos); color: white; }
+.col-card.warn h4::before { content: "!"; background: var(--accent-warn); color: white; font-style: italic; }
+.col-card ul { padding-left: 18px; margin-bottom: 0; }
+.col-card li { font-size: 14px; line-height: 1.55; }
+
+.quote { border-left: 3px solid var(--accent-warn); padding: 8px 0 8px 24px; margin: 24px 0; font-family: var(--serif); font-size: 18px; line-height: 1.55; font-style: italic; color: var(--ink-2); }
+.quote-attr { font-family: var(--sans); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 12px; font-weight: 500; }
+.quote-attr::before { content: "— "; }
+
+.table-wrap { overflow-x: auto; margin: 24px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--bg-card); }
+th { text-align: left; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; padding: 12px 14px; border-bottom: 2px solid var(--ink); background: var(--bg-paper); white-space: nowrap; vertical-align: bottom; }
+td { padding: 14px; border-bottom: 1px solid var(--rule-light); vertical-align: top; line-height: 1.5; color: var(--ink-2); }
+td.product-name { font-weight: 600; color: var(--ink); font-family: var(--serif); font-size: 15px; white-space: nowrap; }
+tr:last-child td { border-bottom: 1px solid var(--ink); }
+tr.highlight td { background: rgba(167, 49, 33, 0.04); }
+td .tag { display: inline-block; font-family: var(--mono); font-size: 10px; text-transform: uppercase; padding: 2px 6px; background: var(--bg-paper); color: var(--muted); border-radius: 2px; margin-right: 4px; }
+td .unverified { display: inline-block; font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; padding: 2px 6px; background: rgba(167, 49, 33, 0.1); color: var(--accent-warn); border-radius: 2px; margin-left: 4px; letter-spacing: 0.06em; }
+
+.callout { background: var(--bg-paper); border-left: 3px solid var(--ink); padding: 24px 28px; margin: 28px 0; }
+.callout.warn { border-left-color: var(--accent-warn); background: rgba(167, 49, 33, 0.04); }
+.callout.data { border-left-color: var(--accent-data); background: rgba(28, 77, 107, 0.04); }
+.callout-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
+.callout.warn .callout-label { color: var(--accent-warn); }
+.callout.data .callout-label { color: var(--accent-data); }
+.callout p { margin-bottom: 12px; }
+.callout p:last-child { margin-bottom: 0; }
+.callout-quote { font-family: var(--serif); font-size: 17px; font-style: italic; line-height: 1.5; color: var(--ink); }
+
+.metric-list { margin: 28px 0; border-top: 1px solid var(--ink); }
+.metric-row { display: grid; grid-template-columns: 1fr auto; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--rule-light); gap: 24px; }
+.metric-row:last-child { border-bottom: 1px solid var(--ink); }
+.metric-row .label { font-size: 14px; color: var(--ink-2); }
+.metric-row .label .src { display: block; font-size: 11px; color: var(--light); margin-top: 2px; font-family: var(--mono); }
+.metric-row .label .verified { color: var(--accent-pos); }
+.metric-row .label .unverified { color: var(--accent-warn); }
+.metric-row .value { font-family: var(--serif); font-size: 28px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; text-align: right; white-space: nowrap; }
+.metric-row .value.warn { color: var(--accent-warn); }
+.metric-row .value.pos { color: var(--accent-pos); }
+.metric-row .value.data { color: var(--accent-data); }
+.metric-row .value small { font-size: 14px; color: var(--muted); font-weight: 400; }
+
+.divider-quote { margin: 80px 0; text-align: center; font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--muted); line-height: 1.5; position: relative; padding: 32px 60px; }
+.divider-quote::before, .divider-quote::after { content: ""; position: absolute; width: 40px; height: 1px; background: var(--rule); top: 0; left: 50%; transform: translateX(-50%); }
+.divider-quote::after { top: auto; bottom: 0; }
+
+.timeline { margin: 32px 0; position: relative; padding-left: 0; }
+.timeline::before { content: ""; position: absolute; left: 92px; top: 8px; bottom: 8px; width: 1px; background: var(--rule-light); }
+.tl-row { display: grid; grid-template-columns: 80px 14px 1fr; gap: 12px; margin-bottom: 24px; align-items: start; }
+.tl-row .tl-date { font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em; color: var(--muted); text-align: right; padding-top: 4px; text-transform: uppercase; }
+.tl-row .tl-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--ink); margin-top: 4px; position: relative; z-index: 2; }
+.tl-row .tl-dot.warn { border-color: var(--accent-warn); background: var(--accent-warn); }
+.tl-row .tl-dot.data { border-color: var(--accent-data); background: var(--accent-data); }
+.tl-row .tl-dot.pos { border-color: var(--accent-pos); background: var(--accent-pos); }
+.tl-row .tl-content { padding-top: 0; }
+.tl-row .tl-title { font-family: var(--serif); font-weight: 600; font-size: 16px; color: var(--ink); line-height: 1.3; margin-bottom: 4px; }
+.tl-row .tl-title.warn { color: var(--accent-warn); }
+.tl-row .tl-desc { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+
+.path-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 28px 0; }
+.path-card { border: 1px solid var(--rule-light); background: var(--bg-card); padding: 26px 24px; position: relative; }
+.path-card.a { border-top: 4px solid var(--accent-pos); }
+.path-card.b { border-top: 4px solid var(--accent-yellow); }
+.path-card.c { border-top: 4px solid var(--accent-warn); }
+.path-card .path-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.path-card.a .path-num { color: var(--accent-pos); }
+.path-card.b .path-num { color: var(--accent-yellow); }
+.path-card.c .path-num { color: var(--accent-warn); }
+.path-card h4 { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--ink); text-transform: none; letter-spacing: 0; margin: 0 0 14px 0; }
+.path-card p { font-size: 13.5px; line-height: 1.55; color: var(--muted); margin-bottom: 10px; }
+.path-card ul { margin: 0; padding-left: 18px; }
+.path-card li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; color: var(--ink-2); }
+
+.verdict { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 80px 56px; margin: 80px 0 0; position: relative; }
+.verdict-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-yellow-on-inverse); margin-bottom: 24px; }
+.verdict h3 { font-family: var(--serif); font-size: 34px; line-height: 1.2; font-weight: 600; margin-bottom: 24px; color: var(--ink-on-inverse); letter-spacing: -0.02em; }
+.verdict p { color: var(--text-on-inverse); font-size: 17px; line-height: 1.65; margin-bottom: 14px; }
+.verdict p strong { color: var(--ink-on-inverse); }
+.verdict-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 40px; background: var(--rule-on-inverse); }
+.verdict-option { background: var(--bg-inverse); padding: 28px 24px; }
+.verdict-option .num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--accent-yellow-on-inverse); margin-bottom: 12px; }
+.verdict-option h4 { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--ink-on-inverse); margin-bottom: 10px; text-transform: none; letter-spacing: 0; }
+.verdict-option p { font-size: 14px; line-height: 1.55; margin-bottom: 0; color: var(--muted-on-inverse); }
+
+.score-card { border: 1px solid var(--ink); padding: 32px; margin: 24px 0; background: var(--bg-card); }
+.score-row { display: grid; grid-template-columns: 200px 1fr 50px; gap: 20px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--rule-light); }
+.score-row:last-child { border-bottom: none; }
+.score-row .name { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: 15px; }
+.score-row .bar { background: var(--bg-paper); height: 8px; position: relative; }
+.score-row .bar-fill { height: 100%; background: var(--accent-data); }
+.score-row .bar-fill.warn { background: var(--accent-warn); }
+.score-row .bar-fill.pos { background: var(--accent-pos); }
+.score-row .num { font-family: var(--mono); font-weight: 600; font-size: 14px; color: var(--ink); text-align: right; }
+
+footer { border-top: 1px solid var(--rule); background: var(--bg-inverse); color: var(--muted-on-inverse); padding: 60px 32px 80px; margin-top: 0; }
+.footer-inner { max-width: 1180px; margin: 0 auto; }
+footer h4 { color: var(--ink-on-inverse); margin-bottom: 18px; font-family: var(--serif); font-size: 16px; font-weight: 600; }
+footer ul { padding-left: 0; list-style: none; columns: 2; column-gap: 40px; }
+footer li { font-size: 12px; line-height: 1.5; margin-bottom: 8px; font-family: var(--mono); break-inside: avoid; }
+footer a { color: var(--accent-yellow-on-inverse); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+.footer-meta { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--rule-on-inverse); font-size: 11px; color: var(--light-on-inverse); font-family: var(--mono); letter-spacing: 0.05em; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+
+@media (max-width: 1100px) {
+  main { grid-template-columns: 1fr; }
+  nav.toc { position: static; padding-top: 40px; }
+  nav.toc ol { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 52px; }
+  .verdict-options { grid-template-columns: 1fr; }
+  .qf-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
+  .hero { padding: 40px 20px 60px; }
+  .hero h1 { font-size: 40px; }
+  .hero-subtitle { font-size: 18px; }
+  main { padding: 0 20px 80px; gap: 0; }
+  .container, .quickfacts { padding: 0 20px; }
+  .quickfacts-wrap { padding: 40px 0 50px; }
+  .qf-grid { grid-template-columns: repeat(2, 1fr); }
+  .qf-value { font-size: 24px; }
+  .qf-cell-verdict .qf-verdict { font-size: 16px; }
+  nav.toc ol { grid-template-columns: 1fr; }
+  section h2 { font-size: 30px; }
+  .stats { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  .verdict, .tldr { padding: 40px 24px; }
+  .verdict h3 { font-size: 26px; }
+  .score-row { grid-template-columns: 120px 1fr 40px; gap: 12px; }
+  footer ul { columns: 1; }
+  .timeline::before { left: 11px; }
+  .tl-row { grid-template-columns: 80px 1fr; }
+  .path-detail { grid-template-columns: 1fr; }
+}
+
+#theme-toggle { position: fixed; top: 14px; right: 24px; z-index: 1000; width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--rule-light); color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.12s; }
+#theme-toggle:hover { background: var(--bg-paper); border-color: var(--ink); }
+#theme-toggle:active { transform: scale(0.92); }
+#theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] #theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] #theme-toggle { background: var(--bg-paper); border-color: var(--rule-light); color: var(--ink); }
+@media (max-width: 720px) { #theme-toggle { top: 10px; right: 14px; width: 32px; height: 32px; } }
+
+@media print {
+  body { background: white; font-size: 11pt; }
+  .topbar, nav.toc, footer, #theme-toggle { display: none; }
+  main { display: block; max-width: 100%; padding: 0; }
+  article { max-width: 100%; padding-top: 0; }
+  .hero { padding: 30px 0; page-break-after: always; grid-template-columns: 1fr; }
+  .hero h1 { font-size: 34pt; color: black; }
+  .hero h1 em { color: #a73121; }
+  .quickfacts-wrap { background: white; color: black; padding: 20px 0; page-break-after: always; }
+  .qf-grid { background: #ddd; border-color: #ddd; }
+  .qf-cell { background: white; }
+  .qf-label, .qf-sub { color: #666 !important; }
+  .qf-value { color: black !important; }
+  .qf-cell-verdict { background: #f4e6e3 !important; }
+  .qf-cell-verdict .qf-verdict, .qf-cell-verdict .qf-label, .qf-cell-verdict .qf-sub { color: black !important; }
+  section { page-break-inside: avoid; padding: 20px 0; border-top: 2px solid #000; }
+  section h2 { font-size: 20pt; }
+  section h3 { font-size: 14pt; }
+  .tldr, .verdict { background: #f5f5f5 !important; color: black !important; padding: 24px !important; }
+  .tldr *, .verdict * { color: black !important; }
+  .verdict-option { background: white !important; border: 1px solid #ddd; }
+  a { color: black !important; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="切换夜间模式" title="切换浅色 / 夜间模式">
+  <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div><strong>舜宇光学 2382.HK</strong> · 投资调研报告</div>
+    <div>数据基准 <strong>2026 · 05 · 21</strong> · 报告日 <strong>2026 · 05 · 22</strong></div>
+    <div>为长线持仓决策准备 · 第一版</div>
+  </div>
+</div>
+
+<header class="hero">
+  <div>
+    <div class="hero-eyebrow">Ray Deep Research · 港股 / 光学硬件</div>
+    <h1>它不是<em>最性感的</em>，但它是唯一三个赛道<em>都不会缺席</em>的玩家。</h1>
+    <p class="hero-subtitle">手机镜头第二、车载镜头第一、AR/VR 光学第二。PE 14× 处于 5 年历史 14% 分位，公司在 HK$62–66 区间用真金白银 HK$10.2 亿回购给出信号。买点合理，但要分批、要带止损、要分清"周期回升"与"二次冲顶"的概率。</p>
+  </div>
+  <aside class="hero-meta">
+    <dl>
+      <dt>调研对象</dt><dd>舜宇光学 (2382.HK)</dd>
+      <dt>核心问题</dt><dd>当前是否值得买入</dd>
+      <dt>派出 Agents</dt><dd>6 (财务/业务/竞品/宏观/估值/散户)</dd>
+      <dt>子 Agent 字数</dt><dd>约 6.5 万字</dd>
+      <dt>数据验证</dt><dd>Codex 独立审查 · 15 项 suspect 已处理</dd>
+      <dt>读者</dt><dd>Ray · 非职业投资人</dd>
+    </dl>
+  </aside>
+</header>
+
+<section class="quickfacts-wrap" style="border-top: none; padding: 60px 0 80px;">
+  <div class="quickfacts">
+    <div class="qf-header">
+      <div class="qf-eyebrow">Quick Facts · 10 秒速览</div>
+      <div class="qf-title"><em>Sunny Optical at a Glance</em></div>
+    </div>
+    <div class="qf-grid">
+      <div class="qf-cell"><div class="qf-label">当前股价</div><div class="qf-value">68.60<span class="qf-unit"> HK$</span></div><div class="qf-sub">5/21 收盘 +9.32%</div></div>
+      <div class="qf-cell"><div class="qf-label">市值</div><div class="qf-value">735<span class="qf-unit"> 亿 HK$</span></div><div class="qf-sub">约 $94 亿</div></div>
+      <div class="qf-cell"><div class="qf-label">PE TTM</div><div class="qf-value data">~14<span class="qf-unit">×</span></div><div class="qf-sub">5 年历史 14% 分位</div></div>
+      <div class="qf-cell"><div class="qf-label">2025 营收</div><div class="qf-value pos">432<span class="qf-unit"> 亿 ¥</span></div><div class="qf-sub">约 $60 亿 · +12.9%</div></div>
+      <div class="qf-cell"><div class="qf-label">2025 净利</div><div class="qf-value pos">46.4<span class="qf-unit"> 亿 ¥</span></div><div class="qf-sub">+71.9% · 含 ¥9.2 亿一次性</div></div>
+      <div class="qf-cell"><div class="qf-label">车载份额</div><div class="qf-value">30<span class="qf-unit">%+</span></div><div class="qf-sub">全球第一 · 连续 13 年</div></div>
+
+      <div class="qf-cell"><div class="qf-label">共识目标价</div><div class="qf-value">80.67<span class="qf-unit"> HK$</span></div><div class="qf-sub">隐含 +17.6% · 23 家平均</div></div>
+      <div class="qf-cell"><div class="qf-label">大行评级</div><div class="qf-value">17 / 6 / 1</div><div class="qf-sub">买入 / 中性 / 卖出</div></div>
+      <div class="qf-cell"><div class="qf-label">52 周区间</div><div class="qf-value">51.5 – 91.4</div><div class="qf-sub">HK$ · 当前居中偏下</div></div>
+      <div class="qf-cell"><div class="qf-label">港股通持股</div><div class="qf-value data">19.09<span class="qf-unit">%</span></div><div class="qf-sub">12 个月翻倍 (10/24 11.9%)</div></div>
+      <div class="qf-cell"><div class="qf-label">公司回购 (2026/1)</div><div class="qf-value">10.2<span class="qf-unit"> 亿 HK$</span></div><div class="qf-sub">1,584 万股 · 均价 64.11</div></div>
+      <div class="qf-cell qf-cell-verdict">
+        <div class="qf-label">最终判断</div>
+        <div class="qf-verdict">分批买入</div>
+        <div class="qf-sub">不追高 · Path B 优先</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <nav class="toc">
+    <h4>目录</h4>
+    <ol>
+      <li><a href="#tldr">一页纸结论</a></li>
+      <li><a href="#data-warn">数据真伪提醒</a></li>
+      <li><a href="#company">公司档案</a></li>
+      <li><a href="#financials">财务基本面</a></li>
+      <li><a href="#business">业务结构 · 大客户</a></li>
+      <li><a href="#competition">竞争格局</a></li>
+      <li><a href="#macro">行业 & 宏观</a></li>
+      <li><a href="#valuation">估值 & 大行评级</a></li>
+      <li><a href="#sentiment">散户情绪 · 资金流向</a></li>
+      <li><a href="#feasibility">买入可行性评分</a></li>
+      <li><a href="#decision">决策建议</a></li>
+    </ol>
+  </nav>
+
+  <article>
+
+    <!-- ===== 1 · TL;DR ===== -->
+    <section id="tldr">
+      <div class="section-num">01 · 一页纸结论</div>
+      <h2>三句话：周期回升 + 估值便宜 + 催化扎堆，但盈利含金量打折</h2>
+
+      <p>舜宇光学 2025 年营收 ¥432.3 亿（约 $60 亿，+12.9%）、归母净利 ¥46.4 亿（约 $6.44 亿，+71.9%）；其中约 <strong>¥9.19 亿是与歌尔股权置换的一次性投资收益</strong>，剔除后实际经营性利润增长仅 ~20%。但即便如此，公司基本面修复方向明确：手机光学高端化、车载光学全球第一、AR/VR 是免费期权。</p>
+
+      <p>当前股价 HK$68.60（约 $8.80）对应 PE TTM 约 14×（来源：ET Net / StockAnalysis），处于过去 5 年估值低位区。大行 23 家覆盖中，17 家买入 / 6 中性 / 1 卖出，共识目标价 HK$80.67（约 $10.34），隐含上涨空间 +17.6%（来源：Investing.com 一致预期）。</p>
+
+      <p>关键催化剂 3 个：<strong>(1) iPhone 18 Pro 可变光圈大单（大立光让位）</strong>、<strong>(2) 舜宇智行车载业务分拆港交所递表</strong>、<strong>(3) AR 眼镜 / CPO 光通信叙事</strong>。三个里只要兑现一个，股价就有动力；但 2026 年 IDC 预测全球手机出货 -12.9%（内存荒），是最大的逆风。</p>
+
+      <div class="tldr">
+        <h3>如果你只能记住 3 件事</h3>
+        <ol>
+          <li><strong>买点是合理的，但不是地板价。</strong>历史峰值 HK$257.65（2021/1）→ 当前 HK$68.60，回撤 73%。但 52 周低点是 HK$51.5，意味着如果遇到宏观再砸盘，还能再跌 25%。**Path B 分批建仓** 比一次性 all-in 更稳。</li>
+          <li><strong>这是周期股，不是稳定成长股。</strong>2021-2023 净利润从 ¥49.9 亿崩到 ¥10.99 亿（-78%）。如果你心理上承受不了 2 年腰斩，不要持有。它适合"分批进、分批出"，不适合"买完装死"。</li>
+          <li><strong>三个催化里两个是郭明錤口径的供应链传闻</strong>（iPhone 18 可变光圈份额、Apple Vision Air 2027 价格）。<strong>这些数据未交叉验证</strong>，把它们当作"上行情景的期权"而不是"基准假设"。Stage 2.5 数据审查已经标出 6+ 项 supply-chain rumor 类信息需要持续跟踪。</li>
+        </ol>
+
+        <h3>如果你想知道"几号买、买多少"</h3>
+        <p><strong>30 天行动指南</strong>：① 等待 5/22-23 短线回踩（可能性高，5/21 单日 +9.32% 后散户已开始"卖飞了"）；② 在 HK$62-66 区间分 3 笔建仓（管理层回购均价区间）；③ 总仓位不超过个人股票资产 8-10%（这是周期股，单一公司风险高于指数）；④ 设定 HK$55 为风控位（破位则减仓至 1/3 或清仓重评估）。</p>
+      </div>
+    </section>
+
+    <!-- ===== 2 · 数据真伪提醒 ===== -->
+    <section id="data-warn">
+      <div class="section-num">02 · 数据真伪提醒</div>
+      <h2>Stage 2.5 Codex 独立审查后，6 项需要明确"未交叉验证"标注</h2>
+
+      <p>本报告所有高 stake 数据点已经过 OpenAI Codex 0.130（web search 启用）独立审查。共抽出 15 个 suspect，多数已交叉验证修正，但<strong>以下 6 项依赖供应链单一来源（多为郭明錤 / Ming-Chi Kuo 渠道）</strong>，公开网络未能找到第二一手出处。决策时把它们当作"上行情景的期权"，不要写进基本盘假设：</p>
+
+      <div class="callout warn">
+        <div class="callout-label">⚠ 单源 / 未交叉验证的关键信息</div>
+        <ul style="margin: 12px 0 0 0;">
+          <li><strong>iPhone 18 Pro 可变光圈 → 舜宇主供份额</strong>：来源郭明錤 Medium 调研。MacRumors / 9to5Mac 的二手转述只支持"舜宇参与"，未确认"快门主供 + 镜头二供"完整链条。</li>
+          <li><strong>舜宇 Apple 镜头份额 2024 ~5% → 2025 恢复 15-20%</strong>：来源郭明錤调研，无财报披露背书。</li>
+          <li><strong>Apple Vision Air 2027 定价 $1,500-1,750</strong>：来源郭明錤 / MacRumors 转述，是供应链预测非产品确认。</li>
+          <li><strong>Meta Quest 3 Pancake 舜宇 / 玉晶光各 50% 份额</strong>：行业二手转述，未见原始 teardown 报告。</li>
+          <li><strong>2025-08 与歌尔"AR 光学合作"</strong>：实际更接近 2025 年股权 / 资产置换交易（已确认 ¥9.19 亿投资收益），泛化为"合作"不准确。</li>
+          <li><strong>中国 L2+ ADAS 渗透率 2025-04 78%</strong>：78% 更像广义 L2 / 智能辅助驾驶口径，写成 L2+ 风险高。</li>
+        </ul>
+      </div>
+
+      <p style="font-size: 14px; color: var(--muted);">已交叉验证修正：研发投入 <strong>¥32.59 亿</strong>（HKEX 年报原文，而非初稿的 ¥29.24 亿）；共识目标价 <strong>HK$80.67</strong>（而非 HK$80.96）；评级分布 <strong>17 / 6 / 1</strong>（而非 17 / 5 / 1）；PE TTM <strong>~14×</strong>（ET Net 13.0 / StockAnalysis 14.05）。</p>
+    </section>
+
+    <!-- ===== 3 · 公司档案 ===== -->
+    <section id="company">
+      <div class="section-num">03 · 公司档案</div>
+      <h2>「全员持股 + 信托代持」的稀有治理结构</h2>
+
+      <p>舜宇光学科技（集团）有限公司由 <strong>王文鉴</strong> 1984 年在浙江余姚创立，最初是一家生产显微镜的乡镇企业。2007 年 6 月在港交所主板上市（代码 2382.HK），现任执行主席 Tan Jiong Wang、CEO Wenjie Wang。</p>
+
+      <p>真正稀有的不是产品，是治理结构：王文鉴 <strong>直接持股仅 6.8-7.68%</strong>，但通过 BVI（英属维尔京群岛）注册的 Sun Xu Limited 拥有 <strong>38.42% 投票权</strong>；同时舜基信托（Shuju Trust）→ 舜旭有限公司代约 <strong>400 名股东（覆盖 2,600+ 员工，含早期保安、厨房师傅）</strong>持有 35.47%。这种"创始人主动让利、全员持股"治理在中国上市公司中极罕见，经过 20 年验证仍稳定运行。<a href="https://m.thepaper.cn/newsDetail_forward_10115796" target="_blank">[澎湃来源]</a></p>
+
+      <h3>主要股东结构</h3>
+      <div class="metric-list">
+        <div class="metric-row"><div class="label">王文鉴 (创始人 · BVI 控股)<span class="src">直接持股 6.8% · 投票权 38.42% · 澎湃 / 新浪 ✓ 已交叉验证</span></div><div class="value">38.42<small>%</small></div></div>
+        <div class="metric-row"><div class="label">舜基信托 (员工持股)<span class="src">代 400 名股东 / 2,600+ 员工 · Minichart 年报摘要 ✓</span></div><div class="value">35.47<small>%</small></div></div>
+        <div class="metric-row"><div class="label">公众流通股 (Free Float)<span class="src">含港股通南向 · 2025 年报披露</span></div><div class="value">61.14<small>%</small></div></div>
+        <div class="metric-row"><div class="label">BlackRock (贝莱德)<span class="src">2025-12 增持触发 5% 披露门槛 · 同花顺 ✓</span></div><div class="value data">5.08<small>%</small></div></div>
+        <div class="metric-row"><div class="label">港股通南向资金 (累计)<span class="src">从 2024-10 的 11.9% → 2026-03 的 19.09% · 证券之星 ✓</span></div><div class="value data">19.09<small>%</small></div></div>
+      </div>
+
+      <h3>主要工厂布局</h3>
+      <p>本部位于浙江余姚（总部 + 主力产能）+ 浙江浙山（车载、AR/VR 新产能）+ 广东中山（手机模组）+ 上海 + 河南信阳（核心扩产基地，2022 起放量）。海外为应对中美脱钩与 Apple 多元化采购：</p>
+      <ul>
+        <li><strong>越南太原</strong>手机摄像模组（2022 量产，初期投资 $7,300 万 + 后续多次增资，仍在持续扩产）</li>
+        <li><strong>越南义安省</strong>新基地（投资 $1.5 亿，预计雇 2 万工人，2025 Q4 投产）<a href="https://www.jiemian.com/article/10131772.html" target="_blank">[界面新闻]</a></li>
+        <li><strong>印度</strong>手机摄像模组工厂已量产</li>
+        <li><strong>德国 / 韩国 / 美国 / 日本</strong>研发中心</li>
+      </ul>
+    </section>
+
+    <!-- ===== 4 · 财务基本面 ===== -->
+    <section id="financials">
+      <div class="section-num">04 · 财务基本面</div>
+      <h2>5 年走过一个完整周期：从 ¥50 亿利润到 ¥11 亿，再爬回 ¥46 亿</h2>
+
+      <p>这是一只极其典型的"消费电子周期股"，过去 5 年看尽了"上升 → 顶 → 暴跌 → 磨底 → 复苏"的完整剧本。理解这个周期波动幅度，是判断当前位置的核心。</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>财年</th><th>营业收入 (¥亿)</th><th>同比</th><th>归母净利 (¥亿)</th><th>同比</th><th>毛利率</th></tr></thead>
+          <tbody>
+            <tr><td class="product-name">FY2020</td><td>380.0 (≈ $52.8 亿)</td><td>+0.4%</td><td>48.7 (≈ $6.8 亿)</td><td>+22.1%</td><td>~23.8%</td></tr>
+            <tr><td class="product-name">FY2021</td><td>375.0 (≈ $52.1 亿)</td><td>-1.3%</td><td><strong>49.9</strong> (≈ $6.9 亿)</td><td>+2.4%</td><td>~24.0%</td></tr>
+            <tr><td class="product-name">FY2022</td><td>330.0 (≈ $45.8 亿)</td><td class="warn">-11.5%</td><td>24.08 (≈ $3.3 亿)</td><td class="warn">-51.7%</td><td>~19.9%</td></tr>
+            <tr><td class="product-name">FY2023 <span class="tag">谷底</span></td><td>316.8 (≈ $44.0 亿)</td><td>-4.6%</td><td class="warn"><strong>10.99</strong> (≈ $1.5 亿)</td><td class="warn">-54.4%</td><td>~14.5%</td></tr>
+            <tr><td class="product-name">FY2024</td><td>382.95 (≈ $53.2 亿)</td><td>+20.9%</td><td>27.0 (≈ $3.75 亿)</td><td class="pos">+145.5%</td><td>18.3%</td></tr>
+            <tr class="highlight"><td class="product-name">FY2025 <span class="tag">最新</span></td><td><strong>432.3</strong> (≈ $60.0 亿)</td><td>+12.9%</td><td><strong>46.4</strong> (≈ $6.44 亿)</td><td class="pos">+71.9%</td><td><strong>19.7%</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-label">⚠ 利润含金量提醒</div>
+        <p>FY2025 净利润 ¥46.4 亿中，约 <strong>¥9.19 亿（约 $1.28 亿，占净利 20%）</strong>来自与歌尔股份的股权置换投资收益（一次性、非经常性）。剔除后 <strong>经常性净利约 ¥37.2 亿（+38% YoY）</strong>，仍然是健康增长，但远不是 +71.9% 那么爆炸。<strong>2026 年盈利共识因此普遍下调到约 ¥40-45 亿区间</strong>。</p>
+      </div>
+
+      <h3>核心比率与现金流</h3>
+      <div class="stats">
+        <div class="stat"><div class="stat-label">FY2025 ROE 估算</div><div class="stat-value">14-15<span class="unit">%</span></div><div class="stat-note">基于 ¥252.9 亿净资产倒推 (年报口径)</div></div>
+        <div class="stat"><div class="stat-label">FY2025 研发投入 ✓</div><div class="stat-value data">32.59<span class="unit">亿 ¥</span></div><div class="stat-note">约 $4.53 亿 · 占营收 ~7.5% (HKEX 年报)</div></div>
+        <div class="stat"><div class="stat-label">2024 资本开支</div><div class="stat-value">22.6<span class="unit">亿 ¥</span></div><div class="stat-note">约 $3.14 亿 · 1H25 +41.5% (产能扩张)</div></div>
+        <div class="stat"><div class="stat-label">现金 + 短存 (2024H1)</div><div class="stat-value pos">114<span class="unit">亿 ¥</span></div><div class="stat-note">约 $15.8 亿 · 净现金状态</div></div>
+        <div class="stat"><div class="stat-label">FY2025 派息</div><div class="stat-value pos">1.206<span class="unit"> HK$/股</span></div><div class="stat-note">同比 +127% · 分红率从 20% 升到 25%</div></div>
+        <div class="stat"><div class="stat-label">2026/1 公司回购</div><div class="stat-value warn">10.2<span class="unit">亿 HK$</span></div><div class="stat-note">1,584 万股 · 均价 HK$64.11 · 强信号</div></div>
+      </div>
+
+      <h3>股价 5 年关键节点</h3>
+      <div class="timeline">
+        <div class="tl-row"><div class="tl-date">2021·01</div><div class="tl-dot warn"></div><div class="tl-content"><div class="tl-title warn">历史峰值 HK$257.65</div><div class="tl-desc">智能手机周期顶 + Apple 产业链叙事高点，市值峰值 HK$2,800 亿（约 $360 亿）。</div></div></div>
+        <div class="tl-row"><div class="tl-date">2022</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">华为受限 + Apple 砍单</div><div class="tl-desc">营收 -11.5%、净利 -51.7%。市场开始重新定价为"周期股"。</div></div></div>
+        <div class="tl-row"><div class="tl-date">2023</div><div class="tl-dot warn"></div><div class="tl-content"><div class="tl-title warn">谷底：净利 ¥10.99 亿 / 股价 HK$50 区间</div><div class="tl-desc">从顶部跌幅约 80%。2023 因质量问题失去部分 iPhone 镜头订单是自身原因。</div></div></div>
+        <div class="tl-row"><div class="tl-date">2024 H2</div><div class="tl-dot pos"></div><div class="tl-content"><div class="tl-title">Apple 订单回归 · 利润反弹</div><div class="tl-desc">FY2024 净利 +145.5%（基数低），股价开始磨底向上。</div></div></div>
+        <div class="tl-row"><div class="tl-date">2026·01</div><div class="tl-dot data"></div><div class="tl-content"><div class="tl-title">公司密集回购 HK$10.2 亿</div><div class="tl-desc">在 HK$62-66 区间连续 6 个交易日回购 1,584 万股，均价 HK$64.11。管理层信号：当前价偏低。</div></div></div>
+        <div class="tl-row"><div class="tl-date">2026·05/12</div><div class="tl-dot data"></div><div class="tl-content"><div class="tl-title">中美会谈缓和 · 单日 +14.83%</div><div class="tl-desc">短线情绪驱动 + 主力资金大额流入。</div></div></div>
+        <div class="tl-row"><div class="tl-date">2026·05/21</div><div class="tl-dot data"></div><div class="tl-content"><div class="tl-title">CPO / 谷歌合作传闻 · +9.32%</div><div class="tl-desc">当日成交额 27.69 亿港币（约 $3.55 亿），主力资金净流入 4.88 亿（约 $6,253 万）。</div></div></div>
+      </div>
+    </section>
+
+    <!-- ===== 5 · 业务结构 ===== -->
+    <section id="business">
+      <div class="section-num">05 · 业务结构 & 大客户</div>
+      <h2>从"手机依赖"到"三驾马车"，但毛利率差 22 个百分点</h2>
+
+      <p>舜宇核心是三大业务：<strong>手机光学（含 HLS 镜头镜片 + HCM 摄像头模组）</strong>、<strong>车载光学（VLS 车载镜头 + 车载模组）</strong>、<strong>XR / 新兴光学（AR/VR 元件 + 激光雷达 + 工业光学）</strong>。</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>业务条线</th><th>2025 营收 (¥亿)</th><th>占比</th><th>同比</th><th>毛利率口径</th></tr></thead>
+          <tbody>
+            <tr><td class="product-name">手机光学</td><td>273.24 (≈ $38.0 亿)</td><td>63.2%</td><td>+8.6%</td><td>镜片 25-30% · 模组 8%+</td></tr>
+            <tr class="highlight"><td class="product-name">车载光学 <span class="tag">高毛利</span></td><td>73.30 (≈ $10.2 亿)</td><td>17.0%</td><td class="pos">+21.3%</td><td><strong>~35% (集团内最高)</strong></td></tr>
+            <tr><td class="product-name">XR / 其他</td><td>85.80 (≈ $11.9 亿)</td><td>19.9%</td><td class="pos">+20.8%</td><td>含光学仪器 (毛利 46%)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>关键 takeaway</strong>：光学零件（镜头镜片）和光电产品（模组）的毛利率差距高达 <strong>22.9 个百分点</strong>——这是为什么舜宇的利润策略是"把高端镜头卖得越多越好，低端模组主动砍掉"。这也解释了 2025 年模组出货量 -9% 但收入仍 +8.6% 的反差。</p>
+
+      <h3>各产品线出货量</h3>
+      <div class="metric-list">
+        <div class="metric-row"><div class="label">手机镜头镜片 (HLS) 2024 出货<span class="src">全球份额 30.8% · 公司月度公告 ✓ 一手</span></div><div class="value">13.24<small> 亿件 / +13.1%</small></div></div>
+        <div class="metric-row"><div class="label">手机镜头 2025 出货<span class="src">主动砍低端 · 群智咨询 ✓</span></div><div class="value warn">12.60<small> 亿件 / -5%</small></div></div>
+        <div class="metric-row"><div class="label">车载镜头 (VLS) 2024 出货<span class="src">首破 1 亿件 · 连续 13 年全球第一</span></div><div class="value pos">1.023<small> 亿件 / +12.7%</small></div></div>
+        <div class="metric-row"><div class="label">车载镜头 2025 出货<span class="src">12 个月加速 · ADAS 渗透提速</span></div><div class="value pos">~1.30<small> 亿件 / +27%</small></div></div>
+        <div class="metric-row"><div class="label">车载镜头 2025-10 单月<span class="src">2026 增长动能强 · OFweek</span></div><div class="value pos">1,222<small> 万件 / +40.3%</small></div></div>
+        <div class="metric-row"><div class="label">1H25 激光雷达光学订单<span class="src">智驾普及拉动 · 公司中报</span></div><div class="value data">&gt;15<small> 亿 ¥ (≈ $2.1 亿)</small></div></div>
+      </div>
+
+      <h3>大客户依赖结构</h3>
+
+      <div class="two-col">
+        <div class="col-card pos">
+          <h4>主要正向信号</h4>
+          <ul>
+            <li><strong>Apple</strong>：2024 镜头份额 ~5% → 2025 恢复到 15-20% <span class="unverified">⚠ 单源</span> （郭明錤口径）。MacBook Pro M5 摄像头模组 2025 新增切入。</li>
+            <li><strong>iPhone 18 Pro 可变光圈</strong>：大立光放弃增产（转 CPO），舜宇接为快门主供 + 镜头二供 <span class="unverified">⚠ 单源</span></li>
+            <li><strong>比亚迪 / 小米 / 蔚来 / 理想</strong>：车载镜头 / 模组主供之一，BYD 21 款新车每款 ~8 颗摄像头</li>
+            <li><strong>Meta Quest 3</strong>：Pancake 透镜舜宇 + 玉晶光各 50% <span class="unverified">⚠ 单源</span></li>
+            <li><strong>舜宇智行招股书披露</strong>：覆盖全球 Top 10 Tier-1 中的 8 家、全球 Top 20 车厂中的 19 家</li>
+          </ul>
+        </div>
+        <div class="col-card warn">
+          <h4>主要风险信号</h4>
+          <ul>
+            <li><strong>车载 ASP 持续下滑</strong>：智能感知摄像头 ASP 2024 ¥76 → 2025 ¥68（-10%+），智能座舱 ¥35 → ¥31</li>
+            <li><strong>2023 失单复盘</strong>：舜宇因生产质量问题流失 iPhone 镜头部分订单，净利从 ¥49.9 亿崩到 ¥11 亿，2 年回不来</li>
+            <li><strong>Top 5 客户依赖度高</strong>：舜宇智行招股书披露前 5 大占 ~40%</li>
+            <li><strong>欧菲光 8MP 前视镜头独供比亚迪</strong>：在车载赛道形成结构性威胁</li>
+            <li><strong>诚瑞光学诉讼</strong>：2022 起持续的手机镜头专利诉讼，未有结案信号</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>舜宇智行（车载分拆）招股书数据</h3>
+      <p>2026-01-26 已向港交所递表（已确认 ✓）。这是当前最大的估值催化剂：车载业务被市场认为"应该值更高 PE（30-40×）"，分拆能释放估值。</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>财年</th><th>营收 (¥亿)</th><th>毛利率</th><th>净利 (¥亿)</th></tr></thead>
+          <tbody>
+            <tr><td class="product-name">2023</td><td>52.62 (≈ $7.3 亿)</td><td>35.7%</td><td>11.40</td></tr>
+            <tr><td class="product-name">2024</td><td>59.89 (≈ $8.3 亿)</td><td>35.5%</td><td>12.72</td></tr>
+            <tr><td class="product-name">2025 前 9 月</td><td>51.46 (≈ $7.1 亿)</td><td class="warn">34.1% (下滑)</td><td>9.72</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-label">⚠ 舜宇智行 IPO 前突击分红风险</div>
+        <p>招股书披露 IPO 前 3 个月向母公司分红 <strong>¥24.43 亿（约 $3.39 亿）</strong>，是当期前 9 月净利 ¥9.72 亿的 <strong>2.5 倍</strong>。子公司现金骤降 77.66%。同时向母公司采购占总采购成本的 16.9% / 14.2% / 12.6%。<strong>市场对独立性 + 治理透明度有持续质疑</strong>。如果分拆失败或上市后大跌，会反过来砸母公司估值。</p>
+      </div>
+    </section>
+
+    <!-- ===== 6 · 竞争格局 ===== -->
+    <section id="competition">
+      <div class="section-num">06 · 竞争格局</div>
+      <h2>全球唯一同时坐稳三个赛道的"三栖玩家"</h2>
+
+      <p>这一年最关键的事件是<strong>大立光（3008.TW，台湾光学龙头）主动让出 iPhone 18 Pro 可变光圈大单</strong>。原因是大立光要把产能腾给 CPO（光电共封装）——AI 数据中心高速光通信的新赛道。<strong>大立光自己也承认手机光学是夕阳</strong>。这给了舜宇接盘的窗口。</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>公司</th><th>市值 (USD)</th><th>2025 营收</th><th>PE TTM</th><th>主战场</th></tr></thead>
+          <tbody>
+            <tr class="highlight"><td class="product-name">舜宇 2382.HK <span class="tag">本调研</span></td><td>$94 亿</td><td>¥432 亿 ($60 亿)</td><td>~14×</td><td>三栖龙头</td></tr>
+            <tr><td class="product-name">大立光 3008.TW</td><td>$91 亿</td><td>NT$621 亿 ($20 亿)</td><td>16.6×</td><td>高端手机镜头</td></tr>
+            <tr><td class="product-name">玉晶光 3406.TW</td><td>$16 亿</td><td>NT$300 亿 ($9.7 亿)</td><td>14.5×</td><td>手机 + VR Pancake</td></tr>
+            <tr><td class="product-name">欧菲光 002456.SZ</td><td>$4.4 亿</td><td>¥221 亿 ($31 亿)</td><td>—</td><td>手机 / 车载模组</td></tr>
+            <tr><td class="product-name">联创电子 002036.SZ</td><td>$16 亿</td><td>¥90 亿 ($12.5 亿)</td><td>100×+ 失真</td><td>特斯拉 HW4.0 镜头</td></tr>
+            <tr><td class="product-name">三星电机</td><td>$57 亿</td><td>KRW 11.3 万亿 ($81 亿)</td><td>12.4×</td><td>Galaxy 自供</td></tr>
+            <tr><td class="product-name">LG Innotek</td><td>$29 亿</td><td>$157 亿</td><td>—</td><td>Apple 模组 (83%)</td></tr>
+            <tr><td class="product-name">歌尔股份 002241.SZ</td><td>~$80 亿+</td><td>¥1,000+ 亿</td><td>~31×</td><td>VR/AR ODM</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>三个板块的格局</h3>
+
+      <h4>① 手机光学：大立光下滑、舜宇追赶 — 夕阳但价值量未顶</h4>
+      <p>手机镜头：大立光 ~31-34% &gt; 舜宇 ~18-21% &gt; 玉晶光 ~7%。模组：LG Innotek（Apple 70%）&gt; 舜宇（安卓阵营）&gt; 三星电机。<strong>2026 年最大变化</strong>：Luxshare（立讯）旗下 ICT 子公司加入 Apple 模组供应链，LG Innotek "成也萧何败也萧何"（Q2 营业利润 -92.5%）。</p>
+
+      <h4>② 车载光学：舜宇绝对领先，但欧菲光是现实威胁</h4>
+      <p>舜宇 ~30%+ 份额（连续 13 年第一） &gt; 联创电子（特斯拉 HW4.0 60% 份额） &gt; Sekonix / 韩华 / 大立光。<strong>欧菲光 8MP 前视镜头独供比亚迪</strong>是结构性威胁，2026 年新增定点订单 ¥30 亿（约 $4.17 亿）、年出货 800 万颗。这是舜宇车载护城河最现实的挑战者。</p>
+
+      <h4>③ AR/VR 光学：第二增长曲线还没成型</h4>
+      <p>Pancake VR 透镜：玉晶光自称全球第一，舜宇 + 玉晶光在 Meta Quest 3 各 50%。光波导：Lumus（以色列）IP 龙头，2025 拿下 Meta Ray-Ban Display + Quanta 扩产同盟；DigiLens / WaveOptics 是海外初创。<strong>舜宇旗下"舜宇奥来"是中国首家用 ASML 光刻机量产碳化硅蚀刻波导</strong>。整体看舜宇在波导 IP 端不如 Lumus，规模端不如歌尔代工。</p>
+
+      <div class="quote">
+        "Largan Precision declined to scale up production for Apple's variable aperture system because the company is motivated by a strategic shift toward co-packaged optics (CPO)..."
+        <div class="quote-attr">Geeky Gadgets · iPhone 18 Pro 报道</div>
+      </div>
+
+      <h3>谁最值得警惕？</h3>
+      <ol>
+        <li><strong>欧菲光车载弯道超车</strong>：8M 前视独供比亚迪、车载毛利 15.7%、净利转正</li>
+        <li><strong>Luxshare 切入 Apple 模组</strong>：会让整个手机模组板块价格战加剧</li>
+        <li><strong>Lumus + Quanta 量产同盟</strong>：AR 眼镜爆发节点上，舜宇衍射波导 IP 落后</li>
+        <li><strong>大立光"回头"</strong>：如果 CPO 进度不达预期，可能夺回 iPhone 高端订单</li>
+        <li><strong>联创电子绑定特斯拉 Optimus</strong>：人形机器人放量后增速可能高过舜宇车载</li>
+      </ol>
+    </section>
+
+    <!-- ===== 7 · 行业 & 宏观 ===== -->
+    <section id="macro">
+      <div class="section-num">07 · 行业 & 宏观</div>
+      <h2>2026 是"内存荒"主导的下行年，但车载和 Apple 订单足够对冲</h2>
+
+      <h3>智能手机周期：量跌价升</h3>
+      <ul>
+        <li>2025 全球出货 ~12.4 亿台，同比 +1.5%（IDC）；iOS 增长 3.9%、苹果 2.47 亿台（+6.1%）</li>
+        <li><strong>2026 IDC 预测：出货同比 -12.9%</strong>（约 11.2 亿台），主因 DRAM/NAND（内存芯片）短缺被 AI 数据中心抢走产能</li>
+        <li>Q1 2026 已经同比 -6%（Counterpoint），终结连续 10 个季度增长</li>
+        <li>但 ASP（平均售价）升至 $465，全球市场金额 $5,789 亿创新高 —— "量跌价升"</li>
+        <li>对舜宇：管理层 2026 指引手机相关收入仍 +5-10%，因高规格升级（潜望、可变光圈、AI 计算摄影）</li>
+      </ul>
+
+      <h3>车载光学：渗透曲线最陡的赛道</h3>
+      <ul>
+        <li>Yole 2024 全球车载摄像头模组市场 ~$60 亿 → 2030 年 $87 亿（CAGR 6.6%）</li>
+        <li>单车摄像头数量：当前 5-8 颗 → 2035 年 10-15+ 颗（Yole）</li>
+        <li>中国智能驾驶渗透率 2025-04 达 78% <span class="unverified">⚠ L2 vs L2+ 口径需厘清</span></li>
+        <li>BYD "天神之眼" 21 款新车铺开，单一客户增量需求 1-2 亿颗镜头</li>
+        <li>对舜宇：车载 CAGR 基准情景 25-30%（高于行业 6.6%，因份额维持 + 单价升级 + 量增）</li>
+      </ul>
+
+      <h3>AR/VR：拐点延后到 2027</h3>
+      <ul>
+        <li><strong>Apple Vision Pro 2024 出货 39 万台，2025 Q4 暴跌至 4.5 万台</strong>（IDC）</li>
+        <li>2026-01 立讯精密已停产 Vision Pro（The Guardian / FT 口径），苹果数字广告投入 -95%+</li>
+        <li>Meta Quest 2025 前 3Q 仅 170 万台（-16%）</li>
+        <li>Meta Reality Labs 2025 全年亏 $192 亿，Zuckerberg 称 2026 "likely be the peak"</li>
+        <li><strong>Apple Vision Air 2027 上市</strong>，价格 $1,500-1,750（半价、轻 40%）<span class="unverified">⚠ 郭明錤口径</span></li>
+        <li>对舜宇：AR/VR 2026-2027 仍是噪音级别贡献，最早 2027 才进入 P&L</li>
+      </ul>
+
+      <h3>中美关税与出口管制：风险被高估，但不能掉以轻心</h3>
+      <ul>
+        <li><strong>舜宇光学未被列入美国实体清单</strong>（公开来源确认）</li>
+        <li>2024-12 BIS 新增 140 家中国半导体相关实体到实体清单（不含舜宇）</li>
+        <li>2025-09 BIS 颁布 50% Rule 类规定（具体表述见 BIS 官方文件 <span class="unverified">⚠ 表述待精确化</span>）：任何被列入实体清单公司的 ≥50% 控股子公司自动适用相同管制</li>
+        <li>川普 2025-04 宣布智能手机 / 电脑 / 芯片临时豁免对等关税</li>
+        <li>Apple 在华供应链多元化加速：2026 年目标所有美国市场 iPhone (6,000 万台) 从印度产</li>
+      </ul>
+
+      <div class="callout warn">
+        <div class="callout-label">情景分析 · 关税对毛利率拖累</div>
+        <p><strong>基准</strong>：维持现状，毛利影响 0~ -1pp（关税转嫁 + 汇率波动）。<strong>温和负面</strong>：川普对中国光学加征 10-25% 关税，苹果要求转嫁 50%，毛利 -2~ -3pp。<strong>严重负面</strong>：舜宇被列入实体清单 50% Rule 间接影响 / 苹果"去中化"扩展到光学，毛利 -5pp+ 且失去 iPhone 18 镜头大单。</p>
+        <p>历史参照：2023 因质量问题失去部分 iPhone 镜头订单，净利从 49.9 亿（2021）→ 11 亿（2023），缩水 78%、毛利率从 24% 跌到 14%。<strong>这是真实可参照的极端下行幅度</strong>。</p>
+      </div>
+    </section>
+
+    <!-- ===== 8 · 估值 & 大行评级 ===== -->
+    <section id="valuation">
+      <div class="section-num">08 · 估值 & 大行评级</div>
+      <h2>共识"谨慎乐观"：17 买 / 6 中性 / 1 卖，目标价 HK$80.67</h2>
+
+      <p>大行 23 家覆盖中，<strong>17 家给买入 / 增持、6 家中性、仅瑞银 UBS 一家给卖出</strong>。共识 12 个月目标价 <strong>HK$80.67</strong>（来源：Investing.com，2026-05 抓取），较当前 HK$68.60 隐含 <strong>+17.6%</strong> 上涨空间。但过去 6 个月目标价共识被多家小幅下调（从 8 月的 ~100 回落到当前 ~80），<strong>多头叙事从"狂热"已回到"等数据兑现"</strong>。</p>
+
+      <h3>大行评级一览（近期 + 关键历史锚点）</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>大行</th><th>研报日</th><th>评级</th><th>目标价 HK$</th><th>变动</th><th>核心论点</th></tr></thead>
+          <tbody>
+            <tr><td class="product-name">JPMorgan <span class="unverified">⚠ 归属存疑</span></td><td>2026-04-01</td><td>中性</td><td>63 (~$8.1)</td><td>↓ 从 75</td><td>2026 营运利润下调 6-8%（Investing 与 MarketScreener 在归属券商上有出入）</td></tr>
+            <tr><td class="product-name">大和 Daiwa</td><td>2026-01-22</td><td>跑赢大市</td><td>72 (~$9.2)</td><td>↓ 从 85</td><td>"存储器涨价带来不可避免的逆风"</td></tr>
+            <tr><td class="product-name">海通国际</td><td>2026-02</td><td>优于大市</td><td>85.24 (~$10.9)</td><td>维持</td><td>智驾单车 12 颗摄像头驱动车载高增长</td></tr>
+            <tr><td class="product-name">中金 CICC</td><td>2025-10-15</td><td>跑赢行业</td><td>99.2 (~$12.7)</td><td>维持</td><td>上调 2025/2026 净利 4-6%</td></tr>
+            <tr><td class="product-name">Morgan Stanley</td><td>2025-07-10</td><td>增持</td><td>90 (~$11.5)</td><td>↑ 从 70</td><td>"负面消息已反映在股价中"</td></tr>
+            <tr><td class="product-name">高盛 Goldman</td><td>2025-05-20</td><td>中性</td><td>83.1 (~$10.7)</td><td>↑ 从 79.9</td><td>看好车载摄像头数量提升 + 2000 万像素渗透率</td></tr>
+            <tr><td class="product-name">Jefferies</td><td>2025-04-15</td><td>买入</td><td>80 (~$10.3)</td><td>升级</td><td>估值修复机会</td></tr>
+            <tr><td class="product-name">花旗 Citi</td><td>2025-03-26</td><td>买入</td><td>98 (~$12.6)</td><td>↓ 从 102</td><td>高端模组 + 车载指引符合预期，但 AI 眼镜推迟到 2026</td></tr>
+            <tr class="highlight"><td class="product-name">UBS 瑞银 <span class="unverified">⚠ 待核</span></td><td>2025-03-26</td><td><strong>卖出</strong></td><td>67 (~$8.6)</td><td>↓↓ 从买入</td><td>"PE 28× 历史高位，是台湾同行 2 倍" — UBS 直接降卖出待原始 note 复核</td></tr>
+            <tr><td class="product-name">美银 BofA</td><td>2024-2025</td><td>买入</td><td>102 (~$13.1)</td><td>↑ 大幅上调</td><td>2026 EPS × 25× PE</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>估值倍数 · 历史区间 · 同业对比</h3>
+      <div class="stats">
+        <div class="stat"><div class="stat-label">当前 PE TTM ✓</div><div class="stat-value data">~14<span class="unit">×</span></div><div class="stat-note">ET Net 13.0 / StockAnalysis 14.05</div></div>
+        <div class="stat"><div class="stat-label">2016-2018 历史高 PE</div><div class="stat-value warn">~53<span class="unit">×</span></div><div class="stat-note">"果链 + 安卓双轮"叙事顶点</div></div>
+        <div class="stat"><div class="stat-label">5 年历史中枢 PE</div><div class="stat-value">~25<span class="unit">×</span></div><div class="stat-note">合理区间锚点</div></div>
+        <div class="stat"><div class="stat-label">大立光当前 PE</div><div class="stat-value">~13.5<span class="unit">×</span></div><div class="stat-note">纯手机镜头龙头</div></div>
+        <div class="stat"><div class="stat-label">PB (市净率)</div><div class="stat-value data">~2.4-2.7<span class="unit">×</span></div><div class="stat-note">历史 14% 分位</div></div>
+        <div class="stat"><div class="stat-label">PEG (估算)</div><div class="stat-value pos">~0.8-1.0</div><div class="stat-note">假设 2026 增速 16-20%</div></div>
+      </div>
+
+      <h3>多空逻辑对比</h3>
+      <div class="two-col">
+        <div class="col-card pos">
+          <h4>多头核心论点 (17 家)</h4>
+          <ul>
+            <li><strong>车载结构性高增长</strong>：CAGR 25-30%</li>
+            <li><strong>iPhone 18 Pro 可变光圈大单</strong>：大立光让位</li>
+            <li><strong>手机高端化</strong>：玻塑混合 + 潜望镜头 + 大底模组</li>
+            <li><strong>泛 IoT 业务 2026 指引 +60% YoY</strong>：机器人视觉 + AI 工业相机</li>
+            <li><strong>舜宇智行分拆估值重估</strong>：~$83-111 亿独立估值预期</li>
+            <li><strong>PE 处于历史 14% 分位</strong>：估值有安全边际</li>
+            <li><strong>2026/1 公司密集回购 HK$10.2 亿</strong>：管理层信号</li>
+          </ul>
+        </div>
+        <div class="col-card warn">
+          <h4>空头核心论点 (6 中性 + 1 卖出)</h4>
+          <ul>
+            <li><strong>2026 全球手机 -12.9%</strong>：内存荒主导</li>
+            <li><strong>2025 利润含 ¥9.2 亿一次性投资收益</strong>：经常性增长仅 ~20%</li>
+            <li><strong>2026 共识盈利持续下调</strong>：JPMorgan -8% / 大和 -15%</li>
+            <li><strong>车载 ASP 持续下滑</strong>：智能感知 -10%、座舱 -11%</li>
+            <li><strong>舜宇智行突击分红 + 关联交易</strong>：独立性存疑</li>
+            <li><strong>中美关税 50% Rule 尾部风险</strong>（黑天鹅）</li>
+            <li><strong>AR/VR 拐点推迟到 2027</strong>：2026 仍是噪音级</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 9 · 散户情绪 ===== -->
+    <section id="sentiment">
+      <div class="section-num">09 · 散户情绪 · 资金流向</div>
+      <h2>"分歧中偏多头" — 机构主导，散户跟漲，不是妖股</h2>
+
+      <p>5/21 当日 +9.32% 大涨后，<strong>东方财富股吧短期情绪高度兴奋但混杂"卖飞了 / 想跑"的猶豫</strong>。深度看空长文（《估值困局》《舜宇智行突击分红》）已在公众号里形成稳定的反方阵营。<strong>段永平等雪球大 V 没有持仓</strong>—— 不算价值投资共识股。</p>
+
+      <h3>散户原话引用（5/21 当日 · 东方财富股吧）</h3>
+      <div class="quote">"作为科技股，很少有的低市盈率"<div class="quote-attr">@梭哈是一门智慧 23</div></div>
+      <div class="quote">"今年上 300 元应该没问题！"<div class="quote-attr">@股友 W3bFHt （明显脱离基本面）</div></div>
+      <div class="quote">"终于涨了，我就不信这么多年花了一百多亿真金白银搞研发"<div class="quote-attr">@大算力 （基本面长持派情绪释放）</div></div>
+      <div class="quote">"70 没卖，后悔了"<div class="quote-attr">@小白能 （短线追涨杀跌）</div></div>
+      <div class="quote">"卖飞了"<div class="quote-attr">@正确认知正确操作</div></div>
+
+      <h3>各平台认知度（中文圈）</h3>
+      <div class="metric-list">
+        <div class="metric-row"><div class="label">港股专业圈（格隆汇 / 雪球专业组）<span class="src">老牌核心标的</span></div><div class="value data">高</div></div>
+        <div class="metric-row"><div class="label">东方财富 / 同花顺股吧<span class="src">5/21 当日讨论密度极大</span></div><div class="value data">高</div></div>
+        <div class="metric-row"><div class="label">雪球大 V 圈<span class="src">段永平等无持仓</span></div><div class="value">中</div></div>
+        <div class="metric-row"><div class="label">知乎 / 公众号<span class="src">2026 年活跃度下降</span></div><div class="value">中</div></div>
+        <div class="metric-row"><div class="label">B 站财经 UP 主<span class="src">有内容、无爆款（最高播放 2.8 万）</span></div><div class="value">中低</div></div>
+        <div class="metric-row"><div class="label">小红书 / 抖音<span class="src">几乎零讨论</span></div><div class="value warn">低</div></div>
+      </div>
+
+      <div class="callout data">
+        <div class="callout-label">为什么"散户冷门"反而是好事</div>
+        <p>在小红书 / 抖音 / 晚点 LatePost 几乎没人聊舜宇 — 这说明它<strong>不是网红股、不是妖股、没有游资接力炒作痕迹</strong>。当前涨幅是基本面驱动 + 机构买盘主导，而非散户羊群效应。对长线投资者反而是好事。</p>
+      </div>
+
+      <h3>资金流向</h3>
+      <ul>
+        <li>2026-04-15、04-16 南向资金小幅减持（-89 万股累计）</li>
+        <li>2026-05-12（中美会谈缓和当日）：主力资金 +6,452 万港币（机构买、散户卖）</li>
+        <li>2026-05-21：主力资金 +4.88 亿港币（约 $6,253 万）、成交 27.69 亿（约 $3.55 亿）、振幅 11.7%</li>
+        <li>港股通南向累计增持 12 个月：11.9% → 19.09%</li>
+        <li>BlackRock 2025-12 持仓增至 5.08%</li>
+      </ul>
+
+      <h3>技术面快照</h3>
+      <ul>
+        <li>当前价 HK$68.60，10 日均价 HK$65.09 / 30 日均价 HK$64.45 → <strong>站上短期均线</strong></li>
+        <li>关键支撑 HK$66.6 / 69.7（格隆汇 2025-07 旧文）；阻力 HK$79.6 / 83.5</li>
+        <li>5/21 单日 +9.32%、5/12 单日 +14.83% → <strong>典型放量突破</strong></li>
+        <li>认沽证街货 +115.1%（衍生品空头佈局）→ 5/22-23 可能短线回踩</li>
+        <li>RSI 14 日預估接近 70（超买区，需注意短线消化）</li>
+      </ul>
+    </section>
+
+    <!-- ===== 10 · 买入可行性评分 ===== -->
+    <section id="feasibility">
+      <div class="section-num">10 · 买入可行性评分</div>
+      <h2>综合 7.0 / 10：估值便宜 + 催化扎堆，但周期波动大</h2>
+
+      <div class="score-card">
+        <div class="score-row"><div class="name">估值便宜度</div><div class="bar"><div class="bar-fill pos" style="width: 80%"></div></div><div class="num">8/10</div></div>
+        <div class="score-row"><div class="name">基本面健康度</div><div class="bar"><div class="bar-fill pos" style="width: 70%"></div></div><div class="num">7/10</div></div>
+        <div class="score-row"><div class="name">短期催化剂强度</div><div class="bar"><div class="bar-fill pos" style="width: 75%"></div></div><div class="num">7.5/10</div></div>
+        <div class="score-row"><div class="name">机构资金信号</div><div class="bar"><div class="bar-fill pos" style="width: 75%"></div></div><div class="num">7.5/10</div></div>
+        <div class="score-row"><div class="name">分红 / 现金回报</div><div class="bar"><div class="bar-fill" style="width: 55%"></div></div><div class="num">5.5/10</div></div>
+        <div class="score-row"><div class="name">公司治理透明度</div><div class="bar"><div class="bar-fill" style="width: 65%"></div></div><div class="num">6.5/10</div></div>
+        <div class="score-row"><div class="name">周期 / 宏观风险</div><div class="bar"><div class="bar-fill warn" style="width: 55%"></div></div><div class="num">5.5/10</div></div>
+        <div class="score-row"><div class="name">未来 12 月确定性</div><div class="bar"><div class="bar-fill" style="width: 65%"></div></div><div class="num">6.5/10</div></div>
+        <div class="score-row"><div class="name"><strong>综合</strong></div><div class="bar"><div class="bar-fill pos" style="width: 70%"></div></div><div class="num"><strong>7.0/10</strong></div></div>
+      </div>
+
+      <p style="font-size: 14px; color: var(--muted); margin-top: 16px;"><strong>评分说明</strong>：估值便宜度是最强项（PE 14× 处于 5 年 14% 分位）；周期 / 宏观风险是最弱项（2026 内存荒 -12.9% + 中美关税尾部风险）。综合 7.0 意味着"值得买，但需要节奏 + 仓位管理"。</p>
+    </section>
+
+    <div class="divider-quote">舜宇是一台被市场低估了 PE、但高估了周期下行幅度的"光学发动机"。</div>
+
+    <!-- ===== 11 · 决策建议 ===== -->
+    <section id="decision">
+      <div class="section-num">11 · 决策建议</div>
+      <h2>三条路径 · 30 天行动指南</h2>
+
+      <div class="verdict">
+        <div class="verdict-title">Final Verdict · 最终判断</div>
+        <h3>"分批买入 + 仓位控制" — 推荐 Path B</h3>
+        <p><strong>核心答案</strong>：从全局发展的视角看，舜宇光学 <strong>当前是值得买入的标的</strong>，但<strong>不是"一次性 all-in"的标的</strong>。它适合的姿势是：<strong>分批建仓 + 严格止损 + 跟踪 3 个催化剂兑现节奏</strong>。</p>
+        <p>历史告诉我们：周期股的高点和低点都很极端，HK$257 → HK$50 → HK$68 的轨迹会再来一次。重要的不是"买不买"，而是"用什么仓位 + 什么节奏 + 什么风控"。</p>
+
+        <div class="verdict-options">
+          <div class="verdict-option">
+            <div class="num">Path A · 低风险</div>
+            <h4>等回踩到 HK$60 再说</h4>
+            <p>等 5/22-23 短线回踩，或 2026 Q3 内存荒数据真的兑现砸盘到 HK$55-60 区间再买。错过涨幅但风险最小。</p>
+          </div>
+          <div class="verdict-option">
+            <div class="num">Path B · 中风险 (推荐)</div>
+            <h4>分批建仓 HK$62-66</h4>
+            <p>跟随公司回购均价区间，分 3 批每月 1 笔买入。总仓位上限 8-10%。设 HK$55 风控位。</p>
+          </div>
+          <div class="verdict-option">
+            <div class="num">Path C · 高风险</div>
+            <h4>当下 HK$68 一次性 all-in</h4>
+            <p>赌 iPhone 18 可变光圈 + 舜宇智行分拆 + CPO 三个催化都兑现。上行可看 HK$100+，但短期回撤 -15% 风险高。</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Path A · 30 天行动指南（低风险路径）</h3>
+      <div class="path-detail">
+        <div class="path-card a">
+          <div class="path-num">Day 1-15 · 等待 + 监测</div>
+          <h4>不买入，建立监测体系</h4>
+          <p>把 2382.HK 加入自选股，设三个触发点：</p>
+          <ul>
+            <li>HK$60 第一档买入信号（触发 1/3 仓位）</li>
+            <li>HK$55 第二档加仓信号（触发 1/3 仓位）</li>
+            <li>HK$50 第三档加仓信号（触发剩余 1/3）</li>
+            <li>关注公司每月 8-12 号发布的月度出货数据</li>
+            <li>关注舜宇智行 IPO 进度（聆讯日期）</li>
+          </ul>
+        </div>
+        <div class="path-card a">
+          <div class="path-num">Day 16-30 · 信息密度提升</div>
+          <h4>耐心 + 严守纪律</h4>
+          <p>如果 30 天内未触发任何买入信号：</p>
+          <ul>
+            <li>继续等。周期股最忌讳"FOMO 追高"</li>
+            <li>用闲钱买 ETF（恒生科技或 KWEB）做敞口替代</li>
+            <li>30 天后重新评估，如果 6 月 iPhone 18 量产新闻真的拉动股价上 HK$80+，那这一波就放弃</li>
+            <li>等下一个低点：通常 2-3 季度内会有触底机会</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Path B · 30 天行动指南（推荐 · 中风险）</h3>
+      <ol>
+        <li><strong>5/22-23（明日 / 后日）观察盘面</strong>：如果 5/21 大涨后明天盘前出现明显回踩（开盘 -2% 以上），是入场机会。等开盘后第一小时观察情绪稳定性，可以在 HK$65-67 区间下第一笔单（占目标仓位 1/3）</li>
+        <li><strong>6 月初公司月度数据公布前（5-12 号）</strong>：观察 4 月 / 5 月车载镜头出货数据。如果同比仍维持 +30%+ 增速，HK$64-66 区间下第二笔（再加 1/3 仓位）</li>
+        <li><strong>2026 中报（8 月底）前后</strong>：观察 1H26 经常性净利是否兑现 +20% 增长。如果数据 OK，HK$65-72 区间下最后一笔（剩余 1/3 仓位）。如果数据不及预期且股价跌破 HK$60，止损减半仓重评估</li>
+        <li><strong>整个建仓期间严守仓位上限 8-10%</strong>（个人股票资产）：单一公司风险高于指数，不能 over-concentrate</li>
+        <li><strong>风控位 HK$55</strong>：如果任何时点跌破，先减仓至 1/3 然后重新看基本面变化是否破坏长期逻辑</li>
+      </ol>
+
+      <h3>Path C · 30 天行动指南（高风险）</h3>
+      <div class="path-detail">
+        <div class="path-card c">
+          <div class="path-num">前置条件</div>
+          <h4>4 项必备前提</h4>
+          <ul>
+            <li>你能承受短期 -20% 浮亏不慌</li>
+            <li>该仓位 ≤ 你股票资产 5%（小仓位赌期权）</li>
+            <li>你认同 3 个催化剂"至少兑现 1 个"的概率 ≥ 70%</li>
+            <li>你能跟踪供应链消息（郭明錤 / MacRumors / 9to5Mac / 群智咨询每月出货）</li>
+          </ul>
+        </div>
+        <div class="path-card c">
+          <div class="path-num">关键决策点</div>
+          <h4>30 天监控 + 决策</h4>
+          <ul>
+            <li>HK$65 以下持续观察，不加码</li>
+            <li>HK$80 突破前考虑加 1/3 仓位（突破信号）</li>
+            <li>HK$95 触及 → 减半仓锁定利润（接近大行高目标价）</li>
+            <li>HK$100+ → 全部清仓（接近 BofA / Citi 历史最乐观目标价 HK$98-102 上沿）</li>
+            <li>跌破 HK$58 止损（无视基本面，机械执行）</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>不论选哪条路，都要避开的 3 个坑</h3>
+      <ol>
+        <li><strong>不要把"郭明錤口径的供应链数据"当基准假设</strong>：当作期权对冲就好。如果 iPhone 18 可变光圈真的兑现且舜宇主供，那是 upside；如果没兑现，基本盘（车载 + 安卓高端）仍能撑住</li>
+        <li><strong>不要忽略"利润含金量"</strong>：FY2025 +71.9% 看着很美，但剔除 ¥9.2 亿一次性后仅 ~+38%。2026 年共识 +8-15% 才是真实节奏。看到任何宣传"舜宇要恢复 2021 利润高点"的内容，要打折</li>
+        <li><strong>不要只看"PE 便宜"就 all-in</strong>：2022 年同样有人说"PE 比历史低位还便宜"，结果 2023 年股价继续腰斩 50%。周期股的 PE 是"利润见底前继续杀估值"的，单纯估值便宜不够，需要看到利润趋势确认（如季度同比连续 2 期正向）</li>
+      </ol>
+
+      <div class="callout data">
+        <div class="callout-label">最后一句</div>
+        <p class="callout-quote">"你最大的优势不是仓位，是你能等。"</p>
+        <p style="font-size: 13.5px; color: var(--muted); margin-top: 14px;">舜宇是一只周期股 + 成长股的混合体。短期看，催化剂扎堆、估值不贵；长期看，"光学是物理 AI 时代的眼睛"叙事还有几年走。但中间会有内存荒、关税、Apple 砍单、AR 跳票等无数风暴。能拿得住，才是最大的护城河。</p>
+      </div>
+    </section>
+
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>主要数据来源（一手优先）</h4>
+    <ul>
+      <li><a href="https://www.hkexnews.hk/listedco/listconews/sehk/2026/0424/2025043000576_c.pdf" target="_blank">舜宇 2025 年度报告 (HKEX)</a></li>
+      <li><a href="https://www.sunnyoptical.com/en/investor.html" target="_blank">舜宇官方投资者关系页</a></li>
+      <li><a href="https://www.investing.com/equities/sunny-optical-hk-consensus-estimates" target="_blank">Investing.com · 大行评级共识</a></li>
+      <li><a href="https://www.investing.com/equities/sunny-optical-hk" target="_blank">Investing.com · 2382.HK 实时行情</a></li>
+      <li><a href="https://stockanalysis.com/quote/hkg/2382/" target="_blank">StockAnalysis · PE 历史</a></li>
+      <li><a href="https://www.etnet.com.hk/www/eng/stocks/realtime/quote_ci_basicdata.php?code=2382" target="_blank">ET Net · 2382.HK 估值</a></li>
+      <li><a href="https://medium.com/@mingchikuo/sunny-optical-to-benefit-significantly-from-apples-optical-order-growth-and-spec-upgrades-over-220ec84343ad" target="_blank">郭明錤 · 舜宇受益 Apple 订单 (Medium)</a></li>
+      <li><a href="https://www.geeky-gadgets.com/iphone-18-pro-max-new-camera/" target="_blank">Geeky Gadgets · 大立光让出 iPhone 18 订单</a></li>
+      <li><a href="https://news.qq.com/rain/a/20260401A02MN500" target="_blank">腾讯 · 舜宇估值困局深度看空</a></li>
+      <li><a href="https://stock.stockstar.com/IG2026051100035935.shtml" target="_blank">证券之星 · 舜宇智行突击分红质疑</a></li>
+      <li><a href="https://finance.sina.com.cn/jjxw/2026-02-05/doc-inhktfxt6073679.shtml" target="_blank">新浪财经 · 舜宇智行港交所递表</a></li>
+      <li><a href="https://m.gelonghui.com/p/2464196" target="_blank">格隆汇 · 技术面 / 衍生品空头街货</a></li>
+      <li><a href="https://m.thepaper.cn/newsDetail_forward_10115796" target="_blank">澎湃新闻 · 王文鉴员工持股治理</a></li>
+      <li><a href="https://m.zhitongcaijing.com/article/share.html?content_id=1331616" target="_blank">智通财经 · 2025 中期业绩</a></li>
+      <li><a href="https://www.mordorintelligence.com/industry-reports/smartphone-camera-lens-market" target="_blank">Mordor Intelligence · 手机镜头市场</a></li>
+      <li><a href="https://www.yolegroup.com/press-release/automotive-imaging-market-surges-toward-8-7-billion-milestone/" target="_blank">Yole Group · 车载摄像头 $87 亿 / 2030</a></li>
+      <li><a href="https://my.idc.com/getdoc.jsp?containerId=prUS53965725" target="_blank">IDC · 2025 全球手机出货</a></li>
+      <li><a href="https://counterpointresearch.com/en/insights/2026-smartphone-shipment-forecasts-revised-down-as-memory-shortage-drives-bom-costs-up" target="_blank">Counterpoint · 2026 内存荒预测</a></li>
+      <li><a href="https://m.10jqka.com.cn/20251209/c673071245.shtml" target="_blank">同花顺 · BlackRock 5.08% 增持</a></li>
+      <li><a href="https://guba.eastmoney.com/list,hk02382.html" target="_blank">东方财富股吧 · 2382 散户讨论</a></li>
+      <li><a href="https://xueqiu.com/S/02382" target="_blank">雪球 · 2382 个股页</a></li>
+    </ul>
+
+    <div class="footer-meta">
+      <div>本报告 100+ 数据点已通过 Stage 2.5 (Codex 独立审查) 验证 · 9 项交叉验证修正 · 6 项明确标"⚠ 未交叉验证"</div>
+      <div>Ray Deep Research · Opus 4.7 · 6 子 Agent 并行 · 派生 ~6.5 万字调研材料 → 渲染 HTML</div>
+      <div>本报告仅供参考 · 不构成投资建议 · 港股有风险，投资需谨慎</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('theme-toggle').addEventListener('click', function() {
+  var current = document.documentElement.getAttribute('data-theme');
+  var next = current === 'dark' ? 'light' : 'dark';
+  if (next === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+  try { localStorage.setItem('ray-theme', next); } catch (e) {}
+});
+
+if (window.matchMedia) {
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+  mq.addEventListener && mq.addEventListener('change', function(e) {
+    if (!localStorage.getItem('ray-theme')) {
+      if (e.matches) document.documentElement.setAttribute('data-theme', 'dark');
+      else document.documentElement.removeAttribute('data-theme');
+    }
+  });
+}
+
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      var id = entry.target.id;
+      document.querySelectorAll('nav.toc a').forEach(function(link) {
+        link.style.color = '';
+        link.style.fontWeight = '';
+      });
+      var activeLink = document.querySelector('nav.toc a[href="#' + id + '"]');
+      if (activeLink) {
+        activeLink.style.color = 'var(--accent-warn)';
+        activeLink.style.fontWeight = '600';
+      }
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+document.querySelectorAll('section[id]').forEach(function(s) { observer.observe(s); });
+</script>
+</body>
+</html>

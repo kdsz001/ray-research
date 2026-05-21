@@ -11,6 +11,12 @@
 
 <!-- INDEX-START -->
 
+### 📷 [舜宇光学 2382.HK](sunny-optical/) · 港股光学硬件龙头 · 投资决策类调研
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-22 | [当前是否值得买入 · 全局发展视角](sunny-optical/2026-05-22-sunny-optical.html) | [↗ Open](https://kdsz001.github.io/ray-research/sunny-optical/2026-05-22-sunny-optical.html) |
+
 ### 🧬 [AI 半导体 2026](ai-semiconductor-2026/) · 智能体 AI + 物理 AI + 半导体投资机会全景
 
 | 日期 | 报告 | 在线浏览 |
