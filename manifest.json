@@ -320,6 +320,18 @@
           "title": "初版深度调研 · 把美股、黄金、SpaceX 搬上链的 HL 长子"
         }
       ]
+    },
+    {
+      "slug": "serenity",
+      "name": "Serenity / @aleabitoreddit",
+      "tagline": "X 现象级匿名投资博主 · AI 供应链「卡脖子」选股法 · 方法论深度拆解",
+      "reports": [
+        {
+          "date": "2026-05-31",
+          "file": "2026-05-31-serenity.html",
+          "title": "投资方法论深度拆解 · 学他的问法，别抄他的答案"
+        }
+      ]
     }
   ]
 }

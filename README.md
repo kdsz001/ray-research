@@ -164,6 +164,12 @@
 |------|------|---------|
 | 2026-05-20 | [初版深度调研 · 把美股、黄金、SpaceX 搬上链的 HL 长子](trade-xyz/2026-05-20-trade-xyz.html) | [↗ Open](https://kdsz001.github.io/ray-research/trade-xyz/2026-05-20-trade-xyz.html) |
 
+### 🧭 [Serenity / @aleabitoreddit](serenity/) · X 现象级匿名投资博主 · AI 供应链「卡脖子」选股法 · 方法论拆解
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-05-31 | [投资方法论深度拆解 · 学他的问法，别抄他的答案](serenity/2026-05-31-serenity.html) | [↗ Open](https://kdsz001.github.io/ray-research/serenity/2026-05-31-serenity.html) |
+
 <!-- INDEX-END -->
 
 ---

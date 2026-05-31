@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serenity（@aleabitoreddit）投资方法论深度调研 · 2026.05</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+// 防 FOUC：必须在 head 内同步执行，body 渲染前就设好主题
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec;
+  --bg-paper: #fbf9f4;
+  --bg-card: #ffffff;
+  --bg-dark: #14110d;
+  --bg-dark2: #1f1b16;
+  --ink: #14110d;
+  --ink-2: #2c2620;
+  --muted: #6e6358;
+  --light: #a39787;
+  --rule: #14110d;
+  --rule-light: #d8d1c2;
+  --accent-warn: #a73121;
+  --accent-data: #1c4d6b;
+  --accent-pos: #2c5e3f;
+  --accent-yellow: #c89a2c;
+  --grad-warn: rgba(167, 49, 33, 0.04);
+  --grad-data: rgba(28, 77, 107, 0.04);
+  --shadow-card: 0 0 0 transparent;
+  --bg-inverse: #14110d;
+  --bg-inverse-2: #1f1b16;
+  --ink-on-inverse: #f6f3ec;
+  --text-on-inverse: rgba(246, 243, 236, 0.85);
+  --muted-on-inverse: rgba(246, 243, 236, 0.7);
+  --faint-on-inverse: rgba(246, 243, 236, 0.55);
+  --light-on-inverse: rgba(246, 243, 236, 0.5);
+  --rule-on-inverse: rgba(246, 243, 236, 0.18);
+  --accent-yellow-on-inverse: #c89a2c;
+  --serif: "Source Serif 4", "Source Serif Pro", "Charter", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+  --max-w: 820px;
+}
+
+[data-theme="dark"] {
+  --bg: #15120e;
+  --bg-paper: #1c1814;
+  --bg-card: #1f1b16;
+  --bg-dark: #0a0907;
+  --bg-dark2: #0f0d0a;
+  --ink: #ebe3d3;
+  --ink-2: #c9bfae;
+  --muted: #8d8170;
+  --light: #5c5346;
+  --rule: #ebe3d3;
+  --rule-light: #3a342c;
+  --accent-warn: #e87a5f;
+  --accent-data: #6cb1d6;
+  --accent-pos: #6db98c;
+  --accent-yellow: #e6b945;
+  --grad-warn: rgba(232, 122, 95, 0.06);
+  --grad-data: rgba(108, 177, 214, 0.06);
+  --shadow-card: 0 1px 0 rgba(235, 227, 211, 0.04);
+  --bg-inverse: #ede5d3;
+  --bg-inverse-2: #e0d8c5;
+  --ink-on-inverse: #14110d;
+  --text-on-inverse: rgba(20, 17, 13, 0.85);
+  --muted-on-inverse: rgba(20, 17, 13, 0.7);
+  --faint-on-inverse: rgba(20, 17, 13, 0.55);
+  --light-on-inverse: rgba(20, 17, 13, 0.5);
+  --rule-on-inverse: rgba(20, 17, 13, 0.18);
+  --accent-yellow-on-inverse: #a47a18;
+}
+
+body, .tldr, .verdict, .quickfacts-wrap, footer, table, th, td, .stat, .col-card, .callout, .path-card, .verdict-option, .qf-cell {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  font-size: 16px;
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(167, 49, 33, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 80% 100%, rgba(28, 77, 107, 0.04) 0%, transparent 40%);
+}
+
+.topbar {
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg-paper);
+  padding: 14px 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.topbar-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  color: var(--muted);
+}
+.topbar strong { color: var(--ink); font-weight: 600; }
+
+.hero {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 80px 32px 100px;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: end;
+}
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-warn);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--accent-warn); }
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 70px;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 28px;
+  font-feature-settings: "ss01";
+}
+.hero h1 em { font-style: italic; color: var(--accent-warn); font-weight: 500; }
+.hero-subtitle {
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.45;
+  color: var(--muted);
+  font-style: italic;
+  max-width: 580px;
+}
+.hero-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  border-left: 1px solid var(--rule);
+  padding-left: 24px;
+}
+.hero-meta dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
+.hero-meta dt { color: var(--light); font-weight: 400; }
+.hero-meta dd { color: var(--ink); font-weight: 500; }
+
+.quickfacts-wrap {
+  background: var(--bg-inverse);
+  color: var(--ink-on-inverse);
+  padding: 60px 0 80px;
+  border-bottom: 1px solid var(--rule);
+}
+.quickfacts { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+.qf-header { margin-bottom: 36px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.qf-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-yellow-on-inverse); }
+.qf-title { font-family: var(--serif); font-style: italic; font-size: 28px; font-weight: 500; color: var(--text-on-inverse); letter-spacing: -0.01em; }
+.qf-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--rule-on-inverse); border: 1px solid var(--rule-on-inverse); }
+.qf-cell { background: var(--bg-inverse); padding: 22px 18px 20px; display: flex; flex-direction: column; gap: 6px; min-height: 124px; }
+.qf-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light-on-inverse); }
+.qf-value { font-family: var(--serif); font-weight: 600; font-size: 30px; line-height: 1; color: var(--ink-on-inverse); letter-spacing: -0.02em; margin-top: auto; margin-bottom: 4px; }
+.qf-value.warn { color: var(--accent-warn); }
+.qf-value.pos { color: var(--accent-pos); }
+.qf-value.data { color: var(--accent-data); }
+.qf-value.small { font-size: 21px; }
+.qf-value .qf-unit { font-size: 13px; color: var(--faint-on-inverse); margin-left: 2px; font-weight: 400; }
+.qf-sub { font-size: 11.5px; color: var(--faint-on-inverse); line-height: 1.35; }
+.qf-cell-verdict { background: var(--accent-warn); color: white; }
+.qf-cell-verdict .qf-label { color: rgba(255, 255, 255, 0.8); }
+.qf-cell-verdict .qf-verdict { font-family: var(--serif); font-style: italic; font-size: 21px; font-weight: 600; line-height: 1.15; color: white; margin-top: auto; letter-spacing: -0.01em; }
+.qf-cell-verdict .qf-sub { color: rgba(255, 255, 255, 0.85); }
+
+.container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+main { display: grid; grid-template-columns: 200px 1fr; gap: 60px; max-width: 1180px; margin: 0 auto; padding: 0 32px 120px; }
+
+nav.toc { position: sticky; top: 40px; align-self: start; height: fit-content; padding-top: 80px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+nav.toc h4 { font-size: 10px; color: var(--light); margin-bottom: 18px; font-weight: 500; letter-spacing: 0.15em; }
+nav.toc ol { list-style: none; counter-reset: toc; }
+nav.toc li { counter-increment: toc; margin-bottom: 14px; border-left: 1px solid var(--rule-light); padding-left: 14px; transition: border-color 0.2s; }
+nav.toc li:hover { border-left-color: var(--ink); }
+nav.toc li::before { content: "0" counter(toc); display: block; color: var(--light); font-size: 10px; margin-bottom: 2px; }
+nav.toc a { color: var(--ink-2); text-decoration: none; line-height: 1.3; display: block; font-weight: 500; }
+nav.toc a:hover { color: var(--accent-warn); }
+
+article { max-width: var(--max-w); padding-top: 60px; }
+
+section { padding: 60px 0; border-top: 1px solid var(--rule-light); scroll-margin-top: 30px; }
+section:first-of-type { border-top: none; padding-top: 20px; }
+
+.section-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-warn); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+.section-num::after { content: ""; flex: 1; height: 1px; background: var(--rule-light); }
+section h2 { font-family: var(--serif); font-weight: 600; font-size: 42px; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 28px; font-feature-settings: "ss01"; }
+section h3 { font-family: var(--serif); font-weight: 600; font-size: 24px; line-height: 1.3; margin-top: 44px; margin-bottom: 16px; color: var(--ink); }
+section h4 { font-family: var(--sans); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin-top: 32px; margin-bottom: 12px; }
+section p { font-family: var(--sans); font-size: 16px; line-height: 1.7; color: var(--ink-2); margin-bottom: 16px; }
+section p strong { color: var(--ink); font-weight: 600; }
+section a { color: var(--accent-data); text-decoration: underline; text-decoration-color: rgba(28, 77, 107, 0.3); text-underline-offset: 3px; }
+section a:hover { text-decoration-color: var(--accent-data); }
+
+ul, ol { padding-left: 22px; margin-bottom: 18px; }
+li { margin-bottom: 8px; line-height: 1.7; color: var(--ink-2); }
+li::marker { color: var(--light); }
+
+.tldr { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 56px 56px; border-radius: 0; margin-top: 40px; position: relative; }
+.tldr::before { content: "TL;DR"; position: absolute; top: -1px; left: 56px; background: var(--accent-warn); color: white; padding: 4px 16px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; font-weight: 600; }
+.tldr h3 { font-family: var(--serif); color: var(--ink-on-inverse); font-size: 22px; font-weight: 500; margin-top: 28px; margin-bottom: 12px; }
+.tldr h3:first-of-type { margin-top: 16px; }
+.tldr p, .tldr li { color: var(--text-on-inverse); }
+.tldr p strong, .tldr li strong { color: var(--ink-on-inverse); }
+.tldr ol, .tldr ul { padding-left: 18px; }
+.tldr a { color: var(--ink-on-inverse); text-decoration-color: var(--light-on-inverse); }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 32px 0; }
+.stat { background: var(--bg-card); padding: 28px 24px; }
+.stat-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 10px; }
+.stat-value { font-family: var(--serif); font-weight: 600; font-size: 34px; line-height: 1; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.02em; }
+.stat-value .unit { font-size: 15px; color: var(--muted); font-weight: 400; margin-left: 4px; }
+.stat-value.warn { color: var(--accent-warn); }
+.stat-value.pos { color: var(--accent-pos); }
+.stat-value.data { color: var(--accent-data); }
+.stat-note { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 24px 0; }
+.col-card { border: 1px solid var(--rule-light); padding: 28px; background: var(--bg-card); }
+.col-card h4 { margin-top: 0; display: flex; align-items: center; gap: 10px; }
+.col-card.pos h4 { color: var(--accent-pos); }
+.col-card.warn h4 { color: var(--accent-warn); }
+.col-card h4::before { display: inline-block; width: 18px; height: 18px; border-radius: 50%; font-family: var(--serif); font-size: 13px; text-align: center; line-height: 18px; font-weight: 600; }
+.col-card.pos h4::before { content: "✓"; background: var(--accent-pos); color: white; }
+.col-card.warn h4::before { content: "!"; background: var(--accent-warn); color: white; font-style: italic; }
+.col-card ul { padding-left: 18px; margin-bottom: 0; }
+.col-card li { font-size: 14px; line-height: 1.55; }
+
+.quote { border-left: 3px solid var(--accent-warn); padding: 8px 0 8px 24px; margin: 24px 0; font-family: var(--serif); font-size: 18px; line-height: 1.55; font-style: italic; color: var(--ink-2); }
+.quote .en { display: block; margin-bottom: 8px; }
+.quote .cn { display: block; font-size: 15px; font-style: normal; color: var(--muted); }
+.quote-attr { font-family: var(--sans); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 12px; font-weight: 500; }
+.quote-attr::before { content: "— "; }
+
+.table-wrap { overflow-x: auto; margin: 24px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--bg-card); }
+th { text-align: left; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; padding: 12px 14px; border-bottom: 2px solid var(--ink); background: var(--bg-paper); white-space: nowrap; vertical-align: bottom; }
+td { padding: 13px 14px; border-bottom: 1px solid var(--rule-light); vertical-align: top; line-height: 1.5; color: var(--ink-2); }
+td.product-name { font-weight: 600; color: var(--ink); font-family: var(--serif); font-size: 15px; white-space: nowrap; }
+tr:last-child td { border-bottom: 1px solid var(--ink); }
+td .tag { display: inline-block; font-family: var(--mono); font-size: 10px; text-transform: uppercase; padding: 2px 6px; background: var(--bg-paper); color: var(--muted); border-radius: 2px; margin-right: 4px; }
+tr.highlight td { background: var(--grad-warn); }
+
+.callout { background: var(--bg-paper); border-left: 3px solid var(--ink); padding: 24px 28px; margin: 28px 0; }
+.callout.warn { border-left-color: var(--accent-warn); background: var(--grad-warn); }
+.callout.data { border-left-color: var(--accent-data); background: var(--grad-data); }
+.callout.pos { border-left-color: var(--accent-pos); background: rgba(44, 94, 63, 0.05); }
+.callout-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
+.callout.warn .callout-label { color: var(--accent-warn); }
+.callout.data .callout-label { color: var(--accent-data); }
+.callout.pos .callout-label { color: var(--accent-pos); }
+.callout p { margin-bottom: 12px; }
+.callout p:last-child { margin-bottom: 0; }
+.callout-quote { font-family: var(--serif); font-size: 17px; font-style: italic; line-height: 1.5; color: var(--ink); }
+
+.metric-list { margin: 28px 0; border-top: 1px solid var(--ink); }
+.metric-row { display: grid; grid-template-columns: 1fr auto; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--rule-light); gap: 24px; }
+.metric-row:last-child { border-bottom: 1px solid var(--ink); }
+.metric-row .label { font-size: 14px; color: var(--ink-2); }
+.metric-row .label .src { display: block; font-size: 11px; color: var(--light); margin-top: 2px; font-family: var(--mono); }
+.metric-row .value { font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; text-align: right; white-space: nowrap; }
+.metric-row .value.warn { color: var(--accent-warn); }
+.metric-row .value.pos { color: var(--accent-pos); }
+.metric-row .value.data { color: var(--accent-data); }
+.metric-row .value small { font-size: 13px; color: var(--muted); font-weight: 400; }
+
+.divider-quote { margin: 80px 0; text-align: center; font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--muted); line-height: 1.5; position: relative; padding: 32px 60px; }
+.divider-quote::before, .divider-quote::after { content: ""; position: absolute; width: 40px; height: 1px; background: var(--rule); top: 0; left: 50%; transform: translateX(-50%); }
+.divider-quote::after { top: auto; bottom: 0; }
+
+.timeline { margin: 32px 0; position: relative; padding-left: 0; }
+.timeline::before { content: ""; position: absolute; left: 92px; top: 8px; bottom: 8px; width: 1px; background: var(--rule-light); }
+.tl-row { display: grid; grid-template-columns: 80px 14px 1fr; gap: 12px; margin-bottom: 24px; align-items: start; }
+.tl-row .tl-date { font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em; color: var(--muted); text-align: right; padding-top: 4px; text-transform: uppercase; }
+.tl-row .tl-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--ink); margin-top: 4px; position: relative; z-index: 2; }
+.tl-row .tl-dot.warn { border-color: var(--accent-warn); background: var(--accent-warn); }
+.tl-row .tl-dot.data { border-color: var(--accent-data); background: var(--accent-data); }
+.tl-row .tl-dot.pos { border-color: var(--accent-pos); background: var(--accent-pos); }
+.tl-row .tl-content { padding-top: 0; }
+.tl-row .tl-title { font-family: var(--serif); font-weight: 600; font-size: 16px; color: var(--ink); line-height: 1.3; margin-bottom: 4px; }
+.tl-row .tl-title.warn { color: var(--accent-warn); }
+.tl-row .tl-desc { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+
+/* model cards */
+.model-card { border: 1px solid var(--rule-light); background: var(--bg-card); padding: 26px 28px; margin: 20px 0; position: relative; }
+.model-card .m-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-data); margin-bottom: 8px; }
+.model-card h4 { font-family: var(--serif); font-weight: 600; font-size: 19px; color: var(--ink); text-transform: none; letter-spacing: 0; margin: 0 0 12px 0; }
+.model-card p { font-size: 14.5px; margin-bottom: 10px; }
+.model-card .m-tag { display: inline-block; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; margin-bottom: 12px; }
+.m-tag.solid { background: rgba(44,94,63,0.12); color: var(--accent-pos); }
+.m-tag.weak { background: rgba(167,49,33,0.10); color: var(--accent-warn); }
+
+.case { border-top: 3px solid var(--ink); margin: 40px 0 0; padding-top: 0; }
+.case-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin: 24px 0 4px; }
+.case-head .ticker { font-family: var(--serif); font-weight: 700; font-size: 28px; color: var(--ink); letter-spacing: -0.01em; }
+.case-head .verdict-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; }
+.verdict-tag.hit { background: rgba(44,94,63,0.14); color: var(--accent-pos); }
+.verdict-tag.mixed { background: rgba(200,154,44,0.16); color: #8a6d1a; }
+[data-theme="dark"] .verdict-tag.mixed { color: var(--accent-yellow); }
+
+.path-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 28px 0; }
+.path-card { border: 1px solid var(--rule-light); background: var(--bg-card); padding: 26px 24px; position: relative; }
+.path-card.a { border-top: 4px solid var(--accent-pos); }
+.path-card.c { border-top: 4px solid var(--accent-warn); }
+.path-card .path-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.path-card.a .path-num { color: var(--accent-pos); }
+.path-card.c .path-num { color: var(--accent-warn); }
+.path-card h4 { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--ink); text-transform: none; letter-spacing: 0; margin: 0 0 14px 0; }
+.path-card p { font-size: 13.5px; line-height: 1.55; color: var(--muted); margin-bottom: 10px; }
+.path-card ul { margin: 0; padding-left: 18px; }
+.path-card li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; color: var(--ink-2); }
+
+.verdict { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 80px 56px; margin: 80px 0 0; position: relative; }
+.verdict-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-yellow-on-inverse); margin-bottom: 24px; }
+.verdict h3 { font-family: var(--serif); font-size: 34px; line-height: 1.2; font-weight: 600; margin-bottom: 24px; color: var(--ink-on-inverse); letter-spacing: -0.02em; }
+.verdict p { color: var(--text-on-inverse); font-size: 17px; line-height: 1.65; margin-bottom: 14px; }
+.verdict p strong { color: var(--ink-on-inverse); }
+.verdict-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 40px; background: var(--rule-on-inverse); }
+.verdict-option { background: var(--bg-inverse); padding: 28px 24px; }
+.verdict-option .num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--accent-yellow-on-inverse); margin-bottom: 12px; }
+.verdict-option h4 { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--ink-on-inverse); margin-bottom: 10px; text-transform: none; letter-spacing: 0; }
+.verdict-option p { font-size: 14px; line-height: 1.55; margin-bottom: 0; color: var(--muted-on-inverse); }
+
+.score-card { border: 1px solid var(--ink); padding: 32px; margin: 24px 0; background: var(--bg-card); }
+.score-row { display: grid; grid-template-columns: 220px 1fr 50px; gap: 20px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--rule-light); }
+.score-row:last-child { border-bottom: none; }
+.score-row .name { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: 15px; }
+.score-row .bar { background: var(--bg-paper); height: 8px; position: relative; }
+.score-row .bar-fill { height: 100%; background: var(--accent-data); }
+.score-row .bar-fill.warn { background: var(--accent-warn); }
+.score-row .bar-fill.pos { background: var(--accent-pos); }
+.score-row .num { font-family: var(--mono); font-weight: 600; font-size: 14px; color: var(--ink); text-align: right; }
+
+footer { border-top: 1px solid var(--rule); background: var(--bg-inverse); color: var(--muted-on-inverse); padding: 60px 32px 80px; margin-top: 0; }
+.footer-inner { max-width: 1180px; margin: 0 auto; }
+footer h4 { color: var(--ink-on-inverse); margin-bottom: 18px; font-family: var(--serif); font-size: 16px; font-weight: 600; }
+footer ul { padding-left: 0; list-style: none; columns: 2; column-gap: 40px; }
+footer li { font-size: 12px; line-height: 1.5; margin-bottom: 8px; font-family: var(--mono); break-inside: avoid; }
+footer a { color: var(--accent-yellow-on-inverse); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+.footer-meta { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--rule-on-inverse); font-size: 11px; color: var(--light-on-inverse); font-family: var(--mono); letter-spacing: 0.05em; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+
+@media (max-width: 1100px) {
+  main { grid-template-columns: 1fr; }
+  nav.toc { position: static; padding-top: 40px; }
+  nav.toc ol { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 52px; }
+  .verdict-options { grid-template-columns: 1fr; }
+  .qf-grid { grid-template-columns: repeat(3, 1fr); }
+  .path-detail { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .hero { padding: 40px 20px 60px; }
+  .hero h1 { font-size: 40px; }
+  .hero-subtitle { font-size: 17px; }
+  main { padding: 0 20px 80px; gap: 0; }
+  .container, .quickfacts { padding: 0 20px; }
+  .quickfacts-wrap { padding: 40px 0 50px; }
+  .qf-grid { grid-template-columns: repeat(2, 1fr); }
+  .qf-value { font-size: 24px; }
+  .qf-cell-verdict .qf-verdict { font-size: 17px; }
+  nav.toc ol { grid-template-columns: 1fr; }
+  section h2 { font-size: 30px; }
+  .stats { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  .verdict, .tldr { padding: 40px 24px; }
+  .verdict h3 { font-size: 25px; }
+  .score-row { grid-template-columns: 130px 1fr 40px; gap: 12px; }
+  footer ul { columns: 1; }
+  .timeline::before { left: 11px; }
+  .tl-row { grid-template-columns: 80px 1fr; }
+  .tl-row .tl-date { font-size: 10px; }
+}
+
+#theme-toggle { position: fixed; top: 14px; right: 24px; z-index: 1000; width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--rule-light); color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.12s; }
+#theme-toggle:hover { background: var(--bg-paper); border-color: var(--ink); }
+#theme-toggle:active { transform: scale(0.92); }
+#theme-toggle .icon-sun, #theme-toggle .icon-moon { transition: opacity 0.15s; }
+#theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] #theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] #theme-toggle { background: var(--bg-paper); border-color: var(--rule-light); color: var(--ink); }
+@media (max-width: 720px) { #theme-toggle { top: 10px; right: 14px; width: 32px; height: 32px; } }
+
+@media print {
+  body { background: white; font-size: 11pt; }
+  .topbar, nav.toc, footer, #theme-toggle { display: none; }
+  main { display: block; max-width: 100%; padding: 0; }
+  article { max-width: 100%; padding-top: 0; }
+  .hero { padding: 30px 0; page-break-after: always; grid-template-columns: 1fr; }
+  .hero h1 { font-size: 34pt; color: black; }
+  .hero h1 em { color: #a73121; }
+  .quickfacts-wrap { background: white; color: black; padding: 20px 0; page-break-after: always; }
+  .qf-grid { background: #ddd; border-color: #ddd; }
+  .qf-cell { background: white; }
+  .qf-label, .qf-sub { color: #666 !important; }
+  .qf-value { color: black !important; }
+  .qf-cell-verdict { background: #f4e6e3 !important; }
+  .qf-cell-verdict .qf-verdict, .qf-cell-verdict .qf-label, .qf-cell-verdict .qf-sub { color: black !important; }
+  section { page-break-inside: avoid; padding: 20px 0; border-top: 2px solid #000; }
+  section h2 { font-size: 20pt; }
+  section h3 { font-size: 14pt; }
+  .tldr, .verdict { background: #f5f5f5 !important; color: black !important; padding: 24px !important; }
+  .tldr *, .verdict * { color: black !important; }
+  .verdict-option { background: white !important; border: 1px solid #ddd; }
+  a { color: black !important; text-decoration: none; }
+  .stats, .two-col, .score-card, .model-card { page-break-inside: avoid; }
+  .divider-quote { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="切换夜间模式" title="切换浅色 / 夜间模式">
+  <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div><strong>Serenity · @aleabitoreddit</strong> · 人物 / 投资方法论调研</div>
+    <div>调研日期 <strong>2026 · 05 · 31</strong></div>
+    <div>为"学方法论"而做 · 第一版</div>
+  </div>
+</div>
+
+<header class="hero">
+  <div>
+    <div class="hero-eyebrow">X 现象级投资博主 · 方法论深度拆解</div>
+    <h1>他靠"<em>找最窄的那道关口</em>"<br>一年涨到 51 万粉</h1>
+    <p class="hero-subtitle">
+      Serenity 是一个匿名账号，专门在 AI 硬件供应链里挖那个"个头小、却谁都绕不开"的卡脖子环节，
+      埋伏小盘股。他的<strong>提问方式值得你学</strong>——但他自报的 225 倍收益已被官方标"误导"，
+      他的<strong>具体买卖不值得你抄</strong>。这份报告教你拆开他的方法，也教你看清它的裂缝。
+    </p>
+  </div>
+  <div class="hero-meta">
+    <dl>
+      <dt>调研对象</dt><dd>Serenity（@aleabitoreddit）</dd>
+      <dt>主战场</dt><dd>AI 光通信 / 半导体小盘股</dd>
+      <dt>调研深度</dt><dd>6 个并行 AI 调研员</dd>
+      <dt>一手来源</dt><dd>X 接口 / 推文 / Substack</dd>
+      <dt> </dt><dd>SEC / 股价库 / 知乎 / 财经媒体</dd>
+      <dt>报告字数</dt><dd>约 13,000 字</dd>
+      <dt>面向读者</dt><dd>想学方法论的投资外行</dd>
+    </dl>
+  </div>
+</header>
+
+<div class="quickfacts-wrap">
+  <div class="quickfacts">
+    <div class="qf-header">
+      <div class="qf-eyebrow">10 秒读完 / 核心数据速览</div>
+      <h2 class="qf-title">Serenity at a Glance</h2>
+    </div>
+    <div class="qf-grid">
+      <div class="qf-cell">
+        <div class="qf-label">身份</div>
+        <div class="qf-value small">匿名 persona</div>
+        <div class="qf-sub">动漫头像 · 真名未知</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">粉丝</div>
+        <div class="qf-value data">519<span class="qf-unit">K</span></div>
+        <div class="qf-sub">X 接口 · 2026.05</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">X 建号</div>
+        <div class="qf-value">2025.07</div>
+        <div class="qf-sub">不到一年走红</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">核心打法</div>
+        <div class="qf-value small">卡脖子理论</div>
+        <div class="qf-sub">Chokepoint Theory</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">成名作 $AXTI</div>
+        <div class="qf-value pos">~9–11<span class="qf-unit">倍</span></div>
+        <div class="qf-sub">他约$12→约$140</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">回测胜率</div>
+        <div class="qf-value pos">~86<span class="qf-unit">%</span></div>
+        <div class="qf-sub">TradingKey 回测 · 选股口径</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">自报2年收益</div>
+        <div class="qf-value warn">225<span class="qf-unit">倍</span></div>
+        <div class="qf-sub">⚠ 社区笔记标"误导"</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">杠杆/期权</div>
+        <div class="qf-value warn">重度用</div>
+        <div class="qf-sub">戳破"反期权"误传</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">最大软肋</div>
+        <div class="qf-value small warn">无卖出纪律</div>
+        <div class="qf-sub">只讲买、不讲卖</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">业绩验证</div>
+        <div class="qf-value small">仅选股可验</div>
+        <div class="qf-sub">账户收益无法核实</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">可信度定位</div>
+        <div class="qf-value small">影响者+带单</div>
+        <div class="qf-sub">非"稳定真本事"实证</div>
+      </div>
+      <div class="qf-cell qf-cell-verdict">
+        <div class="qf-label">一句话判断</div>
+        <div class="qf-verdict">学他的"问法"<br>别抄他的"答案"</div>
+        <div class="qf-sub">尤其别在他喊红后追高</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<nav class="toc">
+  <h4>章节目录</h4>
+  <ol>
+    <li><a href="#tldr">一页纸结论</a></li>
+    <li><a href="#who">他是谁</a></li>
+    <li><a href="#core">方法论六块内核</a></li>
+    <li><a href="#map">供应链卡脖子地图</a></li>
+    <li><a href="#models">5 模型 + 8 启发式</a></li>
+    <li><a href="#cases">4 个实战案例</a></li>
+    <li><a href="#quotes">他的金句</a></li>
+    <li><a href="#credibility">可信度与裂缝</a></li>
+    <li><a href="#learnable">能学 vs 学不来</a></li>
+    <li><a href="#decision">给你的建议</a></li>
+  </ol>
+</nav>
+
+<article>
+
+<!-- ===== 1. TL;DR ===== -->
+<section id="tldr">
+  <div class="section-num">01 / 一页纸结论</div>
+  <h2>如果你只看一段，看这段。</h2>
+
+  <p>
+    <strong>Serenity（X 账号 @aleabitoreddit）</strong>是一个 2025 年 7 月才开通、不到一年涨到约 <strong>51.9 万粉丝</strong>的匿名财经博主。他自称"那位著名的 Reddit WSB 交易员"和"AI / 半导体供应链分析师"。他干的事，用一句话概括：<strong>从"AI 一定要疯狂建数据中心"这个确定的大趋势出发，沿着硬件供应链一层层往上游倒推，直到挖到那个"个头很小、却被全行业依赖、又几乎换不掉"的最窄环节，在机构和财报还没反应过来之前重仓买入它的股票。</strong>
+  </p>
+  <p>
+    他给这套方法起名 <strong>"卡脖子理论"（Chokepoint Theory）</strong>，代表作是磷化铟衬底公司 <strong>$AXTI</strong>——他 2025 年底在约 12 美元喊出 150 美元目标价，2026 年 5 月该股摸到约 140 美元（从他入场算约 <strong>9–11 倍</strong>）。第三方对他点过的股票做过脚本回测：平均收益 +82%、胜率 86%、跑赢纳指。<strong>他确实押中过真东西。</strong>
+  </p>
+
+  <div class="tldr">
+    <h3>但在你想"学他、跟他"之前，先记住三件事：</h3>
+    <ol>
+      <li><strong>他的"问法"可学，"答案"不可抄。</strong> 可学的是那套提问方式——"这条热门赛道，最上游、最稀缺、最绕不开的环节是谁卡着？"；不可抄的是他的具体买卖——等你听说时，最肥的 9–11 倍通常已经走完，你是在山顶接盘。</li>
+      <li><strong>他的"神级履历 + 225 倍收益"全是自报、零审计。</strong> 他晒的"2 年 225 倍"收益截图，<strong>已被 X 官方社区笔记公开标注为"误导性呈现"</strong>（截图是账户总值变化，可以靠不断充钱做大，不等于真实收益率）。可验证的只有"他点过的票后来涨了"，他个人到底赚了多少，没人能证实。</li>
+      <li><strong>他的方法论有两个大裂缝。</strong> 一是<strong>整套框架没有"什么时候卖 / 多贵算贵"</strong>——他只讲买入逻辑，自承"估值纪律是弱点"；二是<strong>言行落差</strong>——嘴上讲"上游小盘卡脖子"，手上最大的仓位却漂到了大热门的算力租赁股 $NBIS。</li>
+    </ol>
+
+    <h3>给外行的一句话总结：</h3>
+    <p>
+      把他当成一个<strong>"思路有启发、战绩别全信"的信息源</strong>，去学他"顺着供应链找瓶颈"的思考框架；但<strong>绝不要照着他喊单去买股票</strong>——尤其是那些已经被他带火、涨上天的瑞典/美国小盘股，你跟进的风险远大于机会。
+    </p>
+  </div>
+
+  <div class="callout data">
+    <div class="callout-label">本报告怎么读 · 三个可信度标签</div>
+    <p>因为他大量信息真假混杂，全文统一用三个标签帮你区分：<strong>【他明说】</strong>= 他本人推文原话；<strong>【我推断】</strong>= 调研员从他行为归纳、他没明说的；<strong>【自述未核实】</strong>= 高造假风险、无第三方佐证（尤其收益数字）。看到第三个标签，一律打问号。</p>
+  </div>
+</section>
+
+<!-- ===== 2. 他是谁 ===== -->
+<section id="who">
+  <div class="section-num">02 / 他是谁</div>
+  <h2>一个匿名账号，怎么一年封神？</h2>
+
+  <p>
+    先把硬事实摆出来（以下身份数据来自 X 官方接口实时直读，是一手）：
+  </p>
+
+  <div class="metric-list">
+    <div class="metric-row">
+      <div class="label">粉丝数<span class="src">X 接口 · 一手 ✓</span></div>
+      <div class="value data">518,969</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">关注数 / 发帖数<span class="src">X 接口 · 一手 ✓</span></div>
+      <div class="value">160 <small>/ 6,915</small></div>
+    </div>
+    <div class="metric-row">
+      <div class="label">X 账号创建时间<span class="src">X 接口 rest_id · 一手 ✓</span></div>
+      <div class="value">2025-07-02</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">Reddit 旧号 u/AleaBito 注册<span class="src">moomoo / Reddit · 二手</span></div>
+      <div class="value">2022-01-11</div>
+    </div>
+  </div>
+
+  <p>
+    <strong>账号画像：</strong>头像是动漫风格的白发少女（非真人照片），昵称 Serenity，蓝 V 认证。他的所在地一栏填的是 <strong>"NFA"</strong>——这是 "Not Financial Advice"（非投资建议）的缩写，不是真实地点。他的 bio 自述：<em>"That famous @Reddit WSB Trader now on X. AI/Semi Supply Chain Analyst. ex. RISC-V FDN, AI research scientist; now trading unknown bottlenecks."</em>（那位著名的 Reddit WSB 交易员，现在来了 X。AI/半导体供应链分析师，前 RISC-V 基金会、AI 研究科学家，如今在交易那些没人注意的瓶颈。）
+  </p>
+
+  <div class="callout warn">
+    <div class="callout-label">⚠ 关于他的"履历"</div>
+    <p>"前 AI 研究科学家、Nature 论文作者、RISC-V 基金会成员、2018 年拒绝英伟达 offer（当时股价约 6 美元）"——<strong>这些全部是他自己说的，没有任何一项被第三方独立核实过。</strong>多篇深度报道都统一声明："关于 Serenity 的所有背景信息都是自报、未经任何第三方验证。"<span style="white-space:nowrap">（WSB = WallStreetBets，</span>美国最大的散户炒股论坛，以高杠杆、梗股文化著称。）</p>
+  </div>
+
+  <h3>投资历程时间线</h3>
+
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-date">2022.01</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-title">Reddit 时期：WSB 高杠杆赌徒</div>
+        <div class="tl-desc">注册 u/AleaBito，活跃于 r/WallStreetBets，累计上万帖。自述做过 eToro IPO 单边期权 17.5 万美元、Hims 仓位 10 万美元等高杠杆投机。【自述未核实】</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2022 前后</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">发 $AXTI 帖 → 被 WSB 版主永久封禁</div>
+        <div class="tl-desc">他亲口说："就因为发了 $AXTI 被踢出版块，版主不喜欢一只股票从 15 涨到 70、散户真的赚到钱。"——这段"被打压的散户英雄"故事成了他后来的人设底色。（注：这次并未立刻兑现暴涨，详见案例一的时间线校正。）</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2025.07</div>
+      <div class="tl-dot data"></div>
+      <div class="tl-content">
+        <div class="tl-title">开通现在这个 X 账号</div>
+        <div class="tl-desc">@aleabitoreddit 正式创建。注意：很多造神文说他"2022/2024 年就迁到 X"，与 X 接口的 2025-07-02 矛盾，以一手为准。</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2025.12</div>
+      <div class="tl-dot pos"></div>
+      <div class="tl-content">
+        <div class="tl-title pos">$AXTI 卡脖子长文 → 成名战打响</div>
+        <div class="tl-desc">12-27 系统性喊出磷化铟卡脖子论点，目标价 150 美元。随后 AXTI 在 2026 上半年暴涨，"先知"光环成型。</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.05</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-title">粉丝破 50 万 · 被主流媒体报道</div>
+        <div class="tl-desc">粉丝一路从几万→12.7万→30万→51.9万。被彭博、路透引用，比利时第一大财经报《De Tijd》专题报道。一度有人猜他是著名 AI 研究者 Leopold Aschenbrenner（猜测推文 140 万浏览），把"神秘天才"话题推上顶峰。</div>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    <strong>他为什么火？</strong>四个因素叠加：①"被 WSB 封禁的散户英雄"悲情人设；②反复强调<strong>免费分享、不卖课、不收荐股费</strong>，精准戳中散户对付费荐股的反感；③在大多数人还说"光技术太早"时重仓押注光通信，恰好踩中 CPO（共封装光学）概念爆发；④匿名身份制造的"神秘天才"话题度。
+  </p>
+</section>
+
+<!-- ===== 3. 方法论六块内核 ===== -->
+<section id="core">
+  <div class="section-num">03 / 方法论六块内核</div>
+  <h2>把他的打法拆成六块，逐块讲透。</h2>
+
+  <p>
+    这是全报告最核心的一章。下面六块合起来，就是他完整的投资流程。每一块我都尽量给"<strong>他具体怎么做</strong>"，而不是空泛原则。
+  </p>
+
+  <h3>第 1 块 · 趋势判断：只"确认"不"预测"</h3>
+  <p>
+    【他明说】他不追新闻热点，而是先锚定一个<strong>"物理上绕不开"的大趋势</strong>当地基：AI 要扩张 → 必须疯狂建数据中心 → 数据中心里芯片之间用铜线传数据会撞到"功耗墙"（铜线传得越快发热越猛，散不掉热量）→ 所以<strong>必然</strong>转向用"光"传数据（光通信 / 硅光 / CPO）。他把这叫"光子学超级周期"。
+  </p>
+  <div class="callout">
+    <div class="callout-label">关键区别 · 预判"下一代"而非"当前"</div>
+    <p>他特意区分"当前的瓶颈"和"下一代的瓶颈"，押注<strong>还没发生</strong>的那一代。他原话拿两个激光光源做对比：<em>"One laser source in Lumentum primarily benefits from current optical bottlenecks. The other in $SIVE is for the next gen..."</em>（Lumentum 那种光源吃的是当前的瓶颈红利；而 $SIVE 那种，是为下一代准备的。）——他不买已经在吃当前红利的龙头，专买"再下一代架构切换时才会被点名"的更上游、更小的供应商。</p>
+  </div>
+  <p>白话比方：别人都在抢着买"现在最好卖的铲子"，他偏要去预订"下一代金矿开采时才会用到、现在还没人抢的那种特种钻头"。</p>
+
+  <h3>第 2 块 · 供应链拆解：从 GPU 一层层往上游倒推</h3>
+  <p>
+    【他明说】他最关键的一手产物，是亲手发的一张<strong>"瓶颈速查表"（Bottleneck Cheat Sheet）</strong>，把光通信这条链按层列出来，每层配上对应的公司代码。他的倒推路径是：从大家都知道的 GPU（英伟达）出发，一层层往"上游"挖（越上游＝越接近原材料、越少人关注），一直挖到最底层的衬底材料。完整地图见<a href="#map">下一章</a>。
+  </p>
+  <p>白话比方：所有人都盯着餐厅里最贵的那道菜（英伟达 GPU），他却跑去后厨，一路问"做这道菜的酱料是谁供的？酱料的原料又是谁种的？"——一直问到那个"全国只有两三家能种、断了整条供应链就停摆"的源头小农场。</p>
+
+  <h3>第 3 块 · 瓶颈判定：什么才算"真卡脖子"</h3>
+  <p>
+    【我推断】他从没发过一份编号的判定清单，但从他 $AXTI、$SIVE 两篇长帖里，可以归纳出他反复用的几条硬标准（每条都配他的原话）：
+  </p>
+  <ul>
+    <li><strong>① 市占率高度集中（寡头/双头垄断）</strong>：<em>"两家控制全球 60–70%+ 的 InP 衬底……AXTI 约 30–35%、住友约 30%、JX 日矿 10–15%。就这些，没了。"</em></li>
+    <li><strong>② 不可替代 / 替代极难</strong>：<em>"没有 InP 衬底，整条供应链就垮。"</em></li>
+    <li><strong>③ 大厂的物料清单（BOM）里真依赖它</strong>——他会去翻芯片的物料清单验证：<em>"把谷歌 TPU 和微软 Maia 的物料清单看了一遍后，未来的 ASIC、GPU、超大厂部署都高度依赖光子学。"</em>（BOM＝Bill of Materials，造一个产品所需全部零件的清单。）</li>
+    <li><strong>④ 市值小、但潜在市场大</strong>→ 价值错配 + 容易被大厂直接收购。</li>
+    <li><strong>⑤ 架构必然性</strong>：他强调这环节是"必须、不是可选"，因为铜线撞墙是物理定律，绕不开。</li>
+  </ul>
+
+  <h3>第 4 块 · 选股：只选小盘 + 信息不对称</h3>
+  <p>【他明说】同样一笔需求增量，对巨头无感、对小公司却是"重新定价"：</p>
+  <div class="quote">
+    <span class="en">"But $APPL is already a $3.7T+ company. Product mass-buying won't make a dent. Raspberry Pi, however, is a 542.68M company. The revenue is material."</span>
+    <span class="cn">苹果已经 3.7 万亿美元了，囤货撼动不了它；但树莓派只有 5.43 亿美元，这笔收入是实打实有分量的。</span>
+    <div class="quote-attr">Serenity，谈 $RPI</div>
+  </div>
+  <p>他还把"产品被疯狂讨论、但股票代码没人提"当作机会信号：<em>"感觉市场还没定价，因为我在 X 上几乎看不到有人提这个代码——但产品本身被提了一堆。"</em>他偏好欧洲、被分析师忽视的小盘股（$SIVE 在瑞典、$RPI 在伦敦），认为"地区盲区"造成低估。</p>
+
+  <h3>第 5 块 · 财报预判：抓"预期差"，给可证伪的硬数字</h3>
+  <p>
+    【他明说】这是他最漂亮的一招。他预判某公司财报会超预期，靠的<strong>不是财务模型，是"二阶需求信号 + 市场预期差"</strong>。以 $RPI 为例，他的完整推理是：
+  </p>
+  <ul>
+    <li>抓到一个"需求性质突变"的催化剂：树莓派从"爱好者玩具"突变成"硅谷创业公司几十上百块囤来跑 AI 智能体集群的廉价标准件"；</li>
+    <li>把自己的数字明确摆出来对赌分析师：<em>"分析师现在预测营收增速约 14–17%。但如果囤货持续，增速可能冲到 48–55%。"</em></li>
+    <li>同时<strong>主动列出下行风险</strong>，并声明"这不是重仓"——这是他难得的纪律点。</li>
+  </ul>
+  <p>白话注解："预期差"＝市场（分析师）的预测，和真实将要发生的，之间的差距。差距越大、你越早看到，赚得越多。他的本事是：用产业链一线的"谁在囤货"情报，比华尔街更早看到这个差。</p>
+
+  <h3>第 6 块 · 风控 + 用 AI 反驳自己</h3>
+  <p>
+    【二手转述】他会用大语言模型（如 Gemini）做"红蓝对抗 / 魔鬼代言人"——发帖前让 AI 专门挑他论点的逻辑漏洞。这是 PANews 转述、不是他逐字原话，但和多处背景一致，可信。<strong>注意：他是把 AI 当"研究放大器和找茬工具"，不是当"选股器"</strong>——这一招是他方法里最值得普通人复制的。
+  </p>
+  <p>
+    【他明说】仓位上，风险大的标的他明确"不是重仓"；他把"别人恐慌时加仓"当纪律：<em>"越是这种时候越考验信念。如果你懂基本面和赛道，这就是礼物。"</em>
+  </p>
+  <div class="callout warn">
+    <div class="callout-label">⚠ 这一块也是他最大的洞</div>
+    <p>他的风控几乎<strong>只有"买入侧"，没有"卖出侧"</strong>——整套公开内容里几乎找不到"什么价格该止盈/该认错离场"的部分，他本人也承认"估值纪律是我的弱点"。这意味着：他的框架教你<strong>怎么上车，却没教你怎么下车</strong>。对跟随者来说，这是致命缺口。</p>
+  </div>
+</section>
+
+<div class="divider-quote">
+  "他哪里是在炒股，分明是在拼整条 AI 供应链的拼图。"<br><span style="font-size:15px">——知乎对他打法的概括</span>
+</div>
+
+<!-- ===== 4. 供应链地图 ===== -->
+<section id="map">
+  <div class="section-num">04 / 供应链卡脖子地图</div>
+  <h2>他眼里的 AI 光通信供应链，长这样。</h2>
+
+  <p>
+    这张表是把他亲口点过的标的，按"从终端往最上游"排好的供应链地图（越往下＝越上游、越接近原材料、越少人关注）。<strong>看懂这张表，你就看懂了他每条推文在说什么。</strong>他最看重的两个卡点已加粗。
+  </p>
+
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>层级（白话）</th><th>这一层在干嘛</th><th>他点过的代表标的</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="product-name">GPU / ASIC 终端</td><td>最终需要"光"的人</td><td>$NVDA、$GOOGL TPU、$META、$MSFT Maia、$AMZN Trainium</td></tr>
+      <tr><td class="product-name">CPO / 交换芯片</td><td>把光集成进芯片旁边</td><td>$AVGO（博通）、$MRVL（Marvell）</td></tr>
+      <tr><td class="product-name">光收发模块</td><td>收发光信号的模块、组装</td><td>$AAOI、$COHR、$LITE、$JBL、Innolight</td></tr>
+      <tr><td class="product-name">长距相干光</td><td>数据中心之间传输</td><td>$CIEN、$NOK、$CSCO</td></tr>
+      <tr class="highlight"><td class="product-name">外置激光光源 ★</td><td>提供 CPO 必需的连续激光（核心卡点之一）</td><td><strong>$SIVE（最高信念）</strong>、住友、$LITE、$COHR、$MTSI、$POET</td></tr>
+      <tr><td class="product-name">硅光代工</td><td>把硅光芯片造出来</td><td>$TSEM、$GFS、$UMC、$TSM、$INTC</td></tr>
+      <tr><td class="product-name">微透镜 / 光纤阵列</td><td>把光对准、耦合进光纤</td><td>$HIMX、FOCI（3363.TWO）</td></tr>
+      <tr><td class="product-name">SOI 晶圆</td><td>硅光的衬底</td><td>Soitec（$SOI）</td></tr>
+      <tr class="highlight"><td class="product-name">InP 衬底 ★★</td><td>激光器的"地基晶圆"，全球仅两三家能产（他的"霍尔木兹海峡"）</td><td><strong>$AXTI（皇冠明珠）</strong>、$SMTOY（住友）、JX Nippon</td></tr>
+      <tr><td class="product-name">高量产代工 / 测试</td><td>把激光器规模化做出来 + 量产前验证</td><td>Win Semiconductor、$AEHR</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout data">
+    <div class="callout-label">他最爱的比喻 · "AXTI 海峡"</div>
+    <p class="callout-quote">"全球 20% 的石油要穿过霍尔木兹海峡，那是全球能源贸易最关键的咽喉。现在……把这个咽喉效应翻倍，只不过收货方从韩国/日本换成了 Lumentum 和谷歌。"</p>
+    <p style="margin-top:12px">翻译成人话：整个 AI 光互连的"激光地基"（InP 衬底）就卡在 AXTI 这两三家手里，掐断任何一家，"整个未来 AI 建设就瘫痪"。中文圈把这套"找窄口"打法戏称为<strong>"紫苏叶理论"</strong>——日本怀石料理里那片不起眼、却谁都少不了的紫苏叶。</p>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">⚠ 一个必须知道的"言行落差"</div>
+    <p>他理论上讲的是"最上游、最窄、被忽视的小盘材料股"。但调研发现，他<strong>近几个月实际最大的仓位，已经漂移到了算力租赁股 $NBIS（NeoCloud）</strong>（自述投入"$1.5M+"）——这既不上游、也不窄、更不是被忽视的冷门（$NBIS 是大热门）。即"嘴上卡脖子，手上追热门"。这提醒你：<strong>他实际在做的，和他讲的故事，并不完全是一回事。</strong></p>
+  </div>
+</section>
+
+<!-- ===== 5. 5模型+8启发式 ===== -->
+<section id="models">
+  <div class="section-num">05 / 5 心智模型 + 8 决策启发式</div>
+  <h2>别人已经替我们做好的"方法论蒸馏"。</h2>
+
+  <p>
+    有人（GitHub 项目 <a href="https://github.com/leslieyeo/serenity-reply" target="_blank" rel="noopener noreferrer">leslieyeo/serenity-reply</a>）基于他 1700+ 条推文，把他的方法蒸馏成"5 个心智模型 + 8 条决策启发式"。这是目前最系统的提炼。<strong>但请注意：这是二手提炼，可能有误读</strong>——尤其其中一条（反期权）已被他本人推文证伪，我会标出来。
+  </p>
+
+  <h3>5 个核心心智模型</h3>
+
+  <div class="model-card">
+    <div class="m-num">Model 1</div>
+    <span class="m-tag solid">有第三方佐证</span>
+    <h4>供应链瓶颈理论</h4>
+    <p>AI 基建最暴利的机会不在终端产品，而在那些"控制着不可替代输入"的小公司——它们一断供，整个行业停摆。</p>
+    <p style="color:var(--accent-warn)"><strong>反证：</strong>"断供则全行业停摆"常被夸大。WSB 上有人反驳：AXTI 实际只控约 60–70% 的 InP，日欧都有替代供应商，它是"关键玩家"而非"绝对垄断"。</p>
+  </div>
+
+  <div class="model-card">
+    <div class="m-num">Model 2</div>
+    <span class="m-tag weak">偏自我宣称</span>
+    <h4>瓶颈博弈 vs 扩张估值</h4>
+    <p>不要用传统的"营收增长倍数"给瓶颈公司估值，要用"如果它断供会发生什么"来定价。</p>
+    <p style="color:var(--accent-warn)"><strong>反证：</strong>这模型在牛市有效，熊市或流动性收缩时，再强的卡点也会被一起砸。这正是他自承的弱点：估值纪律缺失。</p>
+  </div>
+
+  <div class="model-card">
+    <div class="m-num">Model 3</div>
+    <span class="m-tag solid">有第三方佐证</span>
+    <h4>英伟达信号读取</h4>
+    <p>英伟达的投资行为是超前信号——它押哪个方向，那个方向的卡点就会在 6–18 个月内兑现。例：英伟达投 20 亿美元给 Marvell 做硅光 → 验证 CPO 路线 → $SIVE 光源受益。</p>
+    <p style="color:var(--muted)"><strong>注：</strong>"跟着英伟达找方向"行业里很普遍，是这 5 个模型里辨识度最低、最不"独家"的一个。</p>
+  </div>
+
+  <div class="model-card">
+    <div class="m-num">Model 4</div>
+    <span class="m-tag solid">最"独家"</span>
+    <h4>信息不对称套利</h4>
+    <p>最好的机会在"机构忽略（太小）+ 散户看不懂（太技术）"的交叉地带。机构通常在他发论点 4–6 周后才开始买入。</p>
+    <p style="color:var(--accent-pos)"><strong>这是他真正的差异化：</strong>主流半导体分析师只覆盖英伟达这类大盘，根本不下沉到 AXTI/SIVE 这种小盘——这片空白才是他的护城河。</p>
+  </div>
+
+  <div class="model-card">
+    <div class="m-num">Model 5</div>
+    <span class="m-tag weak">自相矛盾</span>
+    <h4>正和市场观</h4>
+    <p>他原话："股票市场总体是正和的——<strong>只要你不碰期权</strong>。"价值来自发现未被定价的卡点并提前布局。</p>
+    <p style="color:var(--accent-warn)"><strong>矛盾：</strong>这句话和他本人行为直接打架——他大量买期权、教卖期权、做杠杆。见下方"重大更正"。</p>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">⚠ 重大更正 · "反期权铁律"是误读</div>
+    <p>很多二手提炼（包括上面的 GitHub 项目）说他有一条"<strong>反期权铁律 / 不碰杠杆</strong>"。<strong>这是错的，与他本人推文直接矛盾：</strong></p>
+    <ul>
+      <li>他大量买 leaps（长期看涨期权）：<em>"以 98.8 美元加仓 20 万美元的 $NBIS 看涨期权，2026 年 12 月 105 行权。"</em></li>
+      <li>他专门教备兑开仓当被动收入：<em>"100 万美元激进卖期权：5 天赚 2.02 万美元，周收益 2%，年化 183%。"</em>（备兑开仓 covered call＝持有股票的同时卖出看涨期权收权利金，赚一份"出租股票"的钱。）</li>
+      <li>他自述："我个人盯着做更大的杠杆交易。"</li>
+    </ul>
+    <p><strong>结论：期权和保证金恰恰是他的核心工具。</strong>如果你照着二手版本"学他不碰期权"，方向完全错。<strong>这件事本身就是最好的一课：再权威的二手总结，也要回去对一手原文。</strong></p>
+  </div>
+
+  <h3>8 条决策启发式（逐条 + 风险标注）</h3>
+  <ol>
+    <li><strong>卡脖子测试：</strong>若一家公司控制供应链中不可替代的环节 → 买它，不管它现在营收多小。</li>
+    <li><strong>英伟达跟随法则：</strong>英伟达投什么 → 3 个月内找那个方向的卡点公司。</li>
+    <li><strong>欧洲小盘优先：</strong>同等条件下，欧洲被忽视的小盘半导体 &gt; 美国大盘。</li>
+    <li><strong>反 meme 股标签：</strong>媒体把一个有真实基本面的公司叫"散户炒作股"→ 恰恰说明它被低估。<span style="color:var(--accent-warn)">⚠ 幸存者偏差：这条只数赢家——被叫 meme 股后来反转陷困境的（如 $IQE）往往不被提起。</span></li>
+    <li><strong>机构跟随确认：</strong>论点发出 4–6 周后机构开始买 → 论点被验证。</li>
+    <li><strong style="color:var(--accent-warn)">反期权铁律：</strong><span style="color:var(--accent-warn)">⚠ 经一手推文证伪——他实际重度用期权，见上方更正。这条不要采信。</span></li>
+    <li><strong>DYOR 底线：</strong>"我不告诉任何人买什么股票——我只给数据点。"（DYOR＝Do Your Own Research，自己做研究。这也是他规避带单责任的话术。）</li>
+    <li><strong>地缘政治折价：</strong>受益于中美脱钩 / 稀土管制 / 供应链本土化的公司，估值应加地缘溢价。</li>
+  </ol>
+
+  <div class="callout data">
+    <div class="callout-label">客观回测 · 唯一相对硬的数据</div>
+    <p>TradingKey 写脚本回测了他每条推文"首次提及"标的的实际收益（截至 2026-05-20）：</p>
+    <ul>
+      <li>常提及标的<strong>平均 +82.2%、中位 +63.0%、整体胜率约 86%</strong>；同期纳指 +14.7%。</li>
+      <li>他标"强烈看多"的 18 只：平均 +65.3%、胜率 77.8%。</li>
+      <li>他标"<strong>规避</strong>"的 7 只：平均 <strong>−22.5%</strong>、仅 1 只上涨——<strong>他喊"避开"的也确实大多跌了</strong>，这点反向印证了判断力。</li>
+    </ul>
+    <p style="margin-top:10px"><strong>但：</strong>无法排除"推错后删帖"的幸存者偏差；他自述的账户总收益（46 倍 / 225 倍 / 32 倍等多个口径）全部无法核实。<strong>选股能力强，可信；个人暴富战绩，存疑。</strong></p>
+  </div>
+</section>
+
+<!-- ===== 6. 实战案例 ===== -->
+<section id="cases">
+  <div class="section-num">06 / 4 个实战案例</div>
+  <h2>看他这套方法，到底怎么一步步用出来。</h2>
+
+  <p>下面 4 个案例，是把抽象方法落到具体操作的"教学样本"。每个都拆成：他说了什么 → 逻辑链 → 结果 → 你能学的 / 学不来的。</p>
+
+  <div class="case">
+    <div class="case-head">
+      <span class="ticker">$AXTI</span>
+      <span class="verdict-tag hit">实打实命中</span>
+      <span style="font-size:13px;color:var(--muted)">磷化铟衬底 · 他的成名作</span>
+    </div>
+    <p><strong>① 他说了什么：</strong>2025-12-27（推文时间戳，客观）首次系统喊单，称磷化铟（InP）是"AI 大基建的瓶颈"，一家市值仅 7 亿美元的小盘股 $AXTI 系着英伟达、谷歌、微软、Meta 的扩产命脉。后明确："当初我把 $AXTI 从 12–15 美元喊到 150 美元目标价时，所有人都觉得我疯了。"</p>
+    <p><strong>② 逻辑链：</strong>AI 要算力 → 要更快传输 → 改用光 → 光的激光器要 InP 衬底 → 全球能量产 InP 的就两三家、AXTI 占大头 → 最窄的咽喉，埋伏它。</p>
+    <p><strong>③ 用了哪些证据：</strong>客户绑定（挂到 NVDA/谷歌/微软芯片扩产）+ 市占率数据 + 高纯铟现货涨价做侧证 + 中国对 InP 出口管制放大稀缺性 + 后来台湾 IntelliEPI CEO 公开印证"InP 短缺是 AI 基建瓶颈"。</p>
+    <div class="callout warn">
+      <div class="callout-label">④ 结果 + 时间线校正（重点）</div>
+      <p>客观股价：AXTI 在 2024 年长期趴在 <strong>1–2 美元</strong>（52 周低 1.45），2025 年全年营收仅 8800 万美元、净亏 2140 万美元（基本面是亏损小盘股）。他 2025-12-27 喊单时约 12 美元，2026-05-22 收 <strong>140.83 美元</strong>、5-26 盘中高 143.16——从他入场算约 <strong>9–11 倍</strong>，真命中。</p>
+      <p><strong>但要戳破造神叙事：</strong>坊间说他"2022 年就神准预言 AXTI"。真相是——2022 年他只在 Reddit 提过（彼时约 12 美元，随后被封号），<strong>那次并未兑现，这只票之后一直趴在 1–2 美元两年</strong>。成体系的喊单是 2025 年底，暴涨在 2026 上半年。把"2022 旧梗"和"2025 新喊单"两个"12 美元"缝在一起，制造了"四年神准"的假象。</p>
+    </div>
+    <p><strong>⑤ 你能学的：</strong>顺着热门赛道往上游问"最稀缺的那个零件是谁供的"；用"市占率 + 出口管制 + 原材料涨价"多源互证一个稀缺逻辑；等客户/同行 CEO/监管出来佐证，是验证信号。<strong>学不来 / 风险：</strong>他 12 美元进、你 140 美元才听说——最肥的 9–11 倍已走完，此时跟进＝山顶接盘；且 AXTI 是靠"叙事+稀缺+不断增发输血"撑着的亏损小盘股，单日 15–25% 波动是常态。</p>
+  </div>
+
+  <div class="case">
+    <div class="case-head">
+      <span class="ticker">$RPI</span>
+      <span class="verdict-tag hit">命中</span>
+      <span style="font-size:13px;color:var(--muted)">树莓派 · 财报预期差</span>
+    </div>
+    <p><strong>① 他说了什么：</strong>2026-02 财报前喊多，押营收增速 <strong>48–55%</strong>，而分析师共识只有 14–17%。</p>
+    <p><strong>② 逻辑链：</strong>消费级 AI 硬件爆发 → 硅谷创业公司几十上百块囤树莓派当"AI 智能体集群"的廉价大脑 → 需求井喷 → 而分析师还用老眼光给 14% → 预期差就是钱。</p>
+    <p><strong>③ 证据：</strong>下游"谁在囤货"的一线信号 + 一个具体可证伪的数字（55% vs 14%）。</p>
+    <p><strong>④ 结果：</strong>2026-03-31 财报实际增速约 58%（媒体报道，他推文未自我确认该数字），财报日股价约 +44.76%、次日约 +27.43%，两天约翻倍，被路透/彭博引用。<strong>命中，且预测精度惊人。</strong></p>
+    <p><strong>⑤ 你能学的：</strong>关注"市场共识 vs 真实需求"的缝隙；把判断落成一个具体可证伪的数字，逼自己想清楚、也方便复盘。<strong>学不来 / 风险：</strong>"谁在囤货"的产业链情报外行拿不到；财报是双刃剑，猜对暴涨、猜错暴跌，本质是高赔率事件博弈，不是稳健投资。</p>
+  </div>
+
+  <div class="case">
+    <div class="case-head">
+      <span class="ticker">$SIVE</span>
+      <span class="verdict-tag mixed">命中但风险最高</span>
+      <span style="font-size:13px;color:var(--muted)">瑞典激光光源 · 框架复制</span>
+    </div>
+    <p><strong>① 他说了什么：</strong>称它是"确信度最高的新兴标的"，在约 2.9 亿美元市值时买入，<strong>但自述仓位仅 0.5%–1%</strong>。远期预测：2028 年营收 5 亿、2029 年 10 亿美元（目前几乎没收入、还在亏损）。</p>
+    <p><strong>② 逻辑链：</strong>把 AXTI 那套"光通信卡脖子"框架平移到另一个零件——CPO 必需的连续激光光源，叠加"小到大厂随手就能收购"的并购想象。</p>
+    <div class="callout warn">
+      <div class="callout-label">④ 结果 + 必须知道的阴暗面</div>
+      <p>股价确实大涨（2026-05-22 历史高 74.90 瑞典克朗，约 7 美元；市值约 204 亿克朗 ≈ 19–21 亿美元），方向命中。但：<strong>瑞典经济犯罪局已就其赴美上市"信息提前泄露"开启刑事/内幕调查</strong>；市销率约 <strong>31 倍</strong>（另有更激进口径估 60–80 倍）、远高于行业均值约 4.1 倍；公司持续定向增发稀释；有对冲基金建空头。至于"散户拉盘 1700%"的指控，多来自 X 批评者（如 @annanay 称其为"散户拉盘铁证"），<strong>严肃媒体未点名 Serenity 操纵</strong>，我们如实标注"未坐实"。</p>
+    </div>
+    <p><strong>⑤ 关键启示：</strong>同一个故事第二次讲，标的成色可能差很多——<strong>连他自己都只配 0.5–1% 小仓，把它当高风险小注</strong>。普通人最危险的误读，就是把它当"下一个 AXTI"去重仓。这个案例完美演示了"重仓确信、小注投机"的分配艺术，以及外行最容易做反它。</p>
+  </div>
+
+  <div class="case">
+    <div class="case-head">
+      <span class="ticker">$IREN</span>
+      <span class="verdict-tag mixed">逻辑对、择时吃亏</span>
+      <span style="font-size:13px;color:var(--muted)">由多翻空 · 看增发稀释</span>
+    </div>
+    <p><strong>① 他说了什么：</strong>曾看多 IREN（比特币矿企转型 AI 数据中心租赁），但在公司把增发额度从 10 亿猛扩到 <strong>60 亿美元</strong>后公开翻空，名言："大多数人犯的错是和股票谈恋爱。如果你的逻辑实质变了，你的仓位也该变。"</p>
+    <p><strong>② 逻辑链：</strong>这次不是"找咽喉"，而是看"<strong>资本结构的毒性</strong>"——无上限大额增发会持续抽走公开市场的钱、压制股价，多头逻辑被破坏，于是翻空。（ATM 增发＝公司可随时按市价不停卖新股换现金，对老股东就是不断被稀释。）</p>
+    <p><strong>③ 证据：</strong>SEC 文件（2026-03-05 ATM 从 10 亿扩到 60 亿、配 97 亿微软合同）+ 管理层在 $BKKT/$ASST 上的稀释前科 + 用健康融资的 Nebius 做反例对照。</p>
+    <p><strong>④ 结果：</strong>稀释担忧有据（宣布当天跌约 8.5%，多家给"强烈卖出"）；<strong>但纯看股价，IREN 后来涨回来了</strong>（到 5 月底转为 YTD +50%），他翻空后<strong>踏空了反弹</strong>。判定：逻辑正确，择时吃亏（半对）。</p>
+    <p><strong>⑤ 你能学的（这案例最实用）：</strong>看一家热门公司，<strong>务必去 SEC 文件查它是不是在疯狂增发新股（ATM/offering）</strong>——再好的故事都会被无限稀释拖累；看管理层有没有摧毁股东价值的黑历史；区分"健康融资 vs 有毒融资"。<strong>学不来 / 风险：</strong>择时极难——他逻辑对，股价短期照样能逆基本面涨。这再次证明：<strong>"判断对"不等于"赚到钱"。</strong></p>
+  </div>
+</section>
+
+<!-- ===== 7. 金句 ===== -->
+<section id="quotes">
+  <div class="section-num">07 / 他的金句</div>
+  <h2>他反复说的这些话，是方法论的浓缩。</h2>
+
+  <p>这些是他高频出现、最能代表其思维方式的原话（英文原文 + 中文翻译）。读懂它们，等于摸到他的"心法"。</p>
+
+  <div class="quote">
+    <span class="en">"It's even crazier that a $700m company could become the center of it all."</span>
+    <span class="cn">更疯狂的是，一家 7 亿美元的小公司，竟可能成为这一切的中心。</span>
+    <div class="quote-attr">谈 $AXTI · 卡脖子核心信念</div>
+  </div>
+
+  <div class="quote">
+    <span class="en">"The Photonics Supercycle is here. $NVDA is spearheading the next leap into CPO & Silicon Photonics."</span>
+    <span class="cn">光子学超级周期来了。英伟达正领头迈向 CPO 和硅光子的下一跃。</span>
+    <div class="quote-attr">他的大趋势锚点</div>
+  </div>
+
+  <div class="quote">
+    <span class="en">"Margins > Capacity."</span>
+    <span class="cn">看利润率，别只看产能规模。</span>
+    <div class="quote-attr">他评估算力股的判定标准</div>
+  </div>
+
+  <div class="quote">
+    <span class="en">"Most people make the mistake of getting married to a stock. If your thesis materially changes, so should your position."</span>
+    <span class="cn">大多数人犯的错是和股票谈恋爱。如果你的逻辑实质变了，你的仓位也该变。</span>
+    <div class="quote-attr">谈 $IREN 翻空 · 他最该被学的纪律</div>
+  </div>
+
+  <div class="quote">
+    <span class="en">"Retail panic. Capitulation. Liquidity."</span>
+    <span class="cn">散户恐慌、投降、流动性——这是机构想要的剧本。</span>
+    <div class="quote-attr">他解释下跌时为何反而该买</div>
+  </div>
+
+  <div class="quote">
+    <span class="en">"There's no need to paywall or gatekeep new stocks like others, so just going to share them."</span>
+    <span class="cn">没必要像别人那样把新股票藏起来收费，我直接分享。</span>
+    <div class="quote-attr">他的"免费"人设 —— 但见下章，他其实开了付费订阅</div>
+  </div>
+</section>
+
+<!-- ===== 8. 可信度 ===== -->
+<section id="credibility">
+  <div class="section-num">08 / 可信度与裂缝</div>
+  <h2>他到底可不可信？把红旗一次摆清。</h2>
+
+  <p>这一章是"刹车"。学方法的同时，必须看清他的可信度边界。下面是综合 6 路调研后的可信度评分（满分 10）：</p>
+
+  <div class="score-card">
+    <div class="score-row"><div class="name">选股研究能力</div><div class="bar"><div class="bar-fill pos" style="width:82%"></div></div><div class="num">8.2</div></div>
+    <div class="score-row"><div class="name">方法论原创性</div><div class="bar"><div class="bar-fill pos" style="width:65%"></div></div><div class="num">6.5</div></div>
+    <div class="score-row"><div class="name">业绩可验证性</div><div class="bar"><div class="bar-fill warn" style="width:25%"></div></div><div class="num">2.5</div></div>
+    <div class="score-row"><div class="name">身份/履历可信度</div><div class="bar"><div class="bar-fill warn" style="width:20%"></div></div><div class="num">2.0</div></div>
+    <div class="score-row"><div class="name">利益中立性</div><div class="bar"><div class="bar-fill warn" style="width:35%"></div></div><div class="num">3.5</div></div>
+    <div class="score-row"><div class="name">跟单安全性</div><div class="bar"><div class="bar-fill warn" style="width:20%"></div></div><div class="num">2.0</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="col-card pos">
+      <h4>支持"他有点真东西"</h4>
+      <ul>
+        <li>$AXTI/InP 核心判断在事前（约 12 美元）就提出，逻辑自洽，事后有 SEC 增发价、Wedbush 目标价、同行 CEO 表态、$RPI 财报多重独立佐证——不是纯马后炮。</li>
+        <li>第三方脚本回测：点过的票平均 +82%、胜率 86%，明显跑赢纳指。</li>
+        <li>他标"规避"的票也大多真跌了，判断力双向有效。</li>
+        <li>不卖天价荐股群、不晒私人飞机立威，主要靠免费内容起家。</li>
+      </ul>
+    </div>
+    <div class="col-card warn">
+      <h4>红旗 / 裂缝</h4>
+      <ul>
+        <li><strong>履历 + 收益全自报、零审计</strong>，收益截图被 X 社区笔记标"误导性"。</li>
+        <li>可验证战绩窗口<strong>仅约 5 个月</strong>，正逢 AI 光通信小盘股普涨——难分"真本事"还是"赶上风口"。</li>
+        <li><strong>"免费不卖课" vs 实际开了付费订阅</strong>（已发 173 篇订阅者专属帖）——人设与变现矛盾。</li>
+        <li><strong>先持仓、后公开喊单</strong>（买 OTM 看涨期权再发帖），符合"散户拉盘"指控的结构形态。</li>
+        <li>被资深做空研究者 Herb Greenberg 点名 $AXTI 为"红旗股 / 失控微盘动量交易"。</li>
+        <li>号召粉丝"举报 + 拉黑"质疑账号，压制反方讨论。</li>
+        <li>专押低流动性微盘股 + 50 万粉跟单，反转时极易踩踏。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-label">综合可信度定位</div>
+    <p>他更像是 <strong>"善于表达的内容创作者 / 影响者，且带有危险荐股带单博主的明显特征"</strong>，<strong>够不上"有稳定真本事 alpha 的实证派"</strong>。多家媒体最克制的判断是："<strong>暂不构成骗子，但也不应被当神看待。</strong>"大白话：他不太像传统割韭菜骗子，更像一个真懂一点半导体、又极度擅长讲故事造声势的网红——他押中过真东西，但你看到的是他精心维护的、淡化失败、放大成功的版本。</p>
+  </div>
+</section>
+
+<!-- ===== 9. 能学 vs 学不来 ===== -->
+<section id="learnable">
+  <div class="section-num">09 / 能学 vs 学不来</div>
+  <h2>作为外行，你到底能学走什么？</h2>
+
+  <h3>先补这些基础知识（按顺序）</h3>
+  <ol>
+    <li><strong>看懂 AI 硬件产业链</strong>：GPU → 服务器/数据中心 → 光模块/光通信 → CPO/硅光 → 上游材料（磷化铟、SOI 晶圆、HBM 内存）。不懂这条链，他每条推文都看不懂——本报告第 4 章那张地图就是你的入门图。</li>
+    <li><strong>基础财务与估值常识</strong>：市值、市销率（P/S，股价相对营收贵不贵）、流动性（小盘股能不能随时卖掉）。</li>
+    <li><strong>"自上而下"分析法</strong>：从大趋势 → 行业 → 环节 → 公司的推演框架。</li>
+    <li><strong>风险常识</strong>：仓位管理、止损、识别"拉高出货"、查 SEC 文件里的增发。</li>
+  </ol>
+
+  <div class="two-col">
+    <div class="col-card pos">
+      <h4>普通人能学（方法/纪律层）</h4>
+      <ul>
+        <li><strong>换个问法找标的：</strong>不追最热的龙头，改问"这轮扩张里，谁会被卡住、谁还没被定价"。这套提问可迁移到任何行业。</li>
+        <li><strong>用 AI 当"魔鬼代言人"：</strong>让 AI 帮你检索、整理、<strong>反驳你自己的观点</strong>（而不是替你选股）——他方法里最可复制的一招。</li>
+        <li><strong>查增发稀释：</strong>看热门股先去 SEC 查它是不是在疯狂增发（$IREN 那一课）。</li>
+        <li><strong>逻辑变了就改仓：</strong>不和股票谈恋爱。</li>
+        <li><strong>把判断写成可证伪的数字：</strong>逼自己想清楚、方便复盘（$RPI 的 55% vs 14%）。</li>
+        <li><strong>仓位分级：</strong>确信的重仓、投机的只放小注（他给 $SIVE 仅 0.5–1%）。</li>
+      </ul>
+    </div>
+    <div class="col-card warn">
+      <h4>学不来（靠天赋/信息/承受力）</h4>
+      <ul>
+        <li><strong>专业壁垒：</strong>他能读材料科学/光通信论文、懂物理极限——普通人几个月建不起这种判断力。</li>
+        <li><strong>信息密度与速度：</strong>常年泡在小众供应链情报里（谁在囤树莓派、高纯铟现货报价、出口管制细节），这是时间和圈子的积累。</li>
+        <li><strong>进场时机：</strong>他几乎都在地板价、没人关注时进；等他喊红、你才看到，最肥的涨幅通常已走完。</li>
+        <li><strong>心理承受力：</strong>他买的是单日大涨大跌的高波动小盘股，还用约 1.4 倍杠杆 + 期权，普通人拿不住。</li>
+        <li><strong>运气/时点：</strong>天量收益高度依赖"2024–2026 这轮 AI 光通信叙事"踩点精准，<strong>胜率高 ≠ 你现在跟进还来得及。</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout data">
+    <div class="callout-label">一个朴素但重要的提醒</div>
+    <p class="callout-quote">"不足半年的时间，不足以证明一套方法的有效性，只能证明一个方向的价值。"</p>
+    <p style="margin-top:12px">这套打法的<strong>优势和风险是同一个东西</strong>——极致地只押"AI 链小市值物理卡点"，对了是十倍股，错了（技术路线被替代 / 流动性枯竭 / 订单落空）整条链一起崩、没有对冲。</p>
+  </div>
+</section>
+
+<!-- ===== 10. 决策建议 ===== -->
+<section id="decision">
+  <div class="section-num">10 / 给你的建议</div>
+  <h2>怎么把他用对，而不是被他坑。</h2>
+
+  <h3>7 个可操作的 Takeaway</h3>
+  <ol>
+    <li><strong>把他当"研究线索来源"，不当"买卖指令"。</strong> 看到他点一个新标的，正确动作是顺着去研究那条供应链、补你的认知，而不是打开券商就买。</li>
+    <li><strong>学他的"问法"模板。</strong> 任何热门趋势，问三句：最上游最稀缺的环节是谁？它够不够"卡脖子"（市占集中、难替代、大厂真依赖）？市场定价了没（有没有人提这个代码）？</li>
+    <li><strong>抄他这一招：用 AI 反驳自己。</strong> 你有任何投资想法，先让 AI 扮演"专唱反调的魔鬼代言人"挑漏洞——这是他方法里门槛最低、收益最高的可复制点。</li>
+    <li><strong>建立你自己的"卖出纪律"补他的洞。</strong> 他只教买、不教卖。你必须自己定规则：到什么价/什么信号止盈，逻辑变成什么样止损。</li>
+    <li><strong>看热门股先查增发。</strong> 去 SEC 看 ATM/offering 规模——这是 $IREN 给的最实用一课，外行也学得会。</li>
+    <li><strong>永远区分"他重仓"和"他小注"。</strong> 他给 $SIVE 只放 0.5–1%。别把他的投机小注，当成你的确信重仓。</li>
+    <li><strong>对所有"收益率截图"免疫。</strong> 他的 225 倍已被官方标"误导"。任何人晒收益截图，默认当广告，不当证据。</li>
+  </ol>
+
+  <h3>务必避开的 3 个坑</h3>
+  <ul>
+    <li><strong>坑一：在他喊红后追高。</strong> 你听说时，AXTI 已从 12 涨到 140。这是跟单者最常见的死法。</li>
+    <li><strong>坑二：把他的小盘投机当价值投资重仓。</strong> 他买的是亏损小盘股 + 监管阴云股（$SIVE 有刑事调查），靠叙事撑估值，叙事一裂就腰斩。</li>
+    <li><strong>坑三：信"免费博主＝没有利益冲突"。</strong> 他先持仓后喊单、开了付费订阅、号召举报异见——免费不等于中立。</li>
+  </ul>
+
+  <div class="verdict">
+    <div class="verdict-title">最终判断 · For Ray</div>
+    <h3>学他的"显微镜"，别买他的"彩票"。</h3>
+    <p>
+      Serenity 最有价值的，是一台<strong>"产业链显微镜"</strong>——把一个模糊的大趋势（AI），拆解到"谁是那颗谁都换不掉的螺丝钉"的颗粒度。这套<strong>提问与拆解方式，是真本事，值得你认真学</strong>，而且能迁移到机器人、电力、稀土等任何供应链密集的赛道。
+    </p>
+    <p>
+      但他卖给市场的"<strong>彩票</strong>"——具体买哪只小盘股、225 倍的暴富叙事、神级匿名履历——<strong>不值得你下注</strong>。它们要么无法验证，要么等你能下注时赔率已经变差。最稳妥的姿势：<strong>把他当一个能给你启发的"研究雷达"，用你自己的纪律和卖出规则去过滤他的每一个信号。</strong>
+    </p>
+    <div class="verdict-options">
+      <div class="verdict-option">
+        <div class="num">A / 推荐</div>
+        <h4>当作思维训练</h4>
+        <p>读他的长推文，练"顺供应链找瓶颈 + 用 AI 反驳自己"的肌肉。零成本、纯收益。</p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">B / 谨慎</div>
+        <h4>当作研究线索</h4>
+        <p>他点的方向可以去深挖，但要自己独立验证、自己定买卖纪律，绝不在高位接力。</p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">C / 别做</div>
+        <h4>照单全抄跟单</h4>
+        <p>跟买他喊红的小盘股、信他的收益截图、把投机当重仓——这是亏钱的最短路径。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>主要数据来源</h4>
+    <ul>
+      <li><a href="https://x.com/aleabitoreddit" target="_blank" rel="noopener noreferrer">X · @aleabitoreddit 主页（一手，CDP 直读）</a></li>
+      <li><a href="https://aleabitoreddit.substack.com/p/sivers-semi-sive-the-cpo-laser-supplier" target="_blank" rel="noopener noreferrer">Serenity 本人 Substack · SIVE 长文（含 OSINT 方法）</a></li>
+      <li><a href="https://x.com/aleabitoreddit/status/2004569946492453003" target="_blank" rel="noopener noreferrer">X · $AXTI/InP 卡脖子原始长帖</a></li>
+      <li><a href="https://x.com/aleabitoreddit/status/2033885603423785170" target="_blank" rel="noopener noreferrer">X · 他亲手发的"瓶颈速查表"</a></li>
+      <li><a href="https://x.com/aleabitoreddit/status/2023415224372756782" target="_blank" rel="noopener noreferrer">X · $RPI 财报预判逻辑全文</a></li>
+      <li><a href="https://github.com/leslieyeo/serenity-reply" target="_blank" rel="noopener noreferrer">GitHub · serenity-reply（5 模型+8 启发式蒸馏）</a></li>
+      <li><a href="https://www.tradingkey.com/zh-hans/analysis/stocks/us-stock/261935617-adam-xie" target="_blank" rel="noopener noreferrer">TradingKey · 40 倍收益率检验与回测</a></li>
+      <li><a href="https://zhuanlan.zhihu.com/p/2039045698369361597" target="_blank" rel="noopener noreferrer">知乎 · 5个月32倍 AI 投资方法论（NeoMu）</a></li>
+      <li><a href="https://www.panewslab.com/zh/articles/019e674b-724f-736c-8077-b2221cf24e39" target="_blank" rel="noopener noreferrer">PANews · 卡脖子投资术（含紫苏叶理论）</a></li>
+      <li><a href="https://www.odaily.news/en/post/5210924" target="_blank" rel="noopener noreferrer">Odaily · 零售之神还是赌徒</a></li>
+      <li><a href="https://singularityresearchfund.substack.com/p/inside-the-mind-of-serenity-aleabitoreddit" target="_blank" rel="noopener noreferrer">Substack · Inside the Mind of Serenity</a></li>
+      <li><a href="https://news.futunn.com/en/ja/post/73707645/" target="_blank" rel="noopener noreferrer">futunn · 225x 收益深度解构</a></li>
+      <li><a href="https://www.herbgreenberg.com/p/new-red-flag-alert-the-sudden-surge" target="_blank" rel="noopener noreferrer">Herb Greenberg · $AXTI 红旗警报</a></li>
+      <li><a href="https://x.com/herbgreenberg/status/2038597904500478086" target="_blank" rel="noopener noreferrer">X · Herb Greenberg 质疑帖</a></li>
+      <li><a href="https://www.moomoo.com/community/feed/here-s-the-backstory-on-the-twitter-account-aleabitoreddit-x-116401268326405" target="_blank" rel="noopener noreferrer">moomoo · 账号背景介绍</a></li>
+      <li><a href="https://x.com/aleabitoreddit/status/2046003874553901188" target="_blank" rel="noopener noreferrer">X · "2年225%收益"帖（被社区笔记标误导）</a></li>
+    </ul>
+
+    <div class="footer-meta">
+      <div>报告生成 · 2026-05-31 · Claude Opus 4.8 · 6 个并行 AI 调研员协作完成 · 高 stake 数据经 6 路交叉印证 + 算术一致性自检</div>
+      <div>仅供学习与决策参考 · 收益类数字多为本人自述、未经审计 · 非投资建议 · 投资有风险</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// 主题切换按钮
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    if (next === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+    try { localStorage.setItem('ray-theme', next); } catch (e) {}
+  });
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem('ray-theme')) return;
+      if (e.matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+    });
+  }
+})();
+
+// IntersectionObserver 让 TOC 自动跟随当前章节高亮（sidebar 接管时 nav.toc 被隐藏）
+if ('IntersectionObserver' in window) {
+  const sections = document.querySelectorAll('section[id]');
+  const tocLinks = document.querySelectorAll('nav.toc a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        tocLinks.forEach(link => { link.style.color = ''; link.style.fontWeight = ''; });
+        const activeLink = document.querySelector(`nav.toc a[href="#${id}"]`);
+        if (activeLink) { activeLink.style.color = 'var(--accent-warn)'; activeLink.style.fontWeight = '600'; }
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => observer.observe(s));
+}
+</script>
+
+</body>
+</html>
