@@ -170,6 +170,12 @@
 |------|------|---------|
 | 2026-05-31 | [投资方法论深度拆解 · 学他的问法，别抄他的答案](serenity/2026-05-31-serenity.html) | [↗ Open](https://kdsz001.github.io/ray-research/serenity/2026-05-31-serenity.html) |
 
+### 🚀 [Liftoff Mobile (LFTO)](liftoff-mobile/) · 黑石系移动广告平台 · 真 AI(Cortex)驱动 · 美股打新 IPO 尽调
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-06-03 | [美股打新尽调 · 好公司，但被市场逼着流血上市](liftoff-mobile/2026-06-03-liftoff-mobile.html) | [↗ Open](https://kdsz001.github.io/ray-research/liftoff-mobile/2026-06-03-liftoff-mobile.html) |
+
 <!-- INDEX-END -->
 
 ---

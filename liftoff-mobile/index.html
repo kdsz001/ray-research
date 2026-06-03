@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liftoff Mobile (LFTO) · 调研话题 · Ray Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if ((saved || (prefersDark ? 'dark' : 'light')) === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec; --bg-card: #ffffff; --ink: #14110d; --muted: #6e6358; --light: #a39787;
+  --rule: #14110d; --rule-light: #d8d1c2; --accent: #a73121; --link: #1c4d6b;
+  --serif: "Source Serif 4", Georgia, serif;
+  --sans: "Inter", -apple-system, "PingFang SC", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", monospace;
+}
+[data-theme="dark"] {
+  --bg: #15120e; --bg-card: #1f1b16; --ink: #ebe3d3; --muted: #8d8170; --light: #5c5346;
+  --rule: #ebe3d3; --rule-light: #3a342c; --accent: #e87a5f; --link: #6cb1d6;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--sans); background: var(--bg); color: var(--ink);
+  line-height: 1.65; font-size: 16px; max-width: 720px; margin: 0 auto; padding: 80px 32px;
+  -webkit-font-smoothing: antialiased; transition: background 0.2s, color 0.2s;
+}
+.eyebrow {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 12px;
+}
+.eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--accent); }
+.eyebrow a { color: var(--accent); text-decoration: none; }
+h1 {
+  font-family: var(--serif); font-weight: 600; font-size: 52px;
+  line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 18px;
+}
+.lead { font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--muted); margin-bottom: 50px; }
+h2 {
+  font-family: var(--serif); font-weight: 600; font-size: 22px;
+  margin: 48px 0 18px; letter-spacing: -0.01em;
+}
+.report-list { border-top: 1px solid var(--ink); list-style: none; }
+.report-list li {
+  padding: 20px 0; border-bottom: 1px solid var(--rule-light);
+  display: grid; grid-template-columns: 110px 1fr; gap: 20px; align-items: baseline;
+}
+.report-list .date { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+.report-list .title { font-family: var(--serif); font-size: 19px; font-weight: 600; }
+.report-list a { color: var(--ink); text-decoration: none; }
+.report-list a:hover { color: var(--accent); }
+ul.findings { list-style: none; margin: 0; }
+ul.findings li {
+  padding: 12px 0 12px 22px; position: relative; line-height: 1.55; color: var(--muted);
+  border-bottom: 1px dashed var(--rule-light);
+}
+ul.findings li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-family: var(--mono); }
+ul.findings li:last-child { border: none; }
+ul.findings li strong { color: var(--ink); }
+#theme-toggle {
+  position: fixed; top: 14px; right: 24px; z-index: 1000;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--bg-card); border: 1px solid var(--rule-light);
+  color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center;
+  padding: 0; transition: all 0.15s;
+}
+#theme-toggle:hover { border-color: var(--ink); }
+#theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] #theme-toggle .icon-moon { display: block; }
+footer {
+  margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--rule-light);
+  font-family: var(--mono); font-size: 11px; color: var(--light); letter-spacing: 0.05em;
+}
+footer a { color: var(--muted); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="切换夜间模式">
+  <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<div class="eyebrow"><a href="../">← 返回 Ray Research</a> · 调研话题</div>
+<h1>Liftoff Mobile (LFTO)</h1>
+<p class="lead">黑石（Blackstone）控股的移动广告 / 应用增长平台 · 真 AI（Cortex）驱动 · 2026/06/04 在 Nasdaq 上市 · 美股打新 IPO 尽调。</p>
+
+<h2>报告列表</h2>
+<ul class="report-list">
+  <li>
+    <span class="date">2026-06-03</span>
+    <a class="title" href="2026-06-03-liftoff-mobile.html">美股打新尽调 · 好公司，但被市场逼着流血上市 →</a>
+  </li>
+</ul>
+
+<h2>跨报告核心结论</h2>
+<ul class="findings">
+  <li><strong>打新判断：谨慎 · 小额或放弃</strong> — 好公司 + 折价发行 + 冷板块 + 温吞情绪的组合，是高方差小赌注，不是稳赚；绝不上杠杆、绝不重仓</li>
+  <li><strong>AI 是骨架不是装饰（8/10）</strong> — Cortex AI 平台收入已占总营收约 100%，有专门的竞价 ML 团队，每秒数百万次竞价、每周触达 14 亿日活</li>
+  <li><strong>最大硬伤是债务</strong> — 黑石杠杆收购留下 $18.5 亿债务，每年约 $1.2 亿利息把账面利润吃成亏损，2026 Q1 才刚转正</li>
+  <li><strong>被市场逼着折价</strong> — 1 月想按 $5.5B 发行、撤回过一次，现砍价 29% 到 $3.9B 重来；IPO 价甚至低于一年前私募入股价</li>
+  <li><strong>市占率：独立玩家第一梯队约第 2-4 名</strong> — AppsFlyer iOS 游戏全球第 2、Singular「黄金九强」之一，但够不到龙头 AppLovin（市值约 50 倍）</li>
+  <li><strong>关键实时信号</strong> — 盯最终定价：≥$22 = 需求转暖；≤$20 = 需求疲软、破发风险升高</li>
+</ul>
+
+<footer>
+  <a href="../">Ray Research</a> · <a href="https://github.com/kdsz001/ray-research" target="_blank" rel="noopener noreferrer">GitHub</a>
+</footer>
+
+<script>
+var btn = document.getElementById('theme-toggle');
+btn.addEventListener('click', function() {
+  var current = document.documentElement.getAttribute('data-theme');
+  var next = current === 'dark' ? 'light' : 'dark';
+  if (next === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  else document.documentElement.removeAttribute('data-theme');
+  try { localStorage.setItem('ray-theme', next); } catch (e) {}
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liftoff Mobile (LFTO) 美股打新尽调报告 · 2026.06</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+// 防 FOUC：head 内同步设主题
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec;
+  --bg-paper: #fbf9f4;
+  --bg-card: #ffffff;
+  --bg-dark: #14110d;
+  --bg-dark2: #1f1b16;
+  --ink: #14110d;
+  --ink-2: #2c2620;
+  --muted: #6e6358;
+  --light: #a39787;
+  --rule: #14110d;
+  --rule-light: #d8d1c2;
+  --accent-warn: #a73121;
+  --accent-data: #1c4d6b;
+  --accent-pos: #2c5e3f;
+  --accent-yellow: #c89a2c;
+  --grad-warn: rgba(167, 49, 33, 0.04);
+  --grad-data: rgba(28, 77, 107, 0.04);
+  --shadow-card: 0 0 0 transparent;
+  --bg-inverse: #14110d;
+  --bg-inverse-2: #1f1b16;
+  --ink-on-inverse: #f6f3ec;
+  --text-on-inverse: rgba(246, 243, 236, 0.85);
+  --muted-on-inverse: rgba(246, 243, 236, 0.7);
+  --faint-on-inverse: rgba(246, 243, 236, 0.55);
+  --light-on-inverse: rgba(246, 243, 236, 0.5);
+  --rule-on-inverse: rgba(246, 243, 236, 0.18);
+  --accent-yellow-on-inverse: #c89a2c;
+  --serif: "Source Serif 4", "Source Serif Pro", "Charter", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+  --max-w: 820px;
+}
+[data-theme="dark"] {
+  --bg: #15120e;
+  --bg-paper: #1c1814;
+  --bg-card: #1f1b16;
+  --bg-dark: #0a0907;
+  --bg-dark2: #0f0d0a;
+  --ink: #ebe3d3;
+  --ink-2: #c9bfae;
+  --muted: #8d8170;
+  --light: #5c5346;
+  --rule: #ebe3d3;
+  --rule-light: #3a342c;
+  --accent-warn: #e87a5f;
+  --accent-data: #6cb1d6;
+  --accent-pos: #6db98c;
+  --accent-yellow: #e6b945;
+  --grad-warn: rgba(232, 122, 95, 0.06);
+  --grad-data: rgba(108, 177, 214, 0.06);
+  --shadow-card: 0 1px 0 rgba(235, 227, 211, 0.04);
+  --bg-inverse: #ede5d3;
+  --bg-inverse-2: #e0d8c5;
+  --ink-on-inverse: #14110d;
+  --text-on-inverse: rgba(20, 17, 13, 0.85);
+  --muted-on-inverse: rgba(20, 17, 13, 0.7);
+  --faint-on-inverse: rgba(20, 17, 13, 0.55);
+  --light-on-inverse: rgba(20, 17, 13, 0.5);
+  --rule-on-inverse: rgba(20, 17, 13, 0.18);
+  --accent-yellow-on-inverse: #a47a18;
+}
+body, .tldr, .verdict, .quickfacts-wrap, footer, table, th, td, .stat, .col-card, .callout, .path-card, .verdict-option, .qf-cell {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  font-size: 16px;
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(167, 49, 33, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 80% 100%, rgba(28, 77, 107, 0.04) 0%, transparent 40%);
+}
+.topbar {
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg-paper);
+  padding: 14px 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.topbar-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  color: var(--muted);
+}
+.topbar strong { color: var(--ink); font-weight: 600; }
+.hero {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 80px 32px 100px;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: end;
+}
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-warn);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--accent-warn); }
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 28px;
+  font-feature-settings: "ss01";
+}
+.hero h1 em { font-style: italic; color: var(--accent-warn); font-weight: 500; white-space: nowrap; }
+.hero-subtitle {
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.5;
+  color: var(--muted);
+  font-style: italic;
+  max-width: 580px;
+}
+.hero-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  border-left: 1px solid var(--rule);
+  padding-left: 24px;
+}
+.hero-meta dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
+.hero-meta dt { color: var(--light); font-weight: 400; }
+.hero-meta dd { color: var(--ink); font-weight: 500; }
+.quickfacts-wrap {
+  background: var(--bg-inverse);
+  color: var(--ink-on-inverse);
+  padding: 60px 0 80px;
+  border-bottom: 1px solid var(--rule);
+}
+.quickfacts { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+.qf-header { margin-bottom: 36px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.qf-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-yellow-on-inverse); }
+.qf-title { font-family: var(--serif); font-style: italic; font-size: 28px; font-weight: 500; color: var(--text-on-inverse); letter-spacing: -0.01em; }
+.qf-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--rule-on-inverse); border: 1px solid var(--rule-on-inverse); }
+.qf-cell { background: var(--bg-inverse); padding: 22px 18px 20px; display: flex; flex-direction: column; gap: 6px; min-height: 124px; }
+.qf-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light-on-inverse); }
+.qf-value { font-family: var(--serif); font-weight: 600; font-size: 30px; line-height: 1; color: var(--ink-on-inverse); letter-spacing: -0.02em; margin-top: auto; margin-bottom: 4px; }
+.qf-value.warn { color: var(--accent-warn); }
+.qf-value.pos { color: var(--accent-pos); }
+.qf-value.data { color: var(--accent-data); }
+.qf-value .qf-unit { font-size: 13px; color: var(--faint-on-inverse); margin-left: 2px; font-weight: 400; }
+.qf-sub { font-size: 11.5px; color: var(--faint-on-inverse); line-height: 1.35; }
+.qf-cell-verdict { background: var(--accent-warn); color: white; }
+.qf-cell-verdict .qf-label { color: rgba(255, 255, 255, 0.8); }
+.qf-cell-verdict .qf-verdict { font-family: var(--serif); font-style: italic; font-size: 21px; font-weight: 600; line-height: 1.15; color: white; margin-top: auto; letter-spacing: -0.01em; }
+.qf-cell-verdict .qf-sub { color: rgba(255, 255, 255, 0.85); }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+main { display: grid; grid-template-columns: 200px 1fr; gap: 60px; max-width: 1180px; margin: 0 auto; padding: 0 32px 120px; }
+nav.toc { position: sticky; top: 40px; align-self: start; height: fit-content; padding-top: 80px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+nav.toc h4 { font-size: 10px; color: var(--light); margin-bottom: 18px; font-weight: 500; letter-spacing: 0.15em; }
+nav.toc ol { list-style: none; counter-reset: toc; }
+nav.toc li { counter-increment: toc; margin-bottom: 14px; border-left: 1px solid var(--rule-light); padding-left: 14px; transition: border-color 0.2s; }
+nav.toc li:hover { border-left-color: var(--ink); }
+nav.toc li::before { content: "0" counter(toc); display: block; color: var(--light); font-size: 10px; margin-bottom: 2px; }
+nav.toc a { color: var(--ink-2); text-decoration: none; line-height: 1.3; display: block; font-weight: 500; }
+nav.toc a:hover { color: var(--accent-warn); }
+article { max-width: var(--max-w); padding-top: 60px; }
+section { padding: 60px 0; border-top: 1px solid var(--rule-light); scroll-margin-top: 30px; }
+section:first-of-type { border-top: none; padding-top: 20px; }
+.section-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-warn); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+.section-num::after { content: ""; flex: 1; height: 1px; background: var(--rule-light); }
+section h2 { font-family: var(--serif); font-weight: 600; font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 32px; font-feature-settings: "ss01"; }
+section h3 { font-family: var(--serif); font-weight: 600; font-size: 24px; line-height: 1.3; margin-top: 48px; margin-bottom: 16px; color: var(--ink); }
+section h4 { font-family: var(--sans); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin-top: 36px; margin-bottom: 12px; }
+section p { font-family: var(--sans); font-size: 16px; line-height: 1.7; color: var(--ink-2); margin-bottom: 16px; }
+section p strong { color: var(--ink); font-weight: 600; }
+section a { color: var(--accent-data); text-decoration: underline; text-decoration-color: rgba(28, 77, 107, 0.3); text-underline-offset: 3px; }
+section a:hover { text-decoration-color: var(--accent-data); }
+ul, ol { padding-left: 22px; margin-bottom: 18px; }
+li { margin-bottom: 8px; line-height: 1.7; color: var(--ink-2); }
+li::marker { color: var(--light); }
+.tldr { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 56px 56px; margin-top: 40px; position: relative; }
+.tldr::before { content: "TL;DR"; position: absolute; top: -1px; left: 56px; background: var(--accent-warn); color: white; padding: 4px 16px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; font-weight: 600; }
+.tldr h3 { font-family: var(--serif); color: var(--ink-on-inverse); font-size: 22px; font-weight: 500; margin-top: 28px; margin-bottom: 12px; }
+.tldr h3:first-of-type { margin-top: 16px; }
+.tldr p, .tldr li { color: var(--text-on-inverse); }
+.tldr p strong, .tldr li strong { color: var(--ink-on-inverse); }
+.tldr ol, .tldr ul { padding-left: 18px; }
+.tldr a { color: var(--ink-on-inverse); text-decoration-color: var(--light-on-inverse); }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 32px 0; }
+.stat { background: var(--bg-card); padding: 28px 24px; }
+.stat-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 10px; }
+.stat-value { font-family: var(--serif); font-weight: 600; font-size: 34px; line-height: 1; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.02em; }
+.stat-value .unit { font-size: 15px; color: var(--muted); font-weight: 400; margin-left: 4px; }
+.stat-value.warn { color: var(--accent-warn); }
+.stat-value.pos { color: var(--accent-pos); }
+.stat-value.data { color: var(--accent-data); }
+.stat-note { font-size: 12px; color: var(--muted); line-height: 1.4; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 24px 0; }
+.col-card { border: 1px solid var(--rule-light); padding: 28px; background: var(--bg-card); }
+.col-card h4 { margin-top: 0; display: flex; align-items: center; gap: 10px; }
+.col-card.pos h4 { color: var(--accent-pos); }
+.col-card.warn h4 { color: var(--accent-warn); }
+.col-card h4::before { display: inline-block; width: 18px; height: 18px; border-radius: 50%; font-family: var(--serif); font-size: 13px; text-align: center; line-height: 18px; font-weight: 600; }
+.col-card.pos h4::before { content: "✓"; background: var(--accent-pos); color: white; }
+.col-card.warn h4::before { content: "!"; background: var(--accent-warn); color: white; font-style: italic; }
+.col-card ul { padding-left: 18px; margin-bottom: 0; }
+.col-card li { font-size: 14px; line-height: 1.55; }
+.quote { border-left: 3px solid var(--accent-warn); padding: 8px 0 8px 24px; margin: 24px 0; font-family: var(--serif); font-size: 18px; line-height: 1.55; font-style: italic; color: var(--ink-2); }
+.quote-attr { font-family: var(--sans); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 12px; font-weight: 500; }
+.quote-attr::before { content: "— "; }
+.table-wrap { overflow-x: auto; margin: 24px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--bg-card); }
+th { text-align: left; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; padding: 12px 14px; border-bottom: 2px solid var(--ink); background: var(--bg-paper); white-space: nowrap; vertical-align: bottom; }
+td { padding: 14px; border-bottom: 1px solid var(--rule-light); vertical-align: top; line-height: 1.5; color: var(--ink-2); }
+td.product-name { font-weight: 600; color: var(--ink); font-family: var(--serif); font-size: 15px; white-space: nowrap; }
+tr:last-child td { border-bottom: 1px solid var(--ink); }
+td .tag { display: inline-block; font-family: var(--mono); font-size: 10px; text-transform: uppercase; padding: 2px 6px; background: var(--bg-paper); color: var(--muted); border-radius: 2px; margin-right: 4px; }
+.callout { background: var(--bg-paper); border-left: 3px solid var(--ink); padding: 24px 28px; margin: 28px 0; }
+.callout.warn { border-left-color: var(--accent-warn); background: rgba(167, 49, 33, 0.04); }
+.callout.data { border-left-color: var(--accent-data); background: rgba(28, 77, 107, 0.04); }
+.callout.pos { border-left-color: var(--accent-pos); background: rgba(44, 94, 63, 0.04); }
+.callout-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
+.callout.warn .callout-label { color: var(--accent-warn); }
+.callout.data .callout-label { color: var(--accent-data); }
+.callout.pos .callout-label { color: var(--accent-pos); }
+.callout p { margin-bottom: 12px; }
+.callout p:last-child { margin-bottom: 0; }
+.callout-quote { font-family: var(--serif); font-size: 17px; font-style: italic; line-height: 1.5; color: var(--ink); }
+.metric-list { margin: 28px 0; border-top: 1px solid var(--ink); }
+.metric-row { display: grid; grid-template-columns: 1fr auto; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--rule-light); gap: 24px; }
+.metric-row:last-child { border-bottom: 1px solid var(--ink); }
+.metric-row .label { font-size: 14px; color: var(--ink-2); }
+.metric-row .label .src { display: block; font-size: 11px; color: var(--light); margin-top: 2px; font-family: var(--mono); }
+.metric-row .value { font-family: var(--serif); font-size: 28px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; text-align: right; white-space: nowrap; }
+.metric-row .value.warn { color: var(--accent-warn); }
+.metric-row .value.pos { color: var(--accent-pos); }
+.metric-row .value.data { color: var(--accent-data); }
+.metric-row .value small { font-size: 14px; color: var(--muted); font-weight: 400; }
+.divider-quote { margin: 80px 0; text-align: center; font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--muted); line-height: 1.5; position: relative; padding: 32px 60px; }
+.divider-quote::before, .divider-quote::after { content: ""; position: absolute; width: 40px; height: 1px; background: var(--rule); top: 0; left: 50%; transform: translateX(-50%); }
+.divider-quote::after { top: auto; bottom: 0; }
+.timeline { margin: 32px 0; position: relative; padding-left: 0; }
+.timeline::before { content: ""; position: absolute; left: 92px; top: 8px; bottom: 8px; width: 1px; background: var(--rule-light); }
+.tl-row { display: grid; grid-template-columns: 80px 14px 1fr; gap: 12px; margin-bottom: 24px; align-items: start; }
+.tl-row .tl-date { font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em; color: var(--muted); text-align: right; padding-top: 4px; text-transform: uppercase; }
+.tl-row .tl-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--ink); margin-top: 4px; position: relative; z-index: 2; }
+.tl-row .tl-dot.warn { border-color: var(--accent-warn); background: var(--accent-warn); }
+.tl-row .tl-dot.data { border-color: var(--accent-data); background: var(--accent-data); }
+.tl-row .tl-dot.pos { border-color: var(--accent-pos); background: var(--accent-pos); }
+.tl-row .tl-content { padding-top: 0; }
+.tl-row .tl-title { font-family: var(--serif); font-weight: 600; font-size: 16px; color: var(--ink); line-height: 1.3; margin-bottom: 4px; }
+.tl-row .tl-title.warn { color: var(--accent-warn); }
+.tl-row .tl-desc { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+.path-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 28px 0; }
+.path-card { border: 1px solid var(--rule-light); background: var(--bg-card); padding: 26px 24px; position: relative; }
+.path-card.a { border-top: 4px solid var(--accent-pos); }
+.path-card.b { border-top: 4px solid var(--accent-data); }
+.path-card.c { border-top: 4px solid var(--accent-warn); }
+.path-card .path-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.path-card.a .path-num { color: var(--accent-pos); }
+.path-card.b .path-num { color: var(--accent-data); }
+.path-card.c .path-num { color: var(--accent-warn); }
+.path-card h4 { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--ink); text-transform: none; letter-spacing: 0; margin: 0 0 14px 0; }
+.path-card p { font-size: 13.5px; line-height: 1.55; color: var(--muted); margin-bottom: 10px; }
+.path-card ul { margin: 0; padding-left: 18px; }
+.path-card li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; color: var(--ink-2); }
+.verdict { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 80px 56px; margin: 80px 0 0; position: relative; }
+.verdict-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-yellow-on-inverse); margin-bottom: 24px; }
+.verdict h3 { font-family: var(--serif); font-size: 34px; line-height: 1.2; font-weight: 600; margin-bottom: 24px; color: var(--ink-on-inverse); letter-spacing: -0.02em; }
+.verdict p { color: var(--text-on-inverse); font-size: 17px; line-height: 1.65; margin-bottom: 14px; }
+.verdict p strong { color: var(--ink-on-inverse); }
+.verdict-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 40px; background: var(--rule-on-inverse); }
+.verdict-option { background: var(--bg-inverse); padding: 28px 24px; }
+.verdict-option .num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--accent-yellow-on-inverse); margin-bottom: 12px; }
+.verdict-option h4 { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--ink-on-inverse); margin-bottom: 10px; text-transform: none; letter-spacing: 0; }
+.verdict-option p { font-size: 14px; line-height: 1.55; margin-bottom: 0; color: var(--muted-on-inverse); }
+.score-card { border: 1px solid var(--ink); padding: 32px; margin: 24px 0; background: var(--bg-card); }
+.score-row { display: grid; grid-template-columns: 220px 1fr 80px; gap: 20px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--rule-light); }
+.score-row:last-child { border-bottom: none; }
+.score-row .name { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: 15px; }
+.score-row .bar { background: var(--bg-paper); height: 8px; position: relative; }
+.score-row .bar-fill { height: 100%; background: var(--accent-data); }
+.score-row .bar-fill.warn { background: var(--accent-warn); }
+.score-row .bar-fill.pos { background: var(--accent-pos); }
+.score-row .num { font-family: var(--mono); font-weight: 600; font-size: 14px; color: var(--ink); text-align: right; }
+footer { border-top: 1px solid var(--rule); background: var(--bg-inverse); color: var(--muted-on-inverse); padding: 60px 32px 80px; margin-top: 0; }
+.footer-inner { max-width: 1180px; margin: 0 auto; }
+footer h4 { color: var(--ink-on-inverse); margin-bottom: 18px; font-family: var(--serif); font-size: 16px; font-weight: 600; }
+footer ul { padding-left: 0; list-style: none; columns: 2; column-gap: 40px; }
+footer li { font-size: 12px; line-height: 1.5; margin-bottom: 8px; font-family: var(--mono); break-inside: avoid; }
+footer a { color: var(--accent-yellow-on-inverse); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+.footer-meta { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--rule-on-inverse); font-size: 11px; color: var(--light-on-inverse); font-family: var(--mono); letter-spacing: 0.05em; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+@media (max-width: 1100px) {
+  main { grid-template-columns: 1fr; }
+  nav.toc { position: static; padding-top: 40px; }
+  nav.toc ol { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 54px; }
+  .verdict-options { grid-template-columns: 1fr; }
+  .qf-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
+  .hero { padding: 40px 20px 60px; }
+  .hero h1 { font-size: 40px; }
+  .hero-subtitle { font-size: 17px; }
+  main { padding: 0 20px 80px; gap: 0; }
+  .container, .quickfacts { padding: 0 20px; }
+  .quickfacts-wrap { padding: 40px 0 50px; }
+  .qf-grid { grid-template-columns: repeat(2, 1fr); }
+  .qf-value { font-size: 25px; }
+  .qf-cell-verdict .qf-verdict { font-size: 17px; }
+  nav.toc ol { grid-template-columns: 1fr; }
+  section h2 { font-size: 30px; }
+  .stats { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  .verdict, .tldr { padding: 40px 24px; }
+  .verdict h3 { font-size: 24px; }
+  .score-row { grid-template-columns: 130px 1fr 50px; gap: 12px; }
+  footer ul { columns: 1; }
+  .timeline::before { left: 11px; }
+  .tl-row { grid-template-columns: 80px 1fr; }
+  .tl-row .tl-date { font-size: 10px; }
+  .path-detail { grid-template-columns: 1fr; }
+}
+#theme-toggle { position: fixed; top: 14px; right: 24px; z-index: 1000; width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--rule-light); color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.12s; }
+#theme-toggle:hover { background: var(--bg-paper); border-color: var(--ink); }
+#theme-toggle:active { transform: scale(0.92); }
+#theme-toggle .icon-sun, #theme-toggle .icon-moon { transition: opacity 0.15s; }
+#theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] #theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] #theme-toggle { background: var(--bg-paper); border-color: var(--rule-light); color: var(--ink); }
+@media (max-width: 720px) { #theme-toggle { top: 10px; right: 14px; width: 32px; height: 32px; } }
+@media print {
+  body { background: white; font-size: 11pt; }
+  .topbar, nav.toc, footer, #theme-toggle { display: none; }
+  main { display: block; max-width: 100%; padding: 0; }
+  article { max-width: 100%; padding-top: 0; }
+  .hero { padding: 30px 0; page-break-after: always; grid-template-columns: 1fr; }
+  .hero h1 { font-size: 34pt; color: black; }
+  .hero h1 em { color: #a73121; }
+  .quickfacts-wrap { background: white; color: black; padding: 20px 0; page-break-after: always; }
+  .qf-grid { background: #ddd; border-color: #ddd; }
+  .qf-cell { background: white; }
+  .qf-label, .qf-sub { color: #666 !important; }
+  .qf-value { color: black !important; }
+  .qf-cell-verdict { background: #f4e6e3 !important; }
+  .qf-cell-verdict .qf-verdict, .qf-cell-verdict .qf-label, .qf-cell-verdict .qf-sub { color: black !important; }
+  section { page-break-inside: avoid; padding: 20px 0; border-top: 2px solid #000; }
+  section h2 { font-size: 22pt; }
+  section h3 { font-size: 14pt; }
+  .tldr, .verdict { background: #f5f5f5 !important; color: black !important; padding: 24px !important; }
+  .tldr *, .verdict * { color: black !important; }
+  .verdict-option { background: white !important; border: 1px solid #ddd; }
+  a { color: black !important; text-decoration: none; }
+  .stats, .two-col, .score-card { page-break-inside: avoid; }
+  .divider-quote { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="切换夜间模式" title="切换浅色 / 夜间模式">
+  <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div><strong>Liftoff Mobile (LFTO)</strong> · 美股打新尽调报告</div>
+    <div>调研日期 <strong>2026 · 06 · 03</strong></div>
+    <div>为打新决策准备 · 第一版</div>
+  </div>
+</div>
+
+<header class="hero">
+  <div>
+    <div class="hero-eyebrow">移动广告 / 应用增长平台 · IPO 打新深度尽调</div>
+    <h1>真 AI 驱动的好公司，<br>却在最冷的季节<em>流血上市</em>。</h1>
+    <p class="hero-subtitle">
+      Liftoff 主营年赚（调整后 EBITDA）约 $3.7 亿、增长 30%+、被招股书称为"App 经济不可或缺的增长引擎"。
+      但它背着黑石（Blackstone）留下的 <strong>$15 亿债务</strong>，估值被市场逼着从 $5.5B 砍到 $3.9B、还撤回过一次——
+      这份报告告诉你：这样的新股，到底该不该打。
+    </p>
+  </div>
+  <div class="hero-meta">
+    <dl>
+      <dt>调研对象</dt><dd>Liftoff Mobile, Inc.（LFTO）</dd>
+      <dt>调研深度</dt><dd>5 个并行 AI 调研员</dd>
+      <dt>一手来源</dt><dd>SEC S-1/A 招股书</dd>
+      <dt> </dt><dd>Renaissance / 雪球 / 老虎 / Reddit</dd>
+      <dt>上市日</dt><dd>2026/06/04 · Nasdaq</dd>
+      <dt>截止申购</dt><dd>06/03 19:00（北京时间）</dd>
+      <dt>面向读者</dt><dd>做打新决策的个人投资者</dd>
+    </dl>
+  </div>
+</header>
+
+<div class="quickfacts-wrap">
+  <div class="quickfacts">
+    <div class="qf-header">
+      <div class="qf-eyebrow">10 秒读完 / 打新核心数据速览</div>
+      <h2 class="qf-title">LFTO at a Glance</h2>
+    </div>
+    <div class="qf-grid">
+      <div class="qf-cell">
+        <div class="qf-label">发行价</div>
+        <div class="qf-value">$20–22</div>
+        <div class="qf-sub">1900 万股 · 纯增发新股</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">目标市值</div>
+        <div class="qf-value data">~$3.9<span class="qf-unit">B</span></div>
+        <div class="qf-sub">约 ¥281 亿 · 完全稀释口径</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">募资额</div>
+        <div class="qf-value">$380–418<span class="qf-unit">M</span></div>
+        <div class="qf-sub">约 ¥27–30 亿</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">LTM 营收</div>
+        <div class="qf-value data">$741<span class="qf-unit">M</span></div>
+        <div class="qf-sub">近 12 月 · 同比 +32%</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">调整后 EBITDA 利润率</div>
+        <div class="qf-value pos">58<span class="qf-unit">%</span></div>
+        <div class="qf-sub">Q1'26 · 主营很能赚</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">GAAP 净利</div>
+        <div class="qf-value warn">刚转正</div>
+        <div class="qf-sub">Q1'26 +$49M · 此前年年亏</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">IPO 后债务</div>
+        <div class="qf-value warn">~$1.5<span class="qf-unit">B</span></div>
+        <div class="qf-sub">约 ¥107 亿 · 仅还掉 19%</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">黑石持股</div>
+        <div class="qf-value">50.4<span class="qf-unit">%</span></div>
+        <div class="qf-sub">IPO 后仍控股</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">老股东套现</div>
+        <div class="qf-value pos">$0</div>
+        <div class="qf-sub">黑石一股没卖 · 利好</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">较首次估值</div>
+        <div class="qf-value warn">−29<span class="qf-unit">%</span></div>
+        <div class="qf-sub">$5.5B→$3.9B · 折价重启</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">AI 融合深度</div>
+        <div class="qf-value pos">8<span class="qf-unit">/10</span></div>
+        <div class="qf-sub">Cortex 是骨架不是装饰</div>
+      </div>
+      <div class="qf-cell qf-cell-verdict">
+        <div class="qf-label">打新判断</div>
+        <div class="qf-verdict">谨慎 ·<br>小额或放弃</div>
+        <div class="qf-sub">绝不上杠杆 · 绝不重仓</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<nav class="toc">
+  <h4>章节目录</h4>
+  <ol>
+    <li><a href="#tldr">一页纸结论</a></li>
+    <li><a href="#company">公司是做什么的</a></li>
+    <li><a href="#ai">AI 融合多深</a></li>
+    <li><a href="#financials">财务基本面</a></li>
+    <li><a href="#competition">竞品与市占率</a></li>
+    <li><a href="#ipo">这次 IPO 拆解</a></li>
+    <li><a href="#sentiment">市场情绪</a></li>
+    <li><a href="#risks">风险清单</a></li>
+    <li><a href="#decision">打新建议</a></li>
+  </ol>
+</nav>
+
+<article>
+
+<!-- ===== 1. TL;DR ===== -->
+<section id="tldr">
+  <div class="section-num">01 / 一页纸结论</div>
+  <h2>如果你只看一段，看这段。</h2>
+
+  <p>
+    Liftoff Mobile（代码 <strong>LFTO</strong>）是一家由全球最大私募之一<strong>黑石（Blackstone）控股</strong>、2021 年合并移动广告公司 Vungle 而来的<strong>移动广告 / 应用增长与变现平台</strong>。简单说：它用机器学习引擎 <strong>Cortex</strong> 帮 App 开发者"花钱精准买用户"，也帮 App"靠广告变现赚钱"，每秒处理数百万次广告竞价、每周触达 14 亿日活用户。主营非常能赚钱（调整后 EBITDA 利润率 55%+），增长 30%+，老客户留存率（NRR）高达 130%。
+  </p>
+  <p>
+    但它有两道硬伤：①背着黑石当年杠杆收购留下的 <strong>$18.5 亿债务（约 ¥133 亿）</strong>，每年约 $1.2 亿利息把账面利润吃成亏损，直到 2026 年 Q1 才刚刚转正；②它今年 1 月本想按 <strong>$5.5B 估值</strong>上市，被市场拒绝、<strong>撤回过一次</strong>，现在砍价 29% 到 $3.9B 重来。这是一场"被市场逼着打折"的 IPO。
+  </p>
+
+  <div class="tldr">
+    <h3>关于"它值多少"，三句话说清：</h3>
+    <ol>
+      <li><strong>是好生意，但不是行业老大。</strong>第三方榜单（AppsFlyer / Singular）把它排在<strong>独立广告平台第一梯队、约第 2–4 名</strong>，但真正的市场大头被 Google / Meta / 字节这些"围墙花园"拿走，它够不到龙头 AppLovin（市值是它约 50 倍）。</li>
+      <li><strong>AI 是它的"骨架"不是"装饰"。</strong>它的 Cortex AI 平台收入（Core Advertising）已从 2023 年占 79% 涨到现在<strong>约 100%</strong>——AI 引擎就是它的整个生意本身。它确实站在 AI 时代正确的一侧。</li>
+      <li><strong>当前价是"打折后的合理价"，不是"捡便宜"。</strong>市销率（P/S）约 5 倍、含债的 EV/EBITDA 约 11–12 倍，落在 AdTech 板块中上沿。值不值，取决于你信不信它 30%+ 的增速能继续摊薄那笔巨额利息。</li>
+    </ol>
+
+    <h3>关于"该不该打新"，如果你只能记住三件事：</h3>
+    <ul>
+      <li><strong>发行结构是友好的。</strong>纯发新股、募来的钱主要拿去<strong>还债（去杠杆）</strong>，黑石一股没卖（没有老股东借机套现跑路）；承销商是高盛 + 大摩 + Jefferies 顶级天团；只发 1900 万股、盘子小有稀缺性——这些都利好首日。</li>
+      <li><strong>但情绪温吞、板块正冷。</strong>专业打新机构一家看多一家看空、最权威的 Renaissance 不表态；Reddit 散户冷淡（高赞评论是"垃圾""该跳过""会跌"）；中文打新圈给的评级是"<strong>小赌</strong>"；AdTech 龙头 The Trade Desk 年内跌 38%。这不是一只"必打的大肉签"。</li>
+      <li><strong>它是个高方差的小赌注，不是稳赚。</strong>多头赌"折价 + 豪华承销 + 小盘稀缺 → 首日小涨"；空头怕"板块冷 + 黑石急退 → 上市乏力甚至破发"。🔑 <strong>最有用的实时信号：盯最终定价——落在 $22 或以上 = 需求转暖；落在 $20 或下沿 = 需求疲软、破发风险升高。</strong></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 2. COMPANY ===== -->
+<section id="company">
+  <div class="section-num">02 / 公司是做什么的</div>
+  <h2>它到底靠什么赚钱？</h2>
+
+  <p>
+    一句话：<strong>Liftoff 是移动 App 世界里的"广告中间商 + 自动买手/卖手"</strong>。它站在两端之间——一端是想获取用户的<strong>广告主（买量侧）</strong>，一端是想靠广告赚钱的 <strong>App 开发者（变现侧）</strong>——用算法在零点几秒内自动撮合、竞价、投放。
+  </p>
+
+  <div class="callout data">
+    <div class="callout-label">先把两个黑话讲明白</div>
+    <p>
+      <strong>买量（投放获客）</strong>：帮 App 花钱去全网买新用户，就像"替你到处发传单拉客，但精准到只发给最可能下单的人"。<br>
+      <strong>变现（流量变现）</strong>：帮 App 把自己的广告位卖出去换钱，就像"把你家临街的墙租给别人贴广告收租"。<br>
+      <strong>程序化广告竞价</strong>：广告买卖不靠人谈，靠机器在几十毫秒内自动拍卖成交——<em>就像股票高频交易，只不过交易的是"给某个用户看一次广告的机会"</em>。
+    </p>
+  </div>
+
+  <h3>产品矩阵（一条龙覆盖买量 + 变现）</h3>
+  <ul>
+    <li><strong>Accelerate / Direct / Influence（买量侧）</strong>——帮广告主做用户增长投放、再营销、达人营销，核心是"用同样的预算买到更值钱的用户"。</li>
+    <li><strong>Vungle / Monetize（变现侧）</strong>——给 App 开发者接入 SDK（一段嵌进 App 的广告代码），把广告位变成收入，主打 in-app 视频广告。</li>
+    <li><strong>Intelligence（数据分析）</strong>——给客户看投放效果、做决策的数据后台。</li>
+    <li><strong>Creative Studio（创意工具）</strong>——帮广告主批量制作、测试广告素材（图片/视频）。</li>
+  </ul>
+  <p>
+    招股书披露的规模：服务 <strong>878 家活跃广告主</strong>、接入 <strong>16.8 万个 App</strong>、覆盖约 <strong>14 亿日活用户</strong>。它把买量、变现、创意、数据做成一个闭环（官方叫 "end-to-end platform"，端到端一体化平台）——这是它对中小开发者的卖点：一站式省心。
+  </p>
+
+  <h3>谁拥有它？——黑石的杠杆收购资产</h3>
+  <p>
+    这点对打新很关键。Liftoff 是<strong>私募黑石用"杠杆收购"（LBO，即用大量借债买下公司、把债务挂在公司头上）做出来的资产</strong>。<em>就像有人贷款买了套房收租，租金（经营利润）不错，但每月要还的房贷利息压力巨大。</em>黑石 2021 年主导合并 Liftoff 与 Vungle，2025 年又引入另一家私募 General Atlantic（泛大西洋）入股。私募的终极目标是"养肥了退出套现"——这次 IPO 就是它寻求公开市场退出通道的一步（虽然这次没直接卖股，详见 <a href="#ipo">第 6 章</a>）。
+  </p>
+</section>
+
+<!-- ===== 3. AI ===== -->
+<section id="ai">
+  <div class="section-num">03 / AI 融合多深</div>
+  <h2>AI 是"骨架"，还是"装饰"？</h2>
+
+  <p>
+    这是你最关心的问题。结论先行：<strong>对 Liftoff 来说，AI（机器学习）不是贴上去的概念，而是它整个生意的引擎本身。AI 深度我给 8/10。</strong>
+  </p>
+
+  <h3>最硬的证据：它招的是什么人</h3>
+  <p>
+    判断一家公司"真 AI 还是蹭 AI"，最不会说谎的证据是它的<strong>技术招聘</strong>。Liftoff 有一支专门的"<strong>竞价策略（Bidding Policy）机器学习团队</strong>"，其 Staff 级 ML 工程师岗位的硬要求是（招股书与招聘原文）：
+  </p>
+  <div class="quote">
+    "building state-of-the-art ML models to make accurate bidding decisions in <strong>millions of auctions per second</strong>… predict bidding landscape, conversion rate, and ad relevance… <strong>5+ years applying Machine Learning, including neural networks, to large scale problems</strong>… over <strong>4 million requests per second</strong> and interacting with over <strong>a billion users a week</strong>."
+    <div class="quote-attr">Liftoff Staff ML Engineer (Bidding Policy) 岗位职责原文</div>
+  </div>
+  <p>
+    要求神经网络 5 年经验、每秒数百万次竞价决策、每秒 400 万+ 请求——<strong>这种规模的实时机器学习系统，不是 PR 话术能伪装的</strong>，需要真正的工程团队常年喂数据、调模型。
+  </p>
+
+  <h3>Cortex 引擎用在哪</h3>
+  <p>
+    它的 AI 引擎（招股书叙事为 <strong>Cortex</strong>）干的就是程序化广告最核心的活：<em>在你打开一个 App 的零点几秒内，后台已经完成了一次"为哪个用户、出多少钱、展示哪条广告"的拍卖与决策。</em>具体用在：
+  </p>
+  <ul>
+    <li><strong>实时出价预测</strong>——每次广告机会值多少钱、要不要出手（这是胜负手）。</li>
+    <li><strong>转化率 / 用户价值（LTV）预测</strong>——预判哪个用户更可能下单/付费，从而敢出更高价抢他。</li>
+    <li><strong>创意优选 + 反作弊</strong>——自动挑出效果最好的素材、过滤虚假流量。</li>
+  </ul>
+
+  <div class="callout pos">
+    <div class="callout-label">关键佐证 · AI 就是生意本身</div>
+    <p>
+      招股书里它主推的口径 <strong>"Core Advertising"（即 Cortex AI 平台带来的收入）占总营收的比例，从 2023 年的约 79% 一路涨到 2025 年约 99%、Q1 2026 约 100%</strong>。换句话说，它已经把老的非 AI 业务基本淘汰，<strong>整个公司现在几乎全部收入都跑在 AI 引擎上</strong>。这是"AI 是骨架"最直接的财务证据。
+    </p>
+  </div>
+
+  <h3>短板（为什么不是 9–10 分）</h3>
+  <ul>
+    <li><strong>生成式 AI 创意布局一般</strong>：在"用 AI 自动生成广告图/视频/文案"这波（2024–2026）上，它更多是创意团队借助工具提效，<strong>未见证据表明它有自研的生成式大模型</strong>（此点公开信息有限，标注为未完全证实）。</li>
+    <li><strong>AI 效果口碑不如对手 AppLovin</strong>：同赛道的 AppLovin 靠 AXON 2.0 引擎做出了"现象级效果"的市场认知，Liftoff 引擎强但缺这种"魔力标签"——这也是它估值上不去的根因之一（详见 <a href="#competition">第 5 章</a>）。</li>
+    <li><strong>命门捏在苹果/谷歌手里</strong>：苹果 ATT（App Tracking Transparency，2021 年起让用户可拒绝被追踪，全球同意率仅约 25%）让"精准定向"越来越难。这对所有依赖用户数据的广告平台都是结构性压力，Liftoff 也不例外。</li>
+  </ul>
+</section>
+
+<!-- ===== 4. FINANCIALS ===== -->
+<section id="financials">
+  <div class="section-num">04 / 财务基本面</div>
+  <h2>翻开招股书，它到底什么底子？</h2>
+
+  <p>
+    以下全部来自最权威的一手文件——<strong>SEC 招股书 S-1/A 修订版（2026/6/2 提交）</strong>。招股书（prospectus）就是公司上市前依法必须提交的"官方说明书 + 财务体检报告"，法律上必须说真话。
+  </p>
+
+  <h3>营收：增长 30%+，还在加速</h3>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">FY2024 营收</div>
+      <div class="stat-value">$519<span class="unit">M</span></div>
+      <div class="stat-note">约 ¥37 亿</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">FY2025 营收</div>
+      <div class="stat-value data">$686<span class="unit">M</span></div>
+      <div class="stat-note">同比 +32%</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Q1 2026 营收</div>
+      <div class="stat-value pos">$206<span class="unit">M</span></div>
+      <div class="stat-note">同比 +37% · 加速中</div>
+    </div>
+  </div>
+  <p>
+    最近 12 个月（LTM）总营收 <strong>$741M（约 ¥53 亿）</strong>。对一家 7 亿美元体量的公司，30%+ 的增速算不错，且 Q1 还在加速。
+  </p>
+
+  <h3>盈利：主营真赚钱，但被利息吃成账面亏损（最微妙的一点）</h3>
+  <p>
+    这是本次尽调最需要讲清楚的地方。<strong>它经营层面一直真赚钱，但因为背了巨额收购债务，利息把它压成了"账面净亏损"，直到最近一个季度才转正。</strong>
+  </p>
+  <div class="metric-list">
+    <div class="metric-row">
+      <div class="label">经营利润（主营本身赚的）<span class="src">FY2025 · S-1/A 损益表</span></div>
+      <div class="value pos">+$167<small>M</small></div>
+    </div>
+    <div class="metric-row">
+      <div class="label">利息支出（还债的代价）<span class="src">FY2025 · 元凶就是它</span></div>
+      <div class="value warn">−$127<small>M</small></div>
+    </div>
+    <div class="metric-row">
+      <div class="label">GAAP 净利润（账面最终）<span class="src">FY2024 −$48M → FY2025 −$23M</span></div>
+      <div class="value warn">−$23<small>M</small></div>
+    </div>
+    <div class="metric-row">
+      <div class="label">Q1 2026 净利润<span class="src">刚转正，仅一个季度数据</span></div>
+      <div class="value pos">+$49<small>M</small></div>
+    </div>
+    <div class="metric-row">
+      <div class="label">调整后 EBITDA<span class="src">FY2025 · 利润率 55%</span></div>
+      <div class="value data">$374<small>M</small></div>
+    </div>
+  </div>
+  <div class="callout">
+    <div class="callout-label">EBITDA 是什么 · 大白话</div>
+    <p>
+      <strong>EBITDA</strong>（息税折旧摊销前利润）= 把利息、税、折旧这些"非主营经营"开销加回去，看"主营业务本身赚不赚钱"。<em>就像看一个人月薪——先不管他的房贷利息和买车折旧，光看他工作本身挣多少。</em>Liftoff 的主营（EBITDA）年年大幅为正、利润率高达 55–58%，非常漂亮；问题全出在那笔"房贷利息"上。
+    </p>
+    <p>
+      ⚠️ 提醒：调整后 EBITDA 还加回了股权激励（FY25 加回 $46.8M），而这其实是<strong>真实持续的成本</strong>。所以"调整后"数字偏乐观，别全信。
+    </p>
+  </div>
+
+  <h3>现金流：最扎实的一项</h3>
+  <p>
+    经营性现金流连续为正且大幅增长：FY2024 +$99M → FY2025 +$163M → Q1'26 +$87M。手握现金 $200.9M。<strong>真金白银的现金创造能力，是这家公司最硬的底子。</strong>
+  </p>
+
+  <h3>债务：黑石 LBO 留下的最大硬伤</h3>
+  <div class="metric-list">
+    <div class="metric-row">
+      <div class="label">IPO 前总债务<span class="src">S-1/A · 黑石杠杆收购遗留</span></div>
+      <div class="value warn">$1,850<small>M</small></div>
+    </div>
+    <div class="metric-row">
+      <div class="label">IPO 募资还债后仍欠<span class="src">只还掉约 19%</span></div>
+      <div class="value warn">$1,493<small>M</small></div>
+    </div>
+    <div class="metric-row">
+      <div class="label">股东权益（净资产）<span class="src">累计亏损 −$906.6M 拖累</span></div>
+      <div class="value warn">−$119<small>M</small></div>
+    </div>
+    <div class="metric-row">
+      <div class="label">每年利息负担（约）<span class="src">悬在利润头上的固定成本</span></div>
+      <div class="value warn">~$120<small>M</small></div>
+    </div>
+  </div>
+  <p>
+    <strong>这是最该警惕的一点</strong>：即便用 IPO 募来的钱还债，之后仍欠约 $15 亿，每年约 $1.2 亿利息是雷打不动的固定开销。经济下行或增速一旦放缓，利润会被利息直接吞掉，而且抗风险能力差（净资产还是负的）。
+  </p>
+
+  <h3>客户质量：很健康</h3>
+  <ul>
+    <li><strong>NRR（老客户留存复购率）= 130%</strong>。<em>就像一家健身房，去年的会员今年不仅续费，平均还多买了 30% 的私教课。</em>&gt;100% 说明老客户越用越多，黏性强。</li>
+    <li>Top 100 广告主留存率 <strong>97%</strong>、Top 100 媒体方留存率 <strong>100%</strong>——头部客户几乎不跑。</li>
+    <li>客户集中度健康：无任何单一客户占营收超 10%；但有"行业集中"风险——<strong>近一半广告主收入来自游戏类 App</strong>，游戏行业波动大，是隐患。</li>
+  </ul>
+</section>
+
+<!-- ===== 5. COMPETITION ===== -->
+<section id="competition">
+  <div class="section-num">05 / 竞品与市占率</div>
+  <h2>它在赛道里排第几？</h2>
+
+  <p>
+    先给个大背景：全球移动广告是个<strong>一年约 $4470 亿（2025）、还在涨</strong>的超级大盘，全球总广告开支 2026 年将首破 $1 万亿，且几乎全靠机器自动竞价（程序化）成交。Liftoff、AppLovin 这些公司，就是在这个大盘里抢生意的"机器买手/卖手"。
+  </p>
+
+  <h3>横向对比</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>公司</th>
+          <th>定位</th>
+          <th>营收量级</th>
+          <th>估值 / 市值</th>
+          <th>盈利</th>
+          <th>AI 引擎</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="product-name">AppLovin<br><span class="tag">赛道明星</span></td>
+          <td>纯买量侧广告平台</td>
+          <td><strong>$4.71B</strong>（2024）</td>
+          <td>约 <strong>$2000 亿</strong>（波动大）</td>
+          <td>净利率 61% · EBITDA 利润率 82%</td>
+          <td><strong>AXON 2.0，公认最强</strong></td>
+        </tr>
+        <tr style="background: rgba(167, 49, 33, 0.04);">
+          <td class="product-name">Liftoff<br><span class="tag" style="background: var(--accent-warn); color: white;">本次主角</span></td>
+          <td>买量+变现双侧一体化</td>
+          <td><strong>$686M</strong>（2025）</td>
+          <td>约 <strong>$3.9B</strong>（IPO）</td>
+          <td>GAAP 亏 · 调整后 EBITDA 55%+</td>
+          <td>Cortex，强但非头部</td>
+        </tr>
+        <tr>
+          <td class="product-name">Moloco<br><span class="tag">最像它</span></td>
+          <td>机器学习 DSP（未上市）</td>
+          <td>$200M+ ARR（偏旧）</td>
+          <td>约 $1.5–2B</td>
+          <td>连续 12 季盈利</td>
+          <td>纯 ML，口碑硬</td>
+        </tr>
+        <tr>
+          <td class="product-name">Unity / ironSource</td>
+          <td>游戏引擎 + 广告</td>
+          <td>$503M（FY25）</td>
+          <td>约 $14B</td>
+          <td>亏损</td>
+          <td>Unity Vector（新）</td>
+        </tr>
+        <tr>
+          <td class="product-name">The Trade Desk</td>
+          <td>品牌/CTV 程序化标杆</td>
+          <td>$2.46B（2024）</td>
+          <td>约 $9.9B</td>
+          <td>盈利（净利率 16%）</td>
+          <td>Kokai</td>
+        </tr>
+        <tr>
+          <td class="product-name">Digital Turbine</td>
+          <td>运营商预装分发</td>
+          <td>$490M（FY25）</td>
+          <td>约 $1.1B</td>
+          <td>净亏 $92M</td>
+          <td>较弱</td>
+        </tr>
+        <tr>
+          <td class="product-name">汇量科技<br><span class="tag">中文对标</span></td>
+          <td>港股移动广告（Mobvista）</td>
+          <td>体量与 Liftoff 相近</td>
+          <td>约 $3.7B</td>
+          <td>已盈利</td>
+          <td>自研投放引擎</td>
+        </tr>
+        <tr>
+          <td class="product-name">Google / Meta / 字节</td>
+          <td>围墙花园巨头</td>
+          <td>广告营收 $160B–265B</td>
+          <td>万亿级</td>
+          <td>极度盈利</td>
+          <td>顶级（自有数据）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size: 13px; color: var(--muted);">注：上市公司市值波动剧烈（尤其 AppLovin 2026 年在 $1300 亿–$2000 亿间大幅震荡），表中取 6 月初口径。汇量科技为雪球网友提出的中文对标，口径与 Liftoff 有 gross/net 差异，仅供你找参照感。</p>
+
+  <h3>它的市占率与排名</h3>
+  <p>
+    <strong>坦白说：移动广告没有权威的"营收市占率排行榜"</strong>（因为巨头不单独披露 App 广告口径），任何具体百分比都是编造，本报告拒绝提供。但行业公认的替代标尺是<strong>第三方效果榜单</strong>，Liftoff 的位置很清楚：
+  </p>
+  <ul>
+    <li><strong>AppsFlyer Performance Index</strong>（行业最权威买量榜单）：Liftoff 是"<strong>iOS 游戏全球第 2 大媒体来源</strong>"，拿下"近 100 个 top 10 排名"。</li>
+    <li><strong>Singular ROI Index 2025</strong>：Liftoff 是"<strong>黄金九强</strong>"之一（9 家"上遍每个地区榜单"的平台），与 AppLovin、Google、Meta、TikTok、Unity 同列。</li>
+  </ul>
+  <div class="callout data">
+    <div class="callout-label">市占率结论 · 大白话</div>
+    <p>
+      <em>整个移动广告是一场拳赛：Google / Meta / 字节是无可争议的重量级冠军；AppLovin 是近三年蹿起的超级新星拳王；Liftoff 和 Moloco、Unity 则是稳定排进世界前十、但够不到冠军腰带的一线选手。</em>
+    </p>
+    <p>
+      即——在<strong>独立（非巨头）应用广告平台</strong>里，Liftoff 稳居<strong>第一梯队、约第 2–4 名</strong>；但放到整个市场，它绝非领导者。
+    </p>
+  </div>
+
+  <h3>为什么 AppLovin 市值是它的约 50 倍？</h3>
+  <p>
+    这是理解 Liftoff 估值的关键。差距不在"是不是同行"，而在三个硬指标：
+  </p>
+  <ul>
+    <li><strong>盈利能力</strong>：AppLovin 的调整后 EBITDA 利润率高达 <strong>82%</strong>（每收 100 块赚 82 块，软件界天花板），Liftoff 是 55%+ 但 GAAP 还在亏。AppLovin 是"印钞机"，Liftoff 还在"自证能赚钱"。</li>
+    <li><strong>AI 引擎"神话"</strong>：AppLovin 的 AXON 引擎跑 $100 亿+ 年度广告开支、有 536 项专利、被公认效果最强；Liftoff 引擎强但没有这种"现象级"认知。市场愿为 AXON 的"魔力"付高溢价。</li>
+    <li><strong>资产负债表</strong>：AppLovin 现金充裕、纯广告业务；Liftoff 背 $15 亿债务，高杠杆吃掉利润、压低估值。</li>
+  </ul>
+  <p>
+    <em>一个比方：两家都开餐厅、生意都火。但 AppLovin 是"净利率 82%、零负债、还有个全城排队的招牌菜（AXON）"，Liftoff 是"客流也不错，但背着巨额房贷、菜品没爆款、账面才刚回正"。同样是餐厅，估值自然天差地别。</em>
+  </p>
+  <p>
+    给创业者的启示：在这个赛道，<strong>"全栈一体化"不值钱，"独占的 AI 引擎效果 + 独占的第一方数据"才是真护城河</strong>——这恰恰是 AppLovin 有、Liftoff 没有的东西。
+  </p>
+</section>
+
+<!-- ===== 6. IPO ===== -->
+<section id="ipo">
+  <div class="section-num">06 / 这次 IPO 拆解</div>
+  <h2>发行条款逐条看。</h2>
+
+  <h3>发行条款一览</h3>
+  <div class="metric-list">
+    <div class="metric-row">
+      <div class="label">发行价区间<span class="src">S-1/A 封面</span></div>
+      <div class="value">$20–22</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">发行股数<span class="src">全部为新增发(primary) + 285万绿鞋</span></div>
+      <div class="value">1900<small>万股</small></div>
+    </div>
+    <div class="metric-row">
+      <div class="label">募资额<span class="src">中点 $21 约 $399M</span></div>
+      <div class="value data">$380–418<small>M</small></div>
+    </div>
+    <div class="metric-row">
+      <div class="label">募资用途<span class="src">~$357M 用于还债，纯去杠杆</span></div>
+      <div class="value">还债</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">老股东套现<span class="src">黑石/GA 持股数 IPO 前后不变</span></div>
+      <div class="value pos">$0</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">锁定期 lock-up<span class="src">覆盖约 96% 的 IPO 前股本</span></div>
+      <div class="value">180<small>天</small></div>
+    </div>
+  </div>
+  <div class="callout pos">
+    <div class="callout-label">发行结构判断 · 偏正面</div>
+    <p>
+      这是<strong>"还债型 + 纯增发"</strong>的 IPO，相对友好——募来的钱不是给老股东套现走人，而是降低公司债务负担。<strong>黑石没借 IPO 跑路，反而把自己约一半的股权继续留在场内</strong>（IPO 后仍持股 50.4%、保持控股）。锁定期 180 天也意味着内部人短期内不能抛售。
+    </p>
+    <p>
+      承销商（帮公司卖股票的投行）阵容是<strong>高盛 + 摩根士丹利 + Jefferies</strong> 领衔、外加 Barclays / UBS / 富国 / 德银等十几家——<em>就像一套豪宅同时挂给了城里所有头部中介，卖出去的概率自然高</em>，机构认可度和募资落地性强。
+    </p>
+  </div>
+
+  <h3>但别只看好的一面：这是"折价重启"</h3>
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-date">2026.01</div>
+      <div class="tl-dot data"></div>
+      <div class="tl-content">
+        <div class="tl-title">第一次冲刺 IPO</div>
+        <div class="tl-desc">想按 $26–30/股、估值 $5.5B 募资约 $711M</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.02</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">临门撤回</div>
+        <div class="tl-desc">遇上软件股大跌（投资者担心 AI 冲击），推迟后正式撤回</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.04</div>
+      <div class="tl-dot data"></div>
+      <div class="tl-content">
+        <div class="tl-title">降价重新申报</div>
+        <div class="tl-desc">目标砍到 ~$3.9B 市值、募 ~$399M</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.06</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">$20–22 定价路演（窗口很短）</div>
+        <div class="tl-desc">估值比首次砍了约 29%，预计 6/4 上市</div>
+      </div>
+    </div>
+  </div>
+  <p>
+    <strong>估值比首次尝试砍了约 29%（$5.5B → $3.9B）。</strong>更早在 2025 年 6 月，私募 General Atlantic 入股时的估值还是 $4.3B——也就是说，这次 IPO 价格甚至低于一年前的私募入股价。"估值一路下调"的轨迹本身，就是市场在为"Liftoff 配不上 AppLovin 式溢价"投票。专业打新机构 IPO Boutique 直接把这单标为"<strong>向下修订条款 + 路演窗口短</strong>"——这两件事通常都意味着机构需求不够热。
+  </p>
+
+  <h3>估值贵不贵</h3>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">市销率 P/S（FY25）</div>
+      <div class="stat-value">~5<span class="unit">x</span></div>
+      <div class="stat-note">市值 / 年营收 · 板块中上沿</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">EV/EBITDA（含债）</div>
+      <div class="stat-value data">~11–12<span class="unit">x</span></div>
+      <div class="stat-note">更该看这个，把 $15 亿债算进去了</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">市盈率 P/E</div>
+      <div class="stat-value warn">失真</div>
+      <div class="stat-note">LTM 净利极低算出 ~157x，无意义</div>
+    </div>
+  </div>
+  <p>
+    <strong>为什么市盈率（P/E）不能用</strong>：过去 12 个月有两个季度亏损，净利被拉得极低，算出来 P/E 高达 150 倍以上，看着吓人但没意义。若按 Q1'26 转正后年化，前瞻 P/E 约 18–20 倍又显得正常。所以这家公司用 P/E 估值会严重误导，行业通常看 P/S 和 EV/EBITDA。结论：<strong>当前价是"被市场逼出来的、能成交的合理价"，不算便宜也不离谱，属于"合理偏高"，不是捡便宜。</strong>
+  </p>
+</section>
+
+<!-- ===== 7. SENTIMENT ===== -->
+<section id="sentiment">
+  <div class="section-num">07 / 市场情绪</div>
+  <h2>聪明钱和散户怎么看？</h2>
+
+  <h3>专业打新机构：明显分歧</h3>
+  <div class="two-col">
+    <div class="col-card pos">
+      <h4>看多方</h4>
+      <ul>
+        <li><strong>IPO Prophet</strong>：总评 <strong>8.18/10</strong>，其中"交易质量与承销商"打 <strong>9.1/10</strong>（冲着豪华承销团 + 小盘稀缺性）</li>
+        <li>看多逻辑：折价后性价比 + 顶级投行护航 + 小流通盘 → 首日可能小涨</li>
+      </ul>
+    </div>
+    <div class="col-card warn">
+      <h4>看空方</h4>
+      <ul>
+        <li><strong>IPO Boutique</strong>：明确标 <strong>"Bearish"（看空）</strong>，标题点名"向下修订条款 + 路演窗口短"</li>
+        <li>看空逻辑：降价路演短 = 需求弱；板块冷 + 黑石急退 → 上市乏力甚至破发</li>
+      </ul>
+    </div>
+  </div>
+  <p>
+    最权威的 <strong>Renaissance Capital（打新界的"晨星"）保持中性、不给评级</strong>，只把它客观描述为"App 经济不可或缺的增长变现引擎"。"机构分歧 + 龙头不背书"本身，就是一种谨慎信号。
+  </p>
+
+  <h3>财经媒体：清一色"降价重启、试探需求"</h3>
+  <p>
+    路透、彭博的报道反复用一个词——这是"<strong>a renewed attempt to test investor appetite</strong>（重新试探投资者胃口）"。LFTO 被当成"<strong>软件 IPO 能不能重新打开窗口的试金石</strong>"，市场是抱着"看它成不成"的观望心态，而不是抢着上车。深度分析机构 FinTrendBeacon 的判断是"中性偏审慎"，并给了一句最实用的打新者忠告：
+  </p>
+  <div class="quote">
+    "A first-day pop is easy to understand. A durable public company is harder.（首日大涨容易，做成长期好公司难。）… Pricing at or above $22 would suggest stronger demand. Pricing below $20 would suggest the market still pushed back."
+    <div class="quote-attr">FinTrendBeacon · LFTO IPO 深度分析</div>
+  </div>
+
+  <h3>Reddit 散户：冷淡偏空，没有 meme 热情</h3>
+  <p>
+    Reddit 上唯一一个有实质讨论的帖子（r/investing「Are You In?」39 评论），高赞评论几乎一边倒看衰：
+  </p>
+  <div class="callout warn">
+    <div class="callout-label">Reddit 高赞原话</div>
+    <p class="callout-quote">
+      "Dog shit."（垃圾，8 赞最高）· "Sounds like a skip"（听着像该跳过，6 赞）· "It's gonna tank im calling it 🗣"（我断言它会跌，6 赞）
+    </p>
+  </div>
+  <p style="font-size: 13px; color: var(--muted);">
+    ⚠️ 去伪：r/smallstreetbets 里那些"We Have Liftoff!! Buy!Buy!Buy!"的狂热帖<strong>根本不是说 LFTO</strong>，是在炒 SpaceX 相关标的（火箭双关被搜索误匹配），不能算到 LFTO 头上。
+  </p>
+
+  <h3>中文打新圈：温和观望、"小赌"</h3>
+  <p>
+    中文圈热度比 2 月第一次发行时冷了一大截——雪球、知乎搜"LFTO 打新"基本"<strong>没有搜到相关帖子</strong>"。最积极的表态也很克制：雪球美股打新专栏 @皮皮牛奶 给的评级是"<strong>小赌</strong>"（小仓位试一试，别重仓）；另一位读了招股书的 @苦难精算师 说"<strong>看 IPO 估值不高的话我感觉可以配置一些</strong>"。担忧方则盯着两点：黑石借上市还债套现、公司还在亏损 + 高负债。
+  </p>
+  <div class="callout data">
+    <div class="callout-label">⚠ 重要：美股打新 ≠ 港股打新（别用错概念）</div>
+    <p>
+      中文圈很多人会问"LFTO 暗盘溢价多少、超额认购几倍、能不能孖展"——<strong>这些在美股根本不存在</strong>：
+    </p>
+    <ul>
+      <li><strong>没有暗盘</strong>：美股上市当天才由承销商分配，没有"上市前一晚场外交易"这个环节。</li>
+      <li><strong>认购倍数不公开</strong>：美股由投行私下分配，不像港股由交易所统一公布超购倍数。</li>
+      <li><strong>不能孖展（杠杆）</strong>：美股打新只能用现金认购，不能借券商的钱加杠杆。</li>
+    </ul>
+    <p>
+      <em>港股打新像"明牌拍卖、当场报数"，美股打新像"投行收条子、暗箱分配"。</em>所以任何号称"LFTO 暗盘价 X%"的中文消息，基本是张冠李戴，别信。
+    </p>
+  </div>
+
+  <h3>大环境：AdTech 板块正冷</h3>
+  <p>
+    这是对 LFTO 最不利的背景。AdTech 板块 2026 上半年明显遇冷：龙头 <strong>The Trade Desk 年内跌 38%</strong>（财报后单日暴跌 13%、增速放缓）、<strong>AppLovin 年内跌 26%</strong>（但基本面仍强，是板块唯一"硬通货"）、PubMatic 营收萎缩。AdWeek 直接定调"AdTech 股普跌"。AI 广告叙事还吃香，<strong>但只对"已证明能赚钱"的（如 AppLovin）；对"讲故事的"开始祛魅</strong>——市场现在分得很清，AI 必须兑现成真实营收和利润，否则估值打折。这正是 LFTO 被迫降价的根本原因。
+  </p>
+</section>
+
+<!-- ===== 8. RISKS ===== -->
+<section id="risks">
+  <div class="section-num">08 / 风险清单</div>
+  <h2>招股书自己列的雷，加上社区挖到的。</h2>
+
+  <h4>招股书 Risk Factors 里最该警惕的 5 条</h4>
+  <ol>
+    <li><strong>巨额债务（最硬的伤）</strong>——还完 IPO 仍欠约 $15 亿，每年 ~$1.2 亿利息是固定开销，增速一旦放缓利润会被吃光，抗经济下行能力差。</li>
+    <li><strong>黑石控制权冲突</strong>——IPO 后黑石仍持股 50.4%、仍能控制董事会。作为私募它最终想退出套现，未来诉求可能和散户股东不一致；<strong>锁定期一过（180 天后）它如何减持，是最大悬念</strong>。</li>
+    <li><strong>营收行业集中</strong>——近一半广告主收入来自游戏类 App，游戏行业大起大落，会带动业绩波动。</li>
+    <li><strong>命门捏在苹果/谷歌手里</strong>——移动广告吃饭的家伙是 iOS/安卓的数据和广告标识，平台一改隐私规则（如苹果 ATT），整个商业模式可能受重创。这是所有 AdTech 的共同命门。</li>
+    <li><strong>季度业绩剧烈波动</strong>——公司自己承认季度业绩会大幅波动（看它从年亏到季度盈就知道波动多大），上市后股价可能很颠。</li>
+  </ol>
+
+  <div class="callout warn">
+    <div class="callout-label">⚠ 社区挖到的一个负面信号（小样本，未交叉验证）</div>
+    <p>
+      近期多个专业广告社区（r/PPC、r/adops、r/programmatic 等）<strong>几乎同时冒出"Liftoff 俄罗斯无效流量拖垮投放效果"的吐槽帖</strong>——广告主怀疑它投出去的量里混了大量低质/疑似无效的俄罗斯流量，把获客成本（CPA）和广告回报（ROAS）拖坏了。这直接戳中 AdTech 最敏感的"流量质量/反作弊"问题。
+    </p>
+    <p>
+      <strong>但务必注意</strong>：这几个帖子评论数都很少（7/6/4 条），<strong>样本很小，只能定性为"近期一个值得注意、在多个社区同步冒头的负面口碑信号"，不能当成普遍结论</strong>。评分网站（G2 / TrustRadius）上 Liftoff 整体口碑偏正面（"简单好用、客服响应快"）。
+    </p>
+  </div>
+</section>
+
+<div class="divider-quote">
+  好公司，和好的打新，<br>不是一回事。
+</div>
+
+<!-- ===== 9. DECISION ===== -->
+<section id="decision">
+  <div class="section-num">09 / 打新建议</div>
+  <h2>如果 19:00 前必须决定。</h2>
+
+  <p>
+    把全部数据浓缩成一句话：<strong>这是"好公司 + 折价发行 + 冷板块 + 温吞情绪"的组合——不是稳赚的打新，是个高方差的小赌注。</strong>下面三条路径按"保守 → 激进"排序，你对号入座。
+  </p>
+
+  <div class="verdict">
+    <div class="verdict-title">★ 三条决策路径</div>
+    <h3>"它是不是好公司"和"这把打新划不划算"，<br>是两个问题。</h3>
+    <p>
+      它确实是家有真本事的公司（真 AI、强现金流、高增长）。但打新赚的是"首日溢价"，而首日表现取决于<strong>当下这个时点的供需与情绪</strong>——而现在的情绪是"温吞 + 板块冷 + 折价才发得出"。所以好公司 ≠ 好打新。
+    </p>
+
+    <div class="verdict-options">
+      <div class="verdict-option">
+        <div class="num">路径 A · 保守</div>
+        <h4>放弃 / 观望</h4>
+        <p>
+          如果你只想要"闭眼稳赚"的新股——这只不是。直接跳过，等它上市后看首日定价和表现再说。若真破发了，反而可能是更理性的观察/买入点。适合风险厌恶、不想承受破发的你。
+        </p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">路径 B · 稳健（我倾向）</div>
+        <h4>最小额 / 很小仓位试打</h4>
+        <p>
+          如果你做组合式小额打新、能接受波动，可用最小申购额或很小仓位参与，赌"豪华承销 + 小盘稀缺 + 折价"带来的首日小涨。但务必：纯现金、目标首日小涨即走、破发就认小亏离场。
+        </p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">路径 C · 激进</div>
+        <h4>看好基本面、打新后持有</h4>
+        <p>
+          如果你认同它"30%+ 增长 + 真 AI + 折价"的基本面，可打新后中长期持有。但这已不是"打新逻辑"而是"投资逻辑"，你要承受高负债 + 板块冷 + 黑石减持的长期波动。不建议作为首选。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <h3>不论选哪条，都要守住的 3 条铁律</h3>
+  <div class="path-detail">
+    <div class="path-card c">
+      <div class="path-num">铁律一</div>
+      <h4>绝不上杠杆、绝不重仓</h4>
+      <ul>
+        <li>美股打新本就只能现金认购，别去别处借钱凑</li>
+        <li>这是高方差小赌注，单笔金额控制在"亏光也不心疼"的范围</li>
+        <li>它不是大肉签，不值得 all in</li>
+      </ul>
+    </div>
+    <div class="path-card a">
+      <div class="path-num">铁律二</div>
+      <h4>盯紧"定价"这个实时信号</h4>
+      <ul>
+        <li><strong>定价 ≥ $22</strong>（区间上沿/上调）= 机构需求转暖，偏正面</li>
+        <li><strong>定价 ≤ $20</strong>（区间下沿/下调）= 需求疲软，破发风险升高</li>
+        <li>很多券商可按区间申购、按最终定价缴款——你可据此再做取舍</li>
+      </ul>
+    </div>
+  </div>
+
+  <h4>给打新者的额外提醒</h4>
+  <ul>
+    <li><strong>别被"暗盘/超购倍数"带偏</strong>——美股没有这些，任何号称 LFTO 暗盘溢价的都是假的。</li>
+    <li><strong>别把 A 股/港股的打新赚钱效应套上来</strong>——"新股首日平均涨 200%"那类数据是 A 股/港股的，跟美股、跟这只票无关。</li>
+    <li><strong>最大的长期悬念是黑石减持</strong>——180 天锁定期一过，控股私募怎么退出，会直接影响股价。打新短炒可以不管，但若想持有就必须盯。</li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-label">最后一句</div>
+    <p class="callout-quote">
+      打新不是"判断它是不是好公司"，而是"判断明天开盘那一刻，想买的人多还是想卖的人多"。Liftoff 的基本面撑得起一个合理估值，但它是被市场<strong>逼着打了折</strong>才来的——这意味着想买的人，本来就没那么多。<strong>小注可以，重仓不行，杠杆绝对不行。</strong>
+    </p>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>主要数据来源（一手优先）</h4>
+    <ul>
+      <li><a href="https://www.sec.gov/Archives/edgar/data/1850351/000119312526253016/iron_s-1a_3_round_2.htm" target="_blank" rel="noopener noreferrer">SEC · Liftoff S-1/A 招股书（2026/6/2）</a></li>
+      <li><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001850351" target="_blank" rel="noopener noreferrer">SEC EDGAR · 公司全部文件（CIK 1850351）</a></li>
+      <li><a href="https://www.renaissancecapital.com/Profile/LFTO/Liftoff-Mobile/IPO" target="_blank" rel="noopener noreferrer">Renaissance Capital · LFTO IPO 主页</a></li>
+      <li><a href="https://www.renaissancecapital.com/IPO-Center/News/119431/Advertising-mobile-app-software-Liftoff-Mobile-sets-terms-for-$399-million-" target="_blank" rel="noopener noreferrer">Renaissance · IPO 条款（$399M）</a></li>
+      <li><a href="https://money.usnews.com/investing/news/articles/2026-05-29/blackstone-backed-liftoff-targets-3-7-billion-valuation-in-us-ipo" target="_blank" rel="noopener noreferrer">Reuters/US News · 黑石支持的 Liftoff 目标 $3.7B</a></li>
+      <li><a href="https://app.dealroom.co/news/feed/liftoff-withdraws-711m-ipo-after-market-rejects-5-5b-valuation-amid-ai-driven-software-selloff" target="_blank" rel="noopener noreferrer">Dealroom · Liftoff 撤回 $711M IPO</a></li>
+      <li><a href="https://www.smartkarma.com/insights/liftoff-mobile-inc-lfto-ai-advertising-ipo-downwardly-revises-terms-short-marketing-window" target="_blank" rel="noopener noreferrer">IPO Boutique · 看空研报（Bearish）</a></li>
+      <li><a href="https://www.smartkarma.com/insights/ipo-rating-liftoff-mobile-inc-845fc7cb-4216-4816-9c16-d33821f3470c" target="_blank" rel="noopener noreferrer">IPO Prophet · 看多评级 8.18/10</a></li>
+      <li><a href="https://fintrendbeacon.com/article/liftoff-mobile-ipo-lfto/" target="_blank" rel="noopener noreferrer">FinTrendBeacon · IPO 深度多空分析</a></li>
+      <li><a href="https://old.reddit.com/r/investing/comments/1trjq7d/liftoff_mobile_ipo_64_are_you_in/" target="_blank" rel="noopener noreferrer">Reddit · r/investing「Are You In?」</a></li>
+      <li><a href="https://liftoff.ai/blog/performance-index-16-liftoff-ranks-2nd-in-ios-gaming-receives-nearly-100-top-10-rankings/" target="_blank" rel="noopener noreferrer">Liftoff · AppsFlyer 榜单官方博客</a></li>
+      <li><a href="https://www.appsflyer.com/company/newsroom/pr/performance-index-2025/" target="_blank" rel="noopener noreferrer">AppsFlyer · Performance Index 2025</a></li>
+      <li><a href="https://www.singular.net/blog/mobile-advertising/" target="_blank" rel="noopener noreferrer">Singular · ROI Index 2025（黄金九强）</a></li>
+      <li><a href="https://www.sec.gov/Archives/edgar/data/0001751008/000175100825000006/exhibit991-4q24earningspre.htm" target="_blank" rel="noopener noreferrer">AppLovin · 4Q24 财报</a></li>
+      <li><a href="https://www.nasdaq.com/articles/applovins-premium-valuation-rests-margin-strength-and-axon-scale" target="_blank" rel="noopener noreferrer">Nasdaq · AppLovin 82% 利润率 / AXON</a></li>
+      <li><a href="https://www.moloco.com/blog/singular-roi-index-2025" target="_blank" rel="noopener noreferrer">Moloco · Singular 排名</a></li>
+      <li><a href="https://www.adweek.com/media/adtech-stocks-tumble-as-ai-increased-competition-weigh-on-revenue/" target="_blank" rel="noopener noreferrer">AdWeek · AdTech 股普跌</a></li>
+      <li><a href="https://247wallst.com/investing/2026/05/08/trade-desk-tumbles-13-applovin-holds-gains-as-ad-tech-q1-earnings-split-wall-street/" target="_blank" rel="noopener noreferrer">24/7 Wall St · TTD 跌 13% / AppLovin</a></li>
+      <li><a href="https://xueqiu.com/k?q=LFTO" target="_blank" rel="noopener noreferrer">雪球 · LFTO 讨论流</a></li>
+      <li><a href="https://xueqiu.com/6688473144/374917844" target="_blank" rel="noopener noreferrer">雪球 · 皮皮牛奶（评级"小赌"）</a></li>
+      <li><a href="https://xueqiu.com/8784010314/371083737" target="_blank" rel="noopener noreferrer">雪球 · 苦难精算师（读招股书）</a></li>
+      <li><a href="https://www.laohu8.com/stock/LFTO" target="_blank" rel="noopener noreferrer">老虎证券 · LFTO 个股页</a></li>
+      <li><a href="https://www.mg21.com/lfto.html" target="_blank" rel="noopener noreferrer">美股之家 · LFTO 百科</a></li>
+      <li><a href="https://www.dentsu.com/news-releases/global-ad-spend-set-to-surpass-one-trillion-for-the-first-time-in-2026-as-the-algorithmic-era-redefines-growth" target="_blank" rel="noopener noreferrer">dentsu · 2026 全球广告破万亿</a></li>
+    </ul>
+
+    <div class="footer-meta">
+      <div>报告生成 · 2026-06-03 · Claude Opus 4.8 · 5 个并行 AI 调研员协作 · 高 stake 数据已三方交叉核验</div>
+      <div>仅供打新决策参考 · 不构成投资建议 · 数据随时间变化 · 投资有风险，入市需谨慎</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    if (next === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+    try { localStorage.setItem('ray-theme', next); } catch (e) {}
+  });
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem('ray-theme')) return;
+      if (e.matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+    });
+  }
+})();
+if ('IntersectionObserver' in window) {
+  const sections = document.querySelectorAll('section[id]');
+  const tocLinks = document.querySelectorAll('nav.toc a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        tocLinks.forEach(link => { link.style.color = ''; link.style.fontWeight = ''; });
+        const activeLink = document.querySelector(`nav.toc a[href="#${id}"]`);
+        if (activeLink) { activeLink.style.color = 'var(--accent-warn)'; activeLink.style.fontWeight = '600'; }
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => observer.observe(s));
+}
+</script>
+
+</body>
+</html>
