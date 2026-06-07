@@ -7,6 +7,18 @@
   },
   "topics": [
     {
+      "slug": "gaokao-zhiyuan",
+      "name": "高考报志愿",
+      "tagline": "高考志愿填报 × 抖音 · 行业进场调研",
+      "reports": [
+        {
+          "date": "2026-06-07",
+          "file": "2026-06-07-gaokao-zhiyuan-douyin.html",
+          "title": "高考志愿在抖音做市场 · 进场调研"
+        }
+      ]
+    },
+    {
       "slug": "sunny-optical",
       "name": "舜宇光学 2382.HK",
       "tagline": "港股光学硬件龙头 · 投资决策类调研",

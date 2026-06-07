@@ -11,6 +11,12 @@
 
 <!-- INDEX-START -->
 
+### 🎓 [高考报志愿](gaokao-zhiyuan/) · 高考志愿填报 × 抖音 · 行业进场调研
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-06-07 | [高考志愿在抖音做市场 · 进场调研](gaokao-zhiyuan/2026-06-07-gaokao-zhiyuan-douyin.html) | [↗ Open](https://kdsz001.github.io/ray-research/gaokao-zhiyuan/2026-06-07-gaokao-zhiyuan-douyin.html) |
+
 ### 📷 [舜宇光学 2382.HK](sunny-optical/) · 港股光学硬件龙头 · 投资决策类调研
 
 | 日期 | 报告 | 在线浏览 |

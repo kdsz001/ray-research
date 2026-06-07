@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高考报志愿 · 调研话题 · Ray Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if ((saved || (prefersDark ? 'dark' : 'light')) === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec; --bg-card: #ffffff; --ink: #14110d; --muted: #6e6358; --light: #a39787;
+  --rule: #14110d; --rule-light: #d8d1c2; --accent: #a73121; --link: #1c4d6b;
+  --serif: "Source Serif 4", Georgia, serif;
+  --sans: "Inter", -apple-system, "PingFang SC", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", monospace;
+}
+[data-theme="dark"] {
+  --bg: #15120e; --bg-card: #1f1b16; --ink: #ebe3d3; --muted: #8d8170; --light: #5c5346;
+  --rule: #ebe3d3; --rule-light: #3a342c; --accent: #e87a5f; --link: #6cb1d6;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--sans); background: var(--bg); color: var(--ink);
+  line-height: 1.65; font-size: 16px; max-width: 720px; margin: 0 auto; padding: 80px 32px;
+  -webkit-font-smoothing: antialiased; transition: background 0.2s, color 0.2s;
+}
+.eyebrow {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 12px;
+}
+.eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--accent); }
+.eyebrow a { color: var(--accent); text-decoration: none; }
+h1 {
+  font-family: var(--serif); font-weight: 600; font-size: 56px;
+  line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 18px;
+}
+.lead { font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--muted); margin-bottom: 50px; }
+h2 {
+  font-family: var(--serif); font-weight: 600; font-size: 22px;
+  margin: 48px 0 18px; letter-spacing: -0.01em;
+}
+.report-list {
+  border-top: 1px solid var(--ink); list-style: none;
+}
+.report-list li {
+  padding: 20px 0; border-bottom: 1px solid var(--rule-light);
+  display: grid; grid-template-columns: 110px 1fr; gap: 20px; align-items: baseline;
+}
+.report-list .date { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+.report-list .title { font-family: var(--serif); font-size: 19px; font-weight: 600; }
+.report-list a { color: var(--ink); text-decoration: none; }
+.report-list a:hover { color: var(--accent); }
+ul.findings { list-style: none; margin: 0; }
+ul.findings li {
+  padding: 12px 0 12px 22px; position: relative; line-height: 1.55; color: var(--muted);
+  border-bottom: 1px dashed var(--rule-light);
+}
+ul.findings li::before {
+  content: "→"; position: absolute; left: 0; color: var(--accent); font-family: var(--mono);
+}
+ul.findings li:last-child { border: none; }
+ul.findings li strong { color: var(--ink); }
+#theme-toggle {
+  position: fixed; top: 14px; right: 24px; z-index: 1000;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--bg-card); border: 1px solid var(--rule-light);
+  color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center;
+  padding: 0; transition: all 0.15s;
+}
+#theme-toggle:hover { border-color: var(--ink); }
+#theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] #theme-toggle .icon-moon { display: block; }
+footer {
+  margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--rule-light);
+  font-family: var(--mono); font-size: 11px; color: var(--light); letter-spacing: 0.05em;
+}
+footer a { color: var(--muted); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="切换夜间模式">
+  <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<div class="eyebrow"><a href="../">← 返回 Ray Research</a> · 调研话题</div>
+<h1>高考报志愿</h1>
+<p class="lead">高考志愿填报赛道 × 抖音市场 · 一个 ¥10 亿（约 $1.4 亿）的小盘子，2026 年因张雪峰去世出现头部真空——新人进场可行性评估。</p>
+
+<h2>报告列表</h2>
+<ul class="report-list">
+  <li>
+    <span class="date">2026-06-07</span>
+    <a class="title" href="2026-06-07-gaokao-zhiyuan-douyin.html">高考志愿在抖音做市场 · 进场调研 →</a>
+  </li>
+</ul>
+
+<h2>跨报告核心结论</h2>
+<ul class="findings">
+  <li><strong>盘子是亿元级不是百亿</strong> — 付费市场约 ¥10 亿（艾媒单一口径），增速降到个位数，"近九成愿意"但真实付费率推算仅 4–5%</li>
+  <li><strong>头部真空</strong> — 张雪峰 2026-03-24 因心源性猝死去世（7 家一手媒体已交叉验证），撑起赛道的"个人信任背书"出现裂缝</li>
+  <li><strong>工具层已被大厂免费国有化</strong> — 夸克/百度/腾讯 AI 志愿助手全免费 + 教育部"阳光志愿"官方系统，新人别在工具层卷</li>
+  <li><strong>政策风险中高</strong> — 教育部连续 3 年专项治理 + 广告法第 24 条 + 抖音健康分封号机制，剑指"违规营销话术"</li>
+  <li><strong>新人唯一的缝</strong> — 某省 + 中低分段 + AI 出底稿 + 人工补决策和情绪陪跑；第一年蓄水，2027 才收割</li>
+</ul>
+
+<footer>
+  <a href="../">Ray Research</a> · <a href="https://github.com/kdsz001/ray-research" target="_blank" rel="noopener noreferrer">GitHub</a>
+</footer>
+
+<script>
+var btn = document.getElementById('theme-toggle');
+btn.addEventListener('click', function() {
+  var current = document.documentElement.getAttribute('data-theme');
+  var next = current === 'dark' ? 'light' : 'dark';
+  if (next === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  else document.documentElement.removeAttribute('data-theme');
+  try { localStorage.setItem('ray-theme', next); } catch (e) {}
+});
+</script>
+
+</body>
+</html>

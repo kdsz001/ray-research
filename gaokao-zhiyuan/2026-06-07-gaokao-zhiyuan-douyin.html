@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高考报志愿赛道（抖音）· 行业调研报告 · 2026.06</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec;
+  --bg-paper: #fbf9f4;
+  --bg-card: #ffffff;
+  --bg-dark: #14110d;
+  --bg-dark2: #1f1b16;
+  --ink: #14110d;
+  --ink-2: #2c2620;
+  --muted: #6e6358;
+  --light: #a39787;
+  --rule: #14110d;
+  --rule-light: #d8d1c2;
+  --accent-warn: #a73121;
+  --accent-data: #1c4d6b;
+  --accent-pos: #2c5e3f;
+  --accent-yellow: #c89a2c;
+  --grad-warn: rgba(167, 49, 33, 0.04);
+  --grad-data: rgba(28, 77, 107, 0.04);
+  --shadow-card: 0 0 0 transparent;
+  --bg-inverse: #14110d;
+  --bg-inverse-2: #1f1b16;
+  --ink-on-inverse: #f6f3ec;
+  --text-on-inverse: rgba(246, 243, 236, 0.85);
+  --muted-on-inverse: rgba(246, 243, 236, 0.7);
+  --faint-on-inverse: rgba(246, 243, 236, 0.55);
+  --light-on-inverse: rgba(246, 243, 236, 0.5);
+  --rule-on-inverse: rgba(246, 243, 236, 0.18);
+  --accent-yellow-on-inverse: #c89a2c;
+  --serif: "Source Serif 4", "Source Serif Pro", "Charter", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+  --max-w: 820px;
+}
+[data-theme="dark"] {
+  --bg: #15120e;
+  --bg-paper: #1c1814;
+  --bg-card: #1f1b16;
+  --bg-dark: #0a0907;
+  --bg-dark2: #0f0d0a;
+  --ink: #ebe3d3;
+  --ink-2: #c9bfae;
+  --muted: #8d8170;
+  --light: #5c5346;
+  --rule: #ebe3d3;
+  --rule-light: #3a342c;
+  --accent-warn: #e87a5f;
+  --accent-data: #6cb1d6;
+  --accent-pos: #6db98c;
+  --accent-yellow: #e6b945;
+  --grad-warn: rgba(232, 122, 95, 0.06);
+  --grad-data: rgba(108, 177, 214, 0.06);
+  --shadow-card: 0 1px 0 rgba(235, 227, 211, 0.04);
+  --bg-inverse: #ede5d3;
+  --bg-inverse-2: #e0d8c5;
+  --ink-on-inverse: #14110d;
+  --text-on-inverse: rgba(20, 17, 13, 0.85);
+  --muted-on-inverse: rgba(20, 17, 13, 0.7);
+  --faint-on-inverse: rgba(20, 17, 13, 0.55);
+  --light-on-inverse: rgba(20, 17, 13, 0.5);
+  --rule-on-inverse: rgba(20, 17, 13, 0.18);
+  --accent-yellow-on-inverse: #a47a18;
+}
+body, .tldr, .verdict, .quickfacts-wrap, footer, table, th, td, .stat, .col-card, .callout, .path-card, .verdict-option, .qf-cell {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  font-size: 16px;
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(167, 49, 33, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 80% 100%, rgba(28, 77, 107, 0.04) 0%, transparent 40%);
+}
+.topbar { border-bottom: 1px solid var(--rule); background: var(--bg-paper); padding: 14px 0; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+.topbar-inner { max-width: 1180px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; color: var(--muted); }
+.topbar strong { color: var(--ink); font-weight: 600; }
+.hero { max-width: 1180px; margin: 0 auto; padding: 80px 32px 100px; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 2fr 1fr; gap: 60px; align-items: end; }
+.hero-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-warn); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.hero-eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--accent-warn); }
+.hero h1 { font-family: var(--serif); font-weight: 600; font-size: 72px; line-height: 1.02; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 28px; font-feature-settings: "ss01"; }
+.hero h1 em { font-style: italic; color: var(--accent-warn); font-weight: 500; }
+.hero-subtitle { font-family: var(--serif); font-size: 21px; line-height: 1.5; color: var(--muted); font-style: italic; max-width: 580px; }
+.hero-meta { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 24px; }
+.hero-meta dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
+.hero-meta dt { color: var(--light); font-weight: 400; }
+.hero-meta dd { color: var(--ink); font-weight: 500; }
+.quickfacts-wrap { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 60px 0 80px; border-bottom: 1px solid var(--rule); }
+.quickfacts { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+.qf-header { margin-bottom: 36px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.qf-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-yellow-on-inverse); }
+.qf-title { font-family: var(--serif); font-style: italic; font-size: 28px; font-weight: 500; color: var(--text-on-inverse); letter-spacing: -0.01em; }
+.qf-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--rule-on-inverse); border: 1px solid var(--rule-on-inverse); }
+.qf-cell { background: var(--bg-inverse); padding: 22px 18px 20px; display: flex; flex-direction: column; gap: 6px; min-height: 124px; }
+.qf-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light-on-inverse); }
+.qf-value { font-family: var(--serif); font-weight: 600; font-size: 30px; line-height: 1.02; color: var(--ink-on-inverse); letter-spacing: -0.02em; margin-top: auto; margin-bottom: 4px; }
+.qf-value.warn { color: var(--accent-warn); }
+.qf-value.pos { color: var(--accent-pos); }
+.qf-value.data { color: var(--accent-data); }
+.qf-value .qf-unit { font-size: 13px; color: var(--faint-on-inverse); margin-left: 2px; font-weight: 400; }
+.qf-sub { font-size: 11.5px; color: var(--faint-on-inverse); line-height: 1.35; }
+.qf-cell-verdict { background: var(--accent-warn); color: white; }
+.qf-cell-verdict .qf-label { color: rgba(255, 255, 255, 0.8); }
+.qf-cell-verdict .qf-verdict { font-family: var(--serif); font-style: italic; font-size: 19px; font-weight: 600; line-height: 1.18; color: white; margin-top: auto; letter-spacing: -0.01em; }
+.qf-cell-verdict .qf-sub { color: rgba(255, 255, 255, 0.85); }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+main { display: grid; grid-template-columns: 200px 1fr; gap: 60px; max-width: 1180px; margin: 0 auto; padding: 0 32px 120px; }
+nav.toc { position: sticky; top: 40px; align-self: start; height: fit-content; padding-top: 80px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+nav.toc h4 { font-size: 10px; color: var(--light); margin-bottom: 18px; font-weight: 500; letter-spacing: 0.15em; }
+nav.toc ol { list-style: none; counter-reset: toc; }
+nav.toc li { counter-increment: toc; margin-bottom: 14px; border-left: 1px solid var(--rule-light); padding-left: 14px; transition: border-color 0.2s; }
+nav.toc li:hover { border-left-color: var(--ink); }
+nav.toc li::before { content: "0" counter(toc); display: block; color: var(--light); font-size: 10px; margin-bottom: 2px; }
+nav.toc a { color: var(--ink-2); text-decoration: none; line-height: 1.3; display: block; font-weight: 500; }
+nav.toc a:hover { color: var(--accent-warn); }
+article { max-width: var(--max-w); padding-top: 60px; }
+section { padding: 60px 0; border-top: 1px solid var(--rule-light); scroll-margin-top: 30px; }
+section:first-of-type { border-top: none; padding-top: 20px; }
+.section-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-warn); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+.section-num::after { content: ""; flex: 1; height: 1px; background: var(--rule-light); }
+section h2 { font-family: var(--serif); font-weight: 600; font-size: 42px; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 32px; font-feature-settings: "ss01"; }
+section h3 { font-family: var(--serif); font-weight: 600; font-size: 24px; line-height: 1.3; margin-top: 48px; margin-bottom: 16px; color: var(--ink); }
+section h4 { font-family: var(--sans); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin-top: 36px; margin-bottom: 12px; }
+section p { font-family: var(--sans); font-size: 16px; line-height: 1.7; color: var(--ink-2); margin-bottom: 16px; }
+section p strong { color: var(--ink); font-weight: 600; }
+section a { color: var(--accent-data); text-decoration: underline; text-decoration-color: rgba(28, 77, 107, 0.3); text-underline-offset: 3px; }
+section a:hover { text-decoration-color: var(--accent-data); }
+ul, ol { padding-left: 22px; margin-bottom: 18px; }
+li { margin-bottom: 8px; line-height: 1.7; color: var(--ink-2); }
+li::marker { color: var(--light); }
+.note { font-size: 13px; color: var(--muted); font-style: italic; }
+.tldr { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 56px 56px; border-radius: 0; margin-top: 40px; position: relative; }
+.tldr::before { content: "TL;DR"; position: absolute; top: -1px; left: 56px; background: var(--accent-warn); color: white; padding: 4px 16px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; font-weight: 600; }
+.tldr h3 { font-family: var(--serif); color: var(--ink-on-inverse); font-size: 22px; font-weight: 500; margin-top: 28px; margin-bottom: 12px; }
+.tldr h3:first-of-type { margin-top: 16px; }
+.tldr p, .tldr li { color: var(--text-on-inverse); }
+.tldr p strong, .tldr li strong { color: var(--ink-on-inverse); }
+.tldr ol, .tldr ul { padding-left: 18px; }
+.tldr li { margin-bottom: 12px; }
+.tldr a { color: var(--ink-on-inverse); text-decoration-color: var(--light-on-inverse); }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 32px 0; }
+.stat { background: var(--bg-card); padding: 28px 24px; }
+.stat-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 10px; }
+.stat-value { font-family: var(--serif); font-weight: 600; font-size: 34px; line-height: 1; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.02em; }
+.stat-value .unit { font-size: 15px; color: var(--muted); font-weight: 400; margin-left: 4px; }
+.stat-value.warn { color: var(--accent-warn); }
+.stat-value.pos { color: var(--accent-pos); }
+.stat-value.data { color: var(--accent-data); }
+.stat-note { font-size: 12px; color: var(--muted); line-height: 1.4; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 24px 0; }
+.col-card { border: 1px solid var(--rule-light); padding: 28px; background: var(--bg-card); }
+.col-card h4 { margin-top: 0; display: flex; align-items: center; gap: 10px; }
+.col-card.pos h4 { color: var(--accent-pos); }
+.col-card.warn h4 { color: var(--accent-warn); }
+.col-card h4::before { display: inline-block; width: 18px; height: 18px; border-radius: 50%; font-family: var(--serif); font-size: 13px; text-align: center; line-height: 18px; font-weight: 600; }
+.col-card.pos h4::before { content: "✓"; background: var(--accent-pos); color: white; }
+.col-card.warn h4::before { content: "!"; background: var(--accent-warn); color: white; font-style: italic; }
+.col-card ul { padding-left: 18px; margin-bottom: 0; }
+.col-card li { font-size: 14px; line-height: 1.55; }
+.quote { border-left: 3px solid var(--accent-warn); padding: 8px 0 8px 24px; margin: 24px 0; font-family: var(--serif); font-size: 18px; line-height: 1.55; font-style: italic; color: var(--ink-2); }
+.quote-attr { font-family: var(--sans); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 12px; font-weight: 500; }
+.quote-attr::before { content: "— "; }
+.table-wrap { overflow-x: auto; margin: 24px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--bg-card); }
+th { text-align: left; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; padding: 12px 14px; border-bottom: 2px solid var(--ink); background: var(--bg-paper); white-space: nowrap; vertical-align: bottom; }
+td { padding: 14px; border-bottom: 1px solid var(--rule-light); vertical-align: top; line-height: 1.5; color: var(--ink-2); }
+td.product-name { font-weight: 600; color: var(--ink); font-family: var(--serif); font-size: 15px; }
+tr:last-child td { border-bottom: 1px solid var(--ink); }
+tr.highlight td { background: rgba(167, 49, 33, 0.04); }
+td .tag { display: inline-block; font-family: var(--mono); font-size: 10px; text-transform: uppercase; padding: 2px 6px; background: var(--bg-paper); color: var(--muted); border-radius: 2px; margin-right: 4px; }
+.callout { background: var(--bg-paper); border-left: 3px solid var(--ink); padding: 24px 28px; margin: 28px 0; }
+.callout.warn { border-left-color: var(--accent-warn); background: rgba(167, 49, 33, 0.04); }
+.callout.data { border-left-color: var(--accent-data); background: rgba(28, 77, 107, 0.04); }
+.callout.pos { border-left-color: var(--accent-pos); background: rgba(44, 94, 63, 0.04); }
+.callout-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
+.callout.warn .callout-label { color: var(--accent-warn); }
+.callout.data .callout-label { color: var(--accent-data); }
+.callout.pos .callout-label { color: var(--accent-pos); }
+.callout p { margin-bottom: 12px; }
+.callout p:last-child { margin-bottom: 0; }
+.callout-quote { font-family: var(--serif); font-size: 17px; font-style: italic; line-height: 1.5; color: var(--ink); }
+.metric-list { margin: 28px 0; border-top: 1px solid var(--ink); }
+.metric-row { display: grid; grid-template-columns: 1fr auto; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--rule-light); gap: 24px; }
+.metric-row:last-child { border-bottom: 1px solid var(--ink); }
+.metric-row .label { font-size: 14px; color: var(--ink-2); }
+.metric-row .label .src { display: block; font-size: 11px; color: var(--light); margin-top: 2px; font-family: var(--mono); }
+.metric-row .value { font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; text-align: right; white-space: nowrap; }
+.metric-row .value.warn { color: var(--accent-warn); }
+.metric-row .value.pos { color: var(--accent-pos); }
+.metric-row .value.data { color: var(--accent-data); }
+.metric-row .value small { font-size: 13px; color: var(--muted); font-weight: 400; }
+.divider-quote { margin: 80px 0; text-align: center; font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--muted); line-height: 1.5; position: relative; padding: 32px 60px; }
+.divider-quote::before, .divider-quote::after { content: ""; position: absolute; width: 40px; height: 1px; background: var(--rule); top: 0; left: 50%; transform: translateX(-50%); }
+.divider-quote::after { top: auto; bottom: 0; }
+.timeline { margin: 32px 0; position: relative; padding-left: 0; }
+.timeline::before { content: ""; position: absolute; left: 92px; top: 8px; bottom: 8px; width: 1px; background: var(--rule-light); }
+.tl-row { display: grid; grid-template-columns: 80px 14px 1fr; gap: 12px; margin-bottom: 24px; align-items: start; }
+.tl-row .tl-date { font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em; color: var(--muted); text-align: right; padding-top: 4px; text-transform: uppercase; }
+.tl-row .tl-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--ink); margin-top: 4px; position: relative; z-index: 2; }
+.tl-row .tl-dot.warn { border-color: var(--accent-warn); background: var(--accent-warn); }
+.tl-row .tl-dot.data { border-color: var(--accent-data); background: var(--accent-data); }
+.tl-row .tl-content { padding-top: 0; }
+.tl-row .tl-title { font-family: var(--serif); font-weight: 600; font-size: 16px; color: var(--ink); line-height: 1.3; margin-bottom: 4px; }
+.tl-row .tl-title.warn { color: var(--accent-warn); }
+.tl-row .tl-desc { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+.path-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 28px 0; }
+.path-card { border: 1px solid var(--rule-light); background: var(--bg-card); padding: 26px 24px; position: relative; }
+.path-card.a { border-top: 4px solid var(--accent-pos); }
+.path-card.c { border-top: 4px solid var(--accent-warn); }
+.path-card .path-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.path-card.a .path-num { color: var(--accent-pos); }
+.path-card.c .path-num { color: var(--accent-warn); }
+.path-card h4 { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--ink); text-transform: none; letter-spacing: 0; margin: 0 0 14px 0; }
+.path-card p { font-size: 13.5px; line-height: 1.55; color: var(--muted); margin-bottom: 10px; }
+.path-card ul { margin: 0; padding-left: 18px; }
+.path-card li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; color: var(--ink-2); }
+.verdict { background: var(--bg-inverse); color: var(--ink-on-inverse); padding: 80px 56px; margin: 80px 0 0; position: relative; }
+.verdict-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-yellow-on-inverse); margin-bottom: 24px; }
+.verdict h3 { font-family: var(--serif); font-size: 34px; line-height: 1.22; font-weight: 600; margin-bottom: 24px; color: var(--ink-on-inverse); letter-spacing: -0.02em; }
+.verdict h3 em { color: var(--accent-warn); font-style: italic; }
+.verdict p { color: var(--text-on-inverse); font-size: 17px; line-height: 1.65; margin-bottom: 14px; }
+.verdict p strong { color: var(--ink-on-inverse); }
+.verdict-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 40px; background: var(--rule-on-inverse); }
+.verdict-option { background: var(--bg-inverse); padding: 28px 24px; }
+.verdict-option .num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--accent-yellow-on-inverse); margin-bottom: 12px; }
+.verdict-option h4 { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--ink-on-inverse); margin-bottom: 10px; text-transform: none; letter-spacing: 0; }
+.verdict-option p { font-size: 14px; line-height: 1.55; margin-bottom: 0; color: var(--muted-on-inverse); }
+.score-card { border: 1px solid var(--ink); padding: 32px; margin: 24px 0; background: var(--bg-card); }
+.score-row { display: grid; grid-template-columns: 220px 1fr 70px; gap: 20px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--rule-light); }
+.score-row:last-child { border-bottom: none; }
+.score-row .name { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: 15px; }
+.score-row .bar { background: var(--bg-paper); height: 8px; position: relative; }
+.score-row .bar-fill { height: 100%; background: var(--accent-data); }
+.score-row .bar-fill.warn { background: var(--accent-warn); }
+.score-row .bar-fill.pos { background: var(--accent-pos); }
+.score-row .num { font-family: var(--mono); font-weight: 600; font-size: 13px; color: var(--ink); text-align: right; }
+footer { border-top: 1px solid var(--rule); background: var(--bg-inverse); color: var(--muted-on-inverse); padding: 60px 32px 80px; margin-top: 0; }
+.footer-inner { max-width: 1180px; margin: 0 auto; }
+footer h4 { color: var(--ink-on-inverse); margin-bottom: 18px; font-family: var(--serif); font-size: 16px; font-weight: 600; }
+footer ul { padding-left: 0; list-style: none; columns: 2; column-gap: 40px; }
+footer li { font-size: 12px; line-height: 1.5; margin-bottom: 8px; font-family: var(--mono); break-inside: avoid; color: var(--muted-on-inverse); }
+footer a { color: var(--accent-yellow-on-inverse); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+.footer-meta { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--rule-on-inverse); font-size: 11px; color: var(--light-on-inverse); font-family: var(--mono); letter-spacing: 0.05em; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+@media (max-width: 1100px) {
+  main { grid-template-columns: 1fr; }
+  nav.toc { position: static; padding-top: 40px; }
+  nav.toc ol { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 54px; }
+  .verdict-options { grid-template-columns: 1fr; }
+  .qf-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
+  .hero { padding: 40px 20px 60px; }
+  .hero h1 { font-size: 40px; }
+  .hero-subtitle { font-size: 18px; }
+  main { padding: 0 20px 80px; gap: 0; }
+  .container, .quickfacts { padding: 0 20px; }
+  .quickfacts-wrap { padding: 40px 0 50px; }
+  .qf-grid { grid-template-columns: repeat(2, 1fr); }
+  .qf-value { font-size: 26px; }
+  .qf-cell-verdict .qf-verdict { font-size: 17px; }
+  nav.toc ol { grid-template-columns: 1fr; }
+  section h2 { font-size: 30px; }
+  .stats { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  .verdict, .tldr { padding: 40px 24px; }
+  .verdict h3 { font-size: 25px; }
+  .score-row { grid-template-columns: 130px 1fr 44px; gap: 12px; }
+  footer ul { columns: 1; }
+  .timeline::before { left: 11px; }
+  .tl-row { grid-template-columns: 80px 1fr; }
+  .tl-row .tl-date { font-size: 10px; }
+  .path-detail { grid-template-columns: 1fr; }
+}
+#theme-toggle { position: fixed; top: 14px; right: 24px; z-index: 1000; width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--rule-light); color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.12s; }
+#theme-toggle:hover { background: var(--bg-paper); border-color: var(--ink); }
+#theme-toggle:active { transform: scale(0.92); }
+#theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] #theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] #theme-toggle { background: var(--bg-paper); border-color: var(--rule-light); color: var(--ink); }
+@media (max-width: 720px) { #theme-toggle { top: 10px; right: 14px; width: 32px; height: 32px; } }
+@media print {
+  body { background: white; font-size: 11pt; }
+  .topbar, nav.toc, footer, #theme-toggle { display: none; }
+  main { display: block; max-width: 100%; padding: 0; }
+  article { max-width: 100%; padding-top: 0; }
+  .hero { padding: 30px 0; page-break-after: always; grid-template-columns: 1fr; }
+  .hero h1 { font-size: 34pt; color: black; }
+  .hero h1 em { color: #a73121; }
+  .quickfacts-wrap { background: white; color: black; padding: 20px 0; page-break-after: always; }
+  .qf-grid { background: #ddd; border-color: #ddd; }
+  .qf-cell { background: white; }
+  .qf-label, .qf-sub { color: #666 !important; }
+  .qf-value { color: black !important; }
+  .qf-cell-verdict { background: #f4e6e3 !important; }
+  .qf-cell-verdict .qf-verdict, .qf-cell-verdict .qf-label, .qf-cell-verdict .qf-sub { color: black !important; }
+  section { page-break-inside: avoid; padding: 20px 0; border-top: 2px solid #000; }
+  section h2 { font-size: 22pt; }
+  section h3 { font-size: 14pt; }
+  .tldr, .verdict { background: #f5f5f5 !important; color: black !important; padding: 24px !important; }
+  .tldr *, .verdict * { color: black !important; }
+  .verdict-option { background: white !important; border: 1px solid #ddd; }
+  a { color: black !important; text-decoration: none; }
+  .stats, .two-col, .score-card { page-break-inside: avoid; }
+  .divider-quote { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<button id="theme-toggle" aria-label="切换夜间模式" title="切换浅色 / 夜间模式">
+  <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div><strong>高考报志愿</strong> · 抖音赛道行业调研</div>
+    <div>调研日期 <strong>2026 · 06 · 07</strong>（高考首日）</div>
+    <div>为创业决策准备 · 第一版</div>
+  </div>
+</div>
+
+<header class="hero">
+  <div>
+    <div class="hero-eyebrow">高考志愿填报 × 抖音 · 行业进场调研</div>
+    <h1>一个 10 亿的盘子，<br><em>刚刚失去了它的神</em></h1>
+    <p class="hero-subtitle">
+      高考报志愿这门生意，远没有外界传的那么大——付费市场只有约 <strong>10 亿人民币</strong>，还在减速。
+      但 2026 年 3 月，撑起整个头部的张雪峰猝然离世，留下一把"最贵的空椅子"。
+      对一个想进抖音的新人：盘子不大、监管收紧、AI 免费碾压——但也恰逢十年一遇的头部真空。这份报告告诉你，这一刀，到底该不该下、怎么下。
+    </p>
+  </div>
+  <div class="hero-meta">
+    <dl>
+      <dt>调研主题</dt><dd>高考志愿 · 抖音市场</dd>
+      <dt>调研类型</dt><dd>行业 / 赛道进场</dd>
+      <dt>调研深度</dt><dd>6 个并行 AI 调研员</dd>
+      <dt>覆盖维度</dt><dd>市场 / 玩法 / 玩家</dd>
+      <dt> </dt><dd>政策 / 口碑 / 进场</dd>
+      <dt>数据核验</dt><dd>独立审查 + 一手交叉</dd>
+      <dt>面向读者</dt><dd>想进场的产品型创业者</dd>
+    </dl>
+  </div>
+</header>
+
+<div class="quickfacts-wrap">
+  <div class="quickfacts">
+    <div class="qf-header">
+      <div class="qf-eyebrow">10 秒读完 / 核心数据速览</div>
+      <h2 class="qf-title">The Gaokao Advisory Market at a Glance</h2>
+    </div>
+    <div class="qf-grid">
+      <div class="qf-cell">
+        <div class="qf-label">赛道成熟度</div>
+        <div class="qf-value">成长末</div>
+        <div class="qf-sub">高增长期已过 · 进入低速</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">付费市场规模</div>
+        <div class="qf-value data">¥10<span class="qf-unit">亿</span></div>
+        <div class="qf-sub">约 $1.4 亿 · 非"百亿"</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">年化增速 22→27</div>
+        <div class="qf-value">~7<span class="qf-unit">%</span></div>
+        <div class="qf-sub">从 33% 降到个位数</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">2026 高考人数</div>
+        <div class="qf-value warn">1290<span class="qf-unit">万</span></div>
+        <div class="qf-sub">连续第 2 年下降</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">真实付费率</div>
+        <div class="qf-value warn">~4-5<span class="qf-unit">%</span></div>
+        <div class="qf-sub">"近九成愿意"≠ 真付费</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">客单价跨度</div>
+        <div class="qf-value">68→4万</div>
+        <div class="qf-sub">同行差 600 倍</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">旺季窗口</div>
+        <div class="qf-value warn">3-7<span class="qf-unit">天</span></div>
+        <div class="qf-sub">出分后爆发 · 几乎零复购</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">头部变量</div>
+        <div class="qf-value warn">真空</div>
+        <div class="qf-sub">张雪峰 2026.03 去世</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">大厂 AI 工具</div>
+        <div class="qf-value data">全免费</div>
+        <div class="qf-sub">夸克/百度/腾讯碾压工具层</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">政策风险</div>
+        <div class="qf-value warn">中高</div>
+        <div class="qf-sub">连续 3 年专项治理</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">做通用工具</div>
+        <div class="qf-value warn">红海</div>
+        <div class="qf-sub">晚了 · 别碰</div>
+      </div>
+      <div class="qf-cell qf-cell-verdict">
+        <div class="qf-label">最终判断</div>
+        <div class="qf-verdict">能做，<br>但只做窄缝</div>
+        <div class="qf-sub">某省+中低分+情绪陪跑</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<nav class="toc">
+  <h4>章节目录</h4>
+  <ol>
+    <li><a href="#tldr">一页纸结论</a></li>
+    <li><a href="#market">盘子有多大</a></li>
+    <li><a href="#zxf">头部地震</a></li>
+    <li><a href="#players">玩家格局</a></li>
+    <li><a href="#douyin">抖音变现链路</a></li>
+    <li><a href="#voices">真实口碑</a></li>
+    <li><a href="#risk">政策与平台风险</a></li>
+    <li><a href="#decision">给你的决策建议</a></li>
+  </ol>
+</nav>
+
+<article>
+
+<!-- ===== 1. TL;DR ===== -->
+<section id="tldr">
+  <div class="section-num">01 / 一页纸结论</div>
+  <h2>如果你只看一段，看这段。</h2>
+
+  <p>
+    高考报志愿是个 <strong>"亿元级、不是百亿级"</strong>的小盘子——付费市场规模约 <strong>10 亿人民币（约 $1.4 亿）</strong>，增速已从早年的 33% 年化降到约 7%，进入低速成熟期。需求底层（信息差）是真痛点，但"必须花上万元请专家"是被焦虑营销放大出来的伪刚需——"近九成考生愿意付费"，但按盘子反推，真实付费率可能只有 <strong>4–5%</strong>。
+  </p>
+  <p>
+    这门生意有两个结构性特征致命：一是<strong>极端季节性</strong>——一年只爆发出分后那 3–7 天，几乎零复购；二是<strong>三股力量正在重构格局</strong>：大厂（夸克/百度/腾讯）用<strong>免费 AI</strong> 铲平了工具层，教育部连续 3 年高考季<strong>专项治理</strong>高价乱象，而 2026 年 3 月——撑起整个头部的张雪峰<strong>突然去世</strong>，留下一把"最贵的空椅子"。
+  </p>
+
+  <div class="tldr">
+    <h3>想现在进抖音做这门生意，三种结局：</h3>
+    <ol>
+      <li><strong>做通用志愿工具 / 大数据卡：直接放弃。</strong>夸克、百度、腾讯的 AI 志愿助手全部免费，教育部"阳光志愿"官方系统据测能满足 90%+ 家庭需求。一个 98–360 元的工具，跟免费版几乎同质——这一层已被大厂"国有化"。</li>
+      <li><strong>装专家做高价一对一：又晚又险。</strong>新人没名气=信任为零，而高价一对一恰好是教育部点名 + 广告法红线 + 抖音封号机制三把剑同时对准的地方。</li>
+      <li><strong>真正的机会：做 AI 干不了的那层窄缝。</strong>"某一个省 + 中低分段家长 + AI 出底稿 + 人工补决策和情绪陪跑"——这是头部和大厂都懒得弯腰捡的缝。但要清醒：<strong>第一年是蓄水年，2027 年高考季才是收割年。</strong></li>
+    </ol>
+
+    <h3>如果你只能记住三件事：</h3>
+    <ul>
+      <li><strong>盘子小、监管紧、季节极端——这不是一门"躺赚"的生意。</strong>毛利确实高（头部机构财报口径 78%+），但那是已建立信任后的结果，不是新人第一年能拿到的。</li>
+      <li><strong>张雪峰之死 = 十年一遇的头部真空，但也是政策收紧的逆风期，两者同时成立。</strong>真空不会被"喊自己是规划师"的人填上，只会被下一个有真实内容信任飞轮的人填上。</li>
+      <li><strong>你的护城河不在数据、在"信任 + 私域转化"。</strong>数据免费可得（夸克），难的是把抖音粉丝高效搬进微信、用一对一的高毛利收口，以及让家长敢信你这张脸。</li>
+    </ul>
+  </div>
+
+  <div class="callout data">
+    <div class="callout-label">关于本报告的数据可信度</div>
+    <p>本报告的高风险数字（市场规模、高考人数、张雪峰营收/去世、政策日期、毛利率）已经过<strong>独立 AI 审查员 + 一手来源交叉验证</strong>。其中"张雪峰 2026-03-24 去世"已由 7 家一手媒体（中新网/央视新闻、观察者网、证券时报、新浪财经、钛媒体、东方财富、新浪新闻）交叉确认 <strong>✓</strong>。凡<strong>单一信源、平台自述、媒体口径、传闻</strong>的数字，正文均已明确标注，请按标注谨慎采信。</p>
+  </div>
+</section>
+
+<!-- ===== 2. MARKET ===== -->
+<section id="market">
+  <div class="section-num">02 / 盘子有多大</div>
+  <h2>先把"百亿赛道"的滤镜摘掉</h2>
+
+  <p>
+    所有想进场的人第一件事该知道的：这个盘子没你想的大。整个高考志愿填报<strong>付费</strong>服务的市场规模，2023 年约 9.5 亿元、2024 年约 10.2 亿元、2025 年预测约 10.9 亿元——口径就是<strong>个位数十亿人民币</strong>。
+  </p>
+  <div class="callout warn">
+    <div class="callout-label">⚠ 最常见的认知陷阱</div>
+    <p class="callout-quote">网上很多英文二手摘要把"10.2 亿元"误读成"10.2 billion（102 亿）"，把盘子放大了 10 倍。新华社一手原文白纸黑字是"市场规模近 10 亿元"。别被"百亿赛道""320 亿生意"这类说法骗了——后者通常把整条产业链（教辅、研学、留学）都算进去了。</p>
+  </div>
+
+  <h3>市场规模与增速（艾媒咨询口径）</h3>
+  <div class="metric-list">
+    <div class="metric-row">
+      <div class="label">2023 付费市场规模<span class="src">艾媒咨询 · 新华社引用 · 单一信源</span></div>
+      <div class="value data">¥9.5<small> 亿 / $1.3亿</small></div>
+    </div>
+    <div class="metric-row">
+      <div class="label">2024 付费市场规模<span class="src">艾媒咨询 · ⚠ 单一信源 · 无第三方交叉</span></div>
+      <div class="value data">¥10.2<small> 亿 / $1.4亿</small></div>
+    </div>
+    <div class="metric-row">
+      <div class="label">2027 预测规模<span class="src">艾媒咨询 · 预测值</span></div>
+      <div class="value">¥12.2<small> 亿 / $1.7亿</small></div>
+    </div>
+    <div class="metric-row">
+      <div class="label">年化增速（2022→2027）<span class="src">据上表推算 · 早年曾达 33%</span></div>
+      <div class="value warn">~7<small>%</small></div>
+    </div>
+  </div>
+  <p class="note">注：市场规模数字几乎全部来自艾媒咨询一家，新华社也是转引艾媒，缺艾瑞/灼识等第二方交叉验证。引用时请把它当"单一口径"而非"行业共识"。（来源：<a href="https://www.xinhuanet.com/20240622/695f799e40ec4acf8eb5e69010c4390b/c.html">新华社《新华每日电讯》</a>）</p>
+
+  <h3>需求基本盘：用户池大，但在缩小</h3>
+  <p>每年一千多万考生听起来很多，但有两个坏消息：<strong>2024 年已是历史峰值，之后连降；而且"愿意"和"付费"是两回事。</strong></p>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">2024 高考报名</div>
+      <div class="stat-value">1342<span class="unit">万</span></div>
+      <div class="stat-note">历史峰值 ✓ 教育部口径已核</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">2025 高考报名</div>
+      <div class="stat-value">1335<span class="unit">万</span></div>
+      <div class="stat-note">8 年来首次下降</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">2026 高考报名</div>
+      <div class="stat-value warn">1290<span class="unit">万</span></div>
+      <div class="stat-note">连续第 2 年降（-45 万）</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">渗透率 — 全报告最大的数字落差</div>
+    <p>艾媒口径是"<strong>近九成高考生愿意</strong>选择志愿填报服务"。但"愿意"≠"真付费"。用市场盘子反推：2024 年约 1342 万考生、盘子 10.2 亿元，<strong>就算客单价压到 2000 元，最多覆盖约 50 万人次，真实付费渗透率撑死 4–5%</strong>（本报告基于公开数字的推算，非官方披露）。</p>
+    <p class="note">渗透率（白话：100 个目标用户里有几个真的掏钱了）。"近九成愿意"是营销最爱引用的数字，但它和"实际个位数百分比付费"之间的鸿沟，是这个赛道最该警惕的认知陷阱。</p>
+  </div>
+
+  <h3>价格带：从 68 元到 4 万元，跨越 600 倍</h3>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>档位</th><th>价格（人民币）</th><th>约合美元</th><th>形态 / 代表</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="product-name">工具会员</td><td>68–500 元</td><td>$9–70</td><td>APP 自助查询卡（圆梦/优志愿/夸克）</td></tr>
+      <tr><td class="product-name">中端一对一</td><td>7000–9800 元</td><td>$970–1360</td><td>线下机构单独志愿填报</td></tr>
+      <tr><td class="product-name">高端一对一</td><td>1.2万–1.5万元</td><td>$1670–2080</td><td>名师/副总级专家、综合规划</td></tr>
+      <tr class="highlight"><td class="product-name">名人头部</td><td>1.3万–1.9万元</td><td>$1810–2640</td><td>张雪峰梦想卡/圆梦卡（标准化产品）</td></tr>
+      <tr><td class="product-name">全套打包</td><td>近 4 万元</td><td>~$5500</td><td>综评+志愿+多次咨询叠加</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">真正撑起盘子的是中间"几千到一万出头的线下一对一"和"头部的万元标准化产品"。几百元的 APP 会员走量但单价低，撑不起大盘。（价格来自<a href="https://www.xinhuanet.com/20240622/695f799e40ec4acf8eb5e69010c4390b/c.html">新华社暗访</a> + <a href="https://www.tmtpost.com/7601353.html">钛媒体</a>）</p>
+
+  <h3>季节性：一年就吃几天的"潮汐生意"</h3>
+  <p>
+    这是整门生意最反直觉、也最致命的特征——<strong>需求不是均匀流出，而是开闸瞬间被抢空。</strong>夸克平台分数线公布后"三天已有超千万用户、单日生成志愿报告超 250 万份"（截至 2025 高考季，平台自述）；张雪峰的万元产品"两万个名额不到三小时被抢光"。
+  </p>
+  <div class="callout warn">
+    <div class="callout-label">就像……</div>
+    <p class="callout-quote">这门生意就像卖年夜饭——一年只有除夕那一晚爆满，其余 364 天店里冷清。头部靠把名额"卖成期货"（2026 年名额提前售罄）、靠向考研/留学/研学延伸来填平淡季；纯志愿的小团队过了 7 月就断粮。淡季 11 个月怎么活，是进场前必须想清楚的问题。</p>
+  </div>
+</section>
+
+<div class="divider-quote">
+  "近九成愿意付费，实际只有个位数掏钱。<br>这门生意卖的从来不是数据，是焦虑下的确定性。"
+</div>
+
+<!-- ===== 3. 头部地震 ===== -->
+<section id="zxf">
+  <div class="section-num">03 / 头部地震</div>
+  <h2>那把"最贵的空椅子"</h2>
+
+  <p>
+    要理解 2026 年这个赛道，必须先理解一个人和他的离开。<strong>张雪峰</strong>——这个赛道唯一的超级头部，全网超 4000 万粉，2024 年公司营收媒体口径"超 8 亿元"，万元产品 3 小时售罄 2 万单、单场进账 2 亿元。然后，2026 年 3 月 24 日，他猝然离世。
+  </p>
+
+  <div class="callout warn">
+    <div class="callout-label">✓ 已交叉验证（7 家一手媒体）</div>
+    <p class="callout-quote">2026 年 3 月 24 日，张雪峰（41 岁）在公司跑步后出现不适，送医抢救无效，当日 15:50 因心源性猝死去世。公司由总经理武亮接管，承诺待张雪峰之女成年后交还公司。</p>
+    <p class="note">来源交叉验证：<a href="https://www.chinanews.com.cn/sh/2026/03-24/10592189.shtml">中新网/央视新闻</a> · <a href="https://www.guancha.cn/politics/2026_03_24_811247.shtml">观察者网</a> · <a href="https://www.stcn.com/article/detail/3696114.html">证券时报</a> · <a href="https://finance.sina.com.cn/roll/2026-03-24/doc-inhscaeq1616918.shtml">新浪财经</a> · <a href="https://www.tmtpost.com/7927700.html">钛媒体</a> · <a href="https://finance.eastmoney.com/a/202603243682961170.html">东方财富</a></p>
+  </div>
+
+  <h3>为什么这件事改变了整个赛道的判断</h3>
+  <p>
+    这个赛道的头部，靠的是<strong>"个人信任背书"</strong>——家长付万元买的不是数据（数据网上都有），而是"张雪峰这个人敢替我担决策、对结果负责"的那份安心。万元产品其实是团队老师服务、张雪峰最终"审核签字"。<strong>当那个签字的人没了，护城河就出现了裂缝。</strong>
+  </p>
+  <div class="callout">
+    <div class="callout-label">就像……</div>
+    <p class="callout-quote">就像一家网红餐厅，所有人冲着大厨来；大厨突然走了，店还在、菜谱还在，但"我信这个大厨"的那份溢价瞬间打了折。2026 年高考季（即将到来）是第一次"没有张雪峰"的高考季——峰学蔚来会掉多少量、AI 趁机吃多少，是你做决策最该盯的实时信号。</p>
+  </div>
+
+  <h3>头部信任的时间线</h3>
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-date">2016</div><div class="tl-dot"></div>
+      <div class="tl-content"><div class="tl-title">"七分钟解读 34 所 985"走红</div><div class="tl-desc">张雪峰靠短视频科普起家，奠定"讲大白话、敢说真话"人设</div></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2021</div><div class="tl-dot"></div>
+      <div class="tl-content"><div class="tl-title">成立峰学蔚来</div><div class="tl-desc">本人持股 75%，把个人 IP 公司化、产品化</div></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2024.06</div><div class="tl-dot data"></div>
+      <div class="tl-content"><div class="tl-title">万元卡 3 小时售罄 2 万单</div><div class="tl-desc">单场进账 2 亿元（媒体口径，是 2 亿不是 20 亿），头部地位封顶</div></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2025.09</div><div class="tl-dot warn"></div>
+      <div class="tl-content"><div class="tl-title warn">五平台被同时限制"关注"功能</div><div class="tl-desc">抖音/快手/微博/小红书/B站因"直播不当言论"，10 月解封——平台说限就限</div></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.03</div><div class="tl-dot warn"></div>
+      <div class="tl-content"><div class="tl-title warn">张雪峰因心源性猝死去世（41 岁）</div><div class="tl-desc">头部真空出现，公司由武亮接管，业内称"接的是无解死局"</div></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.06</div><div class="tl-dot warn"></div>
+      <div class="tl-content"><div class="tl-title">第一个"没有张雪峰"的高考季</div><div class="tl-desc">真空被谁填补、AI 吃掉多少，结果尚未揭晓——这是最该盯的信号</div></div>
+    </div>
+  </div>
+  <p class="note">张雪峰的营收"8 亿"、估值"5–8 亿"、份额"&gt;50%"均为媒体转述或本人自述，公司从未公开财报，引用务必标"传闻/未证实"。尤其"份额超 50%"全网无一手出处，且与"市场仅 10 亿、2000+ 玩家"的分散感明显矛盾（很可能"8 亿"含考研/研学/广告等非志愿业务）——<strong>不能简单相除得出"占 80% 份额"</strong>。</p>
+</section>
+
+<!-- ===== 4. 玩家格局 ===== -->
+<section id="players">
+  <div class="section-num">04 / 玩家格局</div>
+  <h2>牌桌上都坐着谁</h2>
+
+  <p>
+    这是一个<strong>"哑铃型"市场</strong>——顶层高度集中在一个人（张雪峰）身上，工具层正被大厂用免费收归，腰部和尾部极度分散（全国 1800+ 家相关企业，八成成立不到五年）。理解这个结构，才知道新人该往哪儿站。
+  </p>
+
+  <h3>三股势力的对位</h3>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>层级</th><th>代表玩家</th><th>打法 / 定价</th><th>对新人意味着</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="product-name">顶层<br>人工背书</td><td>张雪峰/峰学蔚来</td><td>万元标准化卡 + 个人信任背书</td><td><strong style="color:var(--accent-pos)">真空出现</strong>，但需真实信任飞轮才能补</td></tr>
+      <tr class="highlight"><td class="product-name">工具层<br>大数据/AI</td><td>夸克(阿里)、百度、腾讯QQ浏览器</td><td><strong>全部免费</strong>，AI 5 分钟出报告</td><td><strong style="color:var(--accent-warn)">别在这层卷</strong>，必输给大厂免费</td></tr>
+      <tr><td class="product-name">平价卡</td><td>优志愿、掌上高考、蝶变</td><td>98–360 元自助卡</td><td>被免费 AI 挤压，生存空间收窄</td></tr>
+      <tr><td class="product-name">腰部/尾部</td><td>1800+ 家机构 + 无数个人</td><td>地域信息差 + 熟人关系</td><td>极度分散、无品牌护城河、长尾混战</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>大厂 AI：把工具层"国有化"了</h3>
+  <p>
+    2024–2025 是"AI 报志愿"爆发的两年，大厂用免费打法直接降维。这是新人进场最大的变量——它决定了你<strong>绝对不能</strong>去做的事。
+  </p>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>大厂</th><th>产品</th><th>关键数据（平台自述，截至 2025 高考季）</th><th>策略</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="product-name">阿里 / 夸克</td><td>高考志愿大模型</td><td>累计服务超 1.2 亿考生家长；近一半用户来自三线及以下城市</td><td>完全免费</td></tr>
+      <tr><td class="product-name">腾讯</td><td>QQ浏览器 AI 高考通</td><td>2025 季免费服务超 5000 万；最快 3 分钟出报告</td><td>免费</td></tr>
+      <tr><td class="product-name">百度</td><td>AI 志愿助手</td><td>2025 服务近 8000 万人，超 3000 万用 AI 助手</td><td>免费，接 DeepSeek</td></tr>
+      <tr><td class="product-name">教育部官方</td><td>"阳光志愿"+智慧小招</td><td>权威数据，据测满足 90%+ 家庭需求</td><td>免费 + 监管背书</td></tr>
+      <tr class="highlight"><td class="product-name">字节 / 抖音</td><td><strong>无官方 AI 志愿产品</strong></td><td>是张雪峰获客主场，但自己没做工具，反而打击违规规划师</td><td>平台中立 + 监管姿态</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">平台自述用户量（夸克 1.2 亿、优志愿 2200 万）均无第三方审计，互相口径不可比，仅作量级参考。注意字节/抖音这个"沉睡巨人"——它有最大的高考流量池和豆包大模型，却没出官方产品，意图未知，是潜在变量。</p>
+
+  <div class="callout data">
+    <div class="callout-label">关键洞察 · AI 替代不了什么</div>
+    <p>媒体共识是："<strong>AI 给概率参考，但不会给绝对答案、不能替你担决策风险</strong>"。家长付高价买的是"有个人替我扛责任"，AI 追不了责。</p>
+    <p class="callout-quote">就像导航 App 免费又好用，但你做心脏手术还是要找主刀医生——AI 是地图，头部专家卖的是"主刀医生"。大厂用免费把"工具层"国有化了，挤死的是中间的平价玩家；最贵的"人工背书层"反而被衬托得更稀缺。</p>
+  </div>
+</section>
+
+<!-- ===== 5. 抖音变现链路 ===== -->
+<section id="douyin">
+  <div class="section-num">05 / 抖音变现链路</div>
+  <h2>在抖音，钱到底怎么赚</h2>
+
+  <p>
+    如果你决定下场，得先看清这条从 0 到变现的实操链路长什么样。抖音上做志愿的黄金组合是：<strong>"焦虑钩子短视频起号 + 直播连麦答疑收口 + 私域转高价一对一"</strong>——短视频负责涨粉，直播负责把粉丝变成付费，私域负责榨出高客单。
+  </p>
+  <p class="note">私域（白话：把用户加到微信/群里反复触达，像自己养的鱼塘）；投流（花钱买平台曝光，类似买广告位）；GMV（成交总额，卖了多少钱的货）。</p>
+
+  <h3>变现漏斗：像超市试吃</h3>
+  <div class="callout">
+    <div class="callout-label">就像……</div>
+    <p class="callout-quote">整条链路像超市试吃——先用 9.9 元的书、300 元的卡当"试吃"把人引进来，真正赚钱的是后面几千上万的"正餐"（私域一对一）。低价品的作用是<strong>获客</strong>不是赚钱。</p>
+  </div>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>变现路径</th><th>客单价</th><th>转化逻辑</th><th>利润空间</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="product-name">低价课/书引流</td><td>9.9–599 元<br>($1.4–83)</td><td>橱窗挂"钩子"筛人</td><td>量大但单价低，主要为获客</td></tr>
+      <tr><td class="product-name">志愿卡/会员卡</td><td>99–360 元<br>($14–50)</td><td>直播讲规则→推卡</td><td><strong>暴利</strong>：拿货 80 卖 360，约 4.5 倍</td></tr>
+      <tr class="highlight"><td class="product-name">私域转一对一</td><td>2980–13800 元<br>($414–1917)</td><td>免费资料钩子→加微信→群内转化</td><td><strong>利润最厚</strong>：财报口径毛利 78%+</td></tr>
+      <tr><td class="product-name">头部直播带卡</td><td>1.3万–1.9万<br>($1810–2640)</td><td>顶级人设直接在直播间卖</td><td>几乎纯利（张雪峰打法）</td></tr>
+      <tr><td class="product-name">培训/加盟<br>（赚同行钱）</td><td>2000–10800 元<br>($278–1500)</td><td>卖"教你做志愿生意"</td><td>第二条暴利线，比服务考生更稳</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">毛利率经独立核查修正：旭德教育实际为 <strong>77.89%（最新期）/ 78.45%（上年）</strong>（来源：新三板年报，非"78.30%"）；"百年育才 89.34%"全网无出处、疑为早年数字误植，<strong>已降级，请勿引用</strong>。</p>
+
+  <h3>真实账号案例（从头部到腰部）</h3>
+  <div class="two-col">
+    <div class="col-card pos">
+      <h4>头部天花板：张雪峰</h4>
+      <ul>
+        <li>抖音 2696 万粉、全网超 4000 万</li>
+        <li>跳过私域，直接在抖音直播间收口</li>
+        <li>2024 全年营收"超 8 亿"（媒体口径）</li>
+        <li><strong>不可复制</strong>——靠十年个人 IP 沉淀</li>
+      </ul>
+    </div>
+    <div class="col-card pos">
+      <h4>腰部标杆：@胡老师说高考</h4>
+      <ul>
+        <li>抖音 195 万粉（背后是公司化团队）</li>
+        <li>每天固定 3 场直播（10/15/20 点）</li>
+        <li>单款 300 元志愿卡卖 2 万单（约 600 万 GMV / ≈$83 万）</li>
+        <li><strong>可复制</strong>——靠流水线直播跑量</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note">案例来源：<a href="https://www.pai.com.cn/152063.html">电商派</a>、<a href="https://www.jiemian.com/article/9650110.html">界面新闻</a>。腰部标杆证明：非张雪峰、没名气，靠"流水线直播 + 走量卡"也能跑出七位数——这才是新人现实可参照的模型。</p>
+
+  <h3>两个必须知道的盲区</h3>
+  <ul>
+    <li><strong>投流 ROI 是黑盒。</strong>"高考志愿赛道专项"的精准线索单价 / 付费用户获客成本（CAC）没有可信公开数字。教育/知识付费类目通用 ROI 常见 1:3，优化好能到 1:5–8，但<strong>志愿垂类的真实 ROI 必须自己小预算（先投 500 元测点击率&gt;5% 再放量）跑出来</strong>，不能照搬别家。</li>
+    <li><strong>起号门槛卡死大多数人。</strong>抖音自然流量进池硬指标：完播率 15–20% 合格、点赞率 3–5%（每 100 播放 3–5 个赞）。绝大多数新号死在这一步，<strong>跟你懂不懂志愿无关</strong>。</li>
+  </ul>
+</section>
+
+<!-- ===== 6. 真实口碑 ===== -->
+<section id="voices">
+  <div class="section-num">06 / 真实口碑</div>
+  <h2>"智商税"之争，与一线真实声音</h2>
+
+  <p>
+    在知乎、B站、黑猫投诉上扒了一圈，真实口碑两极分化严重。理解这场"智商税"之争，对你做产品定位至关重要——它直接告诉你<strong>用户为什么不满、又为什么仍然买单</strong>。
+  </p>
+  <p class="note">智商税（白话：为信息差或焦虑多花的冤枉钱）。注：小红书/微博/抖音搜索强制登录，部分一线声音来自第三方报道转引，已在来源标注。</p>
+
+  <div class="two-col">
+    <div class="col-card pos">
+      <h4>支持付费方（不是智商税）</h4>
+      <ul>
+        <li><strong>规则确实复杂</strong>：新高考 45 个院校专业组平行志愿，普通家长搞不懂，买的是信息差和规则解读</li>
+        <li><strong>专业认知有真价值</strong>：很多专业"名字稀奇古怪"，有人讲清能避免"以为报人工智能、结果是人工智障"</li>
+        <li><strong>冲稳保策略对外行确实有用</strong>，有考生反馈"第一志愿第一专业顺利录取"</li>
+        <li>花小钱买安心，"N 年后不后悔"</li>
+      </ul>
+    </div>
+    <div class="col-card warn">
+      <h4>反对付费方（就是割韭菜）</h4>
+      <ul>
+        <li><strong>信息本身公开</strong>，"三天就能玩转""不花 1 分钱也能搞定"，买的是焦虑不是稀缺信息</li>
+        <li><strong>方案同质化</strong>：不同分数的孩子方案差不多，"个性化"是话术</li>
+        <li><strong>机构无法对结果负责</strong>，只会给"最安全建议"以保招牌</li>
+        <li><strong>资质造假</strong>：规划师无国家认证，"金牌讲师"是包装</li>
+        <li>价格锚点："超过 3000 就是交智商税"是反对派常见标尺</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>家长的真实原话</h3>
+  <div class="quote">
+    花钱报高考志愿辅导，不是智商税，但是花一万多报高考志愿辅导，里面绝对有部分智商税……老师从答疑、择校、分析专业都特别好，后来被推荐的第一志愿第一专业顺利录取，但看到你说一万多，觉得属实有点太贵了。
+    <div class="quote-attr">知乎考生现身说法</div>
+  </div>
+  <div class="quote">
+    两千多块钱白花了。
+    <div class="quote-attr">林先生，2000 多元一对一咨询后（腾讯《花了两万，还是报不好高考志愿》）</div>
+  </div>
+  <div class="quote">
+    我家的都是我自己做的志愿规划，非常准确，分数压着线录的……我们也花钱买过但是他们结果还没有我自己规划的好。
+    <div class="quote-attr">知乎家长</div>
+  </div>
+
+  <h3>营销话术 vs 真实体验的落差</h3>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>机构/直播间说的</th><th>用户实际遇到的</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>"一对一个性化定制方案"</td><td>不同分数的孩子方案差不多；服务者常是临时培训上岗的实习生</td></tr>
+      <tr><td>"高级/金牌志愿规划师"</td><td>该职业未列入国家职业资格目录，资质是包装</td></tr>
+      <tr><td>"没录取全额退"</td><td>真没录取时"他不退了，开始狡辩了"</td></tr>
+      <tr><td>"选错专业就得复读"</td><td>制造焦虑话术；实际可转专业、修双学位、考研补救</td></tr>
+      <tr><td>199 元志愿卡"选出适合的大学"</td><td>"只给一张卡其他不管""不如免费 AI 软件好用"</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout">
+    <div class="callout-label">最大落差</div>
+    <p class="callout-quote">营销卖的是"确定性和个性化"，用户买到的常是"通用模板 + 心理安慰"。机构能交付的上限（只能给最安全建议、无法对结果负责），与话术承诺的"帮你上岸、不浪费一分"之间，存在结构性鸿沟。这道鸿沟，正是一个"诚实、不吹牛、真陪伴"的新品牌的切入口。</p>
+  </div>
+</section>
+
+<!-- ===== 7. 政策与平台风险 ===== -->
+<section id="risk">
+  <div class="section-num">07 / 政策与平台风险</div>
+  <h2>头上悬着的几把剑</h2>
+
+  <p>
+    这门生意最值钱的卖点，恰好踩在最硬的红线上。综合风险等级：<strong>中高（偏高）</strong>。但要精确理解——<strong>剑不是对着这门生意本身，是对着这门生意惯用的违规营销方式。</strong>合规做客观咨询的空间理论上存在。
+  </p>
+
+  <div class="score-card">
+    <div class="score-row"><div class="name">政策剑</div><div class="bar"><div class="bar-fill warn" style="width:90%"></div></div><div class="num">高</div></div>
+    <div class="score-row"><div class="name">广告法剑</div><div class="bar"><div class="bar-fill warn" style="width:88%"></div></div><div class="num">高</div></div>
+    <div class="score-row"><div class="name">抖音平台剑</div><div class="bar"><div class="bar-fill warn" style="width:75%"></div></div><div class="num">中高</div></div>
+    <div class="score-row"><div class="name">AI 挤压剑</div><div class="bar"><div class="bar-fill" style="width:65%"></div></div><div class="num">中·升</div></div>
+    <div class="score-row"><div class="name">法律纠纷剑</div><div class="bar"><div class="bar-fill" style="width:55%"></div></div><div class="num">中</div></div>
+  </div>
+
+  <h3>三把最锋利的剑</h3>
+  <h4>① 政策剑：连续 3 年高考季亲自下场</h4>
+  <p>教育部连续三年高考季<strong>跨部门（教育+市监+公安+网信）专项治理</strong>，周期性、确定性极强——不是"会不会查"，是"每年都查"。同时官方推免费"阳光志愿"系统 + AI 助手"智慧小招"，公开"证伪"内部数据说法。</p>
+  <div class="callout">
+    <div class="callout-label">就像……</div>
+    <p class="callout-quote">就像政府没禁止你卖矿泉水，但天天在你摊位旁免费发矿泉水、还广播"别买他那种夸大宣传的"。</p>
+  </div>
+
+  <h4>② 广告法剑：最赚钱的话术几乎全违法</h4>
+  <p>核心法条是《广告法》第 24 条。以下话术用了就踩线，处罚依据现成（罚款 20 万–100 万、可吊照）：</p>
+  <ul>
+    <li>"保上名校""百分百录取""一分不浪费" → 不得作保证性承诺</li>
+    <li>"内部数据""精准定位" → 教育部明确"并不存在所谓内部数据"</li>
+    <li>"内部指标""降分补录" → 涉嫌<strong>诈骗罪</strong>（已有判例）</li>
+    <li>"高考志愿规划师"挂资质 → 教育部"从未发放过该职业资格证书"</li>
+  </ul>
+  <p class="note">⚠ 认知关键：目前未检索到针对志愿机构的公开行政处罚决定书，公开的多是法院民事判决（退费类）和教育部点名。这不代表没风险——属"剑悬而未落"，处罚依据现成，一旦被举报/上头条即落。</p>
+
+  <h4>③ 抖音平台剑：健康分 + 封号</h4>
+  <p>抖音不禁止卖志愿咨询，但明文禁绝对化承诺，并有"健康分"机制（像驾照 12 分）：低于 80 分<strong>限流</strong>、低于 60 分关直播、多次违规<strong>封号</strong>。连张雪峰都被五平台同时限制过——头部都没豁免，小号更没有。</p>
+  <p class="note">限流（白话：平台偷偷减少你内容的曝光，把你"雪藏"）；报白（向平台报备资质、开通受限类目权限）。现实操作：多数从业者小店只挂低价课/卡当钩子，高价一对一在私域微信成交，既规避类目限制也避平台抽佣。</p>
+
+  <div class="callout warn">
+    <div class="callout-label">为什么是"中高"而不是"高"</div>
+    <p>因为法律未设前置许可，<strong>合规经营（只做客观咨询、不承诺结果、不吹内部数据）的空间理论上存在</strong>。门槛低意味着只要守规矩就能合法入场。风险集中在"用违规话术获客"这个行业惯用打法上——你能合法卖"咨询建议"，但只要敢承诺结果、敢说有内部数据、敢挂规划师资质，就从"合法咨询"瞬间变成"违法广告"。</p>
+  </div>
+</section>
+
+<!-- ===== 8. 决策建议 ===== -->
+<section id="decision">
+  <div class="section-num">08 / 给你的决策建议</div>
+  <h2>这一刀，到底该不该下、怎么下</h2>
+
+  <p>
+    把六个维度的调研收敛成一句话判断：<strong>"做通用工具/装专家做一对一"——晚了，红海，别碰；"做 AI 重构期里 AI 干不了的那层"——正当时，窗口开着。</strong>下面是给一个产品型外行的具体路线。
+  </p>
+
+  <h3>该做 vs 不该做</h3>
+  <div class="path-detail">
+    <div class="path-card a">
+      <div class="path-num">✓ 该走的路</div>
+      <h4>AI 出底稿 + 人工补"信任与陪伴"</h4>
+      <p>把自己定位成"AI+人工"里的<strong>产品方</strong>，而不是第 10001 个"规划师"：</p>
+      <ul>
+        <li>用免费夸克/付费系统当"大脑"，自己只补 AI 做不了的决策共识、情绪安抚、担责背书</li>
+        <li>极窄定位：<strong>某一个省 + 中低分段（211 末段、普通一本）+ 全程陪跑</strong></li>
+        <li>吃头部和大厂都懒得弯腰捡的缝</li>
+        <li>靠真实内容信任飞轮起号，而非买"规划师"头衔</li>
+      </ul>
+    </div>
+    <div class="path-card c">
+      <div class="path-num">✕ 别走的路</div>
+      <h4>做通用工具 / 装专家收高价</h4>
+      <p>这两条都是新人的死路：</p>
+      <ul>
+        <li><strong>通用志愿卡/AI 工具</strong>：必输给夸克/百度/腾讯的免费，大厂已国有化这一层</li>
+        <li><strong>高价一对一</strong>：新人信任为零，又是政策+广告法+平台三剑齐指之处</li>
+        <li><strong>卖"教你做规划师"的课</strong>：来钱但在割想入行的人，口碑和合规双高风险</li>
+        <li>用"保录取/内部数据"话术获客：直接违法</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>5 条可操作的 Actionable Insights</h3>
+  <ol>
+    <li><strong>第一年当蓄水年，别指望今年回本。</strong>这是"一个旺季定全年"的生意。现象：旺季 3–7 天爆发、几乎零复购。解读：今年 6 月下场已来不及收割，目标定在 2027 年高考季。我能做：用 2026 下半年起号攒粉、攒私域线索。</li>
+    <li><strong>把"季节性"变成"全年陪跑"。</strong>用全年内容日历（高考后讲大学→次年 4 月讲专业）持续涨粉；淡季卖选科咨询（1000–4000 元）、生涯规划，把家长从前一年就圈进私域，再在高考季收口。</li>
+    <li><strong>数据别自己造，买现成的。</strong>核心能力（院校数据、概率测算、政策解读）都能采购：夸克免费出底稿，优志愿等 B 端系统（1万–10万/年）补本地细节。真正稀缺的不是数据，是"把数据翻译成家长敢决策的话"+ 那张能让家长信任的脸。</li>
+    <li><strong>护城河押在"私域转化"上。</strong>低价课谁都会挂，差距在能不能把抖音粉丝高效搬进微信、用一对一的高毛利收口。这是产品型创业者最该想清楚、也最能发挥产品能力的环节。</li>
+    <li><strong>合规当生命线，不碰违规话术。</strong>全程只做客观咨询，绝不出现"保录取/内部数据/规划师资质"。守规矩就能合法入场；一句违规话术就可能限流封号 + 20 万起罚款。</li>
+  </ol>
+
+  <div class="verdict">
+    <div class="verdict-title">最终判断 / The Verdict</div>
+    <h3>能做，但只能做一条<em>很窄的缝</em>——而且要有"先亏一年"的觉悟。</h3>
+    <p>
+      这是个约 10 亿人民币、增速降到个位数、监管已点名、季节极端、八成玩家成立不到五年的<strong>小而拥挤的赛道</strong>。它不性感，也不是"躺赚"。但张雪峰之死撕开了一道十年一遇的头部真空，AI 又把专业门槛历史性砸低——对一个懂产品、懂流量、能沉住气做信任的外行，<strong>缝是真实存在的</strong>。
+    </p>
+    <p>
+      关键是别贪：别去工具层和大厂硬碰，别去高价层踩监管雷区，别幻想第一年回本。把自己钉死在"某省 + 中低分段 + AI 底稿 + 人工陪跑"这一个点上，用一整年把信任飞轮转起来。
+    </p>
+    <div class="verdict-options">
+      <div class="verdict-option">
+        <div class="num">如果你想试</div>
+        <h4>先做"零成本验证"</h4>
+        <p>别先投钱。先用 1–2 个月发某省志愿避坑短视频，看完播率能否过 15%、点赞率过 3%。过不了，说明起号能力不够，及时止损——这比懂不懂志愿重要得多。</p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">如果你要做</div>
+        <h4>把定位钉到最窄</h4>
+        <p>"河南理科中低分家长的志愿陪跑"远胜"全国志愿规划"。窄到大厂和头部懒得弯腰，窄到你能比 AI 通用方案更懂这一小群人。</p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">如果你犹豫</div>
+        <h4>这可能不是你的菜</h4>
+        <p>盘子小、季节极端、监管重、要先亏一年——如果你想要的是规模化、可复购、低监管的生意，这个赛道大概率不值得 all in。把它当一个"练流量+练私域"的副本更合适。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-quote">
+  "真空不会被喊'我是规划师'的人填上，<br>只会被下一个敢替家长担决策的人填上。"
+</div>
+
+</article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>主要数据来源</h4>
+    <ul>
+      <li><a href="https://www.xinhuanet.com/20240622/695f799e40ec4acf8eb5e69010c4390b/c.html">新华社《新华每日电讯》· 志愿填报市场乱象调查</a></li>
+      <li><a href="https://www.iimedia.cn/c400/106344.html">艾媒咨询 · 高考志愿填报市场报告（单一信源）</a></li>
+      <li><a href="http://www.moe.gov.cn/jyb_xwfb/gzdt_gzdt/s5987/202406/t20240618_1136298.html">教育部 · 警惕"高价辅导"陷阱预警</a></li>
+      <li><a href="http://www.moe.gov.cn/jyb_xwfb/gzdt_gzdt/s5987/202406/t20240617_1136235.html">教育部 · "阳光志愿"信息服务系统上线</a></li>
+      <li><a href="https://www.chinanews.com.cn/sh/2026/03-24/10592189.shtml">中新网/央视 · 张雪峰因心源性猝死去世（✓ 已交叉验证）</a></li>
+      <li><a href="https://www.guancha.cn/politics/2026_03_24_811247.shtml">观察者网 · 张雪峰去世报道</a></li>
+      <li><a href="https://finance.sina.com.cn/tech/roll/2025-06-30/doc-infcumzf7038185.shtml">新浪科技 · 夸克出分后三天千万用户</a></li>
+      <li><a href="https://www.tmtpost.com/7601353.html">钛媒体 · 高考收费站（价格/毛利）</a></li>
+      <li><a href="https://www.cbndata.com/information/248242">CBNData · 优志愿 B 端报价</a></li>
+      <li><a href="https://www.jiemian.com/article/9650110.html">界面新闻 · 谁在复制张雪峰</a></li>
+      <li><a href="https://www.pai.com.cn/152063.html">电商派 · 胡老师说高考案例</a></li>
+      <li><a href="https://news.qq.com/rain/a/20240628A01SH200">腾讯 · 花了两万还是报不好高考志愿</a></li>
+      <li><a href="https://www.zhihu.com/question/539411185/answer/3524955719">知乎 · 一万多报志愿是不是智商税</a></li>
+      <li><a href="https://news.cqnews.net/1/detail/1124990891392245760/web/content_1124990891392245760.html">华龙网 · 行业毛利率（财报口径）</a></li>
+      <li><a href="https://36kr.com/p/3322023329917189">36氪 · 张雪峰商业模式 / 淡旺季产品</a></li>
+      <li><a href="https://www.163.com/dy/article/JR9EHLJR051183PJ.html">网易 · DeepSeek 能否取代规划师（AI+人工）</a></li>
+    </ul>
+    <div class="footer-meta">
+      <div>Ray 深度调研引擎 · 6 个并行 AI 调研员 · 生成于 2026-06-07</div>
+      <div>本报告 20+ 个高 stake 数据点已通过 Stage 2.5 独立验证（含 7 家一手交叉确认张雪峰去世、毛利率修正、市场规模单一信源标注）。市场规模/营收/份额含单一信源与媒体口径，已逐处标注，不构成投资或创业建议。</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const toggle = document.getElementById('theme-toggle');
+function applyTheme(theme) {
+  if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  else document.documentElement.removeAttribute('data-theme');
+}
+toggle.addEventListener('click', function() {
+  var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  var next = cur === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+  try { localStorage.setItem('ray-theme', next); } catch (e) {}
+});
+try {
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+    if (!localStorage.getItem('ray-theme')) applyTheme(e.matches ? 'dark' : 'light');
+  });
+} catch (e) {}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      document.querySelectorAll('nav.toc a').forEach(link => { link.style.color = ''; link.style.fontWeight = ''; });
+      const activeLink = document.querySelector(`nav.toc a[href="#${id}"]`);
+      if (activeLink) { activeLink.style.color = 'var(--accent-warn)'; activeLink.style.fontWeight = '600'; }
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
