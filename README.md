@@ -11,6 +11,12 @@
 
 <!-- INDEX-START -->
 
+### 🎯 [SpaceX (SPCX)](spacex/) · 史上最大 IPO · 长期投资尽调
+
+| 日期 | 报告 | 在线浏览 |
+|------|------|---------|
+| 2026-06-14 | [SPCX 上市深度尽调：业务 · 财报 · AI · 投资价值](spacex/2026-06-14-spacex-spcx.html) | [↗ Open](https://kdsz001.github.io/ray-research/spacex/2026-06-14-spacex-spcx.html) |
+
 ### 🎓 [高考报志愿](gaokao-zhiyuan/) · 高考志愿填报 × 抖音 · 行业进场调研
 
 | 日期 | 报告 | 在线浏览 |

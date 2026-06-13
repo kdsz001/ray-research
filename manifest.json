@@ -7,6 +7,18 @@
   },
   "topics": [
     {
+      "slug": "spacex",
+      "name": "SpaceX (SPCX)",
+      "tagline": "史上最大 IPO · 长期投资尽调",
+      "reports": [
+        {
+          "date": "2026-06-14",
+          "file": "2026-06-14-spacex-spcx.html",
+          "title": "SPCX 上市深度尽调：业务 · 财报 · AI · 投资价值"
+        }
+      ]
+    },
+    {
       "slug": "gaokao-zhiyuan",
       "name": "高考报志愿",
       "tagline": "高考志愿填报 × 抖音 · 行业进场调研",

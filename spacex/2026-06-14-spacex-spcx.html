@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SpaceX (SPCX) · 投资尽调 · 2026.06</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/sidebar.css">
+<script defer src="../assets/sidebar.js"></script>
+<script>
+// 防 FOUC：必须在 head 内同步执行，body 渲染前就设好主题
+(function() {
+  try {
+    var saved = localStorage.getItem('ray-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root {
+  --bg: #f6f3ec;
+  --bg-paper: #fbf9f4;
+  --bg-card: #ffffff;
+  --bg-dark: #14110d;
+  --bg-dark2: #1f1b16;
+  --ink: #14110d;
+  --ink-2: #2c2620;
+  --muted: #6e6358;
+  --light: #a39787;
+  --rule: #14110d;
+  --rule-light: #d8d1c2;
+  --accent-warn: #a73121;
+  --accent-data: #1c4d6b;
+  --accent-pos: #2c5e3f;
+  --accent-yellow: #c89a2c;
+  --grad-warn: rgba(167, 49, 33, 0.04);
+  --grad-data: rgba(28, 77, 107, 0.04);
+  --shadow-card: 0 0 0 transparent;
+  /* Inverse block tokens（用于 TL;DR / verdict / Quick Facts / footer 等"反色块"） */
+  --bg-inverse: #14110d;
+  --bg-inverse-2: #1f1b16;
+  --ink-on-inverse: #f6f3ec;
+  --text-on-inverse: rgba(246, 243, 236, 0.85);
+  --muted-on-inverse: rgba(246, 243, 236, 0.7);
+  --faint-on-inverse: rgba(246, 243, 236, 0.55);
+  --light-on-inverse: rgba(246, 243, 236, 0.5);
+  --rule-on-inverse: rgba(246, 243, 236, 0.18);
+  --accent-yellow-on-inverse: #c89a2c;
+  --serif: "Source Serif 4", "Source Serif Pro", "Charter", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
+  --max-w: 820px;
+}
+
+[data-theme="dark"] {
+  --bg: #15120e;
+  --bg-paper: #1c1814;
+  --bg-card: #1f1b16;
+  --bg-dark: #0a0907;
+  --bg-dark2: #0f0d0a;
+  --ink: #ebe3d3;
+  --ink-2: #c9bfae;
+  --muted: #8d8170;
+  --light: #5c5346;
+  --rule: #ebe3d3;
+  --rule-light: #3a342c;
+  --accent-warn: #e87a5f;
+  --accent-data: #6cb1d6;
+  --accent-pos: #6db98c;
+  --accent-yellow: #e6b945;
+  --grad-warn: rgba(232, 122, 95, 0.06);
+  --grad-data: rgba(108, 177, 214, 0.06);
+  --shadow-card: 0 1px 0 rgba(235, 227, 211, 0.04);
+  /* Inverse 反相：dark 模式下反色块变成浅色块，保持视觉对比 */
+  --bg-inverse: #ede5d3;
+  --bg-inverse-2: #e0d8c5;
+  --ink-on-inverse: #14110d;
+  --text-on-inverse: rgba(20, 17, 13, 0.85);
+  --muted-on-inverse: rgba(20, 17, 13, 0.7);
+  --faint-on-inverse: rgba(20, 17, 13, 0.55);
+  --light-on-inverse: rgba(20, 17, 13, 0.5);
+  --rule-on-inverse: rgba(20, 17, 13, 0.18);
+  --accent-yellow-on-inverse: #a47a18;
+}
+
+/* 平滑切换动画（不影响视觉，但让切换不刺眼） */
+body, .tldr, .verdict, .quickfacts-wrap, footer, table, th, td, .stat, .col-card, .callout, .path-card, .verdict-option, .qf-cell {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  font-size: 16px;
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(167, 49, 33, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 80% 100%, rgba(28, 77, 107, 0.04) 0%, transparent 40%);
+}
+
+/* ---------- Top metadata bar ---------- */
+.topbar {
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg-paper);
+  padding: 14px 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.topbar-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  color: var(--muted);
+}
+.topbar strong { color: var(--ink); font-weight: 600; }
+
+/* ---------- Hero ---------- */
+.hero {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 80px 32px 100px;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: end;
+}
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-warn);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--accent-warn);
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 78px;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 28px;
+  font-feature-settings: "ss01";
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent-warn);
+  font-weight: 500;
+}
+.hero-subtitle {
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--muted);
+  font-style: italic;
+  max-width: 560px;
+}
+.hero-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  border-left: 1px solid var(--rule);
+  padding-left: 24px;
+}
+.hero-meta dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
+.hero-meta dt { color: var(--light); font-weight: 400; }
+.hero-meta dd { color: var(--ink); font-weight: 500; }
+
+/* ---------- Quick Facts (10s glance) ---------- */
+.quickfacts-wrap {
+  background: var(--bg-inverse);
+  color: var(--ink-on-inverse);
+  padding: 60px 0 80px;
+  border-bottom: 1px solid var(--rule);
+}
+.quickfacts {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.qf-header { margin-bottom: 36px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.qf-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-yellow-on-inverse);
+}
+.qf-title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text-on-inverse);
+  letter-spacing: -0.01em;
+}
+.qf-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: var(--rule-on-inverse);
+  border: 1px solid var(--rule-on-inverse);
+}
+.qf-cell {
+  background: var(--bg-inverse);
+  padding: 22px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 120px;
+}
+.qf-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--light-on-inverse);
+}
+.qf-value {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--ink-on-inverse);
+  letter-spacing: -0.02em;
+  margin-top: auto;
+  margin-bottom: 4px;
+}
+.qf-value.warn { color: var(--accent-warn); }
+.qf-value.pos { color: var(--accent-pos); }
+.qf-value.data { color: var(--accent-data); }
+.qf-value .qf-unit { font-size: 14px; color: var(--faint-on-inverse); margin-left: 2px; font-weight: 400; }
+.qf-sub {
+  font-size: 11.5px;
+  color: var(--faint-on-inverse);
+  line-height: 1.35;
+}
+.qf-cell-verdict { background: var(--accent-warn); color: white; }
+.qf-cell-verdict .qf-label { color: rgba(255, 255, 255, 0.8); }
+.qf-cell-verdict .qf-verdict {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: white;
+  margin-top: auto;
+  letter-spacing: -0.01em;
+}
+.qf-cell-verdict .qf-sub { color: rgba(255, 255, 255, 0.85); }
+
+/* ---------- Layout containers ---------- */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+main {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 60px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px 120px;
+}
+
+/* ---------- Sticky TOC ---------- */
+nav.toc {
+  position: sticky;
+  top: 40px;
+  align-self: start;
+  height: fit-content;
+  padding-top: 80px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+nav.toc h4 {
+  font-size: 10px;
+  color: var(--light);
+  margin-bottom: 18px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+}
+nav.toc ol { list-style: none; counter-reset: toc; }
+nav.toc li {
+  counter-increment: toc;
+  margin-bottom: 14px;
+  border-left: 1px solid var(--rule-light);
+  padding-left: 14px;
+  transition: border-color 0.2s;
+}
+nav.toc li:hover { border-left-color: var(--ink); }
+nav.toc li::before {
+  content: "0" counter(toc);
+  display: block;
+  color: var(--light);
+  font-size: 10px;
+  margin-bottom: 2px;
+}
+nav.toc a {
+  color: var(--ink-2);
+  text-decoration: none;
+  line-height: 1.3;
+  display: block;
+  font-weight: 500;
+}
+nav.toc a:hover { color: var(--accent-warn); }
+
+article { max-width: var(--max-w); padding-top: 60px; }
+
+/* ---------- Sections ---------- */
+section { padding: 60px 0; border-top: 1px solid var(--rule-light); scroll-margin-top: 30px; }
+section:first-of-type { border-top: none; padding-top: 20px; }
+
+.section-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-warn);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-num::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule-light);
+}
+section h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 32px;
+  font-feature-settings: "ss01";
+}
+section h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.3;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+section h4 {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  margin-top: 36px;
+  margin-bottom: 12px;
+}
+section p {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-2);
+  margin-bottom: 16px;
+}
+section p strong { color: var(--ink); font-weight: 600; }
+section a { color: var(--accent-data); text-decoration: underline; text-decoration-color: rgba(28, 77, 107, 0.3); text-underline-offset: 3px; }
+section a:hover { text-decoration-color: var(--accent-data); }
+
+ul, ol { padding-left: 22px; margin-bottom: 18px; }
+li { margin-bottom: 8px; line-height: 1.7; color: var(--ink-2); }
+li::marker { color: var(--light); }
+
+/* ---------- TL;DR Block ---------- */
+.tldr {
+  background: var(--bg-inverse);
+  color: var(--ink-on-inverse);
+  padding: 56px 56px;
+  border-radius: 0;
+  margin-top: 40px;
+  position: relative;
+}
+.tldr::before {
+  content: "TL;DR";
+  position: absolute;
+  top: -1px;
+  left: 56px;
+  background: var(--accent-warn);
+  color: white;
+  padding: 4px 16px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+}
+.tldr h3 {
+  font-family: var(--serif);
+  color: var(--ink-on-inverse);
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 28px;
+  margin-bottom: 12px;
+}
+.tldr h3:first-of-type { margin-top: 16px; }
+.tldr p, .tldr li { color: var(--text-on-inverse); }
+.tldr p strong, .tldr li strong { color: var(--ink-on-inverse); }
+.tldr ol, .tldr ul { padding-left: 18px; }
+.tldr a { color: var(--ink-on-inverse); text-decoration-color: var(--light-on-inverse); }
+
+/* ---------- Stats grid ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin: 32px 0;
+}
+.stat {
+  background: var(--bg-card);
+  padding: 28px 24px;
+}
+.stat-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.stat-value {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+.stat-value .unit {
+  font-size: 16px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 4px;
+}
+.stat-value.warn { color: var(--accent-warn); }
+.stat-value.pos { color: var(--accent-pos); }
+.stat-value.data { color: var(--accent-data); }
+.stat-note {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ---------- Two col ---------- */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin: 24px 0;
+}
+.col-card {
+  border: 1px solid var(--rule-light);
+  padding: 28px;
+  background: var(--bg-card);
+}
+.col-card h4 {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.col-card.pos h4 { color: var(--accent-pos); }
+.col-card.warn h4 { color: var(--accent-warn); }
+.col-card h4::before {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-family: var(--serif);
+  font-size: 13px;
+  text-align: center;
+  line-height: 18px;
+  font-weight: 600;
+}
+.col-card.pos h4::before { content: "✓"; background: var(--accent-pos); color: white; }
+.col-card.warn h4::before { content: "!"; background: var(--accent-warn); color: white; font-style: italic; }
+.col-card ul { padding-left: 18px; margin-bottom: 0; }
+.col-card li { font-size: 14px; line-height: 1.55; }
+
+/* ---------- Quote ---------- */
+.quote {
+  border-left: 3px solid var(--accent-warn);
+  padding: 8px 0 8px 24px;
+  margin: 24px 0;
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.55;
+  font-style: italic;
+  color: var(--ink-2);
+}
+.quote-attr {
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 12px;
+  font-weight: 500;
+}
+.quote-attr::before { content: "— "; }
+
+/* ---------- Table ---------- */
+.table-wrap { overflow-x: auto; margin: 24px 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: var(--bg-card);
+}
+th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  font-weight: 600;
+  padding: 12px 14px;
+  border-bottom: 2px solid var(--ink);
+  background: var(--bg-paper);
+  white-space: nowrap;
+  vertical-align: bottom;
+}
+td {
+  padding: 14px;
+  border-bottom: 1px solid var(--rule-light);
+  vertical-align: top;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+td.product-name {
+  font-weight: 600;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 15px;
+  white-space: nowrap;
+}
+tr:last-child td { border-bottom: 1px solid var(--ink); }
+td .tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  background: var(--bg-paper);
+  color: var(--muted);
+  border-radius: 2px;
+  margin-right: 4px;
+}
+
+/* ---------- Callout ---------- */
+.callout {
+  background: var(--bg-paper);
+  border-left: 3px solid var(--ink);
+  padding: 24px 28px;
+  margin: 28px 0;
+}
+.callout.warn { border-left-color: var(--accent-warn); background: rgba(167, 49, 33, 0.04); }
+.callout.data { border-left-color: var(--accent-data); background: rgba(28, 77, 107, 0.04); }
+.callout-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.callout.warn .callout-label { color: var(--accent-warn); }
+.callout.data .callout-label { color: var(--accent-data); }
+.callout p { margin-bottom: 12px; }
+.callout p:last-child { margin-bottom: 0; }
+.callout-quote {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* ---------- Hero number rows ---------- */
+.metric-list {
+  margin: 28px 0;
+  border-top: 1px solid var(--ink);
+}
+.metric-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule-light);
+  gap: 24px;
+}
+.metric-row:last-child { border-bottom: 1px solid var(--ink); }
+.metric-row .label {
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.metric-row .label .src {
+  display: block;
+  font-size: 11px;
+  color: var(--light);
+  margin-top: 2px;
+  font-family: var(--mono);
+}
+.metric-row .value {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  text-align: right;
+  white-space: nowrap;
+}
+.metric-row .value.warn { color: var(--accent-warn); }
+.metric-row .value.pos { color: var(--accent-pos); }
+.metric-row .value.data { color: var(--accent-data); }
+.metric-row .value small { font-size: 14px; color: var(--muted); font-weight: 400; }
+
+/* ---------- Section divider with motto ---------- */
+.divider-quote {
+  margin: 80px 0;
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--muted);
+  line-height: 1.5;
+  position: relative;
+  padding: 32px 60px;
+}
+.divider-quote::before, .divider-quote::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 1px;
+  background: var(--rule);
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.divider-quote::after { top: auto; bottom: 0; }
+
+/* ---------- Timeline ---------- */
+.timeline {
+  margin: 32px 0;
+  position: relative;
+  padding-left: 0;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 92px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--rule-light);
+}
+.tl-row {
+  display: grid;
+  grid-template-columns: 80px 14px 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+  align-items: start;
+}
+.tl-row .tl-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  text-align: right;
+  padding-top: 4px;
+  text-transform: uppercase;
+}
+.tl-row .tl-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--ink);
+  margin-top: 4px;
+  position: relative;
+  z-index: 2;
+}
+.tl-row .tl-dot.warn { border-color: var(--accent-warn); background: var(--accent-warn); }
+.tl-row .tl-dot.data { border-color: var(--accent-data); background: var(--accent-data); }
+.tl-row .tl-content { padding-top: 0; }
+.tl-row .tl-title { font-family: var(--serif); font-weight: 600; font-size: 16px; color: var(--ink); line-height: 1.3; margin-bottom: 4px; }
+.tl-row .tl-title.warn { color: var(--accent-warn); }
+.tl-row .tl-desc { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+
+/* ---------- Path A/B/C detail cards ---------- */
+.path-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 28px 0;
+}
+.path-card {
+  border: 1px solid var(--rule-light);
+  background: var(--bg-card);
+  padding: 26px 24px;
+  position: relative;
+}
+.path-card.a { border-top: 4px solid var(--accent-pos); }
+.path-card.c { border-top: 4px solid var(--accent-warn); }
+.path-card .path-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.path-card.a .path-num { color: var(--accent-pos); }
+.path-card.c .path-num { color: var(--accent-warn); }
+.path-card h4 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--ink);
+  text-transform: none;
+  letter-spacing: 0;
+  margin: 0 0 14px 0;
+}
+.path-card p { font-size: 13.5px; line-height: 1.55; color: var(--muted); margin-bottom: 10px; }
+.path-card ul { margin: 0; padding-left: 18px; }
+.path-card li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; color: var(--ink-2); }
+
+/* ---------- Final verdict ---------- */
+.verdict {
+  background: var(--bg-inverse);
+  color: var(--ink-on-inverse);
+  padding: 80px 56px;
+  margin: 80px 0 0;
+  position: relative;
+}
+.verdict-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 24px;
+}
+.verdict h3 {
+  font-family: var(--serif);
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: var(--ink-on-inverse);
+  letter-spacing: -0.02em;
+}
+.verdict p { color: var(--text-on-inverse); font-size: 17px; line-height: 1.65; margin-bottom: 14px; }
+.verdict p strong { color: var(--ink-on-inverse); }
+.verdict-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 40px;
+  background: var(--rule-on-inverse);
+}
+.verdict-option {
+  background: var(--bg-inverse);
+  padding: 28px 24px;
+}
+.verdict-option .num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--accent-yellow-on-inverse);
+  margin-bottom: 12px;
+}
+.verdict-option h4 {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink-on-inverse);
+  margin-bottom: 10px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.verdict-option p { font-size: 14px; line-height: 1.55; margin-bottom: 0; color: var(--muted-on-inverse); }
+
+/* ---------- Score bar ---------- */
+.score-card {
+  border: 1px solid var(--ink);
+  padding: 32px;
+  margin: 24px 0;
+  background: var(--bg-card);
+}
+.score-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 50px;
+  gap: 20px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule-light);
+}
+.score-row:last-child { border-bottom: none; }
+.score-row .name { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: 15px; }
+.score-row .bar { background: var(--bg-paper); height: 8px; position: relative; }
+.score-row .bar-fill { height: 100%; background: var(--accent-data); }
+.score-row .bar-fill.warn { background: var(--accent-warn); }
+.score-row .bar-fill.pos { background: var(--accent-pos); }
+.score-row .num { font-family: var(--mono); font-weight: 600; font-size: 14px; color: var(--ink); text-align: right; }
+
+/* ---------- Footer ---------- */
+footer {
+  border-top: 1px solid var(--rule);
+  background: var(--bg-inverse);
+  color: var(--muted-on-inverse);
+  padding: 60px 32px 80px;
+  margin-top: 0;
+}
+.footer-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+footer h4 { color: var(--ink-on-inverse); margin-bottom: 18px; font-family: var(--serif); font-size: 16px; font-weight: 600; }
+footer ul { padding-left: 0; list-style: none; columns: 2; column-gap: 40px; }
+footer li { font-size: 12px; line-height: 1.5; margin-bottom: 8px; font-family: var(--mono); break-inside: avoid; }
+footer a { color: var(--accent-yellow-on-inverse); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+.footer-meta {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule-on-inverse);
+  font-size: 11px;
+  color: var(--light-on-inverse);
+  font-family: var(--mono);
+  letter-spacing: 0.05em;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  main { grid-template-columns: 1fr; }
+  nav.toc { position: static; padding-top: 40px; }
+  nav.toc ol { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 56px; }
+  .verdict-options { grid-template-columns: 1fr; }
+  .qf-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
+  .hero { padding: 40px 20px 60px; }
+  .hero h1 { font-size: 42px; }
+  .hero-subtitle { font-size: 18px; }
+  main { padding: 0 20px 80px; gap: 0; }
+  .container, .quickfacts { padding: 0 20px; }
+  .quickfacts-wrap { padding: 40px 0 50px; }
+  .qf-grid { grid-template-columns: repeat(2, 1fr); }
+  .qf-value { font-size: 26px; }
+  .qf-cell-verdict .qf-verdict { font-size: 18px; }
+  nav.toc ol { grid-template-columns: 1fr; }
+  section h2 { font-size: 32px; }
+  .stats { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  .verdict, .tldr { padding: 40px 24px; }
+  .verdict h3 { font-size: 26px; }
+  .score-row { grid-template-columns: 120px 1fr 40px; gap: 12px; }
+  footer ul { columns: 1; }
+  .timeline::before { left: 11px; }
+  .tl-row { grid-template-columns: 80px 1fr; }
+  .tl-row .tl-date { font-size: 10px; }
+  .path-detail { grid-template-columns: 1fr; }
+}
+
+/* ---------- Theme toggle button ---------- */
+#theme-toggle {
+  position: fixed;
+  top: 14px;
+  right: 24px;
+  z-index: 1000;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--rule-light);
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.12s;
+}
+#theme-toggle:hover { background: var(--bg-paper); border-color: var(--ink); }
+#theme-toggle:active { transform: scale(0.92); }
+#theme-toggle .icon-sun, #theme-toggle .icon-moon { transition: opacity 0.15s; }
+#theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] #theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] #theme-toggle {
+  background: var(--bg-paper);
+  border-color: var(--rule-light);
+  color: var(--ink);
+}
+
+@media (max-width: 720px) {
+  #theme-toggle { top: 10px; right: 14px; width: 32px; height: 32px; }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  body { background: white; font-size: 11pt; }
+  .topbar, nav.toc, footer, #theme-toggle { display: none; }
+  main { display: block; max-width: 100%; padding: 0; }
+  article { max-width: 100%; padding-top: 0; }
+  .hero { padding: 30px 0; page-break-after: always; grid-template-columns: 1fr; }
+  .hero h1 { font-size: 36pt; color: black; }
+  .hero h1 em { color: #a73121; }
+  .quickfacts-wrap { background: white; color: black; padding: 20px 0; page-break-after: always; }
+  .qf-grid { background: #ddd; border-color: #ddd; }
+  .qf-cell { background: white; }
+  .qf-label, .qf-sub { color: #666 !important; }
+  .qf-value { color: black !important; }
+  .qf-cell-verdict { background: #f4e6e3 !important; }
+  .qf-cell-verdict .qf-verdict, .qf-cell-verdict .qf-label, .qf-cell-verdict .qf-sub { color: black !important; }
+  section { page-break-inside: avoid; padding: 20px 0; border-top: 2px solid #000; }
+  section h2 { font-size: 22pt; }
+  section h3 { font-size: 14pt; }
+  .tldr, .verdict { background: #f5f5f5 !important; color: black !important; padding: 24px !important; }
+  .tldr *, .verdict * { color: black !important; }
+  .verdict-option { background: white !important; border: 1px solid #ddd; }
+  a { color: black !important; text-decoration: none; }
+  .stats, .two-col, .score-card { page-break-inside: avoid; }
+  .divider-quote { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== THEME TOGGLE ===== -->
+<button id="theme-toggle" aria-label="切换夜间模式" title="切换浅色 / 夜间模式">
+  <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<!-- ===== TOP META BAR ===== -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div><strong>SpaceX / SPCX</strong> · 长期投资尽调</div>
+    <div>调研日期 <strong>2026 · 06 · 14</strong></div>
+    <div>面向长期投资者 · 上市第 2 天快照 · v1</div>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div>
+    <div class="hero-eyebrow">投资尽调 · 航天 / 卫星互联网 / AI</div>
+    <h1>最强的太空公司，<em>最贵的</em>船票</h1>
+    <p class="hero-subtitle">
+      SpaceX 以史上最大 IPO（募资 <strong>约 $750 亿</strong>）登陆纳斯达克，估值 <strong>$1.75 万亿</strong>、市销率 <strong>约 94 倍</strong>——全球最贵的大盘股之一。它垄断了人类入轨能力、握着唯一盈利的卫星网络，却又年亏 <strong>$49 亿</strong>、把一个烧钱的 AI 帝国捆了进来。这份报告回答一个问题：作为长期投资，它到底值不值得，以及该怎么上车。
+    </p>
+  </div>
+  <div class="hero-meta">
+    <dl>
+      <dt>调研对象</dt><dd>SpaceX · 纳斯达克 SPCX</dd>
+      <dt>调研深度</dt><dd>6 个并行 AI 调研员</dd>
+      <dt>覆盖平台</dt><dd>SEC 招股书 / 券商行情 / CNBC·NPR·彭博 / 雪球·知乎·Reddit</dd>
+      <dt>一手来源</dt><dd>424B4 招股书全文（11.8MB）+ IBKR 行情</dd>
+      <dt>报告字数</dt><dd>约 9,500 字</dd>
+      <dt>面向读者</dt><dd>非金融背景 · 考虑长期持有</dd>
+    </dl>
+  </div>
+</header>
+
+<!-- ===== QUICK FACTS · 10 秒看完 ===== -->
+<div class="quickfacts-wrap">
+  <div class="quickfacts">
+    <div class="qf-header">
+      <div class="qf-eyebrow">10 秒读完 / 核心数据速览</div>
+      <h2 class="qf-title">SpaceX (SPCX) at a Glance</h2>
+    </div>
+    <div class="qf-grid">
+      <div class="qf-cell">
+        <div class="qf-label">上市</div>
+        <div class="qf-value">06.12<span class="qf-unit">2026</span></div>
+        <div class="qf-sub">纳斯达克 · 代码 SPCX</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">发行价 → 首日收盘</div>
+        <div class="qf-value pos">$161</div>
+        <div class="qf-sub">$135 起 · 首日 +19.2%</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">募资额</div>
+        <div class="qf-value data">$750<span class="qf-unit">亿</span></div>
+        <div class="qf-sub">=$75B · 史上最大 IPO</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">IPO 估值</div>
+        <div class="qf-value">$1.75<span class="qf-unit">万亿</span></div>
+        <div class="qf-sub">首日盘中一度破 $2 万亿</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">2025 营收</div>
+        <div class="qf-value">$186.7<span class="qf-unit">亿</span></div>
+        <div class="qf-sub">同比 +33%（招股书）</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">2025 净亏损</div>
+        <div class="qf-value warn">−$49.4<span class="qf-unit">亿</span></div>
+        <div class="qf-sub">仅 Starlink 板块盈利</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">市销率 P/S</div>
+        <div class="qf-value warn">94<span class="qf-unit">倍</span></div>
+        <div class="qf-sub">特斯拉的约 6 倍贵</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">马斯克投票权</div>
+        <div class="qf-value">82.4<span class="qf-unit">%</span></div>
+        <div class="qf-sub">经济权益约 42% · 受控公司</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">Starlink 订户</div>
+        <div class="qf-value pos">1,030<span class="qf-unit">万</span></div>
+        <div class="qf-sub">同比 +105% · 164 国</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">分析师目标价</div>
+        <div class="qf-value">$63–227</div>
+        <div class="qf-sub">空头 $63 / 多头 $227</div>
+      </div>
+      <div class="qf-cell">
+        <div class="qf-label">解禁高峰</div>
+        <div class="qf-value warn">2026.12</div>
+        <div class="qf-sub">第 70 天起滚动解禁</div>
+      </div>
+      <div class="qf-cell qf-cell-verdict">
+        <div class="qf-label">我的判断</div>
+        <div class="qf-verdict">伟大的公司，<br>透支的价格</div>
+        <div class="qf-sub">长期基本面强 · 入场价无安全垫</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ===== TOC ===== -->
+<nav class="toc">
+  <h4>章节目录</h4>
+  <ol>
+    <li><a href="#tldr">一页纸结论</a></li>
+    <li><a href="#ipo">SPCX 到底是什么</a></li>
+    <li><a href="#business">业务结构：三大分部</a></li>
+    <li><a href="#financials">收入财报：招股书拆解</a></li>
+    <li><a href="#ai">AI 维度与想象空间</a></li>
+    <li><a href="#vision">马斯克的愿景与规划</a></li>
+    <li><a href="#risks">竞争 · 风险 · 做空逻辑</a></li>
+    <li><a href="#invest">怎么投 + 中外观点</a></li>
+    <li><a href="#decision">给你的投资判断</a></li>
+  </ol>
+</nav>
+
+<article>
+
+<!-- ===== 01 TL;DR ===== -->
+<section id="tldr">
+  <div class="section-num">01 / 一页纸结论</div>
+  <h2>它是不是一门好生意？是。现在是不是好价格？大概率不是。</h2>
+
+  <p>先把你最关心的事说清楚：<strong>SpaceX 真的上市了</strong>，不是谣言、不是蹭名字的代币。2026 年 6 月 12 日它在纳斯达克挂牌，代码 <strong>SPCX</strong>，募资约 <strong>$750 亿（$75 billion）</strong>，一举打破沙特阿美 2019 年 $294 亿的纪录，成为<strong>人类历史上最大的 IPO</strong>（首次公开募股，公司第一次把股票卖给公众）。</p>
+
+  <p>这是一家真正意义上"独一档"的公司：它一家的火箭 2025 年送上太空的货，<strong>比全世界其他所有国家和公司加起来还多</strong>；它的 Starlink（星链，全球卫星上网）是目前唯一稳定大额盈利的卫星互联网。问题不在公司好不好，而在<strong>你被要求用什么价格上车</strong>——市销率（股价相当于年营收的多少倍）高达 <strong>94 倍</strong>，是特斯拉的约 6 倍、英伟达的近 5 倍。这个价格里，已经预支了它未来一二十年几乎不能出错的高速增长。</p>
+
+  <div class="callout data">
+    <div class="callout-label">数据可信度说明 · 本报告读了什么</div>
+    <p>本报告核心数字直接来自 <strong>SEC（美国证监会）招股书 424B4 全文（11.8MB，逐段提取）</strong>，并用券商实时行情（盈透 IBKR）、CNBC / NPR / 彭博 / CBS 多方交叉印证。<strong>17 项高 stake 数据已逐项验算</strong>：分部营收（$40.86 亿 + $113.87 亿 + $32.01 亿）与合并营收 $186.74 亿分毫对得上、利润表逐行勾稽无误。已修正调研过程中两处口径错误——<strong>市销率应为 94 倍（不是 9.4 倍）、募资应为约 $750 亿即 $75 billion（不是 $75 亿）</strong>。</p>
+  </div>
+
+  <div class="tldr">
+    <h3>5 句话看懂 SpaceX 这笔投资</h3>
+    <ol>
+      <li><strong>护城河是真的，而且极深。</strong>可复用火箭让它垄断了"把东西送上天"这件事（2025 年占全球入轨质量 &gt;80%），Starlink 是唯一全球卫星宽带网、还高速盈利——这两条护城河五年内没人能复制。</li>
+      <li><strong>但现在整体还在巨亏、疯狂烧钱。</strong>2025 年净亏 <strong>$49.4 亿</strong>，自由现金流 <strong>−$140 亿</strong>（赚的钱远不够投资花的），全靠融资和这次 IPO 续命。赚钱的只有 Starlink，火箭被 Starship 研发拖亏、AI 是个"烧钱炉"。</li>
+      <li><strong>它已经不只是航天公司了。</strong>2026 年 2 月，马斯克把自己的 AI 公司 xAI（含大模型 Grok、数据中心、社交平台 X）整个并进来——这既是估值想象力的来源（"太空 + AI"），也是亏损和争议的来源。</li>
+      <li><strong>估值是最大的风险。</strong>94 倍市销率全球罕见，权威机构晨星给的合理价只有 <strong>$63</strong>（较发行价腰斩），多头则看到 <strong>$190–227</strong>。当前 $161 卡在多空中间，安全垫很薄。</li>
+      <li><strong>对你的结论：好公司，但不必急着追高。</strong>作为想长期持有的非专业投资者，更稳的做法是等首份财报（约 8 月）和解禁抛压（2026 Q3–Q4）过后、估值更合理时再分批建仓，并且只用正股、远离杠杆 ETF。详见第 9 章。</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== 02 SPCX 是什么 ===== -->
+<section id="ipo">
+  <div class="section-num">02 / SPCX 到底是什么</div>
+  <h2>一场创纪录的 IPO，和一个你必须分清的陷阱</h2>
+
+  <p>"SPCX" 就是 Space Exploration Technologies Corp.（SpaceX 法律全名）在<strong>纳斯达克</strong>的股票代码。买入一股 SPCX，你就是这家公司的真正股东（A 类普通股）。这一点要先和市面上的"假 SpaceX"划清界限——见下方提醒。</p>
+
+  <div class="metric-list">
+    <div class="metric-row">
+      <div class="label">上市日期 / 交易所<span class="src">CNBC · NPR ✓ 已交叉验证</span></div>
+      <div class="value">2026.06.12 · 纳斯达克</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">发行价（固定价，不设区间）<span class="src">SpaceX 官方定价稿 ✓</span></div>
+      <div class="value data">$135.00</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">发行股数 × 价格 = 募资<span class="src">555,555,555 股 × $135 ✓ 验算</span></div>
+      <div class="value">约 $750 亿 <small>($75B)</small></div>
+    </div>
+    <div class="metric-row">
+      <div class="label">IPO 估值 / 首日收盘市值<span class="src">CNBC ✓</span></div>
+      <div class="value">$1.75 → $2.1 <small>万亿</small></div>
+    </div>
+    <div class="metric-row">
+      <div class="label">首日：开盘 → 盘中高 → 收盘<span class="src">CNBC · CBS ✓</span></div>
+      <div class="value">$150 → $176.5 → $161</div>
+    </div>
+    <div class="metric-row">
+      <div class="label">超额认购 / 散户配额<span class="src">CNBC · 需求约 $1500 亿</span></div>
+      <div class="value">约 2 倍 / 约 20%</div>
+    </div>
+  </div>
+
+  <p>注意两个数：发行价 $135 是马斯克<strong>"一口价"拍板</strong>的（不像常规 IPO 给个价格区间再询价），首日收在 $161（+19.2%）。盘中一度冲到 $176.52（+30.8%）后回落——这种"冲高回落"本身就是短线投机资金活跃的信号。</p>
+
+  <div class="callout warn">
+    <div class="callout-label">⚠ 必须分清：你买的到底是不是"真股票"</div>
+    <p>市面上至少有三类"SpaceX"，<strong>只有第一类是你真正持有的公司股权</strong>：</p>
+    <p><strong>① 正股 SPCX（纳斯达克）</strong>——真股东，有股权。这是你该买的。</p>
+    <p><strong>② 杠杆 ETF / ETP</strong>（如 SPCF、LOFF 等 2 倍做多，还有 2 倍做空、欧洲甚至有 3 倍做多、代码干脆叫 ELON / MUSK）——是用衍生品"按日"放大涨跌的基金，<strong>只适合短线，长期持有会被"波动损耗"慢慢磨掉本金</strong>（详见第 8 章）。</p>
+    <p><strong>③ 链上"代币化 SpaceX"</strong>（如 Hyperliquid 上的 SPCX-USDC 合成永续）——<strong>不是股票</strong>，是用合约模拟股价的衍生品，你没有任何股权、投票权，承担的是平台和预言机喂价风险。你之前研究过的"Hyperliquid 把 SpaceX 搬上链"指的就是这类。<strong>千万别和正股混为一谈。</strong></p>
+  </div>
+</section>
+
+<!-- ===== 03 业务结构 ===== -->
+<section id="business">
+  <div class="section-num">03 / 业务结构：三大分部</div>
+  <h2>一台"垂直整合飞轮"：火箭、星链、AI</h2>
+
+  <p>很多人以为 SpaceX 有"五大业务"，但招股书里它<strong>只分三个报告分部</strong>（reportable segment，会计上单独披露盈亏的事业部）：<strong>Space（航天发射）、Connectivity（连接，即 Starlink）、AI（xAI）</strong>。Starship（星舰）是 Space 分部里的下一代火箭项目，Starshield（军用专网）是 Connectivity 分部下的政府线——它们不是独立分部。</p>
+
+  <p>这三块拼成一个"<strong>飞轮</strong>"（flywheel，<em>就像滚雪球：越转越大、越大越快</em>）：发射越便宜 → 撑得起 Starlink → Starlink 赚钱回血 → 投入 Starship 和 AI → Starship 让发射更便宜、卫星部署更猛 → 飞轮转得更快。<strong>全部资产都在上市主体 SPCX 内</strong>，没有体外资产被排除。</p>
+
+  <h3>三大分部 2025 全年财务（招股书原文）</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>分部</th><th>一句话定位</th><th>2025 营收</th><th>营业利润/亏损</th><th>是否赚钱</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="product-name">Space<br><span class="tag">发射</span></td>
+          <td>可复用火箭，垄断"送货上天"</td>
+          <td><strong>$40.86 亿</strong>（21.9%）</td>
+          <td class="">−$6.57 亿</td>
+          <td>核心赚钱，被 Starship 研发($30亿)拖亏</td>
+        </tr>
+        <tr style="background: rgba(44, 94, 63, 0.05);">
+          <td class="product-name">Connectivity<br><span class="tag">星链</span></td>
+          <td>全球唯一盈利的卫星宽带网</td>
+          <td><strong>$113.87 亿</strong>（61%）</td>
+          <td>+$44.23 亿</td>
+          <td>✅ 唯一现金牛，EBITDA 利润率约 63%</td>
+        </tr>
+        <tr>
+          <td class="product-name">AI<br><span class="tag">xAI</span></td>
+          <td>Grok 大模型 + 数据中心 + X</td>
+          <td><strong>$32.01 亿</strong>（17%）</td>
+          <td>−$63.55 亿</td>
+          <td>🔴 烧钱黑洞，2025 capex 吞 $127 亿</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>① Space（发射）—— 帝国的地基</h4>
+  <p>2025 年 Falcon 9（猎鹰 9 号，可复用火箭——<em>火箭打完能回收再用，像飞机而不是一次性烟花</em>）发射 <strong>165 次</strong>，单枚助推器最多复用 34 次。它把发射成本从历史均价约 $18,500/公斤砍到约 $2,700/公斤（降 85%）。2025 年它承接了 12 次国安发射里的 11 次、NASA 全部 5 次空间站往返。注意一个会计细节：<strong>给自己发 Starlink 卫星的发射不计入这块营收</strong>，所以它的真实"发射能力"远大于 $40.86 亿这个对外营收数字。</p>
+
+  <h4>② Connectivity / Starlink —— 唯一赚钱的引擎</h4>
+  <p>在轨约 <strong>9,600 颗</strong>卫星（占全球可机动卫星约 75%），订户约 <strong>1,030 万</strong>（同比 +105%），覆盖 164 国。有意思的是 ARPU（每户每月平均收入）<strong>逐年下降</strong>：从 2023 年的 $99 降到 2026 Q1 的 $66——这是公司<strong>故意</strong>的薄利多销策略，靠规模和降本而非涨价赚钱。这一块 2025 年经营利润 +$44.23 亿、EBITDA 利润率约 63%，是整个公司的造血机。</p>
+
+  <h4>③ AI / xAI —— 想象力与黑洞的混合体</h4>
+  <p>2026 年 2 月并入，含数据中心 COLOSSUS（约 1 吉瓦算力）、大模型 Grok、社交网络 X（5.5 亿月活）。这块单列一章细讲（第 5 章）。结构上要记住：它营收只有 $32 亿，却亏了 $63.55 亿、吞掉公司 61% 的资本开支——<strong>公司整体的巨亏，几乎全是这块造成的</strong>。</p>
+
+  <div class="callout">
+    <div class="callout-label">关于"Starlink 会不会单独分拆上市"</div>
+    <p>历史上马斯克多次暗示星链成熟后可能独立 IPO。但我们<strong>逐字检索了整份招股书</strong>，"分拆 / spin-off / 单独上市"<strong>零命中</strong>——目前 Starlink 完整留在 SPCX 体内，<strong>没有任何分拆安排</strong>。这是"确认没有"，不是"没查到"。</p>
+  </div>
+</section>
+
+<!-- ===== 04 财报 ===== -->
+<section id="financials">
+  <div class="section-num">04 / 收入财报：招股书拆解</div>
+  <h2>赚钱的星链，填不满烧钱的窟窿</h2>
+
+  <p>这是你让我"一定要读招股书"的那部分。下面全部来自 SEC 上的财务三表（已审计）。先看利润表的三年轨迹：</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>百万美元</th><th>2025</th><th>2024</th><th>2023</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="product-name">营收</td><td><strong>18,674</strong></td><td>14,015</td><td>10,387</td></tr>
+        <tr><td class="product-name">研发 R&amp;D</td><td>8,643</td><td>3,464</td><td>2,105</td></tr>
+        <tr><td class="product-name">营业利润/亏损</td><td>(2,589)</td><td>466</td><td>(3,505)</td></tr>
+        <tr><td class="product-name">净利润/亏损</td><td><strong>(4,937)</strong></td><td><strong>791</strong></td><td>(4,628)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>2025 年营收 $186.7 亿、同比增 33%，但<strong>净亏损 $49.4 亿</strong>（2024 年还小赚 $7.9 亿，又转亏了）。转亏主因是<strong>研发费从 $34.6 亿暴涨到 $86.4 亿</strong>（翻 2.5 倍）——主要是并进来的 xAI 在烧钱搞大模型、加上 Starship 持续投入。更要命的是现金流：</p>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">经营现金流 2025</div>
+      <div class="stat-value pos">+$67.9<span class="unit">亿</span></div>
+      <div class="stat-note">主业本身在"造血"</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">资本开支 capex 2025</div>
+      <div class="stat-value warn">−$207<span class="unit">亿</span></div>
+      <div class="stat-note">建厂/造箭/铺卫星/买 GPU</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">自由现金流 2025</div>
+      <div class="stat-value warn">−$140<span class="unit">亿</span></div>
+      <div class="stat-note">缺口全靠融资+IPO 补</div>
+    </div>
+  </div>
+
+  <p><strong>自由现金流（公司真正能自由支配的余钱）= 经营现金流 − 资本开支 = 68 − 207 = −140 亿</strong>。<em>就像一家拼命扩张的工厂：店面在赚钱，但赚的钱全砸进盖新厂还不够，差的部分靠借钱和卖股票补。</em>这次 IPO 募的约 $750 亿，本质就是接着填这个窟窿——招股书写明募资优先用于扩张 AI 算力、发射设施、卫星星座，并<strong>明确不分红</strong>（回报只能靠股价涨）。</p>
+
+  <h4>债务在变重</h4>
+  <p>2025 年底总债务及租赁约 <strong>$229 亿</strong>；到 2026 Q1（3 月底）升到 <strong>$291 亿</strong>——因为 3 月新借了一笔 <strong>$200 亿无担保过桥贷款</strong>，用来置换 xAI/X 原来那批 9.5%–12.5% 的高息债。<strong>IPO 募资的一大隐藏用途，就是还这 $200 亿过桥贷</strong>。截至 2026 Q1，公司累计亏损已达 $413 亿。</p>
+
+  <h4>贵不贵：市销率 94 倍的横向对比</h4>
+  <p>市销率（P/S，市值是年营收的几倍，越高说明市场预期越乐观、也越容易摔）是这份报告里最该记住的数字：</p>
+
+  <div class="score-card">
+    <div class="score-row">
+      <div class="name">SpaceX (SPCX)</div>
+      <div class="bar"><div class="bar-fill warn" style="width: 100%;"></div></div>
+      <div class="num">~94×</div>
+    </div>
+    <div class="score-row">
+      <div class="name">Rocket Lab</div>
+      <div class="bar"><div class="bar-fill warn" style="width: 92.5%;"></div></div>
+      <div class="num">~87×</div>
+    </div>
+    <div class="score-row">
+      <div class="name">英伟达 NVDA</div>
+      <div class="bar"><div class="bar-fill" style="width: 21%;"></div></div>
+      <div class="num">~20×</div>
+    </div>
+    <div class="score-row">
+      <div class="name">特斯拉 TSLA</div>
+      <div class="bar"><div class="bar-fill" style="width: 16%;"></div></div>
+      <div class="num">~16×</div>
+    </div>
+    <div class="score-row">
+      <div class="name">苹果 AAPL</div>
+      <div class="bar"><div class="bar-fill" style="width: 10%;"></div></div>
+      <div class="num">~9.5×</div>
+    </div>
+    <div class="score-row">
+      <div class="name">波音 / 洛克希德</div>
+      <div class="bar"><div class="bar-fill pos" style="width: 2%;"></div></div>
+      <div class="num">~2×</div>
+    </div>
+  </div>
+
+  <p>结论很直白：SpaceX 是这份名单里<strong>最贵的</strong>，比特斯拉贵约 6 倍、比英伟达贵近 5 倍，唯一同量级的是同为火箭高成长股的 Rocket Lab。<em>就像给一家年收入 187 亿的公司贴了 1.75 万亿的价签——市场不是按它现在赚多少定价，而是押注它未来很多年都高速增长且不犯错。</em>贵不贵，取决于你信不信这个增长故事能兑现。</p>
+</section>
+
+<!-- ===== 05 AI ===== -->
+<section id="ai">
+  <div class="section-num">05 / AI 维度与想象空间</div>
+  <h2>"太空 + AI"：真有料，也真有水分</h2>
+
+  <p>这是你特别要我补的维度。一句话：SpaceX 的 AI 想象空间是个<strong>真料与水分的混合体</strong>。</p>
+
+  <h4>它怎么和 AI 扯上关系的</h4>
+  <p>2026 年 2 月 2 日，马斯克把自己的 AI 公司 xAI 整个并进 SpaceX（全股票交易，合并体估值 <strong>$1.25 万亿</strong> = SpaceX $1 万亿 + xAI $2,500 亿，号称史上最大并购）。5 月起 xAI 不再作为独立公司存在，变成 SpaceX 的 "SpaceXAI" 部门。SpaceX 由此一次性拿到：大模型 <strong>Grok</strong>（吃海量文字训练出来、能对话写作的 AI，类似 ChatGPT）、超级数据中心 <strong>COLOSSUS</strong>（在孟菲斯，约 1 吉瓦算力——<em>专门训练 AI 的超大计算机集群</em>）、社交网络 <strong>X</strong>（原 Twitter，5.5 亿月活）。</p>
+
+  <h4>真料：已经落地的协同</h4>
+  <ul>
+    <li><strong>Grok 已在给 Starlink 干客服</strong>——语音版上线，电话解决率 70%。</li>
+    <li><strong>"轨道数据中心"已正式向 FCC 备案</strong>（不是 PPT）——计划部署最多 <strong>100 万颗</strong>卫星，靠太阳同步轨道"永远晒太阳"供电、用太空真空免费散热跑 AI，愿景 100 吉瓦算力。<em>就像把发电厂和机房一起搬上天，用永不落山的太阳供电、用宇宙的寒冷当免费空调。</em></li>
+    <li><strong>反讽的背书</strong>：连 Grok 的竞争对手 Anthropic（Claude 的母公司）都签约租用了 SpaceX 的 Colossus 数据中心超 300 兆瓦算力——说明 SpaceX 想当"AI 算力的卖水人"。</li>
+  </ul>
+
+  <h4>水分：多头叙事 vs 同行打脸</h4>
+  <p>多头（如 Oppenheimer 给"跑赢"评级、目标价约 $190–195，对应市值约 $2.5 万亿；ARK 预测 2030 年达 $2.5 万亿）把"<strong>发射 + 全球连接 + AI + 社交</strong>"捆成一个"别人无法复制的复合护城河"。但质疑同样响亮：</p>
+
+  <div class="two-col">
+    <div class="col-card pos">
+      <h4>多头：凭什么值 $2 万亿+</h4>
+      <ul>
+        <li>"唯一同时握有资本、数据、大模型、硬件、制造、工程人才的垂直整合 AI 公司"（Oppenheimer）</li>
+        <li>AI 最大瓶颈是电，太空太阳能"取之不尽"，2–3 年内太空可能是最便宜算力</li>
+        <li>Grok 接 X 实时数据 + Starlink 全球分发，是别人没有的牌</li>
+      </ul>
+    </div>
+    <div class="col-card warn">
+      <h4>空头：故事注水 / 烧钱炉</h4>
+      <ul>
+        <li>xAI 2026 Q1 单季亏 $24.7 亿、2025 全年亏 $63.5 亿，被斥为"临床意义上的烧钱炉"</li>
+        <li>OpenAI 的 Sam Altman 公开称太空数据中心提案"完全不现实"（辐射/散热/发射成本三大瓶颈）</li>
+        <li>Grok 有"换脸生成不雅图""MechaHitler"等内容安全丑闻，已引来欧盟、英国等多国监管立案——这些麻烦现在传导到上市公司身上</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>还有一个会持续发酵的话题：<strong>特斯拉 + SpaceX + xAI 三合一传闻</strong>。彭博、路透、Fortune 都报过三家在谈，马斯克本人说"我的公司正趋向融合"，SpaceX 总裁 Shotwell 在 IPO 当天称合并"是真实的可能性"。但截至今天<strong>只是强传闻 + 高管暗示，未敲定</strong>。（盈透 IBKR 上甚至有一个专门赌"特斯拉 SpaceX 是否合并"的预测合约 MTSSX。）</p>
+
+  <div class="callout warn">
+    <div class="callout-label">把"想象空间"分清四层（别把想象当事实）</div>
+    <p><strong>① 已落地</strong>：Grok 跑星链客服、Anthropic 租算力、Go 购物助手。<strong>② 已备案在推进</strong>：100 万颗轨道数据中心、Starship 部署 V3。<strong>③ 强传闻+官方暗示</strong>：特斯拉三合一。<strong>④ 纯想象/上行期权</strong>：太空算力成 AI 主力、AI 成 SpaceX 最大业务。<strong>多头的 $2 万亿叙事高度依赖第④层兑现，任何一环断裂，估值就回落到"Starlink 现实价值 + xAI 烧钱"。</strong></p>
+  </div>
+</section>
+
+<!-- ===== 06 愿景 ===== -->
+<section id="vision">
+  <div class="section-num">06 / 马斯克的愿景与规划</div>
+  <h2>他为什么现在上市，又想把公司带去哪</h2>
+
+  <p>马斯克坚持私有了 <strong>24 年</strong>、长期讨厌华尔街的季度压力。这次掉头 IPO，彭博深度报道的核心词是"<strong>Faster, move faster</strong>"（更快，再快）。两个推手：一是 Starlink 估值和现金流暴涨，二是 AI 热潮（2 月并购 xAI 后急需资本）。马斯克自己的说法是为"<strong>一个重大增长阶段</strong>"筹钱——部署 10 万到 100 万颗通信卫星，并<strong>从 2028 年起在太空建 AI 数据中心</strong>。</p>
+
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-date">2026.02</div>
+      <div class="tl-dot data"></div>
+      <div class="tl-content">
+        <div class="tl-title">并购 xAI + X</div>
+        <div class="tl-desc">全股票，合并体估值 $1.25 万亿，AI 正式成为第三分部</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.02.09</div>
+      <div class="tl-dot warn"></div>
+      <div class="tl-content">
+        <div class="tl-title warn">火星计划推迟 5–7 年，转向优先登月</div>
+        <div class="tl-desc">重大转向：近期重心从火星挪到月球 + 太空 AI 算力（据多家媒体摘要，未核到一手公告原文）</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.03</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-title">借 $200 亿过桥贷</div>
+        <div class="tl-desc">置换 xAI/X 的高息债，为 IPO 清理资产负债表</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.05</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-title">Starship 第 12 次试飞</div>
+        <div class="tl-desc">首次启用下一代飞船 + 助推器；预期 2026 下半年开始商业入轨</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2026.06.12</div>
+      <div class="tl-dot data"></div>
+      <div class="tl-content">
+        <div class="tl-title">SPCX 上市</div>
+        <div class="tl-desc">史上最大 IPO，募资约 $750 亿</div>
+      </div>
+    </div>
+  </div>
+
+  <h4>火星梦的现实：时间表被推后了</h4>
+  <p>马斯克的长期愿景没变——无人飞船瞄准 2026 底/2027 火星窗口（他自评约 50% 把握）、载人 2029–2031、首飞用特斯拉 Optimus 机器人当"假人"、长期每两年发上千艘船建殖民地。但有个对投资判断很关键的变化：<strong>2026 年 2 月，SpaceX 宣布把火星任务推迟约 5–7 年，转而优先登月</strong>。换句话说，最性感的"火星叙事"兑现时间被显著推后，近期能讲的故事是登月 + 太空 AI 数据中心（2028 起）。</p>
+
+  <div class="callout warn">
+    <div class="callout-label">关键人 & 控制权：你出钱，但几乎没有投票权</div>
+    <p>马斯克经济权益约 <strong>42%</strong>，但靠 B 类股每股 10 票（A 类每股 1 票），握 <strong>82.4% 投票权</strong>——<em>就像他手里的票一票当十票</em>。SPCX 因此是"受控公司"，可豁免多项治理要求，B 类股东能单独选出董事会过半席位。好处是他不受短期主义牵制、能长期烧钱搞火星；代价是<strong>你作为散户对公司决策几乎没有发言权</strong>。加上公司<strong>没给马斯克买关键人保险</strong>，而他同时还在管特斯拉、Neuralink、Boring 等多家公司——精力分散是真实风险。</p>
+  </div>
+</section>
+
+<!-- ===== 07 风险 ===== -->
+<section id="risks">
+  <div class="section-num">07 / 竞争 · 风险 · 做空逻辑</div>
+  <h2>空头看到 $63：下行风险有多大</h2>
+
+  <p>这一章故意"挑刺"，帮你看清买在高位可能踩的坑。先看竞争——SpaceX 领先，但四面都有人追：</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>战线</th><th>主要对手</th><th>威胁</th><th>一句话</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="product-name">发射</td><td>Blue Origin、Rocket Lab、ULA、中国国家队</td><td>中</td><td>美国国安发射已被政策性分给 5 家，主动削 SpaceX 份额</td></tr>
+        <tr><td class="product-name">卫星网</td><td>亚马逊 Kuiper、中国千帆/国网</td><td>高</td><td>中国两大星座规划合计近 2.8 万颗，且对 Starlink 封闭市场</td></tr>
+        <tr><td class="product-name">AI</td><td>OpenAI、Anthropic、Google</td><td>高</td><td>xAI 三面挨打、烧钱最多、靠低价抢量</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>看空逻辑：为什么有人看到 $63–75</h4>
+  <ul>
+    <li><strong>估值离谱</strong>：94 倍市销率，全球没有第二家有正营收的超大公司接近。权威机构<strong>晨星（Morningstar）给的合理价只有 $63</strong>（整体估值 $7,800 亿，不到 IPO 一半），知名做空者 Jim Chanos 称 $1.75 万亿建立在"<strong>hopes and dreams</strong>（希望与梦想）"之上。倍数从 94× 回到 40× 就意味着跌约 57%。</li>
+    <li><strong>增长全押在还没商业化的 Starship 上</strong>：招股书白纸黑字"预计 2026 下半年才开始向轨道运送载荷"，而"太空 AI 算力要在经济上划算，必须依赖 Starship 完全可复用"——这技术尚未实现。</li>
+    <li><strong>AI 拖累 + 稀释故事</strong>：把巨亏、监管缠身的 xAI 捆进来，让人分不清自己在买太空基建还是补贴投机性 AI。</li>
+    <li><strong>很像短线投机盘</strong>：散户配额异常高（约 20%，常规只有 5–10%），CNBC 采访的散户原话见下——典型"meme 股"情绪结构，退潮时容易踩踏。</li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-label">散户原话（保留原文）</div>
+    <p class="callout-quote">"It's outrageous. It's stupid. It's unreasonable, to be frankly honest."<br>—— 一位申购了 1000 股、却说这价格离谱的散户（CNBC）</p>
+  </div>
+
+  <div class="quote">
+    SpaceX 居然把"小行星采矿"列为了未来的核心业务之一。我觉得这太科幻了……读起来根本不是商业计划，就是一本不折不扣的科幻小说。我可没有兴趣去做空这只股票，我只是选择作壁上观。
+    <div class="quote-attr">Steve Eisman（《大空头》原型投资人之一），雪球用户引述</div>
+  </div>
+
+  <h4>监管、地缘、解禁——三个额外的雷</h4>
+  <ul>
+    <li><strong>监管</strong>：FAA 发射许可、FCC 频谱、反垄断（X+xAI+卫星+政府合同集于一身）、约 24.2% 营收（招股书风险摘要措辞为"约五分之一"）来自美国政府——政府一变脸就受冲击。</li>
+    <li><strong>地缘</strong>：马斯克曾在乌克兰战时下令切断某区域 Starlink，引发各国对"一个私人能开关一国通信"的高度警惕，可能促使主权国家扶持本土星座、把 Starlink 拒之门外。</li>
+    <li><strong>解禁（lock-up）</strong>：内部人锁定期不是一刀切，而是<strong>分批滚动提前解禁</strong>——IPO 后第 70/90/105/120/135 天各解 7%，Q2 财报后先解 20%，到约 <strong>2026 年 12 月</strong>基本全释放（马斯克本人锁 366 天）。<em>解禁＝早期股东和员工可以开始抛售，供给一下变多，股价通常承压。</em>未来几个月会有多个解禁窗口。</li>
+  </ul>
+</section>
+
+<!-- ===== 08 投资方式 ===== -->
+<section id="invest">
+  <div class="section-num">08 / 怎么投 + 中外观点</div>
+  <h2>作为中国个人投资者，怎么买、别人怎么看</h2>
+
+  <h4>怎么买（从"真股票"到"影子"）</h4>
+  <ul>
+    <li><strong>正股 SPCX（最推荐先搞懂）</strong>：开一个支持美股的跨境券商账户，像买普通股一样下单，<strong>1 股起买</strong>。富途（Moomoo）、老虎已上线 SPCX 可二级市场交易。"打新"那班车已开走（6/12 已上市），现在只能买二级市场。</li>
+    <li><strong>杠杆 ETF（短线工具，别长拿）</strong>：已确认至少 5 只 2 倍做多（SPCF、LOFF、SPCH、SPCU、SPAL），另有 2 倍做空、欧洲 3 倍做多（代码就叫 ELON / MUSK）。它们按日重置，<em>就像在向下的自动扶梯上往上走——震荡市里越折腾越往下掉</em>。例：标的第一天 +10%、第二天 −10%，本身净亏 1%，2 倍做多产品却净亏 4%。<strong>长期持有请直接买正股。</strong></li>
+    <li><strong>链上代币（不是股票）</strong>：见第 2 章提醒，承担平台/预言机风险，没有股权。</li>
+  </ul>
+
+  <h4>分析师怎么看（目标价＝预测约一年后值多少）</h4>
+  <div class="two-col">
+    <div class="col-card pos">
+      <h4>多头</h4>
+      <ul>
+        <li>承销团均值 <strong>$174</strong>（增持）</li>
+        <li>Oppenheimer：跑赢，<strong>$190–195</strong>（≈$2.5 万亿）</li>
+        <li>共识最高 <strong>$227</strong></li>
+        <li>高盛预测 2030 年营收 $474B、大摩 2040 年 $3.4 万亿</li>
+      </ul>
+    </div>
+    <div class="col-card warn">
+      <h4>空头 / 估值模型</h4>
+      <ul>
+        <li>晨星公允价值 <strong>$63</strong>（≈$7,800 亿）</li>
+        <li>Doug Kass 约 <strong>$70</strong></li>
+        <li>"基本面地板" <strong>$75</strong></li>
+        <li>Chanos：估值是"hopes and dreams"</li>
+      </ul>
+    </div>
+  </div>
+  <p>当前价 $161 几乎正卡在"承销团目标价之下、空头估值之上"的中间地带——多空分歧极大本身就说明<strong>这只票的不确定性远高于普通蓝筹</strong>。</p>
+
+  <h4>中外散户情绪</h4>
+  <p>英文世界"<strong>边骂贵边抢</strong>"（WSB 几天提及超 1,600 次，嘴上嫌贵手上照买）；中文社区（雪球/知乎/富途）<strong>热情登船、重点在"怎么买"</strong>，专业空头（Chanos、Eisman、晨星）则一致质疑估值。典型的超级热门 IPO 情绪结构：散户偏 FOMO（怕错过），专业资金偏谨慎。</p>
+
+  <h4>给中国投资者的现实门槛（只列事实，非理财建议）</h4>
+  <ul>
+    <li><strong>账户</strong>：需支持美股的跨境券商（富途/老虎/盈透等）。注意——2025 年起富途、长桥等已对大陆"非存量"新客户暂停开户，能否新开取决于你的身份与居住地，需逐家确认。</li>
+    <li><strong>购汇</strong>：个人每年购汇上限 <strong>$5 万（约 ¥36 万）</strong>，且明文不得用于境外证券投资——这是大陆投资者出海买美股的现实合规约束。</li>
+    <li><strong>税</strong>：SPCX <strong>不分红</strong>，所以股息税基本用不上；美国对非居民股票买卖差价不征税，但收益需按规定在中国境内申报（跨境炒股补税监管已趋严）。</li>
+  </ul>
+
+  <h4>历史对照：超级热门巨型 IPO 后会怎样</h4>
+  <p>前车之鉴并不乐观：沙特阿美（2019，史上最热）很快破发；Rivian 首年跌约 64%；滴滴首年跌约 84%；Coinbase 一年内跌约 75%。纳斯达克统计：约 <strong>64% 的 IPO 在上市头三年跑输大盘</strong>。教训是：首日大涨 ≠ 长期赚钱，散户常买在"史上最高价"，解禁常是回调的导火索，估值越极端回撤空间越大。</p>
+</section>
+
+<!-- ===== 09 决策 ===== -->
+<section id="decision">
+  <div class="section-num">09 / 给你的投资判断</div>
+  <h2>好公司，但不必在最贵的时候上车</h2>
+
+  <p>把所有线索收拢成一句话：<strong>SpaceX 作为"生意"几乎无可挑剔，作为"当前价格的股票"安全垫很薄。</strong>它有真实、极深的护城河（垄断入轨能力 + 唯一盈利的全球卫星网），长期空间确实大；但它同时在巨亏烧钱、把高争议的 AI 捆了进来、估值贵到全球罕见、控制权完全在马斯克手里、且未来几个月有解禁抛压。对一个想<strong>长期持有</strong>的非专业投资者来说，问题不是"要不要拥有它"，而是"<strong>用什么价格、什么节奏拥有它</strong>"。</p>
+
+  <div class="verdict">
+    <div class="verdict-title">★ 三条可选路径（按风险从低到高）</div>
+    <h3>不预测短期涨跌，只匹配"你是哪种投资者"。</h3>
+    <p>下面不是推荐你买或卖，而是把"如果要参与"的三种现实做法摆出来，对应不同的风险承受力。<strong>以下均非个性化理财建议，最终决定和盈亏由你自己承担。</strong></p>
+    <div class="verdict-options">
+      <div class="verdict-option">
+        <div class="num">路径 A · 低风险（推荐先考虑）</div>
+        <h4>耐心等更好的价格</h4>
+        <p>看好公司，但不追首日高位。等约 8 月首份财报 + 2026 Q3–Q4 解禁抛压释放后，若回到承销团目标价（$174）下方、甚至更接近基本面区间，再分批建仓。只买正股，绝不碰杠杆 ETF。</p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">路径 B · 中风险</div>
+        <h4>小仓位长期定投</h4>
+        <p>真信 15–20 年的"太空+AI"故事、且能扛 50% 级别回撤——把它当一张"高风险成长期权"，用能睡着觉的小仓位分批定投，长期持有、忽略短期波动。仓位上限设死，不加杠杆。</p>
+      </div>
+      <div class="verdict-option">
+        <div class="num">路径 C · 高风险（明确是投机）</div>
+        <h4>博财报/解禁博弈</h4>
+        <p>短线赌首份财报或解禁前后的波动。请清楚这是投机不是投资；杠杆 ETF 只适合日内、长拿必被波动损耗吃掉。亏得起再玩。</p>
+      </div>
+    </div>
+  </div>
+
+  <h4>不论你选哪条，避开这 3 个坑</h4>
+  <ul>
+    <li><strong>别把杠杆 ETF 或链上代币当"长期持有 SpaceX"</strong>——它们不是正股，长期拿大概率亏在机制上，不是亏在看错公司。</li>
+    <li><strong>别用超过你"亏光也不影响生活"的钱</strong>——94 倍市销率 + 双层股权 + 关键人风险，意味着波动会非常剧烈。</li>
+    <li><strong>别被"史上最大 IPO""火星""万亿"这些词冲昏头</strong>——历史上越热的巨型 IPO，散户买在最高点的概率越大；先想"现在谁付钱、能不能持续付钱"。</li>
+  </ul>
+
+  <div class="callout data">
+    <div class="callout-label">一句话收尾</div>
+    <p class="callout-quote">SpaceX 大概率是这个时代最伟大的公司之一——但"伟大的公司"和"此刻就该买入的股票"是两回事。对你而言，最大的优势恰恰是：你不必现在就做决定，可以等它自己把价格跌到有安全垫，再用真金白银投票。</p>
+  </div>
+</section>
+
+</article>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <h4>主要数据来源（一手优先）</h4>
+    <ul>
+      <li><a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm" target="_blank" rel="noopener noreferrer">SEC 424B4 招股书（定价版）</a> · 财务三表/分部/债务/风险因素一手出处</li>
+      <li><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001181412&type=&dateb=&owner=include&count=100" target="_blank" rel="noopener noreferrer">SEC EDGAR · SpaceX 全部 filing</a> · CIK 0001181412</li>
+      <li><a href="https://www.cnbc.com/2026/06/12/spacex-ipo-spcx-live-updates.html" target="_blank" rel="noopener noreferrer">CNBC · IPO 首日直播</a> · 首日收 $161 / +19.2%</li>
+      <li><a href="https://www.npr.org/2026/06/11/nx-s1-5853199/spacex-ipo-price-elon-musk" target="_blank" rel="noopener noreferrer">NPR · $75 billion 募资</a> · 史上最大 IPO</li>
+      <li><a href="https://www.bloomberg.com/news/features/2026-06-13/inside-the-spacex-ipo-why-elon-musk-raced-to-take-spacex-public" target="_blank" rel="noopener noreferrer">Bloomberg · Why Musk Raced to Take SpaceX Public</a></li>
+      <li><a href="https://www.cnbc.com/2026/02/03/musk-xai-spacex-biggest-merger-ever.html" target="_blank" rel="noopener noreferrer">CNBC · SpaceX×xAI $1.25 万亿并购</a></li>
+      <li><a href="https://www.cnbc.com/2026/06/03/morningstar-spacex-ipo-target-price-nasdaq.html" target="_blank" rel="noopener noreferrer">CNBC · 晨星合理价 $7,800 亿</a> · 空头视角</li>
+      <li><a href="https://spacenews.com/spacex-files-plans-for-million-satellite-orbital-data-center-constellation/" target="_blank" rel="noopener noreferrer">SpaceNews · 100 万颗轨道数据中心 FCC 备案</a></li>
+      <li><a href="https://www.marketbeat.com/stocks/NASDAQ/SPCX/forecast/" target="_blank" rel="noopener noreferrer">MarketBeat · 分析师目标价共识</a></li>
+      <li><a href="https://www.cnbc.com/2026/05/21/spacex-insiders-will-get-to-sell-shares-earlier-than-usual-after-the-ipo.html" target="_blank" rel="noopener noreferrer">CNBC · 解禁结构（提前滚动）</a></li>
+      <li><a href="https://xueqiu.com/9951187724/393586277" target="_blank" rel="noopener noreferrer">雪球 · Eisman 看空引述</a> · 中文社区情绪</li>
+      <li><a href="https://www.fool.com/investing/2026/06/11/prediction-heres-when-spacex-will-merge-with-tesla/" target="_blank" rel="noopener noreferrer">Motley Fool · 特斯拉三合一预测</a></li>
+    </ul>
+
+    <div class="footer-meta">
+      <div>报告生成 · 2026-06-14 · Claude · 6 个并行 AI 调研员协作完成 · 17 个高 stake 数据点经逐项验算（分部数据与招股书完全勾稽 · 已修正 P/S 与募资额两处口径错误）</div>
+      <div>仅供决策参考 · 非个性化投资建议 · 数据可能随时间变化 · 投资有风险</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// 主题切换按钮
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    if (next === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+    try { localStorage.setItem('ray-theme', next); } catch (e) {}
+  });
+  // 系统主题变化时跟随（仅当用户没显式选过时）
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem('ray-theme')) return;
+      if (e.matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+    });
+  }
+})();
+
+// 添加平滑高亮当前章节（仅当 sidebar 加载失败时生效——sidebar 接管时 nav.toc 被隐藏）
+if ('IntersectionObserver' in window) {
+  const sections = document.querySelectorAll('section[id]');
+  const tocLinks = document.querySelectorAll('nav.toc a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        tocLinks.forEach(link => {
+          link.style.color = '';
+          link.style.fontWeight = '';
+        });
+        const activeLink = document.querySelector(`nav.toc a[href="#${id}"]`);
+        if (activeLink) {
+          activeLink.style.color = 'var(--accent-warn)';
+          activeLink.style.fontWeight = '600';
+        }
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => observer.observe(s));
+}
+</script>
+
+</body>
+</html>
